@@ -237,15 +237,15 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 		return
 	case *d4.DT_SNO:
 		_, name := h.tocEntries.GetName(t.Id) // TODO: get group string and output
-		h.writeFmt(`<p><a class="snoRef" href="sno/%d">%s</a></p>`, t.Id, name)
+		h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">%s</a></p>`, t.Id, name)
 		return
 	case *d4.DT_SNO_NAME:
 		_, name := h.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group)) // TODO: get group string and output
-		h.writeFmt(`<p><a class="snoRef" href="sno/%d">%s</a></p>`, t.Id, name)
+		h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">%s</a></p>`, t.Id, name)
 		return
 	case *d4.DT_GBID:
 		// TODO: need to enrich with actual gbid name
-		h.writeFmt(`<p><a class="gbidRef" href="gbid/%d">%d</a><p>`, t.Value, t.Value)
+		h.writeFmt(`<p><a class="gbidRef" href="../gbid/%d.html">%d</a><p>`, t.Value, t.Value)
 		return
 	case *d4.DT_STARTLOC_NAME:
 		// TODO: can it be enriched?
