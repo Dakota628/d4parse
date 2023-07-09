@@ -5,4 +5,5 @@ generate:
 .PHONY: install
 install: generate
 install:
+	go mod download
 	go install ./...
