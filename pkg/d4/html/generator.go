@@ -209,11 +209,11 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 		group, name := h.tocEntries.GetName(t.Id.Value)
 		h.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
-		h.writeFmt(`<div class="fieldValue">%d</div></field>`, group) // TODO: group string
+		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></field>`, group) // TODO: group string
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
-		h.writeFmt(`<div class="fieldValue">%d</div></div>`, t.Id.Value)
+		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
-		h.writeFmt(`<div class="fieldValue">%s</div></div>`, name)
+		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
 		h.sb.WriteString("</div>")
 		h.add(t.Meta)
 		return
@@ -381,7 +381,7 @@ func (h *HtmlGenerator) Add(x d4.UnmarshalBinary) {
 
 func (h *HtmlGenerator) String() string {
 	return fmt.Sprintf(
-		`<html><head><style type="text/css">%s</style></head><body>%s</body></html>`,
+		`<html lang="en"><head><style type="text/css">%s</style></head><body>%s</body></html>`,
 		css,
 		h.sb.String(),
 	)
