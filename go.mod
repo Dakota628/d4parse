@@ -8,3 +8,5 @@ require (
 	github.com/deckarep/golang-set/v2 v2.3.0
 	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
 )
+
+require gopkg.in/yaml.v3 v3.0.1 // indirect

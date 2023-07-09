@@ -1,10 +1,12 @@
 package bin
 
 import (
+	"bufio"
 	"encoding/binary"
 	"errors"
 	"io"
 	"math"
+	"strings"
 )
 
 type BinaryReader struct {
@@ -12,9 +14,9 @@ type BinaryReader struct {
 	offset int64
 }
 
-func NewBinaryReader(r io.ReadSeeker) *BinaryReader {
+func NewBinaryReader(rs io.ReadSeeker) *BinaryReader {
 	return &BinaryReader{
-		ReadSeeker: r,
+		ReadSeeker: rs,
 		offset:     0,
 	}
 }
@@ -159,4 +161,23 @@ func (r *BinaryReader) Seek(offset int64, whence int) (int64, error) {
 	}
 
 	return newOffset, err
+}
+
+func (r *BinaryReader) NullTermString(x *string) error {
+	bufReader := bufio.NewReader(r)
+	sb := strings.Builder{}
+	var b byte
+	var err error
+
+	for {
+		if b, err = bufReader.ReadByte(); err == io.EOF || (err == nil && b == 0) {
+			*x = sb.String()
+			return nil
+		} else if err != nil {
+			return err
+		}
+		if err := sb.WriteByte(b); err != nil {
+			return err
+		}
+	}
 }
