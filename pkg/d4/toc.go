@@ -41,13 +41,33 @@ func (t *TocEntry) UnmarshalBinary(r *bin.BinaryReader) error {
 	return nil
 }
 
+type TocEntries map[SnoGroup]map[int32]string
+
+func (e TocEntries) GetName(id int32, groups ...SnoGroup) (SnoGroup, string) {
+	for _, group := range groups {
+		if m, ok := e[group]; ok {
+			if name, ok := m[id]; ok {
+				return group, name
+			}
+		}
+	}
+
+	for group, m := range e {
+		if name, ok := m[id]; ok {
+			return group, name
+		}
+	}
+
+	return SnoGroupUnknown, ""
+}
+
 type Toc struct {
 	NumSnoGroups   int32
 	EntryCounts    []int32 // n = numSnoGroups
 	EntryOffsets   []int32 // n = numSnoGroups
 	EntryUnkCounts []int32 // n = numSnoGroups
 	Unk1           int32
-	Entries        map[SnoGroup]map[int32]string
+	Entries        TocEntries
 }
 
 func (t *Toc) headerSize() int64 {

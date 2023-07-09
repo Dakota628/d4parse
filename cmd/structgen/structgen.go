@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	basicTypes = mapset.NewThreadUnsafeSet[string](
+	BasicTypes = mapset.NewThreadUnsafeSet[string](
 		"DT_NULL",
 		"DT_BYTE",
 		"DT_WORD",
@@ -46,7 +46,7 @@ var (
 		"DT_VECTOR3D",
 		"DT_VECTOR4D",
 	)
-	reqParamTypes = mapset.NewThreadUnsafeSet[string](
+	ReqParamTypes = mapset.NewThreadUnsafeSet[string](
 		"DT_CSTRING",
 		"DT_OPTIONAL",
 		"DT_RANGE",
@@ -139,7 +139,7 @@ func composeTypes(defs d4data.Definitions, types []d4data.TypeHash, hasParent bo
 
 		// This is a weird edge case. We think the internal UI allows to select 3 types default to NULL. Cases like this
 		// are likely a mistake. So, if the final types requires a type param, use null.
-		if reqParamTypes.Contains(t.Name) {
+		if ReqParamTypes.Contains(t.Name) {
 			nullTypeHash, _, ok := defs.GetByName("DT_NULL")
 			if !ok {
 				return nil, ErrNullNotfound
@@ -226,7 +226,7 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 		def := defs.TypeHashToDef[typeHash]
 		var case_ jen.Code
 
-		if reqParamTypes.Contains(def.Name) {
+		if ReqParamTypes.Contains(def.Name) {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Types(jen.Id("T")).Block())
 		} else {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Block())
@@ -256,7 +256,7 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
-	if basicTypes.Contains(def.Name) {
+	if BasicTypes.Contains(def.Name) {
 		return nil
 	}
 
