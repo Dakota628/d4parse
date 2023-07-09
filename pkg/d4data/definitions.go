@@ -8,28 +8,28 @@ import (
 )
 
 type Definition struct {
-	Type string `json:"type"`
-	Hash int `json:"hash"`
-	Name string `json:"name"`
-	Flags int `json:"flags"`
-	FormatHash int `json:"dwFormatHash"`
-	IsPolymorphicType bool `json:"isPolymorphicType"`
-	Fields []Field `json:"fields"`
-	Size int `json:"size"`
+	Type              string  `json:"type"`
+	Hash              int     `json:"hash"`
+	Name              string  `json:"name"`
+	Flags             int     `json:"flags"`
+	FormatHash        int     `json:"dwFormatHash"`
+	IsPolymorphicType bool    `json:"isPolymorphicType"`
+	Fields            []Field `json:"fields"`
+	Size              int     `json:"size"`
 }
 
 type Field struct {
-	Type [3]int `json:"type"`
-	Hash int `json:"hash"`
-	Name string `json:"name"`
-	Flags int `json:"flags"`
-	Offset int `json:"offset"`
-	ArrayLength int `json:"arrayLength"`
-	ArrayLengthOffset int `json:"arrayLengthOffset"`
-	SerializedBitCount int `json:"serializedBitCount"`
-	SerializedArraySizeBitCount int `json:"serializedArraySizeBitCount"`
-	Group int `json:"group"`
-	TagMapType int `json:"tagMapType"`
+	Type                        [3]int `json:"type"`
+	Hash                        int    `json:"hash"`
+	Name                        string `json:"name"`
+	Flags                       int    `json:"flags"`
+	Offset                      int    `json:"offset"`
+	ArrayLength                 int    `json:"arrayLength"`
+	ArrayLengthOffset           int    `json:"arrayLengthOffset"`
+	SerializedBitCount          int    `json:"serializedBitCount"`
+	SerializedArraySizeBitCount int    `json:"serializedArraySizeBitCount"`
+	Group                       int    `json:"group"`
+	TagMapType                  int    `json:"tagMapType"`
 }
 
 type TypeName = string

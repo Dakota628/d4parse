@@ -28,17 +28,15 @@ func main() {
 
 	tocFilePath := os.Args[1]
 
-	snoMeta, err := d4.ReadTocFile(tocFilePath)
+	toc, err := d4.ReadTocFile(tocFilePath)
 	if err != nil {
 		slog.Error("failed to read toc file", slog.Any("error", err))
 		os.Exit(1)
 	}
 
-	//spewConfig.Dump(snoMeta)
-
-	yamlBytes, err := yaml.Marshal(snoMeta)
+	yamlBytes, err := yaml.Marshal(toc.Entries)
 	if err != nil {
-		slog.Error("failed to marshal toc as yaml", slog.Any("error", err))
+		slog.Error("failed to marshal toc entries as yaml", slog.Any("error", err))
 		os.Exit(1)
 	}
 	os.Stdout.Write(yamlBytes)
