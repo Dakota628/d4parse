@@ -6,17 +6,6 @@ import (
 	"os"
 )
 
-type SnoGroup int32
-
-const (
-	SnoGroupActor SnoGroup = 1
-	// TODO: generate rest of enums
-	SnoGroupFace    SnoGroup = 140
-	SnoGroupUnknown SnoGroup = -3
-	SnoGroupCode    SnoGroup = -2
-	SnoGroupNone    SnoGroup = -1
-)
-
 type TocEntry struct {
 	SnoGroup SnoGroup
 	SnoId    int32

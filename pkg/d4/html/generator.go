@@ -55,15 +55,18 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 	// Fast path
 	switch t := x.(type) {
 	case *d4.SnoMeta:
+		// base/meta/ABTest/Axe Bad Data.abt
 		group, name := h.tocEntries.GetName(t.Id.Value)
 		h.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></field>`, group) // TODO: group string
+		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></field>`, group) // TODO: group string
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
 		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
 		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
-		h.sb.WriteString("</div>")
+		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">File</div></div>`)
+		h.writeFmt(`<div class="fieldValue"><p>base/meta/%s/%s%s</p></div></div>`, group, name, group.Ext())
+		h.sb.WriteString("</div>") // TODO: add file name
 		h.add(t.Meta)
 		return
 	case *d4.DT_NULL:
@@ -85,12 +88,16 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 		h.writeFmt("<p>%f</p>", t.Value)
 		return
 	case *d4.DT_SNO:
-		_, name := h.tocEntries.GetName(t.Id) // TODO: get group string and output
-		h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">%s</a></p>`, t.Id, name)
+		if t.Id >= 0 {
+			group, name := h.tocEntries.GetName(t.Id)
+			h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
+		}
 		return
 	case *d4.DT_SNO_NAME:
-		_, name := h.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group)) // TODO: get group string and output
-		h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">%s</a></p>`, t.Id, name)
+		if t.Id >= 0 {
+			group, name := h.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group))
+			h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
+		}
 		return
 	case *d4.DT_GBID:
 		// TODO: need to enrich with actual gbid name
