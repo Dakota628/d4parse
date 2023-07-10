@@ -170,9 +170,11 @@ type DT_RANGE[T UnmarshalBinary] struct {
 }
 
 func (d *DT_RANGE[T]) UnmarshalBinary(r *bin.BinaryReader) error {
+	d.LowerBound = newElem(d.LowerBound)
 	if err := d.LowerBound.UnmarshalBinary(r); err != nil {
 		return err
 	}
+	d.UpperBound = newElem(d.LowerBound)
 	return d.UpperBound.UnmarshalBinary(r)
 }
 
@@ -236,6 +238,14 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader) error {
 		return err
 	}
 
+	if d.Padding1 != 0 {
+		return ErrInvalidPadding
+	}
+
+	if d.DataOffset < 0 || d.DataSize <= 0 {
+		return nil
+	}
+
 	return r.AtPos(int64(d.DataOffset), io.SeekStart, func(r *bin.BinaryReader) error {
 		curr := int64(d.DataOffset)
 
@@ -291,6 +301,10 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader) e
 
 	if d.Padding1 != 0 || d.Padding2 != 0 {
 		return ErrInvalidPadding
+	}
+
+	if d.DataOffset < 0 || d.DataSize <= 0 || d.DataCount <= 0 {
+		return nil
 	}
 
 	// Skip 8 bytes per entry at the start. We're not sure what this is.

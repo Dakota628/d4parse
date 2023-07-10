@@ -61,7 +61,7 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData d4
 		htmlGen.Add(&snoMeta)
 
 		// Write sno file
-		snoHtmlPath := filepath.Join(snoPath, fmt.Sprintf("%d.html", snoMeta.Id))
+		snoHtmlPath := filepath.Join(snoPath, fmt.Sprintf("%d.html", snoMeta.Id.Value))
 		snoHtml, err := os.Create(snoHtmlPath)
 		if err != nil {
 			slog.Error("Error creating html file", err, slog.String("snoHtmlPath", snoHtmlPath))
@@ -98,7 +98,7 @@ func generateHtmlForFiles(toc d4.Toc, gbData d4.GbData, files []string, outputPa
 func generateAllHtml(toc d4.Toc, gameDataPath string, outputPath string) error {
 	// Make paths
 	metaPath := filepath.Join(gameDataPath, metaPrefix)
-	metaGlobPath := filepath.Join(metaPath, "**", "*")
+	metaGlobPath := filepath.Join(metaPath, "**", "*.*")
 	gameBalancePath := filepath.Join(metaPath, "GameBalance")
 
 	// Get all data file names

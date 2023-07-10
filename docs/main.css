@@ -39,6 +39,11 @@ p {
     font-size: .9rem;
 }
 
+pre {
+    padding: .5rem;
+    margin: 0;
+}
+
 textarea {
     resize: vertical;
 }

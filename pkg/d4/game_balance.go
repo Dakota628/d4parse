@@ -24,11 +24,17 @@ func GetGbHeader(gbDef *GameBalanceDefinition) (headers []GBIDHeader) {
 			continue
 		}
 
+		entries = entries.FieldByName("Value")
+		if entries == reflectZero {
+			continue
+		}
+
 		for i := 0; i < entries.Len(); i++ {
-			headerField := entries.Index(i).FieldByName("THeader")
+			headerField := entries.Index(i).Elem().FieldByName("THeader")
 			if headerField == reflectZero {
 				continue
 			}
+
 			if header, ok := headerField.Interface().(GBIDHeader); ok {
 				headers = append(headers, header)
 			}
