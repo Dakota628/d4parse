@@ -9,4 +9,8 @@ require (
 	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
 )
 
-require gopkg.in/yaml.v3 v3.0.1 // indirect
+require (
+	github.com/alphadose/haxmap v1.2.0 // indirect
+	github.com/bmatcuk/doublestar/v4 v4.6.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+)

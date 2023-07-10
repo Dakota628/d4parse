@@ -145,3 +145,5 @@ func ReadTocFile(path string) (Toc, error) {
 	// Unmarshal meta
 	return toc, toc.UnmarshalBinary(r)
 }
+
+// TODO: support payloads mapping

@@ -9,20 +9,20 @@ import (
 	"unicode"
 )
 
-// TODO: javascript to stick most recently scrolled past field value to the top
-
-type HtmlGenerator struct {
+type Generator struct {
 	sb         strings.Builder
 	tocEntries d4.TocEntries
+	gbData     d4.GbData
 }
 
-func NewHtmlGenerator(toc d4.Toc) *HtmlGenerator {
-	return &HtmlGenerator{
+func NewGenerator(toc d4.Toc, gbData d4.GbData) *Generator {
+	return &Generator{
 		tocEntries: toc.Entries,
+		gbData:     gbData,
 	}
 }
 
-func (h *HtmlGenerator) genericType(rtStr string) string {
+func (h *Generator) genericType(rtStr string) string {
 	i := strings.IndexByte(rtStr, '[')
 	if i <= 0 {
 		return rtStr
@@ -30,28 +30,28 @@ func (h *HtmlGenerator) genericType(rtStr string) string {
 	return rtStr[:i]
 }
 
-func (h *HtmlGenerator) genericField(rv reflect.Value, field string) any {
+func (h *Generator) genericField(rv reflect.Value, field string) any {
 	return rv.Elem().FieldByName(field).Interface()
 }
 
-func (h *HtmlGenerator) prettyTypeName(typeName string) string {
+func (h *Generator) prettyTypeName(typeName string) string {
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
 	return typeName
 }
 
-func (h *HtmlGenerator) prettyFieldName(fieldName string) string {
+func (h *Generator) prettyFieldName(fieldName string) string {
 	r := []rune(fieldName)
 	r[0] = unicode.ToLower(r[0])
 	return string(r)
 }
 
-func (h *HtmlGenerator) writeFmt(format string, a ...any) {
+func (h *Generator) writeFmt(format string, a ...any) {
 	h.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
-func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
+func (h *Generator) add(x d4.UnmarshalBinary) {
 	// Fast path
 	switch t := x.(type) {
 	case *d4.SnoMeta:
@@ -59,18 +59,17 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 		group, name := h.tocEntries.GetName(t.Id.Value)
 		h.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></field>`, group) // TODO: group string
+		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></field>`, group)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
 		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
 		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
 		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">File</div></div>`)
 		h.writeFmt(`<div class="fieldValue"><p>base/meta/%s/%s%s</p></div></div>`, group, name, group.Ext())
-		h.sb.WriteString("</div>") // TODO: add file name
+		h.sb.WriteString("</div>")
 		h.add(t.Meta)
 		return
 	case *d4.DT_NULL:
-		h.writeFmt("<i>null</i>")
 		return
 	case *d4.DT_BYTE:
 		h.writeFmt("<p>0x%x</p>", t.Value)
@@ -187,7 +186,7 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 		h.sb.WriteString("</ul>")
 		return
 	case "*d4.DT_TAGMAP":
-		h.sb.WriteString("<i>tag map parsing unsupported</i>") // TODO
+		h.sb.WriteString("<p><i>tag map parsing is not supported</i></p>") // TODO
 		return
 	case "*d4.DT_CSTRING":
 		h.sb.WriteString(h.genericField(xrv, "Value").(string))
@@ -231,13 +230,13 @@ func (h *HtmlGenerator) add(x d4.UnmarshalBinary) {
 	return
 }
 
-func (h *HtmlGenerator) Add(x d4.UnmarshalBinary) {
+func (h *Generator) Add(x d4.UnmarshalBinary) {
 	h.add(x)
 }
 
-func (h *HtmlGenerator) String() string {
+func (h *Generator) String() string {
 	return fmt.Sprintf(
-		`<html lang="en"><head><link rel="stylesheet" href="../main.css"></head><body>%s</body></html>`,
+		`<html lang="en"><head><script src="../main.js"></script><link rel="stylesheet" href="../main.css"></head><body>%s</body></html>`,
 		h.sb.String(),
 	)
 }

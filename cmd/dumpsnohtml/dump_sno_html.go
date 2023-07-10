@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/html"
+	"github.com/alphadose/haxmap"
 	"github.com/davecgh/go-spew/spew"
 	"golang.org/x/exp/slog"
 	"os"
@@ -42,7 +43,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	htmlGen := html.NewHtmlGenerator(toc)
+	htmlGen := html.NewGenerator(toc, haxmap.New[d4.GbId, d4.GbInfo]())
 	htmlGen.Add(&snoMeta)
 	if err = os.WriteFile(outputPath, []byte(htmlGen.String()), 0666); err != nil {
 		slog.Error("failed write html to output file", slog.Any("error", err))
