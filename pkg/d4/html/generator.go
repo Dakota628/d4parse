@@ -12,6 +12,7 @@ import (
 const css = `* { 
 	box-sizing: border-box;
 }
+
 html, body {
 	min-height: 100%;
 	background: #212529;
@@ -22,6 +23,7 @@ html, body {
 body {
 	font-size: 0.75rem;
 	text-rendering: optimizeLegibility;
+	min-width: 1280px;
 }
 	
 body, ul, ol, dl {
@@ -96,7 +98,7 @@ a:hover {
 }
 
 .type {
-	width: 100%;
+ 	width: 100%;
 	clear: both;
 }
 
