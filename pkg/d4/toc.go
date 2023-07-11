@@ -14,7 +14,7 @@ type TocEntry struct {
 	SnoName string
 }
 
-func (t *TocEntry) UnmarshalBinary(r *bin.BinaryReader) error {
+func (t *TocEntry) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int32LE((*int32)(&t.SnoGroup)); err != nil {
 		return err
 	}
@@ -63,7 +63,7 @@ func (t *Toc) headerSize() int64 {
 	return 4 + (int64(t.NumSnoGroups) * (4 + 4 + 4)) + 4
 }
 
-func (t *Toc) UnmarshalBinary(r *bin.BinaryReader) error {
+func (t *Toc) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int32LE(&t.NumSnoGroups); err != nil {
 		return err
 	}
@@ -109,7 +109,7 @@ func (t *Toc) UnmarshalBinary(r *bin.BinaryReader) error {
 
 		t.Entries[SnoGroup(i)] = make(map[int32]string)
 		for j := int32(0); j < t.EntryCounts[i]; j++ {
-			if err := entry.UnmarshalBinary(r); err != nil {
+			if err := entry.UnmarshalBinary(r, nil); err != nil {
 				return err
 			}
 
@@ -143,7 +143,7 @@ func ReadTocFile(path string) (Toc, error) {
 	r := bin.NewBinaryReader(f)
 
 	// Unmarshal meta
-	return toc, toc.UnmarshalBinary(r)
+	return toc, toc.UnmarshalBinary(r, nil)
 }
 
 // TODO: support payloads mapping

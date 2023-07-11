@@ -15,9 +15,9 @@ type SnoMeta struct {
 	Meta   UnmarshalBinary
 }
 
-func (t *SnoMeta) UnmarshalBinary(r *bin.BinaryReader) error {
+func (t *SnoMeta) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	// Read SNOFileHeader
-	if err := t.Header.UnmarshalBinary(r); err != nil {
+	if err := t.Header.UnmarshalBinary(r, nil); err != nil {
 		return err
 	}
 
@@ -27,7 +27,9 @@ func (t *SnoMeta) UnmarshalBinary(r *bin.BinaryReader) error {
 	}
 
 	// Read Id, but don't advance pointer as Meta padding will skip the Id
-	if err := r.AtPos(0, io.SeekCurrent, t.Id.UnmarshalBinary); err != nil {
+	if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
+		return t.Id.UnmarshalBinary(r, nil)
+	}); err != nil {
 		return err
 	}
 
@@ -35,7 +37,12 @@ func (t *SnoMeta) UnmarshalBinary(r *bin.BinaryReader) error {
 	if t.Meta = NewByFormatHash(int(t.Header.DwFormatHash.Value)); t.Meta == nil {
 		return fmt.Errorf("could not find type for format hash: %d", t.Header.DwFormatHash)
 	}
-	return t.Meta.UnmarshalBinary(r)
+
+	if err := t.Meta.UnmarshalBinary(r, nil); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func ReadSnoMetaFile(path string) (SnoMeta, error) {
@@ -52,5 +59,5 @@ func ReadSnoMetaFile(path string) (SnoMeta, error) {
 	r := bin.NewBinaryReader(f)
 
 	// Unmarshal meta
-	return snoMeta, snoMeta.UnmarshalBinary(r)
+	return snoMeta, snoMeta.UnmarshalBinary(r, nil)
 }

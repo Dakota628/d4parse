@@ -4,25 +4,30 @@ import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"golang.org/x/exp/slog"
+	"html"
 	"reflect"
 	"strings"
 	"unicode"
 )
 
+type MaybeExternal interface {
+	IsExternal() bool
+}
+
 type Generator struct {
 	sb         strings.Builder
 	tocEntries d4.TocEntries
-	gbData     d4.GbData
+	gbData     *d4.GbData
 }
 
-func NewGenerator(toc d4.Toc, gbData d4.GbData) *Generator {
+func NewGenerator(toc d4.Toc, gbData *d4.GbData) *Generator {
 	return &Generator{
 		tocEntries: toc.Entries,
 		gbData:     gbData,
 	}
 }
 
-func (h *Generator) genericType(rtStr string) string {
+func (g *Generator) genericType(rtStr string) string {
 	i := strings.IndexByte(rtStr, '[')
 	if i <= 0 {
 		return rtStr
@@ -30,176 +35,214 @@ func (h *Generator) genericType(rtStr string) string {
 	return rtStr[:i]
 }
 
-func (h *Generator) genericField(rv reflect.Value, field string) any {
+func (g *Generator) genericField(rv reflect.Value, field string) any {
 	return rv.Elem().FieldByName(field).Interface()
 }
 
-func (h *Generator) prettyTypeName(typeName string) string {
+func (g *Generator) prettyTypeName(typeName string) string {
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
 	return typeName
 }
 
-func (h *Generator) prettyFieldName(fieldName string) string {
+func (g *Generator) prettyFieldName(fieldName string) string {
 	r := []rune(fieldName)
 	r[0] = unicode.ToLower(r[0])
 	return string(r)
 }
 
-func (h *Generator) writeFmt(format string, a ...any) {
-	h.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
+func (g *Generator) writeFmt(format string, a ...any) {
+	g.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
-func (h *Generator) add(x d4.UnmarshalBinary) {
+func (g *Generator) add(x d4.UnmarshalBinary) {
 	// Fast path
 	switch t := x.(type) {
 	case *d4.SnoMeta:
-		// base/meta/ABTest/Axe Bad Data.abt
-		group, name := h.tocEntries.GetName(t.Id.Value)
-		h.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
-		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></field>`, group)
-		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
-		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
-		h.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">File</div></div>`)
-		h.writeFmt(`<div class="fieldValue"><p>base/meta/%s/%s%s</p></div></div>`, group, name, group.Ext())
-		h.sb.WriteString("</div>")
-		h.add(t.Meta)
+		group, name := g.tocEntries.GetName(t.Id.Value)
+
+		var prefix string
+		if group == d4.SnoGroupStringList {
+			prefix = "enUS_Text"
+		} else {
+			prefix = "base"
+		}
+
+		g.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
+		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
+		g.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, group)
+		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
+		g.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
+		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
+		g.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
+		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">File</div></div>`)
+		g.writeFmt(`<div class="fieldValue"><p>%s/meta/%s/%s%s</p></div></div>`, prefix, group, name, group.Ext())
+		g.sb.WriteString("</div>")
+		g.add(t.Meta)
 		return
 	case *d4.DT_NULL:
 		return
 	case *d4.DT_BYTE:
-		h.writeFmt("<p>0x%x</p>", t.Value)
+		g.writeFmt("<p>0x%x</p>", t.Value)
 		return
 	case *d4.DT_WORD:
-		h.writeFmt("<p>0x%x</p>", t.Value)
+		g.writeFmt("<p>0x%x</p>", t.Value)
 		return
 	case *d4.DT_ENUM:
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_INT:
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_FLOAT:
-		h.writeFmt("<p>%f</p>", t.Value)
+		g.writeFmt("<p>%f</p>", t.Value)
 		return
 	case *d4.DT_SNO:
 		if t.Id >= 0 {
-			group, name := h.tocEntries.GetName(t.Id)
-			h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
+			group, name := g.tocEntries.GetName(t.Id)
+			g.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
 		}
 		return
 	case *d4.DT_SNO_NAME:
 		if t.Id >= 0 {
-			group, name := h.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group))
-			h.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
+			group, name := g.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group))
+			g.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
 		}
 		return
 	case *d4.DT_GBID:
-		// TODO: need to enrich with actual gbid name
-		h.writeFmt(`<p><a class="gbidRef" href="../gbid/%d.html">%d</a><p>`, t.Value, t.Value)
+		if t.Value == 0 || t.Value == 0xFFFFFFFF || t.Group == 0 || t.Group == -1 {
+			return
+		}
+
+		if gbInfoIfc, ok := g.gbData.Load(*t); ok {
+			if gbInfo, ok := gbInfoIfc.(d4.GbInfo); ok {
+				_, gbIdSnoName := g.tocEntries.GetName(gbInfo.SnoId)
+				g.writeFmt(
+					`<p><a class="gbidRef" href="../sno/%d.html#gbid%d">[%s] %s</a><p>`,
+					gbInfo.SnoId, t.Value, gbIdSnoName, gbInfo.Name,
+				)
+				return
+			}
+		}
+
+		g.writeFmt(`<p>%d <i>(unknown GBID)</i></p>`, t.Value)
 		return
 	case *d4.DT_STARTLOC_NAME:
 		// TODO: can it be enriched?
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_UINT:
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_ACD_NETWORK_NAME:
 		// TODO: can it be enriched?
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_SHARED_SERVER_DATA_ID:
 		// TODO: can it be enriched?
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_INT64:
-		h.writeFmt("<p>%d</p>", t.Value)
+		g.writeFmt("<p>%d</p>", t.Value)
 		return
 	case *d4.DT_STRING_FORMULA:
-		// TODO: do we want compiled in here too? Seems useless.
-		h.sb.WriteString(`<code class="formula">`)
-		h.sb.WriteString(t.Value)
-		h.sb.WriteString("</code>")
+		g.sb.WriteString(`<code class="formula">`)
+		g.sb.WriteString(html.EscapeString(t.Value))
+		g.sb.WriteString("</code>")
 		return
 	case *d4.DT_CHARARRAY:
-		h.sb.WriteString("<pre>")
-		h.sb.WriteString(string(t.Value))
-		h.sb.WriteString("</pre>")
+		g.sb.WriteString("<pre>")
+		g.sb.WriteString(html.EscapeString(string(t.Value)))
+		g.sb.WriteString("</pre>")
 		return
 	case *d4.DT_RGBACOLOR:
-		h.writeFmt("<p>#%x%x%x%x</p>", t.B, t.G, t.B, t.A)
+		g.writeFmt("<p>#%x%x%x%x</p>", t.B, t.G, t.B, t.A) // TODO: sample color box next to text
 		return
 	case *d4.DT_RGBACOLORVALUE:
-		h.writeFmt("<p>rgba(%f, %f, %f, %f)</p>", t.B, t.G, t.B, t.A)
+		g.writeFmt("<p>rgba(%f, %f, %f, %f)</p>", t.B, t.G, t.B, t.A) // TODO: sample color box to text
 		return
 	case *d4.DT_BCVEC2I:
-		h.writeFmt("<p>(%f, %f)</p>", t.X, t.Y)
+		g.writeFmt("<p>(%f, %f)</p>", t.X, t.Y)
 		return
 	case *d4.DT_VECTOR2D:
-		h.writeFmt("<p>(%f, %f)</p>", t.X, t.Y)
+		g.writeFmt("<p>(%f, %f)</p>", t.X, t.Y)
 		return
 	case *d4.DT_VECTOR3D:
-		h.writeFmt("<p>(%f, %f, %f)</p>", t.X, t.Y, t.Z)
+		g.writeFmt("<p>(%f, %f, %f)</p>", t.X, t.Y, t.Z)
 		return
 	case *d4.DT_VECTOR4D:
-		h.writeFmt("<p>(%f, %f, %f, %f)</p>", t.X, t.Y, t.Z, t.W)
+		g.writeFmt("<p>(%f, %f, %f, %f)</p>", t.X, t.Y, t.Z, t.W)
 		return
 	}
 
 	// Slow path (reflection)
 	xrt := reflect.TypeOf(x)
 	xrv := reflect.ValueOf(x)
-	baseTypeName := h.genericType(xrt.String())
+	baseTypeName := g.genericType(xrt.String())
 
 	switch baseTypeName {
 	case "*d4.DT_OPTIONAL":
-		if h.genericField(xrv, "Exists").(int32) > 0 {
-			h.add(h.genericField(xrv, "Value").(d4.UnmarshalBinary))
+		if g.genericField(xrv, "Exists").(int32) > 0 {
+			g.add(g.genericField(xrv, "Value").(d4.UnmarshalBinary))
 		}
 		return
 	case "*d4.DT_RANGE":
-		h.sb.WriteString(`<div class="type">`)
-		h.sb.WriteString(`<div class="field"><div class="fieldKey">lowerBound</dt>`)
-		h.sb.WriteString(`<div class="fieldValue">`)
-		h.add(h.genericField(xrv, "LowerBound").(d4.UnmarshalBinary))
-		h.sb.WriteString("</div></div>")
-		h.sb.WriteString(`<div class="field"><div class="fieldKey">upperBound</dt>`)
-		h.sb.WriteString(`<div class="fieldValue">`)
-		h.add(h.genericField(xrv, "UpperBound").(d4.UnmarshalBinary))
-		h.sb.WriteString("</div</div>>")
-		h.sb.WriteString("</div>")
+		g.sb.WriteString(`<div class="type">`)
+		g.sb.WriteString(`<div class="field"><div class="fieldKey">lowerBound</div>`)
+		g.sb.WriteString(`<div class="fieldValue">`)
+		g.add(g.genericField(xrv, "LowerBound").(d4.UnmarshalBinary))
+		g.sb.WriteString("</div></div>")
+		g.sb.WriteString(`<div class="field"><div class="fieldKey">upperBound</div>`)
+		g.sb.WriteString(`<div class="fieldValue">`)
+		g.add(g.genericField(xrv, "UpperBound").(d4.UnmarshalBinary))
+		g.sb.WriteString("</div></div>")
+		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_FIXEDARRAY", "*d4.DT_VARIABLEARRAY", "*d4.DT_POLYMORPHIC_VARIABLEARRAY":
-		h.sb.WriteString(`<ul class="array">`)
+		if maybeExt, ok := x.(MaybeExternal); ok && maybeExt.IsExternal() {
+			g.sb.WriteString("<p><i>note: external data is not supported</i></p>") // TODO
+			return
+		}
+
+		g.sb.WriteString(`<ul class="array">`)
 		valueRv := xrv.Elem().FieldByName("Value")
 		for i := 0; i < valueRv.Len(); i++ {
-			h.sb.WriteString("<li>")
+			g.sb.WriteString("<li>")
 			elemRv := valueRv.Index(i)
-			h.add(elemRv.Interface().(d4.UnmarshalBinary))
-			h.sb.WriteString("</li>")
+			if elemRv.IsNil() {
+				g.sb.WriteString("<p><i>note: could not obtain element</i></p>")
+			} else {
+				g.add(elemRv.Interface().(d4.UnmarshalBinary))
+			}
+			g.sb.WriteString("</li>")
 		}
-		h.sb.WriteString("</ul>")
+		g.sb.WriteString("</ul>")
 		return
 	case "*d4.DT_TAGMAP":
-		h.sb.WriteString("<p><i>tag map parsing is not supported</i></p>") // TODO
+		g.sb.WriteString("<p><i>note: tag map parsing is not supported</i></p>") // TODO
 		return
 	case "*d4.DT_CSTRING":
-		h.sb.WriteString(h.genericField(xrv, "Value").(string))
+		g.sb.WriteString("<pre>")
+		g.sb.WriteString(html.EscapeString(g.genericField(xrv, "Value").(string)))
+		g.sb.WriteString("</pre>")
 	default:
 		// Non-basic types
 		rv := reflect.ValueOf(x).Elem()
 		rt := rv.Type()
 
-		h.sb.WriteString(`<div class="type">`)
-		h.writeFmt(`<div class="typeName">%s</div>`, h.prettyTypeName(rt.Name()))
-		for i := 0; i < rv.NumField(); i++ {
-			vField := rv.Field(i)
-			tField := rt.Field(i)
+		// Write type header (specific headers for linking)
+		g.sb.WriteString("<div ")
+		switch t := x.(type) {
+		case *d4.GBIDHeader:
+			g.writeFmt(`id="gbid%d" `, d4.GbidHash(string(t.SzName.Value)))
+		}
+		g.sb.WriteString(`class="type">`)
+
+		// Write type
+		g.writeFmt(`<div class="typeName">%s</div>`, g.prettyTypeName(rt.Name()))
+		for _, tField := range reflect.VisibleFields(rt) {
+			vField := rv.FieldByIndex(tField.Index)
 
 			if vField.Kind() != reflect.Ptr {
 				vField = vField.Addr()
@@ -216,27 +259,33 @@ func (h *Generator) add(x d4.UnmarshalBinary) {
 				continue
 			}
 
-			h.writeFmt(
-				`<div class="field"><div class="fieldKey"><span class="fieldName">%s</span><span class="fieldType">%s</span></div>`,
-				h.prettyFieldName(tField.Name),
-				h.prettyTypeName(tField.Type.String()),
+			var addlFieldAttrs string
+			if tField.Name == "DwUID" { // Add ids for UIDs for fragment targets
+				addlFieldAttrs = fmt.Sprintf(`id="uid%v"`, vField.Interface())
+			}
+
+			g.writeFmt(
+				`<div %sclass="field"><div class="fieldKey"><span class="fieldName">%s</span><span class="fieldType">%s</span></div>`,
+				addlFieldAttrs,
+				g.prettyFieldName(tField.Name),
+				g.prettyTypeName(tField.Type.String()),
 			)
-			h.sb.WriteString(`<div class="fieldValue">`)
-			h.add(value)
-			h.sb.WriteString(`</div></div>`)
+			g.sb.WriteString(`<div class="fieldValue">`)
+			g.add(value)
+			g.sb.WriteString(`</div></div>`)
 		}
-		h.sb.WriteString("</div>")
+		g.sb.WriteString("</div>")
 	}
 	return
 }
 
-func (h *Generator) Add(x d4.UnmarshalBinary) {
-	h.add(x)
+func (g *Generator) Add(x d4.UnmarshalBinary) {
+	g.add(x)
 }
 
-func (h *Generator) String() string {
+func (g *Generator) String() string {
 	return fmt.Sprintf(
 		`<html lang="en"><head><script src="../main.js"></script><link rel="stylesheet" href="../main.css"></head><body>%s</body></html>`,
-		h.sb.String(),
+		g.sb.String(),
 	)
 }

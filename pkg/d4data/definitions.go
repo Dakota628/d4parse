@@ -12,6 +12,7 @@ type Definition struct {
 	Hash              int     `json:"hash"`
 	Name              string  `json:"name"`
 	Flags             int     `json:"flags"`
+	Inherits          []int   `json:"inherits"`
 	FormatHash        int     `json:"dwFormatHash"`
 	IsPolymorphicType bool    `json:"isPolymorphicType"`
 	Fields            []Field `json:"fields"`

@@ -39,7 +39,8 @@ p {
     font-size: .9rem;
 }
 
-pre {
+pre, code {
+    display: block;
     padding: .5rem;
     margin: 0;
 }
@@ -112,6 +113,10 @@ a:hover {
     clear: both;
 }
 
+.typeName:hover {
+    cursor: pointer;
+}
+
 .field {
     overflow: auto;
     clear: both;
@@ -161,4 +166,18 @@ ul.array > li {
     display: inline-block;
     clear: both;
     width: 100%;
+}
+
+i {
+    color: #dee2e6;
+}
+
+.pathHint {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #087f5b;
+    color: #f8f9fa;
+    padding: 0.5rem;
+    font-size: 0.9rem;
 }

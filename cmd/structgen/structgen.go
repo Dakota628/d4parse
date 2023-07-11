@@ -10,6 +10,7 @@ import (
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"os"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -98,20 +99,27 @@ func SeekRelativeCode(offset int) jen.Code {
 func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 	var code []jen.Code
 
-	// Set length if field has ArrayLength set
-	if field.ArrayLength > -1 {
-		code = append(
-			code,
-			jen.Id("t").Dot(transformedName).Dot("Length").Op("=").Lit(field.ArrayLength),
-		)
+	// Create options code
+	optionsDict := jen.Dict{}
+
+	if field.Flags != 0 {
+		optionsDict[jen.Id("Flags")] = jen.Lit(field.Flags)
 	}
+	if field.ArrayLength > -1 {
+		optionsDict[jen.Id("ArrayLength")] = jen.Lit(field.ArrayLength)
+	}
+	if field.Group > -1 {
+		optionsDict[jen.Id("Group")] = jen.Lit(field.Group)
+	}
+
+	options := jen.Op("&").Id("Options").Values(optionsDict)
 
 	// Call UnmarshalBinary on the sub or basic type
 	code = append(
 		code,
 		jen.If(
 			jen.Err().Op(":=").
-				Id("t").Dot(transformedName).Dot("UnmarshalBinary").Call(jen.Id("r")),
+				Id("t").Dot(transformedName).Dot("UnmarshalBinary").Call(jen.Id("r"), options),
 			jen.Err().Op("!=").Nil(),
 		).Block(
 			jen.Return(jen.Err()),
@@ -261,12 +269,22 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 	}
 
 	// Construct fields
-	fields := make([]jen.Code, 0, len(def.Fields))
+	fields := make([]jen.Code, 0, len(def.Fields)+len(def.Inherits))
 	unmarshalBinaryBody := []jen.Code{
 		TrackCurrentPosCode(),
 	}
 
-	for _, field := range def.Fields {
+	for _, inheritTypeHash := range def.Inherits { // Add inherits comments; TODO: incorporate actual struct embedding
+		var inheritTypeName string
+		if inheritTypeDef, ok := defs.GetByTypeHash(inheritTypeHash); ok {
+			inheritTypeName = inheritTypeDef.Name
+		} else {
+			inheritTypeName = strconv.Itoa(inheritTypeHash)
+		}
+		fields = append(fields, jen.Commentf("// Inherits %s", inheritTypeName))
+	}
+
+	for _, field := range def.Fields { // Add fields
 		fieldTypes := field.Type[:]
 		fieldName := TransformFieldName(field.Name)
 		fieldTypeCode, err := ComposeTypes(defs, fieldTypes)
@@ -290,6 +308,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		jen.Id("t").Op("*").Id(def.Name),
 	).Id("UnmarshalBinary").Params(
 		jen.Id("r").Op("*").Qual("github.com/Dakota628/d4parse/pkg/bin", "BinaryReader"),
+		jen.Id("o").Op("*").Id("Options"),
 	).Error().Block(
 		unmarshalBinaryBody...,
 	).Line()

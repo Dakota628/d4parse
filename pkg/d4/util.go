@@ -1,6 +1,8 @@
 package d4
 
-import "reflect"
+import (
+	"reflect"
+)
 
 func newElem[T UnmarshalBinary](t T) T {
 	elemType := reflect.TypeOf(t).Elem()
@@ -8,4 +10,11 @@ func newElem[T UnmarshalBinary](t T) T {
 	return elemPtr.Interface().(T)
 }
 
-// TODO: function dynamically determine size of struct
+func TrimNullTerminated(x []rune) string {
+	for i, c := range x {
+		if c == 0 {
+			return string(x[:i])
+		}
+	}
+	return string(x)
+}

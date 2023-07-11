@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/html"
-	"github.com/alphadose/haxmap"
 	"github.com/bmatcuk/doublestar/v4"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
@@ -15,15 +14,16 @@ import (
 )
 
 const (
-	workers = 100
+	workers = 1000
 )
 
 var (
-	basePrefix = "base"
-	metaPrefix = filepath.Join(basePrefix, "meta")
+	basePrefix        = "base"
+	metaPrefix        = filepath.Join(basePrefix, "meta")
+	stringListsPrefix = filepath.Join("enUS_Text", "meta", "StringList")
 )
 
-func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData d4.GbData, outputPath string) {
+func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, outputPath string) {
 	defer wg.Done()
 
 	snoPath := filepath.Join(outputPath, "sno")
@@ -48,17 +48,26 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData d4
 
 		// Check GameBalance
 		if gbDef, ok := snoMeta.Meta.(*d4.GameBalanceDefinition); ok {
-			for _, gbHeader := range d4.GetGbHeader(gbDef) {
-				gbData.Set(gbHeader.Gbid.Value, d4.GbInfo{
-					SnoId: snoMeta.Id.Value,
-					Name:  string(gbHeader.SzName.Value),
-				})
+			for _, gbHeader := range d4.GetGbidHeaders(gbDef) {
+				gbName := d4.TrimNullTerminated(gbHeader.SzName.Value)
+				gbData.Store(
+					d4.DT_GBID{
+						Group: gbDef.EGameBalanceType.Value,
+						Value: d4.GbidHash(gbName),
+					},
+					d4.GbInfo{
+						SnoId: snoMeta.Id.Value,
+						Name:  gbName,
+					},
+				)
 			}
 		}
 
 		// Generate html
 		htmlGen := html.NewGenerator(toc, gbData)
 		htmlGen.Add(&snoMeta)
+
+		// TODO: also generate an index file
 
 		// Write sno file
 		snoHtmlPath := filepath.Join(snoPath, fmt.Sprintf("%d.html", snoMeta.Id.Value))
@@ -75,7 +84,7 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData d4
 	}
 }
 
-func generateHtmlForFiles(toc d4.Toc, gbData d4.GbData, files []string, outputPath string) error {
+func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, files []string, outputPath string) error {
 	// Files arr to channel
 	c := make(chan string, len(files))
 	for _, file := range files {
@@ -83,7 +92,7 @@ func generateHtmlForFiles(toc d4.Toc, gbData d4.GbData, files []string, outputPa
 	}
 	close(c)
 
-	// Start wokers
+	// Start workers
 	wg := &sync.WaitGroup{}
 
 	for i := uint(0); i < workers; i++ {
@@ -98,36 +107,42 @@ func generateHtmlForFiles(toc d4.Toc, gbData d4.GbData, files []string, outputPa
 func generateAllHtml(toc d4.Toc, gameDataPath string, outputPath string) error {
 	// Make paths
 	metaPath := filepath.Join(gameDataPath, metaPrefix)
-	metaGlobPath := filepath.Join(metaPath, "**", "*.*")
+	baseMetaGlobPath := filepath.Join(metaPath, "**", "*.*")
+	stringListsPath := filepath.Join(gameDataPath, stringListsPrefix)
+	stringsMetaGlobPath := filepath.Join(stringListsPath, "**", "*.*")
 	gameBalancePath := filepath.Join(metaPath, "GameBalance")
 
 	// Get all data file names
-	filesArr, err := doublestar.FilepathGlob(metaGlobPath)
+	baseMetaFiles, err := doublestar.FilepathGlob(baseMetaGlobPath)
+	if err != nil {
+		return err
+	}
+	stringsMetaFiles, err := doublestar.FilepathGlob(stringsMetaGlobPath)
 	if err != nil {
 		return err
 	}
 
-	slices.SortStableFunc(filesArr, func(a, b string) bool {
+	slices.SortStableFunc(baseMetaFiles, func(a, b string) bool {
 		return strings.HasPrefix(a, gameBalancePath)
 	})
 
 	// Split GameBalance
 	var gameBalanceFiles []string
 
-	for i := 0; i < len(filesArr); i++ {
-		if !strings.HasPrefix(filesArr[i], gameBalancePath) {
-			gameBalanceFiles = filesArr[:i]
-			filesArr = filesArr[i:]
+	for i := 0; i < len(baseMetaFiles); i++ {
+		if !strings.HasPrefix(baseMetaFiles[i], gameBalancePath) {
+			gameBalanceFiles = baseMetaFiles[:i]
+			baseMetaFiles = baseMetaFiles[i:]
 			break
 		}
 	}
 
 	// Parse game balance files first
-	gbData := haxmap.New[d4.GbId, d4.GbInfo]()
+	gbData := &sync.Map{}
 	if err = generateHtmlForFiles(toc, gbData, gameBalanceFiles, outputPath); err != nil {
 		return err
 	}
-	if err = generateHtmlForFiles(toc, gbData, filesArr, outputPath); err != nil {
+	if err = generateHtmlForFiles(toc, gbData, append(stringsMetaFiles, baseMetaFiles...), outputPath); err != nil {
 		return err
 	}
 
