@@ -26,8 +26,8 @@ function onLoad() {
     };
 
     // Collapsable types
-    $(".typeName").on("click", function () {
-        $(this).siblings(".field").toggle();
+    $(".tn").on("click", function () {
+        $(this).siblings(".f").toggle();
     });
 
     // Field paths
@@ -38,7 +38,7 @@ function onLoad() {
     const pathHint = $('<div class="pathHint"></div>');
     $('body').append(pathHint);
 
-    $(".fieldKey").hover(
+    $(".fk").hover(
         function() {
             reversePath($(this), pathHint);
             pathHint.show();
@@ -52,11 +52,11 @@ function fieldPath() {
     let path = {};
     const windowTop = $(window).scrollTop();
 
-    $(".fieldName").each(function(i, elem) {
+    $(".fn").each(function(i, elem) {
         const elemTop = $(elem).offset().top;
 
         // Assure elem has been scrolled past and parent is in viewport
-        if (elemTop > windowTop || !$(elem).closest('.type').isInViewport()) {
+        if (elemTop > windowTop || !$(elem).closest('.t').isInViewport()) {
             return;
         }
 
@@ -81,10 +81,10 @@ function fieldPath() {
 
 function reversePath(elem, pathHint) {
     const path = [];
-    elem = elem.parents('.field').eq(0);
+    elem = elem.parents('.f').eq(0);
     while (elem.length) {
-        path.unshift(elem.find(".fieldKey > .fieldName").first().text());
-        elem = elem.parents('.field').eq(0);
+        path.unshift(elem.find(".fk > .fn").first().text());
+        elem = elem.parents('.f').eq(0);
     }
     pathHint.text("$." + path.join("."));
 }

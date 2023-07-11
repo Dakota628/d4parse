@@ -96,13 +96,13 @@ a:hover {
     text-decoration: underline;
 }
 
-.type {
+.t {
     width: 100%;
     clear: both;
     align-items: stretch;
 }
 
-.typeName {
+.tn {
     width: 100%;
     background: #a61e4d;
     padding: 0.5rem;
@@ -113,16 +113,16 @@ a:hover {
     clear: both;
 }
 
-.typeName:hover {
+.tn:hover {
     cursor: pointer;
 }
 
-.field {
+.f {
     overflow: auto;
     clear: both;
 }
 
-.fieldKey {
+.fk {
     width: 10rem;
     float: left;
     margin-bottom: 0.2rem;
@@ -130,7 +130,7 @@ a:hover {
     background: #343a40;
 }
 
-.fieldKey > .fieldName {
+.fk > .fn {
     float: left;
     width: 100%;
     font-size: 0.9rem;
@@ -138,14 +138,14 @@ a:hover {
     overflow-wrap: anywhere;
 }
 
-.fieldKey > .fieldType {
+.fk > .ft {
     width: 100%;
     font-size: 0.7rem;
     color: #dee2e6;
     overflow-wrap: anywhere;
 }
 
-.fieldValue {
+.fv {
     width: calc(100% - 10.2rem);
     margin-left: 0.2rem;
     float: left;
@@ -153,14 +153,14 @@ a:hover {
     overflow-wrap: anywhere;
 }
 
-ul.array {
+ul.arr {
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
-ul.array > li {
+ul.arr > li {
     margin: 0;
     padding: 0;
     display: inline-block;

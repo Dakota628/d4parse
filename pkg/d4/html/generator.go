@@ -69,15 +69,15 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 			prefix = "base"
 		}
 
-		g.sb.WriteString(`<div class="type snoMeta"><div class="typeName">SNO Info</div>`)
-		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Group</div></div>`)
-		g.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, group)
-		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">ID</div></div>`)
-		g.writeFmt(`<div class="fieldValue"><p>%d</p></div></div>`, t.Id.Value)
-		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">Name</div></div>`)
-		g.writeFmt(`<div class="fieldValue"><p>%s</p></div></div>`, name)
-		g.sb.WriteString(`<div class="field"><div class="fieldKey"><div class="fieldName">File</div></div>`)
-		g.writeFmt(`<div class="fieldValue"><p>%s/meta/%s/%s%s</p></div></div>`, prefix, group, name, group.Ext())
+		g.sb.WriteString(`<div class="t snoMeta"><div class="tn">SNO Info</div>`)
+		g.sb.WriteString(`<div class="f"><div class="fk"><div class="fn">Group</div></div>`)
+		g.writeFmt(`<div class="fv"><p>%s</p></div></div>`, group)
+		g.sb.WriteString(`<div class="f"><div class="fk"><div class="fn">ID</div></div>`)
+		g.writeFmt(`<div class="fv"><p>%d</p></div></div>`, t.Id.Value)
+		g.sb.WriteString(`<div class="f"><div class="fk"><div class="fn">Name</div></div>`)
+		g.writeFmt(`<div class="fv"><p>%s</p></div></div>`, name)
+		g.sb.WriteString(`<div class="f"><div class="fk"><div class="fn">File</div></div>`)
+		g.writeFmt(`<div class="fv"><p>%s/meta/%s/%s%s</p></div></div>`, prefix, group, name, group.Ext())
 		g.sb.WriteString("</div>")
 		g.add(t.Meta)
 		return
@@ -188,13 +188,13 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 		}
 		return
 	case "*d4.DT_RANGE":
-		g.sb.WriteString(`<div class="type">`)
-		g.sb.WriteString(`<div class="field"><div class="fieldKey">lowerBound</div>`)
-		g.sb.WriteString(`<div class="fieldValue">`)
+		g.sb.WriteString(`<div class="t">`)
+		g.sb.WriteString(`<div class="f"><div class="fk">lowerBound</div>`)
+		g.sb.WriteString(`<div class="fv">`)
 		g.add(g.genericField(xrv, "LowerBound").(d4.UnmarshalBinary))
 		g.sb.WriteString("</div></div>")
-		g.sb.WriteString(`<div class="field"><div class="fieldKey">upperBound</div>`)
-		g.sb.WriteString(`<div class="fieldValue">`)
+		g.sb.WriteString(`<div class="f"><div class="fk">upperBound</div>`)
+		g.sb.WriteString(`<div class="fv">`)
 		g.add(g.genericField(xrv, "UpperBound").(d4.UnmarshalBinary))
 		g.sb.WriteString("</div></div>")
 		g.sb.WriteString("</div>")
@@ -205,7 +205,7 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 			return
 		}
 
-		g.sb.WriteString(`<ul class="array">`)
+		g.sb.WriteString(`<ul class="arr">`)
 		valueRv := xrv.Elem().FieldByName("Value")
 		for i := 0; i < valueRv.Len(); i++ {
 			g.sb.WriteString("<li>")
@@ -237,10 +237,10 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 		case *d4.GBIDHeader:
 			g.writeFmt(`id="gbid%d" `, d4.GbidHash(string(t.SzName.Value)))
 		}
-		g.sb.WriteString(`class="type">`)
+		g.sb.WriteString(`class="t">`)
 
 		// Write type
-		g.writeFmt(`<div class="typeName">%s</div>`, g.prettyTypeName(rt.Name()))
+		g.writeFmt(`<div class="tn">%s</div>`, g.prettyTypeName(rt.Name()))
 		for _, tField := range reflect.VisibleFields(rt) {
 			vField := rv.FieldByIndex(tField.Index)
 
@@ -265,12 +265,12 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 			}
 
 			g.writeFmt(
-				`<div %sclass="field"><div class="fieldKey"><span class="fieldName">%s</span><span class="fieldType">%s</span></div>`,
+				`<div %sclass="f"><div class="fk"><span class="fn">%s</span><span class="ft">%s</span></div>`,
 				addlFieldAttrs,
 				g.prettyFieldName(tField.Name),
 				g.prettyTypeName(tField.Type.String()),
 			)
-			g.sb.WriteString(`<div class="fieldValue">`)
+			g.sb.WriteString(`<div class="fv">`)
 			g.add(value)
 			g.sb.WriteString(`</div></div>`)
 		}
