@@ -36,6 +36,7 @@ function onLoad() {
 
     // Field hover
     const pathHint = $('<div class="pathHint"></div>');
+    pathHint.hide();
     $('body').append(pathHint);
 
     $(".fk").hover(

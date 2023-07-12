@@ -11,3 +11,7 @@ install:
 .PHONY: format
 format:
 	go fmt ./...
+
+.PHONY: deploy
+deploy:
+	go run cmd/deploy/deploy.go
