@@ -1053,7 +1053,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 907176602:
 		return &UniqueOperatorChestGizmoData{}
 	case 910005755:
-		return &Type_363d95fb{}
+		return &SubzoneModifierStateMessage{}
 	case 911325909:
 		return &TriggerEventFoley{}
 	case 911604182:
@@ -1471,7 +1471,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 1334189719:
 		return &ActorGroupSubcondition{}
 	case 1335413793:
-		return &Type_4f98cc21{}
+		return &OnOtherBuffAddedCallback{}
 	case 1338965781:
 		return &TriggerEventCameraTransitionToObserver{}
 	case 1340417938:
@@ -1923,7 +1923,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 1812693783:
 		return &ParagonGlyphObtainedMessage{}
 	case 1812719981:
-		return &Type_6c0be96d{}
+		return &DemonScrollNodeMessage{}
 	case 1815184996:
 		return &Type_6c318664{}
 	case 1815206818:
@@ -2191,7 +2191,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 2088915018:
 		return &PowerConditionIsValidForWeaponExpertise{}
 	case 2092006570:
-		return &Type_7cb17caa{}
+		return &OnBerserkRemovedCallback{}
 	case 2094206499:
 		return &AnimSetOverrideEntry{}
 	case 2098572313:
@@ -2529,7 +2529,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 2433333811:
 		return &Type_9109ba33{}
 	case 2438391130:
-		return &Type_9156e55a{}
+		return &OnRetreatCompleteCallback{}
 	case 2442380883:
 		return &PowerConditionOnChance{}
 	case 2450313795:
@@ -2675,7 +2675,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 2582092633:
 		return &DungeonAffixFamilyEntry_Table{}
 	case 2583917793:
-		return &Type_9a0374e1{}
+		return &OnOtherBuffRemovedCallback{}
 	case 2584931415:
 		return &PowerLimitedActorType_Table{}
 	case 2586870554:
@@ -3279,7 +3279,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 3158181227:
 		return &BuffCallbackBase{}
 	case 3161684625:
-		return &Type_bc737a91{}
+		return &TransmogMultipleSlotsMessage{}
 	case 3162215415:
 		return &PreloadSpawnWorldDataMessage{}
 	case 3162763801:
@@ -3453,7 +3453,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 3323553519:
 		return &RequiredMessageHeader{}
 	case 3326311639:
-		return &Type_c6437cd7{}
+		return &OnBerserkAppliedCallback{}
 	case 3326716277:
 		return &TriggerEventPOISkip{}
 	case 3328092972:
@@ -3645,7 +3645,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 3503113420:
 		return &TriggerEventPlayMovie{}
 	case 3503394193:
-		return &Type_d0d18d91{}
+		return &HeroStatusDataMessage{}
 	case 3507066932:
 		return &EnchantAffixMessage{}
 	case 3507772913:
@@ -4019,7 +4019,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 3889109893:
 		return &GameTestingSkillSamplingStartMessage{}
 	case 3889375613:
-		return &Type_e7d3297d{}
+		return &OnDismountCallback{}
 	case 3890074365:
 		return &TriggerEventCameraFollowSpline{}
 	case 3890408608:
@@ -4207,7 +4207,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 4067534784:
 		return &NecroArmySpecMessage{}
 	case 4068810465:
-		return &Type_f2851ee1{}
+		return &OnRetreatCallback{}
 	case 4068844708:
 		return &GlobalCharacterPresets{}
 	case 4071223241:
@@ -4409,7 +4409,7 @@ func NewByTypeHash[T UnmarshalBinary](h int) UnmarshalBinary {
 	case 4253567699:
 		return &Type_fd884ad3{}
 	case 4257156132:
-		return &Type_fdbf0c24{}
+		return &PrefetchMarkerSetMessage{}
 	case 4260534408:
 		return &SurfaceGridPrimitive{}
 	case 4263001440:
@@ -8426,8 +8426,8 @@ type WorldDefinition struct {
 	Unk_675bda3        DT_VARIABLEARRAY[*ScreenStaticCamps]
 	DwAppearanceFlags  DT_UINT
 	EDungeonFlavorType DT_ENUM
-	Unk_cc56e3e        MaterialTexture
-	Unk_5733630        MaterialTexture
+	TMatTexCloud       MaterialTexture
+	TMatTexCloud2      MaterialTexture
 	FlCloudScale       DT_FLOAT
 	TZoneMapParams     ZoneMapParams
 }
@@ -8524,13 +8524,13 @@ func (t *WorldDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) error
 	if _, err := r.Seek(p+208, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_cc56e3e.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.TMatTexCloud.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+248, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_5733630.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.TMatTexCloud2.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+288, io.SeekStart); err != nil {
@@ -23085,8 +23085,8 @@ type Type_1cf6b4f9 struct {
 	Unk_27336d0              DT_FLOAT
 	Unk_969434               DT_INT
 	FlCloudScale             DT_FLOAT
-	Unk_cc56e3e              MaterialTexture
-	Unk_5733630              MaterialTexture
+	TMatTexCloud             MaterialTexture
+	TMatTexCloud2            MaterialTexture
 	Unk_635ca57              Type_cbfdd2ea
 	EEffectType              DT_ENUM
 	Unk_17e101e              DT_INT
@@ -23319,13 +23319,13 @@ func (t *Type_1cf6b4f9) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if _, err := r.Seek(p+608, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_cc56e3e.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.TMatTexCloud.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+648, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_5733630.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.TMatTexCloud2.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+688, io.SeekStart); err != nil {
@@ -37039,7 +37039,7 @@ func (t *UniqueOperatorChestGizmoData) UnmarshalBinary(r *bin.BinaryReader, o *O
 	return nil
 }
 
-type Type_363d95fb struct {
+type SubzoneModifierStateMessage struct {
 	THeader                RequiredMessageHeader
 	GbidSubzoneModifierTag DT_GBID
 	SnoSubzone             DT_SNO
@@ -37051,7 +37051,7 @@ type Type_363d95fb struct {
 	BShouldNotify          DT_INT
 }
 
-func (t *Type_363d95fb) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *SubzoneModifierStateMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -50140,7 +50140,7 @@ func (t *ActorGroupSubcondition) UnmarshalBinary(r *bin.BinaryReader, o *Options
 	return nil
 }
 
-type Type_4f98cc21 struct {
+type OnOtherBuffAddedCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -50150,7 +50150,7 @@ type Type_4f98cc21 struct {
 	Unk_880879b           DT_VARIABLEARRAY[*Type_82280ff3]
 }
 
-func (t *Type_4f98cc21) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnOtherBuffAddedCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -64401,13 +64401,13 @@ func (t *ParagonGlyphObtainedMessage) UnmarshalBinary(r *bin.BinaryReader, o *Op
 	return nil
 }
 
-type Type_6c0be96d struct {
+type DemonScrollNodeMessage struct {
 	THeader   RequiredMessageHeader
 	SnoScroll DT_SNO
 	NNodeUID  DT_INT
 }
 
-func (t *Type_6c0be96d) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *DemonScrollNodeMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -72089,7 +72089,7 @@ func (t *PowerConditionIsValidForWeaponExpertise) UnmarshalBinary(r *bin.BinaryR
 	return nil
 }
 
-type Type_7cb17caa struct {
+type OnBerserkRemovedCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -72100,7 +72100,7 @@ type Type_7cb17caa struct {
 	DwRemovalReasons      DT_UINT
 }
 
-func (t *Type_7cb17caa) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnBerserkRemovedCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -82120,7 +82120,7 @@ func (t *Type_9109ba33) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-type Type_9156e55a struct {
+type OnRetreatCompleteCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -82129,7 +82129,7 @@ type Type_9156e55a struct {
 	ArConditions          DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
 }
 
-func (t *Type_9156e55a) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnRetreatCompleteCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -86221,7 +86221,7 @@ func (t *DungeonAffixFamilyEntry_Table) UnmarshalBinary(r *bin.BinaryReader, o *
 	return nil
 }
 
-type Type_9a0374e1 struct {
+type OnOtherBuffRemovedCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -86231,7 +86231,7 @@ type Type_9a0374e1 struct {
 	Unk_880879b           DT_VARIABLEARRAY[*Type_82280ff3]
 }
 
-func (t *Type_9a0374e1) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnOtherBuffRemovedCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -92938,28 +92938,28 @@ func (t *Type_ac1cf1ab) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 }
 
 type Type_ac30acdf struct {
-	M_aVertices            DT_INT64
-	M_aFaces               DT_INT64
-	M_aDistanceConstraints DT_INT64
-	M_aBendingConstraints  DT_INT64
-	M_aVertexMap           DT_INT64
-	M_aCapsules            DT_INT64
-	M_aPlanes              DT_INT64
-	Unk_15437b6            DT_INT64
-	M_aAnchorMap           DT_INT64
-	M_name                 DT_FIXEDARRAY[*DT_BYTE]
-	M_vertexCount          DT_INT
-	M_faceCount            DT_INT
-	Unk_d4fc6fe            DT_INT
-	Unk_357cf65            DT_INT
-	Unk_e4594b1            DT_INT
-	Unk_4c2d410            DT_INT
-	Unk_5f25c6             DT_INT
-	M_boneCount            DT_INT
-	Unk_b7a310             DT_INT
-	Unk_19d5862            DT_INT
-	M_planeCount           DT_INT
-	M_area                 DT_FLOAT
+	M_aVertices               DT_INT64
+	M_aFaces                  DT_INT64
+	M_aDistanceConstraints    DT_INT64
+	M_aBendingConstraints     DT_INT64
+	M_aVertexMap              DT_INT64
+	M_aCapsules               DT_INT64
+	M_aPlanes                 DT_INT64
+	Unk_15437b6               DT_INT64
+	M_aAnchorMap              DT_INT64
+	M_name                    DT_FIXEDARRAY[*DT_BYTE]
+	M_vertexCount             DT_INT
+	M_faceCount               DT_INT
+	Unk_d4fc6fe               DT_INT
+	M_distanceConstraintCount DT_INT
+	M_bendingConstraintCount  DT_INT
+	Unk_4c2d410               DT_INT
+	Unk_5f25c6                DT_INT
+	M_boneCount               DT_INT
+	M_anchorCount             DT_INT
+	M_capsuleCount            DT_INT
+	M_planeCount              DT_INT
+	M_area                    DT_FLOAT
 }
 
 func (t *Type_ac30acdf) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -93048,13 +93048,13 @@ func (t *Type_ac30acdf) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if _, err := r.Seek(p+116, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_357cf65.UnmarshalBinary(r, &Options{}); err != nil {
+	if err := t.M_distanceConstraintCount.UnmarshalBinary(r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+120, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_e4594b1.UnmarshalBinary(r, &Options{}); err != nil {
+	if err := t.M_bendingConstraintCount.UnmarshalBinary(r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+124, io.SeekStart); err != nil {
@@ -93078,13 +93078,13 @@ func (t *Type_ac30acdf) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if _, err := r.Seek(p+136, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_b7a310.UnmarshalBinary(r, &Options{}); err != nil {
+	if err := t.M_anchorCount.UnmarshalBinary(r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+140, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_19d5862.UnmarshalBinary(r, &Options{}); err != nil {
+	if err := t.M_capsuleCount.UnmarshalBinary(r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+144, io.SeekStart); err != nil {
@@ -105080,12 +105080,12 @@ func (t *BuffCallbackBase) UnmarshalBinary(r *bin.BinaryReader, o *Options) erro
 	return nil
 }
 
-type Type_bc737a91 struct {
+type TransmogMultipleSlotsMessage struct {
 	THeader     RequiredMessageHeader
 	ArTransmogs DT_FIXEDARRAY[*TransmogSlotData]
 }
 
-func (t *Type_bc737a91) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *TransmogMultipleSlotsMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -108420,7 +108420,7 @@ type ProjectileImpactEffect struct {
 	Unk_a4ec910          DT_INT
 	Unk_52ba359          DT_FLOAT
 	FlTargetImpactHeight DT_FLOAT
-	Unk_7f9788f          DT_FLOAT
+	FlTargetImpactPitch  DT_FLOAT
 }
 
 func (t *ProjectileImpactEffect) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -108464,7 +108464,7 @@ func (t *ProjectileImpactEffect) UnmarshalBinary(r *bin.BinaryReader, o *Options
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_7f9788f.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.FlTargetImpactPitch.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -110294,7 +110294,7 @@ func (t *RequiredMessageHeader) UnmarshalBinary(r *bin.BinaryReader, o *Options)
 	return nil
 }
 
-type Type_c6437cd7 struct {
+type OnBerserkAppliedCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -110303,7 +110303,7 @@ type Type_c6437cd7 struct {
 	ArConditions          DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
 }
 
-func (t *Type_c6437cd7) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnBerserkAppliedCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -115012,11 +115012,11 @@ func (t *Type_cbfdd2ea) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 }
 
 type Type_cc139f31 struct {
-	AfFrequency DT_FIXEDARRAY[*DT_FLOAT]
-	AfBend      DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_5611760 DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_2a283cc DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_5c74a81 DT_FLOAT
+	AfFrequency  DT_FIXEDARRAY[*DT_FLOAT]
+	AfBend       DT_FIXEDARRAY[*DT_FLOAT]
+	AfTurbulence DT_FIXEDARRAY[*DT_FLOAT]
+	Unk_2a283cc  DT_FIXEDARRAY[*DT_FLOAT]
+	Unk_5c74a81  DT_FLOAT
 }
 
 func (t *Type_cc139f31) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -115045,7 +115045,7 @@ func (t *Type_cc139f31) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if _, err := r.Seek(p+160, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_5611760.UnmarshalBinary(r, &Options{
+	if err := t.AfTurbulence.UnmarshalBinary(r, &Options{
 		ArrayLength: 20,
 		Flags:       1,
 	}); err != nil {
@@ -117741,7 +117741,7 @@ func (t *TriggerEventPlayMovie) UnmarshalBinary(r *bin.BinaryReader, o *Options)
 	return nil
 }
 
-type Type_d0d18d91 struct {
+type HeroStatusDataMessage struct {
 	THeader    RequiredMessageHeader
 	UHeroId    DT_UINT
 	SzHeroName DT_CHARARRAY
@@ -117749,7 +117749,7 @@ type Type_d0d18d91 struct {
 	NLevel     DT_INT
 }
 
-func (t *Type_d0d18d91) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *HeroStatusDataMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -127451,10 +127451,10 @@ func (t *PlayerQuestHistoryEntry) UnmarshalBinary(r *bin.BinaryReader, o *Option
 }
 
 type SpeedTree8RippleGroup struct {
-	AfBend      DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_7a87372 DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_5611760 DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_5c74a81 DT_FLOAT
+	AfBend                DT_FIXEDARRAY[*DT_FLOAT]
+	AfTurbulenceFrequency DT_FIXEDARRAY[*DT_FLOAT]
+	AfTurbulence          DT_FIXEDARRAY[*DT_FLOAT]
+	Unk_5c74a81           DT_FLOAT
 }
 
 func (t *SpeedTree8RippleGroup) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -127474,7 +127474,7 @@ func (t *SpeedTree8RippleGroup) UnmarshalBinary(r *bin.BinaryReader, o *Options)
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_7a87372.UnmarshalBinary(r, &Options{
+	if err := t.AfTurbulenceFrequency.UnmarshalBinary(r, &Options{
 		ArrayLength: 20,
 		Flags:       1,
 	}); err != nil {
@@ -127483,7 +127483,7 @@ func (t *SpeedTree8RippleGroup) UnmarshalBinary(r *bin.BinaryReader, o *Options)
 	if _, err := r.Seek(p+160, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_5611760.UnmarshalBinary(r, &Options{
+	if err := t.AfTurbulence.UnmarshalBinary(r, &Options{
 		ArrayLength: 20,
 		Flags:       1,
 	}); err != nil {
@@ -127728,20 +127728,20 @@ func (t *BountyZones) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 }
 
 type SurfaceDefinition struct {
-	SnoSplashParticle   DT_SNO
-	Unk_c79c39c         DT_SNO
-	SnoSubmitTransition DT_SNO
-	HStructure          DT_SNO
-	Unk_4a68208         DT_SNO
-	Unk_45ad51c         DT_SNO
-	Unk_24404f          DT_SNO
-	Unk_405f72f         DT_SNO
-	Unk_3972ad          DT_SNO
-	Unk_1f8c560         DT_SNO
-	Unk_d57a372         DT_SNO
-	Unk_4b222fd         DT_SNO
-	FLiquid             DT_INT
-	FGrass              DT_INT
+	SnoSplashParticle                DT_SNO
+	SnoFootstepEffectLeft            DT_SNO
+	SnoFootstepEffectRight           DT_SNO
+	SnoMonsterFootstepEffect         DT_SNO
+	SnoMonsterFootstepWalkEffect     DT_SNO
+	SnoResidualFootstepParticleLeft  DT_SNO
+	SnoResidualFootstepParticleRight DT_SNO
+	SnoFootstepDragEffect            DT_SNO
+	SnoFootstepTrailEffect           DT_SNO
+	SnoFootstepLiftEffect            DT_SNO
+	SnoOverrideWhenWet               DT_SNO
+	Unk_4b222fd                      DT_SNO
+	FLiquid                          DT_INT
+	FGrass                           DT_INT
 }
 
 func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -127761,7 +127761,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_c79c39c.UnmarshalBinary(r, &Options{
+	if err := t.SnoFootstepEffectLeft.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127770,7 +127770,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+16, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.SnoSubmitTransition.UnmarshalBinary(r, &Options{
+	if err := t.SnoFootstepEffectRight.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127779,7 +127779,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.HStructure.UnmarshalBinary(r, &Options{
+	if err := t.SnoMonsterFootstepEffect.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127788,7 +127788,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_4a68208.UnmarshalBinary(r, &Options{
+	if err := t.SnoMonsterFootstepWalkEffect.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127797,7 +127797,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_45ad51c.UnmarshalBinary(r, &Options{
+	if err := t.SnoResidualFootstepParticleLeft.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 27,
 	}); err != nil {
@@ -127806,7 +127806,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_24404f.UnmarshalBinary(r, &Options{
+	if err := t.SnoResidualFootstepParticleRight.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 27,
 	}); err != nil {
@@ -127815,7 +127815,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+36, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_405f72f.UnmarshalBinary(r, &Options{
+	if err := t.SnoFootstepDragEffect.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127824,7 +127824,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_3972ad.UnmarshalBinary(r, &Options{
+	if err := t.SnoFootstepTrailEffect.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127833,7 +127833,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+44, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_1f8c560.UnmarshalBinary(r, &Options{
+	if err := t.SnoFootstepLiftEffect.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -127842,7 +127842,7 @@ func (t *SurfaceDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_d57a372.UnmarshalBinary(r, &Options{
+	if err := t.SnoOverrideWhenWet.UnmarshalBinary(r, &Options{
 		Flags: 1,
 		Group: 43,
 	}); err != nil {
@@ -129458,7 +129458,7 @@ func (t *GameTestingSkillSamplingStartMessage) UnmarshalBinary(r *bin.BinaryRead
 	return nil
 }
 
-type Type_e7d3297d struct {
+type OnDismountCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -129467,7 +129467,7 @@ type Type_e7d3297d struct {
 	ArConditions          DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
 }
 
-func (t *Type_e7d3297d) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnDismountCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -130157,7 +130157,7 @@ type Type_e81e59e2 struct {
 	M_centroid      DT_VECTOR3D
 	M_VertexCount   DT_INT
 	M_FaceCount     DT_INT
-	Unk_5731ab4     DT_INT
+	M_SubEdgeCount  DT_INT
 	M_volume        DT_FLOAT
 	M_area          DT_FLOAT
 }
@@ -130212,7 +130212,7 @@ func (t *Type_e81e59e2) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	if _, err := r.Seek(p+52, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_5731ab4.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.M_SubEdgeCount.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+56, io.SeekStart); err != nil {
@@ -133983,13 +133983,13 @@ func (t *MarkerLevelAreaVolumeData) UnmarshalBinary(r *bin.BinaryReader, o *Opti
 }
 
 type VectorFieldDefinition struct {
-	Unk_7ed9e40 DT_INT
-	Unk_7ed9e41 DT_INT
-	Unk_7ed9e42 DT_INT
-	FlMagMin    DT_FLOAT
-	FlMagMax    DT_FLOAT
-	Aabb        AABB
-	PtSamples   DT_VARIABLEARRAY[*DT_VECTOR3D]
+	NDimX     DT_INT
+	NDimY     DT_INT
+	NDimZ     DT_INT
+	FlMagMin  DT_FLOAT
+	FlMagMax  DT_FLOAT
+	Aabb      AABB
+	PtSamples DT_VARIABLEARRAY[*DT_VECTOR3D]
 }
 
 func (t *VectorFieldDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
@@ -134000,19 +134000,19 @@ func (t *VectorFieldDefinition) UnmarshalBinary(r *bin.BinaryReader, o *Options)
 	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_7ed9e40.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.NDimX.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_7ed9e41.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.NDimY.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+16, io.SeekStart); err != nil {
 		return err
 	}
-	if err := t.Unk_7ed9e42.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
+	if err := t.NDimZ.UnmarshalBinary(r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
@@ -135366,7 +135366,7 @@ func (t *NecroArmySpecMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) 
 	return nil
 }
 
-type Type_f2851ee1 struct {
+type OnRetreatCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
 	DwType                DT_UINT
@@ -135375,7 +135375,7 @@ type Type_f2851ee1 struct {
 	ArConditions          DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
 }
 
-func (t *Type_f2851ee1) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *OnRetreatCallback) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -143623,13 +143623,13 @@ func (t *Type_fd884ad3) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-type Type_fdbf0c24 struct {
+type PrefetchMarkerSetMessage struct {
 	THeader      RequiredMessageHeader
 	SnoMarkerSet DT_SNO
 	Unk_a61d97   DT_OPTIONAL[*DT_INT]
 }
 
-func (t *Type_fdbf0c24) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (t *PrefetchMarkerSetMessage) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err

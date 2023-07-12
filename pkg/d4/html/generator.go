@@ -99,13 +99,13 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 		g.writeFmt("<p>%f</p>", t.Value)
 		return
 	case *d4.DT_SNO:
-		if t.Id >= 0 {
+		if t.Id > 0 {
 			group, name := g.tocEntries.GetName(t.Id)
 			g.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
 		}
 		return
 	case *d4.DT_SNO_NAME:
-		if t.Id >= 0 {
+		if t.Id > 0 {
 			group, name := g.tocEntries.GetName(t.Id, d4.SnoGroup(t.Group))
 			g.writeFmt(`<p><a class="snoRef" href="../sno/%d.html">[%s] %s</a></p>`, t.Id, group, name)
 		}
