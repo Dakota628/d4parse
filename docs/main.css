@@ -63,14 +63,15 @@ img {
 }
 
 input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner {
-    border : 0px;
+    border: 0px;
 }
 
 input[type="search"] {
     -webkit-appearance: textfield;
 }
+
 input[type="submit"] {
-    -webkit-appearance:none;
+    -webkit-appearance: none;
 }
 
 input:required:after {

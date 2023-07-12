@@ -1,5 +1,88 @@
 <html lang="en">
-    <body>
-        <a href="sno/1315204.html">Sample SNO Meta HTML</a>
-    </body>
+<head>
+    <title>Diablo Farm - Docs</title>
+    <link rel="icon" href="favicon.ico"/>
+    <style type="text/css">
+        body {
+            background: #212529;
+            color: #f8f9fa;
+            font-family: sans-serif;
+        }
+
+        #search {
+            width: calc(80% + 1rem + 32px);
+            height: 5rem;
+            position: fixed; /* or absolute */
+            top: calc(50% - 2.5rem);
+            left: 10%;
+            background: #f8f9fa;
+            border: 0.3rem solid #a61e4d;
+            padding: 1rem;
+            color: #a61e4d;
+            font-size: 2rem;
+        }
+
+        #search:focus, #search:hover {
+            outline: none;
+            background: #e9ecef;
+        }
+
+        #logo {
+            width: 32px;
+            height: 32px;
+            position: fixed;
+            top: calc(50% - 16px);
+            left: calc(10% - 32px - 1rem);
+        }
+
+        .swal2-popup {
+            background: #212529 !important;
+            color: #f8f9fa !important;
+        }
+
+        .swal2-x-mark {
+            color: #c92a2a !important;
+            border-color: #c92a2a !important;
+        }
+
+        div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+            background-color: #a61e4d !important;
+            box-shadow: none !important;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const search = $("#search");
+            search.focus();
+            search.on("keydown", function search(e) {
+                if (e.keyCode === 13) {
+                    const url = `sno/${$(this).val()}.html`
+                    $.ajax({
+                        type: "GET",
+                        async: true,
+                        url: `sno/${$(this).val()}.html`,
+                        cache: true,
+                        error: function () {
+                            Swal.fire({
+                                title: 'SNO not found!',
+                                icon: "error",
+                                confirmButtonText: 'Moo!'
+                            })
+                        },
+                        success: function () {
+                            $(location).prop('href', url);
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<img id="logo" src="favicon.ico"/>
+<input id="search" type="number" min="1" max="4294967295" placeholder="Enter a SNO ID..."/>
+</body>
 </html>

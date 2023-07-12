@@ -5,7 +5,7 @@ document.addEventListener(
 );
 
 // We use this to prevent including an extra script tag in each html file
-function loadJS(url, cb){
+function loadJS(url, cb) {
     var scriptTag = document.createElement('script');
     scriptTag.src = url;
     scriptTag.onload = cb;
@@ -15,7 +15,7 @@ function loadJS(url, cb){
 
 function onLoad() {
     // Add isInViewport func
-    $.fn.isInViewport = function() {
+    $.fn.isInViewport = function () {
         var elementTop = $(this).offset().top;
         var elementBottom = elementTop + $(this).outerHeight();
 
@@ -40,10 +40,10 @@ function onLoad() {
     $('body').append(pathHint);
 
     $(".fk").hover(
-        function() {
+        function () {
             reversePath($(this), pathHint);
             pathHint.show();
-        }, function() {
+        }, function () {
             pathHint.hide().empty();
         }
     );
@@ -53,7 +53,7 @@ function fieldPath() {
     let path = {};
     const windowTop = $(window).scrollTop();
 
-    $(".fn").each(function(i, elem) {
+    $(".fn").each(function (i, elem) {
         const elemTop = $(elem).offset().top;
 
         // Assure elem has been scrolled past and parent is in viewport
@@ -73,9 +73,9 @@ function fieldPath() {
         }
     });
 
-   path = Object.entries(path)
-       .sort((a, b) => a[0] - b[0])
-       .map(x => $(x[1]).text());
+    path = Object.entries(path)
+        .sort((a, b) => a[0] - b[0])
+        .map(x => $(x[1]).text());
 
     console.log(path);
 }
