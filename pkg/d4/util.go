@@ -2,6 +2,7 @@ package d4
 
 import (
 	"reflect"
+	"unicode"
 )
 
 func newElem[T Object](t T) T {
@@ -17,4 +18,16 @@ func TrimNullTerminated(x []rune) string {
 		}
 	}
 	return string(x)
+}
+
+func IsIndex(s string) bool {
+	if s == "" {
+		return false
+	}
+	for _, c := range s {
+		if !unicode.IsDigit(c) {
+			return false
+		}
+	}
+	return true
 }

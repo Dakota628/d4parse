@@ -8,6 +8,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/bin"
 	"golang.org/x/exp/slog"
 	"io"
+	"strconv"
 )
 
 var (
@@ -102,6 +103,12 @@ func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}
 
 	return nil
+}
+
+func (d *DT_OPTIONAL[T]) Walk(cb WalkCallback) {
+	if d.Exists > 0 {
+		cb.Do("", d.Value)
+	}
 }
 
 // DT_SNO ...
@@ -201,6 +208,11 @@ func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return d.UpperBound.UnmarshalD4(r, o)
 }
 
+func (d *DT_RANGE[T]) Walk(cb WalkCallback) {
+	cb.Do("LowerBound", d.LowerBound)
+	cb.Do("UpperBound", d.UpperBound)
+}
+
 // DT_FIXEDARRAY ...
 type DT_FIXEDARRAY[T Object] struct {
 	Value []T
@@ -222,8 +234,8 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 }
 
 func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback) {
-	for _, v := range d.Value {
-		cb.Do("", v)
+	for i, v := range d.Value {
+		cb.Do(strconv.Itoa(i), v)
 	}
 }
 
@@ -307,8 +319,8 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 }
 
 func (d *DT_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
-	for _, v := range d.Value {
-		cb.Do("", v)
+	for i, v := range d.Value {
+		cb.Do(strconv.Itoa(i), v)
 	}
 }
 
@@ -412,8 +424,8 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 }
 
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
-	for _, v := range d.Value {
-		cb.Do("", v)
+	for i, v := range d.Value {
+		cb.Do(strconv.Itoa(i), v)
 	}
 }
 
@@ -509,6 +521,10 @@ func (d *DT_CSTRING[Unused]) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 		d.Value = string(buf)
 		return nil
 	})
+}
+
+func (d *DT_CSTRING[Unused]) String() string {
+	return d.Value
 }
 
 // DT_CHARARRAY ...

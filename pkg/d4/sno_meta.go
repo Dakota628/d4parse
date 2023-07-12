@@ -15,9 +15,9 @@ type SnoMeta struct {
 	Meta   Object
 }
 
-func (t *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	// Read SNOFileHeader
-	if err := t.Header.UnmarshalD4(r, nil); err != nil {
+	if err := m.Header.UnmarshalD4(r, nil); err != nil {
 		return err
 	}
 
@@ -28,21 +28,63 @@ func (t *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 	// Read Id, but don't advance pointer as Meta padding will skip the Id
 	if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
-		return t.Id.UnmarshalD4(r, nil)
+		return m.Id.UnmarshalD4(r, nil)
 	}); err != nil {
 		return err
 	}
 
 	// Read meta
-	if t.Meta = NewByFormatHash(int(t.Header.DwFormatHash.Value)); t.Meta == nil {
-		return fmt.Errorf("could not find type for format hash: %d", t.Header.DwFormatHash)
+	if m.Meta = NewByFormatHash(int(m.Header.DwFormatHash.Value)); m.Meta == nil {
+		return fmt.Errorf("could not find type for format hash: %d", m.Header.DwFormatHash)
 	}
 
-	if err := t.Meta.UnmarshalD4(r, nil); err != nil {
+	if err := m.Meta.UnmarshalD4(r, nil); err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func (m *SnoMeta) Walk(cb WalkCallback) {
+	cb.Do("", m.Meta)
+}
+
+// GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is
+// not nil.
+func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {
+	// Assert Walkable
+	x, ok := m.Meta.(Walkable)
+	if !ok {
+		return
+	}
+
+	// Walk SNO and keep track of referenced SNOs
+	x.Walk(func(_ string, v Object, next WalkNext) {
+		var id int32
+
+		switch t := v.(type) {
+		case *DT_SNO:
+			id = t.Id
+		case *DT_SNO_NAME:
+			id = t.Id
+		case *DT_GBID:
+			if gbData != nil {
+				if gbInfoIfc, ok := gbData.Load(*t); ok {
+					if gbInfo, ok := gbInfoIfc.(GbInfo); ok {
+						id = gbInfo.SnoId
+					}
+				}
+			}
+		}
+
+		if id > 0 {
+			refs = append(refs, id)
+		}
+
+		next()
+	})
+
+	return
 }
 
 func ReadSnoMetaFile(path string) (SnoMeta, error) {

@@ -3,7 +3,6 @@ package html
 import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
-	"golang.org/x/exp/slog"
 	"html"
 	"reflect"
 	"strings"
@@ -35,7 +34,8 @@ func (g *Generator) genericField(rv reflect.Value, field string) any {
 	return rv.Elem().FieldByName(field).Interface()
 }
 
-func (g *Generator) prettyTypeName(typeName string) string {
+func (g *Generator) prettyTypeName(t any) string {
+	typeName := fmt.Sprintf("%T", t)
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
@@ -52,12 +52,38 @@ func (g *Generator) writeFmt(format string, a ...any) {
 	g.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
-// TODO: utilize Walk
-//func (g *Generator) walkCallback(k string, v d4.Object, next d4.WalkNext) {
-//
-//}
+func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext) {
+	// Determine how to display the value
+	switch {
+	// It's an element of an iterable
+	case d4.IsIndex(k):
+		g.sb.WriteString("<li>")
+		defer g.sb.WriteString("</li>")
 
-func (g *Generator) add(x d4.Object) {
+	// It's a root element
+	case k == "":
+		break
+
+	// It's a field value
+	default:
+		// Generate extra field attributes
+		var extraFieldAttrs string
+		if k == "DwUID" { // Add ids for UIDs for fragment targets
+			if id, ok := x.(*d4.DT_UINT); ok {
+				extraFieldAttrs = fmt.Sprintf(`id="uid%v"`, id)
+			}
+		}
+
+		// Write the field HTML
+		g.writeFmt(
+			`<div %sclass="f"><div class="fk"><span class="fn">%s</span><span class="ft">%s</span></div>`,
+			extraFieldAttrs,
+			g.prettyFieldName(k),
+			g.prettyTypeName(x),
+		)
+		g.sb.WriteString(`<div class="fv">`)
+		defer g.sb.WriteString(`</div></div>`)
+	}
 
 	// Fast path
 	switch t := x.(type) {
@@ -81,7 +107,6 @@ func (g *Generator) add(x d4.Object) {
 		g.sb.WriteString(`<div class="f"><div class="fk"><div class="fn">File</div></div>`)
 		g.writeFmt(`<div class="fv"><p>%s/meta/%s/%s%s</p></div></div>`, prefix, group, name, group.Ext())
 		g.sb.WriteString("</div>")
-		g.add(t.Meta)
 		return
 	case *d4.DT_NULL:
 		return
@@ -176,29 +201,22 @@ func (g *Generator) add(x d4.Object) {
 	case *d4.DT_VECTOR4D:
 		g.writeFmt("<p>(%f, %f, %f, %f)</p>", t.X, t.Y, t.Z, t.W)
 		return
+	case nil:
+		g.sb.WriteString("<p><i>note: could not obtain element</i></p>") // This should only happen on invalid polymorphic arrays
+		return
 	}
 
 	// Slow path (reflection)
-	xrt := reflect.TypeOf(x)
-	xrv := reflect.ValueOf(x)
-	baseTypeName := g.genericType(xrt.String())
+	rt := reflect.TypeOf(x)
+	baseTypeName := g.genericType(rt.String())
 
 	switch baseTypeName {
 	case "*d4.DT_OPTIONAL":
-		if g.genericField(xrv, "Exists").(int32) > 0 {
-			g.add(g.genericField(xrv, "Value").(d4.Object))
-		}
+		next()
 		return
 	case "*d4.DT_RANGE":
 		g.sb.WriteString(`<div class="t">`)
-		g.sb.WriteString(`<div class="f"><div class="fk">lowerBound</div>`)
-		g.sb.WriteString(`<div class="fv">`)
-		g.add(g.genericField(xrv, "LowerBound").(d4.Object))
-		g.sb.WriteString("</div></div>")
-		g.sb.WriteString(`<div class="f"><div class="fk">upperBound</div>`)
-		g.sb.WriteString(`<div class="fv">`)
-		g.add(g.genericField(xrv, "UpperBound").(d4.Object))
-		g.sb.WriteString("</div></div>")
+		next()
 		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_FIXEDARRAY", "*d4.DT_VARIABLEARRAY", "*d4.DT_POLYMORPHIC_VARIABLEARRAY":
@@ -208,17 +226,7 @@ func (g *Generator) add(x d4.Object) {
 		}
 
 		g.sb.WriteString(`<ul class="arr">`)
-		valueRv := xrv.Elem().FieldByName("Value")
-		for i := 0; i < valueRv.Len(); i++ {
-			g.sb.WriteString("<li>")
-			elemRv := valueRv.Index(i)
-			if elemRv.IsNil() {
-				g.sb.WriteString("<p><i>note: could not obtain element</i></p>")
-			} else {
-				g.add(elemRv.Interface().(d4.Object))
-			}
-			g.sb.WriteString("</li>")
-		}
+		next()
 		g.sb.WriteString("</ul>")
 		return
 	case "*d4.DT_TAGMAP":
@@ -226,14 +234,11 @@ func (g *Generator) add(x d4.Object) {
 		return
 	case "*d4.DT_CSTRING":
 		g.sb.WriteString("<pre>")
-		g.sb.WriteString(html.EscapeString(g.genericField(xrv, "Value").(string)))
+		g.sb.WriteString(html.EscapeString(fmt.Sprintf("%s", x)))
 		g.sb.WriteString("</pre>")
-	default:
-		// Non-basic types
-		rv := reflect.ValueOf(x).Elem()
-		rt := rv.Type()
-
-		// Write type header (specific headers for linking)
+		return
+	default: // Non-basic types
+		// Write type header (with specific attributes for linking)
 		g.sb.WriteString("<div ")
 		switch t := x.(type) {
 		case *d4.GBIDHeader:
@@ -242,47 +247,19 @@ func (g *Generator) add(x d4.Object) {
 		g.sb.WriteString(`class="t">`)
 
 		// Write type
-		g.writeFmt(`<div class="tn">%s</div>`, g.prettyTypeName(rt.Name()))
-		for _, tField := range reflect.VisibleFields(rt) {
-			vField := rv.FieldByIndex(tField.Index)
-
-			if vField.Kind() != reflect.Ptr {
-				vField = vField.Addr()
-			}
-
-			value, ok := vField.Interface().(d4.Object)
-			if !ok {
-				slog.Warn(
-					"invalid field in type",
-					slog.String("type", baseTypeName),
-					slog.String("field", tField.Name),
-					slog.String("fieldType", vField.Type().String()),
-				)
-				continue
-			}
-
-			var addlFieldAttrs string
-			if tField.Name == "DwUID" { // Add ids for UIDs for fragment targets
-				addlFieldAttrs = fmt.Sprintf(`id="uid%v"`, vField.Interface())
-			}
-
-			g.writeFmt(
-				`<div %sclass="f"><div class="fk"><span class="fn">%s</span><span class="ft">%s</span></div>`,
-				addlFieldAttrs,
-				g.prettyFieldName(tField.Name),
-				g.prettyTypeName(tField.Type.String()),
-			)
-			g.sb.WriteString(`<div class="fv">`)
-			g.add(value)
-			g.sb.WriteString(`</div></div>`)
-		}
+		g.writeFmt(`<div class="tn">%s</div>`, g.prettyTypeName(x))
+		next()
 		g.sb.WriteString("</div>")
+
+		return
 	}
-	return
 }
 
 func (g *Generator) Add(x d4.Object) {
-	g.add(x)
+	g.walkCallback("", x, func() {})
+	if w, ok := x.(d4.Walkable); ok {
+		w.Walk(g.walkCallback)
+	}
 }
 
 func (g *Generator) String() string {

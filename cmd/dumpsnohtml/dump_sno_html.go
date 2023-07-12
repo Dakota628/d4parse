@@ -1,22 +1,23 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/html"
 	"golang.org/x/exp/slog"
 	"os"
+	"path/filepath"
 	"sync"
 )
 
 func main() {
-	if len(os.Args) < 4 {
-		slog.Error("usage: dumpsnohtml coreTocFile snoMetaFile outputFile")
+	if len(os.Args) < 3 {
+		slog.Error("usage: dumpsnohtml coreTocFile snoMetaFile")
 		os.Exit(1)
 	}
 
 	tocFilePath := os.Args[1]
 	snoMetaPath := os.Args[2]
-	outputPath := os.Args[3]
 
 	toc, err := d4.ReadTocFile(tocFilePath)
 	if err != nil {
@@ -29,6 +30,7 @@ func main() {
 		slog.Error("failed to read sno meta file", slog.Any("error", err))
 		os.Exit(1)
 	}
+	outputPath := filepath.Join("docs", "sno", fmt.Sprintf("%d.html", snoMeta.Id.Value))
 
 	htmlGen := html.NewGenerator(toc, &sync.Map{})
 	htmlGen.Add(&snoMeta)
