@@ -112,14 +112,15 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 		optionsDict[jen.Id("Group")] = jen.Lit(field.Group)
 	}
 
-	options := jen.Op("&").Id("Options").Values(optionsDict)
-
-	// Call UnmarshalD4 on the sub or basic type
 	code = append(
 		code,
 		jen.If(
-			jen.Err().Op(":=").
-				Id("t").Dot(transformedName).Dot("UnmarshalD4").Call(jen.Id("r"), options),
+			jen.Err().Op(":=").Id("UnmarshalAt").Call(
+				jen.Id("p").Op("+").Lit(field.Offset),
+				jen.Op("&").Id("t").Dot(transformedName),
+				jen.Id("r"),
+				jen.Op("&").Id("Options").Values(optionsDict),
+			),
 			jen.Err().Op("!=").Nil(),
 		).Block(
 			jen.Return(jen.Err()),
@@ -127,6 +128,15 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 	)
 
 	return code
+}
+
+func WalkFieldCode(transformedName string) []jen.Code {
+	return []jen.Code{
+		jen.Id("cb").Dot("Do").Call(
+			jen.Lit(transformedName),
+			jen.Op("&").Id("t").Dot(transformedName),
+		),
+	}
 }
 
 func TransformFieldName(fieldName string) string {
@@ -196,7 +206,7 @@ func ComposeTypes(defs d4data.Definitions, types []d4data.TypeHash) (jen.Code, e
 }
 
 func GenerateFormatHashMapFunc(f *jen.File, defs d4data.Definitions) error {
-	// TODO: could also replace this which a map from formatHash to typeHash
+	// TODO: could also replace this with a map from formatHash to typeHash
 	var cases []jen.Code
 
 	for _, typeHash := range SortedKeys(defs.TypeHashToDef) {
@@ -273,6 +283,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 	unmarshalD4Body := []jen.Code{
 		TrackCurrentPosCode(),
 	}
+	var walkBody []jen.Code
 
 	for _, inheritTypeHash := range def.Inherits { // Add inherits comments; TODO: incorporate actual struct embedding
 		var inheritTypeName string
@@ -285,6 +296,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 	}
 
 	for _, field := range def.Fields { // Add fields
+		// Get field info
 		fieldTypes := field.Type[:]
 		fieldName := TransformFieldName(field.Name)
 		fieldTypeCode, err := ComposeTypes(defs, fieldTypes)
@@ -292,9 +304,14 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 			return err
 		}
 
+		// Add type fields code
 		fields = append(fields, jen.Id(fieldName).Add(fieldTypeCode))
-		unmarshalD4Body = append(unmarshalD4Body, SeekRelativeCode(field.Offset)) // TODO: could add a util func to "UnmarshalAt" to reduce generated code size
+
+		// Add UnmarshalD4 body code
 		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field)...)
+
+		// Add Walk body code
+		walkBody = append(walkBody, WalkFieldCode(fieldName)...)
 	}
 
 	// Construct type
@@ -311,6 +328,15 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		jen.Id("o").Op("*").Id("Options"),
 	).Error().Block(
 		unmarshalD4Body...,
+	).Line()
+
+	// Construct Walk function
+	f.Func().Params(
+		jen.Id("t").Op("*").Id(def.Name),
+	).Id("Walk").Params(
+		jen.Id("cb").Id("WalkCallback"),
+	).Block(
+		walkBody...,
 	).Line()
 
 	return nil

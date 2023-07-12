@@ -12,9 +12,11 @@ import (
 
 var (
 	ErrInvalidPadding      = errors.New("invalid value in padding")
-	ErrArrayLengthRequired = errors.New("ArrayLength option required")
-	ErrGroupRequired       = errors.New("Group option required")
+	ErrArrayLengthRequired = errors.New("array length option required")
+	ErrGroupRequired       = errors.New("group option required")
 )
+
+// TODO: implement Walk for iterable types
 
 type (
 	Options struct {
@@ -29,12 +31,6 @@ type (
 
 	MaybeExternal interface {
 		IsExternal() bool
-	}
-
-	WalkCallback func(k string, v Object, next func())
-
-	Walkable interface {
-		Walk(cb WalkCallback)
 	}
 )
 
@@ -225,6 +221,12 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
+func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback) {
+	for _, v := range d.Value {
+		cb.Do("", v)
+	}
+}
+
 // DT_TAGMAP ...
 type DT_TAGMAP[T Object] struct {
 	Padding1   int64
@@ -302,6 +304,12 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 
 		return nil
 	})
+}
+
+func (d *DT_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
+	for _, v := range d.Value {
+		cb.Do("", v)
+	}
 }
 
 func (d *DT_VARIABLEARRAY[T]) IsExternal() bool {
@@ -401,6 +409,12 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 
 		return nil
 	})
+}
+
+func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
+	for _, v := range d.Value {
+		cb.Do("", v)
+	}
 }
 
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) IsExternal() bool {

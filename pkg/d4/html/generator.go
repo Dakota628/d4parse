@@ -52,7 +52,13 @@ func (g *Generator) writeFmt(format string, a ...any) {
 	g.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
+// TODO: utilize Walk
+//func (g *Generator) walkCallback(k string, v d4.Object, next d4.WalkNext) {
+//
+//}
+
 func (g *Generator) add(x d4.Object) {
+
 	// Fast path
 	switch t := x.(type) {
 	case *d4.SnoMeta:
