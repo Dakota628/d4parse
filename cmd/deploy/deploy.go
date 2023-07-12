@@ -16,6 +16,7 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 const (
@@ -24,7 +25,7 @@ const (
 
 	localBasePath = "docs"
 	workers       = 256
-	maxRetries    = 10
+	maxRetries    = 100
 )
 
 var (
@@ -142,13 +143,17 @@ func main() {
 					ContentLength: fileStat.Size(),
 					ContentType:   aws.String(contentType),
 				}
-				_, err = client.PutObject(ctx, params)
-				if err != nil {
-					log.Fatalf("Failed to put object %q: %s", objectKey, err)
+
+				for _, err = client.PutObject(ctx, params); err != nil; {
+					log.Printf("Retrying PutObject %q with new client due to error: %s", objectKey, err)
+					client = s3.NewFromConfig(cfg)
+					time.Sleep(1 * time.Second)
 				}
 
 				newCount := count.Add(1)
 				log.Printf("Uploaded %s->%s (#%d)", path, objectKey, newCount)
+
+				// TODO: track uploaded successfully files to allow continuing
 			}
 		}()
 	}

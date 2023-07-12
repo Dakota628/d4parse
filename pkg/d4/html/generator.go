@@ -10,10 +10,6 @@ import (
 	"unicode"
 )
 
-type MaybeExternal interface {
-	IsExternal() bool
-}
-
 type Generator struct {
 	sb         strings.Builder
 	tocEntries d4.TocEntries
@@ -56,7 +52,7 @@ func (g *Generator) writeFmt(format string, a ...any) {
 	g.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
-func (g *Generator) add(x d4.UnmarshalBinary) {
+func (g *Generator) add(x d4.Object) {
 	// Fast path
 	switch t := x.(type) {
 	case *d4.SnoMeta:
@@ -184,23 +180,23 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 	switch baseTypeName {
 	case "*d4.DT_OPTIONAL":
 		if g.genericField(xrv, "Exists").(int32) > 0 {
-			g.add(g.genericField(xrv, "Value").(d4.UnmarshalBinary))
+			g.add(g.genericField(xrv, "Value").(d4.Object))
 		}
 		return
 	case "*d4.DT_RANGE":
 		g.sb.WriteString(`<div class="t">`)
 		g.sb.WriteString(`<div class="f"><div class="fk">lowerBound</div>`)
 		g.sb.WriteString(`<div class="fv">`)
-		g.add(g.genericField(xrv, "LowerBound").(d4.UnmarshalBinary))
+		g.add(g.genericField(xrv, "LowerBound").(d4.Object))
 		g.sb.WriteString("</div></div>")
 		g.sb.WriteString(`<div class="f"><div class="fk">upperBound</div>`)
 		g.sb.WriteString(`<div class="fv">`)
-		g.add(g.genericField(xrv, "UpperBound").(d4.UnmarshalBinary))
+		g.add(g.genericField(xrv, "UpperBound").(d4.Object))
 		g.sb.WriteString("</div></div>")
 		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_FIXEDARRAY", "*d4.DT_VARIABLEARRAY", "*d4.DT_POLYMORPHIC_VARIABLEARRAY":
-		if maybeExt, ok := x.(MaybeExternal); ok && maybeExt.IsExternal() {
+		if maybeExt, ok := x.(d4.MaybeExternal); ok && maybeExt.IsExternal() {
 			g.sb.WriteString("<p><i>note: external data is not supported</i></p>") // TODO
 			return
 		}
@@ -213,7 +209,7 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 			if elemRv.IsNil() {
 				g.sb.WriteString("<p><i>note: could not obtain element</i></p>")
 			} else {
-				g.add(elemRv.Interface().(d4.UnmarshalBinary))
+				g.add(elemRv.Interface().(d4.Object))
 			}
 			g.sb.WriteString("</li>")
 		}
@@ -248,7 +244,7 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 				vField = vField.Addr()
 			}
 
-			value, ok := vField.Interface().(d4.UnmarshalBinary)
+			value, ok := vField.Interface().(d4.Object)
 			if !ok {
 				slog.Warn(
 					"invalid field in type",
@@ -279,7 +275,7 @@ func (g *Generator) add(x d4.UnmarshalBinary) {
 	return
 }
 
-func (g *Generator) Add(x d4.UnmarshalBinary) {
+func (g *Generator) Add(x d4.Object) {
 	g.add(x)
 }
 

@@ -16,20 +16,32 @@ var (
 	ErrGroupRequired       = errors.New("Group option required")
 )
 
-type Options struct {
-	Flags       int
-	ArrayLength int
-	Group       int32
-}
+type (
+	Options struct {
+		Flags       int
+		ArrayLength int
+		Group       int32
+	}
 
-type UnmarshalBinary interface { // TODO: rename this
-	UnmarshalBinary(r *bin.BinaryReader, o *Options) error
-}
+	Object interface {
+		UnmarshalD4(r *bin.BinaryReader, o *Options) error
+	}
+
+	MaybeExternal interface {
+		IsExternal() bool
+	}
+
+	WalkCallback func(k string, v Object, next func())
+
+	Walkable interface {
+		Walk(cb WalkCallback)
+	}
+)
 
 // DT_NULL ..
 type DT_NULL struct{}
 
-func (d *DT_NULL) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_NULL) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
@@ -38,7 +50,7 @@ type DT_BYTE struct {
 	Value uint8
 }
 
-func (d *DT_BYTE) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_BYTE) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint8(&d.Value)
 }
 
@@ -47,7 +59,7 @@ type DT_WORD struct {
 	Value uint16
 }
 
-func (d *DT_WORD) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_WORD) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint16LE(&d.Value)
 }
 
@@ -56,7 +68,7 @@ type DT_ENUM struct {
 	Value int32
 }
 
-func (d *DT_ENUM) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_ENUM) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Int32LE(&d.Value)
 }
 
@@ -65,7 +77,7 @@ type DT_INT struct {
 	Value int32
 }
 
-func (d *DT_INT) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_INT) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Int32LE(&d.Value)
 }
 
@@ -74,23 +86,23 @@ type DT_FLOAT struct {
 	Value float32
 }
 
-func (d *DT_FLOAT) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_FLOAT) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Float32LE(&d.Value)
 }
 
 // DT_OPTIONAL ...
-type DT_OPTIONAL[T UnmarshalBinary] struct {
+type DT_OPTIONAL[T Object] struct {
 	Exists int32
 	Value  T
 }
 
-func (d *DT_OPTIONAL[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int32LE(&d.Exists); err != nil {
 		return err
 	}
 
 	if d.Exists > 0 {
-		return d.Value.UnmarshalBinary(r, o)
+		return d.Value.UnmarshalD4(r, o)
 	}
 
 	return nil
@@ -101,7 +113,7 @@ type DT_SNO struct {
 	Id int32
 }
 
-func (d *DT_SNO) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_SNO) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Int32LE(&d.Id)
 }
 
@@ -111,7 +123,7 @@ type DT_SNO_NAME struct {
 	Id    int32
 }
 
-func (d *DT_SNO_NAME) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_SNO_NAME) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int32LE(&d.Group); err != nil {
 		return err
 	}
@@ -124,7 +136,7 @@ type DT_GBID struct {
 	Value uint32
 }
 
-func (d *DT_GBID) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_GBID) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if o == nil {
 		return ErrGroupRequired
 	}
@@ -138,7 +150,7 @@ type DT_STARTLOC_NAME struct {
 	Value uint32
 }
 
-func (d *DT_STARTLOC_NAME) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_STARTLOC_NAME) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint32LE(&d.Value)
 }
 
@@ -147,7 +159,7 @@ type DT_UINT struct {
 	Value uint32
 }
 
-func (d *DT_UINT) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_UINT) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint32LE(&d.Value)
 }
 
@@ -156,7 +168,7 @@ type DT_ACD_NETWORK_NAME struct {
 	Value uint64
 }
 
-func (d *DT_ACD_NETWORK_NAME) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_ACD_NETWORK_NAME) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint64LE(&d.Value)
 }
 
@@ -165,7 +177,7 @@ type DT_SHARED_SERVER_DATA_ID struct {
 	Value uint64
 }
 
-func (d *DT_SHARED_SERVER_DATA_ID) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_SHARED_SERVER_DATA_ID) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Uint64LE(&d.Value)
 }
 
@@ -174,31 +186,31 @@ type DT_INT64 struct {
 	Value int64
 }
 
-func (d *DT_INT64) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_INT64) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return r.Int64LE(&d.Value)
 }
 
 // DT_RANGE ...
-type DT_RANGE[T UnmarshalBinary] struct {
+type DT_RANGE[T Object] struct {
 	LowerBound T
 	UpperBound T
 }
 
-func (d *DT_RANGE[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	d.LowerBound = newElem(d.LowerBound)
-	if err := d.LowerBound.UnmarshalBinary(r, o); err != nil {
+	if err := d.LowerBound.UnmarshalD4(r, o); err != nil {
 		return err
 	}
 	d.UpperBound = newElem(d.LowerBound)
-	return d.UpperBound.UnmarshalBinary(r, o)
+	return d.UpperBound.UnmarshalD4(r, o)
 }
 
 // DT_FIXEDARRAY ...
-type DT_FIXEDARRAY[T UnmarshalBinary] struct {
+type DT_FIXEDARRAY[T Object] struct {
 	Value []T
 }
 
-func (d *DT_FIXEDARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if o == nil {
 		return ErrArrayLengthRequired
 	}
@@ -206,7 +218,7 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) erro
 	d.Value = make([]T, o.ArrayLength)
 	for i := 0; i < o.ArrayLength; i++ {
 		d.Value[i] = newElem(d.Value[i])
-		if err := d.Value[i].UnmarshalBinary(r, o); err != nil {
+		if err := d.Value[i].UnmarshalD4(r, o); err != nil {
 			return err
 		}
 	}
@@ -214,7 +226,7 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) erro
 }
 
 // DT_TAGMAP ...
-type DT_TAGMAP[T UnmarshalBinary] struct {
+type DT_TAGMAP[T Object] struct {
 	Padding1   int64
 	DataOffset int32
 	DataSize   int32
@@ -222,7 +234,7 @@ type DT_TAGMAP[T UnmarshalBinary] struct {
 	// TODO: figure out how to implement this fully
 }
 
-func (d *DT_TAGMAP[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
 	}
@@ -235,7 +247,7 @@ func (d *DT_TAGMAP[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
 }
 
 // DT_VARIABLEARRAY ...
-type DT_VARIABLEARRAY[T UnmarshalBinary] struct {
+type DT_VARIABLEARRAY[T Object] struct {
 	Padding1   int64
 	DataOffset int32
 	DataSize   int32
@@ -244,7 +256,7 @@ type DT_VARIABLEARRAY[T UnmarshalBinary] struct {
 	Value    []T
 }
 
-func (d *DT_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
@@ -277,7 +289,7 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) e
 		for curr := int64(d.DataOffset); curr < int64(d.DataOffset+d.DataSize); {
 			var elem T
 			elem = newElem(elem)
-			if err := elem.UnmarshalBinary(r, o); err != nil {
+			if err := elem.UnmarshalD4(r, o); err != nil {
 				return err
 			}
 			d.Value = append(d.Value, elem)
@@ -297,7 +309,7 @@ func (d *DT_VARIABLEARRAY[T]) IsExternal() bool {
 }
 
 // DT_POLYMORPHIC_VARIABLEARRAY ...
-type DT_POLYMORPHIC_VARIABLEARRAY[T UnmarshalBinary] struct {
+type DT_POLYMORPHIC_VARIABLEARRAY[T Object] struct {
 	Padding1   int64
 	DataOffset int32
 	DataSize   int32
@@ -305,10 +317,10 @@ type DT_POLYMORPHIC_VARIABLEARRAY[T UnmarshalBinary] struct {
 	Padding2   int32
 
 	external bool
-	Value    []UnmarshalBinary
+	Value    []Object
 }
 
-func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
@@ -348,7 +360,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o
 	nSkipped := int64(d.DataCount) * 8
 
 	// Read the data
-	d.Value = make([]UnmarshalBinary, d.DataCount)
+	d.Value = make([]Object, d.DataCount)
 	return r.AtPos(int64(d.DataOffset)+nSkipped, io.SeekStart, func(r *bin.BinaryReader) error {
 		for i := int32(0); i < d.DataCount; i++ {
 			// Note: technically we should read T (T is the actual polymorphic base), but as far as we can tell
@@ -358,7 +370,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o
 			// Read polymorphic base to get type info before reading real type
 			var base PolymorphicBase
 			if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
-				return base.UnmarshalBinary(r, o)
+				return base.UnmarshalD4(r, o)
 			}); err != nil {
 				// TODO: this is definitely not right, remove once GameBalanceTable issue solved
 				if err == io.EOF {
@@ -382,7 +394,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalBinary(r *bin.BinaryReader, o
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
 
-			if err := d.Value[i].UnmarshalBinary(r, o); err != nil {
+			if err := d.Value[i].UnmarshalD4(r, o); err != nil {
 				return err
 			}
 		}
@@ -406,7 +418,7 @@ type DT_STRING_FORMULA struct {
 	Compiled string
 }
 
-func (d *DT_STRING_FORMULA) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_STRING_FORMULA) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	// Skip 8 bytes: https://github.com/blizzhackers/d4data/blob/master/parse.js#L548
 	if _, err := r.Seek(8, io.SeekCurrent); err != nil {
 		return err
@@ -454,14 +466,14 @@ func (d *DT_STRING_FORMULA) UnmarshalBinary(r *bin.BinaryReader, o *Options) err
 }
 
 // DT_CSTRING ...
-type DT_CSTRING[Unused UnmarshalBinary] struct {
+type DT_CSTRING[Unused Object] struct {
 	Offset int32
 	Size   int32
 
 	Value string
 }
 
-func (d *DT_CSTRING[Unused]) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_CSTRING[Unused]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	// Skip 8 bytes
 	if _, err := r.Seek(8, io.SeekCurrent); err != nil {
 		return err
@@ -490,7 +502,7 @@ type DT_CHARARRAY struct {
 	Value []rune
 }
 
-func (d *DT_CHARARRAY) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_CHARARRAY) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if o == nil {
 		return ErrArrayLengthRequired
 	}
@@ -511,7 +523,7 @@ type DT_RGBACOLOR struct {
 	A uint8
 }
 
-func (d *DT_RGBACOLOR) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_RGBACOLOR) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Uint8(&d.R); err != nil {
 		return err
 	}
@@ -536,7 +548,7 @@ type DT_RGBACOLORVALUE struct {
 	A float32
 }
 
-func (d *DT_RGBACOLORVALUE) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_RGBACOLORVALUE) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Float32LE(&d.R); err != nil {
 		return err
 	}
@@ -558,7 +570,7 @@ type DT_BCVEC2I struct {
 	Y float32
 }
 
-func (d *DT_BCVEC2I) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_BCVEC2I) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Float32LE(&d.X); err != nil {
 		return err
 	}
@@ -572,7 +584,7 @@ type DT_VECTOR2D struct {
 	Y float32
 }
 
-func (d *DT_VECTOR2D) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_VECTOR2D) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Float32LE(&d.X); err != nil {
 		return err
 	}
@@ -587,7 +599,7 @@ type DT_VECTOR3D struct {
 	Z float32
 }
 
-func (d *DT_VECTOR3D) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_VECTOR3D) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Float32LE(&d.X); err != nil {
 		return err
 	}
@@ -607,7 +619,7 @@ type DT_VECTOR4D struct {
 	W float32
 }
 
-func (d *DT_VECTOR4D) UnmarshalBinary(r *bin.BinaryReader, o *Options) error {
+func (d *DT_VECTOR4D) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Float32LE(&d.X); err != nil {
 		return err
 	}

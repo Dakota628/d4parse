@@ -4,7 +4,7 @@ import (
 	"reflect"
 )
 
-func newElem[T UnmarshalBinary](t T) T {
+func newElem[T Object](t T) T {
 	elemType := reflect.TypeOf(t).Elem()
 	elemPtr := reflect.New(elemType)
 	return elemPtr.Interface().(T)

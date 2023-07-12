@@ -114,12 +114,12 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 
 	options := jen.Op("&").Id("Options").Values(optionsDict)
 
-	// Call UnmarshalBinary on the sub or basic type
+	// Call UnmarshalD4 on the sub or basic type
 	code = append(
 		code,
 		jen.If(
 			jen.Err().Op(":=").
-				Id("t").Dot(transformedName).Dot("UnmarshalBinary").Call(jen.Id("r"), options),
+				Id("t").Dot(transformedName).Dot("UnmarshalD4").Call(jen.Id("r"), options),
 			jen.Err().Op("!=").Nil(),
 		).Block(
 			jen.Return(jen.Err()),
@@ -220,7 +220,7 @@ func GenerateFormatHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 
 	f.Func().Id("NewByFormatHash").Params(
 		jen.Id("h").Int(),
-	).Id("UnmarshalBinary").Block(
+	).Id("Object").Block(
 		jen.Switch(jen.Id("h")).Block(cases...),
 	).Line()
 
@@ -253,9 +253,9 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 		),
 	)
 
-	f.Func().Id("NewByTypeHash").Types(jen.Id("T").Id("UnmarshalBinary")).Params(
+	f.Func().Id("NewByTypeHash").Types(jen.Id("T").Id("Object")).Params(
 		jen.Id("h").Int(),
-	).Id("UnmarshalBinary").Block(
+	).Id("Object").Block(
 		jen.Switch(jen.Id("h")).Block(cases...),
 	).Line()
 
@@ -270,7 +270,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 
 	// Construct fields
 	fields := make([]jen.Code, 0, len(def.Fields)+len(def.Inherits))
-	unmarshalBinaryBody := []jen.Code{
+	unmarshalD4Body := []jen.Code{
 		TrackCurrentPosCode(),
 	}
 
@@ -293,24 +293,24 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		}
 
 		fields = append(fields, jen.Id(fieldName).Add(fieldTypeCode))
-		unmarshalBinaryBody = append(unmarshalBinaryBody, SeekRelativeCode(field.Offset)) // TODO: could add a util func to "UnmarshalAt" to reduce generated code size
-		unmarshalBinaryBody = append(unmarshalBinaryBody, UnmarshalFieldCode(fieldName, field)...)
+		unmarshalD4Body = append(unmarshalD4Body, SeekRelativeCode(field.Offset)) // TODO: could add a util func to "UnmarshalAt" to reduce generated code size
+		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field)...)
 	}
 
 	// Construct type
 	f.Type().Id(def.Name).Struct(fields...).Line()
 
-	// Construct UnmarshalBinary function
-	unmarshalBinaryBody = append(unmarshalBinaryBody, SeekRelativeCode(def.Size))
-	unmarshalBinaryBody = append(unmarshalBinaryBody, jen.Return(jen.Nil()))
+	// Construct UnmarshalD4 function
+	unmarshalD4Body = append(unmarshalD4Body, SeekRelativeCode(def.Size))
+	unmarshalD4Body = append(unmarshalD4Body, jen.Return(jen.Nil()))
 
 	f.Func().Params(
 		jen.Id("t").Op("*").Id(def.Name),
-	).Id("UnmarshalBinary").Params(
+	).Id("UnmarshalD4").Params(
 		jen.Id("r").Op("*").Qual("github.com/Dakota628/d4parse/pkg/bin", "BinaryReader"),
 		jen.Id("o").Op("*").Id("Options"),
 	).Error().Block(
-		unmarshalBinaryBody...,
+		unmarshalD4Body...,
 	).Line()
 
 	return nil
