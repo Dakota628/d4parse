@@ -114,6 +114,10 @@ a:hover {
     clear: both;
 }
 
+.snoMeta > .tn, .extra > .tn {
+    background: #0b7285;
+}
+
 .tn:hover {
     cursor: pointer;
 }
@@ -181,4 +185,15 @@ i {
     color: #f8f9fa;
     padding: 0.5rem;
     font-size: 0.9rem;
+}
+
+.refs {
+    font-size: .9rem;
+    padding: 0.5rem;
+}
+
+.refs > a {
+    display: inline-block;
+    min-width: 5rem;
+    line-height: 1.5;
 }

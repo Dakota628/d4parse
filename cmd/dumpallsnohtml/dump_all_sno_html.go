@@ -1,10 +1,14 @@
 package main
 
 import (
+	"bufio"
+	"encoding/binary"
+	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/html"
 	"github.com/bmatcuk/doublestar/v4"
+	mapset "github.com/deckarep/golang-set/v2"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"os"
@@ -23,7 +27,53 @@ var (
 	stringListsPrefix = filepath.Join("enUS_Text", "meta", "StringList")
 )
 
-func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, outputPath string) {
+func refsFileWriter(refsFilePath string) (chan [2]int32, *sync.WaitGroup) {
+	seen := mapset.NewSet[[2]int32]()
+	c := make(chan [2]int32, workers*2)
+
+	f, err := os.Create(refsFilePath)
+	if err != nil {
+		slog.Error("Error creating/truncating refs file", slog.Any("error", err))
+		os.Exit(1)
+	}
+	w := bufio.NewWriter(f)
+
+	wg := &sync.WaitGroup{}
+	wg.Add(1)
+
+	go func() {
+		defer wg.Done()
+
+		for {
+			ref, ok := <-c
+			if !ok {
+				break
+			}
+
+			if seen.Contains(ref) {
+				continue
+			}
+			seen.Add(ref)
+
+			if err = errors.Join(
+				binary.Write(w, binary.LittleEndian, ref[0]),
+				binary.Write(w, binary.LittleEndian, ref[1]),
+			); err != nil {
+				slog.Error("Error writing to refs file", slog.Any("error", err))
+				os.Exit(1)
+			}
+		}
+
+		if err = w.Flush(); err != nil {
+			slog.Error("Error flushing refs file output buffer", slog.Any("error", err))
+			os.Exit(1)
+		}
+	}()
+
+	return c, wg
+}
+
+func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, refsC chan [2]int32, outputPath string) {
 	defer wg.Done()
 
 	snoPath := filepath.Join(outputPath, "sno")
@@ -67,8 +117,6 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d
 		htmlGen := html.NewGenerator(toc, gbData)
 		htmlGen.Add(&snoMeta)
 
-		// TODO: also generate an index file
-
 		// Write sno file
 		snoHtmlPath := filepath.Join(snoPath, fmt.Sprintf("%d.html", snoMeta.Id.Value))
 		snoHtml, err := os.Create(snoHtmlPath)
@@ -81,10 +129,18 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d
 			slog.Error("Error writing html file", err, slog.String("snoHtmlPath", snoHtmlPath))
 			continue
 		}
+
+		// Send references to ref file writer
+		for _, ref := range snoMeta.GetReferences(gbData) {
+			refsC <- [2]int32{
+				snoMeta.Id.Value,
+				ref,
+			}
+		}
 	}
 }
 
-func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, files []string, outputPath string) error {
+func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refsC chan [2]int32, files []string, outputPath string) error {
 	// Files arr to channel
 	c := make(chan string, len(files))
 	for _, file := range files {
@@ -94,10 +150,9 @@ func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, files []string, outputP
 
 	// Start workers
 	wg := &sync.WaitGroup{}
-
 	for i := uint(0); i < workers; i++ {
 		wg.Add(1)
-		go generateHtmlWorker(c, wg, toc, gbData, outputPath)
+		go generateHtmlWorker(c, wg, toc, gbData, refsC, outputPath)
 	}
 
 	wg.Wait()
@@ -111,6 +166,7 @@ func generateAllHtml(toc d4.Toc, gameDataPath string, outputPath string) error {
 	stringListsPath := filepath.Join(gameDataPath, stringListsPrefix)
 	stringsMetaGlobPath := filepath.Join(stringListsPath, "**", "*.*")
 	gameBalancePath := filepath.Join(metaPath, "GameBalance")
+	refsFilePath := filepath.Join(outputPath, "refs.bin")
 
 	// Get all data file names
 	baseMetaFiles, err := doublestar.FilepathGlob(baseMetaGlobPath)
@@ -137,14 +193,20 @@ func generateAllHtml(toc d4.Toc, gameDataPath string, outputPath string) error {
 		}
 	}
 
+	// Start refs worker
+	refsC, refsWg := refsFileWriter(refsFilePath)
+
 	// Parse game balance files first
 	gbData := &sync.Map{}
-	if err = generateHtmlForFiles(toc, gbData, gameBalanceFiles, outputPath); err != nil {
+	if err = generateHtmlForFiles(toc, gbData, refsC, gameBalanceFiles, outputPath); err != nil {
 		return err
 	}
-	if err = generateHtmlForFiles(toc, gbData, append(stringsMetaFiles, baseMetaFiles...), outputPath); err != nil {
+	if err = generateHtmlForFiles(toc, gbData, refsC, append(stringsMetaFiles, baseMetaFiles...), outputPath); err != nil {
 		return err
 	}
+
+	close(refsC)
+	refsWg.Wait()
 
 	return nil
 }

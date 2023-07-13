@@ -109,6 +109,10 @@ func main() {
 	cfg := getAwsConfig(accessKeyId, secretAccessKey)
 	files := getFilesToUpload()
 
+	if err := mime.AddExtensionType(".bin", "application/octet-stream"); err != nil {
+		log.Fatalf("Failed to add .bin mime extension: %s", err)
+	}
+
 	var count atomic.Uint64
 	wg := &sync.WaitGroup{}
 	for i := uint(0); i < workers; i++ {
