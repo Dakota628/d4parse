@@ -264,7 +264,7 @@ func (g *Generator) Add(x d4.Object) {
 
 func (g *Generator) String() string {
 	return fmt.Sprintf(
-		`<html lang="en"><head><script src="../main.js"></script><link rel="stylesheet" href="../main.css"></head><body>%s</body></html>`,
+		`<html lang="en"><head><script data-main="../js/sno" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script><link rel="stylesheet" href="../css/sno.css"></head><body>%s</body></html>`,
 		g.sb.String(),
 	)
 }

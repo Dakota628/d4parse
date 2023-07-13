@@ -8,7 +8,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/karrick/godirwalk"
-	"io"
 	"log"
 	"mime"
 	"os"
@@ -74,7 +73,8 @@ func getFilesToUpload() chan string {
 			},
 		)
 
-		if err != nil && err != io.EOF {
+		if err != nil {
+			// NOTE: godirwalk is currently broken on windows and will EOF after the first dir
 			log.Fatalf("Failed to walk directory tree: %s", err)
 		}
 		close(c)

@@ -1,0 +1,36 @@
+body {
+    background: #212529;
+    color: #f8f9fa;
+    font-family: sans-serif;
+}
+
+#search {
+    width: calc(80% + 1rem + 32px);
+    height: 5rem;
+    position: fixed; /* or absolute */
+    top: calc(50% - 2.5rem);
+    left: 10%;
+    background: #f8f9fa;
+    border: 0.3rem solid #a61e4d;
+    padding: 1rem;
+    color: #a61e4d;
+    font-size: 2rem;
+}
+
+#search:focus, #search:hover {
+    outline: none;
+    background: #e9ecef;
+}
+
+#logo {
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 50%;
+    left: calc(10% - 32px - 1rem);
+}
+
+.notie-background-error {
+    background: #c92a2a;
+    color: #f8f9fa;
+}
