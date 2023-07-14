@@ -6,18 +6,27 @@ requirejs.config({
 });
 
 define(['jquery'], ($) => {
+    //  Load refs map
+    loadRefs();
+
     $(() => {
-        // Get SNO ID
-        window.snoId = Number($('.snoMeta .fn:contains("ID")').closest('.f').find('.fv').text());
+        // Read SNO info from HTML
+        window.sno = {
+            group:  getSnoInfo("Group"),
+            id: Number(getSnoInfo("ID")),
+            name:  getSnoInfo("Name"),
+            file:  getSnoInfo("File"),
+        }
+
+        // Set page title
+        $(document).prop("title", `[${sno.group}] ${sno.name}`)
 
         // Add isInViewport func
         $.fn.isInViewport = function () {
             var elementTop = $(this).offset().top;
             var elementBottom = elementTop + $(this).outerHeight();
-
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-
             return elementBottom > viewportTop && elementTop < viewportBottom;
         };
 
@@ -27,8 +36,7 @@ define(['jquery'], ($) => {
         });
 
         // Field hover
-        const pathHint = $('<div class="pathHint"></div>');
-        pathHint.hide();
+        const pathHint = $('<div class="pathHint"></div>').hide();
         $('body').append(pathHint);
 
         $(".fk").hover(
@@ -39,27 +47,30 @@ define(['jquery'], ($) => {
                 pathHint.hide().empty();
             }
         );
-
-        //  Load refs map
-        loadRefs();
     })
 });
 
+function getSnoInfo(key) {
+    return $('.snoMeta .fn:contains("' + key + '")').closest('.f').find('.fv').text()
+}
+
 function reversePath(elem, pathHint) {
-    const path = [];
-    elem = elem.parents('.f').eq(0);
+    let path = "";
+    elem = elem.parents('.f, li').eq(0)
     while (elem.length) {
-        path.unshift(elem.find(".fk > .fn").first().text());
-        elem = elem.parents('.f').eq(0); // TODO: add support for array indexes
+        if (elem.is('li')) {
+            path = "[" + elem.index() + "]" + path;
+        } else {
+            path = "." + elem.find(".fk > .fn").first().text() + path;
+        }
+        elem = elem.parents('.f, li').eq(0);
     }
-    pathHint.text("$." + path.join("."));
+    pathHint.text("$" + path);
 }
 
 function loadRefs() {
-    const snoMeta = $(".snoMeta").eq(0);
     const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Referenced By</div></div><div class="fv refs"></div></div>');
     const valNode = metaEntry.find('.fv');
-    snoMeta.append(metaEntry);
 
     const req = new XMLHttpRequest();
     req.open("GET", "../refs.bin", true);
@@ -69,7 +80,7 @@ function loadRefs() {
         for (let p = 0; p < dv.byteLength; p += 8) { // TODO: if we sort the refs bin, we can binary search
             // Read data
             const to = dv.getInt32(p + 4, true);
-            if (to !== snoId) {
+            if (to !== sno.id) {
                 continue;
             }
             const from = dv.getInt32(p, true);
@@ -79,6 +90,10 @@ function loadRefs() {
             valNode.append(link);
         }
 
+        $(() => {
+            const snoMeta = $(".snoMeta").eq(0);
+            snoMeta.append(metaEntry);
+        })
     };
     req.send();
 }
