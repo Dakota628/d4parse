@@ -97,7 +97,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.t {
+.extra, .t {
     width: 100%;
     clear: both;
     align-items: stretch;

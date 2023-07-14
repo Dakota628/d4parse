@@ -2,21 +2,26 @@ requirejs.config({
     "baseUrl": "js/lib",
     "paths": {
         "jquery": "//code.jquery.com/jquery-3.7.0.min",
+        "dagre": "//unpkg.com/dagre@0.7.4/dist/dagre",
         "cytoscape": "//unpkg.com/cytoscape@3.25.0/dist/cytoscape.min",
+        "cytoscape-dagre": "//unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre",
     }
 });
 
-define(['jquery', 'cytoscape'], ($, cytoscape) => {
+define(['jquery', 'cytoscape', 'cytoscape-dagre'], ($, cytoscape, cydagre) => {
+    // Setup cytoscape
+    cydagre(cytoscape);
+
     //  Load refs map
-    loadRefs();
+    loadRefs($);
 
     $(() => {
         // Read SNO info from HTML
         window.sno = {
-            group:  getSnoInfo("Group"),
+            group: getSnoInfo("Group"),
             id: Number(getSnoInfo("ID")),
-            name:  getSnoInfo("Name"),
-            file:  getSnoInfo("File"),
+            name: getSnoInfo("Name"),
+            file: getSnoInfo("File"),
         }
 
         // Set page title
@@ -31,13 +36,16 @@ define(['jquery', 'cytoscape'], ($, cytoscape) => {
             return elementBottom > viewportTop && elementTop < viewportBottom;
         };
 
+        // Generate quest graph
+        generateQuestGraph($, cytoscape);
+
         // Collapsable types
         $(".tn").on("click", function () {
-            $(this).siblings(".f").toggle();
+            $(this).siblings().toggle();
         });
 
         // Field hover
-        const pathHint = $('<div class="pathHint"></div>').hide();
+        window.pathHint = $('<div class="pathHint"></div>').hide();
         $('body').append(pathHint);
 
         $(".fk").hover(
@@ -48,9 +56,6 @@ define(['jquery', 'cytoscape'], ($, cytoscape) => {
                 pathHint.hide().empty();
             }
         );
-
-        // Generate quest graph
-        generateQuestGraph($, cytoscape);
     })
 });
 
@@ -73,7 +78,6 @@ function reversePath(elem, pathHint) {
 }
 
 function loadRefs($) {
-    const snoMeta = $(".snoMeta").eq(0);
     const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Referenced By</div></div><div class="fv refs"></div></div>');
     const valNode = metaEntry.find('.fv');
 
@@ -95,10 +99,7 @@ function loadRefs($) {
             valNode.append(link);
         }
 
-        $(() => {
-            const snoMeta = $(".snoMeta").eq(0);
-            snoMeta.append(metaEntry);
-        })
+        $(() => $(".snoMeta").eq(0).append(metaEntry));
     };
     req.send();
 }
@@ -112,39 +113,58 @@ function findType(elem, t) {
 function getFieldValue(elem, f) {
     return elem.children('.f:has(> .fk > .fn:contains("' + f + '"))').children('.fv').filter(function () {
         return $(this).closest('.f').find('.fn').text() === f
-    }).eq(0).text();
+    }).eq(0);
 }
 
+const questType = {
+    definition: 'QuestDefinition',
+    phase: 'QuestPhase',
+    objectiveSet: 'QuestObjectiveSet',
+    objectiveSetLink: 'QuestObjectiveSetLink',
+    callback: 'QuestCallback',
+};
+
 function generateQuestGraph($, cytoscape) {
-    const qd = findType($('body'), 'QuestDefinition');
+    // Determine graph nodes and edges
+    const qd = findType($('body'), questType.definition);
     if (qd.length === 0) {
         return
     }
 
+    const uidKey = 'dwUID';
+    const destPhaseUidKey = 'dwDestinationPhaseUID'
+
     let nodes = [];
     let edges = [];
 
-    findType(qd, 'QuestPhase').each(function () {
+    findType(qd, questType.phase).each(function () {
         const phase = $(this);
-        const phaseUid = getFieldValue(phase, 'dwUID');
+        const phaseUidElem = getFieldValue(phase, uidKey);
+        const phaseUid = phaseUidElem.text();
+
         nodes.push({
             group: 'nodes',
             data: {
                 id: phaseUid,
-                name: `Phase ${phaseUid}`,
+                type: questType.phase,
+                name: phaseUid,
                 e: phase,
+                eVal: phaseUidElem,
             },
         });
 
-        findType(phase, 'QuestObjectiveSet').each(function () {
+        findType(phase, questType.objectiveSet).each(function () {
             const objectiveSet = $(this);
-            const objectiveSetUid = getFieldValue(objectiveSet, 'dwUID');
+            const objectiveSetUidElem = getFieldValue(objectiveSet, uidKey);
+            const objectiveSetUid = objectiveSetUidElem.text();
             nodes.push({
                 group: 'nodes',
                 data: {
                     id: objectiveSetUid,
-                    name: `Objective Set ${objectiveSetUid}`,
+                    type: questType.objectiveSet,
+                    name: objectiveSetUid,
                     e: objectiveSet,
+                    eVal: objectiveSetUidElem,
                 },
             });
             edges.push({
@@ -156,9 +176,10 @@ function generateQuestGraph($, cytoscape) {
                 },
             });
 
-            findType(objectiveSet, 'QuestObjectiveSetLink').each(function () {
+            findType(objectiveSet, questType.objectiveSetLink).each(function () {
                 const link = $(this);
-                const linkDestinationPhaseUid = getFieldValue(link, 'dwDestinationPhaseUID');
+                const linkDestinationPhaseUidElem = getFieldValue(link, destPhaseUidKey);
+                const linkDestinationPhaseUid = linkDestinationPhaseUidElem.text();
                 edges.push({
                     group: 'edges',
                     data: {
@@ -169,15 +190,18 @@ function generateQuestGraph($, cytoscape) {
                 });
             });
 
-            findType(objectiveSet, 'QuestCallback').each(function () {
+            findType(objectiveSet, questType.callback).each(function () {
                 const callback = $(this);
-                const callbackUid = getFieldValue(callback, 'dwUID');
+                const callbackUidElem = getFieldValue(callback, uidKey);
+                const callbackUid = callbackUidElem.text();
                 nodes.push({
                     group: 'nodes',
                     data: {
                         id: callbackUid,
-                        name: `Callback ${callbackUid}`,
+                        type: questType.callback,
+                        name: callbackUid,
                         e: callback,
+                        eVal: callbackUidElem,
                     },
                 });
                 edges.push({
@@ -192,48 +216,69 @@ function generateQuestGraph($, cytoscape) {
         });
     });
 
-    const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Quest Graph</div></div><div class="fv"><div id="questGraph"></div></div></div></div>');
+    // Construct the graph
+    const metaEntry = $('<div class="extra"><div class="tn">Quest Graph</div><div id="questGraph"></div></div>')
     const cyDiv = metaEntry.find('#questGraph');
-    $(".snoMeta").eq(0).append(metaEntry);
+    $(".snoMeta").eq(0).after(metaEntry);
 
     let cy = cytoscape({
         container: cyDiv.get(0),
         boxSelectionEnabled: false,
         autoungrabify: true,
-        style: [{
-            selector: "node",
-            css: {
-                label: "data(name)",
-                "text-valign": "center",
-                "text-halign": "center",
-                height: "60px",
-                width: "150px",
-                shape: "rectangle",
-                "background-color": "#343a40",
-                "border": "none",
-                "color": "#4c6ef5",
-                "font-size": "14px"
-            }
-        },
+        style: [
+            {
+                selector: "node",
+                css: {
+                    label: "data(name)",
+                    "text-valign": "center",
+                    "text-halign": "center",
+                    height: "50px",
+                    width: "50px",
+                    shape: "circle",
+                    "background-color": "#343a40",
+                    "border": "none",
+                    "color": "#4c6ef5",
+                    "font-size": "14px"
+                }
+            },
             {
                 selector: "edge",
                 css: {
                     "curve-style": "bezier",
-                    "target-arrow-shape": "triangle"
+                    "target-arrow-shape": "triangle",
+                    "line-color": "#fff",
+                    "target-arrow-color": "#fff",
+                    "opacity": "0.5",
                 }
             }
         ],
+        elements: [
+            ...nodes,
+            ...edges,
+        ],
     });
-    cy.add(nodes);
-    cy.add(edges);
 
+    // Add node events
     cy.on('tap', 'node', function () {
         this.data('e').get(0).scrollIntoView({
             behavior: 'smooth',
         });
     });
 
+    cy.on('mouseover', 'node', function (e) {
+        cyDiv.css('cursor', 'pointer');
+        const keyElem = this.data('eVal').closest('.f').find('.fk');
+        reversePath(keyElem, pathHint);
+        pathHint.show();
+    })
+
+    cy.on('mouseout', 'node', function () {
+        cyDiv.css('cursor', '');
+        pathHint.hide().empty();
+    })
+
+    // Layout and render the graph
     cy.layout({
-        name: 'breadthfirst'
+        name: 'dagre'
     }).run();
 }
