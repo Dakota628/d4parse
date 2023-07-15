@@ -6,12 +6,12 @@ body {
 
 #search {
     width: calc(80% + 1rem + 32px);
-    height: 5rem;
+    height: 3rem;
     position: fixed; /* or absolute */
-    top: calc(50% - 2.5rem);
+    top: calc(50% - 1.5rem);
     left: 10%;
     background: #f8f9fa;
-    border: 0.3rem solid #a61e4d;
+    border: 0.2rem solid #a61e4d;
     padding: 1rem;
     color: #a61e4d;
     font-size: 2rem;
@@ -32,5 +32,37 @@ body {
 
 .notie-background-error {
     background: #c92a2a;
-    color: #f8f9fa;
+    color: #dee2e6;
+}
+
+.ui-widget {
+    border: none !important;
+}
+
+.ui-menu {
+    list-style-type: none;
+    background: #343a40;
+    color: #f1f3f5;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-top: 0.2rem solid #212529 !important;
+    max-height: calc(50% - 7.5em);
+    overflow-y: scroll;
+}
+
+.ui-menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+    padding: 0.5rem !important;
+}
+
+.ui-state-focus, .ui-state-hover, .ui-state-active {
+    background: #4c6ef5 !important;
+    display: block !important;
+    border: none !important;
 }
