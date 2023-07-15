@@ -173,6 +173,7 @@ function generateQuestGraph($, cytoscape) {
                     id: `${phaseUid}:${objectiveSetUid}`,
                     source: phaseUid,
                     target: objectiveSetUid,
+                    color: "#ffffff",
                 },
             });
 
@@ -186,6 +187,9 @@ function generateQuestGraph($, cytoscape) {
                         id: `${objectiveSetUid}:${linkDestinationPhaseUid}`,
                         source: objectiveSetUid,
                         target: linkDestinationPhaseUid,
+                        color: "#4c6ef5",
+                        e: link,
+                        eVal: linkDestinationPhaseUidElem,
                     },
                 });
             });
@@ -210,6 +214,7 @@ function generateQuestGraph($, cytoscape) {
                         id: `${objectiveSetUid}:${callbackUid}`,
                         source: objectiveSetUid,
                         target: callbackUid,
+                        color: "#ffffff",
                     },
                 });
             });
@@ -246,8 +251,8 @@ function generateQuestGraph($, cytoscape) {
                 css: {
                     "curve-style": "bezier",
                     "target-arrow-shape": "triangle",
-                    "line-color": "#fff",
-                    "target-arrow-color": "#fff",
+                    "line-color": "data(color)",
+                    "target-arrow-color": "data(color)",
                     "opacity": "0.5",
                 }
             }
@@ -273,6 +278,31 @@ function generateQuestGraph($, cytoscape) {
     })
 
     cy.on('mouseout', 'node', function () {
+        cyDiv.css('cursor', '');
+        pathHint.hide().empty();
+    })
+
+    // Add edge events
+    cy.on('tap', 'edge', function () {
+        const e = this.data('e')
+        if (e) {
+            e.get(0).scrollIntoView({
+                behavior: 'smooth',
+            });
+        }
+    });
+
+    cy.on('mouseover', 'edge', function (e) {
+        const eVal = this.data('eVal')
+        if (eVal) {
+            cyDiv.css('cursor', 'pointer');
+            const keyElem = eVal.closest('.f').find('.fk');
+            reversePath(keyElem, pathHint);
+            pathHint.show();
+        }
+    })
+
+    cy.on('mouseout', 'edge', function () {
         cyDiv.css('cursor', '');
         pathHint.hide().empty();
     })
