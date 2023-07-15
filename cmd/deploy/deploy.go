@@ -112,6 +112,9 @@ func main() {
 	if err := mime.AddExtensionType(".bin", "application/octet-stream"); err != nil {
 		log.Fatalf("Failed to add .bin mime extension: %s", err)
 	}
+	if err := mime.AddExtensionType(".mpk", "application/msgpack"); err != nil {
+		log.Fatalf("Failed to add .mpk mime extension: %s", err)
+	}
 
 	var count atomic.Uint64
 	wg := &sync.WaitGroup{}
