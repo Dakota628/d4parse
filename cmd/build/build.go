@@ -8,6 +8,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/d4/html"
 	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
+	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"os"
@@ -157,6 +158,23 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 	return nil
 }
 
+func generateNamesFile(toc d4.Toc, outputPath string) error {
+	namesFilePath := filepath.Join(outputPath, "names.mpk")
+
+	b, err := msgpack.Marshal(toc.Entries)
+	if err != nil {
+		return err
+	}
+
+	namesFile, err := os.Create(namesFilePath)
+	if err != nil {
+		return err
+	}
+
+	_, err = namesFile.Write(b)
+	return err
+}
+
 func generateRefsBin(refs mapset.Set[[2]int32], outputPath string) error {
 	refsFilePath := filepath.Join(outputPath, "refs.bin")
 
@@ -206,6 +224,11 @@ func main() {
 	toc, err := d4.ReadTocFile(tocFilePath)
 	if err != nil {
 		slog.Error("Failed to read toc file", slog.Any("error", err))
+		os.Exit(1)
+	}
+
+	if err = generateNamesFile(toc, outputPath); err != nil {
+		slog.Error("Failed to generate names files", slog.Any("error", err))
 		os.Exit(1)
 	}
 
