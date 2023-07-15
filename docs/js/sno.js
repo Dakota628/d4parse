@@ -77,6 +77,39 @@ function reversePath(elem, pathHint) {
     pathHint.text("$" + path);
 }
 
+function refOffset(i) {
+    return (8 * i) + 4
+}
+
+function searchRef(dv, pred) {
+    let l = -1;
+    let h = dv.getUint32(0, true);
+    while (1 + l < h) {
+        const m = l + ((h - l) >> 1);
+        if (pred(dv.getInt32(refOffset(m) + 4, true))) {
+            h = m;
+        } else {
+            l = m;
+        }
+    }
+    return h;
+}
+
+function eachReferencedBy(dv, targetTo, cb) {
+    const len = dv.getUint32(0, true);
+    let i = searchRef(dv, x => targetTo <= x)
+    if (i < 0) {
+        return
+    }
+    for (; i < len; i++) {
+        const off = refOffset(i);
+        if (dv.getInt32(off + 4, true) !== targetTo) {
+            break;
+        }
+        cb(dv.getInt32(off, true));
+    }
+}
+
 function loadRefs($) {
     const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Referenced By</div></div><div class="fv refs"></div></div>');
     const valNode = metaEntry.find('.fv');
@@ -86,19 +119,10 @@ function loadRefs($) {
     req.responseType = "arraybuffer";
     req.onload = function (e) {
         const dv = new DataView(req.response);
-        for (let p = 0; p < dv.byteLength; p += 8) { // TODO: if we sort the refs bin, we can binary search
-            // Read data
-            const to = dv.getInt32(p + 4, true);
-            if (to !== sno.id) {
-                continue;
-            }
-            const from = dv.getInt32(p, true);
-
-            // Append link
+        eachReferencedBy(dv, sno.id, function (from) {
             const link = $("<a></a>").attr("href", `${from}.html`).text(from);
             valNode.append(link);
-        }
-
+        })
         $(() => $(".snoMeta").eq(0).append(metaEntry));
     };
     req.send();
