@@ -41,7 +41,7 @@ define(['jquery', 'cytoscape', 'cytoscape-dagre', 'msgpack'], ($, cytoscape, cyd
         generateQuestGraph($, cytoscape);
 
         // Collapsable types
-        $(".tn").on("click", function () {
+        $(document).on("click", ".tn", function () {
             $(this).siblings().toggle();
         });
 
@@ -146,8 +146,8 @@ function loadRefs($, msgpack) {
     loadGroups(msgpack);
     loadNames(msgpack);
 
-    const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Referenced By</div></div><div class="fv refs"></div></div>');
-    const valNode = metaEntry.find('.fv');
+    const metaEntry = $('<div class="extra"><div class="tn">Referenced By</div><div id="refs"></div></div>')
+    const valNode = metaEntry.find('#refs');
 
     const req = new XMLHttpRequest();
     req.open("GET", "../refs.bin", true);
@@ -158,7 +158,10 @@ function loadRefs($, msgpack) {
             const link = $("<a></a>").attr("href", `${from}.html`).text(snoName(from));
             valNode.append(link);
         })
-        $(() => $(".snoMeta").eq(0).append(metaEntry));
+        if (valNode.is(':empty')) {
+            valNode.append($("<i>Not referenced by anything</i>"))
+        }
+        $(() => $(".snoMeta").eq(0).after(metaEntry));
     };
     req.send();
 }

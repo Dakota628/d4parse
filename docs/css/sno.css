@@ -187,14 +187,20 @@ i {
     font-size: 0.9rem;
 }
 
-.refs {
+#refs {
     font-size: .9rem;
     padding: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
-.refs > a {
-    display: block;
+#refs > a {
+    display: inline-block;
+    width: 33.3333%;
     line-height: 1.5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 0.2rem;
 }
 
 #questGraph {
