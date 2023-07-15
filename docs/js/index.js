@@ -17,29 +17,45 @@ define(['jquery', 'jquery-ui', 'notie', 'msgpack'], ($, ui, notie, msgpack) => {
     });
 });
 
-function search(query, max) {
-    query = query.toLowerCase();
-    const results = []
-    for (const [group, m] of Object.entries(window.snos)) {
-        for (const [id, name] of Object.entries(m)) {
-            if (name.toLowerCase().includes(query)) {
-                results.push({
-                    label: `[${SnoGroups[group]}] ${name}`,
-                    group,
-                    name,
-                    id,
-                });
-                if (results.length === max) {
-                    return results
-                }
+const queryRegex = /(\[(?<group>\w+)\] )?(?<query>.*)/g;
+
+function subSearch(query, max, groupId, m, results) {
+    for (const [id, name] of Object.entries(m)) {
+        if (name.toLowerCase().includes(query)) {
+            results.push({
+                label: `[${SnoGroupsById[groupId]}] ${name}`,
+                groupId,
+                name,
+                id,
+            });
+            if (results.length >= max) {
+                return results
             }
         }
     }
     return results
 }
 
-function entryName(item) {
-    return `[${SnoGroups[item.group]}] ${item.name}`
+function search(query, max) {
+    const queryParts = query.matchAll(queryRegex).next();
+    if (!queryParts) {
+        return []
+    }
+    const group = queryParts.value.groups.group;
+    query = queryParts.value.groups.query.toLowerCase();
+
+    // Group specified
+    if (group) {
+        const groupId = SnoGroupsByName[group];
+        return subSearch(query, max, groupId, snos[groupId] ?? {}, []);
+    }
+
+    // No group specified
+    let results = [];
+    for (const [groupId, m] of Object.entries(snos)) {
+        results = subSearch(query, max, groupId, m, results);
+    }
+    return results;
 }
 
 function loadNames($, msgpack, notie) {
@@ -50,10 +66,10 @@ function loadNames($, msgpack, notie) {
         $(() => {
             window.snos = msgpack.decode(req.response);
             $("#search").autocomplete({
-                source: function(request, response) {
+                source: function (request, response) {
                     response(search(request.term, 100))
                 },
-                select: function(event, ui) {
+                select: function (event, ui) {
                     const url = `sno/${ui.item.id}.html`
                     $.get({
                         url: `sno/${ui.item.id}.html`,
@@ -80,7 +96,7 @@ function loadNames($, msgpack, notie) {
     req.send();
 }
 
-const SnoGroups = {
+const SnoGroupsById = {
     "-3": "Unknown",
     "-2": "Code",
     "-1": "None",
@@ -204,3 +220,5 @@ const SnoGroups = {
     "139": "FacialHair",
     "140": "Face",
 }
+
+const SnoGroupsByName = Object.fromEntries(Object.entries(SnoGroupsById).map(a => a.reverse()))
