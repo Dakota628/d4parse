@@ -193,8 +193,7 @@ i {
 }
 
 .refs > a {
-    display: inline-block;
-    min-width: 5rem;
+    display: block;
     line-height: 1.5;
 }
 

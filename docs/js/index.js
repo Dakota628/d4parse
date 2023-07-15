@@ -46,7 +46,7 @@ function search(query, max) {
 
     // Group specified
     if (group) {
-        const groupId = SnoGroupsByName[group];
+        const groupId = snoGroupsByName[group];
         return subSearch(query, max, groupId, snos[groupId] ?? {}, []);
     }
 
@@ -59,170 +59,52 @@ function search(query, max) {
 }
 
 function loadNames($, msgpack, notie) {
-    const req = new XMLHttpRequest();
-    req.open("GET", "names.mpk", true);
-    req.responseType = "arraybuffer";
-    req.onload = function () {
-        $(() => {
-            window.snos = msgpack.decode(req.response);
-            $("#search").autocomplete({
-                source: function (request, response) {
-                    response(search(request.term, 100))
-                },
-                select: function (event, ui) {
-                    const url = `sno/${ui.item.id}.html`
-                    $.get({
-                        url: `sno/${ui.item.id}.html`,
-                        cache: true,
-                    }).done(() => {
-                        $(location).prop('href', url);
-                    }).fail(() => {
-                        notie.alert({
-                            type: 'error',
-                            text: 'SNO not found!',
-                            buttonText: 'Moo!',
-                            time: 100,
-                        });
-                        $("#search").focus();
-                    })
-                },
-                focus: function (event, ui) {
-                    this.value = entryName(ui.item);
-                    event.preventDefault();
-                },
+    const greq = new XMLHttpRequest();
+    greq.open("GET", "groups.mpk", true);
+    greq.responseType = "arraybuffer";
+    greq.onload = function () {
+        window.snoGroupsById = msgpack.decode(greq.response);
+        window.snoGroupsByName = Object.fromEntries(Object.entries(snoGroupsById).map(a => a.reverse()));
+
+        const nreq = new XMLHttpRequest();
+        nreq.open("GET", "names.mpk", true);
+        nreq.responseType = "arraybuffer";
+        nreq.onload = function () {
+            $(() => {
+                window.snos = msgpack.decode(nreq.response);
+                $("#search").autocomplete({
+                    source: function (request, response) {
+                        response(search(request.term, 100))
+                    },
+                    select: function (event, ui) {
+                        const url = `sno/${ui.item.id}.html`
+                        $.get({
+                            url: `sno/${ui.item.id}.html`,
+                            cache: true,
+                        }).done(() => {
+                            $(location).prop('href', url);
+                        }).fail(() => {
+                            notie.alert({
+                                type: 'error',
+                                text: 'SNO not found!',
+                                buttonText: 'Moo!',
+                                time: 100,
+                            });
+                            $("#search").focus();
+                        })
+                    },
+                    focus: function (event, ui) {
+                        this.value = entryName(ui.item);
+                        event.preventDefault();
+                    },
+                });
             })
-        })
+        };
+        nreq.send();
     };
-    req.send();
+    greq.send();
 }
 
 function entryName(item) {
-    return `[${SnoGroupsById[item.group]}] ${item.name}`
+    return `[${snoGroupsById[item.group]}] ${item.name}`
 }
-
-const SnoGroupsById = {
-    "-3": "Unknown",
-    "-2": "Code",
-    "-1": "None",
-    "1": "Actor",
-    "2": "NPCComponentSet",
-    "3": "AIBehavior",
-    "4": "AIState",
-    "5": "AmbientSound",
-    "6": "Anim",
-    "7": "Anim2D",
-    "8": "AnimSet",
-    "9": "Appearance",
-    "10": "Hero",
-    "11": "Cloth",
-    "12": "Conversation",
-    "13": "ConversationList",
-    "14": "EffectGroup",
-    "15": "Encounter",
-    "17": "Explosion",
-    "18": "FlagSet",
-    "19": "Font",
-    "20": "GameBalance",
-    "21": "Global",
-    "22": "LevelArea",
-    "23": "Light",
-    "24": "MarkerSet",
-    "26": "Observer",
-    "27": "Particle",
-    "28": "Physics",
-    "29": "Power",
-    "31": "Quest",
-    "32": "Rope",
-    "33": "Scene",
-    "35": "Script",
-    "36": "ShaderMap",
-    "37": "Shader",
-    "38": "Shake",
-    "39": "SkillKit",
-    "40": "Sound",
-    "42": "StringList",
-    "43": "Surface",
-    "44": "Texture",
-    "45": "Trail",
-    "46": "UI",
-    "47": "Weather",
-    "48": "World",
-    "49": "Recipe",
-    "51": "Condition",
-    "52": "TreasureClass",
-    "53": "Account",
-    "57": "Material",
-    "59": "Lore",
-    "60": "Reverb",
-    "62": "Music",
-    "63": "Tutorial",
-    "67": "AnimTree",
-    "68": "Vibration",
-    "71": "wWiseSoundBank",
-    "72": "Speaker",
-    "73": "Item",
-    "74": "PlayerClass",
-    "76": "FogVolume",
-    "77": "Biome",
-    "78": "Wall",
-    "79": "SoundTable",
-    "80": "Subzone",
-    "81": "MaterialValue",
-    "82": "MonsterFamily",
-    "83": "TileSet",
-    "84": "Population",
-    "85": "MaterialValueSet",
-    "86": "WorldState",
-    "87": "Schedule",
-    "88": "VectorField",
-    "90": "Storyboard",
-    "92": "Territory",
-    "93": "AudioContext",
-    "94": "VOProcess",
-    "95": "DemonScroll",
-    "96": "QuestChain",
-    "97": "LoudnessPreset",
-    "98": "ItemType",
-    "99": "Achievement",
-    "100": "Crafter",
-    "101": "HoudiniParticlesSim",
-    "102": "Movie",
-    "103": "TiledStyle",
-    "104": "Affix",
-    "105": "Reputation",
-    "106": "ParagonNode",
-    "107": "MonsterAffix",
-    "108": "ParagonBoard",
-    "109": "SetItemBonus",
-    "110": "StoreProduct",
-    "111": "ParagonGlyph",
-    "112": "ParagonGlyphAffix",
-    "114": "Challenge",
-    "115": "MarkingShape",
-    "116": "ItemRequirement",
-    "117": "Boost",
-    "118": "Emote",
-    "119": "Jewelry",
-    "120": "PlayerTitle",
-    "121": "Emblem",
-    "122": "Dye",
-    "123": "FogOfWar",
-    "124": "ParagonThreshold",
-    "125": "AIAwareness",
-    "126": "TrackedReward",
-    "127": "CollisionSettings",
-    "128": "Aspect",
-    "129": "ABTest",
-    "130": "Stagger",
-    "131": "EyeColor",
-    "132": "Makeup",
-    "133": "MarkingColor",
-    "134": "HairColor",
-    "135": "DungeonAffix",
-    "136": "Activity",
-    "138": "HairStyle",
-    "139": "FacialHair",
-    "140": "Face",
-}
-
-const SnoGroupsByName = Object.fromEntries(Object.entries(SnoGroupsById).map(a => a.reverse()))

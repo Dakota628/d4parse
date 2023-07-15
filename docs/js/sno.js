@@ -5,15 +5,16 @@ requirejs.config({
         "dagre": "//unpkg.com/dagre@0.7.4/dist/dagre",
         "cytoscape": "//unpkg.com/cytoscape@3.25.0/dist/cytoscape.min",
         "cytoscape-dagre": "//unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre",
+        "msgpack": "//unpkg.com/@msgpack/msgpack@3.0.0-beta2/dist.es5+umd/msgpack.min",
     }
 });
 
-define(['jquery', 'cytoscape', 'cytoscape-dagre'], ($, cytoscape, cydagre) => {
+define(['jquery', 'cytoscape', 'cytoscape-dagre', 'msgpack'], ($, cytoscape, cydagre, msgpack) => {
     // Setup cytoscape
     cydagre(cytoscape);
 
     //  Load refs map
-    loadRefs($);
+    loadRefs($, msgpack);
 
     $(() => {
         // Read SNO info from HTML
@@ -110,7 +111,41 @@ function eachReferencedBy(dv, targetTo, cb) {
     }
 }
 
-function loadRefs($) {
+function snoName(id) {
+    for (const [groupId, m] of Object.entries(snos)) {
+        const name = m[id];
+        if (name) {
+            return `[${window.snoGroupsById[groupId] ?? 'Unknown'}] ${name}`;
+        }
+
+    }
+    return `[Unknown] ${id}`;
+}
+
+function loadGroups(msgpack) {
+    const req = new XMLHttpRequest();
+    req.open("GET", "../groups.mpk", true);
+    req.responseType = "arraybuffer";
+    req.onload = function () {
+        window.snoGroupsById = msgpack.decode(req.response);
+    };
+    req.send();
+}
+
+function loadNames(msgpack) {
+    const req = new XMLHttpRequest();
+    req.open("GET", "../names.mpk", true);
+    req.responseType = "arraybuffer";
+    req.onload = function () {
+        window.snos = msgpack.decode(req.response);
+    };
+    req.send();
+}
+
+function loadRefs($, msgpack) {
+    loadGroups(msgpack);
+    loadNames(msgpack);
+
     const metaEntry = $('<div class="f"><div class="fk"><div class="fn">Referenced By</div></div><div class="fv refs"></div></div>');
     const valNode = metaEntry.find('.fv');
 
@@ -120,7 +155,7 @@ function loadRefs($) {
     req.onload = function (e) {
         const dv = new DataView(req.response);
         eachReferencedBy(dv, sno.id, function (from) {
-            const link = $("<a></a>").attr("href", `${from}.html`).text(from);
+            const link = $("<a></a>").attr("href", `${from}.html`).text(snoName(from));
             valNode.append(link);
         })
         $(() => $(".snoMeta").eq(0).append(metaEntry));

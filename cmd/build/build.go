@@ -158,6 +158,28 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 	return nil
 }
 
+func generateGroupsFile(outputPath string) error {
+	namesFilePath := filepath.Join(outputPath, "groups.mpk")
+
+	groupMap := make(map[int32]string, d4.MaxSnoGroups-1+3)
+	for i := d4.SnoGroup(-2); i < d4.MaxSnoGroups-1; i++ {
+		groupMap[int32(i)] = i.String()
+	}
+
+	b, err := msgpack.Marshal(groupMap)
+	if err != nil {
+		return err
+	}
+
+	namesFile, err := os.Create(namesFilePath)
+	if err != nil {
+		return err
+	}
+
+	_, err = namesFile.Write(b)
+	return err
+}
+
 func generateNamesFile(toc d4.Toc, outputPath string) error {
 	namesFilePath := filepath.Join(outputPath, "names.mpk")
 
@@ -220,6 +242,11 @@ func main() {
 	d4DataPath := os.Args[1]
 	outputPath := os.Args[2]
 	tocFilePath := filepath.Join(d4DataPath, basePrefix, "CoreTOC.dat")
+
+	if err := generateGroupsFile(outputPath); err != nil {
+		slog.Error("Failed to generate groups files", slog.Any("error", err))
+		os.Exit(1)
+	}
 
 	toc, err := d4.ReadTocFile(tocFilePath)
 	if err != nil {
