@@ -197,7 +197,8 @@ function generateQuestGraph($, cytoscape) {
                     id: `${phaseUid}:${objectiveSetUid}`,
                     source: phaseUid,
                     target: objectiveSetUid,
-                    color: "#ffffff",
+                    color: "#f8f9fa",
+                    shape: "triangle",
                 },
             });
 
@@ -212,6 +213,7 @@ function generateQuestGraph($, cytoscape) {
                         source: objectiveSetUid,
                         target: linkDestinationPhaseUid,
                         color: "#4c6ef5",
+                        shape: "triangle",
                         e: link,
                         eVal: linkDestinationPhaseUidElem,
                     },
@@ -238,7 +240,8 @@ function generateQuestGraph($, cytoscape) {
                         id: `${objectiveSetUid}:${callbackUid}`,
                         source: objectiveSetUid,
                         target: callbackUid,
-                        color: "#ffffff",
+                        color: "#f8f9fa",
+                        shape: "circle-triangle",
                     },
                 });
             });
@@ -273,11 +276,13 @@ function generateQuestGraph($, cytoscape) {
             {
                 selector: "edge",
                 css: {
+                    label: "data(label)",
+                    color: "white",
                     "curve-style": "bezier",
-                    "target-arrow-shape": "triangle",
+                    "target-arrow-shape": "data(shape)",
                     "line-color": "data(color)",
                     "target-arrow-color": "data(color)",
-                    "opacity": "0.5",
+                    "line-opacity": "0.5",
                 }
             }
         ],
