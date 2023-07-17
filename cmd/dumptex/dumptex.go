@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"golang.org/x/exp/slog"
+	"image"
 	"image/png"
 	"os"
 )
@@ -29,20 +30,20 @@ func main() {
 		os.Exit(1)
 	}
 
-	img, err := d4.LoadTexture(texDef, texPayloadPath)
+	_, err = d4.LoadTexture(texDef, texPayloadPath, func(img image.Image) {
+		f, err := os.Create(outputPath)
+		if err != nil {
+			slog.Error("Failed to create output file", slog.Any("error", err))
+			os.Exit(1)
+		}
+
+		if err = png.Encode(f, img); err != nil {
+			slog.Error("Failed to encode output PNG", slog.Any("error", err))
+			os.Exit(1)
+		}
+	})
 	if err != nil {
 		slog.Error("Failed to load texture", slog.Any("error", err))
-		os.Exit(1)
-	}
-
-	f, err := os.Create(outputPath)
-	if err != nil {
-		slog.Error("Failed to create output file", slog.Any("error", err))
-		os.Exit(1)
-	}
-
-	if err = png.Encode(f, img); err != nil {
-		slog.Error("Failed to encode output PNG", slog.Any("error", err))
 		os.Exit(1)
 	}
 }
