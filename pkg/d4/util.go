@@ -1,6 +1,7 @@
 package d4
 
 import (
+	"golang.org/x/exp/constraints"
 	"reflect"
 	"unicode"
 )
@@ -30,4 +31,11 @@ func IsIndex(s string) bool {
 		}
 	}
 	return true
+}
+
+func Max[T constraints.Ordered](a T, b T) T {
+	if b > a {
+		return b
+	}
+	return a
 }
