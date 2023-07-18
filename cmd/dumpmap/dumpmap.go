@@ -1,13 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/bmatcuk/doublestar/v4"
 	"golang.org/x/exp/slog"
-	"image"
 	"image/png"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -19,8 +21,12 @@ func main() {
 	d4DataPath := os.Args[1]
 	outputPath := os.Args[2]
 
-	texMetaGlobPath := filepath.Join(d4DataPath, "base", "meta", "Texture", "zmap_Sanctuary_Eastern_Continent_*_*.tex")
-	texPayBasePath := filepath.Join(d4DataPath, "base", "payload", "Texture")
+	texMetaGlobPath := filepath.Join(
+		d4DataPath,
+		"base", "meta", "Texture", "zmap_Sanctuary_Eastern_Continent_[0-9][0-9]_[0-9][0-9].tex",
+	)
+	payloadBasePath := filepath.Join(d4DataPath, "base", "payload", "Texture")
+	paylowBasePath := filepath.Join(d4DataPath, "base", "paylow", "Texture")
 
 	texMetaFile, err := doublestar.FilepathGlob(texMetaGlobPath)
 	if err != nil {
@@ -30,7 +36,8 @@ func main() {
 
 	for _, texMetaFilePath := range texMetaFile {
 		baseFileName := filepath.Base(texMetaFilePath)
-		texPayFilePath := filepath.Join(texPayBasePath, baseFileName)
+		payloadFilePath := filepath.Join(payloadBasePath, baseFileName)
+		paylowFilePath := filepath.Join(paylowBasePath, baseFileName)
 
 		// Read texture definition
 		snoMeta, err := d4.ReadSnoMetaFile(texMetaFilePath)
@@ -45,34 +52,58 @@ func main() {
 				"Failed to load texture definition",
 				slog.Any("error", err),
 				slog.Any("texMetaFilePath", texMetaFilePath),
-				slog.Any("texPayFilePath", texPayFilePath),
+				slog.Any("payloadFilePay", payloadFilePath),
+				slog.Any("paylowFilePath", paylowFilePath),
 			)
 			os.Exit(1)
 		}
 
 		// Load texture
-		_, err = d4.LoadTexture(texDef, texPayFilePath, func(img image.Image) {
+		mipMaps, err := d4.LoadTexture(texDef, payloadFilePath, paylowFilePath)
+		if err != nil {
+			slog.Error(
+				"Failed to load texture",
+				slog.Any("error", err),
+				slog.String("in", baseFileName),
+			)
+			os.Exit(1)
+		}
+
+		maxLevel := 7
+		for level, img := range mipMaps {
 			// Construct output file path
 			l := len(baseFileName)
-			outputTilePath := filepath.Join(outputPath, baseFileName[l-9:l-4]+".png")
+			parts := strings.Split(baseFileName[l-9:l-4], "_")
+			x, _ := strconv.Atoi(parts[0])
+			y, _ := strconv.Atoi(parts[1])
+			z := maxLevel - level
+
+			tileFileName := fmt.Sprintf("%d_%d_%d.png", x, y, z)
+			outputTilePath := filepath.Join(outputPath, tileFileName)
 
 			// Write texture
 			f, err := os.Create(outputTilePath)
 			if err != nil {
-				slog.Error("Failed to create output file", slog.Any("error", err))
+				slog.Error(
+					"Failed to create output file",
+					slog.Any("error", err),
+					slog.String("in", baseFileName),
+					slog.String("out", outputTilePath),
+				)
 				os.Exit(1)
 			}
 
 			if err = png.Encode(f, img); err != nil {
-				slog.Error("Failed to encode output PNG", slog.Any("error", err))
+				slog.Error(
+					"Failed to encode output PNG",
+					slog.Any("error", err),
+					slog.String("in", baseFileName),
+					slog.String("out", outputTilePath),
+				)
 				os.Exit(1)
 			}
 
-			slog.Info("Wrote tile", slog.String("int", baseFileName), slog.String("out", outputTilePath))
-		})
-		if err != nil {
-			slog.Error("Failed to load texture", slog.Any("error", err))
-			os.Exit(1)
+			slog.Info("Wrote tile", slog.String("in", baseFileName), slog.String("out", outputTilePath))
 		}
 	}
 }

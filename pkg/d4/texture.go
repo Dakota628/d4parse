@@ -2,12 +2,13 @@ package d4
 
 import (
 	"fmt"
-	"github.com/go-gl/gl/v4.4-compatibility/gl"
+	"github.com/go-gl/gl/v4.1-compatibility/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
+	"golang.org/x/exp/slog"
 	"image"
+	"math"
 	"os"
 	"runtime"
-	"sync"
 )
 
 var (
@@ -30,10 +31,7 @@ var (
 		49: {gl.COMPRESSED_RGBA_S3TC_DXT5_EXT, 64, true},
 		50: {gl.COMPRESSED_RGBA_BPTC_UNORM_ARB, 64, true},
 		51: {gl.COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB, 64, true},
-	}
-
-	glfwOnce   sync.Once
-	glfwWindow *glfw.Window
+	} // Compression types: BPTC=BC7, BPTC_FLOAT=BC6H, DXT1, DXT3, DXT5, RGTC1, RGTC2
 )
 
 type TextureFormat struct {
@@ -52,31 +50,33 @@ func (f TextureFormat) GlType() (type_ int32) {
 	return
 }
 
-func initGl() *glfw.Window {
-	glfwOnce.Do(func() {
-		if err := glfw.Init(); err != nil {
-			panic(err)
-		}
+func init() {
 
-		glfw.WindowHint(glfw.Resizable, glfw.False)
-		glfw.WindowHint(glfw.ContextVersionMajor, 4)
-		glfw.WindowHint(glfw.ContextVersionMinor, 1)
-		glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLCoreProfile)
-		glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
+	if err := glfw.Init(); err != nil {
+		panic(err)
+	}
+}
 
-		window, err := glfw.CreateWindow(1, 1, "d4parse texture", nil, nil)
-		if err != nil {
-			panic(err)
-		}
-		window.Hide()
-		window.MakeContextCurrent()
+func makeWindow() *glfw.Window {
+	glfw.WindowHint(glfw.Resizable, glfw.False)
+	glfw.WindowHint(glfw.ContextVersionMajor, 4)
+	glfw.WindowHint(glfw.ContextVersionMinor, 1)
+	glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLCompatProfile)
+	glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
+	glfw.WindowHint(glfw.Visible, glfw.False)
+	glfw.WindowHint(glfw.OpenGLDebugContext, glfw.True)
 
-		if err = gl.Init(); err != nil {
-			panic(err)
-		}
-		glfwWindow = window
-	})
-	return glfwWindow
+	window, err := glfw.CreateWindow(1, 1, "d4parse texture", nil, nil)
+	if err != nil {
+		panic(err)
+	}
+	window.MakeContextCurrent()
+
+	if err = gl.Init(); err != nil {
+		panic(err)
+	}
+
+	return window
 }
 
 func align(n int, alignment int) int {
@@ -87,9 +87,14 @@ func align(n int, alignment int) int {
 	}
 }
 
-func LoadTexture(def *TextureDefinition, payloadPath string, f func(image2 image.Image)) (image.Image, error) {
-	// Init OpenGL
-	_ = initGl()
+func LoadTexture(def *TextureDefinition, payloadPath string, paylowPath string) (map[int]image.Image, error) {
+	// OpenGL will explode if we don't do this
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+
+	// I don't know why we need a new window for each call, but this made things work on Windows...
+	window := makeWindow()
+	defer window.Destroy()
 
 	// Get texture format info
 	textureFormat, ok := TextureFormats[def.ETexFormat.Value]
@@ -97,79 +102,195 @@ func LoadTexture(def *TextureDefinition, payloadPath string, f func(image2 image
 		return nil, fmt.Errorf("unknown texture format: %d", textureFormat)
 	}
 
-	// Get texture info
-	width := align(int(def.DwWidth.Value), textureFormat.Alignment)
-	height := int(def.DwHeight.Value)
-	minMipMap := int(def.DwMipMapLevelMin.Value)
-	offset := int(def.SerTex.Value[0].DwOffset.Value)
-	size := int(def.SerTex.Value[0].DwSizeAndFlags.Value)
-
-	// Get texture pixels
-	pixels, err := os.ReadFile(payloadPath)
+	// Get texture paylods
+	payloadData, err := os.ReadFile(payloadPath)
 	if err != nil {
 		return nil, err
 	}
 
-	pixels = pixels[offset:]
+	var paylowData []byte
+	if paylowPath != "" {
+		if _, err = os.Stat(paylowPath); err == nil {
+			paylowData, err = os.ReadFile(paylowPath)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
 
 	// Load texture in OpenGL
 	var tex uint32
 	gl.GenTextures(1, &tex)
-	fmt.Printf("GenTextures %x\n", gl.GetError())
-	gl.ActiveTexture(gl.TEXTURE0)
-	fmt.Printf("ActiveTexture %x\n", gl.GetError())
-	gl.BindTexture(gl.TEXTURE_2D, tex)
-	fmt.Printf("BindTexture %x\n", gl.GetError())
-
-	defer gl.BindTexture(gl.TEXTURE_2D, 0)
-	defer fmt.Printf("BindTexture %x\n", gl.GetError())
-
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_R, gl.TEXTURE_WRAP_R)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_S)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
-
-	if textureFormat.Compressed {
-		gl.CompressedTexImage2D(
-			gl.TEXTURE_2D,
-			int32(minMipMap),
-			uint32(textureFormat.GlInternalFormat),
-			int32(width),
-			int32(height),
-			0,
-			int32(size),
-			gl.Ptr(pixels),
-		)
-		fmt.Printf("CompressedTexImage2D %x\n", gl.GetError())
-	} else {
-		gl.TexImage2D(
-			gl.TEXTURE_2D,
-			int32(minMipMap),
-			textureFormat.GlInternalFormat,
-			int32(width),
-			int32(height),
-			0,
-			uint32(textureFormat.GlFormat()),
-			uint32(textureFormat.GlType()),
-			gl.Ptr(pixels),
-		)
-		fmt.Printf("TexImage2D %x\n", gl.GetError())
+	if e := gl.GetError(); e != 0 {
+		err = fmt.Errorf("error generating texture: %x", e)
 	}
 
-	rect := image.Rect(0, 0, width, height)
-	rgba := image.NewRGBA(rect)
-	gl.GetTextureImage(
-		tex,
-		int32(minMipMap),
-		gl.RGBA,
-		gl.UNSIGNED_BYTE,
-		int32(len(rgba.Pix)),
-		gl.Ptr(rgba.Pix),
-	)
-	fmt.Printf("GetTexImage %x\n", gl.GetError())
+	gl.ActiveTexture(gl.TEXTURE0)
+	if e := gl.GetError(); e != 0 {
+		err = fmt.Errorf("error activating texture0: %x", e)
+	}
 
-	runtime.KeepAlive(pixels)
-	runtime.KeepAlive(rgba)
+	gl.BindTexture(gl.TEXTURE_2D, tex)
+	if e := gl.GetError(); e != 0 {
+		err = fmt.Errorf("error binding texture: %x", e)
+	}
 
-	return rgba, nil
+	// Defer unbind texture
+	defer func() {
+		gl.DeleteTextures(1, &tex)
+		if e := gl.GetError(); e != 0 {
+			err = fmt.Errorf("error unbinding texture: %x", e)
+		}
+
+		gl.BindTexture(gl.TEXTURE_2D, 0)
+		if e := gl.GetError(); e != 0 {
+			err = fmt.Errorf("error unbinding texture: %x", e)
+		}
+		gl.Flush()
+	}()
+
+	// Don't return directly so defer can update the error output if necessary
+	mipMap, err := LoadMipMap(tex, def, textureFormat, payloadData, paylowData)
+	return mipMap, err
+}
+
+func LoadMipMap(
+	tex uint32,
+	def *TextureDefinition,
+	texFormat TextureFormat,
+	payloadData []byte,
+	paylowData []byte,
+) (map[int]image.Image, error) {
+	mipMaps := make(map[int]image.Image, len(def.SerTex.Value))
+	minLevel := int(def.DwMipMapLevelMin.Value)
+	maxLevel := int(def.DwMipMapLevelMax.Value)
+
+	width := int(def.DwWidth.Value)
+	height := int(def.DwHeight.Value)
+
+	seenZeroOffset := false
+	usePaylow := false
+
+	for l := minLevel; l <= maxLevel; l++ {
+		// Get serialize data
+		level := l - minLevel
+		serData := def.SerTex.Value[level]
+
+		// Get current data
+		offset := int(serData.DwOffset.Value)
+		size := int(serData.DwSizeAndFlags.Value)
+
+		if offset == 0 {
+			if !usePaylow && seenZeroOffset {
+				usePaylow = true
+			}
+			seenZeroOffset = true
+		}
+
+		var data []byte
+		if usePaylow {
+			data = paylowData[offset : offset+size]
+		} else {
+			data = payloadData[offset : offset+size]
+		}
+
+		// Get current mipmap dimensions
+		scale := 1 / math.Pow(2, float64(level))
+		levelWidth := int(float64(width) * scale)
+		levelWidthAligned := align(levelWidth, texFormat.Alignment)
+		levelHeight := int(float64(height) * scale)
+
+		slog.Info(
+			"Loading texture",
+			slog.Int("format", int(def.ETexFormat.Value)),
+			slog.Int("level", level),
+			slog.Int("alignment", texFormat.Alignment),
+			slog.Int("levelWidth", levelWidth),
+			slog.Int("levelHeight", levelHeight),
+			slog.Any("dataLen", len(data)),
+		)
+
+		// Load texture into GPU memory
+		if texFormat.Compressed {
+			gl.CompressedTexImage2D(
+				gl.TEXTURE_2D,
+				int32(level),
+				uint32(texFormat.GlInternalFormat),
+				int32(levelWidthAligned),
+				int32(levelHeight),
+				0,
+				int32(size),
+				gl.Ptr(data),
+			)
+			if e := gl.GetError(); e != 0 {
+				return nil, fmt.Errorf("error uploading compressed texture for mipmap %d: %x", level, e)
+			}
+		} else {
+			gl.TexImage2D(
+				gl.TEXTURE_2D,
+				int32(level),
+				texFormat.GlInternalFormat,
+				int32(levelWidthAligned),
+				int32(levelHeight),
+				0,
+				uint32(texFormat.GlFormat()),
+				uint32(texFormat.GlType()),
+				gl.Ptr(data),
+			)
+			if e := gl.GetError(); e != 0 {
+				return nil, fmt.Errorf("error uploading texture for mipmap %d: %x", level, e)
+			}
+
+			runtime.KeepAlive(data)
+		}
+
+		// Load current level dimensions
+		var texLevelWidth, texLevelHeight int32
+		gl.GetTexLevelParameteriv(gl.TEXTURE_2D, int32(level), gl.TEXTURE_WIDTH, &texLevelWidth)
+		if e := gl.GetError(); e != 0 {
+			return nil, fmt.Errorf("error retrieving texture width for mipmap %d: %x", level, e)
+		}
+
+		gl.GetTexLevelParameteriv(gl.TEXTURE_2D, int32(level), gl.TEXTURE_HEIGHT, &texLevelHeight)
+		if e := gl.GetError(); e != 0 {
+			return nil, fmt.Errorf("error retrieving texture height for mipmap %d: %x", level, e)
+		}
+
+		// Load transformed texture image into CPU memory
+		//rgba := image.NewRGBA(image.Rect(0, 0, levelWidth, levelHeight))
+		//gl.GetTextureSubImage(
+		//	tex,
+		//	int32(level),
+		//	0,
+		//	0,
+		//	0,
+		//	int32(levelWidth),
+		//	int32(levelHeight),
+		//	1,
+		//	gl.RGBA,
+		//	gl.UNSIGNED_BYTE,
+		//	int32(len(rgba.Pix)),
+		//	gl.Ptr(rgba.Pix),
+		//)
+		rgba := image.NewRGBA(image.Rect(0, 0, levelWidthAligned, levelHeight))
+		gl.GetTexImage(
+			gl.TEXTURE_2D,
+			int32(level),
+			gl.RGBA,
+			gl.UNSIGNED_BYTE,
+			gl.Ptr(rgba.Pix),
+		)
+		if e := gl.GetError(); e != 0 {
+			return nil, fmt.Errorf("error retrieving texture image for mipmap %d: %x", level, e)
+		}
+
+		rgba.Rect.Max = image.Pt(levelWidth, levelHeight)
+		mipMaps[level] = rgba
+	}
+
+	runtime.KeepAlive(paylowData)
+	runtime.KeepAlive(payloadData)
+	gl.Flush()
+
+	return mipMaps, nil
 }
