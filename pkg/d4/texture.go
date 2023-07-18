@@ -257,34 +257,25 @@ func LoadMipMap(
 		}
 
 		// Load transformed texture image into CPU memory
-		//rgba := image.NewRGBA(image.Rect(0, 0, levelWidth, levelHeight))
-		//gl.GetTextureSubImage(
-		//	tex,
-		//	int32(level),
-		//	0,
-		//	0,
-		//	0,
-		//	int32(levelWidth),
-		//	int32(levelHeight),
-		//	1,
-		//	gl.RGBA,
-		//	gl.UNSIGNED_BYTE,
-		//	int32(len(rgba.Pix)),
-		//	gl.Ptr(rgba.Pix),
-		//)
-		rgba := image.NewRGBA(image.Rect(0, 0, levelWidthAligned, levelHeight))
-		gl.GetTexImage(
-			gl.TEXTURE_2D,
+		rgba := image.NewRGBA(image.Rect(0, 0, levelWidth, levelHeight))
+		gl.GetTextureSubImage(
+			tex,
 			int32(level),
+			0,
+			0,
+			0,
+			int32(levelWidth),
+			int32(levelHeight),
+			1,
 			gl.RGBA,
 			gl.UNSIGNED_BYTE,
+			int32(len(rgba.Pix)),
 			gl.Ptr(rgba.Pix),
 		)
 		if e := gl.GetError(); e != 0 {
 			return nil, fmt.Errorf("error retrieving texture image for mipmap %d: %x", level, e)
 		}
 
-		rgba.Rect.Max = image.Pt(levelWidth, levelHeight)
 		mipMaps[level] = rgba
 	}
 
