@@ -80,11 +80,10 @@ func makeWindow() *glfw.Window {
 }
 
 func align(n int, alignment int) int {
-	if r := n % alignment; r == 0 {
-		return n
-	} else {
+	if r := n % alignment; r != 0 {
 		return n + alignment - r
 	}
+	return n
 }
 
 func LoadTexture(def *TextureDefinition, payloadPath string, paylowPath string) (map[int]image.Image, error) {
