@@ -24,9 +24,9 @@ func NewByFormatHash(h int) Object {
 	case 1052791206:
 		return &AmbientSoundDefinition{}
 	case 3028891766:
-		return &AnimDefinition{}
+		return &AnimationDefinition{}
 	case 2713967435:
-		return &Anim2DDefinition{}
+		return &Animation2DDefinition{}
 	case 3959966581:
 		return &AnimSetDefinition{}
 	case 4283047555:
@@ -208,7 +208,7 @@ func NewByFormatHash(h int) Object {
 	case 2697244277:
 		return &TutorialDefinition{}
 	case 4248541951:
-		return &UIDefinition{}
+		return &UIDialogDefinition{}
 	case 2168367308:
 		return &VectorFieldDefinition{}
 	case 1610557741:
