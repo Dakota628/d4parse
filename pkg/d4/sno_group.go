@@ -122,10 +122,12 @@ const (
 	SnoGroupHairColor           SnoGroup = 134
 	SnoGroupDungeonAffix        SnoGroup = 135
 	SnoGroupActivity            SnoGroup = 136
+	SnoSeason                   SnoGroup = 136
 	SnoGroupHairStyle           SnoGroup = 138
 	SnoGroupFacialHair          SnoGroup = 139
 	SnoGroupFace                SnoGroup = 140
-	MaxSnoGroups                         = 141
+	SnoAiCoordinator            SnoGroup = 144
+	MaxSnoGroups                         = 147
 )
 
 func (g SnoGroup) String() string {
@@ -374,6 +376,8 @@ func (g SnoGroup) String() string {
 		return "FacialHair"
 	case 140:
 		return "Face"
+	case 144:
+		return "AICoordinator"
 	default:
 		return "Unknown"
 	}
@@ -656,13 +660,25 @@ func (g SnoGroup) Ext() string {
 	case 136:
 		return ".act"
 	case 137:
-		return ""
+		return ".sea"
 	case 138:
 		return ".har"
 	case 139:
 		return ".fhr"
 	case 140:
 		return ".fac"
+	case 141:
+		return ""
+	case 142:
+		return ""
+	case 143:
+		return ""
+	case 144:
+		return ".aic"
+	case 145:
+		return ""
+	case 146:
+		return ""
 	default:
 		return ""
 	}
