@@ -12,6 +12,10 @@ install:
 format:
 	go fmt ./...
 
+.PHONY: build
+build:
+	go run cmd/build/build.go ${DUMP_PATH} docs
+
 .PHONY: deploy
 deploy:
 	go run cmd/deploy/deploy.go

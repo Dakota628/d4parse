@@ -9,222 +9,220 @@ import (
 
 func NewByFormatHash(h int) Object {
 	switch h {
-	case 123576589:
-		return &SoundTableDefinition{}
-	case 2705556582:
-		return &TiledStyleDefinition{}
-	case 1401597153:
-		return &ObserverDefinition{}
-	case 2771942927:
-		return &BiomeDefinition{}
-	case 2832127214:
-		return &WorldDefinition{}
-	case 3381734033:
-		return &AffixDefinition{}
-	case 7088667:
-		return &SetItemBonusDefinition{}
-	case 380239245:
-		return &ConditionDefinition{}
-	case 3259836636:
-		return &FogVolumeDefinition{}
-	case 3804982558:
-		return &PowerDefinition{}
-	case 2697244277:
-		return &TutorialDefinition{}
-	case 534872050:
-		return &ParagonGlyphAffixDefinition{}
-	case 755559698:
-		return &MakeupDefinition{}
-	case 897638220:
-		return &MonsterAffixDefinition{}
+	case 2930352528:
+		return &SeasonDefinition{}
 	case 1714036886:
 		return &ABTestDefinition{}
-	case 583067962:
-		return &TrailDefinition{}
-	case 3288876967:
-		return &WeatherDefinition{}
-	case 3091042523:
-		return &ParagonNodeDefinition{}
-	case 1614599467:
-		return &LoreDefinition{}
-	case 3581737567:
-		return &RopeDefinition{}
-	case 3028891766:
-		return &AnimationDefinition{}
-	case 2589047893:
-		return &ShaderDefinition{}
-	case 750077193:
-		return &EmoteDefinition{}
-	case 3487489608:
-		return &WorldStateDefinition{}
-	case 33576486:
-		return &CollisionSettingsDefinition{}
-	case 885532651:
-		return &TrackedRewardDefinition{}
-	case 3380059938:
-		return &QuestDefinition{}
-	case 2134793469:
-		return &ChallengeDefinition{}
-	case 3665529110:
-		return &PlayerTitleDefinition{}
-	case 2833653452:
-		return &ParagonThresholdDefinition{}
-	case 2623583028:
-		return &StaggerDefinition{}
-	case 961417760:
-		return &FlagSetDefinition{}
-	case 103202468:
-		return &MusicDefinition{}
-	case 3175752678:
-		return &ClothDefinition{}
-	case 4226195413:
-		return &DungeonAffixDefinition{}
-	case 1610557741:
-		return &VibrationDefinition{}
-	case 1886836184:
-		return &DemonScrollDefinition{}
-	case 1787033204:
-		return &GameBalanceDefinition{}
-	case 122651675:
-		return &ParagonGlyphDefinition{}
-	case 1765209194:
-		return &NPCComponentSetDefinition{}
-	case 35622378:
-		return &AccountDefinition{}
-	case 2720737509:
-		return &HoudiniParticlesSimDefinition{}
-	case 3649590056:
-		return &FogOfWarDefinition{}
-	case 4236165849:
-		return &HeroDefinition{}
-	case 18197804:
-		return &MonsterFamilyDefinition{}
-	case 1505457976:
-		return &BoostDefinition{}
-	case 729361343:
-		return &MaterialValueSetDefinition{}
-	case 3207332567:
-		return &SpeakerDefinition{}
-	case 1245587136:
-		return &EffectGroupDefinition{}
-	case 759454506:
-		return &ParticleDefinition{}
-	case 4033859869:
-		return &AppearanceDefinition{}
-	case 1313271435:
-		return &ItemTypeDefinition{}
-	case 3806544672:
-		return &ReputationDefinition{}
-	case 3176705080:
-		return &AnimTreeDefinition{}
-	case 4110251921:
-		return &EncounterDefinition{}
-	case 78014346:
-		return &ReverbDefinition{}
-	case 602045172:
-		return &MarkingShapeDefinition{}
-	case 1883232011:
-		return &SceneDefinition{}
-	case 3509507267:
-		return &FaceDefinition{}
+	case 1944355256:
+		return &AchievementDefinition{}
 	case 685009452:
 		return &ActivityDefinition{}
-	case 4133184448:
-		return &RecipeDefinition{}
-	case 855891767:
-		return &DyeDefinition{}
-	case 748469283:
-		return &FacialHairDefinition{}
-	case 3403712277:
-		return &JewelryDefinition{}
-	case 2806960416:
-		return &TerritoryDefinition{}
-	case 3030569474:
-		return &StoryboardDefinition{}
-	case 629552494:
-		return &AmbientSoundDefinition{}
-	case 1043973718:
-		return &MaterialValueDefinition{}
-	case 248985203:
-		return &EyeColorDefinition{}
-	case 106063450:
-		return &ParagonBoardDefinition{}
-	case 504242798:
+	case 2209134147:
 		return &ActorDefinition{}
-	case 2053041403:
-		return &MaterialDefinition{}
-	case 444476534:
-		return &ItemDefinition{}
-	case 4188235771:
-		return &UIDialogDefinition{}
-	case 1090574979:
-		return &SubzoneDefinition{}
-	case 1535366740:
-		return &ConversationDefinition{}
-	case 1855248456:
-		return &CrafterDefinition{}
-	case 3195129035:
-		return &StoreProductDefinition{}
-	case 1266777396:
-		return &AchievementDefinition{}
-	case 2980791119:
-		return &LightDefinition{}
-	case 333863280:
-		return &SoundDefinition{}
-	case 72915516:
-		return &PhysicsDefinition{}
-	case 2210875563:
-		return &ShaderMapDefinition{}
+	case 1334515424:
+		return &AffixDefinition{}
+	case 1052791206:
+		return &AmbientSoundDefinition{}
+	case 3028891766:
+		return &AnimDefinition{}
+	case 2713967435:
+		return &Anim2DDefinition{}
+	case 3959966581:
+		return &AnimSetDefinition{}
+	case 4283047555:
+		return &AnimTreeDefinition{}
+	case 54867816:
+		return &AppearanceDefinition{}
 	case 2420016543:
 		return &AspectDefinition{}
-	case 406598172:
-		return &wWiseSoundBankDefinition{}
-	case 470708965:
-		return &LevelAreaDefinition{}
-	case 3643810545:
-		return &EmblemDefinition{}
-	case 1613245723:
-		return &PlayerClassDefinition{}
-	case 4040157842:
-		return &TextureDefinition{}
-	case 1803351102:
-		return &FontDefinition{}
-	case 1743771856:
-		return &MovieDefinition{}
-	case 1340376438:
-		return &StringListDefinition{}
 	case 2511652383:
 		return &AudioContextDefinition{}
-	case 2191681936:
-		return &QuestChainDefinition{}
-	case 1632124970:
-		return &ItemRequirementDefinition{}
-	case 2180915558:
-		return &WallDefinition{}
-	case 2259066920:
-		return &SurfaceDefinition{}
-	case 2713967435:
-		return &Animation2DDefinition{}
-	case 1395860536:
-		return &HairColorDefinition{}
-	case 1784206760:
-		return &GlobalDefinition{}
-	case 3528476834:
-		return &ShakeDefinition{}
+	case 2771942927:
+		return &BiomeDefinition{}
+	case 1505457976:
+		return &BoostDefinition{}
+	case 2493266938:
+		return &ChallengeDefinition{}
+	case 3175752678:
+		return &ClothDefinition{}
+	case 33576486:
+		return &CollisionSettingsDefinition{}
+	case 3526560486:
+		return &ConditionDefinition{}
+	case 1535366740:
+		return &ConversationDefinition{}
+	case 743168058:
+		return &CrafterDefinition{}
+	case 1886836184:
+		return &DemonScrollDefinition{}
+	case 4226195413:
+		return &DungeonAffixDefinition{}
+	case 855891767:
+		return &DyeDefinition{}
+	case 4102152914:
+		return &EffectGroupDefinition{}
+	case 3643810545:
+		return &EmblemDefinition{}
+	case 750077193:
+		return &EmoteDefinition{}
+	case 4110251921:
+		return &EncounterDefinition{}
 	case 4060704305:
 		return &ExplosionDefinition{}
-	case 2168367308:
-		return &VectorFieldDefinition{}
-	case 3894106449:
-		return &MarkerSetDefinition{}
+	case 248985203:
+		return &EyeColorDefinition{}
+	case 3509507267:
+		return &FaceDefinition{}
+	case 748469283:
+		return &FacialHairDefinition{}
+	case 961417760:
+		return &FlagSetDefinition{}
+	case 3649590056:
+		return &FogOfWarDefinition{}
+	case 3259836636:
+		return &FogVolumeDefinition{}
+	case 1803351102:
+		return &FontDefinition{}
+	case 4165310366:
+		return &GameBalanceDefinition{}
+	case 4068775928:
+		return &GlobalDefinition{}
+	case 1395860536:
+		return &HairColorDefinition{}
 	case 1271134248:
 		return &HairStyleDefinition{}
-	case 578767506:
-		return &AnimSetDefinition{}
-	case 138216317:
-		return &SkillKitDefinition{}
+	case 2720737509:
+		return &HoudiniParticlesSimDefinition{}
+	case 3848608585:
+		return &ItemDefinition{}
+	case 1229771660:
+		return &ItemRequirementDefinition{}
+	case 2620689364:
+		return &ItemTypeDefinition{}
+	case 3403712277:
+		return &JewelryDefinition{}
+	case 2776190697:
+		return &LevelAreaDefinition{}
+	case 3582800333:
+		return &LightDefinition{}
+	case 1614599467:
+		return &LoreDefinition{}
+	case 755559698:
+		return &MakeupDefinition{}
+	case 3847589890:
+		return &MarkerSetDefinition{}
 	case 1776463076:
 		return &MarkingColorDefinition{}
+	case 602045172:
+		return &MarkingShapeDefinition{}
+	case 2053041403:
+		return &MaterialDefinition{}
+	case 1043973718:
+		return &MaterialValueDefinition{}
+	case 729361343:
+		return &MaterialValueSetDefinition{}
+	case 897638220:
+		return &MonsterAffixDefinition{}
+	case 18197804:
+		return &MonsterFamilyDefinition{}
+	case 1743771856:
+		return &MovieDefinition{}
+	case 103202468:
+		return &MusicDefinition{}
+	case 1765209194:
+		return &NPCComponentSetDefinition{}
+	case 1401597153:
+		return &ObserverDefinition{}
+	case 106063450:
+		return &ParagonBoardDefinition{}
+	case 122651675:
+		return &ParagonGlyphDefinition{}
+	case 771278168:
+		return &ParagonGlyphAffixDefinition{}
+	case 4174764616:
+		return &ParagonNodeDefinition{}
+	case 4201272951:
+		return &ParagonThresholdDefinition{}
+	case 759454506:
+		return &ParticleDefinition{}
+	case 72915516:
+		return &PhysicsDefinition{}
+	case 2127853829:
+		return &PlayerClassDefinition{}
+	case 3344435680:
+		return &PlayerTitleDefinition{}
+	case 47580482:
+		return &PowerDefinition{}
+	case 1817808733:
+		return &QuestDefinition{}
+	case 2191681936:
+		return &QuestChainDefinition{}
+	case 1088236903:
+		return &RecipeDefinition{}
+	case 3806544672:
+		return &ReputationDefinition{}
+	case 78014346:
+		return &ReverbDefinition{}
+	case 1389907684:
+		return &RopeDefinition{}
+	case 1883232011:
+		return &SceneDefinition{}
+	case 7088667:
+		return &SetItemBonusDefinition{}
+	case 1791973961:
+		return &ShaderDefinition{}
+	case 2210875563:
+		return &ShaderMapDefinition{}
+	case 3528476834:
+		return &ShakeDefinition{}
+	case 138216317:
+		return &SkillKitDefinition{}
+	case 306133137:
+		return &SoundDefinition{}
+	case 123576589:
+		return &SoundTableDefinition{}
+	case 3207332567:
+		return &SpeakerDefinition{}
+	case 2623583028:
+		return &StaggerDefinition{}
+	case 1587341777:
+		return &StoreProductDefinition{}
+	case 3030569474:
+		return &StoryboardDefinition{}
+	case 1340376439:
+		return &StringListDefinition{}
+	case 2741245875:
+		return &SubzoneDefinition{}
+	case 2259066920:
+		return &SurfaceDefinition{}
+	case 2806960416:
+		return &TerritoryDefinition{}
+	case 4040157842:
+		return &TextureDefinition{}
+	case 2705556582:
+		return &TiledStyleDefinition{}
+	case 1529103962:
+		return &TrackedRewardDefinition{}
+	case 583067962:
+		return &TrailDefinition{}
+	case 2697244277:
+		return &TutorialDefinition{}
+	case 4248541951:
+		return &UIDefinition{}
+	case 2168367308:
+		return &VectorFieldDefinition{}
+	case 1610557741:
+		return &VibrationDefinition{}
+	case 2180915558:
+		return &WallDefinition{}
+	case 3288876968:
+		return &WeatherDefinition{}
+	case 3726375657:
+		return &WorldDefinition{}
+	case 3487489608:
+		return &WorldStateDefinition{}
+	case 406598172:
+		return &wWiseSoundBankDefinition{}
 	default:
 		return nil
 	}
@@ -235,7 +233,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 88275:
 		return &OBB{}
 	case 861281:
-		return &Type_d2461{}
+		return &GBIDBlocklistDataChanged{}
 	case 2408934:
 		return &AABB{}
 	case 3112412:
@@ -279,7 +277,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 51081978:
 		return &Type_30b72fa{}
 	case 57812962:
-		return &Type_37227e2{}
+		return &BossDoorGizmoActivate{}
 	case 59500993:
 		return &Type_38be9c1{}
 	case 64253465:
@@ -299,7 +297,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 79564513:
 		return &ProjectileAttachmentOnHitMessage{}
 	case 79879298:
-		return &Type_4c2dc82{}
+		return &dmClothCapsuleDefMirror{}
 	case 82777608:
 		return &GameBalanceTable{}
 	case 87940067:
@@ -309,13 +307,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 89349493:
 		return &Type_5535d75{}
 	case 89353708:
-		return &Type_5536dec{}
+		return &IKLeg{}
 	case 90985183:
 		return &BlockedDamageVisualsMessage{}
 	case 92261083:
 		return &Type_57fcadb{}
 	case 92721210:
-		return &Type_586d03a{}
+		return &LocalEventTrackingData{}
 	case 93816786:
 		return &DungeonAffixFamilyEntry{}
 	case 98864240:
@@ -414,6 +412,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &TriggerEventFadeOtherPlayers{}
 	case 204122261:
 		return &ScrollbarStyle{}
+	case 207751246:
+		return &Type_c62084e{}
 	case 207826213:
 		return &PlayHotbarUIFlourishMessage{}
 	case 208996826:
@@ -605,7 +605,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 385403115:
 		return &DebugProjectileMovementUpdateMessage{}
 	case 387731069:
-		return &Type_171c4e7d{}
+		return &GameTestingSalvageItems{}
 	case 389048112:
 		return &NpcFollowerArchetype{}
 	case 392807017:
@@ -615,9 +615,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 394717690:
 		return &Type_1786e9fa{}
 	case 398282971:
-		return &Type_17bd50db{}
+		return &ActorHitCollisionShape{}
 	case 404172836:
-		return &Type_18173024{}
+		return &DRLGWorldDebugInfo{}
 	case 405077397:
 		return &TriggerEventSetAudioState{}
 	case 408415486:
@@ -627,13 +627,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 415892117:
 		return &Type_18ca0295{}
 	case 417636351:
-		return &Type_18e49fff{}
+		return &dmHeightDataMirror{}
 	case 417796692:
 		return &AIPropType_Table{}
 	case 418395020:
 		return &HeroStateRewardsMessage{}
 	case 419152424:
-		return &Type_18fbc228{}
+		return &TriggerEventObjectTurnToFace{}
 	case 422165983:
 		return &QuestTimerUpdatedMessage{}
 	case 424839738:
@@ -643,7 +643,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 430464268:
 		return &UpgradedItemLabelSubcondition{}
 	case 432411082:
-		return &Type_19c611ca{}
+		return &LuxSettings{}
 	case 434197565:
 		return &GlobalServiceNPCData{}
 	case 443290979:
@@ -679,7 +679,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 469047295:
 		return &MonsterAffixDefinition{}
 	case 469541751:
-		return &Type_1bfca377{}
+		return &TriggerEventChangeShaderMapOverrideDuration{}
 	case 471636391:
 		return &Type_1c1c99a7{}
 	case 475975077:
@@ -700,6 +700,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &DebugForceSpawnMessage{}
 	case 491575639:
 		return &ClanBankDepositMessage{}
+	case 494586042:
+		return &Type_1d7ac8ba{}
 	case 494681324:
 		return &Type_1d7c3cec{}
 	case 495345607:
@@ -738,6 +740,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &IKBoneChainBase{}
 	case 540613693:
 		return &CollisionShape{}
+	case 541981023:
+		return &Type_204df95f{}
 	case 544227643:
 		return &SharedChildFile{}
 	case 546095827:
@@ -790,6 +794,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &ABTestDefinition{}
 	case 607927028:
 		return &DebugProjectileRaycastMessage{}
+	case 608184390:
+		return &Type_24402846{}
 	case 609698022:
 		return &Type_245740e6{}
 	case 612856310:
@@ -824,12 +830,16 @@ func NewByTypeHash[T Object](h int) Object {
 		return &Type_27090ba7{}
 	case 656451641:
 		return &WeatherDefinition{}
+	case 657629450:
+		return &Type_2732a10a{}
 	case 658153198:
 		return &Type_273a9eee{}
 	case 658729586:
 		return &LabelEntry{}
+	case 665473065:
+		return &Type_27aa5029{}
 	case 667403575:
-		return &Type_27c7c537{}
+		return &ClassPassiveSkillPowerData{}
 	case 679896568:
 		return &ConsoleProperty{}
 	case 680168459:
@@ -862,6 +872,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &OnItemPickupBuffCallback{}
 	case 708398011:
 		return &DisplayMode{}
+	case 708924230:
+		return &Type_2a415346{}
 	case 714854064:
 		return &CurrentZoneSubcondition{}
 	case 715283015:
@@ -917,7 +929,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 768702240:
 		return &EssencePowerTierEntry_Table{}
 	case 769249943:
-		return &Type_2dd9d297{}
+		return &GameTestingBuyItem{}
 	case 773758990:
 		return &PrefetchRunOnDisk{}
 	case 777063961:
@@ -926,6 +938,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &SocketedEffects{}
 	case 779841713:
 		return &ActorAnimSetPreloadHelper{}
+	case 790690301:
+		return &Type_2f20f9fd{}
 	case 792493210:
 		return &PlayerSkillModPointsSubcondition{}
 	case 796243964:
@@ -935,13 +949,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 797606314:
 		return &MaterialEnumValueDefinition{}
 	case 797648367:
-		return &Type_2f8b25ef{}
+		return &dmMeshTriangleMirror{}
 	case 798453786:
 		return &Currencies_Table{}
 	case 800593142:
 		return &WorldTierUnlockedMessage{}
 	case 802058580:
-		return &Type_2fce7154{}
+		return &ScoreStatistic{}
 	case 804883275:
 		return &SpeedTreeWind8{}
 	case 805216097:
@@ -964,6 +978,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &AICellBytes{}
 	case 815039567:
 		return &SurfaceGrid{}
+	case 818712694:
+		return &Type_30cc9076{}
 	case 821344136:
 		return &ExperienceLevelAlt_Table{}
 	case 821665730:
@@ -975,7 +991,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 827674886:
 		return &Type_31555106{}
 	case 830630473:
-		return &Type_31826a49{}
+		return &GlobalRoadGraphCell{}
+	case 833093383:
+		return &Type_31a7ff07{}
 	case 834055373:
 		return &PortalTransferSetupMessage{}
 	case 834825378:
@@ -1105,7 +1123,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 959143181:
 		return &GeneratorToItemResponseMessage{}
 	case 960545022:
-		return &Type_3940c0fe{}
+		return &OnHitSounds{}
 	case 962397665:
 		return &CraftMultipleMessage{}
 	case 962881663:
@@ -1123,7 +1141,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 981125895:
 		return &FreezeDirectionMessage{}
 	case 982587744:
-		return &Type_3a911960{}
+		return &dmClothDataMirror{}
 	case 983502194:
 		return &Type_3a9f0d72{}
 	case 987746260:
@@ -1154,12 +1172,16 @@ func NewByTypeHash[T Object](h int) Object {
 		return &Type_3c468167{}
 	case 1011655352:
 		return &PlasmaAttachMessage{}
+	case 1013293730:
+		return &Type_3c65a2a2{}
 	case 1014113135:
 		return &TriggerEventDisableRagdollAnimationOverride{}
 	case 1014763069:
 		return &CancelGroupTransferMessage{}
 	case 1014796656:
 		return &ConversationNodeReference{}
+	case 1014817440:
+		return &Type_3c7ce2a0{}
 	case 1015376646:
 		return &ActorMountData{}
 	case 1018331041:
@@ -1215,13 +1237,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1059956194:
 		return &MarkerHeightFieldClutter{}
 	case 1061475052:
-		return &Type_3f44d2ec{}
+		return &ParagonGlyphAffixAttributeMap{}
 	case 1063987433:
 		return &ShrineGizmoData{}
 	case 1064833490:
 		return &Type_3f7811d2{}
 	case 1066764433:
-		return &Type_3f958891{}
+		return &TriggerEventChangeShaderMapOverride{}
 	case 1068774800:
 		return &FrameAnim{}
 	case 1071057721:
@@ -1300,6 +1322,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &TriggerEventHideWarpUI{}
 	case 1144835562:
 		return &MusicDefinition{}
+	case 1146575562:
+		return &Type_44575aca{}
 	case 1150600713:
 		return &PlayerCurrentWorldSubcondition{}
 	case 1154619828:
@@ -1308,6 +1332,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &VisualEquipment{}
 	case 1156716628:
 		return &TraversalGizmoData{}
+	case 1161022673:
+		return &Type_4533ccd1{}
 	case 1161896531:
 		return &OnDeathBuffCallback{}
 	case 1163953319:
@@ -1315,7 +1341,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1173939491:
 		return &ClothDefinition{}
 	case 1175697692:
-		return &Type_4613b91c{}
+		return &GameTestingCloseVendor{}
 	case 1178593178:
 		return &UIItemButtonStyle{}
 	case 1181604269:
@@ -1436,6 +1462,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &RunTimeMaterialValues{}
 	case 1304868885:
 		return &ScriptEventParamPower{}
+	case 1305923393:
+		return &Type_4dd6cf41{}
 	case 1306251290:
 		return &ScriptEventParamQuest{}
 	case 1306363395:
@@ -1527,7 +1555,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1395779955:
 		return &SimpleRequest{}
 	case 1398161649:
-		return &Type_535640f1{}
+		return &AdditionalStatistic{}
 	case 1401177745:
 		return &Type_53844691{}
 	case 1403384113:
@@ -1553,7 +1581,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1420342763:
 		return &EnterWorldMessage{}
 	case 1428470990:
-		return &Type_5524bcce{}
+		return &PowerBlendOverrideList{}
 	case 1428538427:
 		return &BiomeItem{}
 	case 1429869474:
@@ -1582,6 +1610,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &Type_56dcc16f{}
 	case 1457360706:
 		return &ActorItemData{}
+	case 1459584362:
+		return &Type_56ff7d6a{}
 	case 1460440831:
 		return &TrackedQuestChangedMessage{}
 	case 1462511893:
@@ -1613,7 +1643,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1490385319:
 		return &MarkerSplineData{}
 	case 1492891980:
-		return &Type_58fbb94c{}
+		return &ClassPassiveSkillSlotData{}
 	case 1494553099:
 		return &UIThumbButtonStyle{}
 	case 1496684361:
@@ -1632,6 +1662,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &UIComboBoxStyle{}
 	case 1500520594:
 		return &SwitchGizmoData{}
+	case 1503223956:
+		return &Type_59996094{}
 	case 1505533788:
 		return &MonsterACDInfo{}
 	case 1506311405:
@@ -1660,6 +1692,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &GlobalNPCCustomizationData{}
 	case 1531705921:
 		return &PowerConditionDamageIsCrit{}
+	case 1532086805:
+		return &Type_5b51ca15{}
 	case 1536548129:
 		return &VertexElem{}
 	case 1539306012:
@@ -1675,7 +1709,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1548004936:
 		return &Type_5c44ae48{}
 	case 1548404444:
-		return &Type_5c4ac6dc{}
+		return &MapImageHandleReference{}
 	case 1548498258:
 		return &OnHitBuffCallback{}
 	case 1549763492:
@@ -1715,7 +1749,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1580383550:
 		return &Type_5e32bd3e{}
 	case 1583616832:
-		return &Type_5e641340{}
+		return &SpeedTreeWindGroup{}
 	case 1585147788:
 		return &MusicTransition{}
 	case 1585421177:
@@ -1731,7 +1765,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1598717599:
 		return &RareMonsterNamesEntry_Table{}
 	case 1599239464:
-		return &Type_5f527528{}
+		return &dmTransformMirror{}
 	case 1600030893:
 		return &PowerFacingWindow{}
 	case 1600853111:
@@ -1831,7 +1865,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1712030165:
 		return &Type_660b81d5{}
 	case 1717523836:
-		return &Type_665f557c{}
+		return &DebugProjectileDetPathData{}
 	case 1718506033:
 		return &Type_666e5231{}
 	case 1718849905:
@@ -1846,6 +1880,12 @@ func NewByTypeHash[T Object](h int) Object {
 		return &MarkerMonsterActorData{}
 	case 1738373142:
 		return &PowerConditionDamageIsDot{}
+	case 1738374856:
+		return &Type_679d7ec8{}
+	case 1738588147:
+		return &Type_67a0bff3{}
+	case 1739069350:
+		return &Type_67a817a6{}
 	case 1740982451:
 		return &Type_67c548b3{}
 	case 1745318875:
@@ -1853,9 +1893,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1745391946:
 		return &Type_6808914a{}
 	case 1751632332:
-		return &Type_6867c9cc{}
+		return &PreloadSpawnMarkerData{}
 	case 1752813939:
-		return &Type_6879d173{}
+		return &UInt64DataResponse{}
 	case 1753871156:
 		return &WaypointEffectInfo{}
 	case 1755847107:
@@ -1869,11 +1909,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1766737593:
 		return &SNOFileHeader{}
 	case 1769463365:
-		return &Type_6977de45{}
+		return &ShortcutKey{}
 	case 1770847088:
 		return &UITimerStyle{}
 	case 1771829381:
 		return &OnStartPowerCallback{}
+	case 1771985748:
+		return &Type_699e5b54{}
 	case 1775775341:
 		return &AtLeastLogicSubcondition{}
 	case 1776237801:
@@ -1897,11 +1939,11 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1789096554:
 		return &RunTimeMaterialVectorGraphEntry{}
 	case 1791638909:
-		return &Type_6aca3d7d{}
+		return &GameTestingActorUseSkill{}
 	case 1795423328:
 		return &Type_6b03fc60{}
 	case 1797021084:
-		return &Type_6b1c5d9c{}
+		return &UIImageHandleReference{}
 	case 1797564205:
 		return &PlayerWeaponExpertiseLevelMessage{}
 	case 1800961110:
@@ -1919,7 +1961,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1811863812:
 		return &VertTiledWindowPieces{}
 	case 1812237195:
-		return &Type_6c048b8b{}
+		return &LayerVertexAO{}
 	case 1812693783:
 		return &ParagonGlyphObtainedMessage{}
 	case 1812719981:
@@ -1961,7 +2003,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1866279015:
 		return &LockingGizmoData{}
 	case 1868650677:
-		return &Type_6f6158b5{}
+		return &GameTestingCloseCrafter{}
 	case 1869689402:
 		return &HitReactionOverride{}
 	case 1872500871:
@@ -2013,7 +2055,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1915825028:
 		return &MediumBiomeObject{}
 	case 1917309641:
-		return &Type_7247d2c9{}
+		return &NightmareDungeonGlobalSpawn{}
 	case 1919141278:
 		return &LooteeLevelRangeSubcondition{}
 	case 1921550813:
@@ -2021,7 +2063,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1922961974:
 		return &StencilParams{}
 	case 1925015032:
-		return &Type_72bd65f8{}
+		return &RequiredRequestMessageHeader{}
 	case 1927540920:
 		return &GlobalMarkerActorPortalData{}
 	case 1928395195:
@@ -2055,7 +2097,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 1954392551:
 		return &DRLGPortalInfo{}
 	case 1955932002:
-		return &Type_74952762{}
+		return &JoinExistingGamePlayer{}
 	case 1956557694:
 		return &BoostCheatEntry{}
 	case 1958909611:
@@ -2119,7 +2161,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2022002312:
 		return &Type_78854e88{}
 	case 2024104618:
-		return &Type_78a562aa{}
+		return &ClassPassiveSkillData{}
 	case 2028905861:
 		return &PlayerClassResourceData{}
 	case 2029186460:
@@ -2177,7 +2219,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2067380477:
 		return &OnResourceGainedBuffCallback{}
 	case 2073439808:
-		return &Type_7b962e40{}
+		return &ScriptEventParamSpawnerParentMarkerHandle{}
 	case 2074591759:
 		return &Type_7ba7c20f{}
 	case 2077459498:
@@ -2207,11 +2249,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2114060201:
 		return &ActorCombatData{}
 	case 2114606337:
-		return &Type_7e0a5501{}
+		return &GameSyncedDebugData{}
 	case 2118224808:
 		return &Type_7e418ba8{}
 	case 2121213381:
 		return &GameTestingActorDeathSamplingStartMessage{}
+	case 2126649151:
+		return &Type_7ec2173f{}
 	case 2127931882:
 		return &WorldEvent{}
 	case 2137439767:
@@ -2288,6 +2332,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &DT_STARTLOC_NAME{}
 	case 2196035606:
 		return &ParticleLifeEvent{}
+	case 2196661953:
+		return &Type_82ee66c1{}
 	case 2201739835:
 		return &QuestItemCountSubcondition{}
 	case 2203797867:
@@ -2309,7 +2355,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2218862017:
 		return &LocalPlayerNetEvent{}
 	case 2221046122:
-		return &Type_8462796a{}
+		return &DRLGTileDebugInfo{}
 	case 2224583688:
 		return &ConvexHull{}
 	case 2228087293:
@@ -2389,7 +2435,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2296234344:
 		return &ActiveSkillSavedData{}
 	case 2303447637:
-		return &Type_894bd255{}
+		return &RoadTypeProperties{}
 	case 2305778229:
 		return &PowerCallbackBase{}
 	case 2306151105:
@@ -2420,10 +2466,12 @@ func NewByTypeHash[T Object](h int) Object {
 		return &PlayerClassSubcondition{}
 	case 2322205255:
 		return &OnGizmoOperatedBuffCallback{}
+	case 2322513553:
+		return &Type_8a6ebe91{}
 	case 2322586175:
 		return &PowerConditionDamageHasVulnerable{}
 	case 2330953703:
-		return &Type_8aef87e7{}
+		return &dmHeightSampleMirror{}
 	case 2332138205:
 		return &AIBroadcast{}
 	case 2335353143:
@@ -2459,7 +2507,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2366025409:
 		return &Type_8d06aec1{}
 	case 2366029567:
-		return &Type_8d06beff{}
+		return &CollectAchievementItemRewardsRequest{}
 	case 2366545239:
 		return &Type_8d0e9d57{}
 	case 2366876290:
@@ -2553,7 +2601,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2473743515:
 		return &ParagonGlyphExperience_Table{}
 	case 2474805987:
-		return &Type_93828ae3{}
+		return &PlayerCompletedRepeatableQuestEntry{}
 	case 2475257601:
 		return &OctreeCube{}
 	case 2475563578:
@@ -2568,6 +2616,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &BroadcastTextMessage{}
 	case 2489740473:
 		return &Type_94666cb9{}
+	case 2489826166:
+		return &Type_9467bb76{}
 	case 2498157443:
 		return &MarkingShapeDefinition{}
 	case 2499966838:
@@ -2639,7 +2689,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2554746855:
 		return &Type_984657e7{}
 	case 2562866241:
-		return &Type_98c23c41{}
+		return &UIControlClickSounds{}
+	case 2563239354:
+		return &Type_98c7edba{}
 	case 2563708935:
 		return &VisualInventoryMessage{}
 	case 2564089914:
@@ -2679,7 +2731,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2584931415:
 		return &PowerLimitedActorType_Table{}
 	case 2586870554:
-		return &Type_9a30831a{}
+		return &SkillTreeSkillRankMod{}
 	case 2588169118:
 		return &PRTransform{}
 	case 2592055163:
@@ -2730,6 +2782,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &PrefetchActorMessage{}
 	case 2632036962:
 		return &SerializeData{}
+	case 2633518996:
+		return &Type_9cf84f94{}
 	case 2635124950:
 		return &GlobalEmblems{}
 	case 2637916746:
@@ -2768,6 +2822,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &BaseACDInfo{}
 	case 2696054852:
 		return &WorldStateFullUpdateMessage{}
+	case 2696410867:
+		return &Type_a0b7f6f3{}
 	case 2698056971:
 		return &JewelryDefinition{}
 	case 2699874909:
@@ -2789,7 +2845,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2715697063:
 		return &PowerConditionIsTrackedActor{}
 	case 2715997611:
-		return &Type_a1e2d5ab{}
+		return &ZoneProgressRewardPerTierData{}
 	case 2716429438:
 		return &StarsSettings{}
 	case 2718809169:
@@ -2823,7 +2879,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2760098121:
 		return &ConsoleCommandResultsMessage{}
 	case 2760774118:
-		return &Type_a48e11e6{}
+		return &BlendTimeOverrideEntry{}
 	case 2763598860:
 		return &PlayerVariableIsSetSubcondition{}
 	case 2763918557:
@@ -2837,15 +2893,15 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2766662738:
 		return &ActorCollisionFlags{}
 	case 2767272062:
-		return &Type_a4f1387e{}
+		return &PlayerAnimSetOverride{}
 	case 2768795568:
-		return &Type_a50877b0{}
+		return &ZoneProgressRewardData{}
 	case 2770795733:
 		return &ShaderMapOverride{}
 	case 2771980683:
 		return &Type_a539118b{}
 	case 2772503601:
-		return &Type_a5410c31{}
+		return &PvPInfoResponse{}
 	case 2777232529:
 		return &PowerConditionIsDamageType{}
 	case 2777898273:
@@ -2880,6 +2936,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &GBIDHeader{}
 	case 2811314006:
 		return &HotbarButtonData{}
+	case 2820249283:
+		return &Type_a81996c3{}
 	case 2822536850:
 		return &StoryboardDefinition{}
 	case 2823526119:
@@ -2909,7 +2967,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2842269379:
 		return &ValidComponent{}
 	case 2847726419:
-		return &Type_a9bcdb53{}
+		return &WwiseChildFile{}
 	case 2857749912:
 		return &Type_aa55cd98{}
 	case 2863656093:
@@ -2937,13 +2995,13 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2885013475:
 		return &NPCItems{}
 	case 2887578027:
-		return &Type_ac1cf1ab{}
+		return &UITemplateStyleOverride{}
 	case 2888871135:
 		return &Type_ac30acdf{}
 	case 2890825383:
 		return &UIRadioButtonGroupStyle{}
 	case 2891320840:
-		return &Type_ac560e08{}
+		return &GameTestingBuybackItem{}
 	case 2893246136:
 		return &MaterialBoolValue{}
 	case 2894373936:
@@ -2957,7 +3015,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2902473767:
 		return &GeoSet{}
 	case 2902494846:
-		return &Type_ad008e7e{}
+		return &RequiredResponseMessageHeader{}
 	case 2907517865:
 		return &Type_ad4d33a9{}
 	case 2907865191:
@@ -2967,7 +3025,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2909661697:
 		return &DesignerVariableChanged{}
 	case 2917036215:
-		return &Type_adde70b7{}
+		return &GameTestingSellItem{}
 	case 2918685438:
 		return &Type_adf79afe{}
 	case 2920294703:
@@ -3006,6 +3064,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &IKData{}
 	case 2949726179:
 		return &ACDTranslateFacingMessage{}
+	case 2952710408:
+		return &Type_affec908{}
 	case 2953843760:
 		return &MarkerLink{}
 	case 2956401361:
@@ -3027,7 +3087,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2968578253:
 		return &Type_b0f0e8cd{}
 	case 2968693081:
-		return &Type_b0f2a959{}
+		return &RequiredCommandFrameMessageHeader{}
 	case 2971327593:
 		return &WeaponExpertiseRanks_Table{}
 	case 2974720179:
@@ -3045,7 +3105,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2982009401:
 		return &Type_b1bdda39{}
 	case 2982989742:
-		return &Type_b1cccfae{}
+		return &ZoneProgressPerZoneData{}
 	case 2983615105:
 		return &MarkerAxeMapIconData{}
 	case 2985547766:
@@ -3063,7 +3123,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 2997763859:
 		return &InventoryRequestMoveMessage{}
 	case 3000146908:
-		return &Type_b2d29bdc{}
+		return &UIDateTimeSettings{}
 	case 3001537487:
 		return &ShaderPermutation{}
 	case 3002009882:
@@ -3103,7 +3163,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3028624595:
 		return &Type_b48524d3{}
 	case 3029538669:
-		return &Type_b493176d{}
+		return &ItemImageHandleReference{}
 	case 3032334607:
 		return &SpeedTreeWind8Params{}
 	case 3032830054:
@@ -3175,7 +3235,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3096238958:
 		return &PreloadACDDataMessage{}
 	case 3096396389:
-		return &Type_b88f4265{}
+		return &dmMtxMirror{}
 	case 3096716593:
 		return &ActorUIData{}
 	case 3100302512:
@@ -3185,7 +3245,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3101715391:
 		return &AnimTreeNodeChild{}
 	case 3101771039:
-		return &Type_b8e1451f{}
+		return &dmMeshNodeMirror{}
 	case 3101980087:
 		return &ChestGizmoData{}
 	case 3102876383:
@@ -3235,7 +3295,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3127494188:
 		return &MarkerPrefabData{}
 	case 3128190323:
-		return &Type_ba746573{}
+		return &TriggerEventCameraChangeDepthOfField{}
 	case 3128795864:
 		return &Type_ba7da2d8{}
 	case 3130001275:
@@ -3264,6 +3324,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &AnimSetOrderTagEntry{}
 	case 3145411138:
 		return &ActiveSubzoneModifierSubcondition{}
+	case 3145668840:
+		return &Type_bb7f18e8{}
 	case 3152339101:
 		return &DestroySceneMessage{}
 	case 3153011302:
@@ -3283,7 +3345,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3162215415:
 		return &PreloadSpawnWorldDataMessage{}
 	case 3162763801:
-		return &Type_bc83f219{}
+		return &QuestFollowerPhaseInfo{}
 	case 3169008909:
 		return &AnimTreeLeaf{}
 	case 3169091771:
@@ -3377,7 +3439,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3251898289:
 		return &ConversationTreeNode{}
 	case 3252537043:
-		return &Type_c1ddc6d3{}
+		return &dmMeshDataMirror{}
 	case 3256968112:
 		return &SpawnGenerator{}
 	case 3262450273:
@@ -3412,6 +3474,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &SubzoneDefinition{}
 	case 3297622236:
 		return &CapsuleProximityData{}
+	case 3297641649:
+		return &Type_c48e04b1{}
 	case 3297747400:
 		return &ConversationRandomSelectionNode{}
 	case 3300608366:
@@ -3436,8 +3500,10 @@ func NewByTypeHash[T Object](h int) Object {
 		return &UIEditStyle{}
 	case 3312843337:
 		return &MarkerGroupData{}
+	case 3313504794:
+		return &SeasonSubcondition{}
 	case 3314464778:
-		return &Type_c58eb80a{}
+		return &TownPortalReturnDest{}
 	case 3315275999:
 		return &PartyVoteReplyMessage{}
 	case 3316134124:
@@ -3447,7 +3513,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3319843167:
 		return &PvPBucketLevels{}
 	case 3320317005:
-		return &Type_c5e8044d{}
+		return &PowerEffectOverrides{}
 	case 3322368510:
 		return &PortalInfo{}
 	case 3323553519:
@@ -3485,7 +3551,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3343492614:
 		return &StackPortionMessage{}
 	case 3346038647:
-		return &Type_c7707f77{}
+		return &GameTestingCraftItem{}
 	case 3346910512:
 		return &ACDInventoryPositionMessage{}
 	case 3351197648:
@@ -3494,6 +3560,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &RenderParams{}
 	case 3352290229:
 		return &BoneStructure{}
+	case 3352680818:
+		return &SeasonDefinition{}
 	case 3352785496:
 		return &PlayerFlagSubcondition{}
 	case 3356365191:
@@ -3508,6 +3576,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &EffectGroupPositionZKeyData{}
 	case 3369569511:
 		return &Type_c8d78ce7{}
+	case 3372040510:
+		return &Type_c8fd413e{}
 	case 3374369047:
 		return &StoreProductDefinition{}
 	case 3378075250:
@@ -3546,8 +3616,10 @@ func NewByTypeHash[T Object](h int) Object {
 		return &GlobalAVData{}
 	case 3409962653:
 		return &AlphaBlendFactors{}
+	case 3410126194:
+		return &Type_cb426572{}
 	case 3412473811:
-		return &Type_cb6637d3{}
+		return &GameTestingInteractNPC{}
 	case 3413477057:
 		return &NetAttributeKeyValue{}
 	case 3414193985:
@@ -3560,6 +3632,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &CheatCampaignStateMessage{}
 	case 3422409450:
 		return &Type_cbfdd2ea{}
+	case 3422446376:
+		return &Type_cbfe6328{}
 	case 3423838001:
 		return &Type_cc139f31{}
 	case 3423973094:
@@ -3588,8 +3662,10 @@ func NewByTypeHash[T Object](h int) Object {
 		return &SoundDefinition{}
 	case 3445310279:
 		return &Type_cd5b4347{}
+	case 3446996197:
+		return &Type_cd74fce5{}
 	case 3447305554:
-		return &Type_cd79b552{}
+		return &GameTestingPurchaseSkill{}
 	case 3453107854:
 		return &ScriptEventParamSubzone{}
 	case 3457286220:
@@ -3624,6 +3700,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &ScriptEventParamActorGroup{}
 	case 3485436892:
 		return &Type_cfbf8bdc{}
+	case 3485974543:
+		return &Type_cfc7c00f{}
 	case 3489737491:
 		return &TriggerEventCameraKeyFrame{}
 	case 3493213809:
@@ -3657,7 +3735,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3513188739:
 		return &ItemSpecifierData{}
 	case 3514741062:
-		return &Type_d17eb146{}
+		return &SubObjectAppearanceVariant{}
 	case 3520446032:
 		return &GameSetupMessage{}
 	case 3524572566:
@@ -3698,6 +3776,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &OnInitializeAttackBuffCallback{}
 	case 3555289754:
 		return &LevelAreaDefinition{}
+	case 3557025358:
+		return &Type_d403e64e{}
 	case 3558947995:
 		return &Type_d4213c9b{}
 	case 3559084288:
@@ -3809,9 +3889,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3660521401:
 		return &SubzoneTypeSubcondition{}
 	case 3661168133:
-		return &Type_da38fe05{}
+		return &dmClothPlaneDefMirror{}
 	case 3666486037:
-		return &Type_da8a2315{}
+		return &QuestFollowerSpawnBehavior{}
 	case 3672216444:
 		return &StringListDefinition{}
 	case 3674862323:
@@ -3846,6 +3926,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &IntensitySubParam{}
 	case 3704120622:
 		return &ParagonGlyphAffixAttribute{}
+	case 3705522846:
+		return &Type_dcddca9e{}
 	case 3707753598:
 		return &TriggerEventObjectMoveToObject{}
 	case 3708548105:
@@ -3906,10 +3988,14 @@ func NewByTypeHash[T Object](h int) Object {
 		return &Type_e1a124f1{}
 	case 3786148276:
 		return &Type_e1ac09b4{}
+	case 3787314167:
+		return &Type_e1bdd3f7{}
 	case 3790868530:
 		return &Type_e1f41032{}
 	case 3795316385:
 		return &AttributesChangedBuffCallback{}
+	case 3796098960:
+		return &Type_e243df90{}
 	case 3796435398:
 		return &PowerPhaseInitialization{}
 	case 3797928927:
@@ -3952,12 +4038,16 @@ func NewByTypeHash[T Object](h int) Object {
 		return &WorldSyncedDataMessage{}
 	case 3833381323:
 		return &ScriptEventParamTrackedReward{}
+	case 3833869781:
+		return &Type_e48435d5{}
 	case 3835832585:
 		return &DRLGWorldDebugInfoMessage{}
 	case 3836204633:
 		return &WallDefinition{}
 	case 3836325597:
 		return &BountyIcons{}
+	case 3837898558:
+		return &Type_e4c1af3e{}
 	case 3844612145:
 		return &StringTableEntry{}
 	case 3845014595:
@@ -3971,7 +4061,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3856437459:
 		return &CustomizationData{}
 	case 3856914134:
-		return &Type_e5e3d6d6{}
+		return &dmFloat4Mirror{}
 	case 3856916112:
 		return &BountyZones{}
 	case 3859902386:
@@ -4009,7 +4099,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3878735867:
 		return &Type_e730cffb{}
 	case 3879849394:
-		return &Type_e741cdb2{}
+		return &dmInputTriangleMirror{}
 	case 3882395607:
 		return &PowerConditionIsActorBerserk{}
 	case 3884811641:
@@ -4031,9 +4121,9 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3892462007:
 		return &ShaderOverride{}
 	case 3894303202:
-		return &Type_e81e59e2{}
+		return &dmPolytopeDataMirror{}
 	case 3895665662:
-		return &Type_e83323fe{}
+		return &DRLGEventDebugInfo{}
 	case 3896035154:
 		return &OnProjectileCreateBuffCallback{}
 	case 3897348097:
@@ -4047,7 +4137,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3900142886:
 		return &UIMinimapFoWStyle{}
 	case 3900534977:
-		return &Type_e87d70c1{}
+		return &SpawnLocOverrideData{}
 	case 3905611800:
 		return &TriggerEventSetWeaponSheathedDuration{}
 	case 3907208665:
@@ -4062,6 +4152,8 @@ func NewByTypeHash[T Object](h int) Object {
 		return &CloneBeingDeletedMessage{}
 	case 3911232674:
 		return &QuitGameMessage{}
+	case 3911333260:
+		return &Type_e922358c{}
 	case 3913967859:
 		return &EffectGroupActorMovementTrack{}
 	case 3914002741:
@@ -4087,7 +4179,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3934834412:
 		return &RestrictedComponent{}
 	case 3938200363:
-		return &Type_eabc2b2b{}
+		return &dmSubEdgeMirror{}
 	case 3938253109:
 		return &DPathSinData{}
 	case 3938938339:
@@ -4103,7 +4195,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 3952011826:
 		return &Type_eb8eea32{}
 	case 3952663046:
-		return &Type_eb98da06{}
+		return &MaterialScalarValuesUsed{}
 	case 3955716320:
 		return &bcQuat{}
 	case 3955895500:
@@ -4161,15 +4253,17 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4000554560:
 		return &SkillTagStruct{}
 	case 4006089948:
-		return &Type_eec814dc{}
+		return &TriggerEventRestoreTimeOfDay{}
 	case 4010719183:
-		return &Type_ef0eb7cf{}
+		return &TempCollisionMesh{}
 	case 4012831658:
 		return &ExplosionDefinition{}
 	case 4014476633:
-		return &Type_ef480d59{}
+		return &GameTestingProfilingStarted{}
 	case 4014883557:
 		return &MarkerLevelAreaVolumeData{}
+	case 4019404115:
+		return &Type_ef933d53{}
 	case 4022121664:
 		return &VectorFieldDefinition{}
 	case 4027789355:
@@ -4199,7 +4293,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4059665222:
 		return &GameSyncedDebugDataMessage{}
 	case 4060009143:
-		return &Type_f1fed2b7{}
+		return &dmFrameMirror{}
 	case 4063447694:
 		return &LookAtBone{}
 	case 4063504516:
@@ -4229,7 +4323,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4093179991:
 		return &MarkerSetDefinition{}
 	case 4100996537:
-		return &Type_f4703db9{}
+		return &PrefabCustomizedMarker{}
 	case 4101156222:
 		return &EffectGroupMaterialTrack{}
 	case 4102386549:
@@ -4255,7 +4349,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4118521851:
 		return &OnEquipPowerCallback{}
 	case 4119790019:
-		return &Type_f58f01c3{}
+		return &MaterialVectorValuesUsed{}
 	case 4120944920:
 		return &ResolvedPortalDestination{}
 	case 4121622049:
@@ -4271,7 +4365,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4123887595:
 		return &Type_f5cd87eb{}
 	case 4128871178:
-		return &Type_f619930a{}
+		return &SplineEasingWeight{}
 	case 4129646214:
 		return &TrackedCheckpointGizmoData{}
 	case 4133241699:
@@ -4279,7 +4373,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4134809062:
 		return &MsgTriggeredEvent{}
 	case 4134908163:
-		return &Type_f675b103{}
+		return &UIProgressBarBase{}
 	case 4135518729:
 		return &LevelScalingDefinition_Table{}
 	case 4135555133:
@@ -4293,7 +4387,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4138637758:
 		return &EffectGroupRotationYawKeyData{}
 	case 4138865712:
-		return &Type_f6b21430{}
+		return &PowerBuffCrowdControl{}
 	case 4143117588:
 		return &WeaponExpertiseRankReward{}
 	case 4148177091:
@@ -4349,7 +4443,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4208099680:
 		return &MainHandItemLabelSubcondition{}
 	case 4211607403:
-		return &Type_fb08076b{}
+		return &RequestPvPInfo{}
 	case 4211930836:
 		return &TriggerGizmoData{}
 	case 4212868281:
@@ -4365,7 +4459,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4219842648:
 		return &MountSelectMessage{}
 	case 4221588828:
-		return &Type_fba0555c{}
+		return &dmPlaneMirror{}
 	case 4223096186:
 		return &Type_fbb7557a{}
 	case 4225700928:
@@ -4429,7 +4523,7 @@ func NewByTypeHash[T Object](h int) Object {
 	case 4271208238:
 		return &TrackPieces{}
 	case 4272741198:
-		return &Type_feacdb4e{}
+		return &SkillExtraAndArsenalEntry{}
 	case 4273329489:
 		return &Type_feb5d551{}
 	case 4282423481:
@@ -4474,13 +4568,13 @@ func (t *OBB) Walk(cb WalkCallback) {
 	cb.Do("WvExt", &t.WvExt)
 }
 
-type Type_d2461 struct {
+type GBIDBlocklistDataChanged struct {
 	THeader                    RequiredMessageHeader
 	Unk_25d9f91                DT_FIXEDARRAY[*GBHandle]
 	ENetAttributeKeyValueIndex DT_FIXEDARRAY[*DT_UINT]
 }
 
-func (t *Type_d2461) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GBIDBlocklistDataChanged) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -4506,7 +4600,7 @@ func (t *Type_d2461) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_d2461) Walk(cb WalkCallback) {
+func (t *GBIDBlocklistDataChanged) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("Unk_25d9f91", &t.Unk_25d9f91)
 	cb.Do("ENetAttributeKeyValueIndex", &t.ENetAttributeKeyValueIndex)
@@ -4555,8 +4649,8 @@ func (t *Stat) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *Stat) Walk(cb WalkCallback) {}
 
 type PowerLimitedActorType struct {
-	THeader     GBIDHeader
-	Unk_20d9783 DT_UINT
+	THeader         GBIDHeader
+	DwMaxActorCount DT_UINT
 }
 
 func (t *PowerLimitedActorType) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -4567,7 +4661,7 @@ func (t *PowerLimitedActorType) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+260, &t.Unk_20d9783, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+260, &t.DwMaxActorCount, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+264, io.SeekStart); err != nil {
@@ -4578,7 +4672,7 @@ func (t *PowerLimitedActorType) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 
 func (t *PowerLimitedActorType) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_20d9783", &t.Unk_20d9783)
+	cb.Do("DwMaxActorCount", &t.DwMaxActorCount)
 }
 
 type SoundTableDefinition struct {
@@ -4725,9 +4819,9 @@ func (t *PowerConditionIsVulnerable) Walk(cb WalkCallback) {
 }
 
 type PlayerParagonPointMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	NNewPoints  DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	NNewPoints            DT_INT
 }
 
 func (t *PlayerParagonPointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -4738,7 +4832,7 @@ func (t *PlayerParagonPointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.NNewPoints, r, &Options{Flags: 1}); err != nil {
@@ -4752,7 +4846,7 @@ func (t *PlayerParagonPointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 
 func (t *PlayerParagonPointMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("NNewPoints", &t.NNewPoints)
 }
 
@@ -4977,13 +5071,13 @@ func (t *WwiseSwitchValue) Walk(cb WalkCallback) {
 }
 
 type AssignSkillMessage struct {
-	THeader       RequiredMessageHeader
-	SnoPower      DT_SNO
-	NSlot         DT_INT
-	NEnchantSlot  DT_INT
-	BIsEnchant    DT_INT
-	BIsAutoAssign DT_INT
-	Unk_dce541c   DT_UINT
+	THeader               RequiredMessageHeader
+	SnoPower              DT_SNO
+	NSlot                 DT_INT
+	NEnchantSlot          DT_INT
+	BIsEnchant            DT_INT
+	BIsAutoAssign         DT_INT
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *AssignSkillMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -5012,7 +5106,7 @@ func (t *AssignSkillMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+32, &t.BIsAutoAssign, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+36, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+36, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
@@ -5028,7 +5122,7 @@ func (t *AssignSkillMessage) Walk(cb WalkCallback) {
 	cb.Do("NEnchantSlot", &t.NEnchantSlot)
 	cb.Do("BIsEnchant", &t.BIsEnchant)
 	cb.Do("BIsAutoAssign", &t.BIsAutoAssign)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type PetType struct {
@@ -5369,7 +5463,7 @@ func (t *Type_30b72fa) Walk(cb WalkCallback) {
 	cb.Do("ArConditions", &t.ArConditions)
 }
 
-type Type_37227e2 struct {
+type BossDoorGizmoActivate struct {
 	// Inherits Type_d4213c9b
 	DwType      DT_UINT
 	Unk_9b2bc26 Type_80554fed
@@ -5377,7 +5471,7 @@ type Type_37227e2 struct {
 	DwPad       DT_UINT
 }
 
-func (t *Type_37227e2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *BossDoorGizmoActivate) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -5400,7 +5494,7 @@ func (t *Type_37227e2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_37227e2) Walk(cb WalkCallback) {
+func (t *BossDoorGizmoActivate) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("Unk_9b2bc26", &t.Unk_9b2bc26)
 	cb.Do("Unk_77ed19a", &t.Unk_77ed19a)
@@ -5620,23 +5714,23 @@ func (t *Type_44d632e) Walk(cb WalkCallback) {
 }
 
 type ZoneMapParams struct {
-	FlZoneArtScale    DT_FLOAT
-	VecZoneArtCenter  DT_VECTOR2D
-	FlZoneBaseScale   DT_FLOAT
-	Unk_80bc841       DT_FLOAT
-	Unk_4e79635       DT_FLOAT
-	Unk_341cf9b       DT_FLOAT
-	Unk_7ed5974       DT_FLOAT
-	Unk_f373e7a       DT_FLOAT
-	Unk_77999b9       DT_FLOAT
-	ArZoomBreakpoints DT_VARIABLEARRAY[*DT_FLOAT]
-	Unk_42cbe27       DT_INT
-	Unk_34b452        DT_SNO
-	Unk_3620f37       DT_INT
-	Unk_c60b9b0       DT_INT
-	Unk_754c08a       DT_SNO
-	ArFogOfWar        DT_VARIABLEARRAY[*FogOfWarImage]
-	Unk_ff16ba3       DT_VARIABLEARRAY[*Type_bef5a4a]
+	FlZoneArtScale     DT_FLOAT
+	VecZoneArtCenter   DT_VECTOR2D
+	FlZoneBaseScale    DT_FLOAT
+	FlZoneZoomScaleMax DT_FLOAT
+	Unk_4e79635        DT_FLOAT
+	Unk_341cf9b        DT_FLOAT
+	Unk_7ed5974        DT_FLOAT
+	Unk_f373e7a        DT_FLOAT
+	Unk_77999b9        DT_FLOAT
+	ArZoomBreakpoints  DT_VARIABLEARRAY[*DT_FLOAT]
+	Unk_42cbe27        DT_INT
+	Unk_34b452         DT_SNO
+	Unk_3620f37        DT_INT
+	Unk_c60b9b0        DT_INT
+	Unk_754c08a        DT_SNO
+	ArFogOfWar         DT_VARIABLEARRAY[*FogOfWarImage]
+	Unk_ff16ba3        DT_VARIABLEARRAY[*Type_bef5a4a]
 }
 
 func (t *ZoneMapParams) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -5653,7 +5747,7 @@ func (t *ZoneMapParams) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+12, &t.FlZoneBaseScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_80bc841, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.FlZoneZoomScaleMax, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.Unk_4e79635, r, &Options{Flags: 1}); err != nil {
@@ -5711,7 +5805,7 @@ func (t *ZoneMapParams) Walk(cb WalkCallback) {
 	cb.Do("FlZoneArtScale", &t.FlZoneArtScale)
 	cb.Do("VecZoneArtCenter", &t.VecZoneArtCenter)
 	cb.Do("FlZoneBaseScale", &t.FlZoneBaseScale)
-	cb.Do("Unk_80bc841", &t.Unk_80bc841)
+	cb.Do("FlZoneZoomScaleMax", &t.FlZoneZoomScaleMax)
 	cb.Do("Unk_4e79635", &t.Unk_4e79635)
 	cb.Do("Unk_341cf9b", &t.Unk_341cf9b)
 	cb.Do("Unk_7ed5974", &t.Unk_7ed5974)
@@ -5780,14 +5874,14 @@ func (t *HdrSettings) Walk(cb WalkCallback) {
 }
 
 type ProjectileAttachmentOnHitMessage struct {
-	THeader           RequiredMessageHeader
-	AnnTarget         DT_ACD_NETWORK_NAME
-	AnnAttacker       DT_ACD_NETWORK_NAME
-	Unk_5692531       DT_OPTIONAL[*DT_VECTOR3D]
-	Unk_5d619c6       DT_OPTIONAL[*DT_VECTOR3D]
-	FlImpactDirection DT_OPTIONAL[*DT_FLOAT]
-	FlImpactPitch     DT_OPTIONAL[*DT_FLOAT]
-	SnoEffectGroup    DT_SNO
+	THeader                    RequiredMessageHeader
+	AnnTarget                  DT_ACD_NETWORK_NAME
+	AnnAttacker                DT_ACD_NETWORK_NAME
+	VLocalImpactPos            DT_OPTIONAL[*DT_VECTOR3D]
+	VProjectileImpactDirection DT_OPTIONAL[*DT_VECTOR3D]
+	FlImpactDirection          DT_OPTIONAL[*DT_FLOAT]
+	FlImpactPitch              DT_OPTIONAL[*DT_FLOAT]
+	SnoEffectGroup             DT_SNO
 }
 
 func (t *ProjectileAttachmentOnHitMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -5804,10 +5898,10 @@ func (t *ProjectileAttachmentOnHitMessage) UnmarshalD4(r *bin.BinaryReader, o *O
 	if err := UnmarshalAt(p+24, &t.AnnAttacker, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_5d619c6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.VProjectileImpactDirection, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+64, &t.FlImpactDirection, r, &Options{Flags: 1}); err != nil {
@@ -5832,15 +5926,15 @@ func (t *ProjectileAttachmentOnHitMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("AnnTarget", &t.AnnTarget)
 	cb.Do("AnnAttacker", &t.AnnAttacker)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
-	cb.Do("Unk_5d619c6", &t.Unk_5d619c6)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
+	cb.Do("VProjectileImpactDirection", &t.VProjectileImpactDirection)
 	cb.Do("FlImpactDirection", &t.FlImpactDirection)
 	cb.Do("FlImpactPitch", &t.FlImpactPitch)
 	cb.Do("SnoEffectGroup", &t.SnoEffectGroup)
 }
 
-type Type_4c2dc82 struct {
-	LocalTransform Type_5f527528
+type dmClothCapsuleDefMirror struct {
+	LocalTransform dmTransformMirror
 	Scale          DT_VECTOR4D
 	Radius1        DT_FLOAT
 	Radius2        DT_FLOAT
@@ -5851,7 +5945,7 @@ type Type_4c2dc82 struct {
 	Padding        DT_FIXEDARRAY[*DT_WORD]
 }
 
-func (t *Type_4c2dc82) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmClothCapsuleDefMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -5889,7 +5983,7 @@ func (t *Type_4c2dc82) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_4c2dc82) Walk(cb WalkCallback) {
+func (t *dmClothCapsuleDefMirror) Walk(cb WalkCallback) {
 	cb.Do("LocalTransform", &t.LocalTransform)
 	cb.Do("Scale", &t.Scale)
 	cb.Do("Radius1", &t.Radius1)
@@ -6029,7 +6123,7 @@ func (t *Type_5535d75) Walk(cb WalkCallback) {
 	cb.Do("Unk_155967", &t.Unk_155967)
 }
 
-type Type_5536dec struct {
+type IKLeg struct {
 	EIKLimb            DT_ENUM
 	PtUpperLegs        DT_VARIABLEARRAY[*IKBone]
 	BUseAnimatedOffset DT_INT
@@ -6038,7 +6132,7 @@ type Type_5536dec struct {
 	Unk_978714f        DT_FLOAT
 }
 
-func (t *Type_5536dec) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *IKLeg) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -6067,7 +6161,7 @@ func (t *Type_5536dec) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_5536dec) Walk(cb WalkCallback) {
+func (t *IKLeg) Walk(cb WalkCallback) {
 	cb.Do("EIKLimb", &t.EIKLimb)
 	cb.Do("PtUpperLegs", &t.PtUpperLegs)
 	cb.Do("BUseAnimatedOffset", &t.BUseAnimatedOffset)
@@ -6077,13 +6171,13 @@ func (t *Type_5536dec) Walk(cb WalkCallback) {
 }
 
 type BlockedDamageVisualsMessage struct {
-	THeader           RequiredMessageHeader
-	AnnDefender       DT_ACD_NETWORK_NAME
-	AnnAttacker       DT_ACD_NETWORK_NAME
-	Unk_5692531       DT_OPTIONAL[*DT_VECTOR3D]
-	Unk_5d619c6       DT_OPTIONAL[*DT_VECTOR3D]
-	FlImpactDirection DT_OPTIONAL[*DT_FLOAT]
-	FlImpactPitch     DT_OPTIONAL[*DT_FLOAT]
+	THeader                    RequiredMessageHeader
+	AnnDefender                DT_ACD_NETWORK_NAME
+	AnnAttacker                DT_ACD_NETWORK_NAME
+	VLocalImpactPos            DT_OPTIONAL[*DT_VECTOR3D]
+	VProjectileImpactDirection DT_OPTIONAL[*DT_VECTOR3D]
+	FlImpactDirection          DT_OPTIONAL[*DT_FLOAT]
+	FlImpactPitch              DT_OPTIONAL[*DT_FLOAT]
 }
 
 func (t *BlockedDamageVisualsMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -6100,10 +6194,10 @@ func (t *BlockedDamageVisualsMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+24, &t.AnnAttacker, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_5d619c6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.VProjectileImpactDirection, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+64, &t.FlImpactDirection, r, &Options{Flags: 1}); err != nil {
@@ -6122,8 +6216,8 @@ func (t *BlockedDamageVisualsMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("AnnDefender", &t.AnnDefender)
 	cb.Do("AnnAttacker", &t.AnnAttacker)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
-	cb.Do("Unk_5d619c6", &t.Unk_5d619c6)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
+	cb.Do("VProjectileImpactDirection", &t.VProjectileImpactDirection)
 	cb.Do("FlImpactDirection", &t.FlImpactDirection)
 	cb.Do("FlImpactPitch", &t.FlImpactPitch)
 }
@@ -6192,13 +6286,13 @@ func (t *Type_57fcadb) Walk(cb WalkCallback) {
 	cb.Do("BDisableDefaultDungeonStates", &t.BDisableDefaultDungeonStates)
 }
 
-type Type_586d03a struct {
+type LocalEventTrackingData struct {
 	NOccurrence  DT_INT
 	SnoMarker    DT_INT
 	NMarkerIndex DT_INT
 }
 
-func (t *Type_586d03a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *LocalEventTrackingData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -6218,7 +6312,7 @@ func (t *Type_586d03a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_586d03a) Walk(cb WalkCallback) {
+func (t *LocalEventTrackingData) Walk(cb WalkCallback) {
 	cb.Do("NOccurrence", &t.NOccurrence)
 	cb.Do("SnoMarker", &t.SnoMarker)
 	cb.Do("NMarkerIndex", &t.NMarkerIndex)
@@ -6997,7 +7091,7 @@ type ObserverDefinition struct {
 	WvCameraOffsetVector DT_VECTOR3D
 	Unk_5a947a6          DT_INT
 	Unk_5c0680d          DT_VECTOR3D
-	Unk_9dab378          DT_FLOAT
+	FlCameraOffsetScalar DT_FLOAT
 	Unk_3fe5936          DT_FLOAT
 	Unk_c9a32ec          DT_FLOAT
 	Unk_3ac51ed          DT_FLOAT
@@ -7028,7 +7122,7 @@ type ObserverDefinition struct {
 	Unk_9e17f0a          DT_FLOAT
 	Unk_8f82b03          DT_FLOAT
 	Unk_777445b          DT_FLOAT
-	Unk_ca6f9df          DT_FLOAT
+	FlItemUntargetable   DT_FLOAT
 	Unk_ee8e3a           DT_FLOAT
 	Unk_e45f065          DT_FLOAT
 }
@@ -7053,7 +7147,7 @@ func (t *ObserverDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+40, &t.Unk_5c0680d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+52, &t.Unk_9dab378, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+52, &t.FlCameraOffsetScalar, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+56, &t.Unk_3fe5936, r, &Options{Flags: 1}); err != nil {
@@ -7146,7 +7240,7 @@ func (t *ObserverDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+172, &t.Unk_777445b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_ca6f9df, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+176, &t.FlItemUntargetable, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+180, &t.Unk_ee8e3a, r, &Options{Flags: 1}); err != nil {
@@ -7167,7 +7261,7 @@ func (t *ObserverDefinition) Walk(cb WalkCallback) {
 	cb.Do("WvCameraOffsetVector", &t.WvCameraOffsetVector)
 	cb.Do("Unk_5a947a6", &t.Unk_5a947a6)
 	cb.Do("Unk_5c0680d", &t.Unk_5c0680d)
-	cb.Do("Unk_9dab378", &t.Unk_9dab378)
+	cb.Do("FlCameraOffsetScalar", &t.FlCameraOffsetScalar)
 	cb.Do("Unk_3fe5936", &t.Unk_3fe5936)
 	cb.Do("Unk_c9a32ec", &t.Unk_c9a32ec)
 	cb.Do("Unk_3ac51ed", &t.Unk_3ac51ed)
@@ -7198,7 +7292,7 @@ func (t *ObserverDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_9e17f0a", &t.Unk_9e17f0a)
 	cb.Do("Unk_8f82b03", &t.Unk_8f82b03)
 	cb.Do("Unk_777445b", &t.Unk_777445b)
-	cb.Do("Unk_ca6f9df", &t.Unk_ca6f9df)
+	cb.Do("FlItemUntargetable", &t.FlItemUntargetable)
 	cb.Do("Unk_ee8e3a", &t.Unk_ee8e3a)
 	cb.Do("Unk_e45f065", &t.Unk_e45f065)
 }
@@ -7417,9 +7511,9 @@ func (t *PowerConditionIsShapeshiftForm) Walk(cb WalkCallback) {
 }
 
 type PlayerEmblemResponseMessage struct {
-	THeader     Type_72bd65f8
-	Unk_dce541c DT_UINT
-	SnoEmblem   DT_SNO
+	THeader               RequiredRequestMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoEmblem             DT_SNO
 }
 
 func (t *PlayerEmblemResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -7430,7 +7524,7 @@ func (t *PlayerEmblemResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.SnoEmblem, r, &Options{
@@ -7447,19 +7541,19 @@ func (t *PlayerEmblemResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 
 func (t *PlayerEmblemResponseMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoEmblem", &t.SnoEmblem)
 }
 
 type Type_9153bc3 struct {
-	FlProgressMin DT_FLOAT
-	FlProgressMax DT_FLOAT
-	BVertical     DT_INT
-	Unk_e69457b   Type_6b1c5d9c
-	Unk_2eb0960   Type_6b1c5d9c
-	Unk_9df1c6f   Type_6b1c5d9c
-	BReversed     DT_INT
-	FlThickness   DT_FLOAT
+	FlProgressMin            DT_FLOAT
+	FlProgressMax            DT_FLOAT
+	BVertical                DT_INT
+	HProgressForegroundImage UIImageHandleReference
+	HProgressBackgroundImage UIImageHandleReference
+	Unk_9df1c6f              UIImageHandleReference
+	BReversed                DT_INT
+	FlThickness              DT_FLOAT
 }
 
 func (t *Type_9153bc3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -7476,10 +7570,10 @@ func (t *Type_9153bc3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.BVertical, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_e69457b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.HProgressForegroundImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_2eb0960, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.HProgressBackgroundImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.Unk_9df1c6f, r, &Options{Flags: 1}); err != nil {
@@ -7501,8 +7595,8 @@ func (t *Type_9153bc3) Walk(cb WalkCallback) {
 	cb.Do("FlProgressMin", &t.FlProgressMin)
 	cb.Do("FlProgressMax", &t.FlProgressMax)
 	cb.Do("BVertical", &t.BVertical)
-	cb.Do("Unk_e69457b", &t.Unk_e69457b)
-	cb.Do("Unk_2eb0960", &t.Unk_2eb0960)
+	cb.Do("HProgressForegroundImage", &t.HProgressForegroundImage)
+	cb.Do("HProgressBackgroundImage", &t.HProgressBackgroundImage)
 	cb.Do("Unk_9df1c6f", &t.Unk_9df1c6f)
 	cb.Do("BReversed", &t.BReversed)
 	cb.Do("FlThickness", &t.FlThickness)
@@ -7735,7 +7829,7 @@ type UICheckBoxStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_c12ea3b               DT_TAGMAP[*DT_ENUM]
 }
@@ -8186,8 +8280,8 @@ func (t *BiomeClutter) Walk(cb WalkCallback) {
 }
 
 type Type_b5002e1 struct {
-	GbidSpawnLocType DT_GBID
-	Unk_7a5b3f7      DT_FLOAT
+	GbidSpawnLocType        DT_GBID
+	FlGlobalCooldownSeconds DT_FLOAT
 }
 
 func (t *Type_b5002e1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -8201,7 +8295,7 @@ func (t *Type_b5002e1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_7a5b3f7, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.FlGlobalCooldownSeconds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
@@ -8212,11 +8306,11 @@ func (t *Type_b5002e1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_b5002e1) Walk(cb WalkCallback) {
 	cb.Do("GbidSpawnLocType", &t.GbidSpawnLocType)
-	cb.Do("Unk_7a5b3f7", &t.Unk_7a5b3f7)
+	cb.Do("FlGlobalCooldownSeconds", &t.FlGlobalCooldownSeconds)
 }
 
 type ModifyCurrencyMessage struct {
-	THeader       Type_72bd65f8
+	THeader       RequiredRequestMessageHeader
 	ECurrencyType DT_ENUM
 	NOpAmount     DT_INT64
 }
@@ -8568,7 +8662,7 @@ type TriggerEventFadeOtherPlayers struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -8595,7 +8689,7 @@ func (t *TriggerEventFadeOtherPlayers) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -8630,7 +8724,7 @@ func (t *TriggerEventFadeOtherPlayers) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -8665,10 +8759,37 @@ func (t *ScrollbarStyle) Walk(cb WalkCallback) {
 	cb.Do("TElements", &t.TElements)
 }
 
+type Type_c62084e struct {
+	THeader RequiredRequestMessageHeader
+	NData   DT_INT
+}
+
+func (t *Type_c62084e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.NData, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_c62084e) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("NData", &t.NData)
+}
+
 type PlayHotbarUIFlourishMessage struct {
-	THeader     Type_b0f2a959
-	Unk_dce541c DT_UINT
-	SnoPower    DT_SNO
+	THeader               RequiredCommandFrameMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoPower              DT_SNO
 }
 
 func (t *PlayHotbarUIFlourishMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -8679,7 +8800,7 @@ func (t *PlayHotbarUIFlourishMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.SnoPower, r, &Options{
@@ -8696,7 +8817,7 @@ func (t *PlayHotbarUIFlourishMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 
 func (t *PlayHotbarUIFlourishMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoPower", &t.SnoPower)
 }
 
@@ -8956,7 +9077,7 @@ type AffixDefinition struct {
 	SnoRareNamePrefixStringList DT_SNO
 	SnoRareNameSuffixStringList DT_SNO
 	GbidAffixFamily             DT_GBID
-	Unk_d1d9b8                  DT_FIXEDARRAY[*DT_INT]
+	FAllowedForPlayerClass      DT_FIXEDARRAY[*DT_INT]
 	ArAllowedItemLabels         DT_VARIABLEARRAY[*DT_ENUM]
 	DwAllowedQualityLevels      DT_UINT
 	EAffixType                  DT_ENUM
@@ -8965,9 +9086,10 @@ type AffixDefinition struct {
 	SnoPassivePower             DT_SNO
 	SnoClassRequirement         DT_SNO
 	ArAffixSkillTags            DT_VARIABLEARRAY[*DT_GBID]
-	Unk_f5936eb                 DT_VARIABLEARRAY[*DT_SNO]
-	Unk_cc55a2d                 DT_VARIABLEARRAY[*DT_GBID]
-	Unk_bd86972                 DT_VARIABLEARRAY[*DT_GBID]
+	ArPowerToModify             DT_VARIABLEARRAY[*DT_SNO]
+	ArSkillTagsToAdd            DT_VARIABLEARRAY[*DT_GBID]
+	ArSkillTagsToRemove         DT_VARIABLEARRAY[*DT_GBID]
+	Unk_4cb9610                 DT_GBID
 }
 
 func (t *AffixDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -9011,7 +9133,7 @@ func (t *AffixDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_d1d9b8, r, &Options{
+	if err := UnmarshalAt(p+76, &t.FAllowedForPlayerClass, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
@@ -9050,25 +9172,31 @@ func (t *AffixDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_f5936eb, r, &Options{
+	if err := UnmarshalAt(p+176, &t.ArPowerToModify, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+192, &t.Unk_cc55a2d, r, &Options{
+	if err := UnmarshalAt(p+192, &t.ArSkillTagsToAdd, r, &Options{
 		Flags: 1,
 		Group: 56,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+208, &t.Unk_bd86972, r, &Options{
+	if err := UnmarshalAt(p+208, &t.ArSkillTagsToRemove, r, &Options{
 		Flags: 1,
 		Group: 56,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+224, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+224, &t.Unk_4cb9610, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+232, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -9084,7 +9212,7 @@ func (t *AffixDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoRareNamePrefixStringList", &t.SnoRareNamePrefixStringList)
 	cb.Do("SnoRareNameSuffixStringList", &t.SnoRareNameSuffixStringList)
 	cb.Do("GbidAffixFamily", &t.GbidAffixFamily)
-	cb.Do("Unk_d1d9b8", &t.Unk_d1d9b8)
+	cb.Do("FAllowedForPlayerClass", &t.FAllowedForPlayerClass)
 	cb.Do("ArAllowedItemLabels", &t.ArAllowedItemLabels)
 	cb.Do("DwAllowedQualityLevels", &t.DwAllowedQualityLevels)
 	cb.Do("EAffixType", &t.EAffixType)
@@ -9093,9 +9221,10 @@ func (t *AffixDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoPassivePower", &t.SnoPassivePower)
 	cb.Do("SnoClassRequirement", &t.SnoClassRequirement)
 	cb.Do("ArAffixSkillTags", &t.ArAffixSkillTags)
-	cb.Do("Unk_f5936eb", &t.Unk_f5936eb)
-	cb.Do("Unk_cc55a2d", &t.Unk_cc55a2d)
-	cb.Do("Unk_bd86972", &t.Unk_bd86972)
+	cb.Do("ArPowerToModify", &t.ArPowerToModify)
+	cb.Do("ArSkillTagsToAdd", &t.ArSkillTagsToAdd)
+	cb.Do("ArSkillTagsToRemove", &t.ArSkillTagsToRemove)
+	cb.Do("Unk_4cb9610", &t.Unk_4cb9610)
 }
 
 type ExperienceLevel struct {
@@ -9740,12 +9869,12 @@ func (t *ConsoleAwardDefinition) Walk(cb WalkCallback) {
 type Type_fe0bd4d struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *Type_fe0bd4d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -9768,7 +9897,7 @@ func (t *Type_fe0bd4d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -9783,7 +9912,7 @@ func (t *Type_fe0bd4d) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type Capsule struct {
@@ -10050,7 +10179,7 @@ type ACDEnterKnownMessage struct {
 	UGizmoHash                     DT_OPTIONAL[*DT_UINT]
 	Unk_9e938b5                    DT_OPTIONAL[*DT_INT64]
 	AnnSummonedBy                  DT_OPTIONAL[*DT_ACD_NETWORK_NAME]
-	Unk_b192047                    DT_OPTIONAL[*DT_SNO]
+	SnoAttachedRenderActor         DT_OPTIONAL[*DT_SNO]
 	DwAttachedHardpoint            DT_OPTIONAL[*DT_UINT]
 	DwAttachHardpoint              DT_OPTIONAL[*DT_UINT]
 	Unk_3929c26                    DT_OPTIONAL[*DT_ACD_NETWORK_NAME]
@@ -10144,7 +10273,7 @@ func (t *ACDEnterKnownMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+320, &t.AnnSummonedBy, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+332, &t.Unk_b192047, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+332, &t.SnoAttachedRenderActor, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+340, &t.DwAttachedHardpoint, r, &Options{Flags: 1}); err != nil {
@@ -10201,7 +10330,7 @@ func (t *ACDEnterKnownMessage) Walk(cb WalkCallback) {
 	cb.Do("UGizmoHash", &t.UGizmoHash)
 	cb.Do("Unk_9e938b5", &t.Unk_9e938b5)
 	cb.Do("AnnSummonedBy", &t.AnnSummonedBy)
-	cb.Do("Unk_b192047", &t.Unk_b192047)
+	cb.Do("SnoAttachedRenderActor", &t.SnoAttachedRenderActor)
 	cb.Do("DwAttachedHardpoint", &t.DwAttachedHardpoint)
 	cb.Do("DwAttachHardpoint", &t.DwAttachHardpoint)
 	cb.Do("Unk_3929c26", &t.Unk_3929c26)
@@ -10364,7 +10493,7 @@ type JoinExistingGameMessage struct {
 	EXLocale      DT_ENUM
 	FlAspectRatio DT_FLOAT
 	UProtocolHash DT_UINT
-	AtPlayers     DT_FIXEDARRAY[*Type_74952762]
+	AtPlayers     DT_FIXEDARRAY[*JoinExistingGamePlayer]
 	TTrace        TraceMessage
 }
 
@@ -10554,11 +10683,11 @@ type Type_11a18e87 struct {
 	Unk_9cf9482                      UIEffect
 	Unk_53346c4                      UIEffect
 	Unk_4c24000                      DT_INT
-	HImageFrame                      Type_6b1c5d9c
-	HMaskImage                       Type_6b1c5d9c
-	Unk_ca5933c                      Type_6b1c5d9c
+	HImageFrame                      UIImageHandleReference
+	HMaskImage                       UIImageHandleReference
+	HHitMaskImage                    UIImageHandleReference
 	Unk_902601b                      DT_INT
-	Unk_878e49e                      Type_6b1c5d9c
+	HImageRenderSourceOverlay        UIImageHandleReference
 	SnoChildHoverTiledStyle          DT_SNO
 	Unk_7cf5f9e                      DT_SNO
 	BWinDraggable                    DT_INT
@@ -10707,13 +10836,13 @@ func (t *Type_11a18e87) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+240, &t.HMaskImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+244, &t.Unk_ca5933c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+244, &t.HHitMaskImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+248, &t.Unk_902601b, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+252, &t.Unk_878e49e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+252, &t.HImageRenderSourceOverlay, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+256, &t.SnoChildHoverTiledStyle, r, &Options{
@@ -10925,9 +11054,9 @@ func (t *Type_11a18e87) Walk(cb WalkCallback) {
 	cb.Do("Unk_4c24000", &t.Unk_4c24000)
 	cb.Do("HImageFrame", &t.HImageFrame)
 	cb.Do("HMaskImage", &t.HMaskImage)
-	cb.Do("Unk_ca5933c", &t.Unk_ca5933c)
+	cb.Do("HHitMaskImage", &t.HHitMaskImage)
 	cb.Do("Unk_902601b", &t.Unk_902601b)
-	cb.Do("Unk_878e49e", &t.Unk_878e49e)
+	cb.Do("HImageRenderSourceOverlay", &t.HImageRenderSourceOverlay)
 	cb.Do("SnoChildHoverTiledStyle", &t.SnoChildHoverTiledStyle)
 	cb.Do("Unk_7cf5f9e", &t.Unk_7cf5f9e)
 	cb.Do("BWinDraggable", &t.BWinDraggable)
@@ -10985,8 +11114,8 @@ func (t *Type_11a18e87) Walk(cb WalkCallback) {
 }
 
 type PlayerUnpossessActorMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerUnpossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -10997,7 +11126,7 @@ func (t *PlayerUnpossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
@@ -11008,7 +11137,7 @@ func (t *PlayerUnpossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Option
 
 func (t *PlayerUnpossessActorMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type DataIDDataMessage struct {
@@ -11044,7 +11173,7 @@ type QuestObjectiveSet struct {
 	ArCallbacks         DT_VARIABLEARRAY[*QuestCallback]
 	Unk_a845fa9         DT_INT
 	Unk_89d02b1         DT_SNO
-	Unk_68d4eb0         QuestReward
+	TFirstTimeReward    QuestReward
 	TReward             QuestReward
 	TKeyedDungeonReward QuestReward
 	Unk_8c63f3c         DT_INT
@@ -11075,31 +11204,31 @@ func (t *QuestObjectiveSet) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_68d4eb0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.TFirstTimeReward, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.TReward, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.TReward, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.TKeyedDungeonReward, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+144, &t.TKeyedDungeonReward, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.Unk_8c63f3c, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+192, &t.Unk_8c63f3c, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+172, &t.Unk_e903c4e, r, &Options{
+	if err := UnmarshalAt(p+196, &t.Unk_e903c4e, r, &Options{
 		Flags: 1,
 		Group: 12,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_8f432f8, r, &Options{
+	if err := UnmarshalAt(p+200, &t.Unk_8f432f8, r, &Options{
 		Flags: 1,
 		Group: 73,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+192, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+216, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -11111,7 +11240,7 @@ func (t *QuestObjectiveSet) Walk(cb WalkCallback) {
 	cb.Do("ArCallbacks", &t.ArCallbacks)
 	cb.Do("Unk_a845fa9", &t.Unk_a845fa9)
 	cb.Do("Unk_89d02b1", &t.Unk_89d02b1)
-	cb.Do("Unk_68d4eb0", &t.Unk_68d4eb0)
+	cb.Do("TFirstTimeReward", &t.TFirstTimeReward)
 	cb.Do("TReward", &t.TReward)
 	cb.Do("TKeyedDungeonReward", &t.TKeyedDungeonReward)
 	cb.Do("Unk_8c63f3c", &t.Unk_8c63f3c)
@@ -11201,14 +11330,14 @@ func (t *AudioMonsterCategory) Walk(cb WalkCallback) {
 type TriggerEventAttachSpawnedActor struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	DwID           DT_UINT
-	THardpointLink HardpointLink
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwID            DT_UINT
+	THardpointLink  HardpointLink
 }
 
 func (t *TriggerEventAttachSpawnedActor) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -11231,7 +11360,7 @@ func (t *TriggerEventAttachSpawnedActor) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwID, r, &Options{Flags: 1}); err != nil {
@@ -11252,7 +11381,7 @@ func (t *TriggerEventAttachSpawnedActor) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwID", &t.DwID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 }
@@ -11904,15 +12033,15 @@ func (t *SceneSpecification) Walk(cb WalkCallback) {
 type TriggerEventRelaxCloth struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_85269a4 DT_INT
-	DwActorID   DT_UINT
-	Unk_54489ef DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_85269a4     DT_INT
+	DwActorID       DT_UINT
+	Unk_54489ef     DT_INT
 }
 
 func (t *TriggerEventRelaxCloth) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -11935,7 +12064,7 @@ func (t *TriggerEventRelaxCloth) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_85269a4, r, &Options{Flags: 17}); err != nil {
@@ -11959,7 +12088,7 @@ func (t *TriggerEventRelaxCloth) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_85269a4", &t.Unk_85269a4)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("Unk_54489ef", &t.Unk_54489ef)
@@ -12494,7 +12623,7 @@ type PowerDefinition struct {
 	Unk_923b5fb                  DT_INT
 	Unk_e517f6f                  DT_INT
 	EHitSound                    DT_ENUM
-	Unk_4d7691e                  Type_3940c0fe
+	OnHitSounds                  OnHitSounds
 	Unk_1a5392                   DT_INT
 	Unk_97eadb8                  DT_UINT
 	Unk_5e1a52d                  DT_INT
@@ -12529,7 +12658,7 @@ type PowerDefinition struct {
 	Unk_767809                   DT_FLOAT
 	BCastTargetAllies            DT_INT
 	BCastTargetEnemies           DT_INT
-	Unk_7095076                  DT_INT
+	BCastTargetPlayersOnly       DT_INT
 	TCastTargetNecroCorpsesOnly  DT_STRING_FORMULA
 	Unk_b9b985                   DT_STRING_FORMULA
 	Unk_bcdb405                  DT_INT
@@ -12547,7 +12676,7 @@ type PowerDefinition struct {
 	Unk_8b4e7a                   DT_ENUM
 	Unk_44bbb8e                  DT_INT
 	TAttackRadius                DT_STRING_FORMULA
-	Unk_3587b29                  DT_INT
+	BRequiresPathToTarget        DT_INT
 	BIsApproachPower             DT_INT
 	SnoPowerApproach             DT_SNO
 	Unk_f70b0d                   DT_ENUM
@@ -12568,8 +12697,8 @@ type PowerDefinition struct {
 	BInvulnerableDuring          DT_INT
 	BUntargetableDuring          DT_INT
 	BCannotDieDuring             DT_INT
-	Unk_636a66b                  DT_INT
-	Unk_160bc26                  DT_INT
+	BCannotBeInterruptedDuring   DT_INT
+	BStunnedUnstoppableIdDuring  DT_INT
 	BIgnoreGravityDuring         DT_INT
 	Unk_7a416a6                  DT_INT
 	ArCCInfo                     DT_FIXEDARRAY[*PowerCrowdControlInfo]
@@ -12829,7 +12958,7 @@ func (t *PowerDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+536, &t.EHitSound, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+540, &t.Unk_4d7691e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+540, &t.OnHitSounds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+552, &t.Unk_1a5392, r, &Options{Flags: 1}); err != nil {
@@ -12940,7 +13069,7 @@ func (t *PowerDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+896, &t.BCastTargetEnemies, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+900, &t.Unk_7095076, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+900, &t.BCastTargetPlayersOnly, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+904, &t.TCastTargetNecroCorpsesOnly, r, &Options{Flags: 1}); err != nil {
@@ -12994,7 +13123,7 @@ func (t *PowerDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1080, &t.TAttackRadius, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1112, &t.Unk_3587b29, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+1112, &t.BRequiresPathToTarget, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1116, &t.BIsApproachPower, r, &Options{Flags: 17}); err != nil {
@@ -13063,10 +13192,10 @@ func (t *PowerDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1308, &t.BCannotDieDuring, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1312, &t.Unk_636a66b, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+1312, &t.BCannotBeInterruptedDuring, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1316, &t.Unk_160bc26, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+1316, &t.BStunnedUnstoppableIdDuring, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1320, &t.BIgnoreGravityDuring, r, &Options{Flags: 17}); err != nil {
@@ -13318,7 +13447,7 @@ func (t *PowerDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_923b5fb", &t.Unk_923b5fb)
 	cb.Do("Unk_e517f6f", &t.Unk_e517f6f)
 	cb.Do("EHitSound", &t.EHitSound)
-	cb.Do("Unk_4d7691e", &t.Unk_4d7691e)
+	cb.Do("OnHitSounds", &t.OnHitSounds)
 	cb.Do("Unk_1a5392", &t.Unk_1a5392)
 	cb.Do("Unk_97eadb8", &t.Unk_97eadb8)
 	cb.Do("Unk_5e1a52d", &t.Unk_5e1a52d)
@@ -13353,7 +13482,7 @@ func (t *PowerDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_767809", &t.Unk_767809)
 	cb.Do("BCastTargetAllies", &t.BCastTargetAllies)
 	cb.Do("BCastTargetEnemies", &t.BCastTargetEnemies)
-	cb.Do("Unk_7095076", &t.Unk_7095076)
+	cb.Do("BCastTargetPlayersOnly", &t.BCastTargetPlayersOnly)
 	cb.Do("TCastTargetNecroCorpsesOnly", &t.TCastTargetNecroCorpsesOnly)
 	cb.Do("Unk_b9b985", &t.Unk_b9b985)
 	cb.Do("Unk_bcdb405", &t.Unk_bcdb405)
@@ -13371,7 +13500,7 @@ func (t *PowerDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_8b4e7a", &t.Unk_8b4e7a)
 	cb.Do("Unk_44bbb8e", &t.Unk_44bbb8e)
 	cb.Do("TAttackRadius", &t.TAttackRadius)
-	cb.Do("Unk_3587b29", &t.Unk_3587b29)
+	cb.Do("BRequiresPathToTarget", &t.BRequiresPathToTarget)
 	cb.Do("BIsApproachPower", &t.BIsApproachPower)
 	cb.Do("SnoPowerApproach", &t.SnoPowerApproach)
 	cb.Do("Unk_f70b0d", &t.Unk_f70b0d)
@@ -13392,8 +13521,8 @@ func (t *PowerDefinition) Walk(cb WalkCallback) {
 	cb.Do("BInvulnerableDuring", &t.BInvulnerableDuring)
 	cb.Do("BUntargetableDuring", &t.BUntargetableDuring)
 	cb.Do("BCannotDieDuring", &t.BCannotDieDuring)
-	cb.Do("Unk_636a66b", &t.Unk_636a66b)
-	cb.Do("Unk_160bc26", &t.Unk_160bc26)
+	cb.Do("BCannotBeInterruptedDuring", &t.BCannotBeInterruptedDuring)
+	cb.Do("BStunnedUnstoppableIdDuring", &t.BStunnedUnstoppableIdDuring)
 	cb.Do("BIgnoreGravityDuring", &t.BIgnoreGravityDuring)
 	cb.Do("Unk_7a416a6", &t.Unk_7a416a6)
 	cb.Do("ArCCInfo", &t.ArCCInfo)
@@ -13899,7 +14028,7 @@ type MarkerAmbientSoundData struct {
 	DwPad                          DT_UINT
 	EInterpolationMode             DT_ENUM
 	Unk_a3f1699                    DT_FLOAT
-	Unk_ecc987f                    DT_ENUM
+	EAmbientSoundShape             DT_ENUM
 	FlCapsuleLength                DT_FLOAT
 	FClosedSpline                  DT_INT
 	SnoCampaignVisibilityCondition DT_SNO
@@ -13923,7 +14052,7 @@ func (t *MarkerAmbientSoundData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+20, &t.Unk_a3f1699, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_ecc987f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.EAmbientSoundShape, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+28, &t.FlCapsuleLength, r, &Options{Flags: 1}); err != nil {
@@ -13952,7 +14081,7 @@ func (t *MarkerAmbientSoundData) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("EInterpolationMode", &t.EInterpolationMode)
 	cb.Do("Unk_a3f1699", &t.Unk_a3f1699)
-	cb.Do("Unk_ecc987f", &t.Unk_ecc987f)
+	cb.Do("EAmbientSoundShape", &t.EAmbientSoundShape)
 	cb.Do("FlCapsuleLength", &t.FlCapsuleLength)
 	cb.Do("FClosedSpline", &t.FClosedSpline)
 	cb.Do("SnoCampaignVisibilityCondition", &t.SnoCampaignVisibilityCondition)
@@ -14204,7 +14333,7 @@ type GlobalData struct {
 	FlMonsterCritDamageScalar               DT_FLOAT
 	FlPlayerCritDamageScalar                DT_FLOAT
 	FlPvPMaxCritDamagePercent               DT_FLOAT
-	Unk_66251ff                             DT_FLOAT
+	FlDefaultDamageVariance                 DT_FLOAT
 	Unk_251341c                             DT_FLOAT
 	Unk_352d6bc                             DT_FLOAT
 	Unk_e248d9d                             DT_FLOAT
@@ -14335,7 +14464,7 @@ type GlobalData struct {
 	FlCombatRadius                          DT_FLOAT
 	Unk_a04a7d5                             DT_FLOAT
 	FlTargetAbandonTime                     DT_FLOAT
-	Unk_e24f012                             DT_FLOAT
+	FlBossTargetAbandonTime                 DT_FLOAT
 	Unk_a26a857                             DT_FLOAT
 	Unk_9a3861e                             DT_UINT
 	Unk_27a4780                             DT_FLOAT
@@ -14572,7 +14701,8 @@ type GlobalData struct {
 	FlPowerEffectIntensityPerSkillRank      DT_FLOAT
 	FlMaxPowerEffectIntensityFromSkillRanks DT_FLOAT
 	Unk_57c5af4                             DT_FLOAT
-	Unk_7125533                             DT_VARIABLEARRAY[*ScalarFunctionFormula]
+	ArSeasons                               DT_VARIABLEARRAY[*DT_SNO]
+	TScalarFormulas                         DT_VARIABLEARRAY[*ScalarFunctionFormula]
 	Unk_5beabc1                             DT_FLOAT
 	Unk_72ee1ae                             DT_FLOAT
 	Unk_b59ed1                              DT_FLOAT
@@ -14841,7 +14971,7 @@ func (t *GlobalData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+420, &t.FlPvPMaxCritDamagePercent, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+424, &t.Unk_66251ff, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+424, &t.FlDefaultDamageVariance, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+428, &t.Unk_251341c, r, &Options{Flags: 1}); err != nil {
@@ -15271,7 +15401,7 @@ func (t *GlobalData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1864, &t.FlTargetAbandonTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1868, &t.Unk_e24f012, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1868, &t.FlBossTargetAbandonTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1872, &t.Unk_a26a857, r, &Options{Flags: 1}); err != nil {
@@ -16007,87 +16137,93 @@ func (t *GlobalData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 	if err := UnmarshalAt(p+4032, &t.ArCurrencyCaps, r, &Options{
-		ArrayLength: 28,
+		ArrayLength: 31,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4256, &t.Unk_606852d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4280, &t.Unk_606852d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4280, &t.Unk_bf59715, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4304, &t.Unk_bf59715, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4296, &t.Unk_2bb7f27, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4320, &t.Unk_2bb7f27, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4300, &t.Unk_50c5dba, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4324, &t.Unk_50c5dba, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4304, &t.Unk_a19cbf3, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4328, &t.Unk_a19cbf3, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4308, &t.FlPowerEffectIntensityPerSkillRank, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4332, &t.FlPowerEffectIntensityPerSkillRank, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4312, &t.FlMaxPowerEffectIntensityFromSkillRanks, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4336, &t.FlMaxPowerEffectIntensityFromSkillRanks, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4316, &t.Unk_57c5af4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4340, &t.Unk_57c5af4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4320, &t.Unk_7125533, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4344, &t.ArSeasons, r, &Options{
+		Flags: 1,
+		Group: 137,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4336, &t.Unk_5beabc1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4360, &t.TScalarFormulas, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4340, &t.Unk_72ee1ae, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4376, &t.Unk_5beabc1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4344, &t.Unk_b59ed1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4380, &t.Unk_72ee1ae, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4348, &t.Unk_38b5fed, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4384, &t.Unk_b59ed1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4352, &t.Unk_dbc6f0d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4388, &t.Unk_38b5fed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4356, &t.Unk_9ea22ec, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4392, &t.Unk_dbc6f0d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4360, &t.Unk_9155d6b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4396, &t.Unk_9ea22ec, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4364, &t.Unk_b1d46f8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4400, &t.Unk_9155d6b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4368, &t.Unk_9f4060e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4404, &t.Unk_b1d46f8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4372, &t.Unk_2cbcb69, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4408, &t.Unk_9f4060e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4376, &t.Unk_603d082, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4412, &t.Unk_2cbcb69, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4380, &t.Unk_c20677a, r, &Options{
+	if err := UnmarshalAt(p+4416, &t.Unk_603d082, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4420, &t.Unk_c20677a, r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4384, &t.Unk_bad483c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4424, &t.Unk_bad483c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4388, &t.Unk_f883e95, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4428, &t.Unk_f883e95, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4392, &t.Unk_ae661d1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4432, &t.Unk_ae661d1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+4400, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+4440, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -16173,7 +16309,7 @@ func (t *GlobalData) Walk(cb WalkCallback) {
 	cb.Do("FlMonsterCritDamageScalar", &t.FlMonsterCritDamageScalar)
 	cb.Do("FlPlayerCritDamageScalar", &t.FlPlayerCritDamageScalar)
 	cb.Do("FlPvPMaxCritDamagePercent", &t.FlPvPMaxCritDamagePercent)
-	cb.Do("Unk_66251ff", &t.Unk_66251ff)
+	cb.Do("FlDefaultDamageVariance", &t.FlDefaultDamageVariance)
 	cb.Do("Unk_251341c", &t.Unk_251341c)
 	cb.Do("Unk_352d6bc", &t.Unk_352d6bc)
 	cb.Do("Unk_e248d9d", &t.Unk_e248d9d)
@@ -16304,7 +16440,7 @@ func (t *GlobalData) Walk(cb WalkCallback) {
 	cb.Do("FlCombatRadius", &t.FlCombatRadius)
 	cb.Do("Unk_a04a7d5", &t.Unk_a04a7d5)
 	cb.Do("FlTargetAbandonTime", &t.FlTargetAbandonTime)
-	cb.Do("Unk_e24f012", &t.Unk_e24f012)
+	cb.Do("FlBossTargetAbandonTime", &t.FlBossTargetAbandonTime)
 	cb.Do("Unk_a26a857", &t.Unk_a26a857)
 	cb.Do("Unk_9a3861e", &t.Unk_9a3861e)
 	cb.Do("Unk_27a4780", &t.Unk_27a4780)
@@ -16541,7 +16677,8 @@ func (t *GlobalData) Walk(cb WalkCallback) {
 	cb.Do("FlPowerEffectIntensityPerSkillRank", &t.FlPowerEffectIntensityPerSkillRank)
 	cb.Do("FlMaxPowerEffectIntensityFromSkillRanks", &t.FlMaxPowerEffectIntensityFromSkillRanks)
 	cb.Do("Unk_57c5af4", &t.Unk_57c5af4)
-	cb.Do("Unk_7125533", &t.Unk_7125533)
+	cb.Do("ArSeasons", &t.ArSeasons)
+	cb.Do("TScalarFormulas", &t.TScalarFormulas)
 	cb.Do("Unk_5beabc1", &t.Unk_5beabc1)
 	cb.Do("Unk_72ee1ae", &t.Unk_72ee1ae)
 	cb.Do("Unk_b59ed1", &t.Unk_b59ed1)
@@ -17008,18 +17145,18 @@ func (t *Type_16e3cafe) Walk(cb WalkCallback) {
 }
 
 type DebugProjectileMovementUpdateMessage struct {
-	THeader            RequiredMessageHeader
-	Ann                DT_ACD_NETWORK_NAME
-	IdSWorld           DT_SHARED_SERVER_DATA_ID
-	WpStart            DT_VECTOR3D
-	VVelocity          DT_VECTOR3D
-	Unk_5aa0d1f        DT_VECTOR3D
-	Unk_be8c5f6        DT_INT
-	FlProjectileRadius DT_FLOAT
-	Unk_dab04b2        DT_FLOAT
-	TDetPathData       DT_OPTIONAL[*Type_665f557c]
-	ArCollisionChecks  DT_FIXEDARRAY[*DebugProjectileCollisionCheck]
-	Unk_81f3430        DT_INT
+	THeader                   RequiredMessageHeader
+	Ann                       DT_ACD_NETWORK_NAME
+	IdSWorld                  DT_SHARED_SERVER_DATA_ID
+	WpStart                   DT_VECTOR3D
+	VVelocity                 DT_VECTOR3D
+	Unk_5aa0d1f               DT_VECTOR3D
+	Unk_be8c5f6               DT_INT
+	FlProjectileRadius        DT_FLOAT
+	FlProjectileCapsuleLength DT_FLOAT
+	TDetPathData              DT_OPTIONAL[*DebugProjectileDetPathData]
+	ArCollisionChecks         DT_FIXEDARRAY[*DebugProjectileCollisionCheck]
+	Unk_81f3430               DT_INT
 }
 
 func (t *DebugProjectileMovementUpdateMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -17051,7 +17188,7 @@ func (t *DebugProjectileMovementUpdateMessage) UnmarshalD4(r *bin.BinaryReader, 
 	if err := UnmarshalAt(p+72, &t.FlProjectileRadius, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_dab04b2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+76, &t.FlProjectileCapsuleLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDetPathData, r, &Options{Flags: 1}); err != nil {
@@ -17081,17 +17218,17 @@ func (t *DebugProjectileMovementUpdateMessage) Walk(cb WalkCallback) {
 	cb.Do("Unk_5aa0d1f", &t.Unk_5aa0d1f)
 	cb.Do("Unk_be8c5f6", &t.Unk_be8c5f6)
 	cb.Do("FlProjectileRadius", &t.FlProjectileRadius)
-	cb.Do("Unk_dab04b2", &t.Unk_dab04b2)
+	cb.Do("FlProjectileCapsuleLength", &t.FlProjectileCapsuleLength)
 	cb.Do("TDetPathData", &t.TDetPathData)
 	cb.Do("ArCollisionChecks", &t.ArCollisionChecks)
 	cb.Do("Unk_81f3430", &t.Unk_81f3430)
 }
 
-type Type_171c4e7d struct {
+type GameTestingSalvageItems struct {
 	THeader RequiredMessageHeader
 }
 
-func (t *Type_171c4e7d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingSalvageItems) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -17105,7 +17242,7 @@ func (t *Type_171c4e7d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_171c4e7d) Walk(cb WalkCallback) {
+func (t *GameTestingSalvageItems) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 }
 
@@ -17291,18 +17428,18 @@ func (t *DetachCarryableFromPlayerMessage) Walk(cb WalkCallback) {
 type Type_1786e9fa struct {
 	NRadioButtonValue                    DT_INT
 	Unk_d6b1ed2                          DT_INT
-	Unk_b264c41                          Type_6b1c5d9c
-	Unk_b93f506                          Type_6b1c5d9c
-	Unk_ffcb54c                          Type_6b1c5d9c
+	Unk_b264c41                          UIImageHandleReference
+	Unk_b93f506                          UIImageHandleReference
+	Unk_ffcb54c                          UIImageHandleReference
 	SnoTiledStyleSoundsRetreatTiledStyle DT_SNO
 	Unk_a781ae5                          DT_SNO
 	Unk_966c056                          DT_SNO
 	Unk_7310a9                           DT_RGBACOLOR
 	Unk_807b009                          DT_RGBACOLOR
 	SzChosenHex                          DT_CSTRING[*DT_BYTE]
-	ArSrcPath                            Type_6b1c5d9c
-	Unk_608378d                          Type_6b1c5d9c
-	Unk_ac65a3e                          Type_6b1c5d9c
+	ArSrcPath                            UIImageHandleReference
+	Unk_608378d                          UIImageHandleReference
+	Unk_ac65a3e                          UIImageHandleReference
 	Unk_69f59f                           DT_SNO
 }
 
@@ -17392,17 +17529,17 @@ func (t *Type_1786e9fa) Walk(cb WalkCallback) {
 	cb.Do("Unk_69f59f", &t.Unk_69f59f)
 }
 
-type Type_17bd50db struct {
-	Unk_20b45d7 DT_UINT
-	EType       DT_ENUM
-	FlRadius    DT_FLOAT
-	FlLength    DT_FLOAT
-	APitch      DT_FLOAT
-	AYaw        DT_FLOAT
-	Unk_711980c DT_VECTOR3D
+type ActorHitCollisionShape struct {
+	Unk_20b45d7      DT_UINT
+	EType            DT_ENUM
+	FlRadius         DT_FLOAT
+	FlLength         DT_FLOAT
+	APitch           DT_FLOAT
+	AYaw             DT_FLOAT
+	VBoneLocalOffset DT_VECTOR3D
 }
 
-func (t *Type_17bd50db) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ActorHitCollisionShape) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -17425,7 +17562,7 @@ func (t *Type_17bd50db) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+20, &t.AYaw, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_711980c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.VBoneLocalOffset, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+36, io.SeekStart); err != nil {
@@ -17434,26 +17571,26 @@ func (t *Type_17bd50db) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_17bd50db) Walk(cb WalkCallback) {
+func (t *ActorHitCollisionShape) Walk(cb WalkCallback) {
 	cb.Do("Unk_20b45d7", &t.Unk_20b45d7)
 	cb.Do("EType", &t.EType)
 	cb.Do("FlRadius", &t.FlRadius)
 	cb.Do("FlLength", &t.FlLength)
 	cb.Do("APitch", &t.APitch)
 	cb.Do("AYaw", &t.AYaw)
-	cb.Do("Unk_711980c", &t.Unk_711980c)
+	cb.Do("VBoneLocalOffset", &t.VBoneLocalOffset)
 }
 
-type Type_18173024 struct {
+type DRLGWorldDebugInfo struct {
 	DwSeed                 DT_UINT
 	DwSeedInitial          DT_UINT
 	SnoPrimaryDungeonQuest DT_SNO
-	ArTiles                DT_FIXEDARRAY[*Type_8462796a]
-	ArDRLGEvents           DT_FIXEDARRAY[*Type_e83323fe]
+	ArTiles                DT_FIXEDARRAY[*DRLGTileDebugInfo]
+	ArDRLGEvents           DT_FIXEDARRAY[*DRLGEventDebugInfo]
 	Unk_5999f73            Type_57fcadb
 }
 
-func (t *Type_18173024) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *DRLGWorldDebugInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -17491,7 +17628,7 @@ func (t *Type_18173024) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_18173024) Walk(cb WalkCallback) {
+func (t *DRLGWorldDebugInfo) Walk(cb WalkCallback) {
 	cb.Do("DwSeed", &t.DwSeed)
 	cb.Do("DwSeedInitial", &t.DwSeedInitial)
 	cb.Do("SnoPrimaryDungeonQuest", &t.SnoPrimaryDungeonQuest)
@@ -17503,13 +17640,13 @@ func (t *Type_18173024) Walk(cb WalkCallback) {
 type TriggerEventSetAudioState struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	TAudioState WwiseSwitchValue
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	TAudioState     WwiseSwitchValue
 }
 
 func (t *TriggerEventSetAudioState) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -17532,7 +17669,7 @@ func (t *TriggerEventSetAudioState) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TAudioState, r, &Options{Flags: 1}); err != nil {
@@ -17550,7 +17687,7 @@ func (t *TriggerEventSetAudioState) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TAudioState", &t.TAudioState)
 }
 
@@ -17690,7 +17827,7 @@ func (t *Type_18ca0295) Walk(cb WalkCallback) {
 	cb.Do("TMargins", &t.TMargins)
 }
 
-type Type_18e49fff struct {
+type dmHeightDataMirror struct {
 	CountX    DT_INT
 	CountY    DT_INT
 	CellWidth DT_FLOAT
@@ -17699,7 +17836,7 @@ type Type_18e49fff struct {
 	Scale     DT_FLOAT
 }
 
-func (t *Type_18e49fff) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmHeightDataMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -17728,7 +17865,7 @@ func (t *Type_18e49fff) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_18e49fff) Walk(cb WalkCallback) {
+func (t *dmHeightDataMirror) Walk(cb WalkCallback) {
 	cb.Do("CountX", &t.CountX)
 	cb.Do("CountY", &t.CountY)
 	cb.Do("CellWidth", &t.CellWidth)
@@ -17772,9 +17909,9 @@ func (t *AIPropType_Table) Walk(cb WalkCallback) {
 }
 
 type HeroStateRewardsMessage struct {
-	THeader            RequiredMessageHeader
-	Unk_dce541c        DT_UINT
-	ArZoneProgressData DT_FIXEDARRAY[*Type_f0f63f3d]
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	ArZoneProgressData    DT_FIXEDARRAY[*Type_f0f63f3d]
 }
 
 func (t *HeroStateRewardsMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -17785,7 +17922,7 @@ func (t *HeroStateRewardsMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.ArZoneProgressData, r, &Options{
@@ -17802,29 +17939,29 @@ func (t *HeroStateRewardsMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 
 func (t *HeroStateRewardsMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("ArZoneProgressData", &t.ArZoneProgressData)
 }
 
-type Type_18fbc228 struct {
+type TriggerEventObjectTurnToFace struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	DwObjectID  DT_UINT
-	DwTargetID  DT_UINT
-	AThreshold  DT_FLOAT
-	Unk_d74c75c DT_FLOAT
-	Unk_77ca12a DT_INT
-	Unk_23237e1 DT_INT
-	Unk_f1b6afc DT_FLOAT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwObjectID      DT_UINT
+	DwTargetID      DT_UINT
+	AThreshold      DT_FLOAT
+	Unk_d74c75c     DT_FLOAT
+	Unk_77ca12a     DT_INT
+	Unk_23237e1     DT_INT
+	Unk_f1b6afc     DT_FLOAT
 }
 
-func (t *Type_18fbc228) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TriggerEventObjectTurnToFace) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -17844,7 +17981,7 @@ func (t *Type_18fbc228) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwObjectID, r, &Options{Flags: 1}); err != nil {
@@ -17874,13 +18011,13 @@ func (t *Type_18fbc228) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_18fbc228) Walk(cb WalkCallback) {
+func (t *TriggerEventObjectTurnToFace) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwObjectID", &t.DwObjectID)
 	cb.Do("DwTargetID", &t.DwTargetID)
 	cb.Do("AThreshold", &t.AThreshold)
@@ -17938,7 +18075,7 @@ type UIRadioButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_d3a1ebf               DT_TAGMAP[*DT_ENUM]
 }
@@ -18073,20 +18210,20 @@ func (t *UpgradedItemLabelSubcondition) Walk(cb WalkCallback) {
 	cb.Do("EItemLabel", &t.EItemLabel)
 }
 
-type Type_19c611ca struct {
-	Unk_59cd8cf DT_FLOAT
-	Unk_59cd7d1 DT_FLOAT
+type LuxSettings struct {
+	FlLuxMin DT_FLOAT
+	FlLuxMax DT_FLOAT
 }
 
-func (t *Type_19c611ca) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *LuxSettings) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+0, &t.Unk_59cd8cf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+0, &t.FlLuxMin, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_59cd7d1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.FlLuxMax, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
@@ -18095,9 +18232,9 @@ func (t *Type_19c611ca) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_19c611ca) Walk(cb WalkCallback) {
-	cb.Do("Unk_59cd8cf", &t.Unk_59cd8cf)
-	cb.Do("Unk_59cd7d1", &t.Unk_59cd7d1)
+func (t *LuxSettings) Walk(cb WalkCallback) {
+	cb.Do("FlLuxMin", &t.FlLuxMin)
+	cb.Do("FlLuxMax", &t.FlLuxMax)
 }
 
 type GlobalServiceNPCData struct {
@@ -18133,36 +18270,36 @@ func (t *GlobalServiceNPCData) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 		return err
 	}
 	if err := UnmarshalAt(p+256, &t.ArCrafters, r, &Options{
-		ArrayLength: 5,
+		ArrayLength: 6,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+400, &t.ArCrafterLockConditions, r, &Options{
-		ArrayLength: 5,
+	if err := UnmarshalAt(p+424, &t.ArCrafterLockConditions, r, &Options{
+		ArrayLength: 6,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+480, &t.Unk_13e0ecf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+520, &t.Unk_13e0ecf, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+484, &t.THealerEvents, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+524, &t.THealerEvents, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+488, &t.Unk_24fcd3d, r, &Options{
+	if err := UnmarshalAt(p+528, &t.Unk_24fcd3d, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+492, &t.Unk_6ac8078, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+532, &t.Unk_6ac8078, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+496, &t.Unk_2a2b3f7, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+536, &t.Unk_2a2b3f7, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+504, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+544, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -18187,7 +18324,7 @@ type ParagonGlyphAffixDefinition struct {
 	Unk_e53c570          DT_ENUM
 	ArThresholdSelector  DT_VARIABLEARRAY[*DT_SNO]
 	EBonusOperation      DT_ENUM
-	Unk_e80c332          DT_VARIABLEARRAY[*Type_3f44d2ec]
+	Unk_e80c332          DT_VARIABLEARRAY[*ParagonGlyphAffixAttributeMap]
 	Unk_2506574          DT_GBID
 	Unk_680001b          DT_FLOAT
 	Unk_1135a20          DT_FLOAT
@@ -18370,7 +18507,7 @@ type UIMenuItemStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -18727,7 +18864,7 @@ func (t *SpawnerGizmoData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+248, &t.TInstanceData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+456, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+472, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -19348,7 +19485,7 @@ func (t *MonsterAffixDefinition) Walk(cb WalkCallback) {
 	cb.Do("HIcon", &t.HIcon)
 }
 
-type Type_1bfca377 struct {
+type TriggerEventChangeShaderMapOverrideDuration struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
@@ -19356,7 +19493,7 @@ type Type_1bfca377 struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	TDuration           DT_FLOAT
 	DwTriggerFlags      DT_UINT
 	DwTriggerFlagsEx    DT_UINT
@@ -19369,7 +19506,7 @@ type Type_1bfca377 struct {
 	Unk_279aa5a         DT_INT
 }
 
-func (t *Type_1bfca377) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TriggerEventChangeShaderMapOverrideDuration) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -19386,7 +19523,7 @@ func (t *Type_1bfca377) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -19425,12 +19562,12 @@ func (t *Type_1bfca377) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_1bfca377) Walk(cb WalkCallback) {
+func (t *TriggerEventChangeShaderMapOverrideDuration) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -19482,7 +19619,7 @@ func (t *Type_1c1c99a7) Walk(cb WalkCallback) {
 }
 
 type Type_1c5ecda5 struct {
-	Unk_13ed858 DT_VARIABLEARRAY[*Type_ac1cf1ab]
+	TStyleOverrides DT_VARIABLEARRAY[*UITemplateStyleOverride]
 }
 
 func (t *Type_1c5ecda5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -19490,7 +19627,7 @@ func (t *Type_1c5ecda5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+0, &t.Unk_13ed858, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+0, &t.TStyleOverrides, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+16, io.SeekStart); err != nil {
@@ -19500,7 +19637,7 @@ func (t *Type_1c5ecda5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 }
 
 func (t *Type_1c5ecda5) Walk(cb WalkCallback) {
-	cb.Do("Unk_13ed858", &t.Unk_13ed858)
+	cb.Do("TStyleOverrides", &t.TStyleOverrides)
 }
 
 type TimedSpawningData struct {
@@ -19643,7 +19780,7 @@ type Type_1cf6b4f9 struct {
 	Unk_e9c94fc              Type_cbfdd2ea
 	Unk_acc170e              DT_FLOAT
 	Unk_ec2c674              DT_FLOAT
-	Unk_4c76230              DT_SNO
+	SnoSkylightTex           DT_SNO
 	Unk_afd6821              bcQuat
 	FSunEnabled              DT_INT
 	PathSunColor             Type_560ae4cf
@@ -19905,7 +20042,7 @@ func (t *Type_1cf6b4f9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1204, &t.Unk_ec2c674, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1208, &t.Unk_4c76230, r, &Options{
+	if err := UnmarshalAt(p+1208, &t.SnoSkylightTex, r, &Options{
 		Flags: 1,
 		Group: 44,
 	}); err != nil {
@@ -20223,7 +20360,7 @@ func (t *Type_1cf6b4f9) Walk(cb WalkCallback) {
 	cb.Do("Unk_e9c94fc", &t.Unk_e9c94fc)
 	cb.Do("Unk_acc170e", &t.Unk_acc170e)
 	cb.Do("Unk_ec2c674", &t.Unk_ec2c674)
-	cb.Do("Unk_4c76230", &t.Unk_4c76230)
+	cb.Do("SnoSkylightTex", &t.SnoSkylightTex)
 	cb.Do("Unk_afd6821", &t.Unk_afd6821)
 	cb.Do("FSunEnabled", &t.FSunEnabled)
 	cb.Do("PathSunColor", &t.PathSunColor)
@@ -20481,7 +20618,7 @@ func (t *DebugForceSpawnMessage) Walk(cb WalkCallback) {
 }
 
 type ClanBankDepositMessage struct {
-	THeader         Type_72bd65f8
+	THeader         RequiredRequestMessageHeader
 	AnnItem         DT_ACD_NETWORK_NAME
 	NBankTab        DT_INT
 	ECurrencyType   DT_ENUM
@@ -20520,6 +20657,38 @@ func (t *ClanBankDepositMessage) Walk(cb WalkCallback) {
 	cb.Do("NBankTab", &t.NBankTab)
 	cb.Do("ECurrencyType", &t.ECurrencyType)
 	cb.Do("NCurrencyAmount", &t.NCurrencyAmount)
+}
+
+type Type_1d7ac8ba struct {
+	SzName      DT_CSTRING[*DT_BYTE]
+	Unk_c5f0201 DT_INT
+	NID         DT_INT
+}
+
+func (t *Type_1d7ac8ba) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.SzName, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.Unk_c5f0201, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.NID, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_1d7ac8ba) Walk(cb WalkCallback) {
+	cb.Do("SzName", &t.SzName)
+	cb.Do("Unk_c5f0201", &t.Unk_c5f0201)
+	cb.Do("NID", &t.NID)
 }
 
 type Type_1d7c3cec struct {
@@ -20822,7 +20991,7 @@ type TriggerEventShadow struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
 	BShadow          DT_INT
@@ -20848,7 +21017,7 @@ func (t *TriggerEventShadow) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwTriggerFlags, r, &Options{Flags: 524289}); err != nil {
@@ -20872,7 +21041,7 @@ func (t *TriggerEventShadow) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
 	cb.Do("BShadow", &t.BShadow)
@@ -20977,7 +21146,7 @@ type Type_1eb0f5e6 struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -21004,7 +21173,7 @@ func (t *Type_1eb0f5e6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -21039,7 +21208,7 @@ func (t *Type_1eb0f5e6) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -21222,7 +21391,7 @@ type SignGizmoData struct {
 	SnoDisembodiedVoice          DT_SNO
 	ESignMaterial                DT_ENUM
 	SnoLore                      DT_SNO
-	Unk_13742cd                  Type_6b1c5d9c
+	Unk_13742cd                  UIImageHandleReference
 }
 
 func (t *SignGizmoData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -21711,6 +21880,45 @@ func (t *CollisionShape) Walk(cb WalkCallback) {
 	cb.Do("FlRadius", &t.FlRadius)
 }
 
+type Type_204df95f struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	BInverse DT_INT
+	DwPad    DT_UINT
+	ESubject DT_ENUM
+}
+
+func (t *Type_204df95f) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.ESubject, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_204df95f) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("ESubject", &t.ESubject)
+}
+
 type SharedChildFile struct {
 	SzMD5 DT_CHARARRAY
 }
@@ -21824,12 +22032,12 @@ func (t *DebugDataRequestMessage) Walk(cb WalkCallback) {
 type Type_20a14f36 struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *Type_20a14f36) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -21852,7 +22060,7 @@ func (t *Type_20a14f36) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -21867,7 +22075,7 @@ func (t *Type_20a14f36) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type TriggerEventShadowDuration struct {
@@ -21878,7 +22086,7 @@ type TriggerEventShadowDuration struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -21907,7 +22115,7 @@ func (t *TriggerEventShadowDuration) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -21948,7 +22156,7 @@ func (t *TriggerEventShadowDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -22081,7 +22289,7 @@ type Type_219037e7 struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -22111,7 +22319,7 @@ func (t *Type_219037e7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -22155,7 +22363,7 @@ func (t *Type_219037e7) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -22203,7 +22411,7 @@ type TriggerEventAddObject struct {
 	TConditions               TriggerConditions
 	FGenerated                DT_INT
 	Unk_6cba752               DT_INT
-	Unk_e560b0b               DT_UINT
+	DwParentActorID           DT_UINT
 	TDuration                 DT_FLOAT
 	DwTriggerFlags            DT_UINT
 	DwTriggerFlagsEx          DT_UINT
@@ -22235,15 +22443,15 @@ type TriggerEventAddObject struct {
 	Unk_cb43646               DT_INT
 	FRandomLook               DT_INT
 	TLookLink                 LookLink
-	Unk_48fd494               DT_INT
+	FOverrideActorVariant     DT_INT
 	Unk_6b8bffc               DT_ENUM
 	SnoAnimSetOverride        DT_SNO
-	SnoPlayerAnimSetOverrides DT_VARIABLEARRAY[*Type_a4f1387e]
+	SnoPlayerAnimSetOverrides DT_VARIABLEARRAY[*PlayerAnimSetOverride]
 	DwSegmentsStep            DT_UINT
 	DwShaderMapOverride       DT_UINT
 	NLocalPlayerIndex         DT_INT
 	FlScale                   DT_FLOAT
-	Unk_b0f4eeb               DT_UINT
+	SzSpawnLocatorName        DT_UINT
 	VecScalar                 DT_VECTOR2D
 	Transform                 PRTransform
 	TEffectGroupHardpointLink HardpointLink
@@ -22277,7 +22485,7 @@ func (t *TriggerEventAddObject) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -22385,7 +22593,7 @@ func (t *TriggerEventAddObject) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+236, &t.TLookLink, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+240, &t.Unk_48fd494, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+240, &t.FOverrideActorVariant, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+244, &t.Unk_6b8bffc, r, &Options{Flags: 1}); err != nil {
@@ -22412,7 +22620,7 @@ func (t *TriggerEventAddObject) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+284, &t.FlScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.Unk_b0f4eeb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+288, &t.SzSpawnLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+292, &t.VecScalar, r, &Options{Flags: 1}); err != nil {
@@ -22471,7 +22679,7 @@ func (t *TriggerEventAddObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -22503,7 +22711,7 @@ func (t *TriggerEventAddObject) Walk(cb WalkCallback) {
 	cb.Do("Unk_cb43646", &t.Unk_cb43646)
 	cb.Do("FRandomLook", &t.FRandomLook)
 	cb.Do("TLookLink", &t.TLookLink)
-	cb.Do("Unk_48fd494", &t.Unk_48fd494)
+	cb.Do("FOverrideActorVariant", &t.FOverrideActorVariant)
 	cb.Do("Unk_6b8bffc", &t.Unk_6b8bffc)
 	cb.Do("SnoAnimSetOverride", &t.SnoAnimSetOverride)
 	cb.Do("SnoPlayerAnimSetOverrides", &t.SnoPlayerAnimSetOverrides)
@@ -22511,7 +22719,7 @@ func (t *TriggerEventAddObject) Walk(cb WalkCallback) {
 	cb.Do("DwShaderMapOverride", &t.DwShaderMapOverride)
 	cb.Do("NLocalPlayerIndex", &t.NLocalPlayerIndex)
 	cb.Do("FlScale", &t.FlScale)
-	cb.Do("Unk_b0f4eeb", &t.Unk_b0f4eeb)
+	cb.Do("SzSpawnLocatorName", &t.SzSpawnLocatorName)
 	cb.Do("VecScalar", &t.VecScalar)
 	cb.Do("Transform", &t.Transform)
 	cb.Do("TEffectGroupHardpointLink", &t.TEffectGroupHardpointLink)
@@ -22531,15 +22739,15 @@ func (t *TriggerEventAddObject) Walk(cb WalkCallback) {
 type TriggerEventDeleteObject struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_2b94198 DT_INT
-	DwActorID   DT_UINT
-	DwID        DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_2b94198     DT_INT
+	DwActorID       DT_UINT
+	DwID            DT_UINT
 }
 
 func (t *TriggerEventDeleteObject) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -22562,7 +22770,7 @@ func (t *TriggerEventDeleteObject) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_2b94198, r, &Options{Flags: 17}); err != nil {
@@ -22586,7 +22794,7 @@ func (t *TriggerEventDeleteObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_2b94198", &t.Unk_2b94198)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("DwID", &t.DwID)
@@ -22727,7 +22935,7 @@ func (t *Type_22d9402d) Walk(cb WalkCallback) {
 type PlayerClassDruidData struct {
 	DwUnlockLevel  DT_UINT
 	SnoUnlockQuest DT_SNO
-	TPassiveData   Type_78a562aa
+	TPassiveData   ClassPassiveSkillData
 }
 
 func (t *PlayerClassDruidData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -22819,35 +23027,35 @@ type TriggerEventActorMovement struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType               DT_UINT
-	TConditions          TriggerConditions
-	FGenerated           DT_INT
-	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
-	TDuration            DT_FLOAT
-	DwTriggerFlags       DT_UINT
-	DwTriggerFlagsEx     DT_UINT
-	TCleanup             TriggerCleanup
-	Unk_49e9257          DT_INT
-	Unk_5490979          DT_INT
-	DwPad                DT_UINT
-	SzLocatorName        DT_UINT
-	DwActorID            DT_UINT
-	Unk_7c25701          DT_ENUM
-	EOrientationMode     DT_ENUM
-	Unk_daebe18          DT_ENUM
-	Unk_6101673          DT_UINT
-	Unk_8470ffc          HardpointLink
-	Unk_46c8459          DT_UINT
-	EBlendEasing         DT_ENUM
-	EMoveRate            DT_ENUM
-	Unk_3c71266          DT_ENUM
-	Unk_c751343          DT_INT
-	Unk_17909b9          DT_INT
-	THardpointLinkTarget HardpointLink
-	DwTargetID           DT_UINT
-	Unk_23237e1          DT_INT
-	Unk_f1b6afc          DT_FLOAT
+	DwType                DT_UINT
+	TConditions           TriggerConditions
+	FGenerated            DT_INT
+	Unk_6cba752           DT_INT
+	DwParentActorID       DT_UINT
+	TDuration             DT_FLOAT
+	DwTriggerFlags        DT_UINT
+	DwTriggerFlagsEx      DT_UINT
+	TCleanup              TriggerCleanup
+	Unk_49e9257           DT_INT
+	Unk_5490979           DT_INT
+	DwPad                 DT_UINT
+	SzLocatorName         DT_UINT
+	DwActorID             DT_UINT
+	Unk_7c25701           DT_ENUM
+	EOrientationMode      DT_ENUM
+	Unk_daebe18           DT_ENUM
+	Unk_6101673           DT_UINT
+	Unk_8470ffc           HardpointLink
+	Unk_46c8459           DT_UINT
+	EBlendEasing          DT_ENUM
+	EMoveRate             DT_ENUM
+	EDynamicMovementSpeed DT_ENUM
+	Unk_c751343           DT_INT
+	Unk_17909b9           DT_INT
+	THardpointLinkTarget  HardpointLink
+	DwTargetID            DT_UINT
+	Unk_23237e1           DT_INT
+	Unk_f1b6afc           DT_FLOAT
 }
 
 func (t *TriggerEventActorMovement) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -22867,7 +23075,7 @@ func (t *TriggerEventActorMovement) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -22921,7 +23129,7 @@ func (t *TriggerEventActorMovement) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+168, &t.EMoveRate, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+172, &t.Unk_3c71266, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+172, &t.EDynamicMovementSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+176, &t.Unk_c751343, r, &Options{Flags: 17}); err != nil {
@@ -22953,7 +23161,7 @@ func (t *TriggerEventActorMovement) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -22971,7 +23179,7 @@ func (t *TriggerEventActorMovement) Walk(cb WalkCallback) {
 	cb.Do("Unk_46c8459", &t.Unk_46c8459)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("EMoveRate", &t.EMoveRate)
-	cb.Do("Unk_3c71266", &t.Unk_3c71266)
+	cb.Do("EDynamicMovementSpeed", &t.EDynamicMovementSpeed)
 	cb.Do("Unk_c751343", &t.Unk_c751343)
 	cb.Do("Unk_17909b9", &t.Unk_17909b9)
 	cb.Do("THardpointLinkTarget", &t.THardpointLinkTarget)
@@ -23213,6 +23421,41 @@ func (t *DebugProjectileRaycastMessage) Walk(cb WalkCallback) {
 	cb.Do("WpPosition", &t.WpPosition)
 	cb.Do("WpNormal", &t.WpNormal)
 	cb.Do("Unk_1c414e5", &t.Unk_1c414e5)
+}
+
+type Type_24402846 struct {
+	THeader       RequiredMessageHeader
+	SnoAppearance DT_SNO
+	Unk_a61d97    DT_INT
+}
+
+func (t *Type_24402846) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.SnoAppearance, r, &Options{
+		Flags: 1,
+		Group: 9,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.Unk_a61d97, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_24402846) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("SnoAppearance", &t.SnoAppearance)
+	cb.Do("Unk_a61d97", &t.Unk_a61d97)
 }
 
 type Type_245740e6 struct {
@@ -23753,12 +23996,12 @@ func (t *Type_24a8a9be) Walk(cb WalkCallback) {
 }
 
 type EliteKilledMessage struct {
-	THeader           RequiredMessageHeader
-	Unk_dce541c       DT_UINT
-	SnoActorMonster   DT_SNO
-	EMonsterRarity    DT_ENUM
-	BUseAlternateName DT_INT
-	PRareNameGBIDs    DT_FIXEDARRAY[*DT_GBID]
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoActorMonster       DT_SNO
+	EMonsterRarity        DT_ENUM
+	BUseAlternateName     DT_INT
+	PRareNameGBIDs        DT_FIXEDARRAY[*DT_GBID]
 }
 
 func (t *EliteKilledMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -23769,7 +24012,7 @@ func (t *EliteKilledMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoActorMonster, r, &Options{
@@ -23799,7 +24042,7 @@ func (t *EliteKilledMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 
 func (t *EliteKilledMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoActorMonster", &t.SnoActorMonster)
 	cb.Do("EMonsterRarity", &t.EMonsterRarity)
 	cb.Do("BUseAlternateName", &t.BUseAlternateName)
@@ -24605,6 +24848,48 @@ func (t *WeatherDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_dc54395", &t.Unk_dc54395)
 }
 
+type Type_2732a10a struct {
+	THeader     GBIDHeader
+	EAttribute  DT_ENUM
+	Unk_50ee29e DT_VARIABLEARRAY[*Type_cfc7c00f]
+	HIconImage  DT_UINT
+	Unk_5862a2d DT_UINT
+}
+
+func (t *Type_2732a10a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+260, &t.EAttribute, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+264, &t.Unk_50ee29e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+280, &t.HIconImage, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+284, &t.Unk_5862a2d, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+288, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_2732a10a) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("EAttribute", &t.EAttribute)
+	cb.Do("Unk_50ee29e", &t.Unk_50ee29e)
+	cb.Do("HIconImage", &t.HIconImage)
+	cb.Do("Unk_5862a2d", &t.Unk_5862a2d)
+}
+
 type Type_273a9eee struct {
 	GbidSpawnLocType DT_GBID
 	ERestrictionType DT_ENUM
@@ -24700,12 +24985,47 @@ func (t *LabelEntry) Walk(cb WalkCallback) {
 	cb.Do("Unk_b171d47", &t.Unk_b171d47)
 }
 
-type Type_27c7c537 struct {
+type Type_27aa5029 struct {
+	THeader        RequiredMessageHeader
+	SnoAchievement DT_SNO
+	Unk_815b7e9    DT_INT
+}
+
+func (t *Type_27aa5029) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.SnoAchievement, r, &Options{
+		Flags: 1,
+		Group: 99,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.Unk_815b7e9, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_27aa5029) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("SnoAchievement", &t.SnoAchievement)
+	cb.Do("Unk_815b7e9", &t.Unk_815b7e9)
+}
+
+type ClassPassiveSkillPowerData struct {
 	SnoPassivePower  DT_SNO
 	TUnlockCondition ConditionWrapper
 }
 
-func (t *Type_27c7c537) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ClassPassiveSkillPowerData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -24725,7 +25045,7 @@ func (t *Type_27c7c537) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_27c7c537) Walk(cb WalkCallback) {
+func (t *ClassPassiveSkillPowerData) Walk(cb WalkCallback) {
 	cb.Do("SnoPassivePower", &t.SnoPassivePower)
 	cb.Do("TUnlockCondition", &t.TUnlockCondition)
 }
@@ -24746,9 +25066,9 @@ func (t *ConsoleProperty) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *ConsoleProperty) Walk(cb WalkCallback) {}
 
 type PlayerCustomizationMessage struct {
-	THeader            RequiredMessageHeader
-	TCustomizationData CustomizationData
-	Unk_dce541c        DT_UINT
+	THeader               RequiredMessageHeader
+	TCustomizationData    CustomizationData
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerCustomizationMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -24762,7 +25082,7 @@ func (t *PlayerCustomizationMessage) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+16, &t.TCustomizationData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+56, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+56, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+60, io.SeekStart); err != nil {
@@ -24774,7 +25094,7 @@ func (t *PlayerCustomizationMessage) UnmarshalD4(r *bin.BinaryReader, o *Options
 func (t *PlayerCustomizationMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("TCustomizationData", &t.TCustomizationData)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type Type_28dc8b5b struct {
@@ -25336,6 +25656,38 @@ func (t *DisplayMode) Walk(cb WalkCallback) {
 	cb.Do("DwMSAALevel", &t.DwMSAALevel)
 }
 
+type Type_2a415346 struct {
+	Unk_f501e9d DT_INT
+	Unk_5133232 DT_INT
+	Unk_dbd4b71 DT_INT
+}
+
+func (t *Type_2a415346) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_f501e9d, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.Unk_5133232, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.Unk_dbd4b71, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_2a415346) Walk(cb WalkCallback) {
+	cb.Do("Unk_f501e9d", &t.Unk_f501e9d)
+	cb.Do("Unk_5133232", &t.Unk_5133232)
+	cb.Do("Unk_dbd4b71", &t.Unk_dbd4b71)
+}
+
 type CurrentZoneSubcondition struct {
 	// Inherits Subcondition
 	// Inherits PolymorphicBase
@@ -25451,18 +25803,18 @@ type ConversationRandomChoiceNode struct {
 	// Inherits ConversationScopeNode
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
-	ArChildNodes DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	SnoCondition DT_SNO
-	Unk_d8bf9e4  DT_INT
-	SnoSpeaker   DT_SNO
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
+	ArChildNodes   DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	SnoCondition   DT_SNO
+	Unk_d8bf9e4    DT_INT
+	SnoSpeaker     DT_SNO
 }
 
 func (t *ConversationRandomChoiceNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -25482,7 +25834,7 @@ func (t *ConversationRandomChoiceNode) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -25523,7 +25875,7 @@ func (t *ConversationRandomChoiceNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -26412,8 +26764,8 @@ func (t *WaypointGizmoData) Walk(cb WalkCallback) {
 }
 
 type Type_2cf6a209 struct {
-	Unk_3ef8e38  DT_UINT
-	SnoPowerAnim DT_SNO
+	DwParentNodeID DT_UINT
+	SnoPowerAnim   DT_SNO
 }
 
 func (t *Type_2cf6a209) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -26421,7 +26773,7 @@ func (t *Type_2cf6a209) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+0, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+0, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+4, &t.SnoPowerAnim, r, &Options{
@@ -26437,7 +26789,7 @@ func (t *Type_2cf6a209) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 }
 
 func (t *Type_2cf6a209) Walk(cb WalkCallback) {
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("SnoPowerAnim", &t.SnoPowerAnim)
 }
 
@@ -26829,12 +27181,12 @@ func (t *EssencePowerTierEntry_Table) Walk(cb WalkCallback) {
 	cb.Do("TEntries", &t.TEntries)
 }
 
-type Type_2dd9d297 struct {
+type GameTestingBuyItem struct {
 	THeader      RequiredMessageHeader
 	DwItemAmount DT_INT64
 }
 
-func (t *Type_2dd9d297) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingBuyItem) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -26851,7 +27203,7 @@ func (t *Type_2dd9d297) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_2dd9d297) Walk(cb WalkCallback) {
+func (t *GameTestingBuyItem) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwItemAmount", &t.DwItemAmount)
 }
@@ -27013,6 +27365,40 @@ func (t *ActorAnimSetPreloadHelper) Walk(cb WalkCallback) {
 	cb.Do("TAnimSet", &t.TAnimSet)
 }
 
+type Type_2f20f9fd struct {
+	// Inherits GameBalanceTable
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	DwPad    DT_UINT
+	TEntries DT_VARIABLEARRAY[*Type_9467bb76]
+}
+
+func (t *Type_2f20f9fd) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TEntries, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_2f20f9fd) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("TEntries", &t.TEntries)
+}
+
 type PlayerSkillModPointsSubcondition struct {
 	// Inherits Type_d3c3637f
 	// Inherits Subcondition
@@ -27116,6 +27502,7 @@ type ActorMonsterData struct {
 	Unk_6b4a81d                   DT_FLOAT
 	SnoMonsterFamily              DT_SNO
 	SzArchetype                   DT_UINT
+	Unk_de0631b                   DT_SNO
 	EBaseElement                  DT_ENUM
 	SnoMainHand                   DT_SNO
 	SnoOffHand                    DT_SNO
@@ -27134,13 +27521,14 @@ type ActorMonsterData struct {
 	SnoAffixes                    DT_FIXEDARRAY[*DT_SNO]
 	Unk_c8306c                    DT_FIXEDARRAY[*Type_2d9968c0]
 	SnoDisallowedAffixes          DT_VARIABLEARRAY[*DT_SNO]
+	Unk_c2d611d                   DT_VARIABLEARRAY[*DT_GBID]
 	EAITargetStyleNormal          DT_ENUM
 	EAITargetStyleElite           DT_ENUM
 	Unk_130279f                   DT_GBID
 	Unk_4b9e5c9                   DT_GBID
 	Unk_e7a2637                   DT_UINT
 	SzInternalName                DT_CHARARRAY
-	Unk_d3dddc4                   DT_INT
+	BDoesRetreat                  DT_INT
 	Unk_50569ba                   DT_INT
 	Unk_7a3dc4a                   DT_UINT
 	SnoMount                      DT_SNO
@@ -27164,7 +27552,7 @@ type ActorMonsterData struct {
 	Unk_401dfd8                   DT_FLOAT
 	Unk_f68cd00                   DT_FLOAT
 	Unk_f68cc02                   DT_FLOAT
-	Unk_16266ca                   DT_FLOAT
+	FlBossCameraSmoothing         DT_FLOAT
 	Unk_5428a5e                   DT_FLOAT
 	Unk_3b9132c                   DT_FLOAT
 	Unk_c0cc954                   DT_FLOAT
@@ -27228,229 +27616,241 @@ func (t *ActorMonsterData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+96, &t.SzArchetype, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+100, &t.EBaseElement, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+100, &t.Unk_de0631b, r, &Options{
+		Flags: 513,
+		Group: 9,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.SnoMainHand, r, &Options{
+	if err := UnmarshalAt(p+104, &t.EBaseElement, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+108, &t.SnoMainHand, r, &Options{
 		Flags: 1,
 		Group: 98,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+108, &t.SnoOffHand, r, &Options{
+	if err := UnmarshalAt(p+112, &t.SnoOffHand, r, &Options{
 		Flags: 1,
 		Group: 98,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+112, &t.TLevelScaling, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+116, &t.TLevelScaling, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.NGoldGranted, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+132, &t.NGoldGranted, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+132, &t.SnoTreasureClass, r, &Options{
+	if err := UnmarshalAt(p+136, &t.SnoTreasureClass, r, &Options{
 		Flags: 1,
 		Group: 52,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.SnoTreasureClassElite, r, &Options{
+	if err := UnmarshalAt(p+140, &t.SnoTreasureClassElite, r, &Options{
 		Flags: 1,
 		Group: 52,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+140, &t.SnoTreasureClassSuperElite, r, &Options{
+	if err := UnmarshalAt(p+144, &t.SnoTreasureClassSuperElite, r, &Options{
 		Flags: 1,
 		Group: 52,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+144, &t.FlSummonLifetime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+148, &t.FlSummonLifetime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+148, &t.NSummonMaxConcurrent, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+152, &t.NSummonMaxConcurrent, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+152, &t.NSummonMaxTotal, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+156, &t.NSummonMaxTotal, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+156, &t.ArAIBehaviors, r, &Options{
+	if err := UnmarshalAt(p+160, &t.ArAIBehaviors, r, &Options{
 		ArrayLength: 6,
 		Flags:       1,
 		Group:       3,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+180, &t.BKillSummonsOnDeath, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+184, &t.BKillSummonsOnDeath, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.SnoSummonActor, r, &Options{
+	if err := UnmarshalAt(p+188, &t.SnoSummonActor, r, &Options{
 		ArrayLength: 6,
 		Flags:       1,
 		Group:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+208, &t.ArSummonActors, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+216, &t.ArSummonActors, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+224, &t.SnoAffixes, r, &Options{
+	if err := UnmarshalAt(p+232, &t.SnoAffixes, r, &Options{
 		ArrayLength: 4,
 		Flags:       1,
 		Group:       107,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+240, &t.Unk_c8306c, r, &Options{
+	if err := UnmarshalAt(p+248, &t.Unk_c8306c, r, &Options{
 		ArrayLength: 4,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+272, &t.SnoDisallowedAffixes, r, &Options{
+	if err := UnmarshalAt(p+280, &t.SnoDisallowedAffixes, r, &Options{
 		Flags: 513,
 		Group: 107,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.EAITargetStyleNormal, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+296, &t.Unk_c2d611d, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+292, &t.EAITargetStyleElite, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+312, &t.EAITargetStyleNormal, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+296, &t.Unk_130279f, r, &Options{
+	if err := UnmarshalAt(p+316, &t.EAITargetStyleElite, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+320, &t.Unk_130279f, r, &Options{
 		Flags: 1,
 		Group: 42,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+300, &t.Unk_4b9e5c9, r, &Options{
+	if err := UnmarshalAt(p+324, &t.Unk_4b9e5c9, r, &Options{
 		Flags: 1,
 		Group: 42,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+304, &t.Unk_e7a2637, r, &Options{Flags: 524289}); err != nil {
+	if err := UnmarshalAt(p+328, &t.Unk_e7a2637, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+308, &t.SzInternalName, r, &Options{
+	if err := UnmarshalAt(p+332, &t.SzInternalName, r, &Options{
 		ArrayLength: 128,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+436, &t.Unk_d3dddc4, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+460, &t.BDoesRetreat, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+440, &t.Unk_50569ba, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+464, &t.Unk_50569ba, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+444, &t.Unk_7a3dc4a, r, &Options{Flags: 524289}); err != nil {
+	if err := UnmarshalAt(p+468, &t.Unk_7a3dc4a, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+448, &t.SnoMount, r, &Options{
+	if err := UnmarshalAt(p+472, &t.SnoMount, r, &Options{
 		Flags: 1,
 		Group: 1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+452, &t.SnoPowerPossessed, r, &Options{
+	if err := UnmarshalAt(p+476, &t.SnoPowerPossessed, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+456, &t.Unk_87dbd3a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+480, &t.Unk_87dbd3a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+460, &t.Unk_7859c5b, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+484, &t.Unk_7859c5b, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+464, &t.BIsWorldBoss, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+488, &t.BIsWorldBoss, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+468, &t.Unk_bc58cee, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+492, &t.Unk_bc58cee, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+472, &t.Unk_7fdab9c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+496, &t.Unk_7fdab9c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+476, &t.Unk_e7ee8f1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+500, &t.Unk_e7ee8f1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+480, &t.Unk_e4c90d3, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+504, &t.Unk_e4c90d3, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+484, &t.Unk_12ecd6a, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+508, &t.Unk_12ecd6a, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+488, &t.FlHPScalarOverride, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+512, &t.FlHPScalarOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+492, &t.FlDamageScalarOverride, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+516, &t.FlDamageScalarOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+496, &t.Unk_c2cc767, r, &Options{
+	if err := UnmarshalAt(p+520, &t.Unk_c2cc767, r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+500, &t.SnoStaggerPower, r, &Options{
+	if err := UnmarshalAt(p+524, &t.SnoStaggerPower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+504, &t.SnoStaggerSettings, r, &Options{
+	if err := UnmarshalAt(p+528, &t.SnoStaggerSettings, r, &Options{
 		Flags: 1,
 		Group: 130,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+508, &t.SnoBossObserver, r, &Options{
+	if err := UnmarshalAt(p+532, &t.SnoBossObserver, r, &Options{
 		Flags: 1,
 		Group: 26,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+512, &t.Unk_1627b04, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+536, &t.Unk_1627b04, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+516, &t.Unk_401e0d6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+540, &t.Unk_401e0d6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+520, &t.Unk_401dfd8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+544, &t.Unk_401dfd8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+524, &t.Unk_f68cd00, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+548, &t.Unk_f68cd00, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+528, &t.Unk_f68cc02, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+552, &t.Unk_f68cc02, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+532, &t.Unk_16266ca, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+556, &t.FlBossCameraSmoothing, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+536, &t.Unk_5428a5e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+560, &t.Unk_5428a5e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+540, &t.Unk_3b9132c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+564, &t.Unk_3b9132c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+544, &t.Unk_c0cc954, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+568, &t.Unk_c0cc954, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+548, &t.Unk_d5178b2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+572, &t.Unk_d5178b2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+552, &t.Unk_e08f0df, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+576, &t.Unk_e08f0df, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+560, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+584, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -27471,6 +27871,7 @@ func (t *ActorMonsterData) Walk(cb WalkCallback) {
 	cb.Do("Unk_6b4a81d", &t.Unk_6b4a81d)
 	cb.Do("SnoMonsterFamily", &t.SnoMonsterFamily)
 	cb.Do("SzArchetype", &t.SzArchetype)
+	cb.Do("Unk_de0631b", &t.Unk_de0631b)
 	cb.Do("EBaseElement", &t.EBaseElement)
 	cb.Do("SnoMainHand", &t.SnoMainHand)
 	cb.Do("SnoOffHand", &t.SnoOffHand)
@@ -27489,13 +27890,14 @@ func (t *ActorMonsterData) Walk(cb WalkCallback) {
 	cb.Do("SnoAffixes", &t.SnoAffixes)
 	cb.Do("Unk_c8306c", &t.Unk_c8306c)
 	cb.Do("SnoDisallowedAffixes", &t.SnoDisallowedAffixes)
+	cb.Do("Unk_c2d611d", &t.Unk_c2d611d)
 	cb.Do("EAITargetStyleNormal", &t.EAITargetStyleNormal)
 	cb.Do("EAITargetStyleElite", &t.EAITargetStyleElite)
 	cb.Do("Unk_130279f", &t.Unk_130279f)
 	cb.Do("Unk_4b9e5c9", &t.Unk_4b9e5c9)
 	cb.Do("Unk_e7a2637", &t.Unk_e7a2637)
 	cb.Do("SzInternalName", &t.SzInternalName)
-	cb.Do("Unk_d3dddc4", &t.Unk_d3dddc4)
+	cb.Do("BDoesRetreat", &t.BDoesRetreat)
 	cb.Do("Unk_50569ba", &t.Unk_50569ba)
 	cb.Do("Unk_7a3dc4a", &t.Unk_7a3dc4a)
 	cb.Do("SnoMount", &t.SnoMount)
@@ -27519,7 +27921,7 @@ func (t *ActorMonsterData) Walk(cb WalkCallback) {
 	cb.Do("Unk_401dfd8", &t.Unk_401dfd8)
 	cb.Do("Unk_f68cd00", &t.Unk_f68cd00)
 	cb.Do("Unk_f68cc02", &t.Unk_f68cc02)
-	cb.Do("Unk_16266ca", &t.Unk_16266ca)
+	cb.Do("FlBossCameraSmoothing", &t.FlBossCameraSmoothing)
 	cb.Do("Unk_5428a5e", &t.Unk_5428a5e)
 	cb.Do("Unk_3b9132c", &t.Unk_3b9132c)
 	cb.Do("Unk_c0cc954", &t.Unk_c0cc954)
@@ -27561,7 +27963,7 @@ func (t *MaterialEnumValueDefinition) Walk(cb WalkCallback) {
 	cb.Do("VValue", &t.VValue)
 }
 
-type Type_2f8b25ef struct {
+type dmMeshTriangleMirror struct {
 	I1            DT_INT
 	I2            DT_INT
 	I3            DT_INT
@@ -27573,7 +27975,7 @@ type Type_2f8b25ef struct {
 	DwIncludeMask DT_WORD
 }
 
-func (t *Type_2f8b25ef) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmMeshTriangleMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -27611,7 +28013,7 @@ func (t *Type_2f8b25ef) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_2f8b25ef) Walk(cb WalkCallback) {
+func (t *dmMeshTriangleMirror) Walk(cb WalkCallback) {
 	cb.Do("I1", &t.I1)
 	cb.Do("I2", &t.I2)
 	cb.Do("I3", &t.I3)
@@ -27684,9 +28086,9 @@ func (t *WorldTierUnlockedMessage) Walk(cb WalkCallback) {
 	cb.Do("EWorldTier", &t.EWorldTier)
 }
 
-type Type_2fce7154 struct{}
+type ScoreStatistic struct{}
 
-func (t *Type_2fce7154) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ScoreStatistic) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -27697,7 +28099,7 @@ func (t *Type_2fce7154) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_2fce7154) Walk(cb WalkCallback) {}
+func (t *ScoreStatistic) Walk(cb WalkCallback) {}
 
 type SpeedTreeWind8 struct {
 	// Inherits SpeedTreeWindBase
@@ -27766,9 +28168,9 @@ func (t *BoneStructureInfo) Walk(cb WalkCallback) {
 }
 
 type PlayerActorSetInitialMessage struct {
-	THeader     RequiredMessageHeader
-	Ann         DT_ACD_NETWORK_NAME
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	Ann                   DT_ACD_NETWORK_NAME
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerActorSetInitialMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -27782,7 +28184,7 @@ func (t *PlayerActorSetInitialMessage) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+16, &t.Ann, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
@@ -27794,7 +28196,7 @@ func (t *PlayerActorSetInitialMessage) UnmarshalD4(r *bin.BinaryReader, o *Optio
 func (t *PlayerActorSetInitialMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("Ann", &t.Ann)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type Type_300a1e1b struct {
@@ -28003,7 +28405,7 @@ type PowerPayloadDefinition struct {
 	Unk_15c6c03                DT_INT
 	Unk_e842c84                DT_INT
 	Unk_b8f2b                  DT_ENUM
-	Unk_79ce2e1                DT_INT
+	BHasCombatEffectOverride   DT_INT
 	TCombatEffectOverride      DT_STRING_FORMULA
 	Unk_ddcd868                DT_ENUM
 	SnoNormalHitEffectGroup    DT_SNO
@@ -28014,7 +28416,7 @@ type PowerPayloadDefinition struct {
 	Unk_969096b                DT_INT
 	Unk_5885b8                 DT_ENUM
 	Unk_f38eac9                DT_INT
-	Unk_67260fc                Type_3940c0fe
+	Unk_67260fc                OnHitSounds
 }
 
 func (t *PowerPayloadDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -28088,7 +28490,7 @@ func (t *PowerPayloadDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+404, &t.Unk_b8f2b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+408, &t.Unk_79ce2e1, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+408, &t.BHasCombatEffectOverride, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+416, &t.TCombatEffectOverride, r, &Options{Flags: 1}); err != nil {
@@ -28157,7 +28559,7 @@ func (t *PowerPayloadDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_15c6c03", &t.Unk_15c6c03)
 	cb.Do("Unk_e842c84", &t.Unk_e842c84)
 	cb.Do("Unk_b8f2b", &t.Unk_b8f2b)
-	cb.Do("Unk_79ce2e1", &t.Unk_79ce2e1)
+	cb.Do("BHasCombatEffectOverride", &t.BHasCombatEffectOverride)
 	cb.Do("TCombatEffectOverride", &t.TCombatEffectOverride)
 	cb.Do("Unk_ddcd868", &t.Unk_ddcd868)
 	cb.Do("SnoNormalHitEffectGroup", &t.SnoNormalHitEffectGroup)
@@ -28233,6 +28635,46 @@ func (t *SurfaceGrid) Walk(cb WalkCallback) {
 	cb.Do("AabbBounds", &t.AabbBounds)
 	cb.Do("DwRows", &t.DwRows)
 	cb.Do("DwColumns", &t.DwColumns)
+}
+
+type Type_30cc9076 struct {
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoAchievement        DT_SNO
+	BManuallyTracked      DT_INT
+}
+
+func (t *Type_30cc9076) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.SnoAchievement, r, &Options{
+		Flags: 1,
+		Group: 99,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.BManuallyTracked, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_30cc9076) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
+	cb.Do("SnoAchievement", &t.SnoAchievement)
+	cb.Do("BManuallyTracked", &t.BManuallyTracked)
 }
 
 type ExperienceLevelAlt_Table struct {
@@ -28475,11 +28917,11 @@ func (t *Type_31555106) Walk(cb WalkCallback) {
 	cb.Do("Unk_bb865d0", &t.Unk_bb865d0)
 }
 
-type Type_31826a49 struct {
+type GlobalRoadGraphCell struct {
 	ArSegmentIndices DT_VARIABLEARRAY[*DT_INT]
 }
 
-func (t *Type_31826a49) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GlobalRoadGraphCell) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -28493,8 +28935,35 @@ func (t *Type_31826a49) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_31826a49) Walk(cb WalkCallback) {
+func (t *GlobalRoadGraphCell) Walk(cb WalkCallback) {
 	cb.Do("ArSegmentIndices", &t.ArSegmentIndices)
+}
+
+type Type_31a7ff07 struct {
+	THeader     GBIDHeader
+	Unk_66a98b7 DT_UINT
+}
+
+func (t *Type_31a7ff07) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+260, &t.Unk_66a98b7, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+264, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_31a7ff07) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("Unk_66a98b7", &t.Unk_66a98b7)
 }
 
 type PortalTransferSetupMessage struct {
@@ -28676,6 +29145,7 @@ type RopeDefinition struct {
 	TSystemDurationRange               DT_RANGE[*DT_FLOAT]
 	TSystemDurationScalar              InterpolationScalar
 	FlOutroDuration                    DT_FLOAT
+	Unk_b1810a4                        DT_INT
 	PathColorOverTime                  Type_560ae4cf
 	PathColorOverLength                Type_560ae4cf
 	PathAlpha                          Type_cbfdd2ea
@@ -28797,142 +29267,145 @@ func (t *RopeDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+228, &t.FlOutroDuration, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+232, &t.PathColorOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+232, &t.Unk_b1810a4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.PathColorOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+240, &t.PathColorOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+344, &t.PathAlpha, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+296, &t.PathColorOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+400, &t.PathAlphaOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+352, &t.PathAlpha, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+456, &t.Unk_ab00250, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+408, &t.PathAlphaOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+512, &t.Unk_3c8d383, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+464, &t.Unk_ab00250, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+568, &t.Unk_d96e4e6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+520, &t.Unk_3c8d383, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+624, &t.Unk_bf2b399, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+576, &t.Unk_d96e4e6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+680, &t.Unk_abcab5e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+632, &t.Unk_bf2b399, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+736, &t.Unk_9a3f811, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+688, &t.Unk_abcab5e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+792, &t.Unk_3a6dc3c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+744, &t.Unk_9a3f811, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+848, &t.Unk_5ddd86f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+800, &t.Unk_3a6dc3c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+904, &t.PathWidthOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+856, &t.Unk_5ddd86f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+960, &t.PathWidthOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+912, &t.PathWidthOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1016, &t.PathSourcePointWorldUpMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+968, &t.PathWidthOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1072, &t.PathSourcePointAlongRopeMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1024, &t.PathSourcePointWorldUpMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1128, &t.PathSourcePointPerpendicularMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1080, &t.PathSourcePointAlongRopeMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1184, &t.Unk_fd2b7ac, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1136, &t.PathSourcePointPerpendicularMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1240, &t.PathDestPointWorldUpMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1192, &t.Unk_fd2b7ac, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1296, &t.PathDestPointAlongRopeMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1248, &t.PathDestPointWorldUpMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1352, &t.PathDestPointPerpendicularMotion, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1304, &t.PathDestPointAlongRopeMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1408, &t.PathSeparation, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1360, &t.PathDestPointPerpendicularMotion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1464, &t.PathXAmpOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1416, &t.PathSeparation, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1520, &t.PathYAmpOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1472, &t.PathXAmpOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1576, &t.Unk_14d71e7, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1528, &t.PathYAmpOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1632, &t.Unk_3e97148, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1584, &t.Unk_14d71e7, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1688, &t.PathFreqOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1640, &t.Unk_3e97148, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1744, &t.PathPhaseSpeedOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1696, &t.PathFreqOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1800, &t.Unk_e85eb5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1752, &t.PathPhaseSpeedOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1808, &t.Unk_f7381a2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1808, &t.Unk_e85eb5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1816, &t.Unk_bc10ec1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1816, &t.Unk_f7381a2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1824, &t.Unk_6a3b8c1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1824, &t.Unk_bc10ec1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1880, &t.Unk_a74800e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1832, &t.Unk_6a3b8c1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1936, &t.Unk_a85b95c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1888, &t.Unk_a74800e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1944, &t.Unk_910dc49, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1944, &t.Unk_a85b95c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1952, &t.Unk_fa52de8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1952, &t.Unk_910dc49, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1960, &t.Unk_c44c7c8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1960, &t.Unk_fa52de8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2016, &t.Unk_4a82155, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1968, &t.Unk_c44c7c8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2072, &t.NNoiseFrequency, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2024, &t.Unk_4a82155, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2076, &t.TNoiseRateRange, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2080, &t.NNoiseFrequency, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2088, &t.PathNoiseRangeOverLength, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2084, &t.TNoiseRateRange, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2144, &t.PathTangentSourceOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2096, &t.PathNoiseRangeOverLength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2200, &t.PathTangentDestinationOverTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2152, &t.PathTangentSourceOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2256, &t.PtMsgTriggeredEvents, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2208, &t.PathTangentDestinationOverTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2272, &t.DwMaxSystems, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2264, &t.PtMsgTriggeredEvents, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+2280, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+2280, &t.DwMaxSystems, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+2288, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -28960,6 +29433,7 @@ func (t *RopeDefinition) Walk(cb WalkCallback) {
 	cb.Do("TSystemDurationRange", &t.TSystemDurationRange)
 	cb.Do("TSystemDurationScalar", &t.TSystemDurationScalar)
 	cb.Do("FlOutroDuration", &t.FlOutroDuration)
+	cb.Do("Unk_b1810a4", &t.Unk_b1810a4)
 	cb.Do("PathColorOverTime", &t.PathColorOverTime)
 	cb.Do("PathColorOverLength", &t.PathColorOverLength)
 	cb.Do("PathAlpha", &t.PathAlpha)
@@ -30272,10 +30746,10 @@ func (t *MarkerNoMountVolumeData) Walk(cb WalkCallback) {
 }
 
 type Type_349ba61e struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	Unk_b88123b DT_CHARARRAY
-	Unk_f1dc826 DT_CHARARRAY
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	Unk_b88123b           DT_CHARARRAY
+	Unk_f1dc826           DT_CHARARRAY
 }
 
 func (t *Type_349ba61e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -30286,7 +30760,7 @@ func (t *Type_349ba61e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.Unk_b88123b, r, &Options{
@@ -30309,7 +30783,7 @@ func (t *Type_349ba61e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_349ba61e) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("Unk_b88123b", &t.Unk_b88123b)
 	cb.Do("Unk_f1dc826", &t.Unk_f1dc826)
 }
@@ -30556,15 +31030,15 @@ func (t *AnimDepthOfField) Walk(cb WalkCallback) {
 type GlobalZoneProgressData struct {
 	// Inherits GlobalBase
 	// Inherits PolymorphicBase
-	DwType               DT_UINT
-	DwPad                DT_UINT
-	Unk_5a84245          DT_CSTRING[*DT_BYTE]
-	ArPerZoneData        DT_FIXEDARRAY[*Type_b1cccfae]
-	Unk_83a373           DT_FIXEDARRAY[*DT_INT]
-	Unk_2d36569          DT_FIXEDARRAY[*DT_INT]
-	ArRewardStringLabels DT_FIXEDARRAY[*DT_UINT]
-	Unk_7f27ec0          DT_FIXEDARRAY[*DT_UINT]
-	Unk_980ba0f          DT_VARIABLEARRAY[*Type_ba2327fc]
+	DwType                DT_UINT
+	DwPad                 DT_UINT
+	SzCurrentTargetBranch DT_CSTRING[*DT_BYTE]
+	ArPerZoneData         DT_FIXEDARRAY[*ZoneProgressPerZoneData]
+	Unk_83a373            DT_FIXEDARRAY[*DT_INT]
+	Unk_2d36569           DT_FIXEDARRAY[*DT_INT]
+	ArRewardStringLabels  DT_FIXEDARRAY[*DT_UINT]
+	Unk_7f27ec0           DT_FIXEDARRAY[*DT_UINT]
+	Unk_980ba0f           DT_VARIABLEARRAY[*Type_ba2327fc]
 }
 
 func (t *GlobalZoneProgressData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -30578,7 +31052,7 @@ func (t *GlobalZoneProgressData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_5a84245, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.SzCurrentTargetBranch, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.ArPerZoneData, r, &Options{
@@ -30587,34 +31061,34 @@ func (t *GlobalZoneProgressData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1712, &t.Unk_83a373, r, &Options{
+	if err := UnmarshalAt(p+1912, &t.Unk_83a373, r, &Options{
 		ArrayLength: 6,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1736, &t.Unk_2d36569, r, &Options{
+	if err := UnmarshalAt(p+1936, &t.Unk_2d36569, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1756, &t.ArRewardStringLabels, r, &Options{
+	if err := UnmarshalAt(p+1956, &t.ArRewardStringLabels, r, &Options{
 		ArrayLength: 2,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1764, &t.Unk_7f27ec0, r, &Options{
+	if err := UnmarshalAt(p+1964, &t.Unk_7f27ec0, r, &Options{
 		ArrayLength: 7,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1792, &t.Unk_980ba0f, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+1992, &t.Unk_980ba0f, r, &Options{}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+1808, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+2008, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -30623,7 +31097,7 @@ func (t *GlobalZoneProgressData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 func (t *GlobalZoneProgressData) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("DwPad", &t.DwPad)
-	cb.Do("Unk_5a84245", &t.Unk_5a84245)
+	cb.Do("SzCurrentTargetBranch", &t.SzCurrentTargetBranch)
 	cb.Do("ArPerZoneData", &t.ArPerZoneData)
 	cb.Do("Unk_83a373", &t.Unk_83a373)
 	cb.Do("Unk_2d36569", &t.Unk_2d36569)
@@ -31182,7 +31656,7 @@ type TriggerEventFoley struct {
 	TConditions        TriggerConditions
 	FGenerated         DT_INT
 	Unk_6cba752        DT_INT
-	Unk_e560b0b        DT_UINT
+	DwParentActorID    DT_UINT
 	THardpointLink     HardpointLink
 	SzFoleyTypeTag     DT_UINT
 	SnoFoleySoundTable DT_SNO
@@ -31212,7 +31686,7 @@ func (t *TriggerEventFoley) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.THardpointLink, r, &Options{Flags: 1}); err != nil {
@@ -31251,7 +31725,7 @@ func (t *TriggerEventFoley) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 	cb.Do("SzFoleyTypeTag", &t.SzFoleyTypeTag)
 	cb.Do("SnoFoleySoundTable", &t.SnoFoleySoundTable)
@@ -31443,13 +31917,13 @@ func (t *ObjectiveRegionParams) Walk(cb WalkCallback) {
 type TriggerEventMusic struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	SnoMusic    DT_SNO
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	SnoMusic        DT_SNO
 }
 
 func (t *TriggerEventMusic) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -31472,7 +31946,7 @@ func (t *TriggerEventMusic) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.SnoMusic, r, &Options{
@@ -31493,7 +31967,7 @@ func (t *TriggerEventMusic) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("SnoMusic", &t.SnoMusic)
 }
 
@@ -31574,7 +32048,7 @@ type TriggerEventVoice struct {
 	TConditions        TriggerConditions
 	FGenerated         DT_INT
 	Unk_6cba752        DT_INT
-	Unk_e560b0b        DT_UINT
+	DwParentActorID    DT_UINT
 	THardpointLink     HardpointLink
 	SzVoiceTypeTag     DT_UINT
 	SnoVoiceSoundTable DT_SNO
@@ -31602,7 +32076,7 @@ func (t *TriggerEventVoice) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.THardpointLink, r, &Options{Flags: 1}); err != nil {
@@ -31635,7 +32109,7 @@ func (t *TriggerEventVoice) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 	cb.Do("SzVoiceTypeTag", &t.SzVoiceTypeTag)
 	cb.Do("SnoVoiceSoundTable", &t.SnoVoiceSoundTable)
@@ -31777,7 +32251,7 @@ type UIHotbarButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_3c001f0               DT_TAGMAP[*DT_ENUM]
 }
@@ -32409,7 +32883,7 @@ func (t *ParametricSettings) Walk(cb WalkCallback) {
 }
 
 type GeneratorToItemResponseMessage struct {
-	THeader Type_ad008e7e
+	THeader RequiredResponseMessageHeader
 	TItemId Type_f5ac91bb
 	Ann     DT_ACD_NETWORK_NAME
 }
@@ -32440,13 +32914,13 @@ func (t *GeneratorToItemResponseMessage) Walk(cb WalkCallback) {
 	cb.Do("Ann", &t.Ann)
 }
 
-type Type_3940c0fe struct {
+type OnHitSounds struct {
 	Unk_85f3271 DT_SNO
 	Unk_4588331 DT_SNO
 	Unk_632d790 DT_SNO
 }
 
-func (t *Type_3940c0fe) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *OnHitSounds) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -32475,7 +32949,7 @@ func (t *Type_3940c0fe) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_3940c0fe) Walk(cb WalkCallback) {
+func (t *OnHitSounds) Walk(cb WalkCallback) {
 	cb.Do("Unk_85f3271", &t.Unk_85f3271)
 	cb.Do("Unk_4588331", &t.Unk_4588331)
 	cb.Do("Unk_632d790", &t.Unk_632d790)
@@ -32791,7 +33265,7 @@ func (t *AnimSetPowerEntry) Walk(cb WalkCallback) {
 type FreezeDirectionMessage struct {
 	THeader           RequiredMessageHeader
 	AnnTarget         DT_OPTIONAL[*DT_ACD_NETWORK_NAME]
-	Unk_5692531       DT_OPTIONAL[*DT_VECTOR3D]
+	VLocalImpactPos   DT_OPTIONAL[*DT_VECTOR3D]
 	FlImpactDirection DT_OPTIONAL[*DT_FLOAT]
 	Unk_a6fef34       DT_OPTIONAL[*DT_VECTOR3D]
 }
@@ -32807,7 +33281,7 @@ func (t *FreezeDirectionMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+16, &t.AnnTarget, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+44, &t.FlImpactDirection, r, &Options{Flags: 1}); err != nil {
@@ -32825,12 +33299,12 @@ func (t *FreezeDirectionMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 func (t *FreezeDirectionMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("AnnTarget", &t.AnnTarget)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
 	cb.Do("FlImpactDirection", &t.FlImpactDirection)
 	cb.Do("Unk_a6fef34", &t.Unk_a6fef34)
 }
 
-type Type_3a911960 struct {
+type dmClothDataMirror struct {
 	BindVertices      DT_INT64
 	BindNormals       DT_INT64
 	Unk_1655a99       DT_INT64
@@ -32850,13 +33324,13 @@ type Type_3a911960 struct {
 	ConstraintLengths DT_INT64
 	Unk_d55a167       DT_INT64
 	Unk_e5fff43       DT_INT64
-	Unk_4816b6f       DT_INT64
+	WarpClusters      DT_INT64
 	Unk_b6736eb       DT_INT64
-	Unk_7a84b88       DT_INT64
-	Unk_ffe06ee       DT_INT64
+	ShearClusters     DT_INT64
+	BendClusters      DT_INT64
 	CapsuleDefs       DT_INT64
-	Unk_4ea6992       DT_INT64
-	Unk_4fdc600       DT_INT64
+	PlaneDefs         DT_INT64
+	DriverBindPose    DT_INT64
 	DriverMap         DT_INT64
 	Name              DT_FIXEDARRAY[*DT_BYTE]
 	Density           DT_FLOAT
@@ -32877,7 +33351,7 @@ type Type_3a911960 struct {
 	PlaneCount        DT_WORD
 }
 
-func (t *Type_3a911960) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmClothDataMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -32939,25 +33413,25 @@ func (t *Type_3a911960) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+144, &t.Unk_e5fff43, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+152, &t.Unk_4816b6f, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+152, &t.WarpClusters, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+160, &t.Unk_b6736eb, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.Unk_7a84b88, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+168, &t.ShearClusters, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_ffe06ee, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+176, &t.BendClusters, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+184, &t.CapsuleDefs, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+192, &t.Unk_4ea6992, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+192, &t.PlaneDefs, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+200, &t.Unk_4fdc600, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+200, &t.DriverBindPose, r, &Options{Flags: 4194304}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+208, &t.DriverMap, r, &Options{Flags: 4194304}); err != nil {
@@ -33020,7 +33494,7 @@ func (t *Type_3a911960) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_3a911960) Walk(cb WalkCallback) {
+func (t *dmClothDataMirror) Walk(cb WalkCallback) {
 	cb.Do("BindVertices", &t.BindVertices)
 	cb.Do("BindNormals", &t.BindNormals)
 	cb.Do("Unk_1655a99", &t.Unk_1655a99)
@@ -33040,13 +33514,13 @@ func (t *Type_3a911960) Walk(cb WalkCallback) {
 	cb.Do("ConstraintLengths", &t.ConstraintLengths)
 	cb.Do("Unk_d55a167", &t.Unk_d55a167)
 	cb.Do("Unk_e5fff43", &t.Unk_e5fff43)
-	cb.Do("Unk_4816b6f", &t.Unk_4816b6f)
+	cb.Do("WarpClusters", &t.WarpClusters)
 	cb.Do("Unk_b6736eb", &t.Unk_b6736eb)
-	cb.Do("Unk_7a84b88", &t.Unk_7a84b88)
-	cb.Do("Unk_ffe06ee", &t.Unk_ffe06ee)
+	cb.Do("ShearClusters", &t.ShearClusters)
+	cb.Do("BendClusters", &t.BendClusters)
 	cb.Do("CapsuleDefs", &t.CapsuleDefs)
-	cb.Do("Unk_4ea6992", &t.Unk_4ea6992)
-	cb.Do("Unk_4fdc600", &t.Unk_4fdc600)
+	cb.Do("PlaneDefs", &t.PlaneDefs)
+	cb.Do("DriverBindPose", &t.DriverBindPose)
 	cb.Do("DriverMap", &t.DriverMap)
 	cb.Do("Name", &t.Name)
 	cb.Do("Density", &t.Density)
@@ -33494,10 +33968,10 @@ func (t *WorldStateDefinition) Walk(cb WalkCallback) {
 }
 
 type ChangedPlayerMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	UsHeroName  DT_CHARARRAY
-	EClass      DT_ENUM
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	UsHeroName            DT_CHARARRAY
+	EClass                DT_ENUM
 }
 
 func (t *ChangedPlayerMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -33508,7 +33982,7 @@ func (t *ChangedPlayerMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.UsHeroName, r, &Options{
@@ -33528,15 +34002,15 @@ func (t *ChangedPlayerMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 
 func (t *ChangedPlayerMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("UsHeroName", &t.UsHeroName)
 	cb.Do("EClass", &t.EClass)
 }
 
 type WallCornerPieces struct {
 	ArPieces          DT_VARIABLEARRAY[*WallPiece]
-	Unk_85db88e       DT_VARIABLEARRAY[*WallPiece]
-	Unk_767477        DT_VARIABLEARRAY[*WallPiece]
+	ArStartCapPieces  DT_VARIABLEARRAY[*WallPiece]
+	ArEndCapPieces    DT_VARIABLEARRAY[*WallPiece]
 	TScale            DT_RANGE[*DT_FLOAT]
 	EPieceSelectMode  DT_ENUM
 	THorizontalOffset DT_RANGE[*DT_FLOAT]
@@ -33557,10 +34031,10 @@ func (t *WallCornerPieces) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.ArPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_85db88e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.ArStartCapPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_767477, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.ArEndCapPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+48, &t.TScale, r, &Options{Flags: 1}); err != nil {
@@ -33601,8 +34075,8 @@ func (t *WallCornerPieces) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *WallCornerPieces) Walk(cb WalkCallback) {
 	cb.Do("ArPieces", &t.ArPieces)
-	cb.Do("Unk_85db88e", &t.Unk_85db88e)
-	cb.Do("Unk_767477", &t.Unk_767477)
+	cb.Do("ArStartCapPieces", &t.ArStartCapPieces)
+	cb.Do("ArEndCapPieces", &t.ArEndCapPieces)
 	cb.Do("TScale", &t.TScale)
 	cb.Do("EPieceSelectMode", &t.EPieceSelectMode)
 	cb.Do("THorizontalOffset", &t.THorizontalOffset)
@@ -33733,15 +34207,45 @@ func (t *PlasmaAttachMessage) Walk(cb WalkCallback) {
 	cb.Do("AnnAttachTo", &t.AnnAttachTo)
 }
 
+type Type_3c65a2a2 struct {
+	Unk_4cb9610 DT_GBID
+	DwWeight    DT_UINT
+}
+
+func (t *Type_3c65a2a2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_4cb9610, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.DwWeight, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_3c65a2a2) Walk(cb WalkCallback) {
+	cb.Do("Unk_4cb9610", &t.Unk_4cb9610)
+	cb.Do("DwWeight", &t.DwWeight)
+}
+
 type TriggerEventDisableRagdollAnimationOverride struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventDisableRagdollAnimationOverride) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -33764,7 +34268,7 @@ func (t *TriggerEventDisableRagdollAnimationOverride) UnmarshalD4(r *bin.BinaryR
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -33779,7 +34283,7 @@ func (t *TriggerEventDisableRagdollAnimationOverride) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type CancelGroupTransferMessage struct {
@@ -33834,8 +34338,248 @@ func (t *ConversationNodeReference) Walk(cb WalkCallback) {
 	cb.Do("DwNodeID", &t.DwNodeID)
 }
 
+type Type_3c7ce2a0 struct {
+	// Inherits NamedGizmoData
+	// Inherits ActorGizmoData
+	// Inherits PolymorphicBase
+	DwType                       DT_UINT
+	DwPad                        DT_UINT
+	FDisableNonFriendlyOperation DT_INT
+	FWalkToCenter                DT_INT
+	FGizmoStartsDisabled         DT_INT
+	FUseStringListName           DT_INT
+	FForceMinimapIcon            DT_INT
+	FlOperationRadius            DT_FLOAT
+	Unk_d0b1df5                  DT_FLOAT
+	FlGizmoUseTime               DT_FLOAT
+	SnoChannelingEffect          DT_SNO
+	Unk_2767229                  DT_INT
+	FGizmoShowProgressBar        DT_INT
+	Unk_6d9ebe1                  DT_INT
+	Unk_5456245                  DT_INT
+	Unk_af5815a                  DT_INT
+	SnoOnClickEffect             DT_SNO
+	SnoPickedUpEffect            DT_SNO
+	SnoDropOnGroundEffect        DT_SNO
+	TConditionData               GizmoConditionData
+	SnoPowerOperator             DT_SNO
+	SnoPowerOperate              DT_SNO
+	SnoPowerOperatorActive       DT_SNO
+	SnoPowerOperateActive        DT_SNO
+	Unk_359810e                  DT_INT
+	NCooldown                    DT_UINT
+	Unk_9c8478e                  DT_UINT
+	Unk_d45ed2d                  DT_INT
+	Unk_f6b20b7                  DT_INT
+	Unk_54513b8                  DT_INT
+	Unk_fd1f378                  DT_UINT
+	Unk_487c14                   DT_UINT
+	Unk_87f2609                  DT_UINT
+	Unk_158eb4f                  DT_FLOAT
+	Unk_ab58cd3                  DT_ENUM
+	Unk_91a3966                  DT_UINT
+	Unk_25312e5                  DT_UINT
+	Unk_4be4371                  DT_INT
+	Unk_4d0f6a9                  DT_UINT
+}
+
+func (t *Type_3c7ce2a0) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.FDisableNonFriendlyOperation, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.FWalkToCenter, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.FGizmoStartsDisabled, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.FUseStringListName, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+32, &t.FForceMinimapIcon, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+36, &t.FlOperationRadius, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+40, &t.Unk_d0b1df5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+44, &t.FlGizmoUseTime, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+48, &t.SnoChannelingEffect, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+52, &t.Unk_2767229, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+56, &t.FGizmoShowProgressBar, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+60, &t.Unk_6d9ebe1, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+64, &t.Unk_5456245, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+68, &t.Unk_af5815a, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+72, &t.SnoOnClickEffect, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+76, &t.SnoPickedUpEffect, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+80, &t.SnoDropOnGroundEffect, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+84, &t.TConditionData, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+88, &t.SnoPowerOperator, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+92, &t.SnoPowerOperate, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+96, &t.SnoPowerOperatorActive, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+100, &t.SnoPowerOperateActive, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+104, &t.Unk_359810e, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+108, &t.NCooldown, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+112, &t.Unk_9c8478e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+116, &t.Unk_d45ed2d, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+120, &t.Unk_f6b20b7, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+124, &t.Unk_54513b8, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+128, &t.Unk_fd1f378, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+132, &t.Unk_487c14, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+136, &t.Unk_87f2609, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+140, &t.Unk_158eb4f, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+144, &t.Unk_ab58cd3, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+148, &t.Unk_91a3966, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+152, &t.Unk_25312e5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+156, &t.Unk_4be4371, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+160, &t.Unk_4d0f6a9, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+168, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_3c7ce2a0) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("FDisableNonFriendlyOperation", &t.FDisableNonFriendlyOperation)
+	cb.Do("FWalkToCenter", &t.FWalkToCenter)
+	cb.Do("FGizmoStartsDisabled", &t.FGizmoStartsDisabled)
+	cb.Do("FUseStringListName", &t.FUseStringListName)
+	cb.Do("FForceMinimapIcon", &t.FForceMinimapIcon)
+	cb.Do("FlOperationRadius", &t.FlOperationRadius)
+	cb.Do("Unk_d0b1df5", &t.Unk_d0b1df5)
+	cb.Do("FlGizmoUseTime", &t.FlGizmoUseTime)
+	cb.Do("SnoChannelingEffect", &t.SnoChannelingEffect)
+	cb.Do("Unk_2767229", &t.Unk_2767229)
+	cb.Do("FGizmoShowProgressBar", &t.FGizmoShowProgressBar)
+	cb.Do("Unk_6d9ebe1", &t.Unk_6d9ebe1)
+	cb.Do("Unk_5456245", &t.Unk_5456245)
+	cb.Do("Unk_af5815a", &t.Unk_af5815a)
+	cb.Do("SnoOnClickEffect", &t.SnoOnClickEffect)
+	cb.Do("SnoPickedUpEffect", &t.SnoPickedUpEffect)
+	cb.Do("SnoDropOnGroundEffect", &t.SnoDropOnGroundEffect)
+	cb.Do("TConditionData", &t.TConditionData)
+	cb.Do("SnoPowerOperator", &t.SnoPowerOperator)
+	cb.Do("SnoPowerOperate", &t.SnoPowerOperate)
+	cb.Do("SnoPowerOperatorActive", &t.SnoPowerOperatorActive)
+	cb.Do("SnoPowerOperateActive", &t.SnoPowerOperateActive)
+	cb.Do("Unk_359810e", &t.Unk_359810e)
+	cb.Do("NCooldown", &t.NCooldown)
+	cb.Do("Unk_9c8478e", &t.Unk_9c8478e)
+	cb.Do("Unk_d45ed2d", &t.Unk_d45ed2d)
+	cb.Do("Unk_f6b20b7", &t.Unk_f6b20b7)
+	cb.Do("Unk_54513b8", &t.Unk_54513b8)
+	cb.Do("Unk_fd1f378", &t.Unk_fd1f378)
+	cb.Do("Unk_487c14", &t.Unk_487c14)
+	cb.Do("Unk_87f2609", &t.Unk_87f2609)
+	cb.Do("Unk_158eb4f", &t.Unk_158eb4f)
+	cb.Do("Unk_ab58cd3", &t.Unk_ab58cd3)
+	cb.Do("Unk_91a3966", &t.Unk_91a3966)
+	cb.Do("Unk_25312e5", &t.Unk_25312e5)
+	cb.Do("Unk_4be4371", &t.Unk_4be4371)
+	cb.Do("Unk_4d0f6a9", &t.Unk_4d0f6a9)
+}
+
 type ActorMountData struct {
 	EMountRarity DT_ENUM
+	Unk_40ae170  DT_SNO
 }
 
 func (t *ActorMountData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -33846,7 +34590,13 @@ func (t *ActorMountData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.EMountRarity, r, &Options{}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+4, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+4, &t.Unk_40ae170, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -33854,6 +34604,7 @@ func (t *ActorMountData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *ActorMountData) Walk(cb WalkCallback) {
 	cb.Do("EMountRarity", &t.EMountRarity)
+	cb.Do("Unk_40ae170", &t.Unk_40ae170)
 }
 
 type PlayerACDInfo struct {
@@ -34012,9 +34763,9 @@ func (t *PlayerACDInfo) Walk(cb WalkCallback) {
 }
 
 type PlayerSavedDataMessage struct {
-	THeader     RequiredMessageHeader
-	TSavedData  PlayerSavedData
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	TSavedData            PlayerSavedData
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerSavedDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -34028,7 +34779,7 @@ func (t *PlayerSavedDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+16, &t.TSavedData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3680, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3680, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+3688, io.SeekStart); err != nil {
@@ -34040,7 +34791,7 @@ func (t *PlayerSavedDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 func (t *PlayerSavedDataMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("TSavedData", &t.TSavedData)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type TransmogSlotMessage struct {
@@ -34293,7 +35044,7 @@ type TriggerEventChangeClothParameters struct {
 	TConditions     TriggerConditions
 	FGenerated      DT_INT
 	Unk_6cba752     DT_INT
-	Unk_e560b0b     DT_UINT
+	DwParentActorID DT_UINT
 	Unk_4f25fc8     DT_SNO
 	SzSubObjectName DT_UINT
 	FlBlendTime     DT_FLOAT
@@ -34319,7 +35070,7 @@ func (t *TriggerEventChangeClothParameters) UnmarshalD4(r *bin.BinaryReader, o *
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_4f25fc8, r, &Options{
@@ -34346,7 +35097,7 @@ func (t *TriggerEventChangeClothParameters) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_4f25fc8", &t.Unk_4f25fc8)
 	cb.Do("SzSubObjectName", &t.SzSubObjectName)
 	cb.Do("FlBlendTime", &t.FlBlendTime)
@@ -34536,7 +35287,7 @@ type SpeedTreeWindParams struct {
 	AfGlobalDistance           DT_FIXEDARRAY[*DT_FLOAT]
 	AfGlobalDirectionAdherence DT_FIXEDARRAY[*DT_FLOAT]
 	AtBranch                   DT_FIXEDARRAY[*SpeedTreeBranchWindLevel]
-	AtLeaf                     DT_FIXEDARRAY[*Type_5e641340]
+	AtLeaf                     DT_FIXEDARRAY[*SpeedTreeWindGroup]
 	Unk_3ee7b7                 DT_FIXEDARRAY[*DT_FLOAT]
 	Unk_420899                 DT_FLOAT
 	Unk_7c69197                DT_FLOAT
@@ -34808,6 +35559,7 @@ type QuestDefinition struct {
 	Unk_b43b442                    DT_VARIABLEARRAY[*DT_GBID]
 	GbidSurveyType                 DT_GBID
 	GbidNightmareDungeonSurveyType DT_GBID
+	Unk_f4b6cde                    Type_56ff7d6a
 	SnoAudioContext                DT_SNO
 	ArAllReferencedItems           DT_VARIABLEARRAY[*DT_SNO]
 }
@@ -34991,16 +35743,19 @@ func (t *QuestDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+336, &t.SnoAudioContext, r, &Options{
+	if err := UnmarshalAt(p+336, &t.Unk_f4b6cde, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+352, &t.SnoAudioContext, r, &Options{
 		Flags: 1,
 		Group: 93,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+344, &t.ArAllReferencedItems, r, &Options{Group: 73}); err != nil {
+	if err := UnmarshalAt(p+360, &t.ArAllReferencedItems, r, &Options{Group: 73}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+360, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+376, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -35052,6 +35807,7 @@ func (t *QuestDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_b43b442", &t.Unk_b43b442)
 	cb.Do("GbidSurveyType", &t.GbidSurveyType)
 	cb.Do("GbidNightmareDungeonSurveyType", &t.GbidNightmareDungeonSurveyType)
+	cb.Do("Unk_f4b6cde", &t.Unk_f4b6cde)
 	cb.Do("SnoAudioContext", &t.SnoAudioContext)
 	cb.Do("ArAllReferencedItems", &t.ArAllReferencedItems)
 }
@@ -35278,12 +36034,12 @@ func (t *MarkerHeightFieldClutter) Walk(cb WalkCallback) {
 	cb.Do("Unk_d188924", &t.Unk_d188924)
 }
 
-type Type_3f44d2ec struct {
+type ParagonGlyphAffixAttributeMap struct {
 	TDestinationAttribute ParagonGlyphAffixAttribute
 	TSourceAttribute      ParagonGlyphAffixAttribute
 }
 
-func (t *Type_3f44d2ec) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ParagonGlyphAffixAttributeMap) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -35300,7 +36056,7 @@ func (t *Type_3f44d2ec) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_3f44d2ec) Walk(cb WalkCallback) {
+func (t *ParagonGlyphAffixAttributeMap) Walk(cb WalkCallback) {
 	cb.Do("TDestinationAttribute", &t.TDestinationAttribute)
 	cb.Do("TSourceAttribute", &t.TSourceAttribute)
 }
@@ -35569,7 +36325,7 @@ func (t *Type_3f7811d2) Walk(cb WalkCallback) {
 	cb.Do("Unk_589fc97", &t.Unk_589fc97)
 }
 
-type Type_3f958891 struct {
+type TriggerEventChangeShaderMapOverride struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
 	DwType              DT_UINT
@@ -35577,13 +36333,13 @@ type Type_3f958891 struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	DwActorID           DT_UINT
 	DwShaderMapOverride DT_UINT
 	Unk_279aa5a         DT_INT
 }
 
-func (t *Type_3f958891) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TriggerEventChangeShaderMapOverride) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -35603,7 +36359,7 @@ func (t *Type_3f958891) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
@@ -35621,13 +36377,13 @@ func (t *Type_3f958891) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_3f958891) Walk(cb WalkCallback) {
+func (t *TriggerEventChangeShaderMapOverride) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("DwShaderMapOverride", &t.DwShaderMapOverride)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
@@ -35705,7 +36461,7 @@ type PowerBuffDefinition struct {
 	Unk_200bd12      DT_INT
 	TDOT             Type_e3f28f16
 	Unk_dcb22bd      DT_INT
-	TCrowdControl    Type_f6b21430
+	TCrowdControl    PowerBuffCrowdControl
 	BHasDamageShield DT_INT
 	TDamageShield    HitpointSpecifier
 }
@@ -35867,7 +36623,7 @@ type TriggerEventHitFlashDuration struct {
 	TConditions                 TriggerConditions
 	FGenerated                  DT_INT
 	Unk_6cba752                 DT_INT
-	Unk_e560b0b                 DT_UINT
+	DwParentActorID             DT_UINT
 	TDuration                   DT_FLOAT
 	DwTriggerFlags              DT_UINT
 	DwTriggerFlagsEx            DT_UINT
@@ -35908,7 +36664,7 @@ func (t *TriggerEventHitFlashDuration) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -35985,7 +36741,7 @@ func (t *TriggerEventHitFlashDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -36031,20 +36787,27 @@ func (t *TextureContent) Walk(cb WalkCallback) {
 	cb.Do("TTexture", &t.TTexture)
 }
 
-type PlayerTitleDefinition struct{}
+type PlayerTitleDefinition struct {
+	BIsSeasonal DT_INT
+}
 
 func (t *PlayerTitleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+8, &t.BIsSeasonal, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *PlayerTitleDefinition) Walk(cb WalkCallback) {}
+func (t *PlayerTitleDefinition) Walk(cb WalkCallback) {
+	cb.Do("BIsSeasonal", &t.BIsSeasonal)
+}
 
 type PreloadSceneDataMessage struct {
 	THeader  RequiredMessageHeader
@@ -36411,13 +37174,13 @@ func (t *AnimTreeNodeOverrideWrapper) Walk(cb WalkCallback) {
 type TriggerEventFrostBreath struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	THardpointLink HardpointLink
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	THardpointLink  HardpointLink
 }
 
 func (t *TriggerEventFrostBreath) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -36440,7 +37203,7 @@ func (t *TriggerEventFrostBreath) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.THardpointLink, r, &Options{Flags: 1}); err != nil {
@@ -36458,7 +37221,7 @@ func (t *TriggerEventFrostBreath) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 }
 
@@ -36498,12 +37261,12 @@ func (t *SubzoneWorldMarkerSetEntry) Walk(cb WalkCallback) {
 type TriggerEventDeleteAllObjects struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventDeleteAllObjects) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -36526,7 +37289,7 @@ func (t *TriggerEventDeleteAllObjects) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -36541,7 +37304,7 @@ func (t *TriggerEventDeleteAllObjects) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type Type_42378b43 struct {
@@ -37530,6 +38293,7 @@ func (t *Type_431a27f7) Walk(cb WalkCallback) {
 
 type EffectGroupPreloadHelper struct {
 	SnoEffectGroup DT_SNO
+	Unk_34956e3    DT_INT
 	Unk_7eb10c0    SerialDataInfo
 	Unk_9ffef5e    SerialDataInfo
 	Unk_82f1fc7    SerialDataInfo
@@ -37546,16 +38310,19 @@ func (t *EffectGroupPreloadHelper) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_7eb10c0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.Unk_34956e3, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_9ffef5e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+8, &t.Unk_7eb10c0, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_82f1fc7, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.Unk_9ffef5e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+24, &t.Unk_82f1fc7, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -37563,6 +38330,7 @@ func (t *EffectGroupPreloadHelper) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 
 func (t *EffectGroupPreloadHelper) Walk(cb WalkCallback) {
 	cb.Do("SnoEffectGroup", &t.SnoEffectGroup)
+	cb.Do("Unk_34956e3", &t.Unk_34956e3)
 	cb.Do("Unk_7eb10c0", &t.Unk_7eb10c0)
 	cb.Do("Unk_9ffef5e", &t.Unk_9ffef5e)
 	cb.Do("Unk_82f1fc7", &t.Unk_82f1fc7)
@@ -37643,12 +38411,12 @@ func (t *RopeEffectMessageACDToPlace) Walk(cb WalkCallback) {
 type TriggerEventAddBaseMountLoadout struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventAddBaseMountLoadout) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -37671,7 +38439,7 @@ func (t *TriggerEventAddBaseMountLoadout) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -37686,7 +38454,7 @@ func (t *TriggerEventAddBaseMountLoadout) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type TriggerEventSubObjectVisibility struct {
@@ -37697,7 +38465,7 @@ type TriggerEventSubObjectVisibility struct {
 	TConditions     TriggerConditions
 	FGenerated      DT_INT
 	Unk_6cba752     DT_INT
-	Unk_e560b0b     DT_UINT
+	DwParentActorID DT_UINT
 	SzSubObjectName DT_UINT
 	BVisible        DT_INT
 }
@@ -37722,7 +38490,7 @@ func (t *TriggerEventSubObjectVisibility) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.SzSubObjectName, r, &Options{Flags: 1}); err != nil {
@@ -37743,7 +38511,7 @@ func (t *TriggerEventSubObjectVisibility) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("SzSubObjectName", &t.SzSubObjectName)
 	cb.Do("BVisible", &t.BVisible)
 }
@@ -38056,13 +38824,13 @@ func (t *Type_44293b37) Walk(cb WalkCallback) {
 type TriggerEventHideWarpUI struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	SnoUI       DT_SNO
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	SnoUI           DT_SNO
 }
 
 func (t *TriggerEventHideWarpUI) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -38085,7 +38853,7 @@ func (t *TriggerEventHideWarpUI) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.SnoUI, r, &Options{
@@ -38106,7 +38874,7 @@ func (t *TriggerEventHideWarpUI) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("SnoUI", &t.SnoUI)
 }
 
@@ -38163,6 +38931,101 @@ func (t *MusicDefinition) Walk(cb WalkCallback) {
 	cb.Do("PtStateValues", &t.PtStateValues)
 	cb.Do("PtGameParameters", &t.PtGameParameters)
 	cb.Do("Unk_6e07e26", &t.Unk_6e07e26)
+}
+
+type Type_44575aca struct {
+	// Inherits TriggerEventRangedDuration
+	// Inherits TriggerEvent
+	// Inherits PolymorphicBase
+	DwType           DT_UINT
+	TConditions      TriggerConditions
+	FGenerated       DT_INT
+	Unk_6cba752      DT_INT
+	DwParentActorID  DT_UINT
+	TDuration        DT_FLOAT
+	DwTriggerFlags   DT_UINT
+	DwTriggerFlagsEx DT_UINT
+	TCleanup         TriggerCleanup
+	Unk_49e9257      DT_INT
+	Unk_5490979      DT_INT
+	DwPad            DT_UINT
+	Unk_279aa5a      DT_INT
+	DwActorID        DT_UINT
+	Unk_154cedd      DT_FLOAT
+}
+
+func (t *Type_44575aca) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TConditions, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+68, &t.FGenerated, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+84, &t.DwTriggerFlags, r, &Options{Flags: 524289}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+88, &t.DwTriggerFlagsEx, r, &Options{Flags: 524289}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+92, &t.TCleanup, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+116, &t.Unk_49e9257, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+120, &t.Unk_5490979, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+124, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+128, &t.Unk_279aa5a, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+132, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+136, &t.Unk_154cedd, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+144, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_44575aca) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("TConditions", &t.TConditions)
+	cb.Do("FGenerated", &t.FGenerated)
+	cb.Do("Unk_6cba752", &t.Unk_6cba752)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
+	cb.Do("TDuration", &t.TDuration)
+	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
+	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
+	cb.Do("TCleanup", &t.TCleanup)
+	cb.Do("Unk_49e9257", &t.Unk_49e9257)
+	cb.Do("Unk_5490979", &t.Unk_5490979)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
+	cb.Do("DwActorID", &t.DwActorID)
+	cb.Do("Unk_154cedd", &t.Unk_154cedd)
 }
 
 type PlayerCurrentWorldSubcondition struct {
@@ -38531,6 +39394,48 @@ func (t *TraversalGizmoData) Walk(cb WalkCallback) {
 	cb.Do("Unk_33bc35b", &t.Unk_33bc35b)
 }
 
+type Type_4533ccd1 struct {
+	// Inherits ScriptEventParamBase
+	// Inherits PolymorphicBase
+	DwType         DT_UINT
+	EParamType     DT_ENUM
+	DwPad          DT_UINT
+	SnoAchievement DT_SNO
+}
+
+func (t *Type_4533ccd1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.EParamType, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.SnoAchievement, r, &Options{
+		Flags: 1,
+		Group: 99,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_4533ccd1) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("EParamType", &t.EParamType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("SnoAchievement", &t.SnoAchievement)
+}
+
 type OnDeathBuffCallback struct {
 	// Inherits BuffCallbackBase
 	// Inherits PolymorphicBase
@@ -38680,11 +39585,11 @@ func (t *ClothDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_4848e0f", &t.Unk_4848e0f)
 }
 
-type Type_4613b91c struct {
+type GameTestingCloseVendor struct {
 	THeader RequiredMessageHeader
 }
 
-func (t *Type_4613b91c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingCloseVendor) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -38698,7 +39603,7 @@ func (t *Type_4613b91c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_4613b91c) Walk(cb WalkCallback) {
+func (t *GameTestingCloseVendor) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 }
 
@@ -38718,7 +39623,7 @@ type UIItemButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_adf9a5f               DT_TAGMAP[*DT_ENUM]
 }
@@ -38995,7 +39900,7 @@ type TriggerEventAddTrail struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	TDuration           DT_FLOAT
 	DwTriggerFlags      DT_UINT
 	DwTriggerFlagsEx    DT_UINT
@@ -39028,7 +39933,7 @@ func (t *TriggerEventAddTrail) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -39087,7 +39992,7 @@ func (t *TriggerEventAddTrail) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -39143,13 +40048,13 @@ func (t *PowerConditionDistanceToTarget) Walk(cb WalkCallback) {
 }
 
 type EngagedMessage struct {
-	THeader           RequiredMessageHeader
-	Unk_dce541c       DT_UINT
-	SnoActorMonster   DT_SNO
-	EMonsterRarity    DT_ENUM
-	BUseAlternateName DT_INT
-	PRareNameGBIDs    DT_FIXEDARRAY[*DT_GBID]
-	SnoMonsterAffixes DT_FIXEDARRAY[*DT_SNO]
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoActorMonster       DT_SNO
+	EMonsterRarity        DT_ENUM
+	BUseAlternateName     DT_INT
+	PRareNameGBIDs        DT_FIXEDARRAY[*DT_GBID]
+	SnoMonsterAffixes     DT_FIXEDARRAY[*DT_SNO]
 }
 
 func (t *EngagedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -39160,7 +40065,7 @@ func (t *EngagedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoActorMonster, r, &Options{
@@ -39197,7 +40102,7 @@ func (t *EngagedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *EngagedMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoActorMonster", &t.SnoActorMonster)
 	cb.Do("EMonsterRarity", &t.EMonsterRarity)
 	cb.Do("BUseAlternateName", &t.BUseAlternateName)
@@ -39524,7 +40429,7 @@ type TriggerEventCameraMoveToCameraMarker struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	TDuration           DT_FLOAT
 	DwTriggerFlags      DT_UINT
 	DwTriggerFlagsEx    DT_UINT
@@ -39562,7 +40467,7 @@ func (t *TriggerEventCameraMoveToCameraMarker) UnmarshalD4(r *bin.BinaryReader, 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -39630,7 +40535,7 @@ func (t *TriggerEventCameraMoveToCameraMarker) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -40543,9 +41448,9 @@ func (t *TryUnlockRecipeTierMessage) Walk(cb WalkCallback) {
 }
 
 type PlayerIntValMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	NVal        DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	NVal                  DT_INT
 }
 
 func (t *PlayerIntValMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -40556,7 +41461,7 @@ func (t *PlayerIntValMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.NVal, r, &Options{Flags: 1}); err != nil {
@@ -40570,7 +41475,7 @@ func (t *PlayerIntValMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 
 func (t *PlayerIntValMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("NVal", &t.NVal)
 }
 
@@ -40691,6 +41596,9 @@ type Type_4bd0bef6 struct {
 	EHairState    DT_ENUM
 	EBeardState   DT_ENUM
 	EJewelryState DT_ENUM
+	Unk_72fdc3e   DT_ENUM
+	Unk_6d5ee89   DT_ENUM
+	Unk_ae7b673   DT_ENUM
 }
 
 func (t *Type_4bd0bef6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -40707,7 +41615,16 @@ func (t *Type_4bd0bef6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.EJewelryState, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+12, &t.Unk_72fdc3e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.Unk_6d5ee89, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.Unk_ae7b673, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -40717,6 +41634,9 @@ func (t *Type_4bd0bef6) Walk(cb WalkCallback) {
 	cb.Do("EHairState", &t.EHairState)
 	cb.Do("EBeardState", &t.EBeardState)
 	cb.Do("EJewelryState", &t.EJewelryState)
+	cb.Do("Unk_72fdc3e", &t.Unk_72fdc3e)
+	cb.Do("Unk_6d5ee89", &t.Unk_6d5ee89)
+	cb.Do("Unk_ae7b673", &t.Unk_ae7b673)
 }
 
 type StoryboardPlaySoundTrack struct {
@@ -40867,10 +41787,10 @@ func (t *RareMonsterNamesMessage) Walk(cb WalkCallback) {
 }
 
 type QuestTrackedQuestChangedMessage struct {
-	THeader          RequiredMessageHeader
-	Unk_dce541c      DT_UINT
-	SnoQuest         DT_SNO
-	BManuallyTracked DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoQuest              DT_SNO
+	BManuallyTracked      DT_INT
 }
 
 func (t *QuestTrackedQuestChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -40881,7 +41801,7 @@ func (t *QuestTrackedQuestChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoQuest, r, &Options{
@@ -40901,7 +41821,7 @@ func (t *QuestTrackedQuestChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Op
 
 func (t *QuestTrackedQuestChangedMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoQuest", &t.SnoQuest)
 	cb.Do("BManuallyTracked", &t.BManuallyTracked)
 }
@@ -41001,7 +41921,7 @@ type TriggerEventDisableConstraint struct {
 	TConditions     TriggerConditions
 	FGenerated      DT_INT
 	Unk_6cba752     DT_INT
-	Unk_e560b0b     DT_UINT
+	DwParentActorID DT_UINT
 	TConstraintLink ConstraintLink
 	THardpointLink  HardpointLink
 }
@@ -41026,7 +41946,7 @@ func (t *TriggerEventDisableConstraint) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TConstraintLink, r, &Options{Flags: 1}); err != nil {
@@ -41047,7 +41967,7 @@ func (t *TriggerEventDisableConstraint) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TConstraintLink", &t.TConstraintLink)
 	cb.Do("THardpointLink", &t.THardpointLink)
 }
@@ -41351,6 +42271,40 @@ func (t *ScriptEventParamPower) Walk(cb WalkCallback) {
 	cb.Do("SnoPower", &t.SnoPower)
 }
 
+type Type_4dd6cf41 struct {
+	// Inherits GameBalanceTable
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	DwPad    DT_UINT
+	TEntries DT_VARIABLEARRAY[*Type_98c7edba]
+}
+
+func (t *Type_4dd6cf41) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TEntries, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_4dd6cf41) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("TEntries", &t.TEntries)
+}
+
 type ScriptEventParamQuest struct {
 	// Inherits ScriptEventParamBase
 	// Inherits PolymorphicBase
@@ -41540,16 +42494,16 @@ func (t *SpawnLocType) Walk(cb WalkCallback) {
 type TriggerEventCancelLook struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType        DT_UINT
-	DwPad         DT_UINT
-	TConditions   TriggerConditions
-	FGenerated    DT_INT
-	Unk_6cba752   DT_INT
-	Unk_e560b0b   DT_UINT
-	DwActorID     DT_UINT
-	SnoAppearance DT_SNO
-	TLookLink     LookLink
-	Unk_279aa5a   DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwActorID       DT_UINT
+	SnoAppearance   DT_SNO
+	TLookLink       LookLink
+	Unk_279aa5a     DT_INT
 }
 
 func (t *TriggerEventCancelLook) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -41572,7 +42526,7 @@ func (t *TriggerEventCancelLook) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
@@ -41602,7 +42556,7 @@ func (t *TriggerEventCancelLook) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("SnoAppearance", &t.SnoAppearance)
 	cb.Do("TLookLink", &t.TLookLink)
@@ -41931,7 +42885,7 @@ type TriggerEventFootstep struct {
 	TConditions           TriggerConditions
 	FGenerated            DT_INT
 	Unk_6cba752           DT_INT
-	Unk_e560b0b           DT_UINT
+	DwParentActorID       DT_UINT
 	THardpointLink        HardpointLink
 	EFootstepType         DT_ENUM
 	EFootstepSide         DT_ENUM
@@ -41959,7 +42913,7 @@ func (t *TriggerEventFootstep) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.THardpointLink, r, &Options{Flags: 1}); err != nil {
@@ -41995,7 +42949,7 @@ func (t *TriggerEventFootstep) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 	cb.Do("EFootstepType", &t.EFootstepType)
 	cb.Do("EFootstepSide", &t.EFootstepSide)
@@ -42132,7 +43086,7 @@ type TriggerEventCameraTransitionToObserver struct {
 	TConditions          TriggerConditions
 	FGenerated           DT_INT
 	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
+	DwParentActorID      DT_UINT
 	TDuration            DT_FLOAT
 	DwTriggerFlags       DT_UINT
 	DwTriggerFlagsEx     DT_UINT
@@ -42143,7 +43097,7 @@ type TriggerEventCameraTransitionToObserver struct {
 	SnoObserver          DT_SNO
 	Unk_74b7ed1          DT_INT
 	ETargetType          DT_ENUM
-	Unk_96c6da9          DT_UINT
+	SzTargetLocatorName  DT_UINT
 	THardpointLinkTarget HardpointLink
 	DwTargetID           DT_UINT
 	ArAdditionalTargets  DT_VARIABLEARRAY[*Type_5eb6ade]
@@ -42168,7 +43122,7 @@ func (t *TriggerEventCameraTransitionToObserver) UnmarshalD4(r *bin.BinaryReader
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -42204,7 +43158,7 @@ func (t *TriggerEventCameraTransitionToObserver) UnmarshalD4(r *bin.BinaryReader
 	if err := UnmarshalAt(p+136, &t.ETargetType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+140, &t.Unk_96c6da9, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+140, &t.SzTargetLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+144, &t.THardpointLinkTarget, r, &Options{Flags: 1}); err != nil {
@@ -42233,7 +43187,7 @@ func (t *TriggerEventCameraTransitionToObserver) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -42244,7 +43198,7 @@ func (t *TriggerEventCameraTransitionToObserver) Walk(cb WalkCallback) {
 	cb.Do("SnoObserver", &t.SnoObserver)
 	cb.Do("Unk_74b7ed1", &t.Unk_74b7ed1)
 	cb.Do("ETargetType", &t.ETargetType)
-	cb.Do("Unk_96c6da9", &t.Unk_96c6da9)
+	cb.Do("SzTargetLocatorName", &t.SzTargetLocatorName)
 	cb.Do("THardpointLinkTarget", &t.THardpointLinkTarget)
 	cb.Do("DwTargetID", &t.DwTargetID)
 	cb.Do("ArAdditionalTargets", &t.ArAdditionalTargets)
@@ -43093,12 +44047,12 @@ func (t *BoneName) Walk(cb WalkCallback) {
 type TriggerEventHideCaptionUI struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventHideCaptionUI) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -43121,7 +44075,7 @@ func (t *TriggerEventHideCaptionUI) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -43136,13 +44090,13 @@ func (t *TriggerEventHideCaptionUI) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type PlayerPossessActorMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	AnnACD      DT_ACD_NETWORK_NAME
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	AnnACD                DT_ACD_NETWORK_NAME
 }
 
 func (t *PlayerPossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -43153,7 +44107,7 @@ func (t *PlayerPossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.AnnACD, r, &Options{Flags: 1}); err != nil {
@@ -43167,7 +44121,7 @@ func (t *PlayerPossessActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 
 func (t *PlayerPossessActorMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("AnnACD", &t.AnnACD)
 }
 
@@ -43404,7 +44358,7 @@ type TriggerEventAddEffectGroup struct {
 	TConditions                    TriggerConditions
 	FGenerated                     DT_INT
 	Unk_6cba752                    DT_INT
-	Unk_e560b0b                    DT_UINT
+	DwParentActorID                DT_UINT
 	Unk_85269a4                    DT_INT
 	Unk_b9368ac                    DT_INT
 	Unk_f50537b                    DT_INT
@@ -43422,7 +44376,7 @@ type TriggerEventAddEffectGroup struct {
 	THardpointLinks                DT_FIXEDARRAY[*HardpointLink]
 	DwTriggerFlags                 DT_UINT
 	DwTriggerFlagsEx               DT_UINT
-	Unk_b0f4eeb                    DT_UINT
+	SzSpawnLocatorName             DT_UINT
 	Transform                      PRTransform
 	TEffectGroupHardpointLink      HardpointLink
 	SnoPowerEffectParam            DT_SNO
@@ -43457,7 +44411,7 @@ func (t *TriggerEventAddEffectGroup) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_85269a4, r, &Options{Flags: 17}); err != nil {
@@ -43517,7 +44471,7 @@ func (t *TriggerEventAddEffectGroup) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+156, &t.DwTriggerFlagsEx, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+160, &t.Unk_b0f4eeb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+160, &t.SzSpawnLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+164, &t.Transform, r, &Options{Flags: 1}); err != nil {
@@ -43571,7 +44525,7 @@ func (t *TriggerEventAddEffectGroup) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_85269a4", &t.Unk_85269a4)
 	cb.Do("Unk_b9368ac", &t.Unk_b9368ac)
 	cb.Do("Unk_f50537b", &t.Unk_f50537b)
@@ -43589,7 +44543,7 @@ func (t *TriggerEventAddEffectGroup) Walk(cb WalkCallback) {
 	cb.Do("THardpointLinks", &t.THardpointLinks)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
-	cb.Do("Unk_b0f4eeb", &t.Unk_b0f4eeb)
+	cb.Do("SzSpawnLocatorName", &t.SzSpawnLocatorName)
 	cb.Do("Transform", &t.Transform)
 	cb.Do("TEffectGroupHardpointLink", &t.TEffectGroupHardpointLink)
 	cb.Do("SnoPowerEffectParam", &t.SnoPowerEffectParam)
@@ -43721,7 +44675,7 @@ func (t *EnchantAffixChooseMessage) Walk(cb WalkCallback) {
 }
 
 type SimpleRequest struct {
-	THeader Type_72bd65f8
+	THeader RequiredRequestMessageHeader
 }
 
 func (t *SimpleRequest) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -43742,9 +44696,9 @@ func (t *SimpleRequest) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 }
 
-type Type_535640f1 struct{}
+type AdditionalStatistic struct{}
 
-func (t *Type_535640f1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *AdditionalStatistic) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -43755,7 +44709,7 @@ func (t *Type_535640f1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_535640f1) Walk(cb WalkCallback) {}
+func (t *AdditionalStatistic) Walk(cb WalkCallback) {}
 
 type Type_53844691 struct {
 	Key         Type_fbb7557a
@@ -44297,27 +45251,27 @@ func (t *SupportedServices) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 	if err := UnmarshalAt(p+48, &t.FCrafter, r, &Options{
-		ArrayLength: 5,
+		ArrayLength: 6,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+68, &t.FClanBank, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+72, &t.FClanBank, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+72, &t.FClassPassive, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+76, &t.FClassPassive, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.FHealer, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+80, &t.FHealer, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+80, &t.FStash, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+84, &t.FStash, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+84, &t.FWardrobe, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+88, &t.FWardrobe, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+88, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+92, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -44437,12 +45391,12 @@ func (t *EnterWorldMessage) Walk(cb WalkCallback) {
 	cb.Do("AtPlayers", &t.AtPlayers)
 }
 
-type Type_5524bcce struct {
-	SnoPowerFrom DT_SNO
-	Unk_ad10223  DT_VARIABLEARRAY[*Type_a48e11e6]
+type PowerBlendOverrideList struct {
+	SnoPowerFrom           DT_SNO
+	PtBlendOverrideEntries DT_VARIABLEARRAY[*BlendTimeOverrideEntry]
 }
 
-func (t *Type_5524bcce) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PowerBlendOverrideList) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -44453,7 +45407,7 @@ func (t *Type_5524bcce) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_ad10223, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+8, &t.PtBlendOverrideEntries, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -44462,9 +45416,9 @@ func (t *Type_5524bcce) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_5524bcce) Walk(cb WalkCallback) {
+func (t *PowerBlendOverrideList) Walk(cb WalkCallback) {
 	cb.Do("SnoPowerFrom", &t.SnoPowerFrom)
-	cb.Do("Unk_ad10223", &t.Unk_ad10223)
+	cb.Do("PtBlendOverrideEntries", &t.PtBlendOverrideEntries)
 }
 
 type BiomeItem struct {
@@ -44660,8 +45614,8 @@ type GameTestingWorldSamplingStartMessage struct {
 	SnoQuest       DT_SNO
 	SzTileSetName  DT_CHARARRAY
 	SzLocationName DT_CHARARRAY
-	Unk_7571722    DT_FLOAT
-	Unk_6999b4f    DT_BCVEC2I
+	TimeOfDay      DT_FLOAT
+	VecChunkIndex  DT_BCVEC2I
 	GbidLabel      DT_GBID
 	Unk_8d446c9    DT_INT
 }
@@ -44710,10 +45664,10 @@ func (t *GameTestingWorldSamplingStartMessage) UnmarshalD4(r *bin.BinaryReader, 
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+160, &t.Unk_7571722, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+160, &t.TimeOfDay, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+164, &t.Unk_6999b4f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+164, &t.VecChunkIndex, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+172, &t.GbidLabel, r, &Options{
@@ -44739,8 +45693,8 @@ func (t *GameTestingWorldSamplingStartMessage) Walk(cb WalkCallback) {
 	cb.Do("SnoQuest", &t.SnoQuest)
 	cb.Do("SzTileSetName", &t.SzTileSetName)
 	cb.Do("SzLocationName", &t.SzLocationName)
-	cb.Do("Unk_7571722", &t.Unk_7571722)
-	cb.Do("Unk_6999b4f", &t.Unk_6999b4f)
+	cb.Do("TimeOfDay", &t.TimeOfDay)
+	cb.Do("VecChunkIndex", &t.VecChunkIndex)
 	cb.Do("GbidLabel", &t.GbidLabel)
 	cb.Do("Unk_8d446c9", &t.Unk_8d446c9)
 }
@@ -44788,7 +45742,7 @@ type TriggerEventShowSubtitle struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -44816,7 +45770,7 @@ func (t *TriggerEventShowSubtitle) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -44854,7 +45808,7 @@ func (t *TriggerEventShowSubtitle) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -45022,8 +45976,8 @@ func (t *MarkerObserverVolumeData) Walk(cb WalkCallback) {
 }
 
 type PrefabCustomization struct {
-	SnoPrefab  DT_SNO
-	Unk_a3efcf DT_VARIABLEARRAY[*Type_f4703db9]
+	SnoPrefab           DT_SNO
+	ArCustomizedMarkers DT_VARIABLEARRAY[*PrefabCustomizedMarker]
 }
 
 func (t *PrefabCustomization) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -45037,7 +45991,7 @@ func (t *PrefabCustomization) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_a3efcf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+8, &t.ArCustomizedMarkers, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -45048,7 +46002,7 @@ func (t *PrefabCustomization) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 
 func (t *PrefabCustomization) Walk(cb WalkCallback) {
 	cb.Do("SnoPrefab", &t.SnoPrefab)
-	cb.Do("Unk_a3efcf", &t.Unk_a3efcf)
+	cb.Do("ArCustomizedMarkers", &t.ArCustomizedMarkers)
 }
 
 type PowerStartVariant struct {
@@ -45161,8 +46115,10 @@ type ActorItemData struct {
 	Unk_842ce3a                          DT_INT
 	FlLootFlippyLandingHeight            DT_FLOAT
 	Unk_62f6313                          DT_SNO
+	Unk_221fdb7                          DT_SNO
 	SnoPickupEffectGroup                 DT_SNO
 	TAttachmentHardpointLink             HardpointLink
+	Unk_204fa35                          DT_ENUM
 	Unk_28e7959                          DT_INT
 	Unk_1427368                          DT_INT
 	Unk_62c39fe                          Type_4bd0bef6
@@ -45183,6 +46139,7 @@ type ActorItemData struct {
 	TWeaponData                          ActorWeaponData
 	Unk_3b0050f                          ActorVisualInventoryData
 	Unk_e133e62                          DT_INT
+	Unk_6990c4a                          DT_ENUM
 }
 
 func (t *ActorItemData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -45286,94 +46243,106 @@ func (t *ActorItemData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+92, &t.SnoPickupEffectGroup, r, &Options{
+	if err := UnmarshalAt(p+92, &t.Unk_221fdb7, r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.TAttachmentHardpointLink, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.SnoPickupEffectGroup, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.Unk_28e7959, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+100, &t.TAttachmentHardpointLink, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+108, &t.Unk_1427368, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+108, &t.Unk_204fa35, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+112, &t.Unk_62c39fe, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+112, &t.Unk_28e7959, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+124, &t.Unk_98050e1, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+116, &t.Unk_1427368, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.Unk_17c40c2, r, &Options{
+	if err := UnmarshalAt(p+120, &t.Unk_62c39fe, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+144, &t.Unk_98050e1, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+148, &t.Unk_17c40c2, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+188, &t.SnoAttachedActor, r, &Options{
+	if err := UnmarshalAt(p+268, &t.SnoAttachedActor, r, &Options{
 		Flags: 1,
 		Group: 1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+192, &t.HDefaultImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+272, &t.HDefaultImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+196, &t.HSocketedImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+276, &t.HSocketedImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+200, &t.HSocketedActiveImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+280, &t.HSocketedActiveImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+204, &t.FMustKeepInInventory, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+284, &t.FMustKeepInInventory, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+208, &t.FBottomless, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+288, &t.FBottomless, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+212, &t.EItemUseType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+292, &t.EItemUseType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+216, &t.SnoPowerUpPower, r, &Options{
+	if err := UnmarshalAt(p+296, &t.SnoPowerUpPower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+220, &t.SnoItemUseLevelAreaRequirement, r, &Options{
+	if err := UnmarshalAt(p+300, &t.SnoItemUseLevelAreaRequirement, r, &Options{
 		Flags: 513,
 		Group: 22,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+224, &t.THardpointOffsets, r, &Options{
+	if err := UnmarshalAt(p+304, &t.THardpointOffsets, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+384, &t.Unk_c0b773, r, &Options{
+	if err := UnmarshalAt(p+464, &t.Unk_c0b773, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+544, &t.Unk_def7f43, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+624, &t.Unk_def7f43, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+560, &t.TWeaponData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+640, &t.TWeaponData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+576, &t.Unk_3b0050f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+656, &t.Unk_3b0050f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+660, &t.Unk_e133e62, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+740, &t.Unk_e133e62, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+664, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+744, &t.Unk_6990c4a, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+752, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -45399,8 +46368,10 @@ func (t *ActorItemData) Walk(cb WalkCallback) {
 	cb.Do("Unk_842ce3a", &t.Unk_842ce3a)
 	cb.Do("FlLootFlippyLandingHeight", &t.FlLootFlippyLandingHeight)
 	cb.Do("Unk_62f6313", &t.Unk_62f6313)
+	cb.Do("Unk_221fdb7", &t.Unk_221fdb7)
 	cb.Do("SnoPickupEffectGroup", &t.SnoPickupEffectGroup)
 	cb.Do("TAttachmentHardpointLink", &t.TAttachmentHardpointLink)
+	cb.Do("Unk_204fa35", &t.Unk_204fa35)
 	cb.Do("Unk_28e7959", &t.Unk_28e7959)
 	cb.Do("Unk_1427368", &t.Unk_1427368)
 	cb.Do("Unk_62c39fe", &t.Unk_62c39fe)
@@ -45421,6 +46392,32 @@ func (t *ActorItemData) Walk(cb WalkCallback) {
 	cb.Do("TWeaponData", &t.TWeaponData)
 	cb.Do("Unk_3b0050f", &t.Unk_3b0050f)
 	cb.Do("Unk_e133e62", &t.Unk_e133e62)
+	cb.Do("Unk_6990c4a", &t.Unk_6990c4a)
+}
+
+type Type_56ff7d6a struct {
+	ArSeasons DT_VARIABLEARRAY[*DT_SNO]
+}
+
+func (t *Type_56ff7d6a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.ArSeasons, r, &Options{
+		Flags: 513,
+		Group: 137,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+16, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_56ff7d6a) Walk(cb WalkCallback) {
+	cb.Do("ArSeasons", &t.ArSeasons)
 }
 
 type TrackedQuestChangedMessage struct {
@@ -45708,7 +46705,7 @@ func (t *MonsterFamilySubcondition) Walk(cb WalkCallback) {
 }
 
 type GizmoMessage struct {
-	THeader        Type_b0f2a959
+	THeader        RequiredCommandFrameMessageHeader
 	AnnGizmo       DT_ACD_NETWORK_NAME
 	DwGizmoContext DT_OPTIONAL[*DT_UINT]
 }
@@ -45861,7 +46858,7 @@ type TriggerEventActorPlayAnimation struct {
 	TConditions        TriggerConditions
 	FGenerated         DT_INT
 	Unk_6cba752        DT_INT
-	Unk_e560b0b        DT_UINT
+	DwParentActorID    DT_UINT
 	TDuration          DT_FLOAT
 	DwTriggerFlags     DT_UINT
 	DwTriggerFlagsEx   DT_UINT
@@ -45911,7 +46908,7 @@ func (t *TriggerEventActorPlayAnimation) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -46015,7 +47012,7 @@ func (t *TriggerEventActorPlayAnimation) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -46199,11 +47196,11 @@ func (t *MarkerSplineData) Walk(cb WalkCallback) {
 	cb.Do("Unk_a3f1699", &t.Unk_a3f1699)
 }
 
-type Type_58fbb94c struct {
+type ClassPassiveSkillSlotData struct {
 	TUnlockCondition ConditionWrapper
 }
 
-func (t *Type_58fbb94c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ClassPassiveSkillSlotData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -46217,7 +47214,7 @@ func (t *Type_58fbb94c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_58fbb94c) Walk(cb WalkCallback) {
+func (t *ClassPassiveSkillSlotData) Walk(cb WalkCallback) {
 	cb.Do("TUnlockCondition", &t.TUnlockCondition)
 }
 
@@ -46237,7 +47234,7 @@ type UIThumbButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -46595,7 +47592,7 @@ type UIComboBoxStyle struct {
 	M_eHasModifiedPowerTagMap DT_TAGMAP[*DT_ENUM]
 	TConsoleInput             UIControlConsoleInput
 	Unk_b4f614c               DT_TAGMAP[*DT_ENUM]
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	TFont                     UIControlFont
 	Unk_6657a4d               DT_TAGMAP[*DT_ENUM]
 }
@@ -46901,6 +47898,38 @@ func (t *SwitchGizmoData) Walk(cb WalkCallback) {
 	cb.Do("TLockData", &t.TLockData)
 	cb.Do("TSwitchBehaviorData", &t.TSwitchBehaviorData)
 	cb.Do("FSwitchCanOperateMultipleTimes", &t.FSwitchCanOperateMultipleTimes)
+}
+
+type Type_59996094 struct {
+	THeader     RequiredMessageHeader
+	Ann         DT_ACD_NETWORK_NAME
+	Unk_bfd00e5 DT_INT
+}
+
+func (t *Type_59996094) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.Ann, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_bfd00e5, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_59996094) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("Ann", &t.Ann)
+	cb.Do("Unk_bfd00e5", &t.Unk_bfd00e5)
 }
 
 type MonsterACDInfo struct {
@@ -47296,7 +48325,7 @@ type TriggerEventFadeRemotePlayers struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -47323,7 +48352,7 @@ func (t *TriggerEventFadeRemotePlayers) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -47358,7 +48387,7 @@ func (t *TriggerEventFadeRemotePlayers) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -47539,6 +48568,40 @@ func (t *PowerConditionDamageIsCrit) UnmarshalD4(r *bin.BinaryReader, o *Options
 }
 
 func (t *PowerConditionDamageIsCrit) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+}
+
+type Type_5b51ca15 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	BInverse DT_INT
+	DwPad    DT_UINT
+}
+
+func (t *Type_5b51ca15) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_5b51ca15) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("BInverse", &t.BInverse)
 	cb.Do("DwPad", &t.DwPad)
@@ -47777,10 +48840,10 @@ type Type_5c24b1a8 struct {
 	NButtonIconTextPaddingX DT_INT
 	Unk_57295f6             DT_FLOAT
 	Unk_57295f7             DT_FLOAT
-	Unk_2330cbf             Type_6b1c5d9c
-	Unk_a2c2344             Type_6b1c5d9c
-	Unk_56f24f5             Type_6b1c5d9c
-	Unk_5a90f13             Type_6b1c5d9c
+	HImageFrameIcon         UIImageHandleReference
+	Unk_a2c2344             UIImageHandleReference
+	HImageFrameIconPressed  UIImageHandleReference
+	HImageFrameIconDisable  UIImageHandleReference
 	Unk_fca1727             DT_INT
 	FLeft                   DT_FLOAT
 	FTop                    DT_FLOAT
@@ -47809,16 +48872,16 @@ func (t *Type_5c24b1a8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+20, &t.Unk_57295f7, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_2330cbf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.HImageFrameIcon, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+28, &t.Unk_a2c2344, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_56f24f5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.HImageFrameIconPressed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+36, &t.Unk_5a90f13, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+36, &t.HImageFrameIconDisable, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+40, &t.Unk_fca1727, r, &Options{Flags: 17}); err != nil {
@@ -47843,10 +48906,10 @@ func (t *Type_5c24b1a8) Walk(cb WalkCallback) {
 	cb.Do("NButtonIconTextPaddingX", &t.NButtonIconTextPaddingX)
 	cb.Do("Unk_57295f6", &t.Unk_57295f6)
 	cb.Do("Unk_57295f7", &t.Unk_57295f7)
-	cb.Do("Unk_2330cbf", &t.Unk_2330cbf)
+	cb.Do("HImageFrameIcon", &t.HImageFrameIcon)
 	cb.Do("Unk_a2c2344", &t.Unk_a2c2344)
-	cb.Do("Unk_56f24f5", &t.Unk_56f24f5)
-	cb.Do("Unk_5a90f13", &t.Unk_5a90f13)
+	cb.Do("HImageFrameIconPressed", &t.HImageFrameIconPressed)
+	cb.Do("HImageFrameIconDisable", &t.HImageFrameIconDisable)
 	cb.Do("Unk_fca1727", &t.Unk_fca1727)
 	cb.Do("FLeft", &t.FLeft)
 	cb.Do("FTop", &t.FTop)
@@ -47892,11 +48955,11 @@ func (t *Type_5c44ae48) Walk(cb WalkCallback) {
 	cb.Do("Transform", &t.Transform)
 }
 
-type Type_5c4ac6dc struct {
+type MapImageHandleReference struct {
 	HImageHandle DT_UINT
 }
 
-func (t *Type_5c4ac6dc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *MapImageHandleReference) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -47910,7 +48973,7 @@ func (t *Type_5c4ac6dc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_5c4ac6dc) Walk(cb WalkCallback) {
+func (t *MapImageHandleReference) Walk(cb WalkCallback) {
 	cb.Do("HImageHandle", &t.HImageHandle)
 }
 
@@ -48334,7 +49397,7 @@ type PlayerSavedData struct {
 	TActiveSkills             DT_FIXEDARRAY[*ActiveSkillSavedData]
 	TEnchantSkills            DT_FIXEDARRAY[*SkillEnchantSavedData]
 	TSkillPassiveData         Type_7bed253b
-	ArSkillExtraAndArsenals   DT_FIXEDARRAY[*Type_feacdb4e]
+	ArSkillExtraAndArsenals   DT_FIXEDARRAY[*SkillExtraAndArsenalEntry]
 	ArPurchasedSkillTreeNodes DT_FIXEDARRAY[*SkillTreeNodeEntry]
 	Unk_4968c70               DT_UINT
 	BUnlockedTownPortal       DT_INT
@@ -48474,10 +49537,10 @@ func (t *PolymorphicBase) Walk(cb WalkCallback) {
 }
 
 type PolytopeData struct {
-	Unk_e96f671    Type_e81e59e2
+	Unk_e96f671    dmPolytopeDataMirror
 	PtVertices     DT_VARIABLEARRAY[*DT_VECTOR3D]
-	PtPlanes       DT_VARIABLEARRAY[*Type_fba0555c]
-	PtSubEdges     DT_VARIABLEARRAY[*Type_eabc2b2b]
+	PtPlanes       DT_VARIABLEARRAY[*dmPlaneMirror]
+	PtSubEdges     DT_VARIABLEARRAY[*dmSubEdgeMirror]
 	PtFaceSubEdges DT_VARIABLEARRAY[*DT_BYTE]
 }
 
@@ -48635,7 +49698,7 @@ type TriggerEventShowClosedCaption struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -48663,7 +49726,7 @@ func (t *TriggerEventShowClosedCaption) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -48701,7 +49764,7 @@ func (t *TriggerEventShowClosedCaption) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -48853,7 +49916,7 @@ func (t *Type_5e32bd3e) Walk(cb WalkCallback) {
 	cb.Do("FlMinimumDuration", &t.FlMinimumDuration)
 }
 
-type Type_5e641340 struct {
+type SpeedTreeWindGroup struct {
 	Unk_c874a5e      DT_FIXEDARRAY[*DT_FLOAT]
 	Unk_289ce5b      DT_FIXEDARRAY[*DT_FLOAT]
 	Unk_4c6f9cb      DT_FIXEDARRAY[*DT_FLOAT]
@@ -48867,7 +49930,7 @@ type Type_5e641340 struct {
 	FLeewardScalar   DT_FLOAT
 }
 
-func (t *Type_5e641340) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SpeedTreeWindGroup) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -48926,7 +49989,7 @@ func (t *Type_5e641340) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_5e641340) Walk(cb WalkCallback) {
+func (t *SpeedTreeWindGroup) Walk(cb WalkCallback) {
 	cb.Do("Unk_c874a5e", &t.Unk_c874a5e)
 	cb.Do("Unk_289ce5b", &t.Unk_289ce5b)
 	cb.Do("Unk_4c6f9cb", &t.Unk_4c6f9cb)
@@ -49172,12 +50235,12 @@ func (t *RareMonsterNamesEntry_Table) Walk(cb WalkCallback) {
 	cb.Do("TEntries", &t.TEntries)
 }
 
-type Type_5f527528 struct {
+type dmTransformMirror struct {
 	Q DT_VECTOR4D
 	P DT_VECTOR4D
 }
 
-func (t *Type_5f527528) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmTransformMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -49194,7 +50257,7 @@ func (t *Type_5f527528) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_5f527528) Walk(cb WalkCallback) {
+func (t *dmTransformMirror) Walk(cb WalkCallback) {
 	cb.Do("Q", &t.Q)
 	cb.Do("P", &t.P)
 }
@@ -49650,7 +50713,7 @@ func (t *Type_6105185b) Walk(cb WalkCallback) {
 }
 
 type AbortPowerMessage struct {
-	THeader  Type_b0f2a959
+	THeader  RequiredCommandFrameMessageHeader
 	SnoPower DT_SNO
 }
 
@@ -50347,7 +51410,7 @@ type TriggerEventHitFlash struct {
 	TConditions                 TriggerConditions
 	FGenerated                  DT_INT
 	Unk_6cba752                 DT_INT
-	Unk_e560b0b                 DT_UINT
+	DwParentActorID             DT_UINT
 	DwTriggerFlags              DT_UINT
 	DwTriggerFlagsEx            DT_UINT
 	RgbaColorAdd                DT_RGBACOLOR
@@ -50386,7 +51449,7 @@ func (t *TriggerEventHitFlash) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwTriggerFlags, r, &Options{Flags: 524289}); err != nil {
@@ -50449,7 +51512,7 @@ func (t *TriggerEventHitFlash) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
 	cb.Do("RgbaColorAdd", &t.RgbaColorAdd)
@@ -50560,8 +51623,8 @@ type QuestPhase struct {
 	Unk_fab6e45     MarkerHandle
 	Unk_47f8481     DT_VECTOR3D
 	Unk_ed8215b     DT_SNO
-	Unk_f6ded77     Type_6b1c5d9c
-	Unk_f84da79     Type_6b1c5d9c
+	Unk_f6ded77     UIImageHandleReference
+	Unk_f84da79     UIImageHandleReference
 	SnoAudioContext DT_SNO
 }
 
@@ -50758,18 +51821,18 @@ func (t *AnimSetAnimPreloadHelper) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 		return err
 	}
 	if err := UnmarshalAt(p+4, &t.Unk_aa12873, r, &Options{
-		ArrayLength: 31,
+		ArrayLength: 33,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+252, &t.Unk_781e07e, r, &Options{
-		ArrayLength: 31,
+	if err := UnmarshalAt(p+268, &t.Unk_781e07e, r, &Options{
+		ArrayLength: 33,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+500, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+532, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -50828,7 +51891,7 @@ type TriggerEventFootstepDrag struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -50856,7 +51919,7 @@ func (t *TriggerEventFootstepDrag) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -50894,7 +51957,7 @@ func (t *TriggerEventFootstepDrag) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -50908,13 +51971,13 @@ func (t *TriggerEventFootstepDrag) Walk(cb WalkCallback) {
 type TriggerEventFootstepLift struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	THardpointLink HardpointLink
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	THardpointLink  HardpointLink
 }
 
 func (t *TriggerEventFootstepLift) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -50937,7 +52000,7 @@ func (t *TriggerEventFootstepLift) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.THardpointLink, r, &Options{Flags: 1}); err != nil {
@@ -50955,7 +52018,7 @@ func (t *TriggerEventFootstepLift) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("THardpointLink", &t.THardpointLink)
 }
 
@@ -50963,18 +52026,18 @@ type ConversationSpeakerCaseNode struct {
 	// Inherits ConversationScopeNode
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
-	ArChildNodes DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	SnoCondition DT_SNO
-	Unk_d8bf9e4  DT_INT
-	SnoSpeaker   DT_SNO
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
+	ArChildNodes   DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	SnoCondition   DT_SNO
+	Unk_d8bf9e4    DT_INT
+	SnoSpeaker     DT_SNO
 }
 
 func (t *ConversationSpeakerCaseNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -50994,7 +52057,7 @@ func (t *ConversationSpeakerCaseNode) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -51035,7 +52098,7 @@ func (t *ConversationSpeakerCaseNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -51237,13 +52300,13 @@ func (t *Type_64372b14) Walk(cb WalkCallback) {
 type TriggerEventDisableCollisionMessages struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	DwTriggerFlags DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwTriggerFlags  DT_UINT
 }
 
 func (t *TriggerEventDisableCollisionMessages) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -51266,7 +52329,7 @@ func (t *TriggerEventDisableCollisionMessages) UnmarshalD4(r *bin.BinaryReader, 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwTriggerFlags, r, &Options{Flags: 524289}); err != nil {
@@ -51284,7 +52347,7 @@ func (t *TriggerEventDisableCollisionMessages) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 }
 
@@ -51887,10 +52950,10 @@ func (t *GlobalVendorEvents) Walk(cb WalkCallback) {
 }
 
 type PlayerQuestMessage struct {
-	THeader      RequiredMessageHeader
-	Unk_dce541c  DT_UINT
-	SnoQuest     DT_SNO
-	SnoLevelArea DT_SNO
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoQuest              DT_SNO
+	SnoLevelArea          DT_SNO
 }
 
 func (t *PlayerQuestMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -51901,7 +52964,7 @@ func (t *PlayerQuestMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoQuest, r, &Options{
@@ -51924,7 +52987,7 @@ func (t *PlayerQuestMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 
 func (t *PlayerQuestMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoQuest", &t.SnoQuest)
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
 }
@@ -52049,7 +53112,7 @@ func (t *Type_660b81d5) Walk(cb WalkCallback) {
 	cb.Do("Unk_6240b01", &t.Unk_6240b01)
 }
 
-type Type_665f557c struct {
+type DebugProjectileDetPathData struct {
 	EDetPathType DT_ENUM
 	WpStartPos   DT_VECTOR3D
 	WpTargetPos  DT_VECTOR3D
@@ -52062,7 +53125,7 @@ type Type_665f557c struct {
 	FlFloatData4 DT_FLOAT
 }
 
-func (t *Type_665f557c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *DebugProjectileDetPathData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -52103,7 +53166,7 @@ func (t *Type_665f557c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_665f557c) Walk(cb WalkCallback) {
+func (t *DebugProjectileDetPathData) Walk(cb WalkCallback) {
 	cb.Do("EDetPathType", &t.EDetPathType)
 	cb.Do("WpStartPos", &t.WpStartPos)
 	cb.Do("WpTargetPos", &t.WpTargetPos)
@@ -52171,14 +53234,14 @@ func (t *NecroArmyUnitSpecializationUpgradeData) Walk(cb WalkCallback) {
 type TriggerEventSequenceEnded struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType        DT_UINT
-	DwPad         DT_UINT
-	TConditions   TriggerConditions
-	FGenerated    DT_INT
-	Unk_6cba752   DT_INT
-	Unk_e560b0b   DT_UINT
-	IdEffectGroup DT_UINT
-	FLoop         DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	IdEffectGroup   DT_UINT
+	FLoop           DT_INT
 }
 
 func (t *TriggerEventSequenceEnded) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -52201,7 +53264,7 @@ func (t *TriggerEventSequenceEnded) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.IdEffectGroup, r, &Options{Flags: 1}); err != nil {
@@ -52222,7 +53285,7 @@ func (t *TriggerEventSequenceEnded) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("IdEffectGroup", &t.IdEffectGroup)
 	cb.Do("FLoop", &t.FLoop)
 }
@@ -52283,14 +53346,14 @@ func (t *UIMinimapRoadsStyle) Walk(cb WalkCallback) {
 }
 
 type Type_674e5442 struct {
-	Unk_c4cbeaa    DT_SNO
-	SnoPowerSelf   DT_SNO
-	Unk_c0a2b38    DT_SNO
-	Unk_87c7255    DT_FLOAT
-	EPowerSyncType DT_ENUM
-	Unk_c0c1492    DT_INT
-	Unk_57d67bf    DT_UINT
-	Unk_c7bd259    DT_UINT
+	Unk_c4cbeaa                       DT_SNO
+	SnoPowerSelf                      DT_SNO
+	SnoSummonedEncounterOverridePower DT_SNO
+	Unk_87c7255                       DT_FLOAT
+	EPowerSyncType                    DT_ENUM
+	Unk_c0c1492                       DT_INT
+	Unk_57d67bf                       DT_UINT
+	Unk_c7bd259                       DT_UINT
 }
 
 func (t *Type_674e5442) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -52310,7 +53373,7 @@ func (t *Type_674e5442) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_c0a2b38, r, &Options{
+	if err := UnmarshalAt(p+8, &t.SnoSummonedEncounterOverridePower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
@@ -52340,7 +53403,7 @@ func (t *Type_674e5442) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *Type_674e5442) Walk(cb WalkCallback) {
 	cb.Do("Unk_c4cbeaa", &t.Unk_c4cbeaa)
 	cb.Do("SnoPowerSelf", &t.SnoPowerSelf)
-	cb.Do("Unk_c0a2b38", &t.Unk_c0a2b38)
+	cb.Do("SnoSummonedEncounterOverridePower", &t.SnoSummonedEncounterOverridePower)
 	cb.Do("Unk_87c7255", &t.Unk_87c7255)
 	cb.Do("EPowerSyncType", &t.EPowerSyncType)
 	cb.Do("Unk_c0c1492", &t.Unk_c0c1492)
@@ -52473,9 +53536,124 @@ func (t *PowerConditionDamageIsDot) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
+type Type_679d7ec8 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	BInverse DT_INT
+	DwPad    DT_UINT
+}
+
+func (t *Type_679d7ec8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_679d7ec8) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+}
+
+type Type_67a0bff3 struct {
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BNegate     DT_INT
+	DwPad       DT_UINT
+	Unk_4cb9610 DT_GBID
+	Unk_c7b2b18 DT_ENUM
+}
+
+func (t *Type_67a0bff3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_4cb9610, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.Unk_c7b2b18, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_67a0bff3) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("Unk_4cb9610", &t.Unk_4cb9610)
+	cb.Do("Unk_c7b2b18", &t.Unk_c7b2b18)
+}
+
+type Type_67a817a6 struct {
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType  DT_UINT
+	BNegate DT_INT
+	DwPad   DT_UINT
+}
+
+func (t *Type_67a817a6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_67a817a6) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("DwPad", &t.DwPad)
+}
+
 type Type_67c548b3 struct {
-	THeader     Type_72bd65f8
-	Unk_dce541c DT_UINT
+	THeader               RequiredRequestMessageHeader
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *Type_67c548b3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -52486,7 +53664,7 @@ func (t *Type_67c548b3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -52497,7 +53675,7 @@ func (t *Type_67c548b3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_67c548b3) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type ActorSlotHelper struct {
@@ -52589,13 +53767,13 @@ func (t *Type_6808914a) Walk(cb WalkCallback) {
 	cb.Do("FlVertexAOSize", &t.FlVertexAOSize)
 }
 
-type Type_6867c9cc struct {
+type PreloadSpawnMarkerData struct {
 	TSNOName   DT_SNO_NAME
 	EActorType DT_ENUM
 	EGender    DT_ENUM
 }
 
-func (t *Type_6867c9cc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PreloadSpawnMarkerData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -52615,18 +53793,18 @@ func (t *Type_6867c9cc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6867c9cc) Walk(cb WalkCallback) {
+func (t *PreloadSpawnMarkerData) Walk(cb WalkCallback) {
 	cb.Do("TSNOName", &t.TSNOName)
 	cb.Do("EActorType", &t.EActorType)
 	cb.Do("EGender", &t.EGender)
 }
 
-type Type_6879d173 struct {
-	THeader Type_ad008e7e
+type UInt64DataResponse struct {
+	THeader RequiredResponseMessageHeader
 	UData   DT_INT64
 }
 
-func (t *Type_6879d173) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UInt64DataResponse) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -52643,7 +53821,7 @@ func (t *Type_6879d173) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6879d173) Walk(cb WalkCallback) {
+func (t *UInt64DataResponse) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("UData", &t.UData)
 }
@@ -53039,14 +54217,14 @@ func (t *SNOFileHeader) Walk(cb WalkCallback) {
 	cb.Do("DwXMLHash", &t.DwXMLHash)
 }
 
-type Type_6977de45 struct {
+type ShortcutKey struct {
 	EKey           DT_ENUM
 	DwModifiers    DT_UINT
 	EKeyAlt        DT_ENUM
 	DwModifiersAlt DT_UINT
 }
 
-func (t *Type_6977de45) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ShortcutKey) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -53069,7 +54247,7 @@ func (t *Type_6977de45) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6977de45) Walk(cb WalkCallback) {
+func (t *ShortcutKey) Walk(cb WalkCallback) {
 	cb.Do("EKey", &t.EKey)
 	cb.Do("DwModifiers", &t.DwModifiers)
 	cb.Do("EKeyAlt", &t.EKeyAlt)
@@ -53171,6 +54349,53 @@ func (t *OnStartPowerCallback) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("SnoTriggerEffectGroup", &t.SnoTriggerEffectGroup)
 	cb.Do("BCouldHaveRagdolled", &t.BCouldHaveRagdolled)
+}
+
+type Type_699e5b54 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BInverse    DT_INT
+	DwPad       DT_UINT
+	ESubject    DT_ENUM
+	Unk_120030a DT_VARIABLEARRAY[*DT_GBID]
+}
+
+func (t *Type_699e5b54) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.ESubject, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+32, &t.Unk_120030a, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_699e5b54) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("ESubject", &t.ESubject)
+	cb.Do("Unk_120030a", &t.Unk_120030a)
 }
 
 type AtLeastLogicSubcondition struct {
@@ -53556,7 +54781,7 @@ func (t *RunTimeMaterialVectorGraphEntry) Walk(cb WalkCallback) {
 	cb.Do("Unk_411da82", &t.Unk_411da82)
 }
 
-type Type_6aca3d7d struct {
+type GameTestingActorUseSkill struct {
 	THeader      RequiredMessageHeader
 	AnnKey       DT_ACD_NETWORK_NAME
 	SnoSkill     DT_SNO
@@ -53565,7 +54790,7 @@ type Type_6aca3d7d struct {
 	BForce       DT_INT
 }
 
-func (t *Type_6aca3d7d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingActorUseSkill) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -53597,7 +54822,7 @@ func (t *Type_6aca3d7d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6aca3d7d) Walk(cb WalkCallback) {
+func (t *GameTestingActorUseSkill) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("AnnKey", &t.AnnKey)
 	cb.Do("SnoSkill", &t.SnoSkill)
@@ -53648,11 +54873,11 @@ func (t *Type_6b03fc60) Walk(cb WalkCallback) {
 	cb.Do("EEasing", &t.EEasing)
 }
 
-type Type_6b1c5d9c struct {
+type UIImageHandleReference struct {
 	HImageHandle DT_UINT
 }
 
-func (t *Type_6b1c5d9c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UIImageHandleReference) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -53666,15 +54891,15 @@ func (t *Type_6b1c5d9c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6b1c5d9c) Walk(cb WalkCallback) {
+func (t *UIImageHandleReference) Walk(cb WalkCallback) {
 	cb.Do("HImageHandle", &t.HImageHandle)
 }
 
 type PlayerWeaponExpertiseLevelMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	SnoItemType DT_SNO
-	NNewLevel   DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoItemType           DT_SNO
+	NNewLevel             DT_INT
 }
 
 func (t *PlayerWeaponExpertiseLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -53685,7 +54910,7 @@ func (t *PlayerWeaponExpertiseLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoItemType, r, &Options{
@@ -53705,7 +54930,7 @@ func (t *PlayerWeaponExpertiseLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *
 
 func (t *PlayerWeaponExpertiseLevelMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoItemType", &t.SnoItemType)
 	cb.Do("NNewLevel", &t.NNewLevel)
 }
@@ -54021,12 +55246,12 @@ func (t *VertTiledWindowPieces) Walk(cb WalkCallback) {
 	cb.Do("HPieceMiddle", &t.HPieceMiddle)
 }
 
-type Type_6c048b8b struct {
+type LayerVertexAO struct {
 	SnoLayer DT_SNO
 	PtChunks DT_VARIABLEARRAY[*LayerInstanceChunk]
 }
 
-func (t *Type_6c048b8b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *LayerVertexAO) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -54046,7 +55271,7 @@ func (t *Type_6c048b8b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6c048b8b) Walk(cb WalkCallback) {
+func (t *LayerVertexAO) Walk(cb WalkCallback) {
 	cb.Do("SnoLayer", &t.SnoLayer)
 	cb.Do("PtChunks", &t.PtChunks)
 }
@@ -54776,11 +56001,11 @@ func (t *LockingGizmoData) Walk(cb WalkCallback) {
 	cb.Do("Unk_c605c30", &t.Unk_c605c30)
 }
 
-type Type_6f6158b5 struct {
+type GameTestingCloseCrafter struct {
 	THeader RequiredMessageHeader
 }
 
-func (t *Type_6f6158b5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingCloseCrafter) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -54794,7 +56019,7 @@ func (t *Type_6f6158b5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_6f6158b5) Walk(cb WalkCallback) {
+func (t *GameTestingCloseCrafter) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 }
 
@@ -54878,16 +56103,16 @@ func (t *IconLayout) Walk(cb WalkCallback) {
 type TriggerEventChangePhysicsParameters struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_668d971 DT_SNO
-	FlBlendTime DT_FLOAT
-	DwActorID   DT_UINT
-	Unk_279aa5a DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_668d971     DT_SNO
+	FlBlendTime     DT_FLOAT
+	DwActorID       DT_UINT
+	Unk_279aa5a     DT_INT
 }
 
 func (t *TriggerEventChangePhysicsParameters) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -54910,7 +56135,7 @@ func (t *TriggerEventChangePhysicsParameters) UnmarshalD4(r *bin.BinaryReader, o
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_668d971, r, &Options{
@@ -54940,7 +56165,7 @@ func (t *TriggerEventChangePhysicsParameters) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_668d971", &t.Unk_668d971)
 	cb.Do("FlBlendTime", &t.FlBlendTime)
 	cb.Do("DwActorID", &t.DwActorID)
@@ -54948,7 +56173,7 @@ func (t *TriggerEventChangePhysicsParameters) Walk(cb WalkCallback) {
 }
 
 type ClanBankMoveItemMessage struct {
-	THeader     Type_72bd65f8
+	THeader     RequiredRequestMessageHeader
 	TItemId     Type_f5ac91bb
 	Unk_cc95a19 DT_INT
 }
@@ -55022,10 +56247,10 @@ func (t *PlayerCurrentLevelAreaSubcondition) Walk(cb WalkCallback) {
 }
 
 type Type_6ff50068 struct {
-	THeader      Type_b0f2a959
-	Unk_dce541c  DT_UINT
-	SnoLevelArea DT_SNO
-	Unk_fcdc6f6  DT_ENUM
+	THeader               RequiredCommandFrameMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoLevelArea          DT_SNO
+	Unk_fcdc6f6           DT_ENUM
 }
 
 func (t *Type_6ff50068) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -55036,7 +56261,7 @@ func (t *Type_6ff50068) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.SnoLevelArea, r, &Options{
@@ -55056,7 +56281,7 @@ func (t *Type_6ff50068) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_6ff50068) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
 	cb.Do("Unk_fcdc6f6", &t.Unk_fcdc6f6)
 }
@@ -55069,7 +56294,7 @@ type TriggerEventTransparency struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
 	FlAlpha          DT_FLOAT
@@ -55095,7 +56320,7 @@ func (t *TriggerEventTransparency) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwTriggerFlags, r, &Options{Flags: 524289}); err != nil {
@@ -55119,7 +56344,7 @@ func (t *TriggerEventTransparency) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
 	cb.Do("FlAlpha", &t.FlAlpha)
@@ -55133,7 +56358,7 @@ type TriggerEventObjectLookAt struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -55162,7 +56387,7 @@ func (t *TriggerEventObjectLookAt) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -55203,7 +56428,7 @@ func (t *TriggerEventObjectLookAt) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -55666,7 +56891,7 @@ func (t *PlayerNonAuthoritativePositionMessage) Walk(cb WalkCallback) {
 }
 
 type GeneratorToItemMessage struct {
-	THeader         Type_72bd65f8
+	THeader         RequiredRequestMessageHeader
 	UsItemGenerator DT_CHARARRAY
 }
 
@@ -55835,9 +57060,9 @@ type ActorCollisionData struct {
 	FlStepUpHeight     DT_FLOAT
 	Unk_d094b9a        DT_ENUM
 	Unk_c5b3851        DT_FLOAT
-	Unk_523b9d9        DT_VARIABLEARRAY[*Type_17bd50db]
-	Unk_ce78a30        Type_17bd50db
-	Unk_f26505b        Type_17bd50db
+	Unk_523b9d9        DT_VARIABLEARRAY[*ActorHitCollisionShape]
+	Unk_ce78a30        ActorHitCollisionShape
+	Unk_f26505b        ActorHitCollisionShape
 	Unk_c627b16        DT_INT
 }
 
@@ -56236,10 +57461,10 @@ func (t *Type_72081710) Walk(cb WalkCallback) {
 }
 
 type AssignClassPassiveSkillSlotMessage struct {
-	THeader     RequiredMessageHeader
-	SnoPower    DT_SNO
-	NSlot       DT_INT
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	SnoPower              DT_SNO
+	NSlot                 DT_INT
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *AssignClassPassiveSkillSlotMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -56259,7 +57484,7 @@ func (t *AssignClassPassiveSkillSlotMessage) UnmarshalD4(r *bin.BinaryReader, o 
 	if err := UnmarshalAt(p+20, &t.NSlot, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
@@ -56272,7 +57497,7 @@ func (t *AssignClassPassiveSkillSlotMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("SnoPower", &t.SnoPower)
 	cb.Do("NSlot", &t.NSlot)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type MediumBiomeObject struct {
@@ -56405,7 +57630,7 @@ func (t *MediumBiomeObject) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
-type Type_7247d2c9 struct {
+type NightmareDungeonGlobalSpawn struct {
 	GbidSpawnLocTypes     DT_VARIABLEARRAY[*DT_GBID]
 	TSpawnPopulationGroup PopGroupHandle
 	TSpawnCountRange      DT_RANGE[*DT_INT]
@@ -56413,7 +57638,7 @@ type Type_7247d2c9 struct {
 	FlNoSpawnChance       DT_FLOAT
 }
 
-func (t *Type_7247d2c9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *NightmareDungeonGlobalSpawn) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -56442,7 +57667,7 @@ func (t *Type_7247d2c9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_7247d2c9) Walk(cb WalkCallback) {
+func (t *NightmareDungeonGlobalSpawn) Walk(cb WalkCallback) {
 	cb.Do("GbidSpawnLocTypes", &t.GbidSpawnLocTypes)
 	cb.Do("TSpawnPopulationGroup", &t.TSpawnPopulationGroup)
 	cb.Do("TSpawnCountRange", &t.TSpawnCountRange)
@@ -56497,14 +57722,14 @@ func (t *LooteeLevelRangeSubcondition) Walk(cb WalkCallback) {
 type TriggerEventMsg struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	EMsgPassMethod DT_ENUM
-	DwMsgKey       DT_ENUM
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	EMsgPassMethod  DT_ENUM
+	DwMsgKey        DT_ENUM
 }
 
 func (t *TriggerEventMsg) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -56527,7 +57752,7 @@ func (t *TriggerEventMsg) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.EMsgPassMethod, r, &Options{Flags: 1}); err != nil {
@@ -56548,7 +57773,7 @@ func (t *TriggerEventMsg) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("EMsgPassMethod", &t.EMsgPassMethod)
 	cb.Do("DwMsgKey", &t.DwMsgKey)
 }
@@ -56630,12 +57855,12 @@ func (t *StencilParams) Walk(cb WalkCallback) {
 	cb.Do("Unk_e787b9d", &t.Unk_e787b9d)
 }
 
-type Type_72bd65f8 struct {
+type RequiredRequestMessageHeader struct {
 	THeader RequiredMessageHeader
 	UToken  DT_UINT
 }
 
-func (t *Type_72bd65f8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *RequiredRequestMessageHeader) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -56652,7 +57877,7 @@ func (t *Type_72bd65f8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_72bd65f8) Walk(cb WalkCallback) {
+func (t *RequiredRequestMessageHeader) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("UToken", &t.UToken)
 }
@@ -57357,14 +58582,14 @@ func (t *DRLGPortalInfo) Walk(cb WalkCallback) {
 	cb.Do("SnoDestLevelArea", &t.SnoDestLevelArea)
 }
 
-type Type_74952762 struct {
+type JoinExistingGamePlayer struct {
 	UGameAccountId DT_UINT
 	UAuthToken     DT_INT64
 	Unk_2f5806b    DT_INT
 	TSessionKey    DT_FIXEDARRAY[*DT_BYTE]
 }
 
-func (t *Type_74952762) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *JoinExistingGamePlayer) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -57390,7 +58615,7 @@ func (t *Type_74952762) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_74952762) Walk(cb WalkCallback) {
+func (t *JoinExistingGamePlayer) Walk(cb WalkCallback) {
 	cb.Do("UGameAccountId", &t.UGameAccountId)
 	cb.Do("UAuthToken", &t.UAuthToken)
 	cb.Do("Unk_2f5806b", &t.Unk_2f5806b)
@@ -57615,7 +58840,7 @@ type Type_75ca18d0 struct {
 	HTemplate           UIControlHandle
 	BActive             DT_INT
 	BAcceptInitialFocus DT_INT
-	Unk_17cfa96         DT_INT
+	BIgnoreInputFocus   DT_INT
 	SzOnInit            DT_CSTRING[*DT_BYTE]
 	SzOnOpen            DT_CSTRING[*DT_BYTE]
 	SzOnClose           DT_CSTRING[*DT_BYTE]
@@ -57655,7 +58880,7 @@ func (t *Type_75ca18d0) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+12, &t.BAcceptInitialFocus, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_17cfa96, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+16, &t.BIgnoreInputFocus, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.SzOnInit, r, &Options{Flags: 1}); err != nil {
@@ -57746,7 +58971,7 @@ func (t *Type_75ca18d0) Walk(cb WalkCallback) {
 	cb.Do("HTemplate", &t.HTemplate)
 	cb.Do("BActive", &t.BActive)
 	cb.Do("BAcceptInitialFocus", &t.BAcceptInitialFocus)
-	cb.Do("Unk_17cfa96", &t.Unk_17cfa96)
+	cb.Do("BIgnoreInputFocus", &t.BIgnoreInputFocus)
 	cb.Do("SzOnInit", &t.SzOnInit)
 	cb.Do("SzOnOpen", &t.SzOnOpen)
 	cb.Do("SzOnClose", &t.SzOnClose)
@@ -57774,12 +58999,12 @@ func (t *Type_75ca18d0) Walk(cb WalkCallback) {
 
 type TriggerEvent struct {
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEvent) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -57802,7 +59027,7 @@ func (t *TriggerEvent) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -57817,7 +59042,7 @@ func (t *TriggerEvent) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type AICellData struct {
@@ -57896,7 +59121,7 @@ type BannerMaskOnly struct {
 	SzName  DT_UINT
 	HLabel  StringLabelHandleEx
 	SnoMask DT_SNO
-	HIcon   Type_6b1c5d9c
+	HIcon   UIImageHandleReference
 }
 
 func (t *BannerMaskOnly) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -58252,7 +59477,7 @@ type TriggerEventAddRope struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	TDuration           DT_FLOAT
 	DwTriggerFlags      DT_UINT
 	DwTriggerFlagsEx    DT_UINT
@@ -58285,7 +59510,7 @@ func (t *TriggerEventAddRope) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -58347,7 +59572,7 @@ func (t *TriggerEventAddRope) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -58364,7 +59589,7 @@ func (t *TriggerEventAddRope) Walk(cb WalkCallback) {
 }
 
 type GenericBlobResponseMessage struct {
-	THeader   Type_ad008e7e
+	THeader   RequiredResponseMessageHeader
 	UBlobSize DT_WORD
 }
 
@@ -58590,15 +59815,15 @@ func (t *SpeakerDefinition) Walk(cb WalkCallback) {
 type TriggerEventSetWeaponSheathed struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_279aa5a DT_INT
-	DwActorID   DT_UINT
-	BSheathed   DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_279aa5a     DT_INT
+	DwActorID       DT_UINT
+	BSheathed       DT_INT
 }
 
 func (t *TriggerEventSetWeaponSheathed) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -58621,7 +59846,7 @@ func (t *TriggerEventSetWeaponSheathed) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_279aa5a, r, &Options{Flags: 17}); err != nil {
@@ -58645,7 +59870,7 @@ func (t *TriggerEventSetWeaponSheathed) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("BSheathed", &t.BSheathed)
@@ -58988,12 +60213,12 @@ func (t *Type_78854e88) Walk(cb WalkCallback) {
 	cb.Do("SnoWeather", &t.SnoWeather)
 }
 
-type Type_78a562aa struct {
-	ArSlots  DT_VARIABLEARRAY[*Type_58fbb94c]
-	ArPowers DT_VARIABLEARRAY[*Type_27c7c537]
+type ClassPassiveSkillData struct {
+	ArSlots  DT_VARIABLEARRAY[*ClassPassiveSkillSlotData]
+	ArPowers DT_VARIABLEARRAY[*ClassPassiveSkillPowerData]
 }
 
-func (t *Type_78a562aa) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ClassPassiveSkillData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -59010,7 +60235,7 @@ func (t *Type_78a562aa) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_78a562aa) Walk(cb WalkCallback) {
+func (t *ClassPassiveSkillData) Walk(cb WalkCallback) {
 	cb.Do("ArSlots", &t.ArSlots)
 	cb.Do("ArPowers", &t.ArPowers)
 }
@@ -59810,24 +61035,25 @@ func (t *CurrencyModifiedMessage) Walk(cb WalkCallback) {
 }
 
 type Type_7ab1e0b4 struct {
-	EListBoxStyle    DT_ENUM
-	SnoHighlightAnim DT_SNO
-	SnoHoverAnim     DT_SNO
-	Unk_62dd471      DT_INT
-	Unk_8aa16e       DT_INT
-	TMargins         UIMargins
-	Unk_4ce228f      UIControlHandle
-	BToggleSelection DT_INT
-	Unk_ccb7997      DT_CSTRING[*DT_BYTE]
-	Unk_53e61d6      DT_ENUM
-	Unk_26fb7aa      DT_FLOAT
-	EBlendEasing     DT_ENUM
-	Unk_ba769f2      DT_FLOAT
-	Unk_7111989      DT_ENUM
-	Unk_784f6fe      DT_INT
-	Unk_1e24eb1      DT_INT
-	NPageIncrement   DT_INT
-	Unk_f28083a      DT_INT
+	EListBoxStyle        DT_ENUM
+	SnoHighlightAnim     DT_SNO
+	SnoHoverAnim         DT_SNO
+	Unk_62dd471          DT_INT
+	Unk_8aa16e           DT_INT
+	TMargins             UIMargins
+	Unk_4ce228f          UIControlHandle
+	BToggleSelection     DT_INT
+	Unk_ccb7997          DT_CSTRING[*DT_BYTE]
+	Unk_53e61d6          DT_ENUM
+	FlScrollbarBlendTime DT_FLOAT
+	EBlendEasing         DT_ENUM
+	Unk_ba769f2          DT_FLOAT
+	Unk_7111989          DT_ENUM
+	Unk_784f6fe          DT_INT
+	Unk_b91b721          DT_INT
+	Unk_1e24eb1          DT_INT
+	NPageIncrement       DT_INT
+	Unk_f28083a          DT_INT
 }
 
 func (t *Type_7ab1e0b4) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -59871,7 +61097,7 @@ func (t *Type_7ab1e0b4) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+64, &t.Unk_53e61d6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+68, &t.Unk_26fb7aa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+68, &t.FlScrollbarBlendTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+72, &t.EBlendEasing, r, &Options{Flags: 1}); err != nil {
@@ -59886,13 +61112,16 @@ func (t *Type_7ab1e0b4) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+84, &t.Unk_784f6fe, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.Unk_1e24eb1, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+88, &t.Unk_b91b721, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+92, &t.NPageIncrement, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+92, &t.Unk_1e24eb1, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.Unk_f28083a, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+96, &t.NPageIncrement, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+100, &t.Unk_f28083a, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+104, io.SeekStart); err != nil {
@@ -59912,11 +61141,12 @@ func (t *Type_7ab1e0b4) Walk(cb WalkCallback) {
 	cb.Do("BToggleSelection", &t.BToggleSelection)
 	cb.Do("Unk_ccb7997", &t.Unk_ccb7997)
 	cb.Do("Unk_53e61d6", &t.Unk_53e61d6)
-	cb.Do("Unk_26fb7aa", &t.Unk_26fb7aa)
+	cb.Do("FlScrollbarBlendTime", &t.FlScrollbarBlendTime)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("Unk_ba769f2", &t.Unk_ba769f2)
 	cb.Do("Unk_7111989", &t.Unk_7111989)
 	cb.Do("Unk_784f6fe", &t.Unk_784f6fe)
+	cb.Do("Unk_b91b721", &t.Unk_b91b721)
 	cb.Do("Unk_1e24eb1", &t.Unk_1e24eb1)
 	cb.Do("NPageIncrement", &t.NPageIncrement)
 	cb.Do("Unk_f28083a", &t.Unk_f28083a)
@@ -60333,7 +61563,7 @@ func (t *OnResourceGainedBuffCallback) Walk(cb WalkCallback) {
 	cb.Do("ArConditions", &t.ArConditions)
 }
 
-type Type_7b962e40 struct {
+type ScriptEventParamSpawnerParentMarkerHandle struct {
 	// Inherits ScriptEventParamBase
 	// Inherits PolymorphicBase
 	DwType        DT_UINT
@@ -60342,7 +61572,7 @@ type Type_7b962e40 struct {
 	TMarkerHandle MarkerHandle
 }
 
-func (t *Type_7b962e40) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ScriptEventParamSpawnerParentMarkerHandle) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -60365,7 +61595,7 @@ func (t *Type_7b962e40) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_7b962e40) Walk(cb WalkCallback) {
+func (t *ScriptEventParamSpawnerParentMarkerHandle) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("EParamType", &t.EParamType)
 	cb.Do("DwPad", &t.DwPad)
@@ -60719,10 +61949,10 @@ func (t *AnimSetOverrideEntry) Walk(cb WalkCallback) {
 }
 
 type CollisionMesh struct {
-	Unk_fb873e2       Type_c1ddc6d3
-	PtDominoVertices  DT_VARIABLEARRAY[*Type_e5e3d6d6]
-	PtDominoTriangles DT_VARIABLEARRAY[*Type_2f8b25ef]
-	PtDominoNodes     DT_VARIABLEARRAY[*Type_b8e1451f]
+	Unk_fb873e2       dmMeshDataMirror
+	PtDominoVertices  DT_VARIABLEARRAY[*dmFloat4Mirror]
+	PtDominoTriangles DT_VARIABLEARRAY[*dmMeshTriangleMirror]
+	PtDominoNodes     DT_VARIABLEARRAY[*dmMeshNodeMirror]
 	Unk_b2f6ec8       DT_INT
 	UFlags            DT_UINT
 	UMaterial         DT_UINT
@@ -60781,15 +62011,15 @@ func (t *CollisionMesh) Walk(cb WalkCallback) {
 }
 
 type SkillTreeNode struct {
-	DwID                  DT_UINT
-	GbidReward            DT_GBID
-	NExclusiveGroupId     DT_INT
-	VPosition             DT_VECTOR2D
-	BRootNode             DT_INT
-	NMinimumEarnedBlocked DT_UINT
-	Unk_bb82ad1           DT_INT
-	ArConnections         DT_VARIABLEARRAY[*SkillTreeNodePersonalConnection]
-	ArnAllowGameBalance   DT_VARIABLEARRAY[*Type_9a30831a]
+	DwID                        DT_UINT
+	GbidReward                  DT_GBID
+	NExclusiveGroupId           DT_INT
+	VPosition                   DT_VECTOR2D
+	BRootNode                   DT_INT
+	DwTalentAbilitiesSpentPoint DT_UINT
+	Unk_bb82ad1                 DT_INT
+	ArConnections               DT_VARIABLEARRAY[*SkillTreeNodePersonalConnection]
+	ArSkillTreeSkillRankMods    DT_VARIABLEARRAY[*SkillTreeSkillRankMod]
 }
 
 func (t *SkillTreeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -60815,7 +62045,7 @@ func (t *SkillTreeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+20, &t.BRootNode, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.NMinimumEarnedBlocked, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwTalentAbilitiesSpentPoint, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+28, &t.Unk_bb82ad1, r, &Options{Flags: 17}); err != nil {
@@ -60824,7 +62054,7 @@ func (t *SkillTreeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+32, &t.ArConnections, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.ArnAllowGameBalance, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.ArSkillTreeSkillRankMods, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+64, io.SeekStart); err != nil {
@@ -60839,10 +62069,10 @@ func (t *SkillTreeNode) Walk(cb WalkCallback) {
 	cb.Do("NExclusiveGroupId", &t.NExclusiveGroupId)
 	cb.Do("VPosition", &t.VPosition)
 	cb.Do("BRootNode", &t.BRootNode)
-	cb.Do("NMinimumEarnedBlocked", &t.NMinimumEarnedBlocked)
+	cb.Do("DwTalentAbilitiesSpentPoint", &t.DwTalentAbilitiesSpentPoint)
 	cb.Do("Unk_bb82ad1", &t.Unk_bb82ad1)
 	cb.Do("ArConnections", &t.ArConnections)
-	cb.Do("ArnAllowGameBalance", &t.ArnAllowGameBalance)
+	cb.Do("ArSkillTreeSkillRankMods", &t.ArSkillTreeSkillRankMods)
 }
 
 type Type_7d803492 struct {
@@ -61016,7 +62246,7 @@ func (t *ActorCombatData) Walk(cb WalkCallback) {
 	cb.Do("ArRotationJoints", &t.ArRotationJoints)
 }
 
-type Type_7e0a5501 struct {
+type GameSyncedDebugData struct {
 	Unk_180e380 DT_UINT
 	Unk_11cfeb2 DT_UINT
 	Unk_8c3326b DT_UINT
@@ -61029,7 +62259,7 @@ type Type_7e0a5501 struct {
 	DwFlags     DT_UINT
 }
 
-func (t *Type_7e0a5501) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameSyncedDebugData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -61076,7 +62306,7 @@ func (t *Type_7e0a5501) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_7e0a5501) Walk(cb WalkCallback) {
+func (t *GameSyncedDebugData) Walk(cb WalkCallback) {
 	cb.Do("Unk_180e380", &t.Unk_180e380)
 	cb.Do("Unk_11cfeb2", &t.Unk_11cfeb2)
 	cb.Do("Unk_8c3326b", &t.Unk_8c3326b)
@@ -61173,6 +62403,33 @@ func (t *GameTestingActorDeathSamplingStartMessage) Walk(cb WalkCallback) {
 	cb.Do("SnoActor", &t.SnoActor)
 	cb.Do("SnoDeathOverride", &t.SnoDeathOverride)
 	cb.Do("UCount", &t.UCount)
+}
+
+type Type_7ec2173f struct {
+	Unk_5c85ae2 DT_FLOAT
+	Unk_6536471 DT_VARIABLEARRAY[*Type_3c65a2a2]
+}
+
+func (t *Type_7ec2173f) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_5c85ae2, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.Unk_6536471, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_7ec2173f) Walk(cb WalkCallback) {
+	cb.Do("Unk_5c85ae2", &t.Unk_5c85ae2)
+	cb.Do("Unk_6536471", &t.Unk_6536471)
 }
 
 type WorldEvent struct {
@@ -61301,7 +62558,7 @@ func (t *HirelingInfo) Walk(cb WalkCallback) {
 }
 
 type Type_7fc234c1 struct {
-	LocalTransform Type_5f527528
+	LocalTransform dmTransformMirror
 	Scale          DT_VECTOR4D
 	Radius1        DT_FLOAT
 	Radius2        DT_FLOAT
@@ -61401,6 +62658,7 @@ type HiddenCacheGizmoData struct {
 	Unk_4be4371                  DT_INT
 	SnoTreasureClass             DT_SNO
 	NXPTier                      DT_INT
+	Unk_3592260                  DT_INT
 	GbidHiddenCache              DT_GBID
 }
 
@@ -61556,7 +62814,10 @@ func (t *HiddenCacheGizmoData) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+164, &t.NXPTier, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.GbidHiddenCache, r, &Options{
+	if err := UnmarshalAt(p+168, &t.Unk_3592260, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+172, &t.GbidHiddenCache, r, &Options{
 		Flags: 1,
 		Group: 28,
 	}); err != nil {
@@ -61609,6 +62870,7 @@ func (t *HiddenCacheGizmoData) Walk(cb WalkCallback) {
 	cb.Do("Unk_4be4371", &t.Unk_4be4371)
 	cb.Do("SnoTreasureClass", &t.SnoTreasureClass)
 	cb.Do("NXPTier", &t.NXPTier)
+	cb.Do("Unk_3592260", &t.Unk_3592260)
 	cb.Do("GbidHiddenCache", &t.GbidHiddenCache)
 }
 
@@ -61660,48 +62922,48 @@ type TriggerEventCameraStayOnSpline struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType              DT_UINT
-	TConditions         TriggerConditions
-	FGenerated          DT_INT
-	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
-	TDuration           DT_FLOAT
-	DwTriggerFlags      DT_UINT
-	DwTriggerFlagsEx    DT_UINT
-	TCleanup            TriggerCleanup
-	Unk_49e9257         DT_INT
-	Unk_5490979         DT_INT
-	DwPad               DT_UINT
-	SzSplineName        DT_UINT
-	Unk_30b49c2         DT_ENUM
-	Unk_8781d26         DT_UINT
-	Unk_9a31592         DT_UINT
-	FlFirstPercent      DT_FLOAT
-	FlLastPercent       DT_FLOAT
-	FlFirstDistance     DT_FLOAT
-	FlLastDistance      DT_FLOAT
-	Unk_71c05df         DT_INT
-	Unk_325b1ab         DT_INT
-	EProximityType      DT_ENUM
-	Unk_72c9d37         DT_UINT
-	Unk_ed13c17         HardpointLink
-	Unk_264c534         DT_UINT
-	VecProximityOffset  DT_VECTOR3D
-	Unk_8ff6495         DT_INT
-	Unk_983a265         DT_INT
-	FlNodeDistance      DT_FLOAT
-	Unk_215cc14         DT_FLOAT
-	Unk_802b7b          DT_INT
-	Unk_e27112b         DT_SNO
-	EOrientationMode    DT_ENUM
-	Unk_daebe18         DT_ENUM
-	Unk_6101673         DT_UINT
-	Unk_8470ffc         HardpointLink
-	Unk_46c8459         DT_UINT
-	VecTargetOffset     DT_VECTOR3D
-	EMicrophoneMode     DT_ENUM
-	VecMicrophoneOffset DT_VECTOR3D
-	EBlendEasing        DT_ENUM
+	DwType                 DT_UINT
+	TConditions            TriggerConditions
+	FGenerated             DT_INT
+	Unk_6cba752            DT_INT
+	DwParentActorID        DT_UINT
+	TDuration              DT_FLOAT
+	DwTriggerFlags         DT_UINT
+	DwTriggerFlagsEx       DT_UINT
+	TCleanup               TriggerCleanup
+	Unk_49e9257            DT_INT
+	Unk_5490979            DT_INT
+	DwPad                  DT_UINT
+	SzSplineName           DT_UINT
+	Unk_30b49c2            DT_ENUM
+	Unk_8781d26            DT_UINT
+	Unk_9a31592            DT_UINT
+	FlFirstPercent         DT_FLOAT
+	FlLastPercent          DT_FLOAT
+	FlFirstDistance        DT_FLOAT
+	FlLastDistance         DT_FLOAT
+	Unk_71c05df            DT_INT
+	Unk_325b1ab            DT_INT
+	EProximityType         DT_ENUM
+	SzProximityLocatorName DT_UINT
+	Unk_ed13c17            HardpointLink
+	DwProximityObjectID    DT_UINT
+	VecProximityOffset     DT_VECTOR3D
+	Unk_8ff6495            DT_INT
+	Unk_983a265            DT_INT
+	FlNodeDistance         DT_FLOAT
+	FlMaxMovementSpeed     DT_FLOAT
+	Unk_802b7b             DT_INT
+	Unk_e27112b            DT_SNO
+	EOrientationMode       DT_ENUM
+	Unk_daebe18            DT_ENUM
+	Unk_6101673            DT_UINT
+	Unk_8470ffc            HardpointLink
+	Unk_46c8459            DT_UINT
+	VecTargetOffset        DT_VECTOR3D
+	EMicrophoneMode        DT_ENUM
+	VecMicrophoneOffset    DT_VECTOR3D
+	EBlendEasing           DT_ENUM
 }
 
 func (t *TriggerEventCameraStayOnSpline) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -61721,7 +62983,7 @@ func (t *TriggerEventCameraStayOnSpline) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -61778,13 +63040,13 @@ func (t *TriggerEventCameraStayOnSpline) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+168, &t.EProximityType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+172, &t.Unk_72c9d37, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+172, &t.SzProximityLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+176, &t.Unk_ed13c17, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.Unk_264c534, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+184, &t.DwProximityObjectID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+188, &t.VecProximityOffset, r, &Options{Flags: 1}); err != nil {
@@ -61799,7 +63061,7 @@ func (t *TriggerEventCameraStayOnSpline) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+208, &t.FlNodeDistance, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+212, &t.Unk_215cc14, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+212, &t.FlMaxMovementSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+216, &t.Unk_802b7b, r, &Options{Flags: 17}); err != nil {
@@ -61849,7 +63111,7 @@ func (t *TriggerEventCameraStayOnSpline) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -61868,14 +63130,14 @@ func (t *TriggerEventCameraStayOnSpline) Walk(cb WalkCallback) {
 	cb.Do("Unk_71c05df", &t.Unk_71c05df)
 	cb.Do("Unk_325b1ab", &t.Unk_325b1ab)
 	cb.Do("EProximityType", &t.EProximityType)
-	cb.Do("Unk_72c9d37", &t.Unk_72c9d37)
+	cb.Do("SzProximityLocatorName", &t.SzProximityLocatorName)
 	cb.Do("Unk_ed13c17", &t.Unk_ed13c17)
-	cb.Do("Unk_264c534", &t.Unk_264c534)
+	cb.Do("DwProximityObjectID", &t.DwProximityObjectID)
 	cb.Do("VecProximityOffset", &t.VecProximityOffset)
 	cb.Do("Unk_8ff6495", &t.Unk_8ff6495)
 	cb.Do("Unk_983a265", &t.Unk_983a265)
 	cb.Do("FlNodeDistance", &t.FlNodeDistance)
-	cb.Do("Unk_215cc14", &t.Unk_215cc14)
+	cb.Do("FlMaxMovementSpeed", &t.FlMaxMovementSpeed)
 	cb.Do("Unk_802b7b", &t.Unk_802b7b)
 	cb.Do("Unk_e27112b", &t.Unk_e27112b)
 	cb.Do("EOrientationMode", &t.EOrientationMode)
@@ -61919,7 +63181,7 @@ type ParticleDefinition struct {
 	PathNoiseSmoothness               DT_VARIABLEARRAY[*Type_cbfdd2ea]
 	PathNoiseAmplitude                DT_VARIABLEARRAY[*Type_cbfdd2ea]
 	PathNoiseAmplitudeRange           DT_VARIABLEARRAY[*VectorPath]
-	Unk_24aa41d                       DT_VARIABLEARRAY[*Type_cbfdd2ea]
+	PathCameraOffset                  DT_VARIABLEARRAY[*Type_cbfdd2ea]
 	SnoMaterial                       DT_SNO
 	SnoHoudini                        DT_SNO
 	SnoPhysics                        DT_SNO
@@ -61985,7 +63247,7 @@ type ParticleDefinition struct {
 	VecVectorFieldDim                 DT_VECTOR3D
 	EVectorFieldAddressMode           DT_ENUM
 	FlVectorFieldScrollSpeed          DT_FLOAT
-	Unk_8f7c9c1                       DT_VARIABLEARRAY[*Type_cbfdd2ea]
+	ArrFlowIdenticalVectorField       DT_VARIABLEARRAY[*Type_cbfdd2ea]
 	Unk_cddc4fd                       DT_VARIABLEARRAY[*VectorPath]
 	PathVectorFieldRotation           DT_VARIABLEARRAY[*VectorPath]
 	Unk_da1d404                       DT_FLOAT
@@ -62084,7 +63346,7 @@ func (t *ParticleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+368, &t.PathNoiseAmplitudeRange, r, &Options{Flags: 8388608}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+384, &t.Unk_24aa41d, r, &Options{Flags: 8388608}); err != nil {
+	if err := UnmarshalAt(p+384, &t.PathCameraOffset, r, &Options{Flags: 8388608}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+400, &t.SnoMaterial, r, &Options{
@@ -62300,7 +63562,7 @@ func (t *ParticleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+1108, &t.FlVectorFieldScrollSpeed, r, &Options{Flags: 8388608}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1112, &t.Unk_8f7c9c1, r, &Options{Flags: 8388608}); err != nil {
+	if err := UnmarshalAt(p+1112, &t.ArrFlowIdenticalVectorField, r, &Options{Flags: 8388608}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1128, &t.Unk_cddc4fd, r, &Options{Flags: 8388608}); err != nil {
@@ -62351,7 +63613,7 @@ func (t *ParticleDefinition) Walk(cb WalkCallback) {
 	cb.Do("PathNoiseSmoothness", &t.PathNoiseSmoothness)
 	cb.Do("PathNoiseAmplitude", &t.PathNoiseAmplitude)
 	cb.Do("PathNoiseAmplitudeRange", &t.PathNoiseAmplitudeRange)
-	cb.Do("Unk_24aa41d", &t.Unk_24aa41d)
+	cb.Do("PathCameraOffset", &t.PathCameraOffset)
 	cb.Do("SnoMaterial", &t.SnoMaterial)
 	cb.Do("SnoHoudini", &t.SnoHoudini)
 	cb.Do("SnoPhysics", &t.SnoPhysics)
@@ -62417,7 +63679,7 @@ func (t *ParticleDefinition) Walk(cb WalkCallback) {
 	cb.Do("VecVectorFieldDim", &t.VecVectorFieldDim)
 	cb.Do("EVectorFieldAddressMode", &t.EVectorFieldAddressMode)
 	cb.Do("FlVectorFieldScrollSpeed", &t.FlVectorFieldScrollSpeed)
-	cb.Do("Unk_8f7c9c1", &t.Unk_8f7c9c1)
+	cb.Do("ArrFlowIdenticalVectorField", &t.ArrFlowIdenticalVectorField)
 	cb.Do("Unk_cddc4fd", &t.Unk_cddc4fd)
 	cb.Do("PathVectorFieldRotation", &t.PathVectorFieldRotation)
 	cb.Do("Unk_da1d404", &t.Unk_da1d404)
@@ -62479,17 +63741,17 @@ func (t *Type_7ff0fb14) Walk(cb WalkCallback) {
 type TriggerEventSetWeaponVisibility struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType        DT_UINT
-	DwPad         DT_UINT
-	TConditions   TriggerConditions
-	FGenerated    DT_INT
-	Unk_6cba752   DT_INT
-	Unk_e560b0b   DT_UINT
-	Unk_279aa5a   DT_INT
-	DwActorID     DT_UINT
-	Unk_a8ee95c   DT_INT
-	Unk_4bec6d2   DT_INT
-	BHideSheathed DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_279aa5a     DT_INT
+	DwActorID       DT_UINT
+	BHideMainHand   DT_INT
+	Unk_4bec6d2     DT_INT
+	BHideSheathed   DT_INT
 }
 
 func (t *TriggerEventSetWeaponVisibility) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -62512,7 +63774,7 @@ func (t *TriggerEventSetWeaponVisibility) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_279aa5a, r, &Options{Flags: 17}); err != nil {
@@ -62521,7 +63783,7 @@ func (t *TriggerEventSetWeaponVisibility) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+84, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.Unk_a8ee95c, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+88, &t.BHideMainHand, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+92, &t.Unk_4bec6d2, r, &Options{Flags: 17}); err != nil {
@@ -62542,10 +63804,10 @@ func (t *TriggerEventSetWeaponVisibility) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
 	cb.Do("DwActorID", &t.DwActorID)
-	cb.Do("Unk_a8ee95c", &t.Unk_a8ee95c)
+	cb.Do("BHideMainHand", &t.BHideMainHand)
 	cb.Do("Unk_4bec6d2", &t.Unk_4bec6d2)
 	cb.Do("BHideSheathed", &t.BHideSheathed)
 }
@@ -62670,7 +63932,7 @@ type AnimPreplayData struct {
 	DwAnimPrePlayDataFlags  DT_UINT
 	DwServerTimeAnimStarted DT_UINT
 	DwSyncedSeed            DT_UINT
-	Unk_7e38ab5             DT_OPTIONAL[*DT_FLOAT]
+	FlPowerAnimSpeed        DT_OPTIONAL[*DT_FLOAT]
 }
 
 func (t *AnimPreplayData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -62687,7 +63949,7 @@ func (t *AnimPreplayData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.DwSyncedSeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_7e38ab5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.FlPowerAnimSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
@@ -62700,24 +63962,24 @@ func (t *AnimPreplayData) Walk(cb WalkCallback) {
 	cb.Do("DwAnimPrePlayDataFlags", &t.DwAnimPrePlayDataFlags)
 	cb.Do("DwServerTimeAnimStarted", &t.DwServerTimeAnimStarted)
 	cb.Do("DwSyncedSeed", &t.DwSyncedSeed)
-	cb.Do("Unk_7e38ab5", &t.Unk_7e38ab5)
+	cb.Do("FlPowerAnimSpeed", &t.FlPowerAnimSpeed)
 }
 
 type ConversationSpeakerSwitchNode struct {
 	// Inherits ConversationScopeNode
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
-	ArChildNodes DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	SnoCondition DT_SNO
-	Unk_d8bf9e4  DT_INT
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
+	ArChildNodes   DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	SnoCondition   DT_SNO
+	Unk_d8bf9e4    DT_INT
 }
 
 func (t *ConversationSpeakerSwitchNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -62737,7 +63999,7 @@ func (t *ConversationSpeakerSwitchNode) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -62772,7 +64034,7 @@ func (t *ConversationSpeakerSwitchNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -63234,7 +64496,7 @@ type Type_81807f39 struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -63265,7 +64527,7 @@ func (t *Type_81807f39) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -63312,7 +64574,7 @@ func (t *Type_81807f39) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -63507,35 +64769,35 @@ func (t *Type_82280ff3) Walk(cb WalkCallback) {
 }
 
 type Type_822e2895 struct {
-	FIsFogged           DT_INT
-	PathFogColor        Type_560ae4cf
-	Unk_626bdd1         Type_560ae4cf
-	Unk_b6d6da5         Type_cbfdd2ea
-	Unk_199c08f         Type_cbfdd2ea
-	PathFogStart        Type_cbfdd2ea
-	Unk_74cb27e         Type_cbfdd2ea
-	Unk_a788b48         Type_cbfdd2ea
-	PathFogExponent     Type_cbfdd2ea
-	Unk_b2aba89         Type_cbfdd2ea
-	Unk_72030bc         Type_cbfdd2ea
-	Unk_7204f87         Type_cbfdd2ea
-	Unk_32d918a         Type_cbfdd2ea
-	Unk_f95c9b0         Type_cbfdd2ea
-	Unk_aef59b6         Type_560ae4cf
-	Unk_f5edab3         Type_cbfdd2ea
-	Unk_5014cdd         Type_cbfdd2ea
-	Unk_647fc8          Type_cbfdd2ea
-	Unk_a8a3bbf         DT_INT
-	Unk_68b6393         Type_560ae4cf
-	PathGroundFogHeight Type_cbfdd2ea
-	Unk_da3c9c0         Type_cbfdd2ea
-	Unk_35f6be9         Type_cbfdd2ea
-	Unk_3db80f1         Type_cbfdd2ea
-	Unk_95c9a3c         Type_cbfdd2ea
-	Unk_49c7577         DT_FLOAT
-	Unk_2ba647c         DT_FLOAT
-	Unk_babc18b         Type_cbfdd2ea
-	PathWind            VectorPath
+	FIsFogged                    DT_INT
+	PathFogColor                 Type_560ae4cf
+	Unk_626bdd1                  Type_560ae4cf
+	Unk_b6d6da5                  Type_cbfdd2ea
+	PathFogIntensityBias         Type_cbfdd2ea
+	PathFogStart                 Type_cbfdd2ea
+	Unk_74cb27e                  Type_cbfdd2ea
+	Unk_a788b48                  Type_cbfdd2ea
+	PathFogExponent              Type_cbfdd2ea
+	Unk_b2aba89                  Type_cbfdd2ea
+	Unk_72030bc                  Type_cbfdd2ea
+	Unk_7204f87                  Type_cbfdd2ea
+	Unk_32d918a                  Type_cbfdd2ea
+	Unk_f95c9b0                  Type_cbfdd2ea
+	Unk_aef59b6                  Type_560ae4cf
+	Unk_f5edab3                  Type_cbfdd2ea
+	Unk_5014cdd                  Type_cbfdd2ea
+	Unk_647fc8                   Type_cbfdd2ea
+	Unk_a8a3bbf                  DT_INT
+	PathGroundFogFogColor        Type_560ae4cf
+	PathGroundFogHeight          Type_cbfdd2ea
+	PathGroundFogDensityScale    Type_cbfdd2ea
+	Unk_35f6be9                  Type_cbfdd2ea
+	Unk_3db80f1                  Type_cbfdd2ea
+	PathGroundFogAbsorptionCoeff Type_cbfdd2ea
+	Unk_49c7577                  DT_FLOAT
+	Unk_2ba647c                  DT_FLOAT
+	Unk_babc18b                  Type_cbfdd2ea
+	PathWind                     VectorPath
 }
 
 func (t *Type_822e2895) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -63555,7 +64817,7 @@ func (t *Type_822e2895) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+120, &t.Unk_b6d6da5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_199c08f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+176, &t.PathFogIntensityBias, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+232, &t.PathFogStart, r, &Options{Flags: 1}); err != nil {
@@ -63600,13 +64862,13 @@ func (t *Type_822e2895) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+960, &t.Unk_a8a3bbf, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+968, &t.Unk_68b6393, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+968, &t.PathGroundFogFogColor, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1024, &t.PathGroundFogHeight, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1080, &t.Unk_da3c9c0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1080, &t.PathGroundFogDensityScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1136, &t.Unk_35f6be9, r, &Options{Flags: 1}); err != nil {
@@ -63615,7 +64877,7 @@ func (t *Type_822e2895) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1192, &t.Unk_3db80f1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1248, &t.Unk_95c9a3c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1248, &t.PathGroundFogAbsorptionCoeff, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+1304, &t.Unk_49c7577, r, &Options{Flags: 1}); err != nil {
@@ -63641,7 +64903,7 @@ func (t *Type_822e2895) Walk(cb WalkCallback) {
 	cb.Do("PathFogColor", &t.PathFogColor)
 	cb.Do("Unk_626bdd1", &t.Unk_626bdd1)
 	cb.Do("Unk_b6d6da5", &t.Unk_b6d6da5)
-	cb.Do("Unk_199c08f", &t.Unk_199c08f)
+	cb.Do("PathFogIntensityBias", &t.PathFogIntensityBias)
 	cb.Do("PathFogStart", &t.PathFogStart)
 	cb.Do("Unk_74cb27e", &t.Unk_74cb27e)
 	cb.Do("Unk_a788b48", &t.Unk_a788b48)
@@ -63656,12 +64918,12 @@ func (t *Type_822e2895) Walk(cb WalkCallback) {
 	cb.Do("Unk_5014cdd", &t.Unk_5014cdd)
 	cb.Do("Unk_647fc8", &t.Unk_647fc8)
 	cb.Do("Unk_a8a3bbf", &t.Unk_a8a3bbf)
-	cb.Do("Unk_68b6393", &t.Unk_68b6393)
+	cb.Do("PathGroundFogFogColor", &t.PathGroundFogFogColor)
 	cb.Do("PathGroundFogHeight", &t.PathGroundFogHeight)
-	cb.Do("Unk_da3c9c0", &t.Unk_da3c9c0)
+	cb.Do("PathGroundFogDensityScale", &t.PathGroundFogDensityScale)
 	cb.Do("Unk_35f6be9", &t.Unk_35f6be9)
 	cb.Do("Unk_3db80f1", &t.Unk_3db80f1)
-	cb.Do("Unk_95c9a3c", &t.Unk_95c9a3c)
+	cb.Do("PathGroundFogAbsorptionCoeff", &t.PathGroundFogAbsorptionCoeff)
 	cb.Do("Unk_49c7577", &t.Unk_49c7577)
 	cb.Do("Unk_2ba647c", &t.Unk_2ba647c)
 	cb.Do("Unk_babc18b", &t.Unk_babc18b)
@@ -63732,6 +64994,45 @@ func (t *ParticleLifeEvent) Walk(cb WalkCallback) {
 	cb.Do("DwParticleIndex", &t.DwParticleIndex)
 	cb.Do("DwType", &t.DwType)
 	cb.Do("FlSystemTime", &t.FlSystemTime)
+}
+
+type Type_82ee66c1 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	BInverse DT_INT
+	DwPad    DT_UINT
+	ESubject DT_ENUM
+}
+
+func (t *Type_82ee66c1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.ESubject, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_82ee66c1) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("ESubject", &t.ESubject)
 }
 
 type QuestItemCountSubcondition struct {
@@ -63910,7 +65211,7 @@ type AppearanceDefinition struct {
 	DwLookVariant         DT_UINT
 	TFoliageSettings      FoliageSettings
 	PtSpeedTreeWind       DT_POLYMORPHIC_VARIABLEARRAY[*SpeedTreeWindBase]
-	Unk_6c10d1            DT_VARIABLEARRAY[*Type_6c048b8b]
+	ArLayersVertexAO      DT_VARIABLEARRAY[*LayerVertexAO]
 	Unk_9a6abe3           DT_FLOAT
 	FlDeformationScale    DT_FLOAT
 }
@@ -63950,7 +65251,7 @@ func (t *AppearanceDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+264, &t.PtSpeedTreeWind, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.Unk_6c10d1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+288, &t.ArLayersVertexAO, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+304, &t.Unk_9a6abe3, r, &Options{Flags: 1}); err != nil {
@@ -63975,7 +65276,7 @@ func (t *AppearanceDefinition) Walk(cb WalkCallback) {
 	cb.Do("DwLookVariant", &t.DwLookVariant)
 	cb.Do("TFoliageSettings", &t.TFoliageSettings)
 	cb.Do("PtSpeedTreeWind", &t.PtSpeedTreeWind)
-	cb.Do("Unk_6c10d1", &t.Unk_6c10d1)
+	cb.Do("ArLayersVertexAO", &t.ArLayersVertexAO)
 	cb.Do("Unk_9a6abe3", &t.Unk_9a6abe3)
 	cb.Do("FlDeformationScale", &t.FlDeformationScale)
 }
@@ -64055,7 +65356,7 @@ type TriggerEventChangeLookDuration struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -64086,7 +65387,7 @@ func (t *TriggerEventChangeLookDuration) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -64136,7 +65437,7 @@ func (t *TriggerEventChangeLookDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -64187,7 +65488,7 @@ func (t *LocalPlayerNetEvent) Walk(cb WalkCallback) {
 	cb.Do("UGameAccountId", &t.UGameAccountId)
 }
 
-type Type_8462796a struct {
+type DRLGTileDebugInfo struct {
 	SnoScene                     DT_SNO
 	IdSScene                     DT_SHARED_SERVER_DATA_ID
 	VWorldPos                    DT_VECTOR3D
@@ -64201,7 +65502,7 @@ type Type_8462796a struct {
 	NElevationsCount             DT_INT
 }
 
-func (t *Type_8462796a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *DRLGTileDebugInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -64261,7 +65562,7 @@ func (t *Type_8462796a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_8462796a) Walk(cb WalkCallback) {
+func (t *DRLGTileDebugInfo) Walk(cb WalkCallback) {
 	cb.Do("SnoScene", &t.SnoScene)
 	cb.Do("IdSScene", &t.IdSScene)
 	cb.Do("VWorldPos", &t.VWorldPos)
@@ -64832,13 +66133,13 @@ func (t *InventoryRequestQuickMoveMessage) Walk(cb WalkCallback) {
 type Type_857c89cd struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	BHide       DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	BHide           DT_INT
 }
 
 func (t *Type_857c89cd) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -64861,7 +66162,7 @@ func (t *Type_857c89cd) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.BHide, r, &Options{Flags: 17}); err != nil {
@@ -64879,7 +66180,7 @@ func (t *Type_857c89cd) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("BHide", &t.BHide)
 }
 
@@ -64891,7 +66192,7 @@ type WwiseInitSoundBank struct {
 	PtInitBank       DT_VARIABLEARRAY[*DT_BYTE]
 	PtGameParameters DT_VARIABLEARRAY[*WwiseGameParameter]
 	PtStateValues    DT_VARIABLEARRAY[*WwiseSwitchValue]
-	Unk_7d0510b      DT_VARIABLEARRAY[*WwiseAudioBus]
+	PtAudioBusses    DT_VARIABLEARRAY[*WwiseAudioBus]
 	Unk_b0f69e7      DT_VARIABLEARRAY[*Type_e1291b50]
 }
 
@@ -64915,7 +66216,7 @@ func (t *WwiseInitSoundBank) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+48, &t.PtStateValues, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.Unk_7d0510b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+64, &t.PtAudioBusses, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_b0f69e7, r, &Options{Flags: 1}); err != nil {
@@ -64933,7 +66234,7 @@ func (t *WwiseInitSoundBank) Walk(cb WalkCallback) {
 	cb.Do("PtInitBank", &t.PtInitBank)
 	cb.Do("PtGameParameters", &t.PtGameParameters)
 	cb.Do("PtStateValues", &t.PtStateValues)
-	cb.Do("Unk_7d0510b", &t.Unk_7d0510b)
+	cb.Do("PtAudioBusses", &t.PtAudioBusses)
 	cb.Do("Unk_b0f69e7", &t.Unk_b0f69e7)
 }
 
@@ -65182,7 +66483,7 @@ type GlobalRoadGraph struct {
 	AabbBounds AABB
 	DwRows     DT_UINT
 	DwColumns  DT_UINT
-	ArGrid     DT_VARIABLEARRAY[*Type_31826a49]
+	ArGrid     DT_VARIABLEARRAY[*GlobalRoadGraphCell]
 }
 
 func (t *GlobalRoadGraph) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -65289,10 +66590,10 @@ func (t *WorldSetRemainingReviveCountMessage) Walk(cb WalkCallback) {
 }
 
 type Type_85f15dc7 struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	SnoPower    DT_SNO
-	DwRank      DT_UINT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoPower              DT_SNO
+	DwRank                DT_UINT
 }
 
 func (t *Type_85f15dc7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -65303,7 +66604,7 @@ func (t *Type_85f15dc7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoPower, r, &Options{
@@ -65323,7 +66624,7 @@ func (t *Type_85f15dc7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_85f15dc7) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoPower", &t.SnoPower)
 	cb.Do("DwRank", &t.DwRank)
 }
@@ -65499,8 +66800,8 @@ func (t *SchedulerGlobalUniqueCategory_Table) Walk(cb WalkCallback) {
 }
 
 type PlayerIndexMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerIndexMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -65511,7 +66812,7 @@ func (t *PlayerIndexMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
@@ -65522,7 +66823,7 @@ func (t *PlayerIndexMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 
 func (t *PlayerIndexMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type DRLGNodeLink struct {
@@ -65642,6 +66943,7 @@ type ItemTypeDefinition struct {
 	ArBodySlots     DT_VARIABLEARRAY[*DT_ENUM]
 	ArItemLabels    DT_VARIABLEARRAY[*DT_ENUM]
 	EWeaponClass    DT_ENUM
+	Unk_6d53dc5     DT_CSTRING[*DT_BYTE]
 	Unk_18ee4ac     DT_ENUM
 	Unk_b2500f1     DT_FLOAT
 	Unk_4811bbe     DT_FLOAT
@@ -65652,9 +66954,11 @@ type ItemTypeDefinition struct {
 	Unk_f03343a     DT_INT
 	Unk_9d54616     DT_INT
 	Unk_b5a1c2b     DT_INT
+	FUsableByClass  DT_FIXEDARRAY[*DT_INT]
 	DwItemLabelMask DT_FIXEDARRAY[*DT_UINT]
 	Unk_60c6aca     DT_VARIABLEARRAY[*Type_a5df0191]
 	Unk_4ec8d93     DT_SNO
+	Unk_f4b6cde     Type_56ff7d6a
 }
 
 func (t *ItemTypeDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -65677,49 +66981,61 @@ func (t *ItemTypeDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+48, &t.EWeaponClass, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+52, &t.Unk_18ee4ac, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+56, &t.Unk_6d53dc5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+56, &t.Unk_b2500f1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+72, &t.Unk_18ee4ac, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+60, &t.Unk_4811bbe, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+76, &t.Unk_b2500f1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.Unk_cc5ef53, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+80, &t.Unk_4811bbe, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+68, &t.Unk_9981e08, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+84, &t.Unk_cc5ef53, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+72, &t.Unk_9e2e500, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+88, &t.Unk_9981e08, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_69d0449, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+92, &t.Unk_9e2e500, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+80, &t.Unk_f03343a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.Unk_69d0449, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+84, &t.Unk_9d54616, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+100, &t.Unk_f03343a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.Unk_b5a1c2b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+104, &t.Unk_9d54616, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+92, &t.DwItemLabelMask, r, &Options{ArrayLength: 2}); err != nil {
+	if err := UnmarshalAt(p+108, &t.Unk_b5a1c2b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.Unk_60c6aca, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+112, &t.FUsableByClass, r, &Options{
+		ArrayLength: 5,
+		Flags:       1,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.Unk_4ec8d93, r, &Options{
+	if err := UnmarshalAt(p+132, &t.DwItemLabelMask, r, &Options{ArrayLength: 2}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+144, &t.Unk_60c6aca, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+160, &t.Unk_4ec8d93, r, &Options{
 		Flags: 1,
 		Group: 27,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+128, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+168, &t.Unk_f4b6cde, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+184, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -65731,6 +67047,7 @@ func (t *ItemTypeDefinition) Walk(cb WalkCallback) {
 	cb.Do("ArBodySlots", &t.ArBodySlots)
 	cb.Do("ArItemLabels", &t.ArItemLabels)
 	cb.Do("EWeaponClass", &t.EWeaponClass)
+	cb.Do("Unk_6d53dc5", &t.Unk_6d53dc5)
 	cb.Do("Unk_18ee4ac", &t.Unk_18ee4ac)
 	cb.Do("Unk_b2500f1", &t.Unk_b2500f1)
 	cb.Do("Unk_4811bbe", &t.Unk_4811bbe)
@@ -65741,9 +67058,11 @@ func (t *ItemTypeDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_f03343a", &t.Unk_f03343a)
 	cb.Do("Unk_9d54616", &t.Unk_9d54616)
 	cb.Do("Unk_b5a1c2b", &t.Unk_b5a1c2b)
+	cb.Do("FUsableByClass", &t.FUsableByClass)
 	cb.Do("DwItemLabelMask", &t.DwItemLabelMask)
 	cb.Do("Unk_60c6aca", &t.Unk_60c6aca)
 	cb.Do("Unk_4ec8d93", &t.Unk_4ec8d93)
+	cb.Do("Unk_f4b6cde", &t.Unk_f4b6cde)
 }
 
 type Type_87a7a74d struct {
@@ -66134,7 +67453,7 @@ func (t *ActiveSkillSavedData) Walk(cb WalkCallback) {
 	cb.Do("SnoSkill", &t.SnoSkill)
 }
 
-type Type_894bd255 struct {
+type RoadTypeProperties struct {
 	RgbaDebugColor DT_RGBACOLOR
 	SnoTexPattern  DT_SNO
 	RgbaColor      DT_RGBACOLOR
@@ -66146,7 +67465,7 @@ type Type_894bd255 struct {
 	Unk_e41f4ef    DT_FLOAT
 }
 
-func (t *Type_894bd255) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *RoadTypeProperties) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -66187,7 +67506,7 @@ func (t *Type_894bd255) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_894bd255) Walk(cb WalkCallback) {
+func (t *RoadTypeProperties) Walk(cb WalkCallback) {
 	cb.Do("RgbaDebugColor", &t.RgbaDebugColor)
 	cb.Do("SnoTexPattern", &t.SnoTexPattern)
 	cb.Do("RgbaColor", &t.RgbaColor)
@@ -66451,7 +67770,7 @@ type UIItemTagStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -66774,7 +68093,7 @@ type UIListBoxStyle struct {
 	M_eHasModifiedPowerTagMap DT_TAGMAP[*DT_ENUM]
 	TConsoleInput             UIControlConsoleInput
 	Unk_b4f614c               DT_TAGMAP[*DT_ENUM]
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	TFont                     UIControlFont
 	Unk_59693f9               DT_TAGMAP[*DT_ENUM]
 }
@@ -66917,6 +68236,40 @@ func (t *OnGizmoOperatedBuffCallback) Walk(cb WalkCallback) {
 	cb.Do("ArConditions", &t.ArConditions)
 }
 
+type Type_8a6ebe91 struct {
+	// Inherits GameBalanceTable
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	DwPad    DT_UINT
+	TEntries DT_VARIABLEARRAY[*Type_2732a10a]
+}
+
+func (t *Type_8a6ebe91) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TEntries, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_8a6ebe91) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("TEntries", &t.TEntries)
+}
+
 type PowerConditionDamageHasVulnerable struct {
 	// Inherits PowerConditionBase
 	// Inherits PolymorphicBase
@@ -66951,14 +68304,14 @@ func (t *PowerConditionDamageHasVulnerable) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
-type Type_8aef87e7 struct {
+type dmHeightSampleMirror struct {
 	Height      DT_FLOAT
 	Material    DT_WORD
 	GameFlags   DT_BYTE
 	Unk_38adf8e DT_BYTE
 }
 
-func (t *Type_8aef87e7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmHeightSampleMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -66981,7 +68334,7 @@ func (t *Type_8aef87e7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_8aef87e7) Walk(cb WalkCallback) {
+func (t *dmHeightSampleMirror) Walk(cb WalkCallback) {
 	cb.Do("Height", &t.Height)
 	cb.Do("Material", &t.Material)
 	cb.Do("GameFlags", &t.GameFlags)
@@ -67262,6 +68615,7 @@ type PowerConditionHasSkillTag struct {
 	BInverse    DT_INT
 	DwPad       DT_UINT
 	ArSkillTags DT_VARIABLEARRAY[*DT_GBID]
+	Unk_56385e4 DT_INT
 }
 
 func (t *PowerConditionHasSkillTag) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -67284,7 +68638,10 @@ func (t *PowerConditionHasSkillTag) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+40, &t.Unk_56385e4, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -67295,6 +68652,7 @@ func (t *PowerConditionHasSkillTag) Walk(cb WalkCallback) {
 	cb.Do("BInverse", &t.BInverse)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("ArSkillTags", &t.ArSkillTags)
+	cb.Do("Unk_56385e4", &t.Unk_56385e4)
 }
 
 type SkillEnchantSavedData struct {
@@ -67457,13 +68815,13 @@ func (t *ReputationSubcondition) Walk(cb WalkCallback) {
 type TriggerEventShowWarpUI struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	SnoUI       DT_SNO
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	SnoUI           DT_SNO
 }
 
 func (t *TriggerEventShowWarpUI) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -67486,7 +68844,7 @@ func (t *TriggerEventShowWarpUI) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.SnoUI, r, &Options{
@@ -67507,7 +68865,7 @@ func (t *TriggerEventShowWarpUI) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("SnoUI", &t.SnoUI)
 }
 
@@ -67638,12 +68996,12 @@ func (t *Type_8d06aec1) Walk(cb WalkCallback) {
 	cb.Do("Padding", &t.Padding)
 }
 
-type Type_8d06beff struct {
-	THeader        RequiredMessageHeader
+type CollectAchievementItemRewardsRequest struct {
+	THeader        RequiredRequestMessageHeader
 	SnoAchievement DT_SNO
 }
 
-func (t *Type_8d06beff) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *CollectAchievementItemRewardsRequest) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -67651,19 +69009,19 @@ func (t *Type_8d06beff) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.SnoAchievement, r, &Options{
+	if err := UnmarshalAt(p+20, &t.SnoAchievement, r, &Options{
 		Flags: 1,
 		Group: 99,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+20, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Type_8d06beff) Walk(cb WalkCallback) {
+func (t *CollectAchievementItemRewardsRequest) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("SnoAchievement", &t.SnoAchievement)
 }
@@ -67701,6 +69059,8 @@ type LevelScalingDefinition struct {
 	Unk_5addb48             DT_FIXEDARRAY[*DT_FLOAT]
 	Unk_21af36c             DT_FIXEDARRAY[*DT_FLOAT]
 	Unk_4148916             DT_FIXEDARRAY[*DT_FLOAT]
+	Unk_6c4f6a5             DT_FLOAT
+	Unk_ca0e50c             DT_FLOAT
 	Unk_75141dd             DT_FLOAT
 	FlClassBaseDamageScalar DT_FIXEDARRAY[*DT_FLOAT]
 }
@@ -67782,16 +69142,22 @@ func (t *LevelScalingDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.Unk_75141dd, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.Unk_6c4f6a5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+100, &t.FlClassBaseDamageScalar, r, &Options{
+	if err := UnmarshalAt(p+100, &t.Unk_ca0e50c, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+104, &t.Unk_75141dd, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+108, &t.FlClassBaseDamageScalar, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+120, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+128, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -67815,6 +69181,8 @@ func (t *LevelScalingDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_5addb48", &t.Unk_5addb48)
 	cb.Do("Unk_21af36c", &t.Unk_21af36c)
 	cb.Do("Unk_4148916", &t.Unk_4148916)
+	cb.Do("Unk_6c4f6a5", &t.Unk_6c4f6a5)
+	cb.Do("Unk_ca0e50c", &t.Unk_ca0e50c)
 	cb.Do("Unk_75141dd", &t.Unk_75141dd)
 	cb.Do("FlClassBaseDamageScalar", &t.FlClassBaseDamageScalar)
 }
@@ -68146,14 +69514,14 @@ func (t *PetType_Table) Walk(cb WalkCallback) {
 type TriggerEventShowCaptionUI struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	SnoUI       DT_SNO
-	Unk_6316fe8 DT_TAGMAP[*DT_ENUM]
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	SnoUI           DT_SNO
+	Unk_6316fe8     DT_TAGMAP[*DT_ENUM]
 }
 
 func (t *TriggerEventShowCaptionUI) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -68176,7 +69544,7 @@ func (t *TriggerEventShowCaptionUI) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.SnoUI, r, &Options{
@@ -68200,7 +69568,7 @@ func (t *TriggerEventShowCaptionUI) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("SnoUI", &t.SnoUI)
 	cb.Do("Unk_6316fe8", &t.Unk_6316fe8)
 }
@@ -68306,9 +69674,9 @@ func (t *GameFoundForTransferMessage) Walk(cb WalkCallback) {
 }
 
 type PlayerDWordDataMessage struct {
-	THeader     RequiredMessageHeader
-	DwData      DT_UINT
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	DwData                DT_UINT
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerDWordDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -68322,7 +69690,7 @@ func (t *PlayerDWordDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+16, &t.DwData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -68334,7 +69702,7 @@ func (t *PlayerDWordDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 func (t *PlayerDWordDataMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwData", &t.DwData)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type WindowPieces struct {
@@ -69471,12 +70839,12 @@ func (t *ParagonGlyphExperience_Table) Walk(cb WalkCallback) {
 	cb.Do("TEntries", &t.TEntries)
 }
 
-type Type_93828ae3 struct {
+type PlayerCompletedRepeatableQuestEntry struct {
 	SnoQuest        DT_SNO
 	NLastOccurrence DT_INT
 }
 
-func (t *Type_93828ae3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PlayerCompletedRepeatableQuestEntry) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -69496,7 +70864,7 @@ func (t *Type_93828ae3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_93828ae3) Walk(cb WalkCallback) {
+func (t *PlayerCompletedRepeatableQuestEntry) Walk(cb WalkCallback) {
 	cb.Do("SnoQuest", &t.SnoQuest)
 	cb.Do("NLastOccurrence", &t.NLastOccurrence)
 }
@@ -69759,6 +71127,28 @@ func (t *Type_94666cb9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *Type_94666cb9) Walk(cb WalkCallback) {
 	cb.Do("DwID", &t.DwID)
 	cb.Do("SnoCondition", &t.SnoCondition)
+}
+
+type Type_9467bb76 struct {
+	Unk_9a78163 DT_INT64
+}
+
+func (t *Type_9467bb76) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_9a78163, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_9467bb76) Walk(cb WalkCallback) {
+	cb.Do("Unk_9a78163", &t.Unk_9a78163)
 }
 
 type MarkingShapeDefinition struct {
@@ -70416,7 +71806,7 @@ type TrickleMessage struct {
 	SnoLevelArea                  DT_SNO
 	FlHealthPercent               DT_OPTIONAL[*DT_FLOAT]
 	Unk_c8448e5                   DT_OPTIONAL[*DT_FLOAT]
-	Unk_36173ba                   DT_OPTIONAL[*DT_SNO]
+	SnoPortalDestWorld            DT_OPTIONAL[*DT_SNO]
 	SnoPortalDestLevelArea        DT_OPTIONAL[*DT_SNO]
 	SnoItem                       DT_OPTIONAL[*DT_SNO]
 	ETeam                         DT_OPTIONAL[*DT_ENUM]
@@ -70472,7 +71862,7 @@ func (t *TrickleMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+68, &t.Unk_c8448e5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_36173ba, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+76, &t.SnoPortalDestWorld, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+84, &t.SnoPortalDestLevelArea, r, &Options{Flags: 1}); err != nil {
@@ -70544,7 +71934,7 @@ func (t *TrickleMessage) Walk(cb WalkCallback) {
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
 	cb.Do("FlHealthPercent", &t.FlHealthPercent)
 	cb.Do("Unk_c8448e5", &t.Unk_c8448e5)
-	cb.Do("Unk_36173ba", &t.Unk_36173ba)
+	cb.Do("SnoPortalDestWorld", &t.SnoPortalDestWorld)
 	cb.Do("SnoPortalDestLevelArea", &t.SnoPortalDestLevelArea)
 	cb.Do("SnoItem", &t.SnoItem)
 	cb.Do("ETeam", &t.ETeam)
@@ -70967,8 +72357,8 @@ func (t *MonsterSubcondition) Walk(cb WalkCallback) {
 }
 
 type FaceDefinition struct {
-	FUsableByClass DT_FIXEDARRAY[*DT_INT]
-	Unk_305622d    DT_UINT
+	FUsableByClass   DT_FIXEDARRAY[*DT_INT]
+	DwSubObjectStyle DT_UINT
 }
 
 func (t *FaceDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -70982,7 +72372,7 @@ func (t *FaceDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_305622d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.DwSubObjectStyle, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
@@ -70993,7 +72383,7 @@ func (t *FaceDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *FaceDefinition) Walk(cb WalkCallback) {
 	cb.Do("FUsableByClass", &t.FUsableByClass)
-	cb.Do("Unk_305622d", &t.Unk_305622d)
+	cb.Do("DwSubObjectStyle", &t.DwSubObjectStyle)
 }
 
 type Type_976d0976 struct {
@@ -71061,7 +72451,7 @@ func (t *Type_977100c8) Walk(cb WalkCallback) {
 type ActorMovementPowerData struct {
 	Unk_b1f0f4e                  DT_STRING_FORMULA
 	Unk_c31445d                  DT_FLOAT
-	Unk_6661ef2                  DT_FLOAT
+	FlFacingDistanceThreshold    DT_FLOAT
 	Unk_f8c5768                  DT_ENUM
 	FlSpeedMultiplier            DT_FLOAT
 	BIgnorePathfinding           DT_INT
@@ -71087,7 +72477,7 @@ func (t *ActorMovementPowerData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+32, &t.Unk_c31445d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+36, &t.Unk_6661ef2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+36, &t.FlFacingDistanceThreshold, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+40, &t.Unk_f8c5768, r, &Options{Flags: 1}); err != nil {
@@ -71141,7 +72531,7 @@ func (t *ActorMovementPowerData) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 func (t *ActorMovementPowerData) Walk(cb WalkCallback) {
 	cb.Do("Unk_b1f0f4e", &t.Unk_b1f0f4e)
 	cb.Do("Unk_c31445d", &t.Unk_c31445d)
-	cb.Do("Unk_6661ef2", &t.Unk_6661ef2)
+	cb.Do("FlFacingDistanceThreshold", &t.FlFacingDistanceThreshold)
 	cb.Do("Unk_f8c5768", &t.Unk_f8c5768)
 	cb.Do("FlSpeedMultiplier", &t.FlSpeedMultiplier)
 	cb.Do("BIgnorePathfinding", &t.BIgnorePathfinding)
@@ -71566,11 +72956,11 @@ func (t *Type_984657e7) Walk(cb WalkCallback) {
 	cb.Do("NAmount", &t.NAmount)
 }
 
-type Type_98c23c41 struct {
+type UIControlClickSounds struct {
 	Unk_eae7586 DT_TAGMAP[*DT_ENUM]
 }
 
-func (t *Type_98c23c41) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UIControlClickSounds) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -71584,8 +72974,62 @@ func (t *Type_98c23c41) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_98c23c41) Walk(cb WalkCallback) {
+func (t *UIControlClickSounds) Walk(cb WalkCallback) {
 	cb.Do("Unk_eae7586", &t.Unk_eae7586)
+}
+
+type Type_98c7edba struct {
+	THeader      GBIDHeader
+	Unk_6216f88  DT_UINT
+	Unk_e0eba5d  DT_FIXEDARRAY[*DT_GBID]
+	ESalvageType DT_ENUM
+	Unk_413bde5  DT_SNO
+	Unk_d66c3c6  UIImageHandleReference
+}
+
+func (t *Type_98c7edba) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+260, &t.Unk_6216f88, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+264, &t.Unk_e0eba5d, r, &Options{
+		ArrayLength: 3,
+		Flags:       1,
+		Group:       66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+276, &t.ESalvageType, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+280, &t.Unk_413bde5, r, &Options{
+		Flags: 1,
+		Group: 1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+284, &t.Unk_d66c3c6, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+288, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_98c7edba) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("Unk_6216f88", &t.Unk_6216f88)
+	cb.Do("Unk_e0eba5d", &t.Unk_e0eba5d)
+	cb.Do("ESalvageType", &t.ESalvageType)
+	cb.Do("Unk_413bde5", &t.Unk_413bde5)
+	cb.Do("Unk_d66c3c6", &t.Unk_d66c3c6)
 }
 
 type VisualInventoryMessage struct {
@@ -71829,12 +73273,12 @@ type Type_991d0313 struct {
 	EScrollbarStyle         DT_ENUM
 	BScrollbarVertical      DT_INT
 	Unk_5360c2              DT_INT
-	Unk_bdf8b74             DT_CSTRING[*DT_BYTE]
+	SzScrollbarOnChange     DT_CSTRING[*DT_BYTE]
 	Unk_3f3a302             DT_SNO
 	SnoScrollbarClickSound  DT_SNO
 	EScrollbarVisibility    DT_ENUM
-	Unk_58496c              DT_FLOAT
-	Unk_26fb7aa             DT_FLOAT
+	FlScrollbarBlendSpeed   DT_FLOAT
+	FlScrollbarBlendTime    DT_FLOAT
 	EBlendEasing            DT_ENUM
 	Unk_ce2abaa             DT_FLOAT
 	Unk_aea1165             DT_INT
@@ -71855,7 +73299,7 @@ func (t *Type_991d0313) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.Unk_5360c2, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_bdf8b74, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.SzScrollbarOnChange, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.Unk_3f3a302, r, &Options{
@@ -71873,10 +73317,10 @@ func (t *Type_991d0313) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+40, &t.EScrollbarVisibility, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+44, &t.Unk_58496c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+44, &t.FlScrollbarBlendSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_26fb7aa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.FlScrollbarBlendTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+52, &t.EBlendEasing, r, &Options{Flags: 1}); err != nil {
@@ -71901,12 +73345,12 @@ func (t *Type_991d0313) Walk(cb WalkCallback) {
 	cb.Do("EScrollbarStyle", &t.EScrollbarStyle)
 	cb.Do("BScrollbarVertical", &t.BScrollbarVertical)
 	cb.Do("Unk_5360c2", &t.Unk_5360c2)
-	cb.Do("Unk_bdf8b74", &t.Unk_bdf8b74)
+	cb.Do("SzScrollbarOnChange", &t.SzScrollbarOnChange)
 	cb.Do("Unk_3f3a302", &t.Unk_3f3a302)
 	cb.Do("SnoScrollbarClickSound", &t.SnoScrollbarClickSound)
 	cb.Do("EScrollbarVisibility", &t.EScrollbarVisibility)
-	cb.Do("Unk_58496c", &t.Unk_58496c)
-	cb.Do("Unk_26fb7aa", &t.Unk_26fb7aa)
+	cb.Do("FlScrollbarBlendSpeed", &t.FlScrollbarBlendSpeed)
+	cb.Do("FlScrollbarBlendTime", &t.FlScrollbarBlendTime)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("Unk_ce2abaa", &t.Unk_ce2abaa)
 	cb.Do("Unk_aea1165", &t.Unk_aea1165)
@@ -72094,7 +73538,7 @@ type Environment struct {
 	SnoSkyboxActor       DT_SNO
 	SnoAudioContext      DT_SNO
 	SnoWeather           DT_SNO
-	Unk_4c76230          DT_SNO
+	SnoSkylightTex       DT_SNO
 	Unk_afd6821          bcQuat
 	SnoOceanMaterial     DT_SNO
 	SnoGroundFogMaterial DT_SNO
@@ -72135,7 +73579,7 @@ func (t *Environment) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+44, &t.Unk_4c76230, r, &Options{
+	if err := UnmarshalAt(p+44, &t.SnoSkylightTex, r, &Options{
 		Flags: 1,
 		Group: 44,
 	}); err != nil {
@@ -72209,7 +73653,7 @@ func (t *Environment) Walk(cb WalkCallback) {
 	cb.Do("SnoSkyboxActor", &t.SnoSkyboxActor)
 	cb.Do("SnoAudioContext", &t.SnoAudioContext)
 	cb.Do("SnoWeather", &t.SnoWeather)
-	cb.Do("Unk_4c76230", &t.Unk_4c76230)
+	cb.Do("SnoSkylightTex", &t.SnoSkylightTex)
 	cb.Do("Unk_afd6821", &t.Unk_afd6821)
 	cb.Do("SnoOceanMaterial", &t.SnoOceanMaterial)
 	cb.Do("SnoGroundFogMaterial", &t.SnoGroundFogMaterial)
@@ -72232,7 +73676,7 @@ type ConversationLineSetNode struct {
 	DwPad                DT_UINT
 	DwNodeID             DT_UINT
 	DwNextNodeID         DT_UINT
-	Unk_3ef8e38          DT_UINT
+	DwParentNodeID       DT_UINT
 	PtNextNode           DT_INT64
 	DwFlags              DT_UINT
 	SzComment            DT_CSTRING[*DT_BYTE]
@@ -72272,7 +73716,7 @@ func (t *ConversationLineSetNode) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -72358,7 +73802,7 @@ func (t *ConversationLineSetNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -72684,12 +74128,12 @@ func (t *PowerLimitedActorType_Table) Walk(cb WalkCallback) {
 	cb.Do("TEntries", &t.TEntries)
 }
 
-type Type_9a30831a struct {
+type SkillTreeSkillRankMod struct {
 	GbidRankReward      DT_GBID
 	DwRequiredSkillRank DT_UINT
 }
 
-func (t *Type_9a30831a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SkillTreeSkillRankMod) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -72709,7 +74153,7 @@ func (t *Type_9a30831a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_9a30831a) Walk(cb WalkCallback) {
+func (t *SkillTreeSkillRankMod) Walk(cb WalkCallback) {
 	cb.Do("GbidRankReward", &t.GbidRankReward)
 	cb.Do("DwRequiredSkillRank", &t.DwRequiredSkillRank)
 }
@@ -73181,7 +74625,7 @@ type TriggerEventFadeMonsters struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -73208,7 +74652,7 @@ func (t *TriggerEventFadeMonsters) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -73243,7 +74687,7 @@ func (t *TriggerEventFadeMonsters) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -73254,14 +74698,16 @@ func (t *TriggerEventFadeMonsters) Walk(cb WalkCallback) {
 }
 
 type RewardDefinition struct {
-	UID             DT_UINT
-	TType           DT_ENUM
-	UFlags          DT_UINT
-	TCurrency       DT_ENUM
-	UQuantity       DT_UINT
-	SnoItem         DT_SNO
-	SnoPlayerTitle  DT_SNO
-	SnoStoreProduct DT_SNO
+	UID              DT_UINT
+	TType            DT_ENUM
+	UFlags           DT_UINT
+	TCurrency        DT_ENUM
+	UQuantity        DT_UINT
+	SnoItem          DT_SNO
+	SnoPlayerTitle   DT_SNO
+	SnoStoreProduct  DT_SNO
+	SnoTrackedReward DT_SNO
+	SnoEmblem        DT_SNO
 }
 
 func (t *RewardDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -73302,7 +74748,19 @@ func (t *RewardDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+32, &t.SnoTrackedReward, r, &Options{
+		Flags: 1,
+		Group: 126,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+36, &t.SnoEmblem, r, &Options{
+		Flags: 1,
+		Group: 121,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -73317,10 +74775,12 @@ func (t *RewardDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoItem", &t.SnoItem)
 	cb.Do("SnoPlayerTitle", &t.SnoPlayerTitle)
 	cb.Do("SnoStoreProduct", &t.SnoStoreProduct)
+	cb.Do("SnoTrackedReward", &t.SnoTrackedReward)
+	cb.Do("SnoEmblem", &t.SnoEmblem)
 }
 
 type Type_9bc33fb9 struct {
-	THeader Type_b0f2a959
+	THeader RequiredCommandFrameMessageHeader
 }
 
 func (t *Type_9bc33fb9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -73356,8 +74816,8 @@ type UIDateTimeStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	Unk_f97174                DT_ENUM
-	TDefaultSettings          Type_b2d29bdc
-	Unk_4af6a2e               Type_b2d29bdc
+	TDefaultSettings          UIDateTimeSettings
+	TSeasonSettings           UIDateTimeSettings
 }
 
 func (t *UIDateTimeStyle) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -73398,7 +74858,7 @@ func (t *UIDateTimeStyle) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+120, &t.TDefaultSettings, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+144, &t.Unk_4af6a2e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+144, &t.TSeasonSettings, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+168, io.SeekStart); err != nil {
@@ -73419,7 +74879,7 @@ func (t *UIDateTimeStyle) Walk(cb WalkCallback) {
 	cb.Do("Unk_4741819", &t.Unk_4741819)
 	cb.Do("Unk_f97174", &t.Unk_f97174)
 	cb.Do("TDefaultSettings", &t.TDefaultSettings)
-	cb.Do("Unk_4af6a2e", &t.Unk_4af6a2e)
+	cb.Do("TSeasonSettings", &t.TSeasonSettings)
 }
 
 type NPCColorSet struct {
@@ -73792,6 +75252,33 @@ func (t *SerializeData) Walk(cb WalkCallback) {
 	cb.Do("DwSizeAndFlags", &t.DwSizeAndFlags)
 }
 
+type Type_9cf84f94 struct {
+	THeader RequiredResponseMessageHeader
+	NData   DT_INT
+}
+
+func (t *Type_9cf84f94) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.NData, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+28, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_9cf84f94) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("NData", &t.NData)
+}
+
 type GlobalEmblems struct {
 	// Inherits GlobalBase
 	// Inherits PolymorphicBase
@@ -73830,9 +75317,9 @@ func (t *GlobalEmblems) Walk(cb WalkCallback) {
 }
 
 type QuestSideQuestAbandonedMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	SnoQuest    DT_SNO
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoQuest              DT_SNO
 }
 
 func (t *QuestSideQuestAbandonedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -73843,7 +75330,7 @@ func (t *QuestSideQuestAbandonedMessage) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoQuest, r, &Options{
@@ -73860,7 +75347,7 @@ func (t *QuestSideQuestAbandonedMessage) UnmarshalD4(r *bin.BinaryReader, o *Opt
 
 func (t *QuestSideQuestAbandonedMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoQuest", &t.SnoQuest)
 }
 
@@ -73939,7 +75426,7 @@ type TriggerEventFadePlayers struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -73966,7 +75453,7 @@ func (t *TriggerEventFadePlayers) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -74001,7 +75488,7 @@ func (t *TriggerEventFadePlayers) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -74073,7 +75560,7 @@ type TriggerEventSetWeaponVisibilityDuration struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -74083,7 +75570,7 @@ type TriggerEventSetWeaponVisibilityDuration struct {
 	DwPad            DT_UINT
 	Unk_279aa5a      DT_INT
 	DwActorID        DT_UINT
-	Unk_a8ee95c      DT_INT
+	BHideMainHand    DT_INT
 	Unk_4bec6d2      DT_INT
 	BHideSheathed    DT_INT
 }
@@ -74105,7 +75592,7 @@ func (t *TriggerEventSetWeaponVisibilityDuration) UnmarshalD4(r *bin.BinaryReade
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -74135,7 +75622,7 @@ func (t *TriggerEventSetWeaponVisibilityDuration) UnmarshalD4(r *bin.BinaryReade
 	if err := UnmarshalAt(p+132, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.Unk_a8ee95c, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+136, &t.BHideMainHand, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+140, &t.Unk_4bec6d2, r, &Options{Flags: 17}); err != nil {
@@ -74155,7 +75642,7 @@ func (t *TriggerEventSetWeaponVisibilityDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -74165,7 +75652,7 @@ func (t *TriggerEventSetWeaponVisibilityDuration) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
 	cb.Do("DwActorID", &t.DwActorID)
-	cb.Do("Unk_a8ee95c", &t.Unk_a8ee95c)
+	cb.Do("BHideMainHand", &t.BHideMainHand)
 	cb.Do("Unk_4bec6d2", &t.Unk_4bec6d2)
 	cb.Do("BHideSheathed", &t.BHideSheathed)
 }
@@ -74222,7 +75709,7 @@ func (t *NPCInteraction) Walk(cb WalkCallback) {
 
 type Type_9e555889 struct {
 	DwMarkerPathID DT_UINT
-	Unk_b1f8d85    DT_INT
+	NAOOffset      DT_INT
 	NDamageState   DT_INT
 }
 
@@ -74234,7 +75721,7 @@ func (t *Type_9e555889) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.DwMarkerPathID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_b1f8d85, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.NAOOffset, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+8, &t.NDamageState, r, &Options{Flags: 1}); err != nil {
@@ -74248,7 +75735,7 @@ func (t *Type_9e555889) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_9e555889) Walk(cb WalkCallback) {
 	cb.Do("DwMarkerPathID", &t.DwMarkerPathID)
-	cb.Do("Unk_b1f8d85", &t.Unk_b1f8d85)
+	cb.Do("NAOOffset", &t.NAOOffset)
 	cb.Do("NDamageState", &t.NDamageState)
 }
 
@@ -74408,13 +75895,13 @@ func (t *FacialHairDefinition) Walk(cb WalkCallback) {
 }
 
 type ClothData struct {
-	Unk_3c1684f         Type_3a911960
+	Unk_3c1684f         dmClothDataMirror
 	PtBindVertices      DT_VARIABLEARRAY[*DT_VECTOR4D]
 	PtBindNormals       DT_VARIABLEARRAY[*DT_VECTOR4D]
 	Unk_f3049dd         DT_VARIABLEARRAY[*DT_FLOAT]
 	PtBlendWeights      DT_VARIABLEARRAY[*DT_FLOAT]
 	Unk_6b5f617         DT_VARIABLEARRAY[*DT_FLOAT]
-	PtDeltaFrames       DT_VARIABLEARRAY[*Type_b88f4265]
+	PtDeltaFrames       DT_VARIABLEARRAY[*dmMtxMirror]
 	PtLevels            DT_VARIABLEARRAY[*DT_WORD]
 	PtAttachmentLengths DT_VARIABLEARRAY[*DT_FLOAT]
 	PtParentIndices     DT_VARIABLEARRAY[*DT_WORD]
@@ -74428,13 +75915,13 @@ type ClothData struct {
 	PtConstraintLengths DT_VARIABLEARRAY[*DT_FLOAT]
 	Unk_8ecbb2b         DT_VARIABLEARRAY[*DT_WORD]
 	Unk_9f71907         DT_VARIABLEARRAY[*DT_FLOAT]
-	Unk_93f4433         DT_VARIABLEARRAY[*Type_fd884ad3]
+	PtWarpClusters      DT_VARIABLEARRAY[*Type_fd884ad3]
 	Unk_250faf          DT_VARIABLEARRAY[*Type_fd884ad3]
-	Unk_4213ccc         DT_VARIABLEARRAY[*Type_fd884ad3]
-	Unk_4bbdfb2         DT_VARIABLEARRAY[*Type_fd884ad3]
-	PtCapsuleDefs       DT_VARIABLEARRAY[*Type_4c2dc82]
-	PtPlaneDefs         DT_VARIABLEARRAY[*Type_da38fe05]
-	Unk_94dfc4          DT_VARIABLEARRAY[*Type_f1fed2b7]
+	PtShearClusters     DT_VARIABLEARRAY[*Type_fd884ad3]
+	PtBendClusters      DT_VARIABLEARRAY[*Type_fd884ad3]
+	PtCapsuleDefs       DT_VARIABLEARRAY[*dmClothCapsuleDefMirror]
+	PtPlaneDefs         DT_VARIABLEARRAY[*dmClothPlaneDefMirror]
+	PtDriverBindPose    DT_VARIABLEARRAY[*dmFrameMirror]
 	PtDriverMap         DT_VARIABLEARRAY[*DT_WORD]
 }
 
@@ -74503,16 +75990,16 @@ func (t *ClothData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+576, &t.Unk_9f71907, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+592, &t.Unk_93f4433, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+592, &t.PtWarpClusters, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+608, &t.Unk_250faf, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+624, &t.Unk_4213ccc, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+624, &t.PtShearClusters, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+640, &t.Unk_4bbdfb2, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+640, &t.PtBendClusters, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+656, &t.PtCapsuleDefs, r, &Options{}); err != nil {
@@ -74521,7 +76008,7 @@ func (t *ClothData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+672, &t.PtPlaneDefs, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+688, &t.Unk_94dfc4, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+688, &t.PtDriverBindPose, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+704, &t.PtDriverMap, r, &Options{}); err != nil {
@@ -74554,22 +76041,22 @@ func (t *ClothData) Walk(cb WalkCallback) {
 	cb.Do("PtConstraintLengths", &t.PtConstraintLengths)
 	cb.Do("Unk_8ecbb2b", &t.Unk_8ecbb2b)
 	cb.Do("Unk_9f71907", &t.Unk_9f71907)
-	cb.Do("Unk_93f4433", &t.Unk_93f4433)
+	cb.Do("PtWarpClusters", &t.PtWarpClusters)
 	cb.Do("Unk_250faf", &t.Unk_250faf)
-	cb.Do("Unk_4213ccc", &t.Unk_4213ccc)
-	cb.Do("Unk_4bbdfb2", &t.Unk_4bbdfb2)
+	cb.Do("PtShearClusters", &t.PtShearClusters)
+	cb.Do("PtBendClusters", &t.PtBendClusters)
 	cb.Do("PtCapsuleDefs", &t.PtCapsuleDefs)
 	cb.Do("PtPlaneDefs", &t.PtPlaneDefs)
-	cb.Do("Unk_94dfc4", &t.Unk_94dfc4)
+	cb.Do("PtDriverBindPose", &t.PtDriverBindPose)
 	cb.Do("PtDriverMap", &t.PtDriverMap)
 }
 
 type PlayerLevelMessage struct {
-	THeader          RequiredMessageHeader
-	Unk_dce541c      DT_UINT
-	NNewLevel        DT_INT
-	DwNewSkillPoints DT_UINT
-	Unk_1e075bd      DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	NNewLevel             DT_INT
+	DwNewSkillPoints      DT_UINT
+	Unk_1e075bd           DT_INT
 }
 
 func (t *PlayerLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -74580,7 +76067,7 @@ func (t *PlayerLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.NNewLevel, r, &Options{Flags: 17}); err != nil {
@@ -74600,7 +76087,7 @@ func (t *PlayerLevelMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 
 func (t *PlayerLevelMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("NNewLevel", &t.NNewLevel)
 	cb.Do("DwNewSkillPoints", &t.DwNewSkillPoints)
 	cb.Do("Unk_1e075bd", &t.Unk_1e075bd)
@@ -74951,9 +76438,41 @@ func (t *WorldStateFullUpdateMessage) Walk(cb WalkCallback) {
 	cb.Do("ArUpdates", &t.ArUpdates)
 }
 
+type Type_a0b7f6f3 struct {
+	DwWeight    DT_UINT
+	Unk_248a3b8 DT_FLOAT
+	Unk_899268f DT_FLOAT
+}
+
+func (t *Type_a0b7f6f3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.DwWeight, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.Unk_248a3b8, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.Unk_899268f, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+12, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_a0b7f6f3) Walk(cb WalkCallback) {
+	cb.Do("DwWeight", &t.DwWeight)
+	cb.Do("Unk_248a3b8", &t.Unk_248a3b8)
+	cb.Do("Unk_899268f", &t.Unk_899268f)
+}
+
 type JewelryDefinition struct {
 	EClassRestriction DT_ENUM
-	Unk_305622d       DT_UINT
+	DwSubObjectStyle  DT_UINT
 	Unk_59b49ef       DT_INT
 	HIconImage        DT_UINT
 }
@@ -74966,7 +76485,7 @@ func (t *JewelryDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.EClassRestriction, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_305622d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.DwSubObjectStyle, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+16, &t.Unk_59b49ef, r, &Options{Flags: 17}); err != nil {
@@ -74983,7 +76502,7 @@ func (t *JewelryDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *JewelryDefinition) Walk(cb WalkCallback) {
 	cb.Do("EClassRestriction", &t.EClassRestriction)
-	cb.Do("Unk_305622d", &t.Unk_305622d)
+	cb.Do("DwSubObjectStyle", &t.DwSubObjectStyle)
 	cb.Do("Unk_59b49ef", &t.Unk_59b49ef)
 	cb.Do("HIconImage", &t.HIconImage)
 }
@@ -75018,7 +76537,7 @@ type TriggerEventSpawnObject struct {
 	TConditions               TriggerConditions
 	FGenerated                DT_INT
 	Unk_6cba752               DT_INT
-	Unk_e560b0b               DT_UINT
+	DwParentActorID           DT_UINT
 	DwID                      DT_UINT
 	Snoname                   DT_SNO_NAME
 	THardpointLinks           DT_FIXEDARRAY[*HardpointLink]
@@ -75026,13 +76545,13 @@ type TriggerEventSpawnObject struct {
 	DwTriggerFlagsEx          DT_UINT
 	FRandomLook               DT_INT
 	TLookLink                 LookLink
-	Unk_48fd494               DT_INT
+	FOverrideActorVariant     DT_INT
 	Unk_6b8bffc               DT_ENUM
 	DwSegmentsStep            DT_UINT
 	DwShaderMapOverride       DT_UINT
 	FlScale                   DT_FLOAT
 	DwSeed                    DT_UINT
-	Unk_b0f4eeb               DT_UINT
+	SzSpawnLocatorName        DT_UINT
 	VecScalar                 DT_VECTOR2D
 	Transform                 PRTransform
 	TEffectGroupHardpointLink HardpointLink
@@ -75063,7 +76582,7 @@ func (t *TriggerEventSpawnObject) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwID, r, &Options{Flags: 1}); err != nil {
@@ -75090,7 +76609,7 @@ func (t *TriggerEventSpawnObject) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+120, &t.TLookLink, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+124, &t.Unk_48fd494, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+124, &t.FOverrideActorVariant, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+128, &t.Unk_6b8bffc, r, &Options{Flags: 1}); err != nil {
@@ -75108,7 +76627,7 @@ func (t *TriggerEventSpawnObject) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+144, &t.DwSeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+148, &t.Unk_b0f4eeb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+148, &t.SzSpawnLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+152, &t.VecScalar, r, &Options{Flags: 1}); err != nil {
@@ -75150,7 +76669,7 @@ func (t *TriggerEventSpawnObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwID", &t.DwID)
 	cb.Do("Snoname", &t.Snoname)
 	cb.Do("THardpointLinks", &t.THardpointLinks)
@@ -75158,13 +76677,13 @@ func (t *TriggerEventSpawnObject) Walk(cb WalkCallback) {
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
 	cb.Do("FRandomLook", &t.FRandomLook)
 	cb.Do("TLookLink", &t.TLookLink)
-	cb.Do("Unk_48fd494", &t.Unk_48fd494)
+	cb.Do("FOverrideActorVariant", &t.FOverrideActorVariant)
 	cb.Do("Unk_6b8bffc", &t.Unk_6b8bffc)
 	cb.Do("DwSegmentsStep", &t.DwSegmentsStep)
 	cb.Do("DwShaderMapOverride", &t.DwShaderMapOverride)
 	cb.Do("FlScale", &t.FlScale)
 	cb.Do("DwSeed", &t.DwSeed)
-	cb.Do("Unk_b0f4eeb", &t.Unk_b0f4eeb)
+	cb.Do("SzSpawnLocatorName", &t.SzSpawnLocatorName)
 	cb.Do("VecScalar", &t.VecScalar)
 	cb.Do("Transform", &t.Transform)
 	cb.Do("TEffectGroupHardpointLink", &t.TEffectGroupHardpointLink)
@@ -75306,7 +76825,7 @@ type TriggerEventCameraChangeTarget struct {
 	TConditions          TriggerConditions
 	FGenerated           DT_INT
 	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
+	DwParentActorID      DT_UINT
 	TDuration            DT_FLOAT
 	DwTriggerFlags       DT_UINT
 	DwTriggerFlagsEx     DT_UINT
@@ -75315,7 +76834,7 @@ type TriggerEventCameraChangeTarget struct {
 	Unk_5490979          DT_INT
 	DwPad                DT_UINT
 	ETargetType          DT_ENUM
-	Unk_96c6da9          DT_UINT
+	SzTargetLocatorName  DT_UINT
 	THardpointLinkTarget HardpointLink
 	DwTargetID           DT_UINT
 	VecTargetOffset      DT_VECTOR3D
@@ -75341,7 +76860,7 @@ func (t *TriggerEventCameraChangeTarget) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -75368,7 +76887,7 @@ func (t *TriggerEventCameraChangeTarget) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+128, &t.ETargetType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+132, &t.Unk_96c6da9, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+132, &t.SzTargetLocatorName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+136, &t.THardpointLinkTarget, r, &Options{Flags: 1}); err != nil {
@@ -75400,7 +76919,7 @@ func (t *TriggerEventCameraChangeTarget) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -75409,7 +76928,7 @@ func (t *TriggerEventCameraChangeTarget) Walk(cb WalkCallback) {
 	cb.Do("Unk_5490979", &t.Unk_5490979)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("ETargetType", &t.ETargetType)
-	cb.Do("Unk_96c6da9", &t.Unk_96c6da9)
+	cb.Do("SzTargetLocatorName", &t.SzTargetLocatorName)
 	cb.Do("THardpointLinkTarget", &t.THardpointLinkTarget)
 	cb.Do("DwTargetID", &t.DwTargetID)
 	cb.Do("VecTargetOffset", &t.VecTargetOffset)
@@ -75495,14 +77014,16 @@ func (t *PowerConditionIsTrackedActor) Walk(cb WalkCallback) {
 	cb.Do("ESubject", &t.ESubject)
 }
 
-type Type_a1e2d5ab struct {
-	TFirstReward    Type_a50877b0
-	TSecondReward   Type_a50877b0
+type ZoneProgressRewardPerTierData struct {
+	TFirstReward    ZoneProgressRewardData
+	TSecondReward   ZoneProgressRewardData
 	NStaticXPAmount DT_INT
+	Unk_1d991f5     DT_UINT
 	NXPTier         DT_INT
+	Unk_3592260     DT_INT
 }
 
-func (t *Type_a1e2d5ab) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ZoneProgressRewardPerTierData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -75516,24 +77037,32 @@ func (t *Type_a1e2d5ab) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+40, &t.NStaticXPAmount, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+44, &t.NXPTier, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+44, &t.Unk_1d991f5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+48, &t.NXPTier, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+52, &t.Unk_3592260, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+56, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Type_a1e2d5ab) Walk(cb WalkCallback) {
+func (t *ZoneProgressRewardPerTierData) Walk(cb WalkCallback) {
 	cb.Do("TFirstReward", &t.TFirstReward)
 	cb.Do("TSecondReward", &t.TSecondReward)
 	cb.Do("NStaticXPAmount", &t.NStaticXPAmount)
+	cb.Do("Unk_1d991f5", &t.Unk_1d991f5)
 	cb.Do("NXPTier", &t.NXPTier)
+	cb.Do("Unk_3592260", &t.Unk_3592260)
 }
 
 type StarsSettings struct {
-	Unk_1d0c343 DT_TAGMAP[*DT_ENUM]
+	ShrineData DT_TAGMAP[*DT_ENUM]
 }
 
 func (t *StarsSettings) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -75541,7 +77070,7 @@ func (t *StarsSettings) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+0, &t.Unk_1d0c343, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+0, &t.ShrineData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+16, io.SeekStart); err != nil {
@@ -75551,7 +77080,7 @@ func (t *StarsSettings) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 }
 
 func (t *StarsSettings) Walk(cb WalkCallback) {
-	cb.Do("Unk_1d0c343", &t.Unk_1d0c343)
+	cb.Do("ShrineData", &t.ShrineData)
 }
 
 type LoudnessParams struct{}
@@ -75572,12 +77101,12 @@ func (t *LoudnessParams) Walk(cb WalkCallback) {}
 type TriggerEventEnableRagdollAnimationOverride struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventEnableRagdollAnimationOverride) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -75600,7 +77129,7 @@ func (t *TriggerEventEnableRagdollAnimationOverride) UnmarshalD4(r *bin.BinaryRe
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -75615,7 +77144,7 @@ func (t *TriggerEventEnableRagdollAnimationOverride) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type DesignerVariable_Table struct {
@@ -75653,7 +77182,7 @@ func (t *DesignerVariable_Table) Walk(cb WalkCallback) {
 }
 
 type StartPowerMessage struct {
-	THeader            Type_b0f2a959
+	THeader            RequiredCommandFrameMessageHeader
 	SnoPower           DT_SNO
 	SnoTriggeringPower DT_OPTIONAL[*DT_SNO]
 	TAnimPreplayData   DT_OPTIONAL[*AnimPreplayData]
@@ -75760,16 +77289,16 @@ func (t *PowerConditionParagonGlyphAffixIsActive) Walk(cb WalkCallback) {
 }
 
 type Type_a2b0fc96 struct {
-	SzVariableName DT_CHARARRAY
-	Unk_9e7b180    DT_INT
-	EVariableType  DT_ENUM
-	TMarkerHandle  MarkerHandle
-	GbidActorGroup DT_GBID
-	Unk_5b5276a    DT_GBID
-	Unk_f5a5252    DT_CHARARRAY
-	SnoReference   DT_SNO_NAME
-	Unk_86254e0    DT_ENUM
-	Unk_a33b274    DT_INT
+	SzVariableName             DT_CHARARRAY
+	Unk_9e7b180                DT_INT
+	EVariableType              DT_ENUM
+	TMarkerHandle              MarkerHandle
+	GbidActorGroup             DT_GBID
+	GbidPrefabScopedActorGroup DT_GBID
+	Unk_f5a5252                DT_CHARARRAY
+	SnoReference               DT_SNO_NAME
+	Unk_86254e0                DT_ENUM
+	Unk_a33b274                DT_INT
 }
 
 func (t *Type_a2b0fc96) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -75798,7 +77327,7 @@ func (t *Type_a2b0fc96) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+84, &t.Unk_5b5276a, r, &Options{
+	if err := UnmarshalAt(p+84, &t.GbidPrefabScopedActorGroup, r, &Options{
 		Flags: 1,
 		Group: 51,
 	}); err != nil {
@@ -75831,7 +77360,7 @@ func (t *Type_a2b0fc96) Walk(cb WalkCallback) {
 	cb.Do("EVariableType", &t.EVariableType)
 	cb.Do("TMarkerHandle", &t.TMarkerHandle)
 	cb.Do("GbidActorGroup", &t.GbidActorGroup)
-	cb.Do("Unk_5b5276a", &t.Unk_5b5276a)
+	cb.Do("GbidPrefabScopedActorGroup", &t.GbidPrefabScopedActorGroup)
 	cb.Do("Unk_f5a5252", &t.Unk_f5a5252)
 	cb.Do("SnoReference", &t.SnoReference)
 	cb.Do("Unk_86254e0", &t.Unk_86254e0)
@@ -76130,12 +77659,12 @@ func (t *ConsoleCommandResultsMessage) Walk(cb WalkCallback) {
 	cb.Do("UsMessage", &t.UsMessage)
 }
 
-type Type_a48e11e6 struct {
+type BlendTimeOverrideEntry struct {
 	SnoPowerTo          DT_SNO
 	FlBlendTimeOverride DT_FLOAT
 }
 
-func (t *Type_a48e11e6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *BlendTimeOverrideEntry) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -76155,7 +77684,7 @@ func (t *Type_a48e11e6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_a48e11e6) Walk(cb WalkCallback) {
+func (t *BlendTimeOverrideEntry) Walk(cb WalkCallback) {
 	cb.Do("SnoPowerTo", &t.SnoPowerTo)
 	cb.Do("FlBlendTimeOverride", &t.FlBlendTimeOverride)
 }
@@ -76301,12 +77830,12 @@ func (t *ActorCollisionFlags) Walk(cb WalkCallback) {
 	cb.Do("UDynamicMyFlags", &t.UDynamicMyFlags)
 }
 
-type Type_a4f1387e struct {
+type PlayerAnimSetOverride struct {
 	SnoPlayerActor     DT_SNO
 	SnoAnimSetOverride DT_SNO
 }
 
-func (t *Type_a4f1387e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PlayerAnimSetOverride) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -76329,12 +77858,12 @@ func (t *Type_a4f1387e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_a4f1387e) Walk(cb WalkCallback) {
+func (t *PlayerAnimSetOverride) Walk(cb WalkCallback) {
 	cb.Do("SnoPlayerActor", &t.SnoPlayerActor)
 	cb.Do("SnoAnimSetOverride", &t.SnoAnimSetOverride)
 }
 
-type Type_a50877b0 struct {
+type ZoneProgressRewardData struct {
 	ERewardType       DT_ENUM
 	SnoItemReward     DT_SNO
 	SnoTrackedReward  DT_SNO
@@ -76342,7 +77871,7 @@ type Type_a50877b0 struct {
 	NStaticGoldAmount DT_INT
 }
 
-func (t *Type_a50877b0) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ZoneProgressRewardData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -76374,7 +77903,7 @@ func (t *Type_a50877b0) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_a50877b0) Walk(cb WalkCallback) {
+func (t *ZoneProgressRewardData) Walk(cb WalkCallback) {
 	cb.Do("ERewardType", &t.ERewardType)
 	cb.Do("SnoItemReward", &t.SnoItemReward)
 	cb.Do("SnoTrackedReward", &t.SnoTrackedReward)
@@ -76497,13 +78026,13 @@ func (t *Type_a539118b) Walk(cb WalkCallback) {
 	cb.Do("NUINumber", &t.NUINumber)
 }
 
-type Type_a5410c31 struct {
+type PvPInfoResponse struct {
 	THeader     RequiredMessageHeader
 	Unk_606dae5 DT_UINT
 	Bonus       DT_CHARARRAY
 }
 
-func (t *Type_a5410c31) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PvPInfoResponse) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -76526,7 +78055,7 @@ func (t *Type_a5410c31) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_a5410c31) Walk(cb WalkCallback) {
+func (t *PvPInfoResponse) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("Unk_606dae5", &t.Unk_606dae5)
 	cb.Do("Bonus", &t.Bonus)
@@ -76599,9 +78128,9 @@ func (t *GenericBlobMessage) Walk(cb WalkCallback) {
 }
 
 type PlayerEnterKnownMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	Ann         DT_ACD_NETWORK_NAME
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	Ann                   DT_ACD_NETWORK_NAME
 }
 
 func (t *PlayerEnterKnownMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -76612,7 +78141,7 @@ func (t *PlayerEnterKnownMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.Ann, r, &Options{Flags: 1}); err != nil {
@@ -76626,7 +78155,7 @@ func (t *PlayerEnterKnownMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 
 func (t *PlayerEnterKnownMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("Ann", &t.Ann)
 }
 
@@ -76982,17 +78511,17 @@ func (t *GroupRegionEntry_Table) Walk(cb WalkCallback) {
 type TriggerEventDetachObject struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	Unk_adbc22e    DT_INT
-	DwActorID      DT_UINT
-	DwID           DT_UINT
-	FEnableRagdoll DT_INT
-	TRagdollParams EnableRagdollParams
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_adbc22e     DT_INT
+	DwActorID       DT_UINT
+	DwID            DT_UINT
+	FEnableRagdoll  DT_INT
+	TRagdollParams  EnableRagdollParams
 }
 
 func (t *TriggerEventDetachObject) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -77015,7 +78544,7 @@ func (t *TriggerEventDetachObject) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_adbc22e, r, &Options{Flags: 17}); err != nil {
@@ -77045,7 +78574,7 @@ func (t *TriggerEventDetachObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_adbc22e", &t.Unk_adbc22e)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("DwID", &t.DwID)
@@ -77237,6 +78766,79 @@ func (t *HotbarButtonData) Walk(cb WalkCallback) {
 	cb.Do("M_annItem", &t.M_annItem)
 }
 
+type Type_a81996c3 struct {
+	// Inherits GlobalMarkerActorData
+	// Inherits PolymorphicBase
+	DwType              DT_UINT
+	DwPad               DT_UINT
+	SnoSubzone          DT_SNO
+	SnoLevelArea        DT_SNO
+	HMinimapIcon        DT_UINT
+	Unk_a94748a         DT_UINT
+	Unk_a0b181c         DT_UINT
+	Unk_d43afff         DT_SNO
+	FMinimapRespectsFoW DT_INT
+}
+
+func (t *Type_a81996c3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.SnoSubzone, r, &Options{
+		Flags: 513,
+		Group: 80,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.SnoLevelArea, r, &Options{
+		Flags: 513,
+		Group: 22,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.HMinimapIcon, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.Unk_a94748a, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+32, &t.Unk_a0b181c, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+36, &t.Unk_d43afff, r, &Options{
+		Flags: 513,
+		Group: 51,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+40, &t.FMinimapRespectsFoW, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_a81996c3) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("SnoSubzone", &t.SnoSubzone)
+	cb.Do("SnoLevelArea", &t.SnoLevelArea)
+	cb.Do("HMinimapIcon", &t.HMinimapIcon)
+	cb.Do("Unk_a94748a", &t.Unk_a94748a)
+	cb.Do("Unk_a0b181c", &t.Unk_a0b181c)
+	cb.Do("Unk_d43afff", &t.Unk_d43afff)
+	cb.Do("FMinimapRespectsFoW", &t.FMinimapRespectsFoW)
+}
+
 type StoryboardDefinition struct {
 	TRootTracks     Type_36030d2d
 	ArChildControls DT_VARIABLEARRAY[*Type_87385a6d]
@@ -77409,7 +79011,7 @@ type UIKeyMappingButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_94ea125               DT_TAGMAP[*DT_ENUM]
 }
@@ -77693,12 +79295,12 @@ func (t *ActorPreloadHelper) Walk(cb WalkCallback) {
 type TriggerEventRestoreCamera struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventRestoreCamera) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -77721,7 +79323,7 @@ func (t *TriggerEventRestoreCamera) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -77736,7 +79338,7 @@ func (t *TriggerEventRestoreCamera) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type Type_a8e85f45 struct {
@@ -77893,9 +79495,9 @@ func (t *ValidComponent) Walk(cb WalkCallback) {
 	cb.Do("TComponent", &t.TComponent)
 }
 
-type Type_a9bcdb53 struct{}
+type WwiseChildFile struct{}
 
-func (t *Type_a9bcdb53) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *WwiseChildFile) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -77906,7 +79508,7 @@ func (t *Type_a9bcdb53) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_a9bcdb53) Walk(cb WalkCallback) {}
+func (t *WwiseChildFile) Walk(cb WalkCallback) {}
 
 type Type_aa55cd98 struct {
 	SzData DT_CSTRING[*DT_BYTE]
@@ -78375,12 +79977,12 @@ func (t *NPCItems) Walk(cb WalkCallback) {
 	cb.Do("SnoOffHand", &t.SnoOffHand)
 }
 
-type Type_ac1cf1ab struct {
+type UITemplateStyleOverride struct {
 	Unk_bbb329e DT_CSTRING[*DT_BYTE]
 	TStyle      DT_POLYMORPHIC_VARIABLEARRAY[*UIControlStyle]
 }
 
-func (t *Type_ac1cf1ab) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UITemplateStyleOverride) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -78397,7 +79999,7 @@ func (t *Type_ac1cf1ab) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ac1cf1ab) Walk(cb WalkCallback) {
+func (t *UITemplateStyleOverride) Walk(cb WalkCallback) {
 	cb.Do("Unk_bbb329e", &t.Unk_bbb329e)
 	cb.Do("TStyle", &t.TStyle)
 }
@@ -78578,12 +80180,12 @@ func (t *UIRadioButtonGroupStyle) Walk(cb WalkCallback) {
 	cb.Do("Unk_c8d49ac", &t.Unk_c8d49ac)
 }
 
-type Type_ac560e08 struct {
+type GameTestingBuybackItem struct {
 	THeader      RequiredMessageHeader
 	DwItemAmount DT_INT64
 }
 
-func (t *Type_ac560e08) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingBuybackItem) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -78600,7 +80202,7 @@ func (t *Type_ac560e08) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ac560e08) Walk(cb WalkCallback) {
+func (t *GameTestingBuybackItem) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwItemAmount", &t.DwItemAmount)
 }
@@ -78630,15 +80232,15 @@ func (t *MaterialBoolValue) Walk(cb WalkCallback) {
 type TriggerEventSetHelmVisibility struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_279aa5a DT_INT
-	DwActorID   DT_UINT
-	BHideHelm   DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_279aa5a     DT_INT
+	DwActorID       DT_UINT
+	BHideHelm       DT_INT
 }
 
 func (t *TriggerEventSetHelmVisibility) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -78661,7 +80263,7 @@ func (t *TriggerEventSetHelmVisibility) UnmarshalD4(r *bin.BinaryReader, o *Opti
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_279aa5a, r, &Options{Flags: 17}); err != nil {
@@ -78685,7 +80287,7 @@ func (t *TriggerEventSetHelmVisibility) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("BHideHelm", &t.BHideHelm)
@@ -79032,13 +80634,13 @@ func (t *GeoSet) Walk(cb WalkCallback) {
 	cb.Do("FlLODDistance", &t.FlLODDistance)
 }
 
-type Type_ad008e7e struct {
+type RequiredResponseMessageHeader struct {
 	THeader RequiredMessageHeader
 	UToken  DT_UINT
 	EError  DT_ENUM
 }
 
-func (t *Type_ad008e7e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *RequiredResponseMessageHeader) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -79058,7 +80660,7 @@ func (t *Type_ad008e7e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ad008e7e) Walk(cb WalkCallback) {
+func (t *RequiredResponseMessageHeader) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("UToken", &t.UToken)
 	cb.Do("EError", &t.EError)
@@ -79252,12 +80854,12 @@ func (t *DesignerVariableChanged) Walk(cb WalkCallback) {
 	cb.Do("TPayload", &t.TPayload)
 }
 
-type Type_adde70b7 struct {
+type GameTestingSellItem struct {
 	THeader      RequiredMessageHeader
 	DwItemAmount DT_INT64
 }
 
-func (t *Type_adde70b7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingSellItem) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -79274,7 +80876,7 @@ func (t *Type_adde70b7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_adde70b7) Walk(cb WalkCallback) {
+func (t *GameTestingSellItem) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwItemAmount", &t.DwItemAmount)
 }
@@ -79360,14 +80962,14 @@ func (t *SetIdleAnimationMessage) Walk(cb WalkCallback) {
 type Type_ae75ccfd struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	TConditions  TriggerConditions
-	FGenerated   DT_INT
-	Unk_6cba752  DT_INT
-	Unk_e560b0b  DT_UINT
-	Unk_77f81b0  StringLabelHandleEx
-	SnoPOICamera DT_SNO
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_77f81b0     StringLabelHandleEx
+	SnoPOICamera    DT_SNO
 }
 
 func (t *Type_ae75ccfd) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -79390,7 +80992,7 @@ func (t *Type_ae75ccfd) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_77f81b0, r, &Options{Flags: 1}); err != nil {
@@ -79414,13 +81016,14 @@ func (t *Type_ae75ccfd) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_77f81b0", &t.Unk_77f81b0)
 	cb.Do("SnoPOICamera", &t.SnoPOICamera)
 }
 
 type AmbientSoundDefinition struct {
 	SnoBackground         DT_SNO
+	Unk_29ee38e           DT_FLOAT
 	TRandomSounds         DT_VARIABLEARRAY[*RandomAmbientSoundParams]
 	TDynamicGameParameter DynamicGameParameter
 	TDynamicAudioState    DynamicAudioState
@@ -79435,6 +81038,9 @@ func (t *AmbientSoundDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 		Flags: 1,
 		Group: 40,
 	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.Unk_29ee38e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+16, &t.TRandomSounds, r, &Options{Flags: 1}); err != nil {
@@ -79454,6 +81060,7 @@ func (t *AmbientSoundDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 
 func (t *AmbientSoundDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoBackground", &t.SnoBackground)
+	cb.Do("Unk_29ee38e", &t.Unk_29ee38e)
 	cb.Do("TRandomSounds", &t.TRandomSounds)
 	cb.Do("TDynamicGameParameter", &t.TDynamicGameParameter)
 	cb.Do("TDynamicAudioState", &t.TDynamicAudioState)
@@ -79542,15 +81149,15 @@ func (t *ScriptMessageMap) Walk(cb WalkCallback) {
 }
 
 type Type_aef2f516 struct {
-	NFrameStart     DT_INT
-	NFrameEnd       DT_INT
-	Unk_a45e6bd     DT_FLOAT
-	Unk_36bc3de     DT_FLOAT
-	BUseTargetActor DT_INT
-	Unk_737a63      DT_INT
-	Unk_e3bef92     DT_UINT
-	Unk_8dadb11     DT_VECTOR3D
-	FlZoom          DT_FLOAT
+	NFrameStart           DT_INT
+	NFrameEnd             DT_INT
+	Unk_a45e6bd           DT_FLOAT
+	Unk_36bc3de           DT_FLOAT
+	BUseTargetActor       DT_INT
+	Unk_737a63            DT_INT
+	Unk_e3bef92           DT_UINT
+	VHardpointLocalOffset DT_VECTOR3D
+	FlZoom                DT_FLOAT
 }
 
 func (t *Type_aef2f516) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -79579,7 +81186,7 @@ func (t *Type_aef2f516) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+24, &t.Unk_e3bef92, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_8dadb11, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.VHardpointLocalOffset, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+40, &t.FlZoom, r, &Options{Flags: 1}); err != nil {
@@ -79599,7 +81206,7 @@ func (t *Type_aef2f516) Walk(cb WalkCallback) {
 	cb.Do("BUseTargetActor", &t.BUseTargetActor)
 	cb.Do("Unk_737a63", &t.Unk_737a63)
 	cb.Do("Unk_e3bef92", &t.Unk_e3bef92)
-	cb.Do("Unk_8dadb11", &t.Unk_8dadb11)
+	cb.Do("VHardpointLocalOffset", &t.VHardpointLocalOffset)
 	cb.Do("FlZoom", &t.FlZoom)
 }
 
@@ -80111,6 +81718,50 @@ func (t *ACDTranslateFacingMessage) Walk(cb WalkCallback) {
 	cb.Do("BSnapFacing", &t.BSnapFacing)
 }
 
+type Type_affec908 struct {
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BNegate     DT_INT
+	DwPad       DT_UINT
+	Unk_dbb58d4 DT_ENUM
+	Unk_c7b2b18 DT_ENUM
+}
+
+func (t *Type_affec908) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_dbb58d4, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.Unk_c7b2b18, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_affec908) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("Unk_dbb58d4", &t.Unk_dbb58d4)
+	cb.Do("Unk_c7b2b18", &t.Unk_c7b2b18)
+}
+
 type MarkerLink struct {
 	NMarkerID    DT_INT
 	DwGroupHash  DT_UINT
@@ -80263,7 +81914,7 @@ type EyeColorDefinition struct {
 	FlIrisRotation           DT_FLOAT
 	FlIrisRoughness          DT_FLOAT
 	FlIrisShadowIntensity    DT_FLOAT
-	Unk_ca1b6fd              DT_FLOAT
+	FlIrisEmissiveStrength   DT_FLOAT
 	FlLimbusBlur             DT_FLOAT
 	FlLimbusBrightness       DT_FLOAT
 	FlLimbusThickness        DT_FLOAT
@@ -80311,7 +81962,7 @@ func (t *EyeColorDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error 
 	if err := UnmarshalAt(p+56, &t.FlIrisShadowIntensity, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+60, &t.Unk_ca1b6fd, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+60, &t.FlIrisEmissiveStrength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+64, &t.FlLimbusBlur, r, &Options{Flags: 1}); err != nil {
@@ -80363,7 +82014,7 @@ func (t *EyeColorDefinition) Walk(cb WalkCallback) {
 	cb.Do("FlIrisRotation", &t.FlIrisRotation)
 	cb.Do("FlIrisRoughness", &t.FlIrisRoughness)
 	cb.Do("FlIrisShadowIntensity", &t.FlIrisShadowIntensity)
-	cb.Do("Unk_ca1b6fd", &t.Unk_ca1b6fd)
+	cb.Do("FlIrisEmissiveStrength", &t.FlIrisEmissiveStrength)
 	cb.Do("FlLimbusBlur", &t.FlLimbusBlur)
 	cb.Do("FlLimbusBrightness", &t.FlLimbusBrightness)
 	cb.Do("FlLimbusThickness", &t.FlLimbusThickness)
@@ -80850,12 +82501,12 @@ func (t *Type_b0f0e8cd) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
-type Type_b0f2a959 struct {
+type RequiredCommandFrameMessageHeader struct {
 	THeader       RequiredMessageHeader
 	UCommandFrame DT_UINT
 }
 
-func (t *Type_b0f2a959) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *RequiredCommandFrameMessageHeader) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -80872,7 +82523,7 @@ func (t *Type_b0f2a959) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_b0f2a959) Walk(cb WalkCallback) {
+func (t *RequiredCommandFrameMessageHeader) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("UCommandFrame", &t.UCommandFrame)
 }
@@ -80961,8 +82612,8 @@ func (t *Type_b14ea0b3) Walk(cb WalkCallback) {
 
 type QuestFollower struct {
 	SnoActor       DT_SNO
-	TSpawnBehavior Type_da8a2315
-	ArPhases       DT_VARIABLEARRAY[*Type_bc83f219]
+	TSpawnBehavior QuestFollowerSpawnBehavior
+	ArPhases       DT_VARIABLEARRAY[*QuestFollowerPhaseInfo]
 }
 
 func (t *QuestFollower) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -81384,17 +83035,17 @@ func (t *Type_b1bdda39) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
-type Type_b1cccfae struct {
+type ZoneProgressPerZoneData struct {
 	ArCamps          DT_VARIABLEARRAY[*DT_SNO]
 	ArDungeons       DT_VARIABLEARRAY[*DT_SNO]
 	GbidHiddenCaches DT_VARIABLEARRAY[*DT_GBID]
 	ArSideQuests     DT_VARIABLEARRAY[*DT_SNO]
 	ArWaypoints      DT_VARIABLEARRAY[*DT_SNO]
 	ArFogOfWar       DT_VARIABLEARRAY[*DT_SNO]
-	ArRewardData     DT_FIXEDARRAY[*Type_a1e2d5ab]
+	ArRewardData     DT_FIXEDARRAY[*ZoneProgressRewardPerTierData]
 }
 
-func (t *Type_b1cccfae) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ZoneProgressPerZoneData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -81441,13 +83092,13 @@ func (t *Type_b1cccfae) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+336, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+376, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Type_b1cccfae) Walk(cb WalkCallback) {
+func (t *ZoneProgressPerZoneData) Walk(cb WalkCallback) {
 	cb.Do("ArCamps", &t.ArCamps)
 	cb.Do("ArDungeons", &t.ArDungeons)
 	cb.Do("GbidHiddenCaches", &t.GbidHiddenCaches)
@@ -81763,14 +83414,14 @@ func (t *InventoryRequestMoveMessage) Walk(cb WalkCallback) {
 	cb.Do("TLocation", &t.TLocation)
 }
 
-type Type_b2d29bdc struct {
+type UIDateTimeSettings struct {
 	Unk_a8652e7 DT_INT64
 	Unk_e037d99 DT_ENUM
 	Unk_cc3458a DT_ENUM
 	EStyle      DT_ENUM
 }
 
-func (t *Type_b2d29bdc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UIDateTimeSettings) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -81793,7 +83444,7 @@ func (t *Type_b2d29bdc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_b2d29bdc) Walk(cb WalkCallback) {
+func (t *UIDateTimeSettings) Walk(cb WalkCallback) {
 	cb.Do("Unk_a8652e7", &t.Unk_a8652e7)
 	cb.Do("Unk_e037d99", &t.Unk_e037d99)
 	cb.Do("Unk_cc3458a", &t.Unk_cc3458a)
@@ -82062,31 +83713,31 @@ type TriggerEventObjectMoveToLocator struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType           DT_UINT
-	TConditions      TriggerConditions
-	FGenerated       DT_INT
-	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
-	TDuration        DT_FLOAT
-	DwTriggerFlags   DT_UINT
-	DwTriggerFlagsEx DT_UINT
-	TCleanup         TriggerCleanup
-	Unk_49e9257      DT_INT
-	Unk_5490979      DT_INT
-	DwPad            DT_UINT
-	DwObjectID       DT_UINT
-	SzLocatorName    DT_UINT
-	EOrientationMode DT_ENUM
-	Unk_daebe18      DT_ENUM
-	Unk_6101673      DT_UINT
-	Unk_8470ffc      HardpointLink
-	Unk_46c8459      DT_UINT
-	EBlendEasing     DT_ENUM
-	EMoveRate        DT_ENUM
-	Unk_3c71266      DT_ENUM
-	Unk_c751343      DT_INT
-	Unk_23237e1      DT_INT
-	Unk_f1b6afc      DT_FLOAT
+	DwType                DT_UINT
+	TConditions           TriggerConditions
+	FGenerated            DT_INT
+	Unk_6cba752           DT_INT
+	DwParentActorID       DT_UINT
+	TDuration             DT_FLOAT
+	DwTriggerFlags        DT_UINT
+	DwTriggerFlagsEx      DT_UINT
+	TCleanup              TriggerCleanup
+	Unk_49e9257           DT_INT
+	Unk_5490979           DT_INT
+	DwPad                 DT_UINT
+	DwObjectID            DT_UINT
+	SzLocatorName         DT_UINT
+	EOrientationMode      DT_ENUM
+	Unk_daebe18           DT_ENUM
+	Unk_6101673           DT_UINT
+	Unk_8470ffc           HardpointLink
+	Unk_46c8459           DT_UINT
+	EBlendEasing          DT_ENUM
+	EMoveRate             DT_ENUM
+	EDynamicMovementSpeed DT_ENUM
+	Unk_c751343           DT_INT
+	Unk_23237e1           DT_INT
+	Unk_f1b6afc           DT_FLOAT
 }
 
 func (t *TriggerEventObjectMoveToLocator) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -82106,7 +83757,7 @@ func (t *TriggerEventObjectMoveToLocator) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -82157,7 +83808,7 @@ func (t *TriggerEventObjectMoveToLocator) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+164, &t.EMoveRate, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.Unk_3c71266, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+168, &t.EDynamicMovementSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+172, &t.Unk_c751343, r, &Options{Flags: 17}); err != nil {
@@ -82180,7 +83831,7 @@ func (t *TriggerEventObjectMoveToLocator) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -82197,7 +83848,7 @@ func (t *TriggerEventObjectMoveToLocator) Walk(cb WalkCallback) {
 	cb.Do("Unk_46c8459", &t.Unk_46c8459)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("EMoveRate", &t.EMoveRate)
-	cb.Do("Unk_3c71266", &t.Unk_3c71266)
+	cb.Do("EDynamicMovementSpeed", &t.EDynamicMovementSpeed)
 	cb.Do("Unk_c751343", &t.Unk_c751343)
 	cb.Do("Unk_23237e1", &t.Unk_23237e1)
 	cb.Do("Unk_f1b6afc", &t.Unk_f1b6afc)
@@ -82238,7 +83889,7 @@ type Type_b3ff0077 struct {
 	TConditions       TriggerConditions
 	FGenerated        DT_INT
 	Unk_6cba752       DT_INT
-	Unk_e560b0b       DT_UINT
+	DwParentActorID   DT_UINT
 	BOverridePosition DT_INT
 	VecPosition       DT_VECTOR2D
 	SzText            DT_CSTRING[*DT_BYTE]
@@ -82264,7 +83915,7 @@ func (t *Type_b3ff0077) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.BOverridePosition, r, &Options{Flags: 17}); err != nil {
@@ -82288,7 +83939,7 @@ func (t *Type_b3ff0077) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("BOverridePosition", &t.BOverridePosition)
 	cb.Do("VecPosition", &t.VecPosition)
 	cb.Do("SzText", &t.SzText)
@@ -82658,11 +84309,11 @@ func (t *Type_b48524d3) Walk(cb WalkCallback) {
 	cb.Do("Unk_5439402", &t.Unk_5439402)
 }
 
-type Type_b493176d struct {
+type ItemImageHandleReference struct {
 	HImageHandle DT_UINT
 }
 
-func (t *Type_b493176d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *ItemImageHandleReference) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -82676,7 +84327,7 @@ func (t *Type_b493176d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_b493176d) Walk(cb WalkCallback) {
+func (t *ItemImageHandleReference) Walk(cb WalkCallback) {
 	cb.Do("HImageHandle", &t.HImageHandle)
 }
 
@@ -82874,9 +84525,9 @@ func (t *XboxConsoleAwardDefinition) Walk(cb WalkCallback) {
 }
 
 type PortedToWaypointMessage struct {
-	THeader      RequiredMessageHeader
-	Unk_dce541c  DT_UINT
-	SnoLevelArea DT_SNO
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoLevelArea          DT_SNO
 }
 
 func (t *PortedToWaypointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -82887,7 +84538,7 @@ func (t *PortedToWaypointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoLevelArea, r, &Options{
@@ -82904,7 +84555,7 @@ func (t *PortedToWaypointMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 
 func (t *PortedToWaypointMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
 }
 
@@ -82942,12 +84593,12 @@ func (t *Type_b5721766) Walk(cb WalkCallback) {
 
 type Type_b58061b6 struct {
 	ECheckboxStyle               DT_ENUM
-	Unk_a7d70e6                  Type_6b1c5d9c
-	Unk_3f146a2                  Type_6b1c5d9c
-	Unk_8aa2175                  Type_6b1c5d9c
-	Unk_2aa2ac9                  Type_6b1c5d9c
-	Unk_28bd9a5                  Type_6b1c5d9c
-	Unk_eece018                  Type_6b1c5d9c
+	HImageFrameCheckedNormal     UIImageHandleReference
+	Unk_3f146a2                  UIImageHandleReference
+	HImageFrameCheckedDisabled   UIImageHandleReference
+	Unk_2aa2ac9                  UIImageHandleReference
+	Unk_28bd9a5                  UIImageHandleReference
+	Unk_eece018                  UIImageHandleReference
 	SnoTiledStyleCheckedNormal   DT_SNO
 	Unk_d3af33f                  DT_SNO
 	SnoTiledStyleCheckedDisabled DT_SNO
@@ -82964,13 +84615,13 @@ func (t *Type_b58061b6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.ECheckboxStyle, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_a7d70e6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.HImageFrameCheckedNormal, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+8, &t.Unk_3f146a2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_8aa2175, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.HImageFrameCheckedDisabled, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+16, &t.Unk_2aa2ac9, r, &Options{Flags: 1}); err != nil {
@@ -83026,9 +84677,9 @@ func (t *Type_b58061b6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_b58061b6) Walk(cb WalkCallback) {
 	cb.Do("ECheckboxStyle", &t.ECheckboxStyle)
-	cb.Do("Unk_a7d70e6", &t.Unk_a7d70e6)
+	cb.Do("HImageFrameCheckedNormal", &t.HImageFrameCheckedNormal)
 	cb.Do("Unk_3f146a2", &t.Unk_3f146a2)
-	cb.Do("Unk_8aa2175", &t.Unk_8aa2175)
+	cb.Do("HImageFrameCheckedDisabled", &t.HImageFrameCheckedDisabled)
 	cb.Do("Unk_2aa2ac9", &t.Unk_2aa2ac9)
 	cb.Do("Unk_28bd9a5", &t.Unk_28bd9a5)
 	cb.Do("Unk_eece018", &t.Unk_eece018)
@@ -84067,9 +85718,9 @@ func (t *ScriptEventParamPrimaryGroup) Walk(cb WalkCallback) {
 }
 
 type Type_b76a31b5 struct {
-	M_transform1 Type_5f527528
-	M_transform2 Type_5f527528
-	M_localFrame Type_5f527528
+	M_transform1 dmTransformMirror
+	M_transform2 dmTransformMirror
+	M_localFrame dmTransformMirror
 	M_normal     DT_VECTOR4D
 	M_stiffness  DT_FLOAT
 	M_friction   DT_FLOAT
@@ -84163,7 +85814,7 @@ type LocalEventDataMessage struct {
 	SnoWorld          DT_SNO
 	SnoSubzone        DT_SNO
 	WpLocation        DT_VECTOR3D
-	Unk_8818621       Type_586d03a
+	Unk_8818621       LocalEventTrackingData
 	BStartImmediately DT_INT
 	BPhaseIsHidden    DT_INT
 }
@@ -84301,12 +85952,14 @@ type ActorDefinition struct {
 	SnoAppearance              DT_SNO
 	ArCustomizationAppearances DT_VARIABLEARRAY[*DT_SNO]
 	ArAnimSets                 DT_VARIABLEARRAY[*DT_SNO]
+	Unk_ccef364                DT_VARIABLEARRAY[*DT_SNO]
 	SnoAnimTree                DT_SNO
 	TAnimTreeOverride          AnimTreeOverride
 	EVariantType               DT_ENUM
 	TDefaultLook               LookLink
-	Unk_3d234d5                DT_UINT
+	DwDefaultShaderMapOverride DT_UINT
 	TScaleRange                DT_RANGE[*DT_FLOAT]
+	Unk_945ec7b                DT_RANGE[*DT_FLOAT]
 	WcylBounds                 AxialCylinder
 	AabbBounds                 AABB
 	WsBounds                   Sphere
@@ -84350,8 +86003,8 @@ type ActorDefinition struct {
 	PtPostprocessed            DT_INT64
 	SnoPrefabAttachment        DT_SNO
 	Unk_d2b5e35                DT_FLOAT
-	Unk_2607092                DT_UINT
-	Unk_79da2a0                DT_UINT
+	SzPrefabLookOverride       DT_UINT
+	DwPrefabShaderMapOverride  DT_UINT
 	ArRTPCOverrides            DT_VARIABLEARRAY[*Type_4174a154]
 }
 
@@ -84387,169 +86040,178 @@ func (t *ActorDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+56, &t.SnoAnimTree, r, &Options{
+	if err := UnmarshalAt(p+56, &t.Unk_ccef364, r, &Options{
+		Flags: 1,
+		Group: 8,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+72, &t.SnoAnimTree, r, &Options{
 		Flags: 1,
 		Group: 67,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.TAnimTreeOverride, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+80, &t.TAnimTreeOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+80, &t.EVariantType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.EVariantType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+84, &t.TDefaultLook, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+100, &t.TDefaultLook, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.Unk_3d234d5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+104, &t.DwDefaultShaderMapOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+92, &t.TScaleRange, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+108, &t.TScaleRange, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+100, &t.WcylBounds, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+116, &t.Unk_945ec7b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.AabbBounds, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+124, &t.WcylBounds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+144, &t.WsBounds, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+144, &t.AabbBounds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+160, &t.AabbAppearanceBoundingBox, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+168, &t.WsBounds, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.WpLocationPowerSrc, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+184, &t.AabbAppearanceBoundingBox, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+196, &t.EPickStyle, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+208, &t.WpLocationPowerSrc, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+200, &t.FlAttachmentScaleFactor, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+220, &t.EPickStyle, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+204, &t.EDefaultTeam, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+224, &t.FlAttachmentScaleFactor, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+208, &t.ECullingLevel, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+228, &t.EDefaultTeam, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+212, &t.FlFadeCorpseTimeUntilFade, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+232, &t.ECullingLevel, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+216, &t.FlFadeCorpseTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+236, &t.FlFadeCorpseTimeUntilFade, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+220, &t.AAbsoluteOrientation, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+240, &t.FlFadeCorpseTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+224, &t.FlHitFlashPower, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+244, &t.AAbsoluteOrientation, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+228, &t.FlHitFlashMultiplier, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+248, &t.FlHitFlashPower, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+232, &t.FlOverlayPower, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+252, &t.FlHitFlashMultiplier, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+236, &t.ETopology, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+256, &t.FlOverlayPower, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+240, &t.PtMsgTriggeredEvents, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+260, &t.ETopology, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+256, &t.PtPhysData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+264, &t.PtMsgTriggeredEvents, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+272, &t.PtCollData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+280, &t.PtPhysData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.EActorGizmoType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+296, &t.PtCollData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+292, &t.Unk_8fbba9b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+312, &t.EActorGizmoType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+296, &t.PtGizmoData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+316, &t.Unk_8fbba9b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+320, &t.PtMonsterData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+320, &t.PtGizmoData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+336, &t.PtCritterData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+344, &t.PtMonsterData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+352, &t.PtPlayerData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+360, &t.PtCritterData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+368, &t.PtItemData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+376, &t.PtPlayerData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+384, &t.PtCombatData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+392, &t.PtItemData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+400, &t.PtDeathData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+408, &t.PtCombatData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+416, &t.PtEffectData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+424, &t.PtDeathData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+432, &t.PtProjData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+440, &t.PtEffectData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+448, &t.PtPropData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+456, &t.PtProjData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+464, &t.PtMovingData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+472, &t.PtPropData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+480, &t.PtBrainData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+488, &t.PtMovingData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+496, &t.PtServerData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+504, &t.PtBrainData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+512, &t.PtUIData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+520, &t.PtServerData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+528, &t.PtAIData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+536, &t.PtUIData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+544, &t.PtVOData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+552, &t.PtAIData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+560, &t.PtNPCData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+568, &t.PtVOData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+576, &t.PtSoundTableData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+584, &t.PtNPCData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+592, &t.PtMountData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+600, &t.PtSoundTableData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+608, &t.PtPostprocessed, r, &Options{Flags: 4194304}); err != nil {
+	if err := UnmarshalAt(p+616, &t.PtMountData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+616, &t.SnoPrefabAttachment, r, &Options{
+	if err := UnmarshalAt(p+632, &t.PtPostprocessed, r, &Options{Flags: 4194304}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+640, &t.SnoPrefabAttachment, r, &Options{
 		Flags: 1,
 		Group: 24,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+620, &t.Unk_d2b5e35, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+644, &t.Unk_d2b5e35, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+624, &t.Unk_2607092, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+648, &t.SzPrefabLookOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+628, &t.Unk_79da2a0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+652, &t.DwPrefabShaderMapOverride, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+632, &t.ArRTPCOverrides, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+656, &t.ArRTPCOverrides, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+648, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+672, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -84562,12 +86224,14 @@ func (t *ActorDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoAppearance", &t.SnoAppearance)
 	cb.Do("ArCustomizationAppearances", &t.ArCustomizationAppearances)
 	cb.Do("ArAnimSets", &t.ArAnimSets)
+	cb.Do("Unk_ccef364", &t.Unk_ccef364)
 	cb.Do("SnoAnimTree", &t.SnoAnimTree)
 	cb.Do("TAnimTreeOverride", &t.TAnimTreeOverride)
 	cb.Do("EVariantType", &t.EVariantType)
 	cb.Do("TDefaultLook", &t.TDefaultLook)
-	cb.Do("Unk_3d234d5", &t.Unk_3d234d5)
+	cb.Do("DwDefaultShaderMapOverride", &t.DwDefaultShaderMapOverride)
 	cb.Do("TScaleRange", &t.TScaleRange)
+	cb.Do("Unk_945ec7b", &t.Unk_945ec7b)
 	cb.Do("WcylBounds", &t.WcylBounds)
 	cb.Do("AabbBounds", &t.AabbBounds)
 	cb.Do("WsBounds", &t.WsBounds)
@@ -84611,8 +86275,8 @@ func (t *ActorDefinition) Walk(cb WalkCallback) {
 	cb.Do("PtPostprocessed", &t.PtPostprocessed)
 	cb.Do("SnoPrefabAttachment", &t.SnoPrefabAttachment)
 	cb.Do("Unk_d2b5e35", &t.Unk_d2b5e35)
-	cb.Do("Unk_2607092", &t.Unk_2607092)
-	cb.Do("Unk_79da2a0", &t.Unk_79da2a0)
+	cb.Do("SzPrefabLookOverride", &t.SzPrefabLookOverride)
+	cb.Do("DwPrefabShaderMapOverride", &t.DwPrefabShaderMapOverride)
 	cb.Do("ArRTPCOverrides", &t.ArRTPCOverrides)
 }
 
@@ -84746,26 +86410,27 @@ func (t *UIBrowserWindowStyle) Walk(cb WalkCallback) {
 }
 
 type LightInstanceData struct {
-	EType                 DT_ENUM
-	DwFlags               DT_UINT
-	Unk_c96f544           DT_UINT
-	Unk_cf4734d           DT_ENUM
-	Unk_56127ed           DT_ENUM
-	TMatTexProjected      MaterialTexture
-	TStateA               LightStateParams
-	Unk_3dc76e8           DT_RANGE[*DT_FLOAT]
-	FFirstTexels          DT_RANGE[*DT_FLOAT]
-	Unk_b2d1b35           DT_FLOAT
-	Unk_da73b5e           DT_RANGE[*DT_FLOAT]
-	Unk_159b591           DT_FLOAT
-	Unk_cdd937c           DT_FLOAT
-	Unk_6b1c15            DT_FLOAT
-	Unk_303bee            DT_FLOAT
-	Unk_c4c66d5           DT_FLOAT
-	Unk_ff1fcfe           DT_FLOAT
-	NSystemDuration       DT_FLOAT
-	FlOutroDuration       DT_FLOAT
-	TSystemDurationScalar InterpolationScalar
+	EType                   DT_ENUM
+	EMobility               DT_ENUM
+	DwFlags                 DT_UINT
+	Unk_c96f544             DT_UINT
+	Unk_cf4734d             DT_ENUM
+	Unk_56127ed             DT_ENUM
+	TMatTexProjected        MaterialTexture
+	TStateA                 LightStateParams
+	Unk_3dc76e8             DT_RANGE[*DT_FLOAT]
+	FFirstTexels            DT_RANGE[*DT_FLOAT]
+	Unk_b2d1b35             DT_FLOAT
+	Unk_da73b5e             DT_RANGE[*DT_FLOAT]
+	FlShadowZBias           DT_FLOAT
+	FlShadowZSlopeScaleBias DT_FLOAT
+	Unk_6b1c15              DT_FLOAT
+	FlShadowNearPlane       DT_FLOAT
+	Unk_c4c66d5             DT_FLOAT
+	Unk_ff1fcfe             DT_FLOAT
+	NSystemDuration         DT_FLOAT
+	FlOutroDuration         DT_FLOAT
+	TSystemDurationScalar   InterpolationScalar
 }
 
 func (t *LightInstanceData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -84776,16 +86441,19 @@ func (t *LightInstanceData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.EType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.DwFlags, r, &Options{Flags: 524289}); err != nil {
+	if err := UnmarshalAt(p+4, &t.EMobility, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_c96f544, r, &Options{Flags: 524289}); err != nil {
+	if err := UnmarshalAt(p+8, &t.DwFlags, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_cf4734d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.Unk_c96f544, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_56127ed, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.Unk_cf4734d, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.Unk_56127ed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.TMatTexProjected, r, &Options{Flags: 1}); err != nil {
@@ -84806,16 +86474,16 @@ func (t *LightInstanceData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+820, &t.Unk_da73b5e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+828, &t.Unk_159b591, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+828, &t.FlShadowZBias, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+832, &t.Unk_cdd937c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+832, &t.FlShadowZSlopeScaleBias, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+836, &t.Unk_6b1c15, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+840, &t.Unk_303bee, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+840, &t.FlShadowNearPlane, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+844, &t.Unk_c4c66d5, r, &Options{Flags: 1}); err != nil {
@@ -84841,6 +86509,7 @@ func (t *LightInstanceData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *LightInstanceData) Walk(cb WalkCallback) {
 	cb.Do("EType", &t.EType)
+	cb.Do("EMobility", &t.EMobility)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("Unk_c96f544", &t.Unk_c96f544)
 	cb.Do("Unk_cf4734d", &t.Unk_cf4734d)
@@ -84851,10 +86520,10 @@ func (t *LightInstanceData) Walk(cb WalkCallback) {
 	cb.Do("FFirstTexels", &t.FFirstTexels)
 	cb.Do("Unk_b2d1b35", &t.Unk_b2d1b35)
 	cb.Do("Unk_da73b5e", &t.Unk_da73b5e)
-	cb.Do("Unk_159b591", &t.Unk_159b591)
-	cb.Do("Unk_cdd937c", &t.Unk_cdd937c)
+	cb.Do("FlShadowZBias", &t.FlShadowZBias)
+	cb.Do("FlShadowZSlopeScaleBias", &t.FlShadowZSlopeScaleBias)
 	cb.Do("Unk_6b1c15", &t.Unk_6b1c15)
-	cb.Do("Unk_303bee", &t.Unk_303bee)
+	cb.Do("FlShadowNearPlane", &t.FlShadowNearPlane)
 	cb.Do("Unk_c4c66d5", &t.Unk_c4c66d5)
 	cb.Do("Unk_ff1fcfe", &t.Unk_ff1fcfe)
 	cb.Do("NSystemDuration", &t.NSystemDuration)
@@ -85007,14 +86676,14 @@ func (t *PreloadACDDataMessage) Walk(cb WalkCallback) {
 	cb.Do("TNPCACDInfo", &t.TNPCACDInfo)
 }
 
-type Type_b88f4265 struct {
+type dmMtxMirror struct {
 	Rx DT_VECTOR4D
 	Ry DT_VECTOR4D
 	Rz DT_VECTOR4D
 	P  DT_VECTOR4D
 }
 
-func (t *Type_b88f4265) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmMtxMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -85037,7 +86706,7 @@ func (t *Type_b88f4265) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_b88f4265) Walk(cb WalkCallback) {
+func (t *dmMtxMirror) Walk(cb WalkCallback) {
 	cb.Do("Rx", &t.Rx)
 	cb.Do("Ry", &t.Ry)
 	cb.Do("Rz", &t.Rz)
@@ -85046,6 +86715,9 @@ func (t *Type_b88f4265) Walk(cb WalkCallback) {
 
 type ActorUIData struct {
 	HPortraitImage           DT_UINT
+	Unk_e3dc66d              DT_INT
+	Unk_a94748a              DT_UINT
+	Unk_a0b181c              DT_UINT
 	HMinimapIcon             DT_UINT
 	Unk_f51d2b3              DT_UINT
 	FMinimapActiveByDefault  DT_INT
@@ -85066,37 +86738,46 @@ func (t *ActorUIData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.HPortraitImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.HMinimapIcon, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.Unk_e3dc66d, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_f51d2b3, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+8, &t.Unk_a94748a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.FMinimapActiveByDefault, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+12, &t.Unk_a0b181c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.FMinimapRespectsFoW, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+16, &t.HMinimapIcon, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_98a6ae1, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+20, &t.Unk_f51d2b3, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_c26b08b, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+24, &t.FMinimapActiveByDefault, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_fab46e5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.FMinimapRespectsFoW, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.FlMinimapMaxVisRange, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.Unk_98a6ae1, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+36, &t.FlMinimapDiscoveryRadius, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+36, &t.Unk_c26b08b, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+40, &t.Unk_c6ec070, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+40, &t.Unk_fab46e5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+72, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+44, &t.FlMinimapMaxVisRange, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+48, &t.FlMinimapDiscoveryRadius, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+56, &t.Unk_c6ec070, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+88, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -85104,6 +86785,9 @@ func (t *ActorUIData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *ActorUIData) Walk(cb WalkCallback) {
 	cb.Do("HPortraitImage", &t.HPortraitImage)
+	cb.Do("Unk_e3dc66d", &t.Unk_e3dc66d)
+	cb.Do("Unk_a94748a", &t.Unk_a94748a)
+	cb.Do("Unk_a0b181c", &t.Unk_a0b181c)
 	cb.Do("HMinimapIcon", &t.HMinimapIcon)
 	cb.Do("Unk_f51d2b3", &t.Unk_f51d2b3)
 	cb.Do("FMinimapActiveByDefault", &t.FMinimapActiveByDefault)
@@ -85159,7 +86843,7 @@ func (t *OnDodgeBuffCallback) Walk(cb WalkCallback) {
 }
 
 type GetInventoryLocationMessage struct {
-	THeader Type_72bd65f8
+	THeader RequiredRequestMessageHeader
 	TItemId Type_f5ac91bb
 }
 
@@ -85222,7 +86906,7 @@ func (t *AnimTreeNodeChild) Walk(cb WalkCallback) {
 	cb.Do("DwChildIndex", &t.DwChildIndex)
 }
 
-type Type_b8e1451f struct {
+type dmMeshNodeMirror struct {
 	NLowerX         DT_FLOAT
 	NLowerY         DT_FLOAT
 	NLowerZ         DT_FLOAT
@@ -85235,7 +86919,7 @@ type Type_b8e1451f struct {
 	DwTriangleCount DT_BYTE
 }
 
-func (t *Type_b8e1451f) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmMeshNodeMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -85276,7 +86960,7 @@ func (t *Type_b8e1451f) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_b8e1451f) Walk(cb WalkCallback) {
+func (t *dmMeshNodeMirror) Walk(cb WalkCallback) {
 	cb.Do("NLowerX", &t.NLowerX)
 	cb.Do("NLowerY", &t.NLowerY)
 	cb.Do("NLowerZ", &t.NLowerZ)
@@ -85668,11 +87352,11 @@ func (t *ItemQualitySubcondition) Walk(cb WalkCallback) {
 }
 
 type KillCountMessage struct {
-	THeader      RequiredMessageHeader
-	Unk_dce541c  DT_UINT
-	NPlayerKills DT_INT
-	NDeaths      DT_INT
-	NAssists     DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	NPlayerKills          DT_INT
+	NDeaths               DT_INT
+	NAssists              DT_INT
 }
 
 func (t *KillCountMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -85683,7 +87367,7 @@ func (t *KillCountMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.NPlayerKills, r, &Options{Flags: 1}); err != nil {
@@ -85703,7 +87387,7 @@ func (t *KillCountMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *KillCountMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("NPlayerKills", &t.NPlayerKills)
 	cb.Do("NDeaths", &t.NDeaths)
 	cb.Do("NAssists", &t.NAssists)
@@ -85833,7 +87517,7 @@ type BannerIcon struct {
 	HLabel      StringLabelHandleEx
 	SnoTexture  DT_SNO
 	Unk_cd49a50 DT_FLOAT
-	HIcon       Type_6b1c5d9c
+	HIcon       UIImageHandleReference
 }
 
 func (t *BannerIcon) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -85882,7 +87566,7 @@ type BannerTrim struct {
 	SnoEmissiveMask DT_SNO
 	FlMetalness     DT_FLOAT
 	FlRoughness     DT_FLOAT
-	HIcon           Type_6b1c5d9c
+	HIcon           UIImageHandleReference
 }
 
 func (t *BannerTrim) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -85948,19 +87632,19 @@ func (t *BannerTrim) Walk(cb WalkCallback) {
 }
 
 type Type_b99f8947 struct {
-	EScrollbarAlignment     DT_ENUM
-	EScrollbarVisibility    DT_ENUM
-	FlScrollbarWidth        DT_FLOAT
-	Unk_5443ce9             DT_INT
-	Unk_ff388bb             DT_FLOAT
-	Unk_58496c              DT_FLOAT
-	Unk_26fb7aa             DT_FLOAT
-	EBlendEasing            DT_ENUM
-	Unk_ebbdec9             DT_FLOAT
-	Unk_438d70b             DT_FLOAT
-	NScrollbarPageIncrement DT_INT
-	Unk_1f6fa9              DT_ENUM
-	Unk_f28083a             DT_INT
+	EScrollbarAlignment              DT_ENUM
+	EScrollbarVisibility             DT_ENUM
+	FlScrollbarWidth                 DT_FLOAT
+	Unk_5443ce9                      DT_INT
+	FlScrollbarMouseWheelScaleFactor DT_FLOAT
+	FlScrollbarBlendSpeed            DT_FLOAT
+	FlScrollbarBlendTime             DT_FLOAT
+	EBlendEasing                     DT_ENUM
+	Unk_ebbdec9                      DT_FLOAT
+	Unk_438d70b                      DT_FLOAT
+	NScrollbarPageIncrement          DT_INT
+	Unk_1f6fa9                       DT_ENUM
+	Unk_f28083a                      DT_INT
 }
 
 func (t *Type_b99f8947) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -85980,13 +87664,13 @@ func (t *Type_b99f8947) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+12, &t.Unk_5443ce9, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_ff388bb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.FlScrollbarMouseWheelScaleFactor, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_58496c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.FlScrollbarBlendSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_26fb7aa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.FlScrollbarBlendTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+28, &t.EBlendEasing, r, &Options{Flags: 1}); err != nil {
@@ -86018,9 +87702,9 @@ func (t *Type_b99f8947) Walk(cb WalkCallback) {
 	cb.Do("EScrollbarVisibility", &t.EScrollbarVisibility)
 	cb.Do("FlScrollbarWidth", &t.FlScrollbarWidth)
 	cb.Do("Unk_5443ce9", &t.Unk_5443ce9)
-	cb.Do("Unk_ff388bb", &t.Unk_ff388bb)
-	cb.Do("Unk_58496c", &t.Unk_58496c)
-	cb.Do("Unk_26fb7aa", &t.Unk_26fb7aa)
+	cb.Do("FlScrollbarMouseWheelScaleFactor", &t.FlScrollbarMouseWheelScaleFactor)
+	cb.Do("FlScrollbarBlendSpeed", &t.FlScrollbarBlendSpeed)
+	cb.Do("FlScrollbarBlendTime", &t.FlScrollbarBlendTime)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("Unk_ebbdec9", &t.Unk_ebbdec9)
 	cb.Do("Unk_438d70b", &t.Unk_438d70b)
@@ -86247,7 +87931,9 @@ type ItemDefinition struct {
 	NTomeLevel                       DT_INT
 	NFixedIPowerLevel                DT_INT
 	Unk_ae0eeff                      DT_ENUM
+	Unk_6a20140                      DT_INT
 	PtAttributes                     DT_VARIABLEARRAY[*AttributeSpecifier]
+	Unk_f48ee7e                      DT_INT
 	ArInherentAffixes                DT_VARIABLEARRAY[*DT_SNO]
 	ArForcedAffixes                  DT_VARIABLEARRAY[*DT_SNO]
 	Unk_e6191d6                      DT_VARIABLEARRAY[*DT_GBID]
@@ -86255,9 +87941,12 @@ type ItemDefinition struct {
 	FUsableByClass                   DT_FIXEDARRAY[*DT_INT]
 	PtSocketedEffects                DT_VARIABLEARRAY[*SocketedEffects]
 	SnoRunePower                     DT_SNO
+	Unk_4cb9610                      DT_GBID
+	Unk_ad84e51                      DT_GBID
 	SnoRecipe                        DT_SNO
 	SnoDemonScroll                   DT_SNO
 	SnoMount                         DT_SNO
+	Unk_40ae170                      DT_SNO
 	SnoParagonGlyph                  DT_SNO
 	Unk_3202773                      DT_VARIABLEARRAY[*DT_GBID]
 	ArReputation                     DT_VARIABLEARRAY[*ReputationValuePair]
@@ -86269,6 +87958,9 @@ type ItemDefinition struct {
 	SnoPowerUpPower                  DT_SNO
 	SnoItemUseLevelAreaRequirement   DT_SNO
 	Unk_f772ea                       DT_UINT
+	Unk_f4b6cde                      Type_56ff7d6a
+	BSeasonItem                      DT_INT
+	Unk_d085fd9                      DT_INT
 	EDisplayedQualityLevel           DT_ENUM
 	NCustomDropWeight                DT_INT
 	SnoPowerPassive                  DT_SNO
@@ -86432,139 +88124,172 @@ func (t *ItemDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+152, &t.Unk_ae0eeff, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
+	if err := UnmarshalAt(p+156, &t.Unk_6a20140, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
 	if err := UnmarshalAt(p+160, &t.PtAttributes, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.ArInherentAffixes, r, &Options{
+	if err := UnmarshalAt(p+176, &t.Unk_f48ee7e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+184, &t.ArInherentAffixes, r, &Options{
 		Flags: 1,
 		Group: 104,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+192, &t.ArForcedAffixes, r, &Options{
+	if err := UnmarshalAt(p+200, &t.ArForcedAffixes, r, &Options{
 		Flags: 1,
 		Group: 104,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+208, &t.Unk_e6191d6, r, &Options{
+	if err := UnmarshalAt(p+216, &t.Unk_e6191d6, r, &Options{
 		Flags: 1,
 		Group: 18,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+224, &t.Unk_192312c, r, &Options{
+	if err := UnmarshalAt(p+232, &t.Unk_192312c, r, &Options{
 		Flags: 1,
 		Group: 18,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+240, &t.FUsableByClass, r, &Options{
+	if err := UnmarshalAt(p+248, &t.FUsableByClass, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+264, &t.PtSocketedEffects, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+272, &t.PtSocketedEffects, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+280, &t.SnoRunePower, r, &Options{
+	if err := UnmarshalAt(p+288, &t.SnoRunePower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+284, &t.SnoRecipe, r, &Options{
+	if err := UnmarshalAt(p+292, &t.Unk_4cb9610, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+296, &t.Unk_ad84e51, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+300, &t.SnoRecipe, r, &Options{
 		Flags: 1,
 		Group: 49,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+288, &t.SnoDemonScroll, r, &Options{
+	if err := UnmarshalAt(p+304, &t.SnoDemonScroll, r, &Options{
 		Flags: 1,
 		Group: 95,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+292, &t.SnoMount, r, &Options{
+	if err := UnmarshalAt(p+308, &t.SnoMount, r, &Options{
 		Flags: 1,
 		Group: 1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+296, &t.SnoParagonGlyph, r, &Options{
+	if err := UnmarshalAt(p+312, &t.Unk_40ae170, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+316, &t.SnoParagonGlyph, r, &Options{
 		Flags: 1,
 		Group: 111,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+304, &t.Unk_3202773, r, &Options{
+	if err := UnmarshalAt(p+320, &t.Unk_3202773, r, &Options{
 		Flags: 1,
 		Group: 18,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+320, &t.ArReputation, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+336, &t.ArReputation, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+336, &t.TInvImages, r, &Options{
+	if err := UnmarshalAt(p+352, &t.TInvImages, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+376, &t.Unk_75d565b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+392, &t.Unk_75d565b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+380, &t.FMustKeepInInventory, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+396, &t.FMustKeepInInventory, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+384, &t.FBottomless, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+400, &t.FBottomless, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+388, &t.EItemUseType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+404, &t.EItemUseType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+392, &t.SnoPowerUpPower, r, &Options{
+	if err := UnmarshalAt(p+408, &t.SnoPowerUpPower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+396, &t.SnoItemUseLevelAreaRequirement, r, &Options{
+	if err := UnmarshalAt(p+412, &t.SnoItemUseLevelAreaRequirement, r, &Options{
 		Flags: 513,
 		Group: 22,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+400, &t.Unk_f772ea, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+416, &t.Unk_f772ea, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+404, &t.EDisplayedQualityLevel, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+424, &t.Unk_f4b6cde, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+408, &t.NCustomDropWeight, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+440, &t.BSeasonItem, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+412, &t.SnoPowerPassive, r, &Options{
+	if err := UnmarshalAt(p+444, &t.Unk_d085fd9, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+448, &t.EDisplayedQualityLevel, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+452, &t.NCustomDropWeight, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+456, &t.SnoPowerPassive, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+416, &t.EGemType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+460, &t.EGemType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+420, &t.SnoPotionPower, r, &Options{
+	if err := UnmarshalAt(p+464, &t.SnoPotionPower, r, &Options{
 		Flags: 1,
 		Group: 29,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+424, &t.BIsTransmog, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+468, &t.BIsTransmog, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+432, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+472, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -86605,7 +88330,9 @@ func (t *ItemDefinition) Walk(cb WalkCallback) {
 	cb.Do("NTomeLevel", &t.NTomeLevel)
 	cb.Do("NFixedIPowerLevel", &t.NFixedIPowerLevel)
 	cb.Do("Unk_ae0eeff", &t.Unk_ae0eeff)
+	cb.Do("Unk_6a20140", &t.Unk_6a20140)
 	cb.Do("PtAttributes", &t.PtAttributes)
+	cb.Do("Unk_f48ee7e", &t.Unk_f48ee7e)
 	cb.Do("ArInherentAffixes", &t.ArInherentAffixes)
 	cb.Do("ArForcedAffixes", &t.ArForcedAffixes)
 	cb.Do("Unk_e6191d6", &t.Unk_e6191d6)
@@ -86613,9 +88340,12 @@ func (t *ItemDefinition) Walk(cb WalkCallback) {
 	cb.Do("FUsableByClass", &t.FUsableByClass)
 	cb.Do("PtSocketedEffects", &t.PtSocketedEffects)
 	cb.Do("SnoRunePower", &t.SnoRunePower)
+	cb.Do("Unk_4cb9610", &t.Unk_4cb9610)
+	cb.Do("Unk_ad84e51", &t.Unk_ad84e51)
 	cb.Do("SnoRecipe", &t.SnoRecipe)
 	cb.Do("SnoDemonScroll", &t.SnoDemonScroll)
 	cb.Do("SnoMount", &t.SnoMount)
+	cb.Do("Unk_40ae170", &t.Unk_40ae170)
 	cb.Do("SnoParagonGlyph", &t.SnoParagonGlyph)
 	cb.Do("Unk_3202773", &t.Unk_3202773)
 	cb.Do("ArReputation", &t.ArReputation)
@@ -86627,6 +88357,9 @@ func (t *ItemDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoPowerUpPower", &t.SnoPowerUpPower)
 	cb.Do("SnoItemUseLevelAreaRequirement", &t.SnoItemUseLevelAreaRequirement)
 	cb.Do("Unk_f772ea", &t.Unk_f772ea)
+	cb.Do("Unk_f4b6cde", &t.Unk_f4b6cde)
+	cb.Do("BSeasonItem", &t.BSeasonItem)
+	cb.Do("Unk_d085fd9", &t.Unk_d085fd9)
 	cb.Do("EDisplayedQualityLevel", &t.EDisplayedQualityLevel)
 	cb.Do("NCustomDropWeight", &t.NCustomDropWeight)
 	cb.Do("SnoPowerPassive", &t.SnoPowerPassive)
@@ -86783,7 +88516,7 @@ func (t *UIDialogDefinition) Walk(cb WalkCallback) {
 }
 
 type BossEncounterStateMessage struct {
-	THeader                   Type_72bd65f8
+	THeader                   RequiredRequestMessageHeader
 	SnoBossEncounterLevelArea DT_SNO
 	EState                    DT_ENUM
 	Unk_57adc31               DT_FIXEDARRAY[*DT_ACD_NETWORK_NAME]
@@ -86859,37 +88592,37 @@ func (t *MarkerPrefabData) Walk(cb WalkCallback) {
 	cb.Do("ArPrefabCustomizations", &t.ArPrefabCustomizations)
 }
 
-type Type_ba746573 struct {
+type TriggerEventCameraChangeDepthOfField struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType           DT_UINT
-	TConditions      TriggerConditions
-	FGenerated       DT_INT
-	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
-	TDuration        DT_FLOAT
-	DwTriggerFlags   DT_UINT
-	DwTriggerFlagsEx DT_UINT
-	TCleanup         TriggerCleanup
-	Unk_49e9257      DT_INT
-	Unk_5490979      DT_INT
-	DwPad            DT_UINT
-	Unk_7902ee3      DT_INT
-	Unk_25955c7      DT_FLOAT
-	Unk_abee5c3      DT_FLOAT
-	Unk_fbca868      DT_FLOAT
-	Unk_839aa20      DT_FLOAT
-	Unk_f75b7db      DT_FLOAT
-	Unk_e7f8ef9      DT_FLOAT
-	Unk_600cf5       DT_FLOAT
-	Unk_aa07da       DT_FLOAT
-	Unk_abbeed2      DT_FLOAT
-	Unk_b9bf10d      DT_FLOAT
-	EBlendEasing     DT_ENUM
+	DwType             DT_UINT
+	TConditions        TriggerConditions
+	FGenerated         DT_INT
+	Unk_6cba752        DT_INT
+	DwParentActorID    DT_UINT
+	TDuration          DT_FLOAT
+	DwTriggerFlags     DT_UINT
+	DwTriggerFlagsEx   DT_UINT
+	TCleanup           TriggerCleanup
+	Unk_49e9257        DT_INT
+	Unk_5490979        DT_INT
+	DwPad              DT_UINT
+	Unk_7902ee3        DT_INT
+	Unk_25955c7        DT_FLOAT
+	Unk_abee5c3        DT_FLOAT
+	Unk_fbca868        DT_FLOAT
+	Unk_839aa20        DT_FLOAT
+	Unk_f75b7db        DT_FLOAT
+	FlEndFocalDistance DT_FLOAT
+	Unk_600cf5         DT_FLOAT
+	Unk_aa07da         DT_FLOAT
+	Unk_abbeed2        DT_FLOAT
+	Unk_b9bf10d        DT_FLOAT
+	EBlendEasing       DT_ENUM
 }
 
-func (t *Type_ba746573) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TriggerEventCameraChangeDepthOfField) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -86906,7 +88639,7 @@ func (t *Type_ba746573) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -86948,7 +88681,7 @@ func (t *Type_ba746573) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+148, &t.Unk_f75b7db, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+152, &t.Unk_e7f8ef9, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+152, &t.FlEndFocalDistance, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+156, &t.Unk_600cf5, r, &Options{Flags: 1}); err != nil {
@@ -86972,12 +88705,12 @@ func (t *Type_ba746573) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ba746573) Walk(cb WalkCallback) {
+func (t *TriggerEventCameraChangeDepthOfField) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -86991,7 +88724,7 @@ func (t *Type_ba746573) Walk(cb WalkCallback) {
 	cb.Do("Unk_fbca868", &t.Unk_fbca868)
 	cb.Do("Unk_839aa20", &t.Unk_839aa20)
 	cb.Do("Unk_f75b7db", &t.Unk_f75b7db)
-	cb.Do("Unk_e7f8ef9", &t.Unk_e7f8ef9)
+	cb.Do("FlEndFocalDistance", &t.FlEndFocalDistance)
 	cb.Do("Unk_600cf5", &t.Unk_600cf5)
 	cb.Do("Unk_aa07da", &t.Unk_aa07da)
 	cb.Do("Unk_abbeed2", &t.Unk_abbeed2)
@@ -87002,13 +88735,13 @@ func (t *Type_ba746573) Walk(cb WalkCallback) {
 type Type_ba7da2d8 struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_d8b6d76 DT_GBID
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_d8b6d76     DT_GBID
 }
 
 func (t *Type_ba7da2d8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -87031,7 +88764,7 @@ func (t *Type_ba7da2d8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_d8b6d76, r, &Options{
@@ -87052,12 +88785,12 @@ func (t *Type_ba7da2d8) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_d8b6d76", &t.Unk_d8b6d76)
 }
 
 type GetInventoryLocationResponseMessage struct {
-	THeader          Type_ad008e7e
+	THeader          RequiredResponseMessageHeader
 	TInvLocationData InventoryLocationMessageData
 	AnnItem          DT_ACD_NETWORK_NAME
 }
@@ -87095,6 +88828,7 @@ type Marker struct {
 	Transform     PRTransform
 	Snoname       DT_SNO_NAME
 	DwMarkerFlags DT_UINT
+	Unk_c1a1f47   DT_UINT
 	VecScale      DT_VECTOR3D
 	PtBase        DT_POLYMORPHIC_VARIABLEARRAY[*MarkerDataBase]
 	PtGroupData   DT_VARIABLEARRAY[*MarkerGroupData]
@@ -87127,28 +88861,31 @@ func (t *Marker) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+48, &t.DwMarkerFlags, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+52, &t.VecScale, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+52, &t.Unk_c1a1f47, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.PtBase, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+56, &t.VecScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.PtGroupData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+72, &t.PtBase, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.PtMarkerLinks, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.PtGroupData, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.Unk_c339f69, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+112, &t.PtMarkerLinks, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+124, &t.DwSeed, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+128, &t.Unk_c339f69, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.TPrefabData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+132, &t.DwSeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+184, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+136, &t.TPrefabData, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+192, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -87161,6 +88898,7 @@ func (t *Marker) Walk(cb WalkCallback) {
 	cb.Do("Transform", &t.Transform)
 	cb.Do("Snoname", &t.Snoname)
 	cb.Do("DwMarkerFlags", &t.DwMarkerFlags)
+	cb.Do("Unk_c1a1f47", &t.Unk_c1a1f47)
 	cb.Do("VecScale", &t.VecScale)
 	cb.Do("PtBase", &t.PtBase)
 	cb.Do("PtGroupData", &t.PtGroupData)
@@ -87296,7 +89034,7 @@ type MonsterFamilyArchetype struct {
 	Unk_100de70          DT_INT
 	Unk_4324dae          DT_FLOAT
 	Unk_c9d3011          DT_FLOAT
-	Unk_86e7bb0          DT_FLOAT
+	FlMaxDamageShield    DT_FLOAT
 	Unk_ccbd7c6          DT_ENUM
 	Unk_a5b8d03          DT_ENUM
 	Unk_773ad4d          DT_ENUM
@@ -87393,7 +89131,7 @@ func (t *MonsterFamilyArchetype) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+80, &t.Unk_c9d3011, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+84, &t.Unk_86e7bb0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+84, &t.FlMaxDamageShield, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+88, &t.Unk_ccbd7c6, r, &Options{Flags: 1}); err != nil {
@@ -87573,7 +89311,7 @@ func (t *MonsterFamilyArchetype) Walk(cb WalkCallback) {
 	cb.Do("Unk_100de70", &t.Unk_100de70)
 	cb.Do("Unk_4324dae", &t.Unk_4324dae)
 	cb.Do("Unk_c9d3011", &t.Unk_c9d3011)
-	cb.Do("Unk_86e7bb0", &t.Unk_86e7bb0)
+	cb.Do("FlMaxDamageShield", &t.FlMaxDamageShield)
 	cb.Do("Unk_ccbd7c6", &t.Unk_ccbd7c6)
 	cb.Do("Unk_a5b8d03", &t.Unk_a5b8d03)
 	cb.Do("Unk_773ad4d", &t.Unk_773ad4d)
@@ -88075,6 +89813,63 @@ func (t *ActiveSubzoneModifierSubcondition) Walk(cb WalkCallback) {
 	cb.Do("GbidSubzoneModifierTag", &t.GbidSubzoneModifierTag)
 }
 
+type Type_bb7f18e8 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BInverse    DT_INT
+	DwPad       DT_UINT
+	ESubject    DT_ENUM
+	Unk_7bd1297 DT_INT
+	Unk_1492e46 DT_INT
+	ArPetTypes  DT_VARIABLEARRAY[*DT_GBID]
+}
+
+func (t *Type_bb7f18e8) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.ESubject, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.Unk_7bd1297, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+32, &t.Unk_1492e46, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+40, &t.ArPetTypes, r, &Options{
+		Flags: 1,
+		Group: 23,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+56, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_bb7f18e8) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("ESubject", &t.ESubject)
+	cb.Do("Unk_7bd1297", &t.Unk_7bd1297)
+	cb.Do("Unk_1492e46", &t.Unk_1492e46)
+	cb.Do("ArPetTypes", &t.ArPetTypes)
+}
+
 type DestroySceneMessage struct {
 	THeader  RequiredMessageHeader
 	IdSScene DT_SHARED_SERVER_DATA_ID
@@ -88143,6 +89938,7 @@ type Currencies struct {
 	GbidCategory   DT_GBID
 	ArItems        DT_VARIABLEARRAY[*CurrencyItem]
 	Unk_a7aad4d    DT_SNO
+	Unk_f4b6cde    Type_56ff7d6a
 }
 
 func (t *Currencies) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -88180,7 +89976,10 @@ func (t *Currencies) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+320, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+320, &t.Unk_f4b6cde, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+336, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -88195,12 +89994,13 @@ func (t *Currencies) Walk(cb WalkCallback) {
 	cb.Do("GbidCategory", &t.GbidCategory)
 	cb.Do("ArItems", &t.ArItems)
 	cb.Do("Unk_a7aad4d", &t.Unk_a7aad4d)
+	cb.Do("Unk_f4b6cde", &t.Unk_f4b6cde)
 }
 
 type Type_bc07d3c7 struct {
 	ArPieces         DT_VARIABLEARRAY[*Type_3ddf9693]
-	Unk_85db88e      DT_VARIABLEARRAY[*Type_3ddf9693]
-	Unk_767477       DT_VARIABLEARRAY[*Type_3ddf9693]
+	ArStartCapPieces DT_VARIABLEARRAY[*Type_3ddf9693]
+	ArEndCapPieces   DT_VARIABLEARRAY[*Type_3ddf9693]
 	Unk_755f012      DT_RANGE[*DT_FLOAT]
 	EPieceSelectMode DT_ENUM
 }
@@ -88213,10 +90013,10 @@ func (t *Type_bc07d3c7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.ArPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_85db88e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.ArStartCapPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_767477, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+32, &t.ArEndCapPieces, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+48, &t.Unk_755f012, r, &Options{Flags: 1}); err != nil {
@@ -88233,8 +90033,8 @@ func (t *Type_bc07d3c7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_bc07d3c7) Walk(cb WalkCallback) {
 	cb.Do("ArPieces", &t.ArPieces)
-	cb.Do("Unk_85db88e", &t.Unk_85db88e)
-	cb.Do("Unk_767477", &t.Unk_767477)
+	cb.Do("ArStartCapPieces", &t.ArStartCapPieces)
+	cb.Do("ArEndCapPieces", &t.ArEndCapPieces)
 	cb.Do("Unk_755f012", &t.Unk_755f012)
 	cb.Do("EPieceSelectMode", &t.EPieceSelectMode)
 }
@@ -88316,16 +90116,16 @@ func (t *NSlice) Walk(cb WalkCallback) {
 type TriggerEventObjectKeyFrame struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_85269a4 DT_INT
-	DwObjectID  DT_UINT
-	ArKeys      DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	Unk_9717a7e DT_FLOAT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_85269a4     DT_INT
+	DwObjectID      DT_UINT
+	ArKeys          DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	Unk_9717a7e     DT_FLOAT
 }
 
 func (t *TriggerEventObjectKeyFrame) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -88348,7 +90148,7 @@ func (t *TriggerEventObjectKeyFrame) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_85269a4, r, &Options{Flags: 17}); err != nil {
@@ -88375,7 +90175,7 @@ func (t *TriggerEventObjectKeyFrame) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_85269a4", &t.Unk_85269a4)
 	cb.Do("DwObjectID", &t.DwObjectID)
 	cb.Do("ArKeys", &t.ArKeys)
@@ -88457,7 +90257,7 @@ type PreloadSpawnWorldDataMessage struct {
 	THeader       RequiredMessageHeader
 	IdSWorld      DT_SHARED_SERVER_DATA_ID
 	Unk_f4f03a5   DT_INT
-	ArPreloadData DT_FIXEDARRAY[*Type_6867c9cc]
+	ArPreloadData DT_FIXEDARRAY[*PreloadSpawnMarkerData]
 }
 
 func (t *PreloadSpawnWorldDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -88493,14 +90293,14 @@ func (t *PreloadSpawnWorldDataMessage) Walk(cb WalkCallback) {
 	cb.Do("ArPreloadData", &t.ArPreloadData)
 }
 
-type Type_bc83f219 struct {
+type QuestFollowerPhaseInfo struct {
 	DwPhase                  DT_UINT
-	TSpawnBehavior           Type_da8a2315
+	TSpawnBehavior           QuestFollowerSpawnBehavior
 	SnoPlayerAttachCondition DT_SNO
 	ArLevelAreas             DT_VARIABLEARRAY[*DT_SNO]
 }
 
-func (t *Type_bc83f219) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *QuestFollowerPhaseInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -88529,7 +90329,7 @@ func (t *Type_bc83f219) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_bc83f219) Walk(cb WalkCallback) {
+func (t *QuestFollowerPhaseInfo) Walk(cb WalkCallback) {
 	cb.Do("DwPhase", &t.DwPhase)
 	cb.Do("TSpawnBehavior", &t.TSpawnBehavior)
 	cb.Do("SnoPlayerAttachCondition", &t.SnoPlayerAttachCondition)
@@ -88868,7 +90668,7 @@ func (t *AnimationClothOverride) Walk(cb WalkCallback) {
 }
 
 type SimpleResponse struct {
-	THeader Type_ad008e7e
+	THeader RequiredResponseMessageHeader
 }
 
 func (t *SimpleResponse) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -88890,11 +90690,11 @@ func (t *SimpleResponse) Walk(cb WalkCallback) {
 }
 
 type HirelingInfoUpdateMessage struct {
-	THeader     RequiredMessageHeader
-	EClass      DT_INT
-	FDead       DT_INT
-	GbidName    DT_GBID
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	EClass                DT_INT
+	FDead                 DT_INT
+	GbidName              DT_GBID
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *HirelingInfoUpdateMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -88914,7 +90714,7 @@ func (t *HirelingInfoUpdateMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+24, &t.GbidName, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
@@ -88928,7 +90728,7 @@ func (t *HirelingInfoUpdateMessage) Walk(cb WalkCallback) {
 	cb.Do("EClass", &t.EClass)
 	cb.Do("FDead", &t.FDead)
 	cb.Do("GbidName", &t.GbidName)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type ConversationCannedNode struct {
@@ -88938,7 +90738,7 @@ type ConversationCannedNode struct {
 	DwPad                 DT_UINT
 	DwNodeID              DT_UINT
 	DwNextNodeID          DT_UINT
-	Unk_3ef8e38           DT_UINT
+	DwParentNodeID        DT_UINT
 	PtNextNode            DT_INT64
 	DwFlags               DT_UINT
 	SzComment             DT_CSTRING[*DT_BYTE]
@@ -88963,7 +90763,7 @@ func (t *ConversationCannedNode) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -88995,7 +90795,7 @@ func (t *ConversationCannedNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -89988,7 +91788,7 @@ type PlayEffectMessage struct {
 	Ann                DT_ACD_NETWORK_NAME
 	EEffectType        DT_ENUM
 	NEffectParameter   DT_OPTIONAL[*DT_INT]
-	Unk_4d7691e        DT_OPTIONAL[*Type_3940c0fe]
+	OnHitSounds        DT_OPTIONAL[*OnHitSounds]
 	AnnPlayer          DT_OPTIONAL[*DT_ACD_NETWORK_NAME]
 	AnnAttacker        DT_OPTIONAL[*DT_ACD_NETWORK_NAME]
 	FlSpeedScale       DT_OPTIONAL[*DT_FLOAT]
@@ -90014,7 +91814,7 @@ func (t *PlayEffectMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+28, &t.NEffectParameter, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+36, &t.Unk_4d7691e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+36, &t.OnHitSounds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+52, &t.AnnPlayer, r, &Options{Flags: 1}); err != nil {
@@ -90046,7 +91846,7 @@ func (t *PlayEffectMessage) Walk(cb WalkCallback) {
 	cb.Do("Ann", &t.Ann)
 	cb.Do("EEffectType", &t.EEffectType)
 	cb.Do("NEffectParameter", &t.NEffectParameter)
-	cb.Do("Unk_4d7691e", &t.Unk_4d7691e)
+	cb.Do("OnHitSounds", &t.OnHitSounds)
 	cb.Do("AnnPlayer", &t.AnnPlayer)
 	cb.Do("AnnAttacker", &t.AnnAttacker)
 	cb.Do("FlSpeedScale", &t.FlSpeedScale)
@@ -90058,21 +91858,21 @@ func (t *PlayEffectMessage) Walk(cb WalkCallback) {
 type ConversationLineNode struct {
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType           DT_UINT
-	DwPad            DT_UINT
-	DwNodeID         DT_UINT
-	DwNextNodeID     DT_UINT
-	Unk_3ef8e38      DT_UINT
-	PtNextNode       DT_INT64
-	DwFlags          DT_UINT
-	SzComment        DT_CSTRING[*DT_BYTE]
-	SnoSpeaker       DT_SNO
-	EGender          DT_ENUM
-	EPlayerClass     DT_ENUM
-	TDisplayTimes    DT_FIXEDARRAY[*ConvLocaleDisplayTimes]
-	SnoSoundOverride DT_SNO
-	Unk_2813b6e      DT_FLOAT
-	Unk_357a6f3      DT_INT
+	DwType                DT_UINT
+	DwPad                 DT_UINT
+	DwNodeID              DT_UINT
+	DwNextNodeID          DT_UINT
+	DwParentNodeID        DT_UINT
+	PtNextNode            DT_INT64
+	DwFlags               DT_UINT
+	SzComment             DT_CSTRING[*DT_BYTE]
+	SnoSpeaker            DT_SNO
+	EGender               DT_ENUM
+	EPlayerClass          DT_ENUM
+	TDisplayTimes         DT_FIXEDARRAY[*ConvLocaleDisplayTimes]
+	SnoSoundOverride      DT_SNO
+	FlSoundEffectDuration DT_FLOAT
+	Unk_357a6f3           DT_INT
 }
 
 func (t *ConversationLineNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -90092,7 +91892,7 @@ func (t *ConversationLineNode) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -90128,7 +91928,7 @@ func (t *ConversationLineNode) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+840, &t.Unk_2813b6e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+840, &t.FlSoundEffectDuration, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+844, &t.Unk_357a6f3, r, &Options{Flags: 17}); err != nil {
@@ -90145,7 +91945,7 @@ func (t *ConversationLineNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -90154,7 +91954,7 @@ func (t *ConversationLineNode) Walk(cb WalkCallback) {
 	cb.Do("EPlayerClass", &t.EPlayerClass)
 	cb.Do("TDisplayTimes", &t.TDisplayTimes)
 	cb.Do("SnoSoundOverride", &t.SnoSoundOverride)
-	cb.Do("Unk_2813b6e", &t.Unk_2813b6e)
+	cb.Do("FlSoundEffectDuration", &t.FlSoundEffectDuration)
 	cb.Do("Unk_357a6f3", &t.Unk_357a6f3)
 }
 
@@ -90594,13 +92394,13 @@ func (t *Type_c1762b19) Walk(cb WalkCallback) {
 type Type_c1c86aca struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	BHide       DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	BHide           DT_INT
 }
 
 func (t *Type_c1c86aca) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -90623,7 +92423,7 @@ func (t *Type_c1c86aca) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.BHide, r, &Options{Flags: 17}); err != nil {
@@ -90641,7 +92441,7 @@ func (t *Type_c1c86aca) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("BHide", &t.BHide)
 }
 
@@ -90768,14 +92568,14 @@ func (t *ItemPreloadHelper) Walk(cb WalkCallback) {
 
 type ConversationTreeNode struct {
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
 }
 
 func (t *ConversationTreeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -90795,7 +92595,7 @@ func (t *ConversationTreeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -90818,13 +92618,13 @@ func (t *ConversationTreeNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
 }
 
-type Type_c1ddc6d3 struct {
+type dmMeshDataMirror struct {
 	ANodes         DT_INT64
 	AVertices      DT_INT64
 	ATriangles     DT_INT64
@@ -90836,7 +92636,7 @@ type Type_c1ddc6d3 struct {
 	Padding        DT_INT
 }
 
-func (t *Type_c1ddc6d3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmMeshDataMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -90874,7 +92674,7 @@ func (t *Type_c1ddc6d3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_c1ddc6d3) Walk(cb WalkCallback) {
+func (t *dmMeshDataMirror) Walk(cb WalkCallback) {
 	cb.Do("ANodes", &t.ANodes)
 	cb.Do("AVertices", &t.AVertices)
 	cb.Do("ATriangles", &t.ATriangles)
@@ -90949,8 +92749,9 @@ type SkillTag struct {
 	EPlayerClass        DT_ENUM
 	EDamageTypeOverride DT_ENUM
 	BIsPrimary          DT_INT
-	ArSkillTreeIcons    DT_FIXEDARRAY[*Type_6b1c5d9c]
-	ArCategoryIcons     DT_FIXEDARRAY[*Type_6b1c5d9c]
+	Unk_483e46          DT_INT
+	ArSkillTreeIcons    DT_FIXEDARRAY[*UIImageHandleReference]
+	ArCategoryIcons     DT_FIXEDARRAY[*UIImageHandleReference]
 }
 
 func (t *SkillTag) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -90973,19 +92774,22 @@ func (t *SkillTag) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+272, &t.BIsPrimary, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+276, &t.ArSkillTreeIcons, r, &Options{
+	if err := UnmarshalAt(p+276, &t.Unk_483e46, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+280, &t.ArSkillTreeIcons, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+296, &t.ArCategoryIcons, r, &Options{
+	if err := UnmarshalAt(p+300, &t.ArCategoryIcons, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+316, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+320, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -90997,6 +92801,7 @@ func (t *SkillTag) Walk(cb WalkCallback) {
 	cb.Do("EPlayerClass", &t.EPlayerClass)
 	cb.Do("EDamageTypeOverride", &t.EDamageTypeOverride)
 	cb.Do("BIsPrimary", &t.BIsPrimary)
+	cb.Do("Unk_483e46", &t.Unk_483e46)
 	cb.Do("ArSkillTreeIcons", &t.ArSkillTreeIcons)
 	cb.Do("ArCategoryIcons", &t.ArCategoryIcons)
 }
@@ -91006,9 +92811,9 @@ type Type_c2ce8583 struct {
 	Unk_80782b8        DT_VECTOR4D
 	V                  DT_VECTOR4D
 	Vw                 DT_VECTOR4D
-	Unk_fe3c31a        Type_b88f4265
-	ClientFrame        Type_b88f4265
-	DeltaFrame         Type_b88f4265
+	Unk_fe3c31a        dmMtxMirror
+	ClientFrame        dmMtxMirror
+	DeltaFrame         dmMtxMirror
 	BindNormal         DT_VECTOR4D
 	SkinNormal         DT_VECTOR4D
 	SkinPoint          DT_VECTOR4D
@@ -91146,7 +92951,7 @@ type TriggerEventScreenFade struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -91174,7 +92979,7 @@ func (t *TriggerEventScreenFade) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -91212,7 +93017,7 @@ func (t *TriggerEventScreenFade) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -91413,7 +93218,7 @@ type TriggerEventFade struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -91443,7 +93248,7 @@ func (t *TriggerEventFade) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -91487,7 +93292,7 @@ func (t *TriggerEventFade) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -91503,12 +93308,12 @@ func (t *TriggerEventFade) Walk(cb WalkCallback) {
 type TriggerEventNull struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventNull) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -91531,7 +93336,7 @@ func (t *TriggerEventNull) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -91546,22 +93351,22 @@ func (t *TriggerEventNull) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type DotApplicationVisualsMessage struct {
-	THeader           RequiredMessageHeader
-	SnoPower          DT_SNO
-	DwPayloadDataID   DT_UINT
-	EDamageType       DT_ENUM
-	AnnTarget         DT_ACD_NETWORK_NAME
-	AnnAttacker       DT_ACD_NETWORK_NAME
-	Unk_1c7ccc9       DT_FLOAT
-	BTargetAlive      DT_INT
-	Unk_5692531       DT_OPTIONAL[*DT_VECTOR3D]
-	Unk_5d619c6       DT_OPTIONAL[*DT_VECTOR3D]
-	FlImpactDirection DT_OPTIONAL[*DT_FLOAT]
-	FlImpactPitch     DT_OPTIONAL[*DT_FLOAT]
+	THeader                    RequiredMessageHeader
+	SnoPower                   DT_SNO
+	DwPayloadDataID            DT_UINT
+	EDamageType                DT_ENUM
+	AnnTarget                  DT_ACD_NETWORK_NAME
+	AnnAttacker                DT_ACD_NETWORK_NAME
+	Unk_1c7ccc9                DT_FLOAT
+	BTargetAlive               DT_INT
+	VLocalImpactPos            DT_OPTIONAL[*DT_VECTOR3D]
+	VProjectileImpactDirection DT_OPTIONAL[*DT_VECTOR3D]
+	FlImpactDirection          DT_OPTIONAL[*DT_FLOAT]
+	FlImpactPitch              DT_OPTIONAL[*DT_FLOAT]
 }
 
 func (t *DotApplicationVisualsMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -91596,10 +93401,10 @@ func (t *DotApplicationVisualsMessage) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+48, &t.BTargetAlive, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+52, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+52, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+68, &t.Unk_5d619c6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+68, &t.VProjectileImpactDirection, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+84, &t.FlImpactDirection, r, &Options{Flags: 1}); err != nil {
@@ -91623,8 +93428,8 @@ func (t *DotApplicationVisualsMessage) Walk(cb WalkCallback) {
 	cb.Do("AnnAttacker", &t.AnnAttacker)
 	cb.Do("Unk_1c7ccc9", &t.Unk_1c7ccc9)
 	cb.Do("BTargetAlive", &t.BTargetAlive)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
-	cb.Do("Unk_5d619c6", &t.Unk_5d619c6)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
+	cb.Do("VProjectileImpactDirection", &t.VProjectileImpactDirection)
 	cb.Do("FlImpactDirection", &t.FlImpactDirection)
 	cb.Do("FlImpactPitch", &t.FlImpactPitch)
 }
@@ -91698,6 +93503,7 @@ type SubzoneDefinition struct {
 	Unk_35fc338          DT_INT
 	Unk_6f7f585          DT_FIXEDARRAY[*LevelScalingData]
 	Unk_496a122          LevelScalingData
+	Unk_50233c8          DT_INT
 	ArForcedPrefetchData DT_VARIABLEARRAY[*ForcedPrefetchData]
 }
 
@@ -91775,10 +93581,13 @@ func (t *SubzoneDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+168, &t.Unk_496a122, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.ArForcedPrefetchData, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+184, &t.Unk_50233c8, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+200, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+192, &t.ArForcedPrefetchData, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+208, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -91801,6 +93610,7 @@ func (t *SubzoneDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_35fc338", &t.Unk_35fc338)
 	cb.Do("Unk_6f7f585", &t.Unk_6f7f585)
 	cb.Do("Unk_496a122", &t.Unk_496a122)
+	cb.Do("Unk_50233c8", &t.Unk_50233c8)
 	cb.Do("ArForcedPrefetchData", &t.ArForcedPrefetchData)
 }
 
@@ -91843,22 +93653,37 @@ func (t *CapsuleProximityData) Walk(cb WalkCallback) {
 	cb.Do("FlHeight", &t.FlHeight)
 }
 
+type Type_c48e04b1 struct{}
+
+func (t *Type_c48e04b1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+1, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_c48e04b1) Walk(cb WalkCallback) {}
+
 type ConversationRandomSelectionNode struct {
 	// Inherits ConversationScopeNode
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
-	ArChildNodes DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	SnoCondition DT_SNO
-	Unk_d8bf9e4  DT_INT
-	DwWeight     DT_UINT
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
+	ArChildNodes   DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	SnoCondition   DT_SNO
+	Unk_d8bf9e4    DT_INT
+	DwWeight       DT_UINT
 }
 
 func (t *ConversationRandomSelectionNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -91878,7 +93703,7 @@ func (t *ConversationRandomSelectionNode) UnmarshalD4(r *bin.BinaryReader, o *Op
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -91916,7 +93741,7 @@ func (t *ConversationRandomSelectionNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -91927,17 +93752,17 @@ func (t *ConversationRandomSelectionNode) Walk(cb WalkCallback) {
 }
 
 type SubObjectNameInfo struct {
-	EType        DT_ENUM
-	DwFlags      DT_UINT
-	DwPersona    DT_BYTE
-	DwState      DT_BYTE
-	DwStyle      DT_UINT
-	DwSlotHash   DT_UINT
-	Unk_d9c73f4  DT_UINT
-	DwDetailHash DT_UINT
-	Unk_c15f7d2  DT_UINT
-	Unk_92fdd14  DT_UINT
-	Unk_b0b7d46  DT_UINT
+	EType                  DT_ENUM
+	DwFlags                DT_UINT
+	DwPersona              DT_BYTE
+	DwState                DT_BYTE
+	DwStyle                DT_UINT
+	DwSlotHash             DT_UINT
+	DwNPCComponentNameHash DT_UINT
+	DwDetailHash           DT_UINT
+	Unk_c15f7d2            DT_UINT
+	Unk_92fdd14            DT_UINT
+	Unk_b0b7d46            DT_UINT
 }
 
 func (t *SubObjectNameInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -91963,7 +93788,7 @@ func (t *SubObjectNameInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+16, &t.DwSlotHash, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_d9c73f4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwNPCComponentNameHash, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.DwDetailHash, r, &Options{Flags: 1}); err != nil {
@@ -91991,7 +93816,7 @@ func (t *SubObjectNameInfo) Walk(cb WalkCallback) {
 	cb.Do("DwState", &t.DwState)
 	cb.Do("DwStyle", &t.DwStyle)
 	cb.Do("DwSlotHash", &t.DwSlotHash)
-	cb.Do("Unk_d9c73f4", &t.Unk_d9c73f4)
+	cb.Do("DwNPCComponentNameHash", &t.DwNPCComponentNameHash)
 	cb.Do("DwDetailHash", &t.DwDetailHash)
 	cb.Do("Unk_c15f7d2", &t.Unk_c15f7d2)
 	cb.Do("Unk_92fdd14", &t.Unk_92fdd14)
@@ -92404,13 +94229,61 @@ func (t *MarkerGroupData) Walk(cb WalkCallback) {
 	cb.Do("VecLocalScale", &t.VecLocalScale)
 }
 
-type Type_c58eb80a struct {
+type SeasonSubcondition struct {
+	// Inherits Type_d3c3637f
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType        DT_UINT
+	BNegate       DT_INT
+	EComparisonOp DT_ENUM
+	DwPad         DT_UINT
+	SnoSeason     DT_SNO
+}
+
+func (t *SeasonSubcondition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.EComparisonOp, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+32, &t.SnoSeason, r, &Options{
+		Flags: 513,
+		Group: 137,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *SeasonSubcondition) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("EComparisonOp", &t.EComparisonOp)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("SnoSeason", &t.SnoSeason)
+}
+
+type TownPortalReturnDest struct {
 	SnoWorld         DT_SNO
 	SnoLevelArea     DT_SNO
 	UExpireTimestamp DT_INT64
 }
 
-func (t *Type_c58eb80a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TownPortalReturnDest) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -92436,7 +94309,7 @@ func (t *Type_c58eb80a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_c58eb80a) Walk(cb WalkCallback) {
+func (t *TownPortalReturnDest) Walk(cb WalkCallback) {
 	cb.Do("SnoWorld", &t.SnoWorld)
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
 	cb.Do("UExpireTimestamp", &t.UExpireTimestamp)
@@ -92583,7 +94456,7 @@ func (t *PvPBucketLevels) Walk(cb WalkCallback) {
 	cb.Do("DwTargetLevel", &t.DwTargetLevel)
 }
 
-type Type_c5e8044d struct {
+type PowerEffectOverrides struct {
 	FlPowerEffectSizeOverride      DT_FLOAT
 	FlPowerEffectIntensityOverride DT_FLOAT
 	FlPowerEffectDurationOverride  DT_FLOAT
@@ -92592,7 +94465,7 @@ type Type_c5e8044d struct {
 	FlPowerEffectHeightOverride    DT_FLOAT
 }
 
-func (t *Type_c5e8044d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PowerEffectOverrides) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -92621,7 +94494,7 @@ func (t *Type_c5e8044d) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_c5e8044d) Walk(cb WalkCallback) {
+func (t *PowerEffectOverrides) Walk(cb WalkCallback) {
 	cb.Do("FlPowerEffectSizeOverride", &t.FlPowerEffectSizeOverride)
 	cb.Do("FlPowerEffectIntensityOverride", &t.FlPowerEffectIntensityOverride)
 	cb.Do("FlPowerEffectDurationOverride", &t.FlPowerEffectDurationOverride)
@@ -92871,7 +94744,7 @@ type TriggerEventPOISkip struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -92898,7 +94771,7 @@ func (t *TriggerEventPOISkip) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -92933,7 +94806,7 @@ func (t *TriggerEventPOISkip) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -93209,7 +95082,7 @@ type UIProgressBarStyle struct {
 	M_eHasModifiedPowerTagMap DT_TAGMAP[*DT_ENUM]
 	TConsoleInput             UIControlConsoleInput
 	Unk_b4f614c               DT_TAGMAP[*DT_ENUM]
-	Unk_10b0379               Type_f675b103
+	Unk_10b0379               UIProgressBarBase
 	Unk_a229fbe               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -93264,27 +95137,27 @@ func (t *UIProgressBarStyle) Walk(cb WalkCallback) {
 }
 
 type PayloadOnHitMessage struct {
-	THeader           RequiredMessageHeader
-	SnoPower          DT_SNO
-	DwPayloadDataID   DT_UINT
-	EDamageType       DT_ENUM
-	AnnTarget         DT_ACD_NETWORK_NAME
-	AnnAttacker       DT_ACD_NETWORK_NAME
-	BTargetAlive      DT_INT
-	EHitSound         DT_OPTIONAL[*DT_ENUM]
-	Unk_75bd339       DT_OPTIONAL[*DT_ENUM]
-	Unk_4d7691e       DT_OPTIONAL[*Type_3940c0fe]
-	Unk_5692531       DT_OPTIONAL[*DT_VECTOR3D]
-	Unk_5d619c6       DT_OPTIONAL[*DT_VECTOR3D]
-	FlImpactDirection DT_OPTIONAL[*DT_FLOAT]
-	FlImpactPitch     DT_OPTIONAL[*DT_FLOAT]
-	Unk_94ab101       DT_OPTIONAL[*DT_SNO]
-	Unk_78c21b7       DT_OPTIONAL[*DT_SNO]
-	Unk_81caaab       DT_OPTIONAL[*DT_SNO]
-	Unk_b1ba550       DT_OPTIONAL[*DT_SNO]
-	Unk_563f3e        DT_OPTIONAL[*DT_ENUM]
-	FlDamageUnscaled  DT_OPTIONAL[*DT_FLOAT]
-	DwEffectFlags     DT_OPTIONAL[*DT_UINT]
+	THeader                    RequiredMessageHeader
+	SnoPower                   DT_SNO
+	DwPayloadDataID            DT_UINT
+	EDamageType                DT_ENUM
+	AnnTarget                  DT_ACD_NETWORK_NAME
+	AnnAttacker                DT_ACD_NETWORK_NAME
+	BTargetAlive               DT_INT
+	EHitSound                  DT_OPTIONAL[*DT_ENUM]
+	Unk_75bd339                DT_OPTIONAL[*DT_ENUM]
+	OnHitSounds                DT_OPTIONAL[*OnHitSounds]
+	VLocalImpactPos            DT_OPTIONAL[*DT_VECTOR3D]
+	VProjectileImpactDirection DT_OPTIONAL[*DT_VECTOR3D]
+	FlImpactDirection          DT_OPTIONAL[*DT_FLOAT]
+	FlImpactPitch              DT_OPTIONAL[*DT_FLOAT]
+	Unk_94ab101                DT_OPTIONAL[*DT_SNO]
+	Unk_78c21b7                DT_OPTIONAL[*DT_SNO]
+	Unk_81caaab                DT_OPTIONAL[*DT_SNO]
+	Unk_b1ba550                DT_OPTIONAL[*DT_SNO]
+	Unk_563f3e                 DT_OPTIONAL[*DT_ENUM]
+	FlDamageUnscaled           DT_OPTIONAL[*DT_FLOAT]
+	DwEffectFlags              DT_OPTIONAL[*DT_UINT]
 }
 
 func (t *PayloadOnHitMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -93322,13 +95195,13 @@ func (t *PayloadOnHitMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+56, &t.Unk_75bd339, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.Unk_4d7691e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+64, &t.OnHitSounds, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+80, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+80, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.Unk_5d619c6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.VProjectileImpactDirection, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+112, &t.FlImpactDirection, r, &Options{Flags: 1}); err != nil {
@@ -93374,9 +95247,9 @@ func (t *PayloadOnHitMessage) Walk(cb WalkCallback) {
 	cb.Do("BTargetAlive", &t.BTargetAlive)
 	cb.Do("EHitSound", &t.EHitSound)
 	cb.Do("Unk_75bd339", &t.Unk_75bd339)
-	cb.Do("Unk_4d7691e", &t.Unk_4d7691e)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
-	cb.Do("Unk_5d619c6", &t.Unk_5d619c6)
+	cb.Do("OnHitSounds", &t.OnHitSounds)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
+	cb.Do("VProjectileImpactDirection", &t.VProjectileImpactDirection)
 	cb.Do("FlImpactDirection", &t.FlImpactDirection)
 	cb.Do("FlImpactPitch", &t.FlImpactPitch)
 	cb.Do("Unk_94ab101", &t.Unk_94ab101)
@@ -93703,12 +95576,12 @@ func (t *StackPortionMessage) Walk(cb WalkCallback) {
 	cb.Do("UAmount", &t.UAmount)
 }
 
-type Type_c7707f77 struct {
+type GameTestingCraftItem struct {
 	THeader      RequiredMessageHeader
 	NCrafterType DT_INT
 }
 
-func (t *Type_c7707f77) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingCraftItem) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -93725,7 +95598,7 @@ func (t *Type_c7707f77) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_c7707f77) Walk(cb WalkCallback) {
+func (t *GameTestingCraftItem) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("NCrafterType", &t.NCrafterType)
 }
@@ -94007,6 +95880,148 @@ func (t *BoneStructure) Walk(cb WalkCallback) {
 	cb.Do("Unk_7659cea", &t.Unk_7659cea)
 }
 
+type SeasonDefinition struct {
+	Unk_e6f242a  DT_UINT
+	ArWorldTiers DT_FIXEDARRAY[*Type_7ec2173f]
+	Unk_974bfc7  Type_ef933d53
+	Unk_9b70c7c  DT_VARIABLEARRAY[*DT_ENUM]
+	Unk_f4e4263  DT_VARIABLEARRAY[*Type_e243df90]
+	Unk_bce1df4  DT_SNO
+	Unk_a3cd06c  DT_GBID
+	Unk_138b165  Type_2a415346
+	Unk_c07ef5d  DT_VARIABLEARRAY[*DT_GBID]
+	Unk_bc09a2f  DT_VARIABLEARRAY[*DT_SNO]
+	Unk_b4c7436  DT_VARIABLEARRAY[*DT_INT]
+	Unk_47369e6  DT_SNO
+	Unk_d38e9f4  DT_SNO
+	Unk_c78a34a  DT_SNO
+	Unk_3c01b8a  DT_SNO
+	Unk_8b03de5  DT_FLOAT
+	Unk_6bbede7  DT_FLOAT
+	Unk_5f62660  DT_UINT
+	Unk_3708d9d  DT_SNO
+}
+
+func (t *SeasonDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.Unk_e6f242a, r, &Options{Flags: 524289}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.ArWorldTiers, r, &Options{
+		ArrayLength: 4,
+		Flags:       1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+112, &t.Unk_974bfc7, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+144, &t.Unk_9b70c7c, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+160, &t.Unk_f4e4263, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+176, &t.Unk_bce1df4, r, &Options{
+		Flags: 1,
+		Group: 20,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+180, &t.Unk_a3cd06c, r, &Options{
+		Flags: 1,
+		Group: 68,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+184, &t.Unk_138b165, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+200, &t.Unk_c07ef5d, r, &Options{
+		Flags: 1,
+		Group: 67,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+216, &t.Unk_bc09a2f, r, &Options{
+		Flags: 1,
+		Group: 99,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+232, &t.Unk_b4c7436, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+248, &t.Unk_47369e6, r, &Options{
+		Flags: 1,
+		Group: 110,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+252, &t.Unk_d38e9f4, r, &Options{
+		Flags: 1,
+		Group: 110,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+256, &t.Unk_c78a34a, r, &Options{
+		Flags: 1,
+		Group: 114,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+260, &t.Unk_3c01b8a, r, &Options{
+		Flags: 1,
+		Group: 114,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+264, &t.Unk_8b03de5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+268, &t.Unk_6bbede7, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+272, &t.Unk_5f62660, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+276, &t.Unk_3708d9d, r, &Options{
+		Flags: 1,
+		Group: 63,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+280, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *SeasonDefinition) Walk(cb WalkCallback) {
+	cb.Do("Unk_e6f242a", &t.Unk_e6f242a)
+	cb.Do("ArWorldTiers", &t.ArWorldTiers)
+	cb.Do("Unk_974bfc7", &t.Unk_974bfc7)
+	cb.Do("Unk_9b70c7c", &t.Unk_9b70c7c)
+	cb.Do("Unk_f4e4263", &t.Unk_f4e4263)
+	cb.Do("Unk_bce1df4", &t.Unk_bce1df4)
+	cb.Do("Unk_a3cd06c", &t.Unk_a3cd06c)
+	cb.Do("Unk_138b165", &t.Unk_138b165)
+	cb.Do("Unk_c07ef5d", &t.Unk_c07ef5d)
+	cb.Do("Unk_bc09a2f", &t.Unk_bc09a2f)
+	cb.Do("Unk_b4c7436", &t.Unk_b4c7436)
+	cb.Do("Unk_47369e6", &t.Unk_47369e6)
+	cb.Do("Unk_d38e9f4", &t.Unk_d38e9f4)
+	cb.Do("Unk_c78a34a", &t.Unk_c78a34a)
+	cb.Do("Unk_3c01b8a", &t.Unk_3c01b8a)
+	cb.Do("Unk_8b03de5", &t.Unk_8b03de5)
+	cb.Do("Unk_6bbede7", &t.Unk_6bbede7)
+	cb.Do("Unk_5f62660", &t.Unk_5f62660)
+	cb.Do("Unk_3708d9d", &t.Unk_3708d9d)
+}
+
 type PlayerFlagSubcondition struct {
 	// Inherits Subcondition
 	// Inherits PolymorphicBase
@@ -94107,7 +96122,7 @@ type UIButtonStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -94181,7 +96196,7 @@ type TriggerEventAttachCamera struct {
 	TConditions          TriggerConditions
 	FGenerated           DT_INT
 	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
+	DwParentActorID      DT_UINT
 	TDuration            DT_FLOAT
 	DwTriggerFlags       DT_UINT
 	DwTriggerFlagsEx     DT_UINT
@@ -94216,7 +96231,7 @@ func (t *TriggerEventAttachCamera) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -94275,7 +96290,7 @@ func (t *TriggerEventAttachCamera) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -94296,12 +96311,12 @@ func (t *TriggerEventAttachCamera) Walk(cb WalkCallback) {
 type TriggerEventOutroAllObjects struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *TriggerEventOutroAllObjects) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -94324,7 +96339,7 @@ func (t *TriggerEventOutroAllObjects) UnmarshalD4(r *bin.BinaryReader, o *Option
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -94339,7 +96354,7 @@ func (t *TriggerEventOutroAllObjects) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type EffectGroupPositionZKeyData struct {
@@ -94463,6 +96478,36 @@ func (t *Type_c8d78ce7) Walk(cb WalkCallback) {
 	cb.Do("Unk_dd3cf3b", &t.Unk_dd3cf3b)
 }
 
+type Type_c8fd413e struct {
+	Unk_d10605a DT_GBID
+	Unk_209e228 DT_INT
+}
+
+func (t *Type_c8fd413e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_d10605a, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.Unk_209e228, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_c8fd413e) Walk(cb WalkCallback) {
+	cb.Do("Unk_d10605a", &t.Unk_d10605a)
+	cb.Do("Unk_209e228", &t.Unk_209e228)
+}
+
 type StoreProductDefinition struct {
 	EType                         DT_ENUM
 	Unk_d0a3165                   DT_VARIABLEARRAY[*DT_SNO]
@@ -94480,6 +96525,8 @@ type StoreProductDefinition struct {
 	SnoHeadstone                  DT_SNO
 	BInventoryDeleteItemAfterUses DT_INT
 	Unk_54edf70                   DT_INT
+	Unk_419cb8c                   DT_ENUM
+	Unk_8f2e3f9                   DT_SNO
 	ArCardArtVariants             DT_VARIABLEARRAY[*CardArt]
 	Unk_7b588be                   DT_UINT
 	HSplashImage                  DT_UINT
@@ -94493,10 +96540,14 @@ type StoreProductDefinition struct {
 	Unk_a26c284                   DT_UINT
 	Unk_a08a2f4                   DT_UINT
 	Unk_aa674fe                   DT_UINT
-	Unk_68af238                   DT_INT
+	Unk_1816ef5                   DT_VECTOR3D
+	BUseCustomizedPreview         DT_INT
 	TCustomizedPreview            Type_619110a4
 	Unk_e5d7f3                    DT_FIXEDARRAY[*DT_INT]
+	Unk_35943b2                   DT_INT
 	HDetailsDisplayImage          DT_UINT
+	Unk_90e847e                   DT_ENUM
+	Unk_62a3cf3                   DT_UINT
 }
 
 func (t *StoreProductDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -94591,61 +96642,82 @@ func (t *StoreProductDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+132, &t.Unk_54edf70, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.ArCardArtVariants, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+136, &t.Unk_419cb8c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+152, &t.Unk_7b588be, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+140, &t.Unk_8f2e3f9, r, &Options{
+		Flags: 1,
+		Group: 137,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+156, &t.HSplashImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+144, &t.ArCardArtVariants, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+160, &t.HConfirmImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+160, &t.Unk_7b588be, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+164, &t.HCategoryIcon, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+164, &t.HSplashImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.HTileImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+168, &t.HConfirmImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+172, &t.Unk_9a0855f, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+172, &t.HCategoryIcon, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_8c37b97, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+176, &t.HTileImage, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+180, &t.Unk_54578ff, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+180, &t.Unk_9a0855f, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.Unk_5ff5733, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+184, &t.Unk_8c37b97, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+188, &t.Unk_a26c284, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+188, &t.Unk_54578ff, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+192, &t.Unk_a08a2f4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+192, &t.Unk_5ff5733, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+196, &t.Unk_aa674fe, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+196, &t.Unk_a26c284, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+200, &t.Unk_68af238, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+200, &t.Unk_a08a2f4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+204, &t.TCustomizedPreview, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+204, &t.Unk_aa674fe, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+256, &t.Unk_e5d7f3, r, &Options{
+	if err := UnmarshalAt(p+208, &t.Unk_1816ef5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+220, &t.BUseCustomizedPreview, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+224, &t.TCustomizedPreview, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+276, &t.Unk_e5d7f3, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+276, &t.HDetailsDisplayImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+296, &t.Unk_35943b2, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+280, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+300, &t.HDetailsDisplayImage, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+304, &t.Unk_90e847e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+308, &t.Unk_62a3cf3, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+312, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -94668,6 +96740,8 @@ func (t *StoreProductDefinition) Walk(cb WalkCallback) {
 	cb.Do("SnoHeadstone", &t.SnoHeadstone)
 	cb.Do("BInventoryDeleteItemAfterUses", &t.BInventoryDeleteItemAfterUses)
 	cb.Do("Unk_54edf70", &t.Unk_54edf70)
+	cb.Do("Unk_419cb8c", &t.Unk_419cb8c)
+	cb.Do("Unk_8f2e3f9", &t.Unk_8f2e3f9)
 	cb.Do("ArCardArtVariants", &t.ArCardArtVariants)
 	cb.Do("Unk_7b588be", &t.Unk_7b588be)
 	cb.Do("HSplashImage", &t.HSplashImage)
@@ -94681,25 +96755,34 @@ func (t *StoreProductDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_a26c284", &t.Unk_a26c284)
 	cb.Do("Unk_a08a2f4", &t.Unk_a08a2f4)
 	cb.Do("Unk_aa674fe", &t.Unk_aa674fe)
-	cb.Do("Unk_68af238", &t.Unk_68af238)
+	cb.Do("Unk_1816ef5", &t.Unk_1816ef5)
+	cb.Do("BUseCustomizedPreview", &t.BUseCustomizedPreview)
 	cb.Do("TCustomizedPreview", &t.TCustomizedPreview)
 	cb.Do("Unk_e5d7f3", &t.Unk_e5d7f3)
+	cb.Do("Unk_35943b2", &t.Unk_35943b2)
 	cb.Do("HDetailsDisplayImage", &t.HDetailsDisplayImage)
+	cb.Do("Unk_90e847e", &t.Unk_90e847e)
+	cb.Do("Unk_62a3cf3", &t.Unk_62a3cf3)
 }
 
 type AchievementDefinition struct {
-	UPointsValue         DT_UINT
-	DwNextID             DT_UINT
-	UMinRequiredCriteria DT_UINT
-	SnoSupersedes        DT_SNO
-	UFlags               DT_UINT
-	UPlatformFlags       DT_UINT
-	ArCriteriaList       DT_VARIABLEARRAY[*CriteriaDefinition]
-	ArRewardList         DT_VARIABLEARRAY[*RewardDefinition]
-	Unk_da26abf          PS4ConsoleAwardDefinition
-	Unk_9c99920          PS5ConsoleAwardDefinition
-	Unk_17fe2c9          XboxConsoleAwardDefinition
-	HImage               DT_UINT
+	UPointsValue             DT_UINT
+	DwNextID                 DT_UINT
+	UMinRequiredCriteria     DT_UINT
+	SnoSupersedes            DT_SNO
+	UFlags                   DT_UINT
+	UPlatformFlags           DT_UINT
+	ArCriteriaList           DT_VARIABLEARRAY[*CriteriaDefinition]
+	ArRewardList             DT_VARIABLEARRAY[*RewardDefinition]
+	Unk_7235f7c              DT_ENUM
+	TPS4AwardDefinitionList  PS4ConsoleAwardDefinition
+	TPS5AwardDefinitionList  PS5ConsoleAwardDefinition
+	TXboxAwardDefinitionList XboxConsoleAwardDefinition
+	Unk_6843d8d              DT_UINT
+	Unk_57fb971              DT_UINT
+	Unk_50169b3              DT_UINT
+	HImage                   DT_UINT
+	HSplashImage             DT_UINT
 }
 
 func (t *AchievementDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -94734,19 +96817,34 @@ func (t *AchievementDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+48, &t.ArRewardList, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+64, &t.Unk_da26abf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+64, &t.Unk_7235f7c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.Unk_9c99920, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+72, &t.TPS4AwardDefinitionList, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+112, &t.Unk_17fe2c9, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.TPS5AwardDefinitionList, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.HImage, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+120, &t.TXboxAwardDefinitionList, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+144, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+144, &t.Unk_6843d8d, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+148, &t.Unk_57fb971, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+152, &t.Unk_50169b3, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+156, &t.HImage, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+160, &t.HSplashImage, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+168, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -94761,10 +96859,15 @@ func (t *AchievementDefinition) Walk(cb WalkCallback) {
 	cb.Do("UPlatformFlags", &t.UPlatformFlags)
 	cb.Do("ArCriteriaList", &t.ArCriteriaList)
 	cb.Do("ArRewardList", &t.ArRewardList)
-	cb.Do("Unk_da26abf", &t.Unk_da26abf)
-	cb.Do("Unk_9c99920", &t.Unk_9c99920)
-	cb.Do("Unk_17fe2c9", &t.Unk_17fe2c9)
+	cb.Do("Unk_7235f7c", &t.Unk_7235f7c)
+	cb.Do("TPS4AwardDefinitionList", &t.TPS4AwardDefinitionList)
+	cb.Do("TPS5AwardDefinitionList", &t.TPS5AwardDefinitionList)
+	cb.Do("TXboxAwardDefinitionList", &t.TXboxAwardDefinitionList)
+	cb.Do("Unk_6843d8d", &t.Unk_6843d8d)
+	cb.Do("Unk_57fb971", &t.Unk_57fb971)
+	cb.Do("Unk_50169b3", &t.Unk_50169b3)
 	cb.Do("HImage", &t.HImage)
+	cb.Do("HSplashImage", &t.HSplashImage)
 }
 
 type UISkillTreeStyle struct {
@@ -94920,6 +97023,7 @@ type QuestReward struct {
 	SnoTreasureClass DT_SNO
 	NXPTier          DT_INT
 	NGoldTier        DT_INT
+	Unk_3592260      DT_INT
 	SnoTrackedReward DT_SNO
 	Unk_b0fd814      DT_INT
 	Unk_186d5e6      Type_e12242af
@@ -94943,25 +97047,28 @@ func (t *QuestReward) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.NGoldTier, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.SnoTrackedReward, r, &Options{
+	if err := UnmarshalAt(p+12, &t.Unk_3592260, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.SnoTrackedReward, r, &Options{
 		Flags: 1,
 		Group: 126,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_b0fd814, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+20, &t.Unk_b0fd814, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_186d5e6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.Unk_186d5e6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_f8ed991, r, &Options{
+	if err := UnmarshalAt(p+32, &t.Unk_f8ed991, r, &Options{
 		Flags: 1,
 		Group: 73,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+40, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+48, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -94971,6 +97078,7 @@ func (t *QuestReward) Walk(cb WalkCallback) {
 	cb.Do("SnoTreasureClass", &t.SnoTreasureClass)
 	cb.Do("NXPTier", &t.NXPTier)
 	cb.Do("NGoldTier", &t.NGoldTier)
+	cb.Do("Unk_3592260", &t.Unk_3592260)
 	cb.Do("SnoTrackedReward", &t.SnoTrackedReward)
 	cb.Do("Unk_b0fd814", &t.Unk_b0fd814)
 	cb.Do("Unk_186d5e6", &t.Unk_186d5e6)
@@ -95010,8 +97118,8 @@ type RenderPass struct {
 	PtPostprocessed  DT_INT64
 	Unk_295833       DT_VARIABLEARRAY[*DT_UINT]
 	PtPerms          DT_VARIABLEARRAY[*ShaderPermutation]
-	Unk_e39f53a      DT_VARIABLEARRAY[*Type_eb98da06]
-	Unk_247b377      DT_VARIABLEARRAY[*Type_f58f01c3]
+	Unk_e39f53a      DT_VARIABLEARRAY[*MaterialScalarValuesUsed]
+	Unk_247b377      DT_VARIABLEARRAY[*MaterialVectorValuesUsed]
 	Unk_1484b5a      DT_VARIABLEARRAY[*Type_d7ee8f26]
 	TDefaultTextures DT_VARIABLEARRAY[*DefaultTextureInfo]
 	Unk_9068982      DT_VARIABLEARRAY[*Type_30511dbc]
@@ -95394,8 +97502,8 @@ type GlobalAVData struct {
 	Unk_1140ffa                         DT_FLOAT
 	FlMultiplayerSmoothing              DT_FLOAT
 	Unk_b7979d6                         DT_FLOAT
-	Unk_1dc7c7a                         DT_FLOAT
-	Unk_15e2cbc                         DT_FLOAT
+	FlSpringMinSpeed                    DT_FLOAT
+	FlSpringMaxSpeed                    DT_FLOAT
 	FlSpringMagnitude                   DT_FLOAT
 	FlSpringStiffness                   DT_FLOAT
 	FlOrbitSLerpScalar                  DT_FLOAT
@@ -95433,8 +97541,8 @@ type GlobalAVData struct {
 	Unk_a879fd8                         DT_RGBACOLOR
 	Unk_614e428                         DT_FLOAT
 	FlTranslucencyScale                 DT_FLOAT
-	Unk_ed46ae1                         DT_FLOAT
-	Unk_a3a221d                         DT_FLOAT
+	FlTranslucencyThicknessScale        DT_FLOAT
+	FlTranslucencyNormalOffset          DT_FLOAT
 	Unk_4450d33                         DT_FLOAT
 	Unk_52fa93a                         DT_FLOAT
 	Unk_f719403                         DT_FLOAT
@@ -95504,7 +97612,7 @@ type GlobalAVData struct {
 	Unk_aa1fd73                         DT_INT
 	Unk_88029e3                         DT_INT
 	Unk_b56464f                         DT_INT
-	Unk_f17e0f7                         DT_INT
+	Unk_7885a5e                         DT_INT
 	Unk_2900bd9                         DT_UINT
 	Unk_4f6a577                         DT_UINT
 	Unk_410fa4f                         DT_UINT
@@ -95518,7 +97626,7 @@ type GlobalAVData struct {
 	TShoreWaveSettings                  ShoreWaveSettings
 	Unk_fa3df7c                         DT_FLOAT
 	Unk_c9c8405                         Type_9934af2e
-	Unk_80c61be                         Type_19c611ca
+	TLuxSettings                        LuxSettings
 	Unk_553ab0                          Type_220eeabc
 	TVertexCountSettings                VertexCountSettings
 	TVertexDensitySettings              VertexDensitySettings
@@ -95536,6 +97644,13 @@ type GlobalAVData struct {
 	Unk_66301bd                         DT_FLOAT
 	Unk_f0e8c35                         DT_FLOAT
 	Unk_9b5adac                         DT_FLOAT
+	Unk_9db4d03                         DT_FLOAT
+	Unk_2d039a1                         DT_FLOAT
+	Unk_d87185b                         DT_FLOAT
+	Unk_f92dd82                         DT_FLOAT
+	Unk_1ed9c8a                         DT_FLOAT
+	Unk_85d52d8                         DT_FLOAT
+	Unk_e02147a                         DT_FLOAT
 	THdrSettings                        HdrSettings
 }
 
@@ -95646,10 +97761,10 @@ func (t *GlobalAVData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+172, &t.Unk_b7979d6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.Unk_1dc7c7a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+176, &t.FlSpringMinSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+180, &t.Unk_15e2cbc, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+180, &t.FlSpringMaxSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+184, &t.FlSpringMagnitude, r, &Options{Flags: 1}); err != nil {
@@ -95763,10 +97878,10 @@ func (t *GlobalAVData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+344, &t.FlTranslucencyScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+348, &t.Unk_ed46ae1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+348, &t.FlTranslucencyThicknessScale, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+352, &t.Unk_a3a221d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+352, &t.FlTranslucencyNormalOffset, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+356, &t.Unk_4450d33, r, &Options{Flags: 1}); err != nil {
@@ -95982,7 +98097,7 @@ func (t *GlobalAVData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+760, &t.Unk_b56464f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+764, &t.Unk_f17e0f7, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+764, &t.Unk_7885a5e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+768, &t.Unk_2900bd9, r, &Options{Flags: 1}); err != nil {
@@ -96024,7 +98139,7 @@ func (t *GlobalAVData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+856, &t.Unk_c9c8405, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+908, &t.Unk_80c61be, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+908, &t.TLuxSettings, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+916, &t.Unk_553ab0, r, &Options{Flags: 1}); err != nil {
@@ -96078,10 +98193,31 @@ func (t *GlobalAVData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+1100, &t.Unk_9b5adac, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1104, &t.THdrSettings, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1104, &t.Unk_9db4d03, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+1112, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+1108, &t.Unk_2d039a1, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1112, &t.Unk_d87185b, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1116, &t.Unk_f92dd82, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1120, &t.Unk_1ed9c8a, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1124, &t.Unk_85d52d8, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1128, &t.Unk_e02147a, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1132, &t.THdrSettings, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+1136, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -96122,8 +98258,8 @@ func (t *GlobalAVData) Walk(cb WalkCallback) {
 	cb.Do("Unk_1140ffa", &t.Unk_1140ffa)
 	cb.Do("FlMultiplayerSmoothing", &t.FlMultiplayerSmoothing)
 	cb.Do("Unk_b7979d6", &t.Unk_b7979d6)
-	cb.Do("Unk_1dc7c7a", &t.Unk_1dc7c7a)
-	cb.Do("Unk_15e2cbc", &t.Unk_15e2cbc)
+	cb.Do("FlSpringMinSpeed", &t.FlSpringMinSpeed)
+	cb.Do("FlSpringMaxSpeed", &t.FlSpringMaxSpeed)
 	cb.Do("FlSpringMagnitude", &t.FlSpringMagnitude)
 	cb.Do("FlSpringStiffness", &t.FlSpringStiffness)
 	cb.Do("FlOrbitSLerpScalar", &t.FlOrbitSLerpScalar)
@@ -96161,8 +98297,8 @@ func (t *GlobalAVData) Walk(cb WalkCallback) {
 	cb.Do("Unk_a879fd8", &t.Unk_a879fd8)
 	cb.Do("Unk_614e428", &t.Unk_614e428)
 	cb.Do("FlTranslucencyScale", &t.FlTranslucencyScale)
-	cb.Do("Unk_ed46ae1", &t.Unk_ed46ae1)
-	cb.Do("Unk_a3a221d", &t.Unk_a3a221d)
+	cb.Do("FlTranslucencyThicknessScale", &t.FlTranslucencyThicknessScale)
+	cb.Do("FlTranslucencyNormalOffset", &t.FlTranslucencyNormalOffset)
 	cb.Do("Unk_4450d33", &t.Unk_4450d33)
 	cb.Do("Unk_52fa93a", &t.Unk_52fa93a)
 	cb.Do("Unk_f719403", &t.Unk_f719403)
@@ -96232,7 +98368,7 @@ func (t *GlobalAVData) Walk(cb WalkCallback) {
 	cb.Do("Unk_aa1fd73", &t.Unk_aa1fd73)
 	cb.Do("Unk_88029e3", &t.Unk_88029e3)
 	cb.Do("Unk_b56464f", &t.Unk_b56464f)
-	cb.Do("Unk_f17e0f7", &t.Unk_f17e0f7)
+	cb.Do("Unk_7885a5e", &t.Unk_7885a5e)
 	cb.Do("Unk_2900bd9", &t.Unk_2900bd9)
 	cb.Do("Unk_4f6a577", &t.Unk_4f6a577)
 	cb.Do("Unk_410fa4f", &t.Unk_410fa4f)
@@ -96246,7 +98382,7 @@ func (t *GlobalAVData) Walk(cb WalkCallback) {
 	cb.Do("TShoreWaveSettings", &t.TShoreWaveSettings)
 	cb.Do("Unk_fa3df7c", &t.Unk_fa3df7c)
 	cb.Do("Unk_c9c8405", &t.Unk_c9c8405)
-	cb.Do("Unk_80c61be", &t.Unk_80c61be)
+	cb.Do("TLuxSettings", &t.TLuxSettings)
 	cb.Do("Unk_553ab0", &t.Unk_553ab0)
 	cb.Do("TVertexCountSettings", &t.TVertexCountSettings)
 	cb.Do("TVertexDensitySettings", &t.TVertexDensitySettings)
@@ -96264,6 +98400,13 @@ func (t *GlobalAVData) Walk(cb WalkCallback) {
 	cb.Do("Unk_66301bd", &t.Unk_66301bd)
 	cb.Do("Unk_f0e8c35", &t.Unk_f0e8c35)
 	cb.Do("Unk_9b5adac", &t.Unk_9b5adac)
+	cb.Do("Unk_9db4d03", &t.Unk_9db4d03)
+	cb.Do("Unk_2d039a1", &t.Unk_2d039a1)
+	cb.Do("Unk_d87185b", &t.Unk_d87185b)
+	cb.Do("Unk_f92dd82", &t.Unk_f92dd82)
+	cb.Do("Unk_1ed9c8a", &t.Unk_1ed9c8a)
+	cb.Do("Unk_85d52d8", &t.Unk_85d52d8)
+	cb.Do("Unk_e02147a", &t.Unk_e02147a)
 	cb.Do("THdrSettings", &t.THdrSettings)
 }
 
@@ -96344,12 +98487,54 @@ func (t *AlphaBlendFactors) Walk(cb WalkCallback) {
 	cb.Do("Unk_968db19", &t.Unk_968db19)
 }
 
-type Type_cb6637d3 struct {
+type Type_cb426572 struct {
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType         DT_UINT
+	BNegate        DT_INT
+	DwPad          DT_UINT
+	SnoAchievement DT_SNO
+}
+
+func (t *Type_cb426572) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.SnoAchievement, r, &Options{
+		Flags: 513,
+		Group: 99,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_cb426572) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("SnoAchievement", &t.SnoAchievement)
+}
+
+type GameTestingInteractNPC struct {
 	THeader   RequiredMessageHeader
 	SzNPCName DT_CHARARRAY
 }
 
-func (t *Type_cb6637d3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingInteractNPC) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -96369,7 +98554,7 @@ func (t *Type_cb6637d3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_cb6637d3) Walk(cb WalkCallback) {
+func (t *GameTestingInteractNPC) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("SzNPCName", &t.SzNPCName)
 }
@@ -96494,7 +98679,6 @@ func (t *ZoneProgressEarnedMessage) Walk(cb WalkCallback) {
 
 type LightDefinition struct {
 	DwFlags        DT_UINT
-	EMobility      DT_ENUM
 	NPriority      DT_INT
 	DwMaxInstances DT_UINT
 	TInstanceData  LightInstanceData
@@ -96510,13 +98694,10 @@ func (t *LightDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+8, &t.DwFlags, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.EMobility, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.NPriority, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.NPriority, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+20, &t.DwMaxInstances, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwMaxInstances, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.TInstanceData, r, &Options{Flags: 1}); err != nil {
@@ -96536,7 +98717,6 @@ func (t *LightDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *LightDefinition) Walk(cb WalkCallback) {
 	cb.Do("DwFlags", &t.DwFlags)
-	cb.Do("EMobility", &t.EMobility)
 	cb.Do("NPriority", &t.NPriority)
 	cb.Do("DwMaxInstances", &t.DwMaxInstances)
 	cb.Do("TInstanceData", &t.TInstanceData)
@@ -96610,6 +98790,45 @@ func (t *Type_cbfdd2ea) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *Type_cbfdd2ea) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("PtArrayNodes", &t.PtArrayNodes)
+}
+
+type Type_cbfe6328 struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	BInverse DT_INT
+	DwPad    DT_UINT
+	ESubject DT_ENUM
+}
+
+func (t *Type_cbfe6328) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.ESubject, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_cbfe6328) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("ESubject", &t.ESubject)
 }
 
 type Type_cc139f31 struct {
@@ -96751,11 +98970,11 @@ func (t *Type_cc354444) Walk(cb WalkCallback) {
 }
 
 type SkillRankChangedMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	SnoPower    DT_SNO
-	DwRank      DT_UINT
-	BFromTome   DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	SnoPower              DT_SNO
+	DwRank                DT_UINT
+	BFromTome             DT_INT
 }
 
 func (t *SkillRankChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -96766,7 +98985,7 @@ func (t *SkillRankChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.SnoPower, r, &Options{
@@ -96789,7 +99008,7 @@ func (t *SkillRankChangedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 
 func (t *SkillRankChangedMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("SnoPower", &t.SnoPower)
 	cb.Do("DwRank", &t.DwRank)
 	cb.Do("BFromTome", &t.BFromTome)
@@ -96984,17 +99203,17 @@ func (t *Type_ccd96a71) Walk(cb WalkCallback) {
 type ConversationScopeNode struct {
 	// Inherits ConversationTreeNode
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	DwNodeID     DT_UINT
-	DwNextNodeID DT_UINT
-	Unk_3ef8e38  DT_UINT
-	PtNextNode   DT_INT64
-	DwFlags      DT_UINT
-	SzComment    DT_CSTRING[*DT_BYTE]
-	ArChildNodes DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	SnoCondition DT_SNO
-	Unk_d8bf9e4  DT_INT
+	DwType         DT_UINT
+	DwPad          DT_UINT
+	DwNodeID       DT_UINT
+	DwNextNodeID   DT_UINT
+	DwParentNodeID DT_UINT
+	PtNextNode     DT_INT64
+	DwFlags        DT_UINT
+	SzComment      DT_CSTRING[*DT_BYTE]
+	ArChildNodes   DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	SnoCondition   DT_SNO
+	Unk_d8bf9e4    DT_INT
 }
 
 func (t *ConversationScopeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -97014,7 +99233,7 @@ func (t *ConversationScopeNode) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+20, &t.DwNextNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_3ef8e38, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.DwParentNodeID, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+32, &t.PtNextNode, r, &Options{Flags: 4194304}); err != nil {
@@ -97049,7 +99268,7 @@ func (t *ConversationScopeNode) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("DwNodeID", &t.DwNodeID)
 	cb.Do("DwNextNodeID", &t.DwNextNodeID)
-	cb.Do("Unk_3ef8e38", &t.Unk_3ef8e38)
+	cb.Do("DwParentNodeID", &t.DwParentNodeID)
 	cb.Do("PtNextNode", &t.PtNextNode)
 	cb.Do("DwFlags", &t.DwFlags)
 	cb.Do("SzComment", &t.SzComment)
@@ -97240,6 +99459,7 @@ type SoundDefinition struct {
 	FlCooldownDuration DT_FLOAT
 	Unk_dc0bc5b        DT_INT
 	Unk_7c7f1a2        DT_FLOAT
+	Unk_a86caeb        DT_FLOAT
 	FlDopplerFactor    DT_FLOAT
 	Unk_f056ee9        DT_FLOAT
 	Unk_f056deb        DT_FLOAT
@@ -97295,13 +99515,16 @@ func (t *SoundDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+84, &t.Unk_7c7f1a2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+88, &t.FlDopplerFactor, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+88, &t.Unk_a86caeb, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+92, &t.Unk_f056ee9, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+92, &t.FlDopplerFactor, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.Unk_f056deb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.Unk_f056ee9, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+100, &t.Unk_f056deb, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+104, io.SeekStart); err != nil {
@@ -97323,6 +99546,7 @@ func (t *SoundDefinition) Walk(cb WalkCallback) {
 	cb.Do("FlCooldownDuration", &t.FlCooldownDuration)
 	cb.Do("Unk_dc0bc5b", &t.Unk_dc0bc5b)
 	cb.Do("Unk_7c7f1a2", &t.Unk_7c7f1a2)
+	cb.Do("Unk_a86caeb", &t.Unk_a86caeb)
 	cb.Do("FlDopplerFactor", &t.FlDopplerFactor)
 	cb.Do("Unk_f056ee9", &t.Unk_f056ee9)
 	cb.Do("Unk_f056deb", &t.Unk_f056deb)
@@ -97350,12 +99574,45 @@ func (t *Type_cd5b4347) Walk(cb WalkCallback) {
 	cb.Do("ArVertexAO", &t.ArVertexAO)
 }
 
-type Type_cd79b552 struct {
+type Type_cd74fce5 struct {
+	Unk_b564d43  DT_SNO
+	ArConditions DT_VARIABLEARRAY[*DT_SNO]
+}
+
+func (t *Type_cd74fce5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_b564d43, r, &Options{
+		Flags: 1,
+		Group: 42,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.ArConditions, r, &Options{
+		Flags: 1,
+		Group: 51,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_cd74fce5) Walk(cb WalkCallback) {
+	cb.Do("Unk_b564d43", &t.Unk_b564d43)
+	cb.Do("ArConditions", &t.ArConditions)
+}
+
+type GameTestingPurchaseSkill struct {
 	THeader     RequiredMessageHeader
 	DwNodeIndex DT_UINT
 }
 
-func (t *Type_cd79b552) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingPurchaseSkill) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -97372,7 +99629,7 @@ func (t *Type_cd79b552) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_cd79b552) Walk(cb WalkCallback) {
+func (t *GameTestingPurchaseSkill) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwNodeIndex", &t.DwNodeIndex)
 }
@@ -97652,13 +99909,13 @@ func (t *GlobalWaypointData) Walk(cb WalkCallback) {
 type TriggerEventOutroEffectGroup struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType        DT_UINT
-	DwPad         DT_UINT
-	TConditions   TriggerConditions
-	FGenerated    DT_INT
-	Unk_6cba752   DT_INT
-	Unk_e560b0b   DT_UINT
-	IdEffectGroup DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	IdEffectGroup   DT_UINT
 }
 
 func (t *TriggerEventOutroEffectGroup) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -97681,7 +99938,7 @@ func (t *TriggerEventOutroEffectGroup) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.IdEffectGroup, r, &Options{Flags: 1}); err != nil {
@@ -97699,7 +99956,7 @@ func (t *TriggerEventOutroEffectGroup) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("IdEffectGroup", &t.IdEffectGroup)
 }
 
@@ -97818,7 +100075,7 @@ type Type_ce82d1b6 struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -97847,7 +100104,7 @@ func (t *Type_ce82d1b6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -97891,7 +100148,7 @@ func (t *Type_ce82d1b6) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -97983,48 +100240,48 @@ func (t *ParticleKeyFrames) Walk(cb WalkCallback) {
 }
 
 type Type_cec837f6 struct {
-	DwID              DT_UINT
-	EType             DT_ENUM
-	TDimension1       DT_STRING_FORMULA
-	TDimension2       DT_STRING_FORMULA
-	TDimension3       DT_STRING_FORMULA
-	TDimension4       DT_STRING_FORMULA
-	TDimension5       DT_STRING_FORMULA
-	Unk_6a8ab2        DT_INT
-	Unk_5078500       DT_INT
-	Unk_128669f       DT_INT
-	FAlignmentHeight  DT_FLOAT
-	ArConditions      DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
-	BAnimated         DT_INT
-	Unk_3ee89a        DT_INT
-	Unk_a4d0200       DT_INT
-	Unk_c91bb71       DT_INT
-	Unk_e960d46       DT_INT
-	Unk_e282419       DT_ENUM
-	Unk_7ed70e2       DT_INT
-	Unk_77bdba8       DT_ENUM
-	Unk_8f61ea4       DT_UINT
-	Unk_3e59e14       DT_VECTOR3D
-	Unk_6076d47       DT_ENUM
-	Unk_8d18eb6       DT_ENUM
-	Unk_67060f1       DT_INT
-	Unk_3999d6e       DT_STRING_FORMULA
-	Unk_3999d6f       DT_STRING_FORMULA
-	Unk_3999d70       DT_STRING_FORMULA
-	TAnimatedInterval DT_STRING_FORMULA
-	Unk_4ac4caa       DT_STRING_FORMULA
-	Unk_e5f3235       DT_STRING_FORMULA
-	Unk_7fd2cb0       DT_INT
-	Unk_bb05455       DT_INT
-	BLoop             DT_INT
-	Unk_77a6dd9       DT_INT
-	Unk_14cfb7f       DT_INT
-	Unk_4f22bac       DT_INT
-	Unk_ca7a183       DT_INT
-	Unk_78bcfac       DT_INT
-	ELOSCheck         DT_ENUM
-	DwTargetingFlags  DT_UINT
-	BDebugDraw        DT_INT
+	DwID                DT_UINT
+	EType               DT_ENUM
+	TDimension1         DT_STRING_FORMULA
+	TDimension2         DT_STRING_FORMULA
+	TDimension3         DT_STRING_FORMULA
+	TDimension4         DT_STRING_FORMULA
+	TDimension5         DT_STRING_FORMULA
+	Unk_6a8ab2          DT_INT
+	Unk_5078500         DT_INT
+	Unk_128669f         DT_INT
+	FAlignmentHeight    DT_FLOAT
+	ArConditions        DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
+	BAnimated           DT_INT
+	Unk_3ee89a          DT_INT
+	Unk_a4d0200         DT_INT
+	Unk_c91bb71         DT_INT
+	Unk_e960d46         DT_INT
+	Unk_e282419         DT_ENUM
+	Unk_7ed70e2         DT_INT
+	Unk_77bdba8         DT_ENUM
+	Unk_8f61ea4         DT_UINT
+	Unk_3e59e14         DT_VECTOR3D
+	Unk_6076d47         DT_ENUM
+	Unk_8d18eb6         DT_ENUM
+	Unk_67060f1         DT_INT
+	TAnimatedDimension1 DT_STRING_FORMULA
+	TAnimatedDimension2 DT_STRING_FORMULA
+	TAnimatedDimension3 DT_STRING_FORMULA
+	TAnimatedInterval   DT_STRING_FORMULA
+	TAnimatedTotalTime  DT_STRING_FORMULA
+	Unk_e5f3235         DT_STRING_FORMULA
+	Unk_7fd2cb0         DT_INT
+	Unk_bb05455         DT_INT
+	BLoop               DT_INT
+	Unk_77a6dd9         DT_INT
+	Unk_14cfb7f         DT_INT
+	Unk_4f22bac         DT_INT
+	Unk_ca7a183         DT_INT
+	Unk_78bcfac         DT_INT
+	ELOSCheck           DT_ENUM
+	DwTargetingFlags    DT_UINT
+	BDebugDraw          DT_INT
 }
 
 func (t *Type_cec837f6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -98107,19 +100364,19 @@ func (t *Type_cec837f6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+264, &t.Unk_67060f1, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+272, &t.Unk_3999d6e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+272, &t.TAnimatedDimension1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+304, &t.Unk_3999d6f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+304, &t.TAnimatedDimension2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+336, &t.Unk_3999d70, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+336, &t.TAnimatedDimension3, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+368, &t.TAnimatedInterval, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+400, &t.Unk_4ac4caa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+400, &t.TAnimatedTotalTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+432, &t.Unk_e5f3235, r, &Options{Flags: 1}); err != nil {
@@ -98190,11 +100447,11 @@ func (t *Type_cec837f6) Walk(cb WalkCallback) {
 	cb.Do("Unk_6076d47", &t.Unk_6076d47)
 	cb.Do("Unk_8d18eb6", &t.Unk_8d18eb6)
 	cb.Do("Unk_67060f1", &t.Unk_67060f1)
-	cb.Do("Unk_3999d6e", &t.Unk_3999d6e)
-	cb.Do("Unk_3999d6f", &t.Unk_3999d6f)
-	cb.Do("Unk_3999d70", &t.Unk_3999d70)
+	cb.Do("TAnimatedDimension1", &t.TAnimatedDimension1)
+	cb.Do("TAnimatedDimension2", &t.TAnimatedDimension2)
+	cb.Do("TAnimatedDimension3", &t.TAnimatedDimension3)
 	cb.Do("TAnimatedInterval", &t.TAnimatedInterval)
-	cb.Do("Unk_4ac4caa", &t.Unk_4ac4caa)
+	cb.Do("TAnimatedTotalTime", &t.TAnimatedTotalTime)
 	cb.Do("Unk_e5f3235", &t.Unk_e5f3235)
 	cb.Do("Unk_7fd2cb0", &t.Unk_7fd2cb0)
 	cb.Do("Unk_bb05455", &t.Unk_bb05455)
@@ -98445,6 +100702,33 @@ func (t *Type_cfbf8bdc) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 }
 
+type Type_cfc7c00f struct {
+	Unk_cb968cf DT_INT
+	Unk_b518e97 DT_FLOAT
+}
+
+func (t *Type_cfc7c00f) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_cb968cf, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.Unk_b518e97, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+8, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_cfc7c00f) Walk(cb WalkCallback) {
+	cb.Do("Unk_cb968cf", &t.Unk_cb968cf)
+	cb.Do("Unk_b518e97", &t.Unk_b518e97)
+}
+
 type TriggerEventCameraKeyFrame struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
@@ -98453,7 +100737,7 @@ type TriggerEventCameraKeyFrame struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	EMicrophoneMode     DT_ENUM
 	VecMicrophoneOffset DT_VECTOR3D
 	ArKeys              DT_POLYMORPHIC_VARIABLEARRAY[*DT_INT64]
@@ -98480,7 +100764,7 @@ func (t *TriggerEventCameraKeyFrame) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.EMicrophoneMode, r, &Options{Flags: 1}); err != nil {
@@ -98507,7 +100791,7 @@ func (t *TriggerEventCameraKeyFrame) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("EMicrophoneMode", &t.EMicrophoneMode)
 	cb.Do("VecMicrophoneOffset", &t.VecMicrophoneOffset)
 	cb.Do("ArKeys", &t.ArKeys)
@@ -98517,13 +100801,13 @@ func (t *TriggerEventCameraKeyFrame) Walk(cb WalkCallback) {
 type TriggerEventObjectTurnToOriginalFacing struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	DwObjectID  DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwObjectID      DT_UINT
 }
 
 func (t *TriggerEventObjectTurnToOriginalFacing) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -98546,7 +100830,7 @@ func (t *TriggerEventObjectTurnToOriginalFacing) UnmarshalD4(r *bin.BinaryReader
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwObjectID, r, &Options{Flags: 1}); err != nil {
@@ -98564,7 +100848,7 @@ func (t *TriggerEventObjectTurnToOriginalFacing) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwObjectID", &t.DwObjectID)
 }
 
@@ -98790,7 +101074,7 @@ type TriggerEventPlayMovie struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -98800,7 +101084,6 @@ type TriggerEventPlayMovie struct {
 	DwPad            DT_UINT
 	SnoMovie         DT_SNO
 	FIntroMovie      DT_INT
-	Unk_295ed9d      DT_INT
 	Unk_26e6b7e      DT_INT
 }
 
@@ -98821,7 +101104,7 @@ func (t *TriggerEventPlayMovie) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -98854,10 +101137,7 @@ func (t *TriggerEventPlayMovie) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+132, &t.FIntroMovie, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.Unk_295ed9d, r, &Options{Flags: 17}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+140, &t.Unk_26e6b7e, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+136, &t.Unk_26e6b7e, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+144, io.SeekStart); err != nil {
@@ -98871,7 +101151,7 @@ func (t *TriggerEventPlayMovie) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -98881,7 +101161,6 @@ func (t *TriggerEventPlayMovie) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("SnoMovie", &t.SnoMovie)
 	cb.Do("FIntroMovie", &t.FIntroMovie)
-	cb.Do("Unk_295ed9d", &t.Unk_295ed9d)
 	cb.Do("Unk_26e6b7e", &t.Unk_26e6b7e)
 }
 
@@ -98971,16 +101250,16 @@ func (t *EnchantAffixMessage) Walk(cb WalkCallback) {
 type TriggerEventChangeLook struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType        DT_UINT
-	DwPad         DT_UINT
-	TConditions   TriggerConditions
-	FGenerated    DT_INT
-	Unk_6cba752   DT_INT
-	Unk_e560b0b   DT_UINT
-	DwActorID     DT_UINT
-	SnoAppearance DT_SNO
-	TLookLink     LookLink
-	Unk_279aa5a   DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwActorID       DT_UINT
+	SnoAppearance   DT_SNO
+	TLookLink       LookLink
+	Unk_279aa5a     DT_INT
 }
 
 func (t *TriggerEventChangeLook) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -99003,7 +101282,7 @@ func (t *TriggerEventChangeLook) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwActorID, r, &Options{Flags: 1}); err != nil {
@@ -99033,7 +101312,7 @@ func (t *TriggerEventChangeLook) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("SnoAppearance", &t.SnoAppearance)
 	cb.Do("TLookLink", &t.TLookLink)
@@ -99055,7 +101334,7 @@ type GlobalStore struct {
 	Unk_2009ff7           DT_INT
 	Unk_aef9c7f           DT_VARIABLEARRAY[*Type_8a12bdb7]
 	ArCameraTransitions   DT_FIXEDARRAY[*StoreCameraTransition]
-	Unk_d679087           DT_SNO
+	SnoStorePreviewWorld  DT_SNO
 	Unk_357aca5           DT_CSTRING[*DT_BYTE]
 	SnoVendorWorld        DT_SNO
 	SzVendorCamera        DT_UINT
@@ -99111,7 +101390,7 @@ func (t *GlobalStore) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+264, &t.Unk_d679087, r, &Options{
+	if err := UnmarshalAt(p+264, &t.SnoStorePreviewWorld, r, &Options{
 		Flags: 1,
 		Group: 48,
 	}); err != nil {
@@ -99139,30 +101418,30 @@ func (t *GlobalStore) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 	if err := UnmarshalAt(p+328, &t.Unk_465e395, r, &Options{
-		ArrayLength: 16,
+		ArrayLength: 17,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1480, &t.ArStoreDisclaimerData, r, &Options{
-		ArrayLength: 8,
+	if err := UnmarshalAt(p+1552, &t.ArStoreDisclaimerData, r, &Options{
+		ArrayLength: 10,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1544, &t.Unk_782b094, r, &Options{
+	if err := UnmarshalAt(p+1632, &t.Unk_782b094, r, &Options{
 		ArrayLength: 1,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1584, &t.Unk_26a4b93, r, &Options{
+	if err := UnmarshalAt(p+1672, &t.Unk_26a4b93, r, &Options{
 		ArrayLength: 4,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+1744, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+1832, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -99181,7 +101460,7 @@ func (t *GlobalStore) Walk(cb WalkCallback) {
 	cb.Do("Unk_2009ff7", &t.Unk_2009ff7)
 	cb.Do("Unk_aef9c7f", &t.Unk_aef9c7f)
 	cb.Do("ArCameraTransitions", &t.ArCameraTransitions)
-	cb.Do("Unk_d679087", &t.Unk_d679087)
+	cb.Do("SnoStorePreviewWorld", &t.SnoStorePreviewWorld)
 	cb.Do("Unk_357aca5", &t.Unk_357aca5)
 	cb.Do("SnoVendorWorld", &t.SnoVendorWorld)
 	cb.Do("SzVendorCamera", &t.SzVendorCamera)
@@ -99264,12 +101543,12 @@ func (t *ItemSpecifierData) Walk(cb WalkCallback) {
 	cb.Do("Unk_aab1fc1", &t.Unk_aab1fc1)
 }
 
-type Type_d17eb146 struct {
+type SubObjectAppearanceVariant struct {
 	EVariantType       DT_ENUM
 	SnoVariantMaterial DT_SNO
 }
 
-func (t *Type_d17eb146) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SubObjectAppearanceVariant) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -99289,7 +101568,7 @@ func (t *Type_d17eb146) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_d17eb146) Walk(cb WalkCallback) {
+func (t *SubObjectAppearanceVariant) Walk(cb WalkCallback) {
 	cb.Do("EVariantType", &t.EVariantType)
 	cb.Do("SnoVariantMaterial", &t.SnoVariantMaterial)
 }
@@ -99430,7 +101709,7 @@ func (t *SimpleMessage) Walk(cb WalkCallback) {
 }
 
 type ClanBankWithdrawMessage struct {
-	THeader         Type_72bd65f8
+	THeader         RequiredRequestMessageHeader
 	TItemId         Type_f5ac91bb
 	ECurrencyType   DT_ENUM
 	NCurrencyAmount DT_INT64
@@ -99469,18 +101748,18 @@ func (t *ClanBankWithdrawMessage) Walk(cb WalkCallback) {
 type GlobalNightmareDungeonData struct {
 	// Inherits GlobalBase
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	ArDungeonLists DT_FIXEDARRAY[*DungeonList]
-	Unk_6ccc3cf    DT_VARIABLEARRAY[*Type_7247d2c9]
-	Unk_6b198fe    DT_FLOAT
-	Unk_2da258     DT_UINT
-	Unk_4242026    DT_FIXEDARRAY[*DT_FLOAT]
-	Unk_74b00e3    DT_FLOAT
-	Unk_aa2399c    DT_FLOAT
-	Unk_855d467    DT_FLOAT
-	Unk_908474b    DT_RANGE[*DT_UINT]
-	Unk_408865c    DT_RANGE[*DT_UINT]
+	DwType                         DT_UINT
+	DwPad                          DT_UINT
+	ArDungeonLists                 DT_FIXEDARRAY[*DungeonList]
+	ArNightmareDungeonGlobalSpawns DT_VARIABLEARRAY[*NightmareDungeonGlobalSpawn]
+	Unk_6b198fe                    DT_FLOAT
+	Unk_2da258                     DT_UINT
+	Unk_4242026                    DT_FIXEDARRAY[*DT_FLOAT]
+	Unk_74b00e3                    DT_FLOAT
+	Unk_aa2399c                    DT_FLOAT
+	Unk_855d467                    DT_FLOAT
+	Unk_908474b                    DT_RANGE[*DT_UINT]
+	Unk_408865c                    DT_RANGE[*DT_UINT]
 }
 
 func (t *GlobalNightmareDungeonData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -99500,7 +101779,7 @@ func (t *GlobalNightmareDungeonData) UnmarshalD4(r *bin.BinaryReader, o *Options
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_6ccc3cf, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.ArNightmareDungeonGlobalSpawns, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+64, &t.Unk_6b198fe, r, &Options{Flags: 1}); err != nil {
@@ -99540,7 +101819,7 @@ func (t *GlobalNightmareDungeonData) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("ArDungeonLists", &t.ArDungeonLists)
-	cb.Do("Unk_6ccc3cf", &t.Unk_6ccc3cf)
+	cb.Do("ArNightmareDungeonGlobalSpawns", &t.ArNightmareDungeonGlobalSpawns)
 	cb.Do("Unk_6b198fe", &t.Unk_6b198fe)
 	cb.Do("Unk_2da258", &t.Unk_2da258)
 	cb.Do("Unk_4242026", &t.Unk_4242026)
@@ -99763,9 +102042,9 @@ func (t *RequestBuffCancelMessage) Walk(cb WalkCallback) {
 }
 
 type CountdownStartedMessage struct {
-	THeader     RequiredMessageHeader
-	DwTime      DT_UINT
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	DwTime                DT_UINT
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *CountdownStartedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -99779,7 +102058,7 @@ func (t *CountdownStartedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+16, &t.DwTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
@@ -99791,7 +102070,7 @@ func (t *CountdownStartedMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 func (t *CountdownStartedMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("DwTime", &t.DwTime)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type OnKillTriggeredBuffCallback struct {
@@ -100102,7 +102381,7 @@ func (t *LevelAreaDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+120, &t.TServices, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+208, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+212, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -100120,6 +102399,40 @@ func (t *LevelAreaDefinition) Walk(cb WalkCallback) {
 	cb.Do("TPrivateLevelScaling", &t.TPrivateLevelScaling)
 	cb.Do("ArPublicLevelScaling", &t.ArPublicLevelScaling)
 	cb.Do("TServices", &t.TServices)
+}
+
+type Type_d403e64e struct {
+	// Inherits GameBalanceTable
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	DwPad    DT_UINT
+	TEntries DT_VARIABLEARRAY[*Type_31a7ff07]
+}
+
+func (t *Type_d403e64e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TEntries, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_d403e64e) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("TEntries", &t.TEntries)
 }
 
 type Type_d4213c9b struct {
@@ -100252,9 +102565,9 @@ func (t *ACDTranslateProjectileMessage) Walk(cb WalkCallback) {
 }
 
 type PlayerTitleResponseMessage struct {
-	THeader      Type_72bd65f8
-	Unk_dce541c  DT_UINT
-	TPlayerTitle SavedPlayerTitle
+	THeader               RequiredRequestMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	TPlayerTitle          SavedPlayerTitle
 }
 
 func (t *PlayerTitleResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -100265,7 +102578,7 @@ func (t *PlayerTitleResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+20, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+24, &t.TPlayerTitle, r, &Options{Flags: 1}); err != nil {
@@ -100279,7 +102592,7 @@ func (t *PlayerTitleResponseMessage) UnmarshalD4(r *bin.BinaryReader, o *Options
 
 func (t *PlayerTitleResponseMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("TPlayerTitle", &t.TPlayerTitle)
 }
 
@@ -100328,9 +102641,9 @@ func (t *PowerOverride) Walk(cb WalkCallback) {
 }
 
 type PlayerForceShapeshiftMessage struct {
-	THeader         RequiredMessageHeader
-	Unk_dce541c     DT_UINT
-	EShapeshiftForm DT_ENUM
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	EShapeshiftForm       DT_ENUM
 }
 
 func (t *PlayerForceShapeshiftMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -100341,7 +102654,7 @@ func (t *PlayerForceShapeshiftMessage) UnmarshalD4(r *bin.BinaryReader, o *Optio
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.EShapeshiftForm, r, &Options{Flags: 1}); err != nil {
@@ -100355,23 +102668,23 @@ func (t *PlayerForceShapeshiftMessage) UnmarshalD4(r *bin.BinaryReader, o *Optio
 
 func (t *PlayerForceShapeshiftMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("EShapeshiftForm", &t.EShapeshiftForm)
 }
 
 type TriggerEventFadeGroup struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	Unk_8dea4d9 DT_INT
-	NFadeGroup  DT_INT
-	EBehavior   DT_ENUM
-	Unk_2b48a58 DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_8dea4d9     DT_INT
+	NFadeGroup      DT_INT
+	EBehavior       DT_ENUM
+	Unk_2b48a58     DT_INT
 }
 
 func (t *TriggerEventFadeGroup) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -100394,7 +102707,7 @@ func (t *TriggerEventFadeGroup) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_8dea4d9, r, &Options{Flags: 17}); err != nil {
@@ -100421,7 +102734,7 @@ func (t *TriggerEventFadeGroup) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_8dea4d9", &t.Unk_8dea4d9)
 	cb.Do("NFadeGroup", &t.NFadeGroup)
 	cb.Do("EBehavior", &t.EBehavior)
@@ -100607,9 +102920,9 @@ func (t *NecroArmyUnitTypeData) Walk(cb WalkCallback) {
 }
 
 type PlayHitJitterMessage struct {
-	THeader     RequiredMessageHeader
-	Ann         DT_ACD_NETWORK_NAME
-	Unk_5692531 DT_VECTOR3D
+	THeader         RequiredMessageHeader
+	Ann             DT_ACD_NETWORK_NAME
+	VLocalImpactPos DT_VECTOR3D
 }
 
 func (t *PlayHitJitterMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -100623,7 +102936,7 @@ func (t *PlayHitJitterMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+16, &t.Ann, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_5692531, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+24, &t.VLocalImpactPos, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+36, io.SeekStart); err != nil {
@@ -100635,7 +102948,7 @@ func (t *PlayHitJitterMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 func (t *PlayHitJitterMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("Ann", &t.Ann)
-	cb.Do("Unk_5692531", &t.Unk_5692531)
+	cb.Do("VLocalImpactPos", &t.VLocalImpactPos)
 }
 
 type OnDoDamageBuffCallback struct {
@@ -100912,7 +103225,7 @@ type TriggerEventFootstepTrail struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -100940,7 +103253,7 @@ func (t *TriggerEventFootstepTrail) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -100978,7 +103291,7 @@ func (t *TriggerEventFootstepTrail) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -101302,13 +103615,13 @@ func (t *WorldTierData) Walk(cb WalkCallback) {
 type TriggerEventSetTimeOfDay struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	FlTimeOfDay DT_FLOAT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	FlTimeOfDay     DT_FLOAT
 }
 
 func (t *TriggerEventSetTimeOfDay) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -101331,7 +103644,7 @@ func (t *TriggerEventSetTimeOfDay) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.FlTimeOfDay, r, &Options{Flags: 1}); err != nil {
@@ -101349,7 +103662,7 @@ func (t *TriggerEventSetTimeOfDay) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("FlTimeOfDay", &t.FlTimeOfDay)
 }
 
@@ -101435,9 +103748,9 @@ func (t *ParagonNodeMessage) Walk(cb WalkCallback) {
 }
 
 type ChatMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_dce541c DT_UINT
-	UsMessage   DT_CHARARRAY
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	UsMessage             DT_CHARARRAY
 }
 
 func (t *ChatMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -101448,7 +103761,7 @@ func (t *ChatMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.UsMessage, r, &Options{
@@ -101465,7 +103778,7 @@ func (t *ChatMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *ChatMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("UsMessage", &t.UsMessage)
 }
 
@@ -101568,7 +103881,7 @@ type PlayerClassDefinition struct {
 	ArCoreStatBenefit               DT_FIXEDARRAY[*PlayerClassCoreStatBenefitData]
 	Unk_39a9625                     DT_GBID
 	SnoSkillKit                     DT_SNO
-	Unk_456c862                     DT_SNO
+	SnoSkillKitBlizzconOverride     DT_SNO
 	Unk_1d2596f                     DT_SNO
 	Unk_f52d089                     DT_FIXEDARRAY[*DT_UINT]
 	SnoCombatDismountPower          DT_SNO
@@ -101734,7 +104047,7 @@ func (t *PlayerClassDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) err
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+256, &t.Unk_456c862, r, &Options{
+	if err := UnmarshalAt(p+256, &t.SnoSkillKitBlizzconOverride, r, &Options{
 		Flags: 1,
 		Group: 39,
 	}); err != nil {
@@ -101976,7 +104289,7 @@ func (t *PlayerClassDefinition) Walk(cb WalkCallback) {
 	cb.Do("ArCoreStatBenefit", &t.ArCoreStatBenefit)
 	cb.Do("Unk_39a9625", &t.Unk_39a9625)
 	cb.Do("SnoSkillKit", &t.SnoSkillKit)
-	cb.Do("Unk_456c862", &t.Unk_456c862)
+	cb.Do("SnoSkillKitBlizzconOverride", &t.SnoSkillKitBlizzconOverride)
 	cb.Do("Unk_1d2596f", &t.Unk_1d2596f)
 	cb.Do("Unk_f52d089", &t.Unk_f52d089)
 	cb.Do("SnoCombatDismountPower", &t.SnoCombatDismountPower)
@@ -102054,23 +104367,23 @@ func (t *ForcedPrefetchEntry) Walk(cb WalkCallback) {
 }
 
 type TextureDefinition struct {
-	ETexFormat       DT_ENUM
-	DwVolumeXSlices  DT_WORD
-	DwVolumeYSlices  DT_WORD
-	DwWidth          DT_WORD
-	DwHeight         DT_WORD
-	DwDepth          DT_UINT
-	DwFaceCount      DT_BYTE
-	DwMipMapLevelMin DT_BYTE
-	DwMipMapLevelMax DT_BYTE
-	DwImportFlags    DT_UINT
-	Unk_d27620       DT_ENUM
-	RgbavalAvgColor  DT_RGBACOLORVALUE
-	PHotspot         DT_BCVEC2I
-	SerTex           DT_VARIABLEARRAY[*SerializeData]
-	PtFrame          DT_VARIABLEARRAY[*TexFrame]
-	Unk_20823c1      DT_VARIABLEARRAY[*Type_835c1731]
-	PtPostprocessed  DT_INT64
+	ETexFormat           DT_ENUM
+	DwVolumeXSlices      DT_WORD
+	DwVolumeYSlices      DT_WORD
+	DwWidth              DT_WORD
+	DwHeight             DT_WORD
+	DwDepth              DT_UINT
+	DwFaceCount          DT_BYTE
+	DwMipMapLevelMin     DT_BYTE
+	DwMipMapLevelMax     DT_BYTE
+	DwImportFlags        DT_UINT
+	ETextureResourceType DT_ENUM
+	RgbavalAvgColor      DT_RGBACOLORVALUE
+	PHotspot             DT_BCVEC2I
+	SerTex               DT_VARIABLEARRAY[*SerializeData]
+	PtFrame              DT_VARIABLEARRAY[*TexFrame]
+	Unk_20823c1          DT_VARIABLEARRAY[*Type_835c1731]
+	PtPostprocessed      DT_INT64
 }
 
 func (t *TextureDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -102108,7 +104421,7 @@ func (t *TextureDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+28, &t.DwImportFlags, r, &Options{Flags: 524289}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_d27620, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+32, &t.ETextureResourceType, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+36, &t.RgbavalAvgColor, r, &Options{}); err != nil {
@@ -102146,7 +104459,7 @@ func (t *TextureDefinition) Walk(cb WalkCallback) {
 	cb.Do("DwMipMapLevelMin", &t.DwMipMapLevelMin)
 	cb.Do("DwMipMapLevelMax", &t.DwMipMapLevelMax)
 	cb.Do("DwImportFlags", &t.DwImportFlags)
-	cb.Do("Unk_d27620", &t.Unk_d27620)
+	cb.Do("ETextureResourceType", &t.ETextureResourceType)
 	cb.Do("RgbavalAvgColor", &t.RgbavalAvgColor)
 	cb.Do("PHotspot", &t.PHotspot)
 	cb.Do("SerTex", &t.SerTex)
@@ -102183,9 +104496,9 @@ func (t *GroupTransferReplyMessage) Walk(cb WalkCallback) {
 }
 
 type PlayerTownPortalReturnDestMessage struct {
-	THeader     RequiredMessageHeader
-	Unk_f703a7e Type_c58eb80a
-	Unk_dce541c DT_UINT
+	THeader               RequiredMessageHeader
+	TTownPortalReturnDest TownPortalReturnDest
+	DwPlayerGameAccountId DT_UINT
 }
 
 func (t *PlayerTownPortalReturnDestMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -102196,10 +104509,10 @@ func (t *PlayerTownPortalReturnDestMessage) UnmarshalD4(r *bin.BinaryReader, o *
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_f703a7e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.TTownPortalReturnDest, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+48, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+48, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+56, io.SeekStart); err != nil {
@@ -102210,8 +104523,8 @@ func (t *PlayerTownPortalReturnDestMessage) UnmarshalD4(r *bin.BinaryReader, o *
 
 func (t *PlayerTownPortalReturnDestMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_f703a7e", &t.Unk_f703a7e)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("TTownPortalReturnDest", &t.TTownPortalReturnDest)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 }
 
 type UIStyleResource struct {
@@ -103330,15 +105643,15 @@ func (t *SubzoneTypeSubcondition) Walk(cb WalkCallback) {
 	cb.Do("EPvPType", &t.EPvPType)
 }
 
-type Type_da38fe05 struct {
-	LocalTransform Type_5f527528
+type dmClothPlaneDefMirror struct {
+	LocalTransform dmTransformMirror
 	Stiffness      DT_FLOAT
 	Friction       DT_FLOAT
 	BoneIndex      DT_WORD
 	Padding        DT_FIXEDARRAY[*DT_WORD]
 }
 
-func (t *Type_da38fe05) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmClothPlaneDefMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -103364,7 +105677,7 @@ func (t *Type_da38fe05) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_da38fe05) Walk(cb WalkCallback) {
+func (t *dmClothPlaneDefMirror) Walk(cb WalkCallback) {
 	cb.Do("LocalTransform", &t.LocalTransform)
 	cb.Do("Stiffness", &t.Stiffness)
 	cb.Do("Friction", &t.Friction)
@@ -103372,7 +105685,7 @@ func (t *Type_da38fe05) Walk(cb WalkCallback) {
 	cb.Do("Padding", &t.Padding)
 }
 
-type Type_da8a2315 struct {
+type QuestFollowerSpawnBehavior struct {
 	Unk_6c68319    DT_ENUM
 	Unk_d64b2c9    DT_INT
 	SnoSummonPower DT_SNO
@@ -103381,7 +105694,7 @@ type Type_da8a2315 struct {
 	Unk_209d19e    DT_INT
 }
 
-func (t *Type_da8a2315) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *QuestFollowerSpawnBehavior) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -103413,7 +105726,7 @@ func (t *Type_da8a2315) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_da8a2315) Walk(cb WalkCallback) {
+func (t *QuestFollowerSpawnBehavior) Walk(cb WalkCallback) {
 	cb.Do("Unk_6c68319", &t.Unk_6c68319)
 	cb.Do("Unk_d64b2c9", &t.Unk_d64b2c9)
 	cb.Do("SnoSummonPower", &t.SnoSummonPower)
@@ -103575,7 +105888,7 @@ func (t *PowerPhaseBranch) Walk(cb WalkCallback) {
 
 type EnterWorldPlayer struct {
 	WpLocation                    DT_VECTOR3D
-	Unk_dce541c                   DT_UINT
+	DwPlayerGameAccountId         DT_UINT
 	TEnterKnownLookOverrides      DT_OPTIONAL[*EnterKnownLookOverrides]
 	TEnterKnownShaderMapOverrides DT_OPTIONAL[*EnterKnownShaderMapOverrides]
 }
@@ -103588,7 +105901,7 @@ func (t *EnterWorldPlayer) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.WpLocation, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+12, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+12, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+16, &t.TEnterKnownLookOverrides, r, &Options{Flags: 1}); err != nil {
@@ -103605,7 +105918,7 @@ func (t *EnterWorldPlayer) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *EnterWorldPlayer) Walk(cb WalkCallback) {
 	cb.Do("WpLocation", &t.WpLocation)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("TEnterKnownLookOverrides", &t.TEnterKnownLookOverrides)
 	cb.Do("TEnterKnownShaderMapOverrides", &t.TEnterKnownShaderMapOverrides)
 }
@@ -104032,37 +106345,83 @@ func (t *ParagonGlyphAffixAttribute) Walk(cb WalkCallback) {
 	cb.Do("NParam", &t.NParam)
 }
 
+type Type_dcddca9e struct {
+	SnoLoopEffect      DT_SNO
+	SnoLoopingWorld    DT_SNO
+	SzCameraMarkerName DT_CHARARRAY
+	Unk_c1d4829        DT_UINT
+}
+
+func (t *Type_dcddca9e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.SnoLoopEffect, r, &Options{
+		Flags: 513,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+4, &t.SnoLoopingWorld, r, &Options{
+		Flags: 513,
+		Group: 48,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.SzCameraMarkerName, r, &Options{
+		ArrayLength: 128,
+		Flags:       1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+136, &t.Unk_c1d4829, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+140, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_dcddca9e) Walk(cb WalkCallback) {
+	cb.Do("SnoLoopEffect", &t.SnoLoopEffect)
+	cb.Do("SnoLoopingWorld", &t.SnoLoopingWorld)
+	cb.Do("SzCameraMarkerName", &t.SzCameraMarkerName)
+	cb.Do("Unk_c1d4829", &t.Unk_c1d4829)
+}
+
 type TriggerEventObjectMoveToObject struct {
 	// Inherits TriggerEventRangedDuration
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType               DT_UINT
-	TConditions          TriggerConditions
-	FGenerated           DT_INT
-	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
-	TDuration            DT_FLOAT
-	DwTriggerFlags       DT_UINT
-	DwTriggerFlagsEx     DT_UINT
-	TCleanup             TriggerCleanup
-	Unk_49e9257          DT_INT
-	Unk_5490979          DT_INT
-	DwPad                DT_UINT
-	DwObjectID           DT_UINT
-	Unk_17909b9          DT_INT
-	THardpointLinkTarget HardpointLink
-	DwTargetID           DT_UINT
-	EOrientationMode     DT_ENUM
-	Unk_daebe18          DT_ENUM
-	Unk_6101673          DT_UINT
-	Unk_8470ffc          HardpointLink
-	Unk_46c8459          DT_UINT
-	EBlendEasing         DT_ENUM
-	EMoveRate            DT_ENUM
-	Unk_3c71266          DT_ENUM
-	Unk_c751343          DT_INT
-	Unk_23237e1          DT_INT
-	Unk_f1b6afc          DT_FLOAT
+	DwType                DT_UINT
+	TConditions           TriggerConditions
+	FGenerated            DT_INT
+	Unk_6cba752           DT_INT
+	DwParentActorID       DT_UINT
+	TDuration             DT_FLOAT
+	DwTriggerFlags        DT_UINT
+	DwTriggerFlagsEx      DT_UINT
+	TCleanup              TriggerCleanup
+	Unk_49e9257           DT_INT
+	Unk_5490979           DT_INT
+	DwPad                 DT_UINT
+	DwObjectID            DT_UINT
+	Unk_17909b9           DT_INT
+	THardpointLinkTarget  HardpointLink
+	DwTargetID            DT_UINT
+	EOrientationMode      DT_ENUM
+	Unk_daebe18           DT_ENUM
+	Unk_6101673           DT_UINT
+	Unk_8470ffc           HardpointLink
+	Unk_46c8459           DT_UINT
+	EBlendEasing          DT_ENUM
+	EMoveRate             DT_ENUM
+	EDynamicMovementSpeed DT_ENUM
+	Unk_c751343           DT_INT
+	Unk_23237e1           DT_INT
+	Unk_f1b6afc           DT_FLOAT
 }
 
 func (t *TriggerEventObjectMoveToObject) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -104082,7 +106441,7 @@ func (t *TriggerEventObjectMoveToObject) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -104139,7 +106498,7 @@ func (t *TriggerEventObjectMoveToObject) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+176, &t.EMoveRate, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+180, &t.Unk_3c71266, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+180, &t.EDynamicMovementSpeed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+184, &t.Unk_c751343, r, &Options{Flags: 17}); err != nil {
@@ -104162,7 +106521,7 @@ func (t *TriggerEventObjectMoveToObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -104181,7 +106540,7 @@ func (t *TriggerEventObjectMoveToObject) Walk(cb WalkCallback) {
 	cb.Do("Unk_46c8459", &t.Unk_46c8459)
 	cb.Do("EBlendEasing", &t.EBlendEasing)
 	cb.Do("EMoveRate", &t.EMoveRate)
-	cb.Do("Unk_3c71266", &t.Unk_3c71266)
+	cb.Do("EDynamicMovementSpeed", &t.EDynamicMovementSpeed)
 	cb.Do("Unk_c751343", &t.Unk_c751343)
 	cb.Do("Unk_23237e1", &t.Unk_23237e1)
 	cb.Do("Unk_f1b6afc", &t.Unk_f1b6afc)
@@ -105686,10 +108045,79 @@ func (t *Type_e1ac09b4) Walk(cb WalkCallback) {
 	cb.Do("SnoItemType", &t.SnoItemType)
 }
 
+type Type_e1bdd3f7 struct {
+	THeader         GBIDHeader
+	Unk_ec907a2     DT_FIXEDARRAY[*Type_a0b7f6f3]
+	SnoCondition    DT_SNO
+	ArForcedAffixes DT_VARIABLEARRAY[*DT_SNO]
+	Unk_1f6b8a6     DT_VARIABLEARRAY[*DT_GBID]
+	Unk_c816404     DT_UINT
+	Unk_2f8528c     DT_VARIABLEARRAY[*DT_GBID]
+	Unk_a6e2711     DT_VARIABLEARRAY[*DT_GBID]
+}
+
+func (t *Type_e1bdd3f7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+260, &t.Unk_ec907a2, r, &Options{
+		ArrayLength: 4,
+		Flags:       1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+308, &t.SnoCondition, r, &Options{
+		Flags: 1,
+		Group: 51,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+312, &t.ArForcedAffixes, r, &Options{
+		Flags: 1,
+		Group: 107,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+328, &t.Unk_1f6b8a6, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+344, &t.Unk_c816404, r, &Options{Flags: 524289}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+352, &t.Unk_2f8528c, r, &Options{Group: 66}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+368, &t.Unk_a6e2711, r, &Options{Group: 66}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+384, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_e1bdd3f7) Walk(cb WalkCallback) {
+	cb.Do("THeader", &t.THeader)
+	cb.Do("Unk_ec907a2", &t.Unk_ec907a2)
+	cb.Do("SnoCondition", &t.SnoCondition)
+	cb.Do("ArForcedAffixes", &t.ArForcedAffixes)
+	cb.Do("Unk_1f6b8a6", &t.Unk_1f6b8a6)
+	cb.Do("Unk_c816404", &t.Unk_c816404)
+	cb.Do("Unk_2f8528c", &t.Unk_2f8528c)
+	cb.Do("Unk_a6e2711", &t.Unk_a6e2711)
+}
+
 type Type_e1f41032 struct {
-	M_localTransform Type_5f527528
-	M_transform1     Type_5f527528
-	M_transform2     Type_5f527528
+	M_localTransform dmTransformMirror
+	M_transform1     dmTransformMirror
+	M_transform2     dmTransformMirror
 	M_scale          DT_VECTOR4D
 	M_invScale       DT_VECTOR4D
 	Unk_fe69d65      DT_VECTOR4D
@@ -105795,6 +108223,43 @@ func (t *AttributesChangedBuffCallback) Walk(cb WalkCallback) {
 	cb.Do("ArConditions", &t.ArConditions)
 }
 
+type Type_e243df90 struct {
+	Unk_62412ed    DT_RANGE[*DT_INT]
+	NRequiredLevel DT_INT
+	Unk_4d258da    DT_ENUM
+	Unk_aeed93c    DT_RANGE[*DT_INT]
+}
+
+func (t *Type_e243df90) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_62412ed, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.NRequiredLevel, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.Unk_4d258da, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.Unk_aeed93c, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+24, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_e243df90) Walk(cb WalkCallback) {
+	cb.Do("Unk_62412ed", &t.Unk_62412ed)
+	cb.Do("NRequiredLevel", &t.NRequiredLevel)
+	cb.Do("Unk_4d258da", &t.Unk_4d258da)
+	cb.Do("Unk_aeed93c", &t.Unk_aeed93c)
+}
+
 type PowerPhaseInitialization struct {
 	// Inherits PowerPhaseBase
 	// Inherits PolymorphicBase
@@ -105882,24 +108347,24 @@ func (t *WallInstanceData) Walk(cb WalkCallback) {
 }
 
 type QuestChainDefinition struct {
-	DwNextID                     DT_UINT
-	SnoSubzone                   DT_SNO
-	Unk_2feafdd                  DT_INT
-	Unk_23523de                  DT_INT
-	EQuestChainType              DT_ENUM
-	Unk_f6ed359                  DT_VARIABLEARRAY[*DT_SNO]
-	Unk_97b742f                  DT_VARIABLEARRAY[*DT_SNO]
-	SnoCompletionSubzoneOverride DT_SNO
-	Unk_8c8a554                  DT_STARTLOC_NAME
-	TMarkerHandle                MarkerHandle
-	VecMarkerLocation            DT_VECTOR3D
-	TFlipLocationMarkerHandle    MarkerHandle
-	VecFlipLocation              DT_VECTOR3D
-	Unk_d35a97e                  DT_SNO
-	Unk_8da547c                  DT_SNO
-	Unk_10a039b                  DT_SNO
-	Unk_62b3134                  DT_SNO
-	ArSteps                      DT_VARIABLEARRAY[*QuestChainStep]
+	DwNextID                       DT_UINT
+	SnoSubzone                     DT_SNO
+	Unk_2feafdd                    DT_INT
+	Unk_23523de                    DT_INT
+	EQuestChainType                DT_ENUM
+	ArRequiredCompletedQuestChains DT_VARIABLEARRAY[*DT_SNO]
+	Unk_97b742f                    DT_VARIABLEARRAY[*DT_SNO]
+	SnoCompletionSubzoneOverride   DT_SNO
+	Unk_8c8a554                    DT_STARTLOC_NAME
+	TMarkerHandle                  MarkerHandle
+	VecMarkerLocation              DT_VECTOR3D
+	TFlipLocationMarkerHandle      MarkerHandle
+	VecFlipLocation                DT_VECTOR3D
+	Unk_d35a97e                    DT_SNO
+	SnoEffectGroupPreFlip          DT_SNO
+	SnoEffectGroupPostFlip         DT_SNO
+	Unk_62b3134                    DT_SNO
+	ArSteps                        DT_VARIABLEARRAY[*QuestChainStep]
 }
 
 func (t *QuestChainDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -105925,7 +108390,7 @@ func (t *QuestChainDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	if err := UnmarshalAt(p+24, &t.EQuestChainType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+32, &t.Unk_f6ed359, r, &Options{
+	if err := UnmarshalAt(p+32, &t.ArRequiredCompletedQuestChains, r, &Options{
 		Flags: 1,
 		Group: 96,
 	}); err != nil {
@@ -105964,13 +108429,13 @@ func (t *QuestChainDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) erro
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+116, &t.Unk_8da547c, r, &Options{
+	if err := UnmarshalAt(p+116, &t.SnoEffectGroupPreFlip, r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.Unk_10a039b, r, &Options{
+	if err := UnmarshalAt(p+120, &t.SnoEffectGroupPostFlip, r, &Options{
 		Flags: 1,
 		Group: 14,
 	}); err != nil {
@@ -105997,7 +108462,7 @@ func (t *QuestChainDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_2feafdd", &t.Unk_2feafdd)
 	cb.Do("Unk_23523de", &t.Unk_23523de)
 	cb.Do("EQuestChainType", &t.EQuestChainType)
-	cb.Do("Unk_f6ed359", &t.Unk_f6ed359)
+	cb.Do("ArRequiredCompletedQuestChains", &t.ArRequiredCompletedQuestChains)
 	cb.Do("Unk_97b742f", &t.Unk_97b742f)
 	cb.Do("SnoCompletionSubzoneOverride", &t.SnoCompletionSubzoneOverride)
 	cb.Do("Unk_8c8a554", &t.Unk_8c8a554)
@@ -106006,8 +108471,8 @@ func (t *QuestChainDefinition) Walk(cb WalkCallback) {
 	cb.Do("TFlipLocationMarkerHandle", &t.TFlipLocationMarkerHandle)
 	cb.Do("VecFlipLocation", &t.VecFlipLocation)
 	cb.Do("Unk_d35a97e", &t.Unk_d35a97e)
-	cb.Do("Unk_8da547c", &t.Unk_8da547c)
-	cb.Do("Unk_10a039b", &t.Unk_10a039b)
+	cb.Do("SnoEffectGroupPreFlip", &t.SnoEffectGroupPreFlip)
+	cb.Do("SnoEffectGroupPostFlip", &t.SnoEffectGroupPostFlip)
 	cb.Do("Unk_62b3134", &t.Unk_62b3134)
 	cb.Do("ArSteps", &t.ArSteps)
 }
@@ -106225,15 +108690,15 @@ func (t *SoundPlayHistory) Walk(cb WalkCallback) {
 type TriggerEventEnableRagdoll struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType         DT_UINT
-	DwPad          DT_UINT
-	TConditions    TriggerConditions
-	FGenerated     DT_INT
-	Unk_6cba752    DT_INT
-	Unk_e560b0b    DT_UINT
-	TRagdollParams EnableRagdollParams
-	DwActorID      DT_UINT
-	Unk_279aa5a    DT_INT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	TRagdollParams  EnableRagdollParams
+	DwActorID       DT_UINT
+	Unk_279aa5a     DT_INT
 }
 
 func (t *TriggerEventEnableRagdoll) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -106256,7 +108721,7 @@ func (t *TriggerEventEnableRagdoll) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TRagdollParams, r, &Options{Flags: 1}); err != nil {
@@ -106280,7 +108745,7 @@ func (t *TriggerEventEnableRagdoll) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TRagdollParams", &t.TRagdollParams)
 	cb.Do("DwActorID", &t.DwActorID)
 	cb.Do("Unk_279aa5a", &t.Unk_279aa5a)
@@ -106535,18 +109000,18 @@ func (t *BlizzconCVarsMessage) Walk(cb WalkCallback) {
 }
 
 type Type_e3f28f16 struct {
-	EDamageType           DT_ENUM
-	TDamage               HitpointSpecifier
-	Unk_89dc285           DT_INT
-	Unk_6331bb5           DT_FLOAT
-	Unk_f551941           DT_ENUM
-	Unk_dd4b5bf           DT_INT
-	Unk_3d768b7           DT_INT
-	Unk_b8f2b             DT_ENUM
-	Unk_79ce2e1           DT_INT
-	TCombatEffectOverride DT_STRING_FORMULA
-	Unk_693b6db           DT_INT
-	Unk_d50fe6e           DT_INT
+	EDamageType              DT_ENUM
+	TDamage                  HitpointSpecifier
+	Unk_89dc285              DT_INT
+	Unk_6331bb5              DT_FLOAT
+	Unk_f551941              DT_ENUM
+	Unk_dd4b5bf              DT_INT
+	Unk_3d768b7              DT_INT
+	Unk_b8f2b                DT_ENUM
+	BHasCombatEffectOverride DT_INT
+	TCombatEffectOverride    DT_STRING_FORMULA
+	Unk_693b6db              DT_INT
+	Unk_d50fe6e              DT_INT
 }
 
 func (t *Type_e3f28f16) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -106578,7 +109043,7 @@ func (t *Type_e3f28f16) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+100, &t.Unk_b8f2b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.Unk_79ce2e1, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+104, &t.BHasCombatEffectOverride, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+112, &t.TCombatEffectOverride, r, &Options{Flags: 1}); err != nil {
@@ -106605,7 +109070,7 @@ func (t *Type_e3f28f16) Walk(cb WalkCallback) {
 	cb.Do("Unk_dd4b5bf", &t.Unk_dd4b5bf)
 	cb.Do("Unk_3d768b7", &t.Unk_3d768b7)
 	cb.Do("Unk_b8f2b", &t.Unk_b8f2b)
-	cb.Do("Unk_79ce2e1", &t.Unk_79ce2e1)
+	cb.Do("BHasCombatEffectOverride", &t.BHasCombatEffectOverride)
 	cb.Do("TCombatEffectOverride", &t.TCombatEffectOverride)
 	cb.Do("Unk_693b6db", &t.Unk_693b6db)
 	cb.Do("Unk_d50fe6e", &t.Unk_d50fe6e)
@@ -106957,10 +109422,57 @@ func (t *ScriptEventParamTrackedReward) Walk(cb WalkCallback) {
 	cb.Do("SnoTrackedReward", &t.SnoTrackedReward)
 }
 
+type Type_e48435d5 struct {
+	// Inherits Subcondition
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BNegate     DT_INT
+	DwPad       DT_UINT
+	Unk_d10605a DT_GBID
+	Unk_c7b2b18 DT_ENUM
+}
+
+func (t *Type_e48435d5) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BNegate, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_d10605a, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+28, &t.Unk_c7b2b18, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_e48435d5) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BNegate", &t.BNegate)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("Unk_d10605a", &t.Unk_d10605a)
+	cb.Do("Unk_c7b2b18", &t.Unk_c7b2b18)
+}
+
 type DRLGWorldDebugInfoMessage struct {
 	THeader        RequiredMessageHeader
 	IdSWorld       DT_SHARED_SERVER_DATA_ID
-	TDRLGDebugInfo Type_18173024
+	TDRLGDebugInfo DRLGWorldDebugInfo
 }
 
 func (t *DRLGWorldDebugInfoMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -107041,6 +109553,40 @@ func (t *BountyIcons) Walk(cb WalkCallback) {
 	cb.Do("HIconNormal", &t.HIconNormal)
 	cb.Do("HIconDisabled", &t.HIconDisabled)
 	cb.Do("HNotificationIcon", &t.HNotificationIcon)
+}
+
+type Type_e4c1af3e struct {
+	// Inherits GameBalanceTable
+	// Inherits PolymorphicBase
+	DwType   DT_UINT
+	DwPad    DT_UINT
+	TEntries DT_VARIABLEARRAY[*Type_e1bdd3f7]
+}
+
+func (t *Type_e4c1af3e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+12, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.TEntries, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_e4c1af3e) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("TEntries", &t.TEntries)
 }
 
 type StringTableEntry struct {
@@ -107277,14 +109823,14 @@ func (t *CustomizationData) Walk(cb WalkCallback) {
 	cb.Do("SnoMarkingColor", &t.SnoMarkingColor)
 }
 
-type Type_e5e3d6d6 struct {
+type dmFloat4Mirror struct {
 	X DT_FLOAT
 	Y DT_FLOAT
 	Z DT_FLOAT
 	W DT_FLOAT
 }
 
-func (t *Type_e5e3d6d6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmFloat4Mirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -107307,7 +109853,7 @@ func (t *Type_e5e3d6d6) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_e5e3d6d6) Walk(cb WalkCallback) {
+func (t *dmFloat4Mirror) Walk(cb WalkCallback) {
 	cb.Do("X", &t.X)
 	cb.Do("Y", &t.Y)
 	cb.Do("Z", &t.Z)
@@ -107488,7 +110034,7 @@ type UIActorTagStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 }
 
@@ -107598,6 +110144,8 @@ type SpawnerGizmoInstanceData struct {
 	SnoTreasureClassOverride        DT_SNO
 	ArActorGroups                   DT_VARIABLEARRAY[*DT_GBID]
 	ArPrefabScopedActorGroups       DT_VARIABLEARRAY[*DT_GBID]
+	Unk_32f4537                     DT_VARIABLEARRAY[*Type_c8fd413e]
+	Unk_5ba0830                     DT_INT
 	Unk_6232e63                     DT_RANGE[*DT_FLOAT]
 	TSpawnTimeRange                 DT_RANGE[*DT_FLOAT]
 	TSpawnQuantityRange             DT_RANGE[*DT_INT]
@@ -107681,76 +110229,82 @@ func (t *SpawnerGizmoInstanceData) UnmarshalD4(r *bin.BinaryReader, o *Options) 
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+96, &t.Unk_6232e63, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+96, &t.Unk_32f4537, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+104, &t.TSpawnTimeRange, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+112, &t.Unk_5ba0830, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+112, &t.TSpawnQuantityRange, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+116, &t.Unk_6232e63, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.FlSpawnStayOpenTime, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+124, &t.TSpawnTimeRange, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+124, &t.FlDelayBeforeDeath, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+132, &t.TSpawnQuantityRange, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.FSpawnTimeIsADelay, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+140, &t.FlSpawnStayOpenTime, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+132, &t.NSpawnMaxCount, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+144, &t.FlDelayBeforeDeath, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+136, &t.NSpawnMaxGenerated, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+148, &t.FSpawnTimeIsADelay, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+140, &t.SnoSpawnCondition, r, &Options{
+	if err := UnmarshalAt(p+152, &t.NSpawnMaxCount, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+156, &t.NSpawnMaxGenerated, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+160, &t.SnoSpawnCondition, r, &Options{
 		Flags: 1,
 		Group: 51,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+144, &t.Unk_b123ad6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+164, &t.Unk_b123ad6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+148, &t.Unk_b694fec, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+168, &t.Unk_b694fec, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+152, &t.FDontPerturb, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+172, &t.FDontPerturb, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+156, &t.FUseLinkedMarkersForLocation, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+176, &t.FUseLinkedMarkersForLocation, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+160, &t.Unk_915258d, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+180, &t.Unk_915258d, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+164, &t.Unk_b043709, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+184, &t.Unk_b043709, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+168, &t.TOffsetRadius, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+188, &t.TOffsetRadius, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+176, &t.EFacingType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+196, &t.EFacingType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+180, &t.FlSpecificFacing, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+200, &t.FlSpecificFacing, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+184, &t.Unk_c9a925d, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+204, &t.Unk_c9a925d, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+188, &t.Unk_3d07f2f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+208, &t.Unk_3d07f2f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+196, &t.FSpawnedMonstersGiveLoot, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+216, &t.FSpawnedMonstersGiveLoot, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+200, &t.FSpawnedMonstersGiveXP, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+220, &t.FSpawnedMonstersGiveXP, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+208, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+224, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -107768,6 +110322,8 @@ func (t *SpawnerGizmoInstanceData) Walk(cb WalkCallback) {
 	cb.Do("SnoTreasureClassOverride", &t.SnoTreasureClassOverride)
 	cb.Do("ArActorGroups", &t.ArActorGroups)
 	cb.Do("ArPrefabScopedActorGroups", &t.ArPrefabScopedActorGroups)
+	cb.Do("Unk_32f4537", &t.Unk_32f4537)
+	cb.Do("Unk_5ba0830", &t.Unk_5ba0830)
 	cb.Do("Unk_6232e63", &t.Unk_6232e63)
 	cb.Do("TSpawnTimeRange", &t.TSpawnTimeRange)
 	cb.Do("TSpawnQuantityRange", &t.TSpawnQuantityRange)
@@ -108061,8 +110617,8 @@ type CollisionHeightField struct {
 	Transform            PRTransform
 	FWater               DT_INT
 	FLandscape           DT_INT
-	Unk_81eccce          Type_18e49fff
-	Unk_4e7e318          DT_VARIABLEARRAY[*Type_8aef87e7]
+	Unk_81eccce          dmHeightDataMirror
+	Unk_4e7e318          DT_VARIABLEARRAY[*dmHeightSampleMirror]
 	PtWaterFlowDirection DT_VARIABLEARRAY[*DT_VECTOR2D]
 }
 
@@ -108291,17 +110847,17 @@ func (t *Type_e6b22340) Walk(cb WalkCallback) {
 }
 
 type MarkerFolder struct {
-	Unk_c5f0201 DT_INT
-	NID         DT_INT
-	EType       DT_ENUM
-	SnoPrefab   DT_SNO
-	Unk_5393220 DT_INT
-	SzName      DT_CSTRING[*DT_BYTE]
-	Unk_c7bd9ba DT_INT
-	Unk_5310d2c DT_INT
-	FIsSpawned  DT_INT
-	Unk_cd2d0c6 DT_INT
-	Unk_75f54c9 DT_INT
+	Unk_c5f0201   DT_INT
+	NID           DT_INT
+	EType         DT_ENUM
+	SnoPrefab     DT_SNO
+	Unk_5393220   DT_INT
+	SzName        DT_CSTRING[*DT_BYTE]
+	Unk_c7bd9ba   DT_INT
+	Unk_5310d2c   DT_INT
+	FIsSpawned    DT_INT
+	Unk_cd2d0c6   DT_INT
+	FIsCustomized DT_INT
 }
 
 func (t *MarkerFolder) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -108342,7 +110898,7 @@ func (t *MarkerFolder) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+52, &t.Unk_cd2d0c6, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+56, &t.Unk_75f54c9, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+56, &t.FIsCustomized, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+64, io.SeekStart); err != nil {
@@ -108362,7 +110918,7 @@ func (t *MarkerFolder) Walk(cb WalkCallback) {
 	cb.Do("Unk_5310d2c", &t.Unk_5310d2c)
 	cb.Do("FIsSpawned", &t.FIsSpawned)
 	cb.Do("Unk_cd2d0c6", &t.Unk_cd2d0c6)
-	cb.Do("Unk_75f54c9", &t.Unk_75f54c9)
+	cb.Do("FIsCustomized", &t.FIsCustomized)
 }
 
 type PowerFormulaTableEntry_Table struct {
@@ -108559,7 +111115,7 @@ func (t *Type_e730cffb) Walk(cb WalkCallback) {
 	cb.Do("Unk_49f6f23", &t.Unk_49f6f23)
 }
 
-type Type_e741cdb2 struct {
+type dmInputTriangleMirror struct {
 	I1            DT_INT
 	I2            DT_INT
 	I3            DT_INT
@@ -108568,7 +111124,7 @@ type Type_e741cdb2 struct {
 	DwIncludeMask DT_WORD
 }
 
-func (t *Type_e741cdb2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmInputTriangleMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -108597,7 +111153,7 @@ func (t *Type_e741cdb2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_e741cdb2) Walk(cb WalkCallback) {
+func (t *dmInputTriangleMirror) Walk(cb WalkCallback) {
 	cb.Do("I1", &t.I1)
 	cb.Do("I2", &t.I2)
 	cb.Do("I3", &t.I3)
@@ -108803,7 +111359,7 @@ type TriggerEventCameraFollowSpline struct {
 	TConditions         TriggerConditions
 	FGenerated          DT_INT
 	Unk_6cba752         DT_INT
-	Unk_e560b0b         DT_UINT
+	DwParentActorID     DT_UINT
 	TDuration           DT_FLOAT
 	DwTriggerFlags      DT_UINT
 	DwTriggerFlagsEx    DT_UINT
@@ -108823,7 +111379,7 @@ type TriggerEventCameraFollowSpline struct {
 	Unk_71c05df         DT_INT
 	Unk_325b1ab         DT_INT
 	EEasing             DT_ENUM
-	TEasingWeight       Type_f619930a
+	TEasingWeight       SplineEasingWeight
 	Unk_802b7b          DT_INT
 	Unk_e27112b         DT_SNO
 	EOrientationMode    DT_ENUM
@@ -108859,7 +111415,7 @@ func (t *TriggerEventCameraFollowSpline) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -108984,7 +111540,7 @@ func (t *TriggerEventCameraFollowSpline) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -109308,7 +111864,7 @@ func (t *ShaderOverride) Walk(cb WalkCallback) {
 	cb.Do("SnoPowerCenters", &t.SnoPowerCenters)
 }
 
-type Type_e81e59e2 struct {
+type dmPolytopeDataMirror struct {
 	M_aVertices     DT_INT64
 	M_aPlanes       DT_INT64
 	M_aSubEdges     DT_INT64
@@ -109321,7 +111877,7 @@ type Type_e81e59e2 struct {
 	M_area          DT_FLOAT
 }
 
-func (t *Type_e81e59e2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmPolytopeDataMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -109362,7 +111918,7 @@ func (t *Type_e81e59e2) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_e81e59e2) Walk(cb WalkCallback) {
+func (t *dmPolytopeDataMirror) Walk(cb WalkCallback) {
 	cb.Do("M_aVertices", &t.M_aVertices)
 	cb.Do("M_aPlanes", &t.M_aPlanes)
 	cb.Do("M_aSubEdges", &t.M_aSubEdges)
@@ -109375,11 +111931,11 @@ func (t *Type_e81e59e2) Walk(cb WalkCallback) {
 	cb.Do("M_area", &t.M_area)
 }
 
-type Type_e83323fe struct {
+type DRLGEventDebugInfo struct {
 	SzEventName DT_CHARARRAY
 }
 
-func (t *Type_e83323fe) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *DRLGEventDebugInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -109396,7 +111952,7 @@ func (t *Type_e83323fe) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_e83323fe) Walk(cb WalkCallback) {
+func (t *DRLGEventDebugInfo) Walk(cb WalkCallback) {
 	cb.Do("SzEventName", &t.SzEventName)
 }
 
@@ -109608,12 +112164,12 @@ func (t *UIMinimapFoWStyle) Walk(cb WalkCallback) {
 	cb.Do("Unk_b4f614c", &t.Unk_b4f614c)
 }
 
-type Type_e87d70c1 struct {
+type SpawnLocOverrideData struct {
 	Unk_1afeee0 DT_GBID
 	Unk_2a1fbb4 DT_SNO
 }
 
-func (t *Type_e87d70c1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SpawnLocOverrideData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -109636,7 +112192,7 @@ func (t *Type_e87d70c1) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_e87d70c1) Walk(cb WalkCallback) {
+func (t *SpawnLocOverrideData) Walk(cb WalkCallback) {
 	cb.Do("Unk_1afeee0", &t.Unk_1afeee0)
 	cb.Do("Unk_2a1fbb4", &t.Unk_2a1fbb4)
 }
@@ -109649,7 +112205,7 @@ type TriggerEventSetWeaponSheathedDuration struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -109679,7 +112235,7 @@ func (t *TriggerEventSetWeaponSheathedDuration) UnmarshalD4(r *bin.BinaryReader,
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -109723,7 +112279,7 @@ func (t *TriggerEventSetWeaponSheathedDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -109737,14 +112293,14 @@ func (t *TriggerEventSetWeaponSheathedDuration) Walk(cb WalkCallback) {
 }
 
 type ConversationTypeSounds struct {
-	SnoGlobalChatterSound   DT_SNO
-	SnoPersonalChatterSound DT_SNO
-	SnoLocalChatterSound    DT_SNO
-	Unk_2fec1de             DT_SNO
-	Unk_c2ef7ca             DT_SNO
-	Unk_c5ab5e8             DT_SNO
-	Unk_5e34eb9             DT_SNO
-	SnoEmoteSound           DT_SNO
+	SnoGlobalChatterSound    DT_SNO
+	SnoPersonalChatterSound  DT_SNO
+	SnoLocalChatterSound     DT_SNO
+	Unk_2fec1de              DT_SNO
+	Unk_c2ef7ca              DT_SNO
+	SnoDisembodiedVoiceSound DT_SNO
+	Unk_5e34eb9              DT_SNO
+	SnoEmoteSound            DT_SNO
 }
 
 func (t *ConversationTypeSounds) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -109782,7 +112338,7 @@ func (t *ConversationTypeSounds) UnmarshalD4(r *bin.BinaryReader, o *Options) er
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+20, &t.Unk_c5ab5e8, r, &Options{
+	if err := UnmarshalAt(p+20, &t.SnoDisembodiedVoiceSound, r, &Options{
 		Flags: 1,
 		Group: 40,
 	}); err != nil {
@@ -109812,7 +112368,7 @@ func (t *ConversationTypeSounds) Walk(cb WalkCallback) {
 	cb.Do("SnoLocalChatterSound", &t.SnoLocalChatterSound)
 	cb.Do("Unk_2fec1de", &t.Unk_2fec1de)
 	cb.Do("Unk_c2ef7ca", &t.Unk_c2ef7ca)
-	cb.Do("Unk_c5ab5e8", &t.Unk_c5ab5e8)
+	cb.Do("SnoDisembodiedVoiceSound", &t.SnoDisembodiedVoiceSound)
 	cb.Do("Unk_5e34eb9", &t.Unk_5e34eb9)
 	cb.Do("SnoEmoteSound", &t.SnoEmoteSound)
 }
@@ -109861,7 +112417,7 @@ type UITreeFolderStyle struct {
 	TFont                     UIControlFont
 	Unk_4741819               DT_TAGMAP[*DT_ENUM]
 	TIcon                     UIControlIcon
-	TClickSounds              Type_98c23c41
+	TClickSounds              UIControlClickSounds
 	Unk_10f81f0               DT_TAGMAP[*DT_ENUM]
 	Unk_b6fa340               DT_TAGMAP[*DT_ENUM]
 }
@@ -110026,6 +112582,45 @@ func (t *QuitGameMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("EReason", &t.EReason)
 	cb.Do("DwLastHeartbeat", &t.DwLastHeartbeat)
+}
+
+type Type_e922358c struct {
+	// Inherits PowerConditionBase
+	// Inherits PolymorphicBase
+	DwType      DT_UINT
+	BInverse    DT_INT
+	DwPad       DT_UINT
+	Unk_1054c5e DT_ENUM
+}
+
+func (t *Type_e922358c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.DwType, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+16, &t.BInverse, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_1054c5e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_e922358c) Walk(cb WalkCallback) {
+	cb.Do("DwType", &t.DwType)
+	cb.Do("BInverse", &t.BInverse)
+	cb.Do("DwPad", &t.DwPad)
+	cb.Do("Unk_1054c5e", &t.Unk_1054c5e)
 }
 
 type EffectGroupActorMovementTrack struct {
@@ -110332,7 +112927,7 @@ type TriggerEventObjectFollowSpline struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -110353,7 +112948,7 @@ type TriggerEventObjectFollowSpline struct {
 	Unk_71c05df      DT_INT
 	Unk_325b1ab      DT_INT
 	EEasing          DT_ENUM
-	TEasingWeight    Type_f619930a
+	TEasingWeight    SplineEasingWeight
 	EOrientationMode DT_ENUM
 	TransformOffset  PRTransform
 	Unk_daebe18      DT_ENUM
@@ -110384,7 +112979,7 @@ func (t *TriggerEventObjectFollowSpline) UnmarshalD4(r *bin.BinaryReader, o *Opt
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -110494,7 +113089,7 @@ func (t *TriggerEventObjectFollowSpline) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -110619,14 +113214,14 @@ func (t *RestrictedComponent) Walk(cb WalkCallback) {
 	cb.Do("PtValidComponents", &t.PtValidComponents)
 }
 
-type Type_eabc2b2b struct {
+type dmSubEdgeMirror struct {
 	TwinOffset DT_BYTE
 	Tail       DT_BYTE
 	Left       DT_BYTE
 	Next       DT_BYTE
 }
 
-func (t *Type_eabc2b2b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmSubEdgeMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -110649,7 +113244,7 @@ func (t *Type_eabc2b2b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_eabc2b2b) Walk(cb WalkCallback) {
+func (t *dmSubEdgeMirror) Walk(cb WalkCallback) {
 	cb.Do("TwinOffset", &t.TwinOffset)
 	cb.Do("Tail", &t.Tail)
 	cb.Do("Left", &t.Left)
@@ -110836,7 +113431,7 @@ func (t *ServerLogMessage) Walk(cb WalkCallback) {
 }
 
 type GenericBlobRequestMessage struct {
-	THeader   Type_72bd65f8
+	THeader   RequiredRequestMessageHeader
 	UBlobSize DT_WORD
 }
 
@@ -110957,12 +113552,12 @@ func (t *Type_eb8eea32) Walk(cb WalkCallback) {
 	cb.Do("EOptionalRarity", &t.EOptionalRarity)
 }
 
-type Type_eb98da06 struct {
+type MaterialScalarValuesUsed struct {
 	SnoMaterialValue DT_SNO
 	FlDefaultValue   DT_FLOAT
 }
 
-func (t *Type_eb98da06) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *MaterialScalarValuesUsed) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -110982,7 +113577,7 @@ func (t *Type_eb98da06) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_eb98da06) Walk(cb WalkCallback) {
+func (t *MaterialScalarValuesUsed) Walk(cb WalkCallback) {
 	cb.Do("SnoMaterialValue", &t.SnoMaterialValue)
 	cb.Do("FlDefaultValue", &t.FlDefaultValue)
 }
@@ -111313,11 +113908,11 @@ func (t *Type_ec9d1911) Walk(cb WalkCallback) {
 }
 
 type GeoChunk struct {
-	AabbBounds  AABB
-	PtLODs      DT_VARIABLEARRAY[*GeoSet]
-	Unk_4137988 DT_VARIABLEARRAY[*GeoChunkVertexBuffer]
-	Unk_457dee2 DT_VARIABLEARRAY[*GeoChunkIndexBuffer]
-	Unk_8c8b576 DT_VARIABLEARRAY[*DT_FLOAT]
+	AabbBounds           AABB
+	PtLODs               DT_VARIABLEARRAY[*GeoSet]
+	PtChunkVertexBuffers DT_VARIABLEARRAY[*GeoChunkVertexBuffer]
+	PtChunkIndexBuffers  DT_VARIABLEARRAY[*GeoChunkIndexBuffer]
+	Unk_8c8b576          DT_VARIABLEARRAY[*DT_FLOAT]
 }
 
 func (t *GeoChunk) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -111331,10 +113926,10 @@ func (t *GeoChunk) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+24, &t.PtLODs, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+40, &t.Unk_4137988, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+40, &t.PtChunkVertexBuffers, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+56, &t.Unk_457dee2, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+56, &t.PtChunkIndexBuffers, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+72, &t.Unk_8c8b576, r, &Options{}); err != nil {
@@ -111349,8 +113944,8 @@ func (t *GeoChunk) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *GeoChunk) Walk(cb WalkCallback) {
 	cb.Do("AabbBounds", &t.AabbBounds)
 	cb.Do("PtLODs", &t.PtLODs)
-	cb.Do("Unk_4137988", &t.Unk_4137988)
-	cb.Do("Unk_457dee2", &t.Unk_457dee2)
+	cb.Do("PtChunkVertexBuffers", &t.PtChunkVertexBuffers)
+	cb.Do("PtChunkIndexBuffers", &t.PtChunkIndexBuffers)
 	cb.Do("Unk_8c8b576", &t.Unk_8c8b576)
 }
 
@@ -111552,15 +114147,21 @@ type GlobalPortalData struct {
 	Unk_17b3d69        PortalInfo
 	Unk_40a7880        PortalInfo
 	Unk_5b9ef28        PortalInfo
-	Unk_70c33          PortalInfo
-	Unk_aab21d0        PortalInfo
 	TDefaultPortalInfo PortalInfo
+	Unk_1b0f21b        PortalInfo
+	Unk_10d5c7e        DT_SNO
+	Unk_e9f1d74        DT_SNO
 	Unk_5d1c931        DT_FIXEDARRAY[*StaticLoadingImages]
+	Unk_2c9374e        DT_FIXEDARRAY[*Type_dcddca9e]
+	Unk_834e1aa        DT_INT
+	Unk_c169c8f        DT_FIXEDARRAY[*Type_dcddca9e]
 	ArPortalTypes      DT_VARIABLEARRAY[*DynamicPortalInfo]
 	DwTownPortalType   DT_UINT
 	Unk_f3c5748        DT_UINT
 	Unk_2b9b577        DT_UINT
 	Unk_706c5c5        DT_UINT
+	Unk_dbc4b77        DT_INT
+	Unk_dfb0a77        DT_INT
 }
 
 func (t *GlobalPortalData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -111586,37 +114187,67 @@ func (t *GlobalPortalData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+664, &t.Unk_5b9ef28, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+880, &t.Unk_70c33, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+880, &t.TDefaultPortalInfo, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1096, &t.Unk_aab21d0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1096, &t.Unk_1b0f21b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1312, &t.TDefaultPortalInfo, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1312, &t.Unk_10d5c7e, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1528, &t.Unk_5d1c931, r, &Options{
+	if err := UnmarshalAt(p+1316, &t.Unk_e9f1d74, r, &Options{
+		Flags: 1,
+		Group: 14,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1320, &t.Unk_5d1c931, r, &Options{
 		ArrayLength: 8,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1784, &t.ArPortalTypes, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1576, &t.Unk_2c9374e, r, &Options{
+		ArrayLength: 5,
+		Flags:       1,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1800, &t.DwTownPortalType, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2276, &t.Unk_834e1aa, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1804, &t.Unk_f3c5748, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2280, &t.Unk_c169c8f, r, &Options{
+		ArrayLength: 3,
+		Flags:       1,
+	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1808, &t.Unk_2b9b577, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2704, &t.ArPortalTypes, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1812, &t.Unk_706c5c5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2720, &t.DwTownPortalType, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+1816, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+2724, &t.Unk_f3c5748, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+2728, &t.Unk_2b9b577, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+2732, &t.Unk_706c5c5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+2736, &t.Unk_dbc4b77, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+2740, &t.Unk_dfb0a77, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+2744, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -111629,15 +114260,21 @@ func (t *GlobalPortalData) Walk(cb WalkCallback) {
 	cb.Do("Unk_17b3d69", &t.Unk_17b3d69)
 	cb.Do("Unk_40a7880", &t.Unk_40a7880)
 	cb.Do("Unk_5b9ef28", &t.Unk_5b9ef28)
-	cb.Do("Unk_70c33", &t.Unk_70c33)
-	cb.Do("Unk_aab21d0", &t.Unk_aab21d0)
 	cb.Do("TDefaultPortalInfo", &t.TDefaultPortalInfo)
+	cb.Do("Unk_1b0f21b", &t.Unk_1b0f21b)
+	cb.Do("Unk_10d5c7e", &t.Unk_10d5c7e)
+	cb.Do("Unk_e9f1d74", &t.Unk_e9f1d74)
 	cb.Do("Unk_5d1c931", &t.Unk_5d1c931)
+	cb.Do("Unk_2c9374e", &t.Unk_2c9374e)
+	cb.Do("Unk_834e1aa", &t.Unk_834e1aa)
+	cb.Do("Unk_c169c8f", &t.Unk_c169c8f)
 	cb.Do("ArPortalTypes", &t.ArPortalTypes)
 	cb.Do("DwTownPortalType", &t.DwTownPortalType)
 	cb.Do("Unk_f3c5748", &t.Unk_f3c5748)
 	cb.Do("Unk_2b9b577", &t.Unk_2b9b577)
 	cb.Do("Unk_706c5c5", &t.Unk_706c5c5)
+	cb.Do("Unk_dbc4b77", &t.Unk_dbc4b77)
+	cb.Do("Unk_dfb0a77", &t.Unk_dfb0a77)
 }
 
 type InventoryStackTransferMessage struct {
@@ -111822,7 +114459,7 @@ type BannerTextileTexture struct {
 	SnoNormal    DT_SNO
 	SnoAlbedo    DT_SNO
 	SnoRoughness DT_SNO
-	HIcon        Type_6b1c5d9c
+	HIcon        UIImageHandleReference
 }
 
 func (t *BannerTextileTexture) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -112350,18 +114987,18 @@ func (t *SkillTagStruct) Walk(cb WalkCallback) {
 	cb.Do("BSearchOnly", &t.BSearchOnly)
 }
 
-type Type_eec814dc struct {
+type TriggerEventRestoreTimeOfDay struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
-func (t *Type_eec814dc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TriggerEventRestoreTimeOfDay) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -112381,7 +115018,7 @@ func (t *Type_eec814dc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -112390,21 +115027,21 @@ func (t *Type_eec814dc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_eec814dc) Walk(cb WalkCallback) {
+func (t *TriggerEventRestoreTimeOfDay) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
-type Type_ef0eb7cf struct {
-	PtVertices  DT_VARIABLEARRAY[*Type_e5e3d6d6]
-	PtTriangles DT_VARIABLEARRAY[*Type_e741cdb2]
+type TempCollisionMesh struct {
+	PtVertices  DT_VARIABLEARRAY[*dmFloat4Mirror]
+	PtTriangles DT_VARIABLEARRAY[*dmInputTriangleMirror]
 }
 
-func (t *Type_ef0eb7cf) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TempCollisionMesh) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -112421,7 +115058,7 @@ func (t *Type_ef0eb7cf) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ef0eb7cf) Walk(cb WalkCallback) {
+func (t *TempCollisionMesh) Walk(cb WalkCallback) {
 	cb.Do("PtVertices", &t.PtVertices)
 	cb.Do("PtTriangles", &t.PtTriangles)
 }
@@ -112523,12 +115160,12 @@ func (t *ExplosionDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_c5b3851", &t.Unk_c5b3851)
 }
 
-type Type_ef480d59 struct {
+type GameTestingProfilingStarted struct {
 	THeader     RequiredMessageHeader
 	SampleIndex DT_INT
 }
 
-func (t *Type_ef480d59) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *GameTestingProfilingStarted) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -112545,7 +115182,7 @@ func (t *Type_ef480d59) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_ef480d59) Walk(cb WalkCallback) {
+func (t *GameTestingProfilingStarted) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 	cb.Do("SampleIndex", &t.SampleIndex)
 }
@@ -112590,6 +115227,47 @@ func (t *MarkerLevelAreaVolumeData) Walk(cb WalkCallback) {
 	cb.Do("DwPad", &t.DwPad)
 	cb.Do("Unk_97fcdff", &t.Unk_97fcdff)
 	cb.Do("SnoLevelArea", &t.SnoLevelArea)
+}
+
+type Type_ef933d53 struct {
+	Unk_e61966d DT_GBID
+	Unk_c80f300 DT_VARIABLEARRAY[*DT_GBID]
+	Unk_215b063 DT_GBID
+}
+
+func (t *Type_ef933d53) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	p, err := r.Pos()
+	if err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+0, &t.Unk_e61966d, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+8, &t.Unk_c80f300, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+24, &t.Unk_215b063, r, &Options{
+		Flags: 1,
+		Group: 66,
+	}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Type_ef933d53) Walk(cb WalkCallback) {
+	cb.Do("Unk_e61966d", &t.Unk_e61966d)
+	cb.Do("Unk_c80f300", &t.Unk_c80f300)
+	cb.Do("Unk_215b063", &t.Unk_215b063)
 }
 
 type VectorFieldDefinition struct {
@@ -112666,9 +115344,9 @@ type Type_f013302b struct {
 	NButtonPressVertical    DT_INT
 	SnoRightClickSound      DT_SNO
 	SnoMiddleClickSound     DT_SNO
-	Unk_b63d29b             Type_6b1c5d9c
-	Unk_d75128c             Type_6b1c5d9c
-	Unk_daefcaa             Type_6b1c5d9c
+	HImageFrameMouseOver    UIImageHandleReference
+	HImageFramePressed      UIImageHandleReference
+	HImageFrameDisable      UIImageHandleReference
 	Unk_1844a00             DT_SNO
 	Unk_c43c17c             DT_SNO
 	Unk_219d52d             DT_SNO
@@ -112759,13 +115437,13 @@ func (t *Type_f013302b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+224, &t.Unk_b63d29b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+224, &t.HImageFrameMouseOver, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+228, &t.Unk_d75128c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+228, &t.HImageFramePressed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+232, &t.Unk_daefcaa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+232, &t.HImageFrameDisable, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+236, &t.Unk_1844a00, r, &Options{
@@ -112841,9 +115519,9 @@ func (t *Type_f013302b) Walk(cb WalkCallback) {
 	cb.Do("NButtonPressVertical", &t.NButtonPressVertical)
 	cb.Do("SnoRightClickSound", &t.SnoRightClickSound)
 	cb.Do("SnoMiddleClickSound", &t.SnoMiddleClickSound)
-	cb.Do("Unk_b63d29b", &t.Unk_b63d29b)
-	cb.Do("Unk_d75128c", &t.Unk_d75128c)
-	cb.Do("Unk_daefcaa", &t.Unk_daefcaa)
+	cb.Do("HImageFrameMouseOver", &t.HImageFrameMouseOver)
+	cb.Do("HImageFramePressed", &t.HImageFramePressed)
+	cb.Do("HImageFrameDisable", &t.HImageFrameDisable)
 	cb.Do("Unk_1844a00", &t.Unk_1844a00)
 	cb.Do("Unk_c43c17c", &t.Unk_c43c17c)
 	cb.Do("Unk_219d52d", &t.Unk_219d52d)
@@ -112892,13 +115570,13 @@ func (t *EffectGroupPositionXKeyData) Walk(cb WalkCallback) {
 }
 
 type AttachActorToActorMessage struct {
-	THeader               RequiredMessageHeader
-	AnnMain               DT_ACD_NETWORK_NAME
-	AnnAttachment         DT_ACD_NETWORK_NAME
-	DwHardPointMain       DT_UINT
-	DwHardPointAttachment DT_UINT
-	QRot                  DT_OPTIONAL[*bcQuat]
-	Unk_9afdd21           DT_OPTIONAL[*DT_INT]
+	THeader                 RequiredMessageHeader
+	AnnMain                 DT_ACD_NETWORK_NAME
+	AnnAttachment           DT_ACD_NETWORK_NAME
+	DwHardPointMain         DT_UINT
+	DwHardPointAttachment   DT_UINT
+	QRot                    DT_OPTIONAL[*bcQuat]
+	FImportHardpointRetreat DT_OPTIONAL[*DT_INT]
 }
 
 func (t *AttachActorToActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -112924,7 +115602,7 @@ func (t *AttachActorToActorMessage) UnmarshalD4(r *bin.BinaryReader, o *Options)
 	if err := UnmarshalAt(p+40, &t.QRot, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+60, &t.Unk_9afdd21, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+60, &t.FImportHardpointRetreat, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+68, io.SeekStart); err != nil {
@@ -112940,7 +115618,7 @@ func (t *AttachActorToActorMessage) Walk(cb WalkCallback) {
 	cb.Do("DwHardPointMain", &t.DwHardPointMain)
 	cb.Do("DwHardPointAttachment", &t.DwHardPointAttachment)
 	cb.Do("QRot", &t.QRot)
-	cb.Do("Unk_9afdd21", &t.Unk_9afdd21)
+	cb.Do("FImportHardpointRetreat", &t.FImportHardpointRetreat)
 }
 
 type ActorBrainData struct {
@@ -113349,10 +116027,10 @@ func (t *AppearanceMaterial) Walk(cb WalkCallback) {
 type ScriptEventParamPrefabScopedActorGroup struct {
 	// Inherits ScriptEventParamBase
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	EParamType  DT_ENUM
-	DwPad       DT_UINT
-	Unk_5b5276a DT_GBID
+	DwType                     DT_UINT
+	EParamType                 DT_ENUM
+	DwPad                      DT_UINT
+	GbidPrefabScopedActorGroup DT_GBID
 }
 
 func (t *ScriptEventParamPrefabScopedActorGroup) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -113369,7 +116047,7 @@ func (t *ScriptEventParamPrefabScopedActorGroup) UnmarshalD4(r *bin.BinaryReader
 	if err := UnmarshalAt(p+20, &t.DwPad, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+24, &t.Unk_5b5276a, r, &Options{
+	if err := UnmarshalAt(p+24, &t.GbidPrefabScopedActorGroup, r, &Options{
 		Flags: 1,
 		Group: 51,
 	}); err != nil {
@@ -113385,7 +116063,7 @@ func (t *ScriptEventParamPrefabScopedActorGroup) Walk(cb WalkCallback) {
 	cb.Do("DwType", &t.DwType)
 	cb.Do("EParamType", &t.EParamType)
 	cb.Do("DwPad", &t.DwPad)
-	cb.Do("Unk_5b5276a", &t.Unk_5b5276a)
+	cb.Do("GbidPrefabScopedActorGroup", &t.GbidPrefabScopedActorGroup)
 }
 
 type Type_f0f63f3d struct {
@@ -113518,7 +116196,7 @@ func (t *Type_f1ddf15d) Walk(cb WalkCallback) {
 
 type GameSyncedDebugDataMessage struct {
 	THeader     RequiredMessageHeader
-	Unk_b6d083b Type_7e0a5501
+	Unk_b6d083b GameSyncedDebugData
 }
 
 func (t *GameSyncedDebugDataMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -113543,13 +116221,13 @@ func (t *GameSyncedDebugDataMessage) Walk(cb WalkCallback) {
 	cb.Do("Unk_b6d083b", &t.Unk_b6d083b)
 }
 
-type Type_f1fed2b7 struct {
+type dmFrameMirror struct {
 	Q DT_VECTOR4D
 	P DT_VECTOR4D
 	S DT_VECTOR4D
 }
 
-func (t *Type_f1fed2b7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmFrameMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -113569,25 +116247,25 @@ func (t *Type_f1fed2b7) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_f1fed2b7) Walk(cb WalkCallback) {
+func (t *dmFrameMirror) Walk(cb WalkCallback) {
 	cb.Do("Q", &t.Q)
 	cb.Do("P", &t.P)
 	cb.Do("S", &t.S)
 }
 
 type LookAtBone struct {
-	Unk_e1f84a7  HardpointLink
-	AYawMin      DT_FLOAT
-	AYawMax      DT_FLOAT
-	Unk_5559079  DT_RANGE[*DT_FLOAT]
-	APitchMin    DT_FLOAT
-	APitchMax    DT_FLOAT
-	Unk_5d19a0   DT_RANGE[*DT_FLOAT]
-	APitchOffset DT_FLOAT
-	ASpeed       DT_FLOAT
-	BYawOnly     DT_INT
-	Unk_e560406  DT_INT
-	FlDelay      DT_FLOAT
+	Unk_e1f84a7         HardpointLink
+	AYawMin             DT_FLOAT
+	AYawMax             DT_FLOAT
+	Unk_5559079         DT_RANGE[*DT_FLOAT]
+	APitchMin           DT_FLOAT
+	APitchMax           DT_FLOAT
+	Unk_5d19a0          DT_RANGE[*DT_FLOAT]
+	APitchOffset        DT_FLOAT
+	ASpeed              DT_FLOAT
+	BYawOnly            DT_INT
+	BDynamicPitchOffset DT_INT
+	FlDelay             DT_FLOAT
 }
 
 func (t *LookAtBone) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -113625,7 +116303,7 @@ func (t *LookAtBone) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+48, &t.BYawOnly, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+52, &t.Unk_e560406, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+52, &t.BDynamicPitchOffset, r, &Options{Flags: 17}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+56, &t.FlDelay, r, &Options{Flags: 1}); err != nil {
@@ -113648,7 +116326,7 @@ func (t *LookAtBone) Walk(cb WalkCallback) {
 	cb.Do("APitchOffset", &t.APitchOffset)
 	cb.Do("ASpeed", &t.ASpeed)
 	cb.Do("BYawOnly", &t.BYawOnly)
-	cb.Do("Unk_e560406", &t.Unk_e560406)
+	cb.Do("BDynamicPitchOffset", &t.BDynamicPitchOffset)
 	cb.Do("FlDelay", &t.FlDelay)
 }
 
@@ -113845,9 +116523,9 @@ func (t *StopConvLineMessage) Walk(cb WalkCallback) {
 }
 
 type Type_f2e060ba struct {
-	Unk_bafabd7             Type_6b1c5d9c
-	Unk_7760c7f             Type_6b1c5d9c
-	Unk_75b4c82             Type_6b1c5d9c
+	Unk_bafabd7             UIImageHandleReference
+	HImageFrameSelected     UIImageHandleReference
+	HImageFrameUnselected   UIImageHandleReference
 	SnoTiledStyleMouseOver  DT_SNO
 	SnoTiledStyleSelected   DT_SNO
 	SnoTiledStyleUnselected DT_SNO
@@ -113861,10 +116539,10 @@ func (t *Type_f2e060ba) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.Unk_bafabd7, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+4, &t.Unk_7760c7f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+4, &t.HImageFrameSelected, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+8, &t.Unk_75b4c82, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+8, &t.HImageFrameUnselected, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+12, &t.SnoTiledStyleMouseOver, r, &Options{
@@ -113893,8 +116571,8 @@ func (t *Type_f2e060ba) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *Type_f2e060ba) Walk(cb WalkCallback) {
 	cb.Do("Unk_bafabd7", &t.Unk_bafabd7)
-	cb.Do("Unk_7760c7f", &t.Unk_7760c7f)
-	cb.Do("Unk_75b4c82", &t.Unk_75b4c82)
+	cb.Do("HImageFrameSelected", &t.HImageFrameSelected)
+	cb.Do("HImageFrameUnselected", &t.HImageFrameUnselected)
 	cb.Do("SnoTiledStyleMouseOver", &t.SnoTiledStyleMouseOver)
 	cb.Do("SnoTiledStyleSelected", &t.SnoTiledStyleSelected)
 	cb.Do("SnoTiledStyleUnselected", &t.SnoTiledStyleUnselected)
@@ -113903,6 +116581,7 @@ func (t *Type_f2e060ba) Walk(cb WalkCallback) {
 type ActorDeathData struct {
 	ArDeathEffectGroups DT_FIXEDARRAY[*DT_SNO]
 	SnoPowerDeath       DT_SNO
+	Unk_2a26311         DT_SNO
 	Unk_6f9a204         DT_INT
 }
 
@@ -113924,10 +116603,16 @@ func (t *ActorDeathData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_6f9a204, r, &Options{Flags: 17}); err != nil {
+	if err := UnmarshalAt(p+28, &t.Unk_2a26311, r, &Options{
+		Flags: 1,
+		Group: 29,
+	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
+	if err := UnmarshalAt(p+32, &t.Unk_6f9a204, r, &Options{Flags: 17}); err != nil {
+		return err
+	}
+	if _, err := r.Seek(p+36, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -113936,6 +116621,7 @@ func (t *ActorDeathData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 func (t *ActorDeathData) Walk(cb WalkCallback) {
 	cb.Do("ArDeathEffectGroups", &t.ArDeathEffectGroups)
 	cb.Do("SnoPowerDeath", &t.SnoPowerDeath)
+	cb.Do("Unk_2a26311", &t.Unk_2a26311)
 	cb.Do("Unk_6f9a204", &t.Unk_6f9a204)
 }
 
@@ -113994,7 +116680,7 @@ type TriggerEventPlayConversationLine struct {
 	TConditions          TriggerConditions
 	FGenerated           DT_INT
 	Unk_6cba752          DT_INT
-	Unk_e560b0b          DT_UINT
+	DwParentActorID      DT_UINT
 	TDuration            DT_FLOAT
 	DwTriggerFlags       DT_UINT
 	DwTriggerFlagsEx     DT_UINT
@@ -114025,7 +116711,7 @@ func (t *TriggerEventPlayConversationLine) UnmarshalD4(r *bin.BinaryReader, o *O
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -114072,7 +116758,7 @@ func (t *TriggerEventPlayConversationLine) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -114261,7 +116947,7 @@ type MarkerSetDefinition struct {
 	ArPrefabDataInfo           DT_VARIABLEARRAY[*PrefabDataInfo]
 	PtPrefabDataMap            DT_INT64
 	PtChunks                   DT_VARIABLEARRAY[*MarkerInstanceChunk]
-	Unk_a3613db                DT_VARIABLEARRAY[*Type_9e555889]
+	ArVertexAOOffsets          DT_VARIABLEARRAY[*Type_9e555889]
 	Unk_6458d11                DT_VARIABLEARRAY[*Type_6ee9427a]
 	Unk_2bbd1d                 Type_c8d78ce7
 	ArVertexAO                 DT_VARIABLEARRAY[*DT_BYTE]
@@ -114301,7 +116987,7 @@ func (t *MarkerSetDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	if err := UnmarshalAt(p+64, &t.PtChunks, r, &Options{}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+80, &t.Unk_a3613db, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+80, &t.ArVertexAOOffsets, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+96, &t.Unk_6458d11, r, &Options{}); err != nil {
@@ -114333,7 +117019,7 @@ func (t *MarkerSetDefinition) Walk(cb WalkCallback) {
 	cb.Do("ArPrefabDataInfo", &t.ArPrefabDataInfo)
 	cb.Do("PtPrefabDataMap", &t.PtPrefabDataMap)
 	cb.Do("PtChunks", &t.PtChunks)
-	cb.Do("Unk_a3613db", &t.Unk_a3613db)
+	cb.Do("ArVertexAOOffsets", &t.ArVertexAOOffsets)
 	cb.Do("Unk_6458d11", &t.Unk_6458d11)
 	cb.Do("Unk_2bbd1d", &t.Unk_2bbd1d)
 	cb.Do("ArVertexAO", &t.ArVertexAO)
@@ -114341,11 +117027,11 @@ func (t *MarkerSetDefinition) Walk(cb WalkCallback) {
 	cb.Do("Unk_d0a9662", &t.Unk_d0a9662)
 }
 
-type Type_f4703db9 struct {
+type PrefabCustomizedMarker struct {
 	TMarker Marker
 }
 
-func (t *Type_f4703db9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PrefabCustomizedMarker) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -114353,13 +117039,13 @@ func (t *Type_f4703db9) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.TMarker, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+184, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+192, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Type_f4703db9) Walk(cb WalkCallback) {
+func (t *PrefabCustomizedMarker) Walk(cb WalkCallback) {
 	cb.Do("TMarker", &t.TMarker)
 }
 
@@ -114426,13 +117112,13 @@ func (t *PlayerWarpedMessage) Walk(cb WalkCallback) {
 }
 
 type TryConsoleCommand struct {
-	THeader      RequiredMessageHeader
-	Unk_dce541c  DT_UINT
-	Unk_243faa3  DT_OPTIONAL[*DT_UINT]
-	UsMessage    DT_CHARARRAY
-	TPlaceTarget SharedServerWorldPlace
-	AnnTarget    DT_ACD_NETWORK_NAME
-	DwFlags      DT_UINT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	Unk_243faa3           DT_OPTIONAL[*DT_UINT]
+	UsMessage             DT_CHARARRAY
+	TPlaceTarget          SharedServerWorldPlace
+	AnnTarget             DT_ACD_NETWORK_NAME
+	DwFlags               DT_UINT
 }
 
 func (t *TryConsoleCommand) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -114443,7 +117129,7 @@ func (t *TryConsoleCommand) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.Unk_243faa3, r, &Options{Flags: 1}); err != nil {
@@ -114472,7 +117158,7 @@ func (t *TryConsoleCommand) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 func (t *TryConsoleCommand) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("Unk_243faa3", &t.Unk_243faa3)
 	cb.Do("UsMessage", &t.UsMessage)
 	cb.Do("TPlaceTarget", &t.TPlaceTarget)
@@ -114481,37 +117167,37 @@ func (t *TryConsoleCommand) Walk(cb WalkCallback) {
 }
 
 type Type_f49e9532 struct {
-	BEnabled    DT_INT
-	Unk_f14ffed DT_VECTOR3D
-	Unk_4899292 Type_cbfdd2ea
-	Unk_169823a Type_cbfdd2ea
-	Unk_f052750 DT_FLOAT
-	Unk_beb976c Type_cbfdd2ea
-	Unk_99175b8 Type_cbfdd2ea
-	Unk_b854fe5 Type_cbfdd2ea
-	Unk_d14bc79 DT_FLOAT
-	Unk_f852d87 DT_FLOAT
-	Unk_86d2585 DT_FLOAT
-	Unk_331d48f DT_VECTOR2D
-	Unk_67b3c4a DT_FLOAT
-	Unk_1ecb588 DT_FLOAT
-	Unk_211837d DT_VECTOR2D
-	Unk_95e2b10 Type_cbfdd2ea
-	Unk_b9a067e Type_cbfdd2ea
-	Unk_2f13301 Type_cbfdd2ea
-	Unk_caea994 DT_FLOAT
-	Unk_e4f6034 DT_FLOAT
-	Unk_924ac95 Type_cbfdd2ea
-	Unk_de5453f DT_VECTOR3D
-	Unk_ab0e39e Type_cbfdd2ea
-	Unk_b75acc5 DT_FLOAT
-	Unk_fd448cd DT_FLOAT
-	Unk_35d43ee DT_FLOAT
-	Unk_6b9f105 DT_INT
-	Unk_ddba751 DT_VECTOR3D
-	Unk_48b7873 DT_FLOAT
-	Unk_b74898b DT_SNO
-	Unk_3ce7419 DT_SNO
+	BEnabled               DT_INT
+	Unk_f14ffed            DT_VECTOR3D
+	Unk_4899292            Type_cbfdd2ea
+	Unk_169823a            Type_cbfdd2ea
+	FlCloudIntensity       DT_FLOAT
+	Unk_beb976c            Type_cbfdd2ea
+	Unk_99175b8            Type_cbfdd2ea
+	PathCloudTypeBias      Type_cbfdd2ea
+	Unk_d14bc79            DT_FLOAT
+	Unk_f852d87            DT_FLOAT
+	Unk_86d2585            DT_FLOAT
+	Unk_331d48f            DT_VECTOR2D
+	Unk_67b3c4a            DT_FLOAT
+	Unk_1ecb588            DT_FLOAT
+	Unk_211837d            DT_VECTOR2D
+	Unk_95e2b10            Type_cbfdd2ea
+	Unk_b9a067e            Type_cbfdd2ea
+	Unk_2f13301            Type_cbfdd2ea
+	Unk_caea994            DT_FLOAT
+	Unk_e4f6034            DT_FLOAT
+	PathTurbulenceStrength Type_cbfdd2ea
+	VCloudWind             DT_VECTOR3D
+	Unk_ab0e39e            Type_cbfdd2ea
+	Unk_b75acc5            DT_FLOAT
+	Unk_fd448cd            DT_FLOAT
+	FlCloudStartingHeight  DT_FLOAT
+	Unk_6b9f105            DT_INT
+	Unk_ddba751            DT_VECTOR3D
+	Unk_48b7873            DT_FLOAT
+	Unk_b74898b            DT_SNO
+	Unk_3ce7419            DT_SNO
 }
 
 func (t *Type_f49e9532) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -114531,7 +117217,7 @@ func (t *Type_f49e9532) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_169823a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+128, &t.Unk_f052750, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+128, &t.FlCloudIntensity, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+136, &t.Unk_beb976c, r, &Options{Flags: 1}); err != nil {
@@ -114540,7 +117226,7 @@ func (t *Type_f49e9532) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+192, &t.Unk_99175b8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+248, &t.Unk_b854fe5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+248, &t.PathCloudTypeBias, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+304, &t.Unk_d14bc79, r, &Options{Flags: 1}); err != nil {
@@ -114579,10 +117265,10 @@ func (t *Type_f49e9532) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+516, &t.Unk_e4f6034, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+520, &t.Unk_924ac95, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+520, &t.PathTurbulenceStrength, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+576, &t.Unk_de5453f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+576, &t.VCloudWind, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+592, &t.Unk_ab0e39e, r, &Options{Flags: 1}); err != nil {
@@ -114594,7 +117280,7 @@ func (t *Type_f49e9532) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+652, &t.Unk_fd448cd, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+656, &t.Unk_35d43ee, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+656, &t.FlCloudStartingHeight, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+660, &t.Unk_6b9f105, r, &Options{Flags: 17}); err != nil {
@@ -114629,10 +117315,10 @@ func (t *Type_f49e9532) Walk(cb WalkCallback) {
 	cb.Do("Unk_f14ffed", &t.Unk_f14ffed)
 	cb.Do("Unk_4899292", &t.Unk_4899292)
 	cb.Do("Unk_169823a", &t.Unk_169823a)
-	cb.Do("Unk_f052750", &t.Unk_f052750)
+	cb.Do("FlCloudIntensity", &t.FlCloudIntensity)
 	cb.Do("Unk_beb976c", &t.Unk_beb976c)
 	cb.Do("Unk_99175b8", &t.Unk_99175b8)
-	cb.Do("Unk_b854fe5", &t.Unk_b854fe5)
+	cb.Do("PathCloudTypeBias", &t.PathCloudTypeBias)
 	cb.Do("Unk_d14bc79", &t.Unk_d14bc79)
 	cb.Do("Unk_f852d87", &t.Unk_f852d87)
 	cb.Do("Unk_86d2585", &t.Unk_86d2585)
@@ -114645,12 +117331,12 @@ func (t *Type_f49e9532) Walk(cb WalkCallback) {
 	cb.Do("Unk_2f13301", &t.Unk_2f13301)
 	cb.Do("Unk_caea994", &t.Unk_caea994)
 	cb.Do("Unk_e4f6034", &t.Unk_e4f6034)
-	cb.Do("Unk_924ac95", &t.Unk_924ac95)
-	cb.Do("Unk_de5453f", &t.Unk_de5453f)
+	cb.Do("PathTurbulenceStrength", &t.PathTurbulenceStrength)
+	cb.Do("VCloudWind", &t.VCloudWind)
 	cb.Do("Unk_ab0e39e", &t.Unk_ab0e39e)
 	cb.Do("Unk_b75acc5", &t.Unk_b75acc5)
 	cb.Do("Unk_fd448cd", &t.Unk_fd448cd)
-	cb.Do("Unk_35d43ee", &t.Unk_35d43ee)
+	cb.Do("FlCloudStartingHeight", &t.FlCloudStartingHeight)
 	cb.Do("Unk_6b9f105", &t.Unk_6b9f105)
 	cb.Do("Unk_ddba751", &t.Unk_ddba751)
 	cb.Do("Unk_48b7873", &t.Unk_48b7873)
@@ -115075,13 +117761,13 @@ func (t *BreakableContainerGizmoData) Walk(cb WalkCallback) {
 type TriggerEventOutroObject struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
-	DwID        DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	DwID            DT_UINT
 }
 
 func (t *TriggerEventOutroObject) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -115104,7 +117790,7 @@ func (t *TriggerEventOutroObject) UnmarshalD4(r *bin.BinaryReader, o *Options) e
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.DwID, r, &Options{Flags: 1}); err != nil {
@@ -115122,7 +117808,7 @@ func (t *TriggerEventOutroObject) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("DwID", &t.DwID)
 }
 
@@ -115201,8 +117887,8 @@ func (t *OnFirstHitPowerCallback) Walk(cb WalkCallback) {
 }
 
 type HairStyleDefinition struct {
-	FUsableByClass DT_FIXEDARRAY[*DT_INT]
-	Unk_305622d    DT_UINT
+	FUsableByClass   DT_FIXEDARRAY[*DT_INT]
+	DwSubObjectStyle DT_UINT
 }
 
 func (t *HairStyleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -115216,7 +117902,7 @@ func (t *HairStyleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+28, &t.Unk_305622d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+28, &t.DwSubObjectStyle, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+32, io.SeekStart); err != nil {
@@ -115227,7 +117913,7 @@ func (t *HairStyleDefinition) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 
 func (t *HairStyleDefinition) Walk(cb WalkCallback) {
 	cb.Do("FUsableByClass", &t.FUsableByClass)
-	cb.Do("Unk_305622d", &t.Unk_305622d)
+	cb.Do("DwSubObjectStyle", &t.DwSubObjectStyle)
 }
 
 type GroupRegionEntry struct {
@@ -115294,12 +117980,12 @@ func (t *OnEquipPowerCallback) Walk(cb WalkCallback) {
 	cb.Do("BCouldHaveRagdolled", &t.BCouldHaveRagdolled)
 }
 
-type Type_f58f01c3 struct {
+type MaterialVectorValuesUsed struct {
 	SnoMaterialValue DT_SNO
 	VDefaultValue    DT_VECTOR4D
 }
 
-func (t *Type_f58f01c3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *MaterialVectorValuesUsed) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -115319,7 +118005,7 @@ func (t *Type_f58f01c3) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_f58f01c3) Walk(cb WalkCallback) {
+func (t *MaterialVectorValuesUsed) Walk(cb WalkCallback) {
 	cb.Do("SnoMaterialValue", &t.SnoMaterialValue)
 	cb.Do("VDefaultValue", &t.VDefaultValue)
 }
@@ -115677,13 +118363,13 @@ func (t *Type_f5cd87eb) Walk(cb WalkCallback) {
 	cb.Do("DwSlotHash", &t.DwSlotHash)
 }
 
-type Type_f619930a struct {
+type SplineEasingWeight struct {
 	FlFirstWeight  DT_FLOAT
 	FlMiddleWeight DT_FLOAT
 	FlLastWeight   DT_FLOAT
 }
 
-func (t *Type_f619930a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SplineEasingWeight) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -115703,7 +118389,7 @@ func (t *Type_f619930a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_f619930a) Walk(cb WalkCallback) {
+func (t *SplineEasingWeight) Walk(cb WalkCallback) {
 	cb.Do("FlFirstWeight", &t.FlFirstWeight)
 	cb.Do("FlMiddleWeight", &t.FlMiddleWeight)
 	cb.Do("FlLastWeight", &t.FlLastWeight)
@@ -116055,11 +118741,11 @@ func (t *MsgTriggeredEvent) Walk(cb WalkCallback) {
 	cb.Do("TCooldown", &t.TCooldown)
 }
 
-type Type_f675b103 struct {
+type UIProgressBarBase struct {
 	Unk_b2b0e88 DT_TAGMAP[*DT_ENUM]
 }
 
-func (t *Type_f675b103) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *UIProgressBarBase) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -116073,7 +118759,7 @@ func (t *Type_f675b103) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_f675b103) Walk(cb WalkCallback) {
+func (t *UIProgressBarBase) Walk(cb WalkCallback) {
 	cb.Do("Unk_b2b0e88", &t.Unk_b2b0e88)
 }
 
@@ -116183,9 +118869,9 @@ func (t *PowerConditionHasSkillRequirement) Walk(cb WalkCallback) {
 }
 
 type AccountProfilePrivacyFlagMessage struct {
-	THeader      RequiredMessageHeader
-	Unk_dce541c  DT_UINT
-	BPrivacyFlag DT_INT
+	THeader               RequiredMessageHeader
+	DwPlayerGameAccountId DT_UINT
+	BPrivacyFlag          DT_INT
 }
 
 func (t *AccountProfilePrivacyFlagMessage) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -116196,7 +118882,7 @@ func (t *AccountProfilePrivacyFlagMessage) UnmarshalD4(r *bin.BinaryReader, o *O
 	if err := UnmarshalAt(p+0, &t.THeader, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+16, &t.Unk_dce541c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+16, &t.DwPlayerGameAccountId, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+20, &t.BPrivacyFlag, r, &Options{Flags: 17}); err != nil {
@@ -116210,7 +118896,7 @@ func (t *AccountProfilePrivacyFlagMessage) UnmarshalD4(r *bin.BinaryReader, o *O
 
 func (t *AccountProfilePrivacyFlagMessage) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
-	cb.Do("Unk_dce541c", &t.Unk_dce541c)
+	cb.Do("DwPlayerGameAccountId", &t.DwPlayerGameAccountId)
 	cb.Do("BPrivacyFlag", &t.BPrivacyFlag)
 }
 
@@ -116278,7 +118964,7 @@ func (t *EffectGroupRotationYawKeyData) Walk(cb WalkCallback) {
 	cb.Do("ArKeyItems", &t.ArKeyItems)
 }
 
-type Type_f6b21430 struct {
+type PowerBuffCrowdControl struct {
 	Unk_c63f49e        DT_INT
 	DwCCFlags          DT_UINT
 	TSlowAmount        DT_STRING_FORMULA
@@ -116286,7 +118972,7 @@ type Type_f6b21430 struct {
 	TStaggerMultiplier DT_STRING_FORMULA
 }
 
-func (t *Type_f6b21430) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *PowerBuffCrowdControl) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -116312,7 +118998,7 @@ func (t *Type_f6b21430) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_f6b21430) Walk(cb WalkCallback) {
+func (t *PowerBuffCrowdControl) Walk(cb WalkCallback) {
 	cb.Do("Unk_c63f49e", &t.Unk_c63f49e)
 	cb.Do("DwCCFlags", &t.DwCCFlags)
 	cb.Do("TSlowAmount", &t.TSlowAmount)
@@ -116844,12 +119530,12 @@ func (t *GlobalHealthPotionData) Walk(cb WalkCallback) {
 type Type_f85d750a struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType      DT_UINT
-	DwPad       DT_UINT
-	TConditions TriggerConditions
-	FGenerated  DT_INT
-	Unk_6cba752 DT_INT
-	Unk_e560b0b DT_UINT
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
 }
 
 func (t *Type_f85d750a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -116872,7 +119558,7 @@ func (t *Type_f85d750a) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if _, err := r.Seek(p+80, io.SeekStart); err != nil {
@@ -116887,7 +119573,7 @@ func (t *Type_f85d750a) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 }
 
 type CompInfluence struct{}
@@ -116908,16 +119594,16 @@ func (t *CompInfluence) Walk(cb WalkCallback) {}
 type TriggerEventOutroServicesDisable struct {
 	// Inherits TriggerEvent
 	// Inherits PolymorphicBase
-	DwType       DT_UINT
-	DwPad        DT_UINT
-	TConditions  TriggerConditions
-	FGenerated   DT_INT
-	Unk_6cba752  DT_INT
-	Unk_e560b0b  DT_UINT
-	Unk_a82d707  DT_ENUM
-	FlDuration   DT_FLOAT
-	FlDistance   DT_FLOAT
-	EBlendEasing DT_ENUM
+	DwType          DT_UINT
+	DwPad           DT_UINT
+	TConditions     TriggerConditions
+	FGenerated      DT_INT
+	Unk_6cba752     DT_INT
+	DwParentActorID DT_UINT
+	Unk_a82d707     DT_ENUM
+	FlDuration      DT_FLOAT
+	FlDistance      DT_FLOAT
+	EBlendEasing    DT_ENUM
 }
 
 func (t *TriggerEventOutroServicesDisable) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -116940,7 +119626,7 @@ func (t *TriggerEventOutroServicesDisable) UnmarshalD4(r *bin.BinaryReader, o *O
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.Unk_a82d707, r, &Options{Flags: 1}); err != nil {
@@ -116967,7 +119653,7 @@ func (t *TriggerEventOutroServicesDisable) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("Unk_a82d707", &t.Unk_a82d707)
 	cb.Do("FlDuration", &t.FlDuration)
 	cb.Do("FlDistance", &t.FlDistance)
@@ -117053,7 +119739,7 @@ type TriggerEventRangedDuration struct {
 	TConditions      TriggerConditions
 	FGenerated       DT_INT
 	Unk_6cba752      DT_INT
-	Unk_e560b0b      DT_UINT
+	DwParentActorID  DT_UINT
 	TDuration        DT_FLOAT
 	DwTriggerFlags   DT_UINT
 	DwTriggerFlagsEx DT_UINT
@@ -117080,7 +119766,7 @@ func (t *TriggerEventRangedDuration) UnmarshalD4(r *bin.BinaryReader, o *Options
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.TDuration, r, &Options{Flags: 1}); err != nil {
@@ -117115,7 +119801,7 @@ func (t *TriggerEventRangedDuration) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("TDuration", &t.TDuration)
 	cb.Do("DwTriggerFlags", &t.DwTriggerFlags)
 	cb.Do("DwTriggerFlagsEx", &t.DwTriggerFlagsEx)
@@ -117145,7 +119831,7 @@ type GlobalUIData struct {
 	Unk_cd8b828                 DT_FLOAT
 	Unk_c13ed3                  DT_FLOAT
 	Unk_b86032f                 DT_FLOAT
-	Unk_d3174a3                 DT_FLOAT
+	FlMapZoomScaleMax           DT_FLOAT
 	Unk_6ccfe46                 DT_FLOAT
 	Unk_837ae57                 DT_FLOAT
 	Unk_3e0d388                 DT_FLOAT
@@ -117233,9 +119919,9 @@ type GlobalUIData struct {
 	Unk_3fdcaed                 DT_FLOAT
 	Unk_b0e8e55                 DT_FLOAT
 	Unk_85356ef                 DT_FLOAT
-	Unk_a82d7f5                 Type_894bd255
-	Unk_cfff5f6                 Type_894bd255
-	Unk_f2e396e                 DT_FIXEDARRAY[*Type_894bd255]
+	TPathProps                  RoadTypeProperties
+	Unk_cfff5f6                 RoadTypeProperties
+	TRoadProps                  DT_FIXEDARRAY[*RoadTypeProperties]
 	Unk_d9fccf3                 Type_31220ee1
 	Unk_c0e1b71                 DT_VECTOR2D
 	Unk_5161778                 DT_VECTOR2D
@@ -117270,6 +119956,7 @@ type GlobalUIData struct {
 	Unk_f993efd                 DT_UINT
 	Unk_ba98f17                 DT_UINT
 	ArHeroDetailsEntries        DT_FIXEDARRAY[*HeroDetailsArray]
+	Unk_a4d68a1                 DT_VARIABLEARRAY[*Type_cd74fce5]
 	Unk_934d708                 DT_FLOAT
 	FCreatedTangents            DT_FLOAT
 	Unk_e3de54d                 DT_FLOAT
@@ -117287,7 +119974,7 @@ type GlobalUIData struct {
 	Unk_59d8d4                  DT_BYTE
 	Unk_15da863                 DT_BYTE
 	Unk_67c326a                 DT_FLOAT
-	Unk_994e59c                 DT_FIXEDARRAY[*ScrollbarStyle]
+	TScrollbarStyles            DT_FIXEDARRAY[*ScrollbarStyle]
 	NMaxRecentAchievements      DT_UINT
 	Unk_90ccf89                 DT_VARIABLEARRAY[*DT_SNO]
 	Unk_2738127                 DT_UINT
@@ -117458,7 +120145,7 @@ func (t *GlobalUIData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+116, &t.Unk_b86032f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+120, &t.Unk_d3174a3, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+120, &t.FlMapZoomScaleMax, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+124, &t.Unk_6ccfe46, r, &Options{Flags: 1}); err != nil {
@@ -117690,579 +120377,582 @@ func (t *GlobalUIData) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 	if err := UnmarshalAt(p+416, &t.TRegions, r, &Options{
-		ArrayLength: 5,
-		Flags:       1,
-	}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+836, &t.TTerritoryRegion, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+860, &t.Unk_2c3270, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+864, &t.Unk_ec0001f, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+868, &t.Unk_c0496bf, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+872, &t.Unk_ec858c, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+876, &t.Unk_5135a05, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+880, &t.Unk_3f64492, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+884, &t.Unk_c993839, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+888, &t.Unk_4cf9be8, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+892, &t.Unk_eee69a4, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+896, &t.Unk_df2414f, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+900, &t.Unk_3fdcbeb, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+904, &t.Unk_3fdcaed, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+908, &t.Unk_b0e8e55, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+912, &t.Unk_85356ef, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+916, &t.Unk_a82d7f5, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+952, &t.Unk_cfff5f6, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+988, &t.Unk_f2e396e, r, &Options{
-		ArrayLength: 2,
-		Flags:       1,
-	}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1060, &t.Unk_d9fccf3, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1128, &t.Unk_c0e1b71, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1136, &t.Unk_5161778, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1144, &t.Unk_78b2a91, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1152, &t.Unk_10c7eaa, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1156, &t.Unk_a61c4bf, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1160, &t.Unk_e058ac2, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1196, &t.Unk_abdc576, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1224, &t.Unk_55e00d8, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1252, &t.Unk_3ba9d7b, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1280, &t.Unk_575246e, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1308, &t.Unk_155fd0, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1336, &t.Unk_9c59a73, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1364, &t.Unk_88a6181, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1392, &t.Unk_cfbdf91, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1396, &t.Unk_62538b3, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1400, &t.Unk_988bcb0, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1404, &t.Unk_f581a6f, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1408, &t.Unk_78ed1cc, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1476, &t.Unk_5cf738e, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1480, &t.Unk_695a8a5, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1484, &t.Unk_b2e2e43, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1488, &t.Unk_e2be78, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1492, &t.Unk_dada65f, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1496, &t.Unk_ccab046, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1497, &t.Unk_78e60c2, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1498, &t.Unk_1333341, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1499, &t.Unk_15a4084, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1500, &t.Unk_c019b27, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1501, &t.Unk_c091278, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1504, &t.Unk_7c3f20c, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1508, &t.Unk_f993efd, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1512, &t.Unk_ba98f17, r, &Options{Flags: 1}); err != nil {
-		return err
-	}
-	if err := UnmarshalAt(p+1520, &t.ArHeroDetailsEntries, r, &Options{
 		ArrayLength: 6,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1616, &t.Unk_934d708, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+920, &t.TTerritoryRegion, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1620, &t.FCreatedTangents, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+944, &t.Unk_2c3270, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1624, &t.Unk_e3de54d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+948, &t.Unk_ec0001f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1628, &t.Unk_2bdd3a2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+952, &t.Unk_c0496bf, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1632, &t.Unk_6d92ca8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+956, &t.Unk_ec858c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1636, &t.Unk_124d5ff, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+960, &t.Unk_5135a05, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1640, &t.Unk_99df291, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+964, &t.Unk_3f64492, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1644, &t.Unk_ecfa0a0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+968, &t.Unk_c993839, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1648, &t.Unk_599fb20, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+972, &t.Unk_4cf9be8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1652, &t.Unk_6fd1380, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+976, &t.Unk_eee69a4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1656, &t.Unk_71f6e7e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+980, &t.Unk_df2414f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1660, &t.Unk_5df2c46, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+984, &t.Unk_3fdcbeb, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1664, &t.Unk_80370e6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+988, &t.Unk_3fdcaed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1668, &t.Unk_321b8d8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+992, &t.Unk_b0e8e55, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1672, &t.Unk_59d8d4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+996, &t.Unk_85356ef, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1673, &t.Unk_15da863, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1000, &t.TPathProps, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1676, &t.Unk_67c326a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+1036, &t.Unk_cfff5f6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1680, &t.Unk_994e59c, r, &Options{
+	if err := UnmarshalAt(p+1072, &t.TRoadProps, r, &Options{
+		ArrayLength: 2,
+		Flags:       1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1144, &t.Unk_d9fccf3, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1212, &t.Unk_c0e1b71, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1220, &t.Unk_5161778, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1228, &t.Unk_78b2a91, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1236, &t.Unk_10c7eaa, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1240, &t.Unk_a61c4bf, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1244, &t.Unk_e058ac2, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1280, &t.Unk_abdc576, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1308, &t.Unk_55e00d8, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1336, &t.Unk_3ba9d7b, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1364, &t.Unk_575246e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1392, &t.Unk_155fd0, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1420, &t.Unk_9c59a73, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1448, &t.Unk_88a6181, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1476, &t.Unk_cfbdf91, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1480, &t.Unk_62538b3, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1484, &t.Unk_988bcb0, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1488, &t.Unk_f581a6f, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1492, &t.Unk_78ed1cc, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1560, &t.Unk_5cf738e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1564, &t.Unk_695a8a5, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1568, &t.Unk_b2e2e43, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1572, &t.Unk_e2be78, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1576, &t.Unk_dada65f, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1580, &t.Unk_ccab046, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1581, &t.Unk_78e60c2, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1582, &t.Unk_1333341, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1583, &t.Unk_15a4084, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1584, &t.Unk_c019b27, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1585, &t.Unk_c091278, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1588, &t.Unk_7c3f20c, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1592, &t.Unk_f993efd, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1596, &t.Unk_ba98f17, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1600, &t.ArHeroDetailsEntries, r, &Options{
+		ArrayLength: 6,
+		Flags:       1,
+	}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1696, &t.Unk_a4d68a1, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1712, &t.Unk_934d708, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1716, &t.FCreatedTangents, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1720, &t.Unk_e3de54d, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1724, &t.Unk_2bdd3a2, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1728, &t.Unk_6d92ca8, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1732, &t.Unk_124d5ff, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1736, &t.Unk_99df291, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1740, &t.Unk_ecfa0a0, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1744, &t.Unk_599fb20, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1748, &t.Unk_6fd1380, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1752, &t.Unk_71f6e7e, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1756, &t.Unk_5df2c46, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1760, &t.Unk_80370e6, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1764, &t.Unk_321b8d8, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1768, &t.Unk_59d8d4, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1769, &t.Unk_15da863, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1772, &t.Unk_67c326a, r, &Options{Flags: 1}); err != nil {
+		return err
+	}
+	if err := UnmarshalAt(p+1776, &t.TScrollbarStyles, r, &Options{
 		ArrayLength: 4,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1920, &t.NMaxRecentAchievements, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2016, &t.NMaxRecentAchievements, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1928, &t.Unk_90ccf89, r, &Options{
+	if err := UnmarshalAt(p+2024, &t.Unk_90ccf89, r, &Options{
 		Flags: 1,
 		Group: 73,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1944, &t.Unk_2738127, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2040, &t.Unk_2738127, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1948, &t.Unk_d9cee69, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2044, &t.Unk_d9cee69, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1964, &t.Unk_d9cee6a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2060, &t.Unk_d9cee6a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1980, &t.Unk_d9cee6b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2076, &t.Unk_d9cee6b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+1996, &t.Unk_d9cee6c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2092, &t.Unk_d9cee6c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2012, &t.Unk_d9cee6d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2108, &t.Unk_d9cee6d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2028, &t.Unk_d9cee6e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2124, &t.Unk_d9cee6e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2044, &t.Unk_d9cee6f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2140, &t.Unk_d9cee6f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2060, &t.Unk_d9cee70, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2156, &t.Unk_d9cee70, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2076, &t.Unk_d9cf2aa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2172, &t.Unk_d9cf2aa, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2092, &t.Unk_d9cf2ab, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2188, &t.Unk_d9cf2ab, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2108, &t.Unk_d9cf2ac, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2204, &t.Unk_d9cf2ac, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2124, &t.Unk_d9cf2ad, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2220, &t.Unk_d9cf2ad, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2140, &t.Unk_d9cf2ae, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2236, &t.Unk_d9cf2ae, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2156, &t.Unk_d9cf2af, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2252, &t.Unk_d9cf2af, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2172, &t.Unk_d9cf2b0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2268, &t.Unk_d9cf2b0, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2188, &t.Unk_d9cf2b1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2284, &t.Unk_d9cf2b1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2204, &t.Unk_d9cf6eb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2300, &t.Unk_d9cf6eb, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2220, &t.Unk_d9cf6ec, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2316, &t.Unk_d9cf6ec, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2236, &t.Unk_d9cf6ed, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2332, &t.Unk_d9cf6ed, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2252, &t.Unk_d9cf6ee, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2348, &t.Unk_d9cf6ee, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2268, &t.Unk_d9cf6ef, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2364, &t.Unk_d9cf6ef, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2284, &t.Unk_d9cf6f0, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2380, &t.Unk_d9cf6f0, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2300, &t.Unk_d9cf6f1, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2396, &t.Unk_d9cf6f1, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2316, &t.Unk_d9cf6f2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2412, &t.Unk_d9cf6f2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2332, &t.Unk_db41c87, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2428, &t.Unk_db41c87, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2336, &t.Unk_ee3ceab, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2432, &t.Unk_ee3ceab, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2340, &t.Unk_bd7d800, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2436, &t.Unk_bd7d800, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2344, &t.Unk_9d49dc4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2440, &t.Unk_9d49dc4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2348, &t.Unk_537458b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2444, &t.Unk_537458b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2352, &t.Unk_d1d3a2f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2448, &t.Unk_d1d3a2f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2356, &t.Unk_8e05798, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2452, &t.Unk_8e05798, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2360, &t.Unk_d949c5c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2456, &t.Unk_d949c5c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2364, &t.Unk_d3dd9b3, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2460, &t.Unk_d3dd9b3, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2368, &t.Unk_1aea757, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2464, &t.Unk_1aea757, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2372, &t.Unk_ac8d9e4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2468, &t.Unk_ac8d9e4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2376, &t.Unk_666e28, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2472, &t.Unk_666e28, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2380, &t.Unk_a47711, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2476, &t.Unk_a47711, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2384, &t.SzDetailThreshhold, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2480, &t.SzDetailThreshhold, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2388, &t.Unk_81f03e4, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2484, &t.Unk_81f03e4, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2392, &t.Unk_c26d828, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2488, &t.Unk_c26d828, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2396, &t.SzDetailOptimize, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2492, &t.SzDetailOptimize, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2400, &t.Unk_dd1f975, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2496, &t.Unk_dd1f975, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2404, &t.Unk_444be6e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2500, &t.Unk_444be6e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2408, &t.Unk_8d8b8f2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2504, &t.Unk_8d8b8f2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2412, &t.Unk_b45637b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2508, &t.Unk_b45637b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2416, &t.Unk_15b8e1f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2512, &t.Unk_15b8e1f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2420, &t.Unk_84522db, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2516, &t.Unk_84522db, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2424, &t.Unk_ef9e97f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2520, &t.Unk_ef9e97f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2428, &t.Unk_da9dee8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2524, &t.Unk_da9dee8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2432, &t.Unk_b0735ac, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2528, &t.Unk_b0735ac, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2436, &t.Unk_41cf76a, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2532, &t.Unk_41cf76a, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2440, &t.Unk_c67ef6e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2536, &t.Unk_c67ef6e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2444, &t.Unk_47c4557, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2540, &t.Unk_47c4557, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2448, &t.Unk_635f97b, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2544, &t.Unk_635f97b, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2452, &t.Unk_2e61264, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2548, &t.Unk_2e61264, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2456, &t.Unk_e1af6a8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2552, &t.Unk_e1af6a8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2460, &t.Unk_c68bf91, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2556, &t.Unk_c68bf91, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2464, &t.Unk_e49e7f5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2560, &t.Unk_e49e7f5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2468, &t.Unk_6eebf91, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2564, &t.Unk_6eebf91, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2472, &t.Unk_c8fe7f5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2568, &t.Unk_c8fe7f5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2476, &t.Unk_187125e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2572, &t.Unk_187125e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2480, &t.Unk_b5d02e2, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2576, &t.Unk_b5d02e2, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2484, &t.Unk_e931d19, r, &Options{
+	if err := UnmarshalAt(p+2580, &t.Unk_e931d19, r, &Options{
 		ArrayLength: 23,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2576, &t.ArBountyIcons, r, &Options{
+	if err := UnmarshalAt(p+2672, &t.ArBountyIcons, r, &Options{
 		ArrayLength: 10,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2696, &t.ArBountyTierIcons, r, &Options{
+	if err := UnmarshalAt(p+2792, &t.ArBountyTierIcons, r, &Options{
 		ArrayLength: 3,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2744, &t.Unk_aa34698, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+2840, &t.Unk_aa34698, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2752, &t.TClassInfo, r, &Options{
+	if err := UnmarshalAt(p+2848, &t.TClassInfo, r, &Options{
 		ArrayLength: 5,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2912, &t.Unk_51e3091, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3008, &t.Unk_51e3091, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2928, &t.Unk_dc621b6, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3024, &t.Unk_dc621b6, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2944, &t.Unk_1ff54e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3040, &t.Unk_1ff54e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2960, &t.Unk_6a92c0c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3056, &t.Unk_6a92c0c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2976, &t.Unk_2db68, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3072, &t.Unk_2db68, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+2992, &t.Unk_dbd3ebc, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3088, &t.Unk_dbd3ebc, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3008, &t.Unk_bb45514, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3104, &t.Unk_bb45514, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3024, &t.Unk_6494906, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3120, &t.Unk_6494906, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3028, &t.Unk_31fce21, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3124, &t.Unk_31fce21, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3032, &t.Unk_774d89f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3128, &t.Unk_774d89f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3036, &t.Unk_ef2cbab, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3132, &t.Unk_ef2cbab, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3040, &t.Unk_4f23516, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3136, &t.Unk_4f23516, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3044, &t.Unk_d3ef4e8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3140, &t.Unk_d3ef4e8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3048, &t.Unk_618bf22, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3144, &t.Unk_618bf22, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3056, &t.Unk_199897, r, &Options{
+	if err := UnmarshalAt(p+3152, &t.Unk_199897, r, &Options{
 		Flags: 513,
 		Group: 44,
 	}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3072, &t.Unk_17dc82, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3168, &t.Unk_17dc82, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3076, &t.Unk_29f26f5, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3172, &t.Unk_29f26f5, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3080, &t.FlMinimapRevealRadius, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3176, &t.FlMinimapRevealRadius, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3084, &t.Unk_b8c638c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3180, &t.Unk_b8c638c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3088, &t.Unk_2b6498d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3184, &t.Unk_2b6498d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3104, &t.Unk_7b6861c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3200, &t.Unk_7b6861c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3108, &t.Unk_c56ad90, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3204, &t.Unk_c56ad90, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3112, &t.Unk_1f7cfee, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3208, &t.Unk_1f7cfee, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3116, &t.Unk_85af920, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3212, &t.Unk_85af920, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3120, &t.Unk_3ec7e81, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3216, &t.Unk_3ec7e81, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3124, &t.Unk_586724, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3220, &t.Unk_586724, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3128, &t.Unk_1fa8d3c, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3224, &t.Unk_1fa8d3c, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3132, &t.Unk_1fa8c3e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3228, &t.Unk_1fa8c3e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3136, &t.Unk_17a967d, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3232, &t.Unk_17a967d, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3140, &t.Unk_f063bba, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3236, &t.Unk_f063bba, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3144, &t.Unk_ce72bfa, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3240, &t.Unk_ce72bfa, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3148, &t.Unk_ce72afc, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3244, &t.Unk_ce72afc, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3152, &t.Unk_9ecbbb, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3248, &t.Unk_9ecbbb, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3156, &t.Unk_39edff8, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3252, &t.Unk_39edff8, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3160, &t.Unk_c79c16e, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3256, &t.Unk_c79c16e, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3164, &t.Unk_c79c070, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3260, &t.Unk_c79c070, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3168, &t.Unk_c70a82f, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3264, &t.Unk_c70a82f, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3172, &t.BInfiniteAmount, r, &Options{Flags: 1}); err != nil {
+	if err := UnmarshalAt(p+3268, &t.BInfiniteAmount, r, &Options{Flags: 1}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+3176, &t.Unk_26a4b93, r, &Options{
+	if err := UnmarshalAt(p+3272, &t.Unk_26a4b93, r, &Options{
 		ArrayLength: 1,
 		Flags:       1,
 	}); err != nil {
 		return err
 	}
-	if _, err := r.Seek(p+3216, io.SeekStart); err != nil {
+	if _, err := r.Seek(p+3312, io.SeekStart); err != nil {
 		return err
 	}
 	return nil
@@ -118286,7 +120976,7 @@ func (t *GlobalUIData) Walk(cb WalkCallback) {
 	cb.Do("Unk_cd8b828", &t.Unk_cd8b828)
 	cb.Do("Unk_c13ed3", &t.Unk_c13ed3)
 	cb.Do("Unk_b86032f", &t.Unk_b86032f)
-	cb.Do("Unk_d3174a3", &t.Unk_d3174a3)
+	cb.Do("FlMapZoomScaleMax", &t.FlMapZoomScaleMax)
 	cb.Do("Unk_6ccfe46", &t.Unk_6ccfe46)
 	cb.Do("Unk_837ae57", &t.Unk_837ae57)
 	cb.Do("Unk_3e0d388", &t.Unk_3e0d388)
@@ -118374,9 +121064,9 @@ func (t *GlobalUIData) Walk(cb WalkCallback) {
 	cb.Do("Unk_3fdcaed", &t.Unk_3fdcaed)
 	cb.Do("Unk_b0e8e55", &t.Unk_b0e8e55)
 	cb.Do("Unk_85356ef", &t.Unk_85356ef)
-	cb.Do("Unk_a82d7f5", &t.Unk_a82d7f5)
+	cb.Do("TPathProps", &t.TPathProps)
 	cb.Do("Unk_cfff5f6", &t.Unk_cfff5f6)
-	cb.Do("Unk_f2e396e", &t.Unk_f2e396e)
+	cb.Do("TRoadProps", &t.TRoadProps)
 	cb.Do("Unk_d9fccf3", &t.Unk_d9fccf3)
 	cb.Do("Unk_c0e1b71", &t.Unk_c0e1b71)
 	cb.Do("Unk_5161778", &t.Unk_5161778)
@@ -118411,6 +121101,7 @@ func (t *GlobalUIData) Walk(cb WalkCallback) {
 	cb.Do("Unk_f993efd", &t.Unk_f993efd)
 	cb.Do("Unk_ba98f17", &t.Unk_ba98f17)
 	cb.Do("ArHeroDetailsEntries", &t.ArHeroDetailsEntries)
+	cb.Do("Unk_a4d68a1", &t.Unk_a4d68a1)
 	cb.Do("Unk_934d708", &t.Unk_934d708)
 	cb.Do("FCreatedTangents", &t.FCreatedTangents)
 	cb.Do("Unk_e3de54d", &t.Unk_e3de54d)
@@ -118428,7 +121119,7 @@ func (t *GlobalUIData) Walk(cb WalkCallback) {
 	cb.Do("Unk_59d8d4", &t.Unk_59d8d4)
 	cb.Do("Unk_15da863", &t.Unk_15da863)
 	cb.Do("Unk_67c326a", &t.Unk_67c326a)
-	cb.Do("Unk_994e59c", &t.Unk_994e59c)
+	cb.Do("TScrollbarStyles", &t.TScrollbarStyles)
 	cb.Do("NMaxRecentAchievements", &t.NMaxRecentAchievements)
 	cb.Do("Unk_90ccf89", &t.Unk_90ccf89)
 	cb.Do("Unk_2738127", &t.Unk_2738127)
@@ -118594,7 +121285,7 @@ type AnimSetDefinition struct {
 	PtWeaponClasses  DT_VARIABLEARRAY[*DT_ENUM]
 	EAnimsetType     DT_ENUM
 	PtPowerEntryList DT_VARIABLEARRAY[*AnimSetPowerEntry]
-	Unk_d9dcd40      DT_VARIABLEARRAY[*Type_5524bcce]
+	Unk_d9dcd40      DT_VARIABLEARRAY[*PowerBlendOverrideList]
 	Unk_4ff6b8e      DT_VARIABLEARRAY[*Type_a1889860]
 }
 
@@ -119050,11 +121741,11 @@ func (t *MainHandItemLabelSubcondition) Walk(cb WalkCallback) {
 	cb.Do("NItemLabel", &t.NItemLabel)
 }
 
-type Type_fb08076b struct {
+type RequestPvPInfo struct {
 	THeader RequiredMessageHeader
 }
 
-func (t *Type_fb08076b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *RequestPvPInfo) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -119068,7 +121759,7 @@ func (t *Type_fb08076b) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_fb08076b) Walk(cb WalkCallback) {
+func (t *RequestPvPInfo) Walk(cb WalkCallback) {
 	cb.Do("THeader", &t.THeader)
 }
 
@@ -119547,12 +122238,12 @@ func (t *MountSelectMessage) Walk(cb WalkCallback) {
 	cb.Do("SnoSelectedMountItem", &t.SnoSelectedMountItem)
 }
 
-type Type_fba0555c struct {
+type dmPlaneMirror struct {
 	Normal DT_VECTOR3D
 	Offset DT_FLOAT
 }
 
-func (t *Type_fba0555c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *dmPlaneMirror) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -119569,7 +122260,7 @@ func (t *Type_fba0555c) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_fba0555c) Walk(cb WalkCallback) {
+func (t *dmPlaneMirror) Walk(cb WalkCallback) {
 	cb.Do("Normal", &t.Normal)
 	cb.Do("Offset", &t.Offset)
 }
@@ -120849,12 +123540,12 @@ func (t *TrackPieces) Walk(cb WalkCallback) {
 	cb.Do("HPieceFrame", &t.HPieceFrame)
 }
 
-type Type_feacdb4e struct {
+type SkillExtraAndArsenalEntry struct {
 	SnoPower     DT_SNO
 	DwWeaponSlot DT_INT
 }
 
-func (t *Type_feacdb4e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *SkillExtraAndArsenalEntry) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	p, err := r.Pos()
 	if err != nil {
 		return err
@@ -120874,7 +123565,7 @@ func (t *Type_feacdb4e) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (t *Type_feacdb4e) Walk(cb WalkCallback) {
+func (t *SkillExtraAndArsenalEntry) Walk(cb WalkCallback) {
 	cb.Do("SnoPower", &t.SnoPower)
 	cb.Do("DwWeaponSlot", &t.DwWeaponSlot)
 }
@@ -120887,7 +123578,7 @@ type Type_feb5d551 struct {
 	TConditions       TriggerConditions
 	FGenerated        DT_INT
 	Unk_6cba752       DT_INT
-	Unk_e560b0b       DT_UINT
+	DwParentActorID   DT_UINT
 	BOverridePosition DT_INT
 	VecPosition       DT_VECTOR2D
 }
@@ -120912,7 +123603,7 @@ func (t *Type_feb5d551) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := UnmarshalAt(p+72, &t.Unk_6cba752, r, &Options{Flags: 16}); err != nil {
 		return err
 	}
-	if err := UnmarshalAt(p+76, &t.Unk_e560b0b, r, &Options{}); err != nil {
+	if err := UnmarshalAt(p+76, &t.DwParentActorID, r, &Options{}); err != nil {
 		return err
 	}
 	if err := UnmarshalAt(p+80, &t.BOverridePosition, r, &Options{Flags: 17}); err != nil {
@@ -120933,7 +123624,7 @@ func (t *Type_feb5d551) Walk(cb WalkCallback) {
 	cb.Do("TConditions", &t.TConditions)
 	cb.Do("FGenerated", &t.FGenerated)
 	cb.Do("Unk_6cba752", &t.Unk_6cba752)
-	cb.Do("Unk_e560b0b", &t.Unk_e560b0b)
+	cb.Do("DwParentActorID", &t.DwParentActorID)
 	cb.Do("BOverridePosition", &t.BOverridePosition)
 	cb.Do("VecPosition", &t.VecPosition)
 }
@@ -121094,7 +123785,7 @@ type SubzoneModifierTagsEntry struct {
 	Unk_891f4a8         DT_SNO
 	Unk_82ec588         DT_FLOAT
 	NMonsterLevelOffset DT_INT
-	ArSpawnLocOverrides DT_VARIABLEARRAY[*Type_e87d70c1]
+	ArSpawnLocOverrides DT_VARIABLEARRAY[*SpawnLocOverrideData]
 	Unk_a60ef1c         DT_INT
 }
 

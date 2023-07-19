@@ -1,7 +1,8 @@
-package d4
+package tex
 
 import (
 	"fmt"
+	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/go-gl/gl/v4.1-compatibility/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
 	"golang.org/x/exp/slog"
@@ -51,7 +52,6 @@ func (f TextureFormat) GlType() (type_ int32) {
 }
 
 func init() {
-
 	if err := glfw.Init(); err != nil {
 		panic(err)
 	}
@@ -86,7 +86,7 @@ func align(n int, alignment int) int {
 	return n
 }
 
-func LoadTexture(def *TextureDefinition, payloadPath string, paylowPath string) (map[int]image.Image, error) {
+func LoadTexture(def *d4.TextureDefinition, payloadPath string, paylowPath string) (map[int]image.Image, error) {
 	// OpenGL will explode if we don't do this
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
@@ -155,7 +155,7 @@ func LoadTexture(def *TextureDefinition, payloadPath string, paylowPath string) 
 
 func LoadMipMap(
 	tex uint32,
-	def *TextureDefinition,
+	def *d4.TextureDefinition,
 	texFormat TextureFormat,
 	payloadData []byte,
 	paylowData []byte,
@@ -202,6 +202,7 @@ func LoadMipMap(
 		slog.Info(
 			"Loading texture",
 			slog.Int("format", int(def.ETexFormat.Value)),
+			slog.Int("l", l),
 			slog.Int("level", level),
 			slog.Int("alignment", texFormat.Alignment),
 			slog.Int("levelWidth", levelWidth),

@@ -366,6 +366,8 @@ func (g SnoGroup) String() string {
 		return "DungeonAffix"
 	case 136:
 		return "Activity"
+	case 137:
+		return "Season"
 	case 138:
 		return "HairStyle"
 	case 139:

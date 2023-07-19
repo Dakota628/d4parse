@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/tex"
 	"github.com/bmatcuk/doublestar/v4"
 	"golang.org/x/exp/slog"
 	"image/png"
@@ -59,7 +60,7 @@ func main() {
 		}
 
 		// Load texture
-		mipMaps, err := d4.LoadTexture(texDef, payloadFilePath, paylowFilePath)
+		mipMaps, err := tex.LoadTexture(texDef, payloadFilePath, paylowFilePath)
 		if err != nil {
 			slog.Error(
 				"Failed to load texture",

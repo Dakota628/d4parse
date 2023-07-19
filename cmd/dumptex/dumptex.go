@@ -3,21 +3,27 @@ package main
 import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/tex"
 	"golang.org/x/exp/slog"
 	"image/png"
 	"os"
+	"path/filepath"
 )
 
 func main() {
 	if len(os.Args) < 4 {
-		slog.Error("usage: dumptex texDefPath texPayloadPath texPaylowPath outputPrefix")
+		slog.Error("usage: dumptex dataPath texName outputPrefix")
 		os.Exit(1)
 	}
 
-	texDefPath := os.Args[1]
-	texPayloadPath := os.Args[2]
-	texPaylowPath := os.Args[3]
-	outputPrefix := os.Args[4]
+	dataPath := os.Args[1]
+	texName := os.Args[2]
+	outputPrefix := os.Args[3]
+
+	texName += ".tex"
+	texDefPath := filepath.Join(dataPath, "base", "meta", "Texture", texName)
+	texPayloadPath := filepath.Join(dataPath, "base", "payload", "Texture", texName)
+	texPaylowPath := filepath.Join(dataPath, "base", "paylow", "Texture", texName)
 
 	snoMeta, err := d4.ReadSnoMetaFile(texDefPath)
 	if err != nil {
@@ -31,7 +37,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	mipMaps, err := d4.LoadTexture(texDef, texPayloadPath, texPaylowPath)
+	mipMaps, err := tex.LoadTexture(texDef, texPayloadPath, texPaylowPath)
 	if err != nil {
 		slog.Error("Failed to load texture", slog.Any("error", err))
 		os.Exit(1)
