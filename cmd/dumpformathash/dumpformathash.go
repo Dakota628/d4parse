@@ -47,8 +47,16 @@ func main() {
 			panic(err)
 		}
 
-		if snoGroup == "137" {
+		// Update SNO group names whose definitions differ slightly
+		switch snoGroup {
+		case "137":
 			snoGroup = "Season"
+		case "Anim":
+			snoGroup = "Animation"
+		case "Anim2D":
+			snoGroup = "Animation2D"
+		case "UI":
+			snoGroup = "UIDialog"
 		}
 
 		// Generate case statement

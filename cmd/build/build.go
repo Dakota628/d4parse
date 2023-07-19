@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+	"sync/atomic"
 )
 
 const (
@@ -27,7 +28,7 @@ var (
 	stringListsPrefix = filepath.Join("enUS_Text", "meta", "StringList")
 )
 
-func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], outputPath string) {
+func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], outputPath string, progress *atomic.Uint64) {
 	defer wg.Done()
 
 	snoPath := filepath.Join(outputPath, "sno")
@@ -84,17 +85,22 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d
 			continue
 		}
 
-		// Send references to ref file writer
+		// Write SNO references
 		for _, ref := range snoMeta.GetReferences(gbData) {
 			refs.Add([2]int32{
 				snoMeta.Id.Value,
 				ref,
 			})
 		}
+
+		// Report progress
+		if n := progress.Add(1); n%1000 == 0 {
+			slog.Info("Still generating html...", slog.Int("progress", int(n)))
+		}
 	}
 }
 
-func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], files []string, outputPath string) error {
+func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], files []string, outputPath string, progress *atomic.Uint64) error {
 	// Files arr to channel
 	c := make(chan string, len(files))
 	for _, file := range files {
@@ -106,7 +112,7 @@ func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int3
 	wg := &sync.WaitGroup{}
 	for i := uint(0); i < workers; i++ {
 		wg.Add(1)
-		go generateHtmlWorker(c, wg, toc, gbData, refs, outputPath)
+		go generateHtmlWorker(c, wg, toc, gbData, refs, outputPath, progress)
 	}
 
 	wg.Wait()
@@ -148,10 +154,15 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 
 	// Parse game balance files first
 	gbData := &sync.Map{}
-	if err = generateHtmlForFiles(toc, gbData, refs, gameBalanceFiles, outputPath); err != nil {
+	var progress atomic.Uint64
+
+	slog.Info("Generating game balance html files...")
+	if err = generateHtmlForFiles(toc, gbData, refs, gameBalanceFiles, outputPath, &progress); err != nil {
 		return err
 	}
-	if err = generateHtmlForFiles(toc, gbData, refs, append(stringsMetaFiles, baseMetaFiles...), outputPath); err != nil {
+
+	slog.Info("Generating remaining html files...")
+	if err = generateHtmlForFiles(toc, gbData, refs, append(stringsMetaFiles, baseMetaFiles...), outputPath, &progress); err != nil {
 		return err
 	}
 
@@ -243,28 +254,33 @@ func main() {
 	outputPath := os.Args[2]
 	tocFilePath := filepath.Join(d4DataPath, basePrefix, "CoreTOC.dat")
 
+	slog.Info("Generating groups file...")
 	if err := generateGroupsFile(outputPath); err != nil {
 		slog.Error("Failed to generate groups files", slog.Any("error", err))
 		os.Exit(1)
 	}
 
+	slog.Info("Reading TOC file...")
 	toc, err := d4.ReadTocFile(tocFilePath)
 	if err != nil {
 		slog.Error("Failed to read toc file", slog.Any("error", err))
 		os.Exit(1)
 	}
 
+	slog.Info("Generating names file...")
 	if err = generateNamesFile(toc, outputPath); err != nil {
 		slog.Error("Failed to generate names files", slog.Any("error", err))
 		os.Exit(1)
 	}
 
+	slog.Info("Generating html files...")
 	refs := mapset.NewSet[[2]int32]()
 	if err = generateAllHtml(toc, refs, d4DataPath, outputPath); err != nil {
 		slog.Error("Failed to generate html files", slog.Any("error", err))
 		os.Exit(1)
 	}
 
+	slog.Info("Generating refs file...")
 	if err = generateRefsBin(refs, outputPath); err != nil {
 		slog.Error("Failed to generate refs bin", slog.Any("error", err))
 		os.Exit(1)
