@@ -147,3 +147,4 @@ func ReadTocFile(path string) (Toc, error) {
 }
 
 // TODO: support payloads mapping
+// TODO: support EncryptedSNOS.dat
