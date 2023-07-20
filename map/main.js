@@ -44,6 +44,35 @@ const D4CRS = L.extend({}, L.CRS.Simple, {
     transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
 });
 
+// Markers
+const markerColors = {
+    'Global': 'green',
+    'World': 'blue',
+    'World - Game': 'lightorange',
+    'World - Lighting': 'yellow',
+    'World - Merged': 'lightblue',
+    'World - Cameras': 'gray',
+    'World - Props': 'lightbrown',
+    'World - Merged Props': 'brown',
+    'World - Bounties': 'red',
+    'World - Events': 'orange',
+    'World - Clickies': 'pink',
+    'World - Population': 'purple',
+    'World - Ambient': 'lightpurple',
+    'Subzone': 'blue',
+    'Subzone - Game': 'lightorange',
+    'Subzone - Lighting': 'yellow',
+    'Subzone - Merged': 'lightblue',
+    'Subzone - Cameras': 'gray',
+    'Subzone - Props': 'lightbrown',
+    'Subzone - Merged Props': 'brown',
+    'Subzone - Bounties': 'red',
+    'Subzone - Events': 'orange',
+    'Subzone - Clickies': 'pink',
+    'Subzone - Population': 'purple',
+    'Subzone - Ambient': 'lightpurple',
+};
+
 // Main
 window.addEventListener("DOMContentLoaded", () => {
     // Setup renderer
@@ -63,7 +92,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // Setup tiles
     window.tiles = L.tileLayer('maptiles/{z}/{x}_{y}.png', {
         tileSize: tileSize,
-        maxZoom: 4,
+        maxZoom: 5,
         minZoom: -1,
         minNativeZoom: 0,
         maxNativeZoom: 3,
@@ -75,19 +104,78 @@ window.addEventListener("DOMContentLoaded", () => {
     map.on('click', function(e) {
         L.popup()
             .setLatLng(e.latlng)
-            .setContent(`(${e.latlng.lat}, ${e.latlng.lng})`)
+            .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
             .openOn(map);
-        console.log(e);
     });
 
     // Add markers
-    L.circle([0, 0], {
-        radius: 1.5,
+    L.circleMarker([0, 0], {
+        radius: 5,
         stroke: false,
         fill: true,
-        fillOpacity: 1.0,
-        fillColor: "red",
+        fillOpacity: 0.75,
+        fillColor: "black",
     }).bindTooltip("This is the center of the world!").addTo(map);
+
+    const dataLayers = L.control.layers([], []).addTo(map);
+    const searchMarkers = []
+
+    loadMarkers((markers) => {
+        // console.log(markers);
+
+        for (const poly of markers["Polygons"]) {
+            L.polygon(poly, {
+                weight: 3,
+                color: '#ffffff',
+                fill: false,
+                opacity: 0.1,
+                interactive: false,
+            }).addTo(map)
+        }
+
+        for (const [markerGroup, d] of Object.entries(markers["Markers"])) {
+            const groupMarkers = []
+
+            for (const marker of d) {
+                if (marker.d !== "") {
+                    marker.d += "<br/>"
+                }
+
+                const circle = L.circleMarker([marker.x, marker.y], {
+                    radius: 5,
+                    stroke: false,
+                    fill: true,
+                    fillOpacity: 0.75,
+                    fillColor: markerColors[markerGroup],
+                    title: marker.n,
+                });
+                circle.bindTooltip(
+                    `<b> <a href="../sno/${marker.r}">${marker.n}</a></b><p>${marker.d}Source: <a href="../sno/${marker.s}">${marker.s}</a><br/>(${marker.x}, ${marker.y}, ${marker.z})</p>`,
+                    { direction: 'center' },
+                );
+
+                groupMarkers.push(circle);
+                // searchMarkers.push(circle);
+            }
+
+            const groupLayer = L.layerGroup(groupMarkers);
+            dataLayers.addOverlay(groupLayer, markerGroup);
+        }
+
+        // const searchLayer = L.layerGroup(searchMarkers);
+        // new L.control.search({
+        //     layer: searchLayer,
+        //     initial: false,
+        //     propertyName: 'title',
+        //     hideMarkerOnCollapse: true,
+        //     zoom: 5,
+        // }).addTo(map);
+        // map.removeLayer(searchLayer); // Search layer is fake... just to facilitate the search
+    });
+
+
+    // TODO: add overlays for quest conditioned map updates
+    // TODO: add radius (on hover) around markers with a radius
 });
 
 function rotate(p, angle) {
@@ -98,4 +186,14 @@ function rotate(p, angle) {
         (cos * p.x) + (sin * p.y),
         (cos * p.y) - (sin * p.x)
     );
+}
+
+function loadMarkers(cb) {
+    const req = new XMLHttpRequest();
+    req.open("GET", "markers.mpk", true);
+    req.responseType = "arraybuffer";
+    req.onload = function () {
+        cb(msgpack.deserialize(req.response))
+    };
+    req.send();
 }

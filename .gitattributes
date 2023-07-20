@@ -1,0 +1,2 @@
+maps/markers.mpk filter=lfs diff=lfs merge=lfs -text
+map/markers.mpk filter=lfs diff=lfs merge=lfs -text
