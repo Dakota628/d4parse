@@ -3,6 +3,6 @@ samples/
 *.dump
 d4data/
 docs/sno/
-map/combined.png
-map/tiles/
-map/maptiles/
+docs/map/combined.png
+docs/map/tiles/
+docs/map/maptiles/

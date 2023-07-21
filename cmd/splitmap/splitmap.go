@@ -19,7 +19,7 @@ const (
 )
 
 var (
-	mapDir    = "map"
+	mapDir    = filepath.Join("docs", "map")
 	outputDir = filepath.Join(mapDir, "maptiles")
 	levels    = []int{
 		5,

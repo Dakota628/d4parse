@@ -2,61 +2,36 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 const (
 	sanctuaryEasternContinentSnoId = 69068
-	// TODO: gbid spawns
 )
 
 var (
-	outputFile = filepath.Join("map", "markers.mpk")
-	sceneTypes = map[string]string{
-		"(Game)":         "Game",
-		"(Lighting)":     "Lighting",
-		"(Merged)":       "Merged",
-		"(Cameras)":      "Cameras",
-		"(Props)":        "Props",
-		"(Merged_Props)": "Merged Props",
-		"(Events)":       "Events",
-		"(Clickies)":     "Clickies",
-		"(Population)":   "Population",
-		"(Ambient)":      "Ambient",
-	}
+	outputFile = filepath.Join("docs", "map", "map.mpk")
 )
 
 type MarkerData struct {
-	RefSno    int32   `msgpack:"r"`
-	SourceSno int32   `msgpack:"s"`
-	Name      string  `msgpack:"n"`
-	Desc      string  `msgpack:"d"`
-	X         float32 `msgpack:"x"`
-	Y         float32 `msgpack:"y"`
-	Z         float32 `msgpack:"z"`
+	RefSnoGroup uint8          `msgpack:"g"`
+	RefSno      int32          `msgpack:"r"`
+	SourceSno   int32          `msgpack:"s"`
+	X           float32        `msgpack:"x"`
+	Y           float32        `msgpack:"y"`
+	Z           float32        `msgpack:"z"`
+	Metadata    map[string]any `msgpack:"m"`
 }
 
 type Polygon [][2]float32
 
-func getSceneGroup(prefix string, snoName string) string {
-	for suffix, group := range sceneTypes {
-		if strings.HasSuffix(snoName, suffix) {
-			return fmt.Sprintf("%s - %s", prefix, group)
-		}
-	}
-	return prefix
-}
-
-func mergeMarkerGroups(a, b map[string][]MarkerData) {
-	for key, v := range b {
-		a[key] = append(a[key], v...)
-	}
+type MapData struct {
+	Markers  []MarkerData `msgpack:"m"`
+	Polygons []Polygon    `msgpack:"p"`
 }
 
 func loadGlobalMarkers(baseMetaPath string, toc d4.Toc, worldSnoId int32) ([]MarkerData, error) {
@@ -86,24 +61,26 @@ func loadGlobalMarkers(baseMetaPath string, toc d4.Toc, worldSnoId int32) ([]Mar
 		}
 
 		// Get referenced sno name
-		refSnoGroup, refSnoName := toc.Entries.GetName(gma.SnoActor.Id)
+		refSnoGroup, _ := toc.Entries.GetName(gma.SnoActor.Id)
 
 		// Add marker data
 		md = append(md, MarkerData{
-			RefSno:    gma.SnoActor.Id,
-			SourceSno: meta.Id.Value,
-			Name:      fmt.Sprintf("[%s] %s", refSnoGroup, refSnoName),     // Lookup szMarkerName?
-			Desc:      fmt.Sprintf("Gizmo Type: %d", gma.EGizmoType.Value), // TODO
-			X:         gma.TWorldTransform.Wp.X,
-			Y:         gma.TWorldTransform.Wp.Y,
-			Z:         gma.TWorldTransform.Wp.Z,
+			RefSnoGroup: uint8(refSnoGroup),
+			RefSno:      gma.SnoActor.Id,
+			SourceSno:   meta.Id.Value,
+			X:           gma.TWorldTransform.Wp.X,
+			Y:           gma.TWorldTransform.Wp.Y,
+			Z:           gma.TWorldTransform.Wp.Z,
+			Metadata: map[string]any{
+				"gt": gma.EGizmoType.Value,
+			},
 		})
 	})
 
 	return md, nil
 }
 
-func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *d4.SceneChunk) (map[string][]MarkerData, error) {
+func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *d4.SceneChunk) ([]MarkerData, error) {
 	sceneSnoGroup, sceneSnoName := toc.Entries.GetName(sceneChunk.Snoname.Id)
 	worldSnoPath := filepath.Join(baseMetaPath, "Scene", sceneSnoName+sceneSnoGroup.Ext())
 	sceneSnoMeta, err := d4.ReadSnoMetaFile(worldSnoPath)
@@ -116,7 +93,7 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 		return nil, errors.New("not scene definition")
 	}
 
-	md := make(map[string][]MarkerData)
+	var md []MarkerData
 
 	for _, layer := range sd.ArLayers.Value {
 		markerSetSnoGroup, markerSetSnoName := toc.Entries.GetName(layer.Id)
@@ -138,18 +115,16 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 				return
 			}
 
-			refSnoGroup, refSnoName := toc.Entries.GetName(marker.Snoname.Id)
-
-			sceneGroup := getSceneGroup("World", markerSetSnoName)
-			md[sceneGroup] = append(md[sceneGroup], MarkerData{
-				RefSno:    marker.Snoname.Id,
-				SourceSno: markerSetSnoMeta.Id.Value,
-				Name:      fmt.Sprintf("[%s] %s", refSnoGroup, refSnoName),
-				Desc:      fmt.Sprintf("Type: %d", marker.EType.Value),
-				X:         sceneChunk.Transform.Wp.X + marker.Transform.Wp.X,
-				Y:         sceneChunk.Transform.Wp.Y + marker.Transform.Wp.Y,
-				Z:         sceneChunk.Transform.Wp.Z + marker.Transform.Wp.Z,
-				// TODO: could also add scale to add a larger radius on hover
+			md = append(md, MarkerData{
+				RefSnoGroup: uint8(marker.Snoname.Group),
+				RefSno:      marker.Snoname.Id,
+				SourceSno:   markerSetSnoMeta.Id.Value,
+				X:           sceneChunk.Transform.Wp.X + marker.Transform.Wp.X,
+				Y:           sceneChunk.Transform.Wp.Y + marker.Transform.Wp.Y,
+				Z:           sceneChunk.Transform.Wp.Z + marker.Transform.Wp.Z,
+				Metadata: map[string]any{
+					"mt": marker.EType.Value,
+				}, // TODO: could also add scale to add a larger radius on hover
 			})
 		})
 	}
@@ -157,7 +132,7 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 	return md, nil
 }
 
-func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32) (map[string][]MarkerData, error) {
+func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32) ([]MarkerData, error) {
 	subZoneGroup, subZoneName := toc.Entries.GetName(subZoneId)
 	subZonePath := filepath.Join(baseMetaPath, "Subzone", subZoneName+subZoneGroup.Ext())
 	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath)
@@ -170,7 +145,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 		return nil, errors.New("not sub zone definition")
 	}
 
-	md := make(map[string][]MarkerData)
+	var md []MarkerData
 
 	sd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
 		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
@@ -197,18 +172,16 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 				next()
 				return
 			}
-
-			refSnoGroup, refSnoName := toc.Entries.GetName(marker.Snoname.Id)
-
-			sceneGroup := getSceneGroup("Subzone", markerSetSnoName)
-			md[sceneGroup] = append(md[sceneGroup], MarkerData{
-				RefSno:    marker.Snoname.Id,
-				SourceSno: markerSetSnoMeta.Id.Value,
-				Name:      fmt.Sprintf("[%s] %s", refSnoGroup, refSnoName),
-				Desc:      fmt.Sprintf("Type: %d", marker.EType.Value),
-				X:         marker.Transform.Wp.X,
-				Y:         marker.Transform.Wp.Y,
-				Z:         marker.Transform.Wp.Z,
+			md = append(md, MarkerData{
+				RefSnoGroup: uint8(marker.Snoname.Group),
+				RefSno:      marker.Snoname.Id,
+				SourceSno:   markerSetSnoMeta.Id.Value,
+				X:           marker.Transform.Wp.X,
+				Y:           marker.Transform.Wp.Y,
+				Z:           marker.Transform.Wp.Z,
+				Metadata: map[string]any{
+					"mt": marker.EType.Value,
+				},
 				// TODO: could also add scale to add a larger radius on hover
 			})
 		})
@@ -217,7 +190,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 	return md, nil
 }
 
-func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) (map[string][]MarkerData, []Polygon, error) {
+func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerData, []Polygon, error) {
 	// Get sno file
 	worldSnoGroup, worldSnoName := toc.Entries.GetName(worldId)
 	worldSnoPath := filepath.Join(baseMetaPath, "World", worldSnoName+worldSnoGroup.Ext())
@@ -233,7 +206,7 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) (map[strin
 
 	// Load data from the world
 	var polygons []Polygon
-	md := make(map[string][]MarkerData)
+	var md []MarkerData
 
 	wd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
 		switch x := v.(type) {
@@ -253,14 +226,14 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) (map[strin
 			if err != nil {
 				panic(err) // Not a great solution but whatever
 			}
-			mergeMarkerGroups(md, sceneMarkers)
+			md = append(md, sceneMarkers...)
 		case *d4.SceneSpecification:
 			for _, subZone := range x.ArSubzones.Value {
 				subZoneMarkers, err := loadSubZone(baseMetaPath, toc, worldId, subZone.SnoSubzone.Id)
 				if err != nil {
 					panic(err) // Not a great solution but whatever
 				}
-				mergeMarkerGroups(md, subZoneMarkers)
+				md = append(md, subZoneMarkers...)
 			}
 		}
 
@@ -289,29 +262,26 @@ func main() {
 	}
 
 	// Load markers
-	var polygons []Polygon
-	markers := make(map[string][]MarkerData)
+	var md MapData
 
 	slog.Info("Loading global markers...")
-	markers["Global"], err = loadGlobalMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
+	globalMarkers, err := loadGlobalMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
 	if err != nil {
 		panic(err)
 	}
+	md.Markers = append(md.Markers, globalMarkers...)
 
 	slog.Info("Loading Sanctuary_Eastern_Continent markers...")
-	var worldMarkers map[string][]MarkerData
-	worldMarkers, polygons, err = loadWorldMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
+	var worldMarkers []MarkerData
+	worldMarkers, md.Polygons, err = loadWorldMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
 	if err != nil {
 		panic(err)
 	}
-	mergeMarkerGroups(markers, worldMarkers)
+	md.Markers = append(md.Markers, worldMarkers...)
 
 	// Write marker data
-	slog.Info("Generating markers file...")
-	packed, err := msgpack.Marshal(map[string]any{
-		"Markers":  markers,
-		"Polygons": polygons,
-	})
+	slog.Info("Generating map data file...")
+	packed, err := msgpack.Marshal(md) // TODO: support multiple worlds; generate file for each world
 	if err != nil {
 		panic(err)
 	}
