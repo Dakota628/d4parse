@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
@@ -14,7 +15,7 @@ const (
 )
 
 var (
-	outputFile = filepath.Join("docs", "map", "map.mpk")
+	outputBasePath = filepath.Join("docs", "map")
 )
 
 type MarkerData struct {
@@ -243,6 +244,47 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 	return md, polygons, nil
 }
 
+func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
+	// Load markers
+	var md MapData
+
+	slog.Info("Loading global markers...")
+	globalMarkers, err := loadGlobalMarkers(baseMetaPath, toc, worldSnoId)
+	if err != nil {
+		panic(err)
+	}
+	md.Markers = append(md.Markers, globalMarkers...)
+
+	slog.Info("Loading Sanctuary_Eastern_Continent markers...")
+	var worldMarkers []MarkerData
+	worldMarkers, md.Polygons, err = loadWorldMarkers(baseMetaPath, toc, worldSnoId)
+	if err != nil {
+		return err
+	}
+	md.Markers = append(md.Markers, worldMarkers...)
+
+	// Write marker data
+	slog.Info("Generating map data file...")
+	packed, err := msgpack.Marshal(md)
+	if err != nil {
+		return err
+	}
+
+	outputPath := filepath.Join(outputBasePath, "data", fmt.Sprintf("%d.mpk", worldSnoId))
+	f, err := os.Create(outputPath)
+	if err != nil {
+		return err
+	}
+
+	if _, err = f.Write(packed); err != nil {
+		return err
+	}
+
+	// TODO: also load quest markers
+
+	return nil
+}
+
 func main() {
 	if len(os.Args) < 2 {
 		slog.Error("usage: dumpmapdata d4DataPath")
@@ -261,37 +303,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Load markers
-	var md MapData
-
-	slog.Info("Loading global markers...")
-	globalMarkers, err := loadGlobalMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
-	if err != nil {
-		panic(err)
-	}
-	md.Markers = append(md.Markers, globalMarkers...)
-
-	slog.Info("Loading Sanctuary_Eastern_Continent markers...")
-	var worldMarkers []MarkerData
-	worldMarkers, md.Polygons, err = loadWorldMarkers(baseMetaPath, toc, sanctuaryEasternContinentSnoId)
-	if err != nil {
-		panic(err)
-	}
-	md.Markers = append(md.Markers, worldMarkers...)
-
-	// Write marker data
-	slog.Info("Generating map data file...")
-	packed, err := msgpack.Marshal(md) // TODO: support multiple worlds; generate file for each world
-	if err != nil {
-		panic(err)
-	}
-
-	f, err := os.Create(outputFile)
-	if err != nil {
-		panic(err)
-	}
-
-	if _, err = f.Write(packed); err != nil {
-		panic(err)
+	for worldSnoId, worldSnoName := range toc.Entries[d4.SnoGroupWorld] {
+		if err := generateForWorld(baseMetaPath, toc, worldSnoId); err != nil {
+			slog.Error("Failed generate world data", slog.Any("error", err), slog.Any("snoName", worldSnoName))
+			os.Exit(1)
+		}
 	}
 }
