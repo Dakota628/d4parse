@@ -27,23 +27,6 @@ const originMapUnits = pxToMapUnit(origin);
 const minMapUnits = subPx(pxToMapUnit(min), originMapUnits);
 const maxMapUnits = subPx(pxToMapUnit(max), originMapUnits);
 
-// D4 CRS
-const D4Projection = L.extend({}, L.Projection.LonLat, {
-    project: function (latlng) {
-        let point = L.Projection.LonLat.project(latlng);
-        return rotate(point, -45);
-    },
-    unproject: function (point) {
-        point = rotate(point, 45);
-        return L.Projection.LonLat.unproject(point);
-    },
-});
-
-const D4CRS = L.extend({}, L.CRS.Simple, {
-    projection: D4Projection,
-    transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
-});
-
 // Markers
 const markerColors = {
     'Actor': 'green',
@@ -61,121 +44,37 @@ const markerColors = {
     'Weather': 'lightskyblue',
 };
 
-// Main
-window.addEventListener("DOMContentLoaded", () => {
-    // Setup renderer
-    window.canvas = L.canvas();
+const worldSnoGroup = 48;
+const defaultSnoId =  69068;
+const defaultSnoName = "Sanctuary_Eastern_Continent"
 
-    // Setup map
-    window.map = L.map('map', {
-        attributionControl: false,
-        crs: D4CRS,
-        renderer: canvas,
-        maxBounds: L.latLngBounds( // Basically magic at this point
-            L.latLng(-970, -2890),
-            L.latLng(-970, 2545),
-        )
-    }).setView([0, 0], 0);
+// Load groups and names data
+loadData((groups, names) => {
+    // Set global data and data layers
+    window.groups = groups;
+    window.names = names;
 
-    // Setup tiles
-    window.tiles = L.tileLayer('maptiles/{z}/{x}_{y}.png', {
-        tileSize: tileSize,
-        maxZoom: 6,
-        minZoom: -1,
-        minNativeZoom: 0,
-        maxNativeZoom: 3,
-        noWrap: true,
-        tms: false,
-    }).addTo(map);
-
-    // Add map events
-    map.on('click', function (e) {
-        L.popup()
-            .setLatLng(e.latlng)
-            .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
-            .openOn(map);
-    });
-
-    // Add markers
-    L.circleMarker([0, 0], {
-        radius: 5,
-        stroke: false,
-        fill: true,
-        fillOpacity: 0.75,
-        fillColor: "black",
-    }).bindTooltip("This is the center of the world!").addTo(map);
-
-    window.dataLayers = L.control.layers([], []).addTo(map);
-
-    loadData((data) => {
-        const p = data.mapData.p;
-        const m = data.mapData.m;
-
-        // Polygons
-        let len = p.length;
-        while (len--) { // Using while has a measurable performance improvement... bc Javascript.
-            L.polygon(p[len], {
-                weight: 3,
-                color: '#ffffff',
-                fill: false,
-                opacity: 0.1,
-                interactive: false,
-            }).addTo(map)
-        }
-        // Markers
-        const groups = {};
-
-        len = m.length;
-        while (len--) {
-            const marker = m[len];
-            const groupName = snoGroupName(data.groups, marker.g);
-            const title = snoName(data.groups, data.names, marker.g, marker.r);
-            const color = markerColors[groupName];
-
-            const circle = L.circleMarker([marker.x, marker.y], {
-                radius: 5,
-                stroke: false,
-                fill: true,
-                fillOpacity: 0.75,
-                fillColor: markerColors[groupName],
-            }).bindPopup(
-                markerPopup(marker, title),
-                {direction: 'center'},
-            );
-
-            if (!groups.hasOwnProperty(groupName)) {
-                groups[groupName] = L.markerClusterGroup({
-                    spiderfyOnMaxZoom: false,
-                    removeOutsideVisibleBounds: true,
-                    disableClusteringAtZoom: 3,
-                    iconCreateFunction: function (cluster) {
-                        var childCount = cluster.getChildCount();
-                        return new L.DivIcon({
-                            html: `<div>${childCount}</div>`,
-                            className: `cluster group_${groupName}`,
-                            iconSize: new L.Point(40, 40),
-                        });
-                    }
-                });
-            }
-            groups[groupName].addLayer(circle);
+    $(() => {
+        // Add world selector
+        const worldSelect = $("#worldSelect");
+        for (const [snoId, snoName] of Object.entries(names[worldSnoGroup])) {
+            worldSelect.append(`<option value="${snoId}">${snoName}</option>`);
         }
 
-        for (const group of Object.keys(groups).sort()) {
-            dataLayers.addOverlay(groups[group], group);
-        }
+        // Load base world
+        loadMap(groups, names, defaultSnoId, defaultSnoName);
 
         // Remove loading screen
-        document.getElementById("loading").style.display = 'none';
+        $("#loading").hide();
     });
-
-    // TODO: add overlays for quest conditioned map updates
-    // TODO: add radius (on hover) around markers with a radius
-    // TODO: add rotated and non-rotated grid
-    // TODO: filter by gizmo type
-    // TODO: expand marker sets on click
-    // TODO: custom search with Fuse?
 });
+
+// TODO: add overlays for quest conditioned map updates
+// TODO: add radius (on hover) around markers with a radius
+// TODO: add rotated and non-rotated grid
+// TODO: filter by gizmo type
+// TODO: expand marker sets on click
+// TODO: custom search with Fuse?
 
 function rotate(p, angle) {
     const rads = (Math.PI / 180) * angle;
@@ -229,26 +128,170 @@ function snoName(groups, names, group, id) {
     return `[${groupName}] ${names[id]}`
 }
 
-function loadData(cb) {
-    Promise.all([
-        binaryRequest('GET', 'map.mpk'),
-        binaryRequest('GET', '../groups.mpk'),
-        binaryRequest('GET', '../names.mpk'),
-    ]).then((values) => {
-        const mapData = msgpackr.unpack(values[0].currentTarget.response);
-        const groups = msgpackr.unpack(values[1].currentTarget.response);
-        const names = msgpackr.unpack(values[2].currentTarget.response);
-        cb({mapData, groups, names});
+function loadMap(groups, names, worldSnoId, worldSnoName) {
+    // if (window.map && window.map.remove) {
+    //     window.map.remove();
+    // }
+
+    // D4 CRS (TODO: determine from world data)
+    const D4Projection = L.extend({}, L.Projection.LonLat, {
+        project: function (latlng) {
+            let point = L.Projection.LonLat.project(latlng);
+            return rotate(point, -45);
+        },
+        unproject: function (point) {
+            point = rotate(point, 45);
+            return L.Projection.LonLat.unproject(point);
+        },
+    });
+
+    const D4CRS = L.extend({}, L.CRS.Simple, {
+        projection: D4Projection,
+        transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
+    });
+
+    // Setup renderer
+    const canvas = L.canvas();
+
+    // Setup map
+    window.map = L.map('map', {
+        attributionControl: false,
+        crs: D4CRS,
+        renderer: canvas,
+        maxBounds: L.latLngBounds( // Basically magic at this point
+            L.latLng(-970, -2890),
+            L.latLng(-970, 2545),
+        )
+    }).setView([0, 0], 0);
+
+    worldTileLayer(map, worldSnoId, worldSnoName);
+
+    // Add map events
+    map.on('click', function (e) {
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
+            .openOn(map);
+    });
+
+    // Add markers
+    L.circleMarker([0, 0], {
+        radius: 5,
+        stroke: false,
+        fill: true,
+        fillOpacity: 0.75,
+        fillColor: "black",
+    }).bindTooltip("This is the center of the world!").addTo(map);
+
+    loadWorld(map, groups, names, worldSnoId, worldSnoName);
+}
+
+function loadWorld(map, groups, names, worldSnoId, worldSnoName) {
+    binaryRequest('GET', `data/${worldSnoId}.mpk`).then((data) => {
+        const mapData = msgpackr.unpack(data);
+        const p = mapData.p;
+        const m = mapData.m;
+
+        // Polygons
+        let len = p.length;
+        while (len--) { // Using while has a measurable performance improvement... bc Javascript.
+            L.polygon(p[len], {
+                weight: 3,
+                color: '#ffffff',
+                fill: false,
+                opacity: 0.1,
+                interactive: false,
+            }).addTo(map)
+        }
+
+        // Markers
+        const markers = {};
+
+        len = m.length;
+        while (len--) {
+            const marker = m[len];
+            const groupName = snoGroupName(groups, marker.g);
+            const title = snoName(groups, names, marker.g, marker.r);
+
+            const circle = L.circleMarker([marker.x, marker.y], {
+                radius: 5,
+                stroke: false,
+                fill: true,
+                fillOpacity: 0.75,
+                fillColor: markerColors[groupName],
+            }).bindPopup(
+                markerPopup(marker, title),
+                {direction: 'center'},
+            );
+
+            if (!markers.hasOwnProperty(groupName)) {
+                markers[groupName] = L.markerClusterGroup({
+                    spiderfyOnMaxZoom: false,
+                    removeOutsideVisibleBounds: true,
+                    disableClusteringAtZoom: 3,
+                    iconCreateFunction: function (cluster) {
+                        var childCount = cluster.getChildCount();
+                        return new L.DivIcon({
+                            html: `<div>${childCount}</div>`,
+                            className: `cluster group_${groupName}`,
+                            iconSize: new L.Point(40, 40),
+                        });
+                    }
+                });
+            }
+            markers[groupName].addLayer(circle);
+        }
+
+        const dataLayers = L.control.layers({}, {}).addTo(map);
+        for (const markerGroup of Object.keys(markers).sort()) {
+            const layer = markers[markerGroup];
+            dataLayers.addOverlay(layer, markerGroup);
+        }
     });
 }
 
+function worldTileLayer(map, worldSnoId, worldSnoName) {
+    // Setup tiles
+    return L.tileLayer(`maptiles/${worldSnoId}/{z}/{x}_{y}.png`, {
+        tileSize: tileSize,
+        maxZoom: 6,
+        minZoom: -1,
+        minNativeZoom: 0,
+        maxNativeZoom: 3,
+        noWrap: true,
+        tms: false,
+    }).addTo(map);
+}
+
+function loadData(cb) {
+    Promise.all([
+        binaryRequest('GET', '../groups.mpk'),
+        binaryRequest('GET', '../names.mpk'),
+    ]).then((values) => {
+        cb(
+            msgpackr.unpack(values[0]),
+            msgpackr.unpack(values[1]),
+        );
+    }, console.error);
+}
+
 function binaryRequest(method, url) {
-    return new Promise(function (resolve, reject) {
-        const xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        xhr.responseType = 'arraybuffer';
-        xhr.onload = resolve;
-        xhr.onerror = reject;
-        xhr.send();
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'arraybuffer';
+    return $.ajax({
+        method,
+        url,
+        xhr: function() {
+            return xhr;
+        }
+    })
+    //
+    // return new Promise(function (resolve, reject) {
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open(method, url);
+    //     xhr.responseType = 'arraybuffer';
+    //     xhr.onload = resolve;
+    //     xhr.onerror = reject;
+    //     xhr.send();
+    // });
 }
