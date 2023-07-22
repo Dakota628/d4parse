@@ -1,14 +1,3 @@
-// From ZoneMapParams in WorldDefinition
-const zoneArtScale = 1.066667; // tZoneMapParams.fZoneArtScale
-const zoneArtCenter = [1449.000000, 2909.000000]; // tZoneMapParams.vecZoneArtCenter
-const zoneMapParamsScale = 5; // Scale of texture relative to zone map params
-
-// Pixels <-> Leaflet map units
-const mapUnitPerTile = 64;
-const mapSize = 40;
-const tileSize = 512;
-const pxPerMapUnit = tileSize / mapUnitPerTile;
-
 function pxToMapUnit(px) {
     return [px[0] / pxPerMapUnit, px[1] / pxPerMapUnit];
 }
@@ -16,16 +5,6 @@ function pxToMapUnit(px) {
 function subPx(a, b) {
     return [a[0] - b[0], a[1] - b[1]];
 }
-
-// Calculated constants
-const min = [0, 0];
-const max = [tileSize * mapSize, tileSize * mapSize];
-const origin = [zoneArtCenter[0] * zoneMapParamsScale, zoneArtCenter[1] * zoneMapParamsScale];
-const ptScale = 1 + ((1 - zoneArtScale) * zoneMapParamsScale);
-
-const originMapUnits = pxToMapUnit(origin);
-const minMapUnits = subPx(pxToMapUnit(min), originMapUnits);
-const maxMapUnits = subPx(pxToMapUnit(max), originMapUnits);
 
 // Markers
 const markerColors = {
@@ -45,24 +24,37 @@ const markerColors = {
 };
 
 const worldSnoGroup = 48;
+const sceneSnoGroup = 33;
 const defaultSnoId =  69068;
 const defaultSnoName = "Sanctuary_Eastern_Continent"
 
 // Load groups and names data
 loadData((groups, names) => {
-    // Set global data and data layers
-    window.groups = groups;
-    window.names = names;
-
     $(() => {
         // Add world selector
         const worldSelect = $("#worldSelect");
-        for (const [snoId, snoName] of Object.entries(names[worldSnoGroup])) {
-            worldSelect.append(`<option value="${snoId}">${snoName}</option>`);
+        worldSelect.select2({
+            theme: "classic"
+        });
+
+        let worldSnos = Object.entries(names[worldSnoGroup]);
+        worldSnos.sort((a,b) => a[1].localeCompare(b[1]))
+        for (const [snoId, snoName] of worldSnos) {
+            worldSelect.append(`<option value="${snoId}">[World] ${snoName}</option>`);
+        }
+
+        let sceneSnos = Object.entries(names[sceneSnoGroup]);
+        sceneSnos.sort((a,b) => a[1].localeCompare(b[1]))
+        for (const [snoId, snoName] of sceneSnos) {
+            worldSelect.append(`<option value="${snoId}">[Scene] ${snoName}</option>`);
         }
 
         // Load base world
-        loadMap(groups, names, defaultSnoId, defaultSnoName);
+        loadWorld(groups, names, defaultSnoId, defaultSnoName);
+
+        worldSelect.change(function() {
+            loadWorld(groups, names, $(this).val(), $(this).find('option:selected').text());
+        });
 
         // Remove loading screen
         $("#loading").hide();
@@ -128,69 +120,95 @@ function snoName(groups, names, group, id) {
     return `[${groupName}] ${names[id]}`
 }
 
-function loadMap(groups, names, worldSnoId, worldSnoName) {
-    // if (window.map && window.map.remove) {
-    //     window.map.remove();
-    // }
-
-    // D4 CRS (TODO: determine from world data)
-    const D4Projection = L.extend({}, L.Projection.LonLat, {
-        project: function (latlng) {
-            let point = L.Projection.LonLat.project(latlng);
-            return rotate(point, -45);
-        },
-        unproject: function (point) {
-            point = rotate(point, 45);
-            return L.Projection.LonLat.unproject(point);
-        },
-    });
-
-    const D4CRS = L.extend({}, L.CRS.Simple, {
-        projection: D4Projection,
-        transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
-    });
-
-    // Setup renderer
-    const canvas = L.canvas();
-
-    // Setup map
-    window.map = L.map('map', {
-        attributionControl: false,
-        crs: D4CRS,
-        renderer: canvas,
-        maxBounds: L.latLngBounds( // Basically magic at this point
-            L.latLng(-970, -2890),
-            L.latLng(-970, 2545),
-        )
-    }).setView([0, 0], 0);
-
-    worldTileLayer(map, worldSnoId, worldSnoName);
-
-    // Add map events
-    map.on('click', function (e) {
-        L.popup()
-            .setLatLng(e.latlng)
-            .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
-            .openOn(map);
-    });
-
-    // Add markers
-    L.circleMarker([0, 0], {
-        radius: 5,
-        stroke: false,
-        fill: true,
-        fillOpacity: 0.75,
-        fillColor: "black",
-    }).bindTooltip("This is the center of the world!").addTo(map);
-
-    loadWorld(map, groups, names, worldSnoId, worldSnoName);
-}
-
-function loadWorld(map, groups, names, worldSnoId, worldSnoName) {
+function loadWorld(groups, names, worldSnoId, worldSnoName) {
     binaryRequest('GET', `data/${worldSnoId}.mpk`).then((data) => {
         const mapData = msgpackr.unpack(data);
-        const p = mapData.p;
-        const m = mapData.m;
+
+        if (!mapData.p && !mapData.m) {
+            alert("No Data For Scene/World");
+            return
+        }
+
+        if (window.m && window.m.remove) {
+            window.m.remove();
+        }
+
+        $("#worldSelect").val(worldSnoId);
+
+        // From ZoneMapParams in WorldDefinition
+        window.zoneArtScale = mapData.artScale; // tZoneMapParams.fZoneArtScale
+        window.zoneArtCenter = [mapData.artCenterX, mapData.artCenterY]; // tZoneMapParams.vecZoneArtCenter
+        window.zoneMapParamsScale = 5; // Scale of texture relative to zone map params
+
+        // Pixels <-> Leaflet map units
+        window.mapUnitPerTile = 64;
+        window.mapSize = 40;
+        window.tileSize = 512;
+        window.pxPerMapUnit = tileSize / mapUnitPerTile;
+
+        // Calculated constants
+        window.min = [0, 0];
+        window.max = [tileSize * mapSize, tileSize * mapSize];
+        window.origin = [zoneArtCenter[0] * zoneMapParamsScale, zoneArtCenter[1] * zoneMapParamsScale];
+        window.ptScale = 1 + ((1 - zoneArtScale) * zoneMapParamsScale);
+
+        window.originMapUnits = pxToMapUnit(origin);
+        window.minMapUnits = subPx(pxToMapUnit(min), originMapUnits);
+        window.maxMapUnits = subPx(pxToMapUnit(max), originMapUnits);
+
+        // D4 CRS (TODO: determine from world data)
+        const D4Projection = L.extend({}, L.Projection.LonLat, {
+            project: function (latlng) {
+                let point = L.Projection.LonLat.project(latlng);
+                return rotate(point, -45);
+            },
+            unproject: function (point) {
+                point = rotate(point, 45);
+                return L.Projection.LonLat.unproject(point);
+            },
+        });
+
+        const D4CRS = L.extend({}, L.CRS.Simple, {
+            projection: D4Projection,
+            transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
+        });
+
+        // Setup renderer
+        const canvas = L.canvas();
+
+        // Setup map
+        window.m = L.map('map', {
+            attributionControl: false,
+            crs: D4CRS,
+            renderer: canvas,
+            // maxBounds: L.latLngBounds( // Basically magic at this point
+            //     L.latLng(-970, -2890),
+            //     L.latLng(-970, 2545),
+            // )
+        }).setView([0, 0], 0);
+
+        worldTileLayer(window.m, worldSnoId, worldSnoName);
+
+        // Add map events
+        window.m.on('click', function (e) {
+            L.popup()
+                .setLatLng(e.latlng)
+                .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
+                .openOn(window.m);
+        });
+
+        // Add markers
+        L.circleMarker([0, 0], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: "black",
+        }).bindTooltip("This is the center of the world!").addTo(window.m);
+
+        // Load world
+        const p = mapData.p ?? [];
+        const m = mapData.m ?? [];
 
         // Polygons
         let len = p.length;
@@ -201,7 +219,7 @@ function loadWorld(map, groups, names, worldSnoId, worldSnoName) {
                 fill: false,
                 opacity: 0.1,
                 interactive: false,
-            }).addTo(map)
+            }).addTo(window.m)
         }
 
         // Markers
@@ -242,19 +260,19 @@ function loadWorld(map, groups, names, worldSnoId, worldSnoName) {
             markers[groupName].addLayer(circle);
         }
 
-        const dataLayers = L.control.layers({}, {}).addTo(map);
+        const dataLayers = L.control.layers({}, {}).addTo(window.m);
         for (const markerGroup of Object.keys(markers).sort()) {
             const layer = markers[markerGroup];
             dataLayers.addOverlay(layer, markerGroup);
         }
-    });
+    }, console.error);
 }
 
 function worldTileLayer(map, worldSnoId, worldSnoName) {
     // Setup tiles
     return L.tileLayer(`maptiles/${worldSnoId}/{z}/{x}_{y}.png`, {
         tileSize: tileSize,
-        maxZoom: 6,
+        maxZoom: 15,
         minZoom: -1,
         minNativeZoom: 0,
         maxNativeZoom: 3,
