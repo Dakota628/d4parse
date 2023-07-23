@@ -26,7 +26,6 @@ const markerColors = {
 const worldSnoGroup = 48;
 const sceneSnoGroup = 33;
 const defaultSnoId =  69068;
-const defaultSnoName = "Sanctuary_Eastern_Continent"
 
 // Load groups and names data
 loadData((groups, names) => {
@@ -49,15 +48,25 @@ loadData((groups, names) => {
             worldSelect.append(`<option value="${snoId}">[Scene] ${snoName}</option>`);
         }
 
-        // Load base world
-        loadWorld(groups, names, defaultSnoId, defaultSnoName);
-
+        // Add world select
         worldSelect.change(function() {
             loadWorld(groups, names, $(this).val(), $(this).find('option:selected').text());
         });
 
-        // Remove loading screen
-        $("#loading").hide();
+        // Load base world
+        worldSelect.val(defaultSnoId).trigger('change');
+
+        // Add search event
+        $("#search").data('val', '').on('input', function(){
+            clearTimeout(this.delay);
+            this.delay = setTimeout(function(){
+                if (this.value !== $(this).data('val')) {
+                    console.log("Searching for:", this.value);
+                    $(this).data('val', this.value);
+                    drawMarkers(groups, names, this.value);
+                }
+            }.bind(this), 800);
+        });
     });
 });
 
@@ -120,20 +129,81 @@ function snoName(groups, names, group, id) {
     return `[${groupName}] ${names[id]}`
 }
 
-function loadWorld(groups, names, worldSnoId, worldSnoName) {
+function drawMarkers(groups, names, search) {
+    console.log("Drawing markers:", search);
+
+    if (!window.m) {
+        return;
+    }
+
+    if (window.dataLayers) {
+        window.dataLayers.remove();
+    }
+
+    const m = mapData.m ?? [];
+    const markers = {};
+
+    let len = m.length;
+    while (len--) {
+        const marker = m[len];
+        const groupName = snoGroupName(groups, marker.g);
+        const title = snoName(groups, names, marker.g, marker.r);
+
+        if (search && search.length > 0) {
+            if (!title.toLowerCase().includes(search)) {
+                continue;
+            }
+        }
+
+        const circle = L.circleMarker([marker.x, marker.y], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: markerColors[groupName],
+        }).bindPopup(
+            markerPopup(marker, title),
+            {direction: 'center'},
+        );
+
+        if (!markers.hasOwnProperty(groupName)) {
+            markers[groupName] = L.markerClusterGroup({
+                spiderfyOnMaxZoom: false,
+                removeOutsideVisibleBounds: true,
+                disableClusteringAtZoom: 3,
+                iconCreateFunction: function (cluster) {
+                    var childCount = cluster.getChildCount();
+                    return new L.DivIcon({
+                        html: `<div>${childCount}</div>`,
+                        className: `cluster group_${groupName}`,
+                        iconSize: new L.Point(40, 40),
+                    });
+                }
+            });
+        }
+        markers[groupName].addLayer(circle);
+    }
+
+    window.dataLayers = L.control.layers({}, markers).addTo(window.m);
+}
+
+function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
+    console.log("Loading world:", worldSnoId, worldSnoName);
+
+    // Show loading screen
+    $("#loading").show();
+
     binaryRequest('GET', `data/${worldSnoId}.mpk`).then((data) => {
-        const mapData = msgpackr.unpack(data);
+        window.mapData = msgpackr.unpack(data);
 
         if (!mapData.p && !mapData.m) {
-            alert("No Data For Scene/World");
+            alert("No data for Scene/World");
             return
         }
 
         if (window.m && window.m.remove) {
             window.m.remove();
         }
-
-        $("#worldSelect").val(worldSnoId);
 
         // From ZoneMapParams in WorldDefinition
         window.zoneArtScale = mapData.artScale; // tZoneMapParams.fZoneArtScale
@@ -191,8 +261,7 @@ function loadWorld(groups, names, worldSnoId, worldSnoName) {
 
         // Add map events
         window.m.on('click', function (e) {
-            L.popup()
-                .setLatLng(e.latlng)
+            L.popup().setLatLng(e.latlng)
                 .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
                 .openOn(window.m);
         });
@@ -208,7 +277,6 @@ function loadWorld(groups, names, worldSnoId, worldSnoName) {
 
         // Load world
         const p = mapData.p ?? [];
-        const m = mapData.m ?? [];
 
         // Polygons
         let len = p.length;
@@ -223,48 +291,11 @@ function loadWorld(groups, names, worldSnoId, worldSnoName) {
         }
 
         // Markers
-        const markers = {};
+        $("#search").val("")
+        drawMarkers(groups, names, "");
 
-        len = m.length;
-        while (len--) {
-            const marker = m[len];
-            const groupName = snoGroupName(groups, marker.g);
-            const title = snoName(groups, names, marker.g, marker.r);
-
-            const circle = L.circleMarker([marker.x, marker.y], {
-                radius: 5,
-                stroke: false,
-                fill: true,
-                fillOpacity: 0.75,
-                fillColor: markerColors[groupName],
-            }).bindPopup(
-                markerPopup(marker, title),
-                {direction: 'center'},
-            );
-
-            if (!markers.hasOwnProperty(groupName)) {
-                markers[groupName] = L.markerClusterGroup({
-                    spiderfyOnMaxZoom: false,
-                    removeOutsideVisibleBounds: true,
-                    disableClusteringAtZoom: 3,
-                    iconCreateFunction: function (cluster) {
-                        var childCount = cluster.getChildCount();
-                        return new L.DivIcon({
-                            html: `<div>${childCount}</div>`,
-                            className: `cluster group_${groupName}`,
-                            iconSize: new L.Point(40, 40),
-                        });
-                    }
-                });
-            }
-            markers[groupName].addLayer(circle);
-        }
-
-        const dataLayers = L.control.layers({}, {}).addTo(window.m);
-        for (const markerGroup of Object.keys(markers).sort()) {
-            const layer = markers[markerGroup];
-            dataLayers.addOverlay(layer, markerGroup);
-        }
+        // Remove loading screen
+        $("#loading").hide();
     }, console.error);
 }
 
@@ -303,13 +334,4 @@ function binaryRequest(method, url) {
             return xhr;
         }
     })
-    //
-    // return new Promise(function (resolve, reject) {
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.open(method, url);
-    //     xhr.responseType = 'arraybuffer';
-    //     xhr.onload = resolve;
-    //     xhr.onerror = reject;
-    //     xhr.send();
-    // });
 }

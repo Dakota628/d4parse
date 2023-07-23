@@ -159,9 +159,9 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
-				X:           marker.Transform.Wp.X,
-				Y:           marker.Transform.Wp.Y,
-				Z:           marker.Transform.Wp.Z,
+				X:           sceneChunk.Transform.Wp.X + marker.Transform.Wp.X,
+				Y:           sceneChunk.Transform.Wp.Y + marker.Transform.Wp.Y,
+				Z:           sceneChunk.Transform.Wp.Z + marker.Transform.Wp.Z,
 				Metadata: map[string]any{
 					"mt": marker.EType.Value,
 				}, // TODO: could also add scale to add a larger radius on hover

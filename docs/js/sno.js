@@ -144,7 +144,7 @@ function loadNames(msgpack) {
 
 function loadRefs($, msgpack) {
     loadGroups(msgpack);
-    loadNames(msgpack);
+    loadNames(msgpack); // TODO: fix race condition
 
     const metaEntry = $('<div class="extra"><div class="tn">Referenced By</div><div id="refs"></div></div>')
     const valNode = metaEntry.find('#refs');

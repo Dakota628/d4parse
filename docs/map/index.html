@@ -12,6 +12,10 @@
     <script src="https://unpkg.com/msgpackr@1.9.5/dist/index.js"></script>
     <script src="main.js"></script>
     <style>
+        * {
+            font-family: sans-serif;
+        }
+
         html, body, #map {
             width: 100%;
             height: 100%;
@@ -29,6 +33,21 @@
             z-index: 100000;
         }
 
+        #search {
+            width: 25%;
+            min-width: 200px;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1000;
+            padding: 3px 8px;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            outline: none !important;
+            font-size: 16px;
+            color: #444;
+        }
+
         .select2-container {
             width: 25%;
             min-width: 200px;
@@ -41,7 +60,6 @@
         #worldSelect {
             padding: 5px;
             width: 25%;
-            height: 50px;
             font-size: 16px;
             position: fixed;
             bottom: 10px;
@@ -111,6 +129,17 @@
 
         .group_Weather {
             background-color: lightskyblue;
+        }
+
+        .loading-text {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            top: calc(50% + 80px);
+            z-index: 100000;
+            color: white;
+            font-size: 16px;
         }
 
         .lds-roller {
@@ -224,8 +253,10 @@
 <body>
     <div id="loading">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="loading-text">Loading Map Data</div>
     </div>
     <div id="map"></div>
     <select id="worldSelect"></select>
+    <input id="search" type="search" placeholder="Search..." />
 </body>
 </html>
