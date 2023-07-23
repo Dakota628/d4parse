@@ -197,6 +197,7 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
         window.mapData = msgpackr.unpack(data);
 
         if (!mapData.p && !mapData.m) {
+            $("#loading").hide();
             alert("No data for Scene/World");
             return
         }
