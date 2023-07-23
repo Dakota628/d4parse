@@ -14,7 +14,9 @@ define(['jquery', 'cytoscape', 'cytoscape-dagre', 'msgpack'], ($, cytoscape, cyd
     cydagre(cytoscape);
 
     //  Load refs map
-    loadRefs($, msgpack);
+    loadRefs($, msgpack, function () {
+
+    });
 
     $(() => {
         // Read SNO info from HTML
@@ -111,59 +113,46 @@ function eachReferencedBy(dv, targetTo, cb) {
     }
 }
 
-function snoName(id) {
-    for (const [groupId, m] of Object.entries(snos)) {
+function snoName(names, groups, id) {
+    for (const [groupId, m] of Object.entries(names)) {
         const name = m[id];
         if (name) {
-            return `[${window.snoGroupsById[groupId] ?? 'Unknown'}] ${name}`;
+            return `[${groups[groupId] ?? 'Unknown'}] ${name}`;
         }
 
     }
     return `[Unknown] ${id}`;
 }
 
-function loadGroups(msgpack) {
-    const req = new XMLHttpRequest();
-    req.open("GET", "../groups.mpk", true);
-    req.responseType = "arraybuffer";
-    req.onload = function () {
-        window.snoGroupsById = msgpack.decode(req.response);
-    };
-    req.send();
-}
-
-function loadNames(msgpack) {
-    const req = new XMLHttpRequest();
-    req.open("GET", "../names.mpk", true);
-    req.responseType = "arraybuffer";
-    req.onload = function () {
-        window.snos = msgpack.decode(req.response);
-    };
-    req.send();
-}
-
 function loadRefs($, msgpack) {
-    loadGroups(msgpack);
-    loadNames(msgpack); // TODO: fix race condition
+    Promise.all([
+        binaryRequest($, 'GET', '../refs.bin'),
+        binaryRequest($, 'GET', '../groups.mpk'),
+        binaryRequest($, 'GET', '../names.mpk'),
+    ]).then((values) => {
+        window.groups = msgpack.decode(values[1]);
+        window.names = msgpack.decode(values[2]);
 
-    const metaEntry = $('<div class="extra"><div class="tn">Referenced By</div><div id="refs"></div></div>')
-    const valNode = metaEntry.find('#refs');
+        const metaEntry = $('<div class="extra"><div class="tn">Referenced By</div><div id="refs"></div></div>')
+        const valNode = metaEntry.find('#refs');
 
-    const req = new XMLHttpRequest();
-    req.open("GET", "../refs.bin", true);
-    req.responseType = "arraybuffer";
-    req.onload = function (e) {
-        const dv = new DataView(req.response);
-        eachReferencedBy(dv, sno.id, function (from) {
-            const link = $("<a></a>").attr("href", `${from}.html`).text(snoName(from));
-            valNode.append(link);
-        })
+        eachReferencedBy(
+            new DataView(values[0]),
+            sno.id,
+            function (from) {
+                valNode.append(
+                    $("<a></a>")
+                        .attr("href", `${from}.html`)
+                        .text(snoName(names, groups, from))
+                );
+            },
+        );
+
         if (valNode.is(':empty')) {
             valNode.append($("<i>Not referenced by anything</i>"))
         }
         $(() => $(".snoMeta").eq(0).after(metaEntry));
-    };
-    req.send();
+    }, console.error);
 }
 
 function findType(elem, t) {
@@ -378,4 +367,16 @@ function generateQuestGraph($, cytoscape) {
     cy.layout({
         name: 'dagre'
     }).run();
+}
+
+function binaryRequest($, method, url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'arraybuffer';
+    return $.ajax({
+        method,
+        url,
+        xhr: function() {
+            return xhr;
+        }
+    })
 }

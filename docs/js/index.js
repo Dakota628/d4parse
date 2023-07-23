@@ -19,11 +19,11 @@ define(['jquery', 'jquery-ui', 'notie', 'msgpack'], ($, ui, notie, msgpack) => {
 
 const queryRegex = /(\[(?<group>\w+)\] )?(?<query>.*)/g;
 
-function subSearch(query, max, group, m, results) {
+function subSearch(groups, query, max, group, m, results) {
     for (const [id, name] of Object.entries(m)) {
         if (name.toLowerCase().includes(query)) {
             results.push({
-                label: entryName({group, name}),
+                label: entryName(groups, {group, name}),
                 group,
                 name,
                 id,
@@ -36,7 +36,7 @@ function subSearch(query, max, group, m, results) {
     return results
 }
 
-function search(query, max) {
+function search(groups, groupsByName, names, query, max) {
     const queryParts = query.matchAll(queryRegex).next();
     if (!queryParts) {
         return []
@@ -46,65 +46,68 @@ function search(query, max) {
 
     // Group specified
     if (group) {
-        const groupId = snoGroupsByName[group];
-        return subSearch(query, max, groupId, snos[groupId] ?? {}, []);
+        const groupId = groupsByName[group];
+        return subSearch(groups, query, max, groupId, names[groupId] ?? {}, []);
     }
 
     // No group specified
     let results = [];
-    for (const [groupId, m] of Object.entries(snos)) {
-        results = subSearch(query, max, groupId, m, results);
+    for (const [groupId, m] of Object.entries(names)) {
+        results = subSearch(groups, query, max, groupId, m, results);
     }
     return results;
 }
 
 function loadNames($, msgpack, notie) {
-    const greq = new XMLHttpRequest();
-    greq.open("GET", "groups.mpk", true);
-    greq.responseType = "arraybuffer";
-    greq.onload = function () {
-        window.snoGroupsById = msgpack.decode(greq.response);
-        window.snoGroupsByName = Object.fromEntries(Object.entries(snoGroupsById).map(a => a.reverse()));
+    Promise.all([
+        binaryRequest($, 'GET', 'groups.mpk'),
+        binaryRequest($, 'GET', 'names.mpk'),
+    ]).then((values) => {
+        window.groups = msgpack.decode(values[0]);
+        window.groupsByName = Object.fromEntries(Object.entries(groups).map(a => a.reverse()))
+        window.names = msgpack.decode(values[1]);
 
-        const nreq = new XMLHttpRequest();
-        nreq.open("GET", "names.mpk", true);
-        nreq.responseType = "arraybuffer";
-        nreq.onload = function () {
-            $(() => {
-                window.snos = msgpack.decode(nreq.response);
-                $("#search").autocomplete({
-                    source: function (request, response) {
-                        response(search(request.term, 100))
-                    },
-                    select: function (event, ui) {
-                        const url = `sno/${ui.item.id}.html`
-                        $.get({
-                            url: `sno/${ui.item.id}.html`,
-                            cache: true,
-                        }).done(() => {
-                            $(location).prop('href', url);
-                        }).fail(() => {
-                            notie.alert({
-                                type: 'error',
-                                text: 'SNO not found!',
-                                buttonText: 'Moo!',
-                                time: 100,
-                            });
-                            $("#search").focus();
-                        })
-                    },
-                    focus: function (event, ui) {
-                        this.value = entryName(ui.item);
-                        event.preventDefault();
-                    },
-                });
-            })
-        };
-        nreq.send();
-    };
-    greq.send();
+        $("#search").autocomplete({
+            source: function (request, response) {
+                response(search(groups, groupsByName, names, request.term, 100))
+            },
+            select: function (event, ui) {
+                const url = `sno/${ui.item.id}.html`
+                $.get({
+                    url: `sno/${ui.item.id}.html`,
+                    cache: true,
+                }).done(() => {
+                    $(location).prop('href', url);
+                }).fail(() => {
+                    notie.alert({
+                        type: 'error',
+                        text: 'SNO not found!',
+                        buttonText: 'Moo!',
+                        time: 100,
+                    });
+                    $("#search").focus();
+                })
+            },
+            focus: function (event, ui) {
+                this.value = entryName(groups, names, ui.item);
+                event.preventDefault();
+            },
+        });
+    }, console.error);
 }
 
-function entryName(item) {
-    return `[${snoGroupsById[item.group]}] ${item.name}`
+function binaryRequest($, method, url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'arraybuffer';
+    return $.ajax({
+        method,
+        url,
+        xhr: function() {
+            return xhr;
+        }
+    })
+}
+
+function entryName(groups, item) {
+    return `[${groups[item.group]}] ${item.name}`
 }
