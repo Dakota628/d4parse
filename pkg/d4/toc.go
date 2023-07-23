@@ -1,6 +1,7 @@
 package d4
 
 import (
+	"errors"
 	"github.com/Dakota628/d4parse/pkg/bin"
 	"io"
 	"os"
@@ -146,5 +147,104 @@ func ReadTocFile(path string) (Toc, error) {
 	return toc, toc.UnmarshalD4(r, nil)
 }
 
+type TocReplacedSnosEntry struct {
+	SnoGroup int32
+	SnoId    int32
+	Unk0     int64
+	Unk1     int32
+	Unk2     int32
+}
+
+type TocReplacedSnosMapping struct {
+	EntryCount uint32
+	Entries    []TocReplacedSnosEntry
+}
+
+func (t *TocReplacedSnosMapping) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	if _, err := r.Seek(4, io.SeekCurrent); err != nil {
+		return err
+	}
+	if err := r.Uint32LE(&t.EntryCount); err != nil {
+		return err
+	}
+
+	t.Entries = make([]TocReplacedSnosEntry, t.EntryCount)
+	for i := uint32(0); i < t.EntryCount; i++ {
+		// Skip 24 bytes
+		if _, err := r.Seek(24, io.SeekCurrent); err != nil {
+			return err
+		}
+
+		// Read entry
+		var e TocReplacedSnosEntry
+		if err := r.Int32LE(&e.SnoGroup); err != nil {
+			return err
+		}
+		if err := r.Int32LE(&e.SnoId); err != nil {
+			return err
+		}
+
+		if err := r.Int64LE(&e.Unk0); err != nil {
+			return err
+		}
+		if err := r.Int32LE(&e.Unk1); err != nil {
+			return err
+		}
+		if err := r.Int32LE(&e.Unk2); err != nil {
+			return err
+		}
+
+		if e.Unk1 != -1 && e.Unk2 != 0 {
+			return errors.New("invalid data in unk1 or unk2")
+		}
+
+		t.Entries[i] = e
+	}
+
+	return nil
+}
+
+type TocSharedPayloadsEntry struct {
+	SrcSnoId  uint32
+	DestSnoId uint32
+}
+
+type TocSharedPayloadsMapping struct {
+	EntryCount uint32
+	Entries    []TocSharedPayloadsEntry
+}
+
+func (t *TocSharedPayloadsMapping) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	if _, err := r.Seek(4, io.SeekCurrent); err != nil {
+		return err
+	}
+	if err := r.Uint32LE(&t.EntryCount); err != nil {
+		return err
+	}
+
+	t.Entries = make([]TocSharedPayloadsEntry, t.EntryCount)
+	for i := uint32(0); i < t.EntryCount; i++ {
+		// Skip 8 bytes
+		if _, err := r.Seek(24, io.SeekCurrent); err != nil {
+			return err
+		}
+
+		// Read entry
+		var e TocSharedPayloadsEntry
+
+		if err := r.Uint32LE(&e.SrcSnoId); err != nil {
+			return err
+		}
+		if err := r.Uint32LE(&e.DestSnoId); err != nil {
+			return err
+		}
+
+		t.Entries[i] = e
+	}
+
+	return nil
+}
+
 // TODO: support payloads mapping
 // TODO: support EncryptedSNOS.dat
+// TODO: support GlobalSNO.dat

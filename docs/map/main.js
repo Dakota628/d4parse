@@ -75,8 +75,9 @@ loadData((groups, names) => {
 // TODO: add radius (on hover) around markers with a radius
 // TODO: add rotated and non-rotated grid
 // TODO: filter by gizmo type
-// TODO: expand marker sets on click
-// TODO: custom search with Fuse?
+// TODO: regex search
+// TODO: assure cluster groups are removed during search
+// TODO: styling consistent with docs eventually
 
 function rotate(p, angle) {
     const rads = (Math.PI / 180) * angle;
@@ -131,6 +132,7 @@ function snoName(groups, names, group, id) {
 }
 
 function drawMarkers(groups, names, search) {
+    search = search.toLowerCase();
     console.log("Drawing markers:", search);
 
     if (!window.m) {
