@@ -1,0 +1,269 @@
+* {
+    font-family: sans-serif;
+}
+
+html, body, #map {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: black;
+}
+
+#loading {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100000;
+}
+
+#search {
+    width: 25%;
+    min-width: 200px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    outline: none !important;
+    font-size: 16px;
+    color: #444;
+    border: 1px solid #aaa;
+}
+
+.select2-container {
+    width: 25%;
+    min-width: 200px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+#worldSelect {
+    padding: 5px;
+    width: 25%;
+    font-size: 16px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.snoRef {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.snoRef:hover {
+    overflow: auto;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: inherit;
+}
+
+.popupTitle {
+    font-weight: bold;
+}
+
+.markerAttrs dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.markerAttrs dt:first-of-type {
+    margin-top: 0;
+}
+
+.markerAttrs dd {
+    margin-left: 0;
+}
+
+.cluster {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    font-size: 10px;
+    opacity: 0.75;
+}
+
+.group_Actor {
+    background-color: green;
+}
+
+.group_AmbientSound {
+    background-color: mediumpurple;
+}
+
+.group_Encounter {
+    background-color: red;
+}
+
+.group_EffectGroup {
+    background-color: blue;
+}
+
+.group_FogVolume {
+    background-color: mintcream;
+}
+
+.group_Light {
+    background-color: yellow;
+}
+
+.group_MarkerSet {
+    background-color: lightgray;
+}
+
+.group_Material {
+    background-color: orange;
+}
+
+.group_Particle {
+    background-color: brown;
+}
+
+.group_Quest {
+    background-color: lightblue;
+}
+
+.group_Sound {
+    background-color: purple;
+}
+
+.group_Unknown {
+    background-color: darkgray;
+}
+
+.group_Weather {
+    background-color: lightskyblue;
+}
+
+.loadingText {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    top: calc(50% + 80px);
+    z-index: 100000;
+    color: white;
+    font-size: 16px;
+}
+
+.ldsRoller {
+    display: inline-block;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    left: calc(50% - 40px);
+    top: calc(50% - 40px);
+    z-index: 1000000;
+}
+
+.ldsRoller div {
+    animation: ldsRoller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+
+.ldsRoller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+}
+
+.ldsRoller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+
+.ldsRoller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+
+.ldsRoller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+
+.ldsRoller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+}
+
+.ldsRoller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+
+.ldsRoller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+}
+
+.ldsRoller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+
+.ldsRoller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+
+.ldsRoller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+
+.ldsRoller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+}
+
+.ldsRoller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+
+.ldsRoller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+}
+
+.ldsRoller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+
+.ldsRoller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+}
+
+.ldsRoller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+
+.ldsRoller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+}
+
+@keyframes ldsRoller {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

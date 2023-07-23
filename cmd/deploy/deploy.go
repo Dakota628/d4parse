@@ -54,8 +54,9 @@ func getAwsConfig(accessKeyId string, secretAccessKey string) aws.Config {
 	return cfg
 }
 
-func getFilesToUpload() chan string {
+func getFilesToUpload(skipSno bool) chan string {
 	c := make(chan string, workers*10)
+	snoPrefix := filepath.Join("docs", "sno")
 
 	go func() {
 		err := godirwalk.Walk(
@@ -63,6 +64,10 @@ func getFilesToUpload() chan string {
 			&godirwalk.Options{
 				Callback: func(path string, de *godirwalk.Dirent) error {
 					if !de.IsRegular() {
+						return nil
+					}
+
+					if skipSno && filepath.HasPrefix(path, snoPrefix) {
 						return nil
 					}
 
@@ -107,7 +112,7 @@ func main() {
 	defer cancel()
 
 	cfg := getAwsConfig(accessKeyId, secretAccessKey)
-	files := getFilesToUpload()
+	files := getFilesToUpload(false)
 
 	if err := mime.AddExtensionType(".bin", "application/octet-stream"); err != nil {
 		log.Fatalf("Failed to add .bin mime extension: %s", err)

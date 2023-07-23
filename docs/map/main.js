@@ -89,24 +89,44 @@ function rotate(p, angle) {
     );
 }
 
-function markerPopup(marker, title) {
-    let extra = '';
-    const meta = marker.m ?? {};
-    if (meta.hasOwnProperty('mt')) {
-        extra += `Marker Type: ${meta.mt}<br/>`
-    }
-    if (meta.hasOwnProperty('gt')) {
-        extra += `Gizmo Type: ${meta.gt}<br/>`
+const markerMetaNames = {
+    'mt': 'Marker Type',
+    'gt': 'Gizmo Type',
+}
+
+function markerPopup(groups, names, marker, title) {
+    const popup = $('<div></div>'); // Container doesn't matter, we just want the inner html
+    popup.append(`<a class="snoRef popupTitle" href="../sno/${marker.r}.html">${title}</a>`);
+
+    // Add attributes
+    const dl = $('<dl class="markerAttrs"></dl>');
+
+    // -- Source
+    dl.append(`<dt>Source</dt><dd><a class="snoRef"  href="../sno/${marker.s}.html">${snoName(groups, names, lookupSnoGroup(names, marker.s), marker.s)}</a></dd>`);
+
+    // -- Data SNOs
+    const dataSnos = marker.d ?? [];
+    if (dataSnos.length > 0) {
+        dl.append('<dt>Data</dt>');
+        const dd = $('<dd></dd>');
+        for (const dataSno of dataSnos) {
+            const title = snoName(groups, names, lookupSnoGroup(names, dataSno), dataSno);
+            dd.append(`<a class="snoRef" href="../sno/${marker.s}.html">${title}</a>`)
+        }
+        dl.append(dd);
     }
 
-    return `<b><a href="../sno/${marker.r}.html">${title}</a></b>
-    <p>
-    Source: <a href="../sno/${marker.s}.html">${marker.s}</a>
-    <br/>
-    ${extra}
-    <br/>
-    <i>${marker.x}, ${marker.y}, ${marker.z}</i>
-    </p>`;
+    // -- Metadata
+    for (const [key, val] of Object.entries(marker.m ?? {})) {
+        dl.append(`<dt>${markerMetaNames[key] ?? key}</dt><dd>${val}</dd>`);
+    }
+
+    popup.append(dl);
+
+    // Add coordinates
+    popup.append(`<i>${marker.x.toFixed(6)}, ${marker.y.toFixed(6)}, ${marker.z.toFixed(6)}</i>`)
+
+    return popup.html();
 }
 
 function snoGroupName(groups, id) {
@@ -114,6 +134,15 @@ function snoGroupName(groups, id) {
         return "Unknown";
     }
     return groups[id] ?? `Group_${id}`;
+}
+
+function lookupSnoGroup(names, id) {
+    for (const [groupId, m] of Object.entries(names)) {
+        if (m.hasOwnProperty(id)) {
+            return groupId
+        }
+    }
+    return -1;
 }
 
 function snoName(groups, names, group, id) {
@@ -165,7 +194,7 @@ function drawMarkers(groups, names, search) {
             fillOpacity: 0.75,
             fillColor: markerColors[groupName],
         }).bindPopup(
-            markerPopup(marker, title),
+            markerPopup(groups, names, marker, title),
             {direction: 'center'},
         );
 
@@ -267,7 +296,7 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
         // Add map events
         window.m.on('click', function (e) {
             L.popup().setLatLng(e.latlng)
-                .setContent(`${e.latlng.lat}, ${e.latlng.lng}`)
+                .setContent(`${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}`)
                 .openOn(window.m);
         });
 

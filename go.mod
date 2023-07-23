@@ -12,7 +12,9 @@ require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/deckarep/golang-set/v2 v2.3.0
 	github.com/go-gl/gl v0.0.0-20211210172815-726fda9656d6
+	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b
 	github.com/karrick/godirwalk v1.17.0
+	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/vmihailenco/msgpack/v5 v5.3.5
 	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
 	gopkg.in/yaml.v3 v3.0.1
@@ -33,7 +35,5 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.12 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.2 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
-	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b // indirect
-	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 )

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/bmatcuk/doublestar/v4"
+	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
 	"os"
@@ -15,10 +16,34 @@ var (
 	outputBasePath = filepath.Join("docs", "map")
 )
 
+type UniqueMarkerData struct {
+	seen    mapset.Set[string]
+	Markers []MarkerData
+}
+
+func NewUniqueMarkerData() *UniqueMarkerData {
+	return &UniqueMarkerData{
+		seen: mapset.NewThreadUnsafeSet[string](),
+	}
+}
+
+func (u *UniqueMarkerData) Add(data ...MarkerData) {
+	for _, d := range data {
+		mpb, err := msgpack.Marshal(d)
+		if err != nil {
+			panic(err)
+		}
+		if u.seen.Add(string(mpb)) {
+			u.Markers = append(u.Markers, d)
+		}
+	}
+}
+
 type MarkerData struct {
 	RefSnoGroup uint8          `msgpack:"g"`
 	RefSno      int32          `msgpack:"r"`
 	SourceSno   int32          `msgpack:"s"`
+	DataSnos    []int32        `msgpack:"d"`
 	X           float32        `msgpack:"x"`
 	Y           float32        `msgpack:"y"`
 	Z           float32        `msgpack:"z"`
@@ -33,6 +58,23 @@ type MapData struct {
 	ZoneArtCenterY float32      `msgpack:"artCenterY"`
 	Markers        []MarkerData `msgpack:"m"`
 	Polygons       []Polygon    `msgpack:"p"`
+}
+
+func dataSnosFromMarker(m *d4.Marker) (snos []int32) {
+	m.PtBase.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+		switch x := v.(type) {
+		case *d4.DT_SNO:
+			if x.Id > 0 {
+				snos = append(snos, x.Id)
+			}
+		case *d4.DT_SNO_NAME:
+			if x.Id > 0 {
+				snos = append(snos, x.Id)
+			}
+		}
+		next()
+	})
+	return
 }
 
 func loadGlobalMarkers(baseMetaPath string, toc d4.Toc, worldSnoId int32) ([]MarkerData, error) {
@@ -95,6 +137,7 @@ func loadScene(baseMetaPath string, toc d4.Toc, sceneSnoName string) ([]MarkerDa
 
 	var md []MarkerData
 
+	// Add layers
 	for _, layer := range sd.ArLayers.Value {
 		markerSetSnoGroup, markerSetSnoName := toc.Entries.GetName(layer.Id)
 		markerSetSnoPath := filepath.Join(baseMetaPath, "MarkerSet", markerSetSnoName+markerSetSnoGroup.Ext())
@@ -113,6 +156,7 @@ func loadScene(baseMetaPath string, toc d4.Toc, sceneSnoName string) ([]MarkerDa
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
+				DataSnos:    dataSnosFromMarker(marker),
 				X:           marker.Transform.Wp.X,
 				Y:           marker.Transform.Wp.Y,
 				Z:           marker.Transform.Wp.Z,
@@ -159,6 +203,7 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
+				DataSnos:    dataSnosFromMarker(marker),
 				X:           sceneChunk.Transform.Wp.X + marker.Transform.Wp.X,
 				Y:           sceneChunk.Transform.Wp.Y + marker.Transform.Wp.Y,
 				Z:           sceneChunk.Transform.Wp.Z + marker.Transform.Wp.Z,
@@ -186,19 +231,23 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 	}
 
 	var md []MarkerData
+	var seenMarkerSet = mapset.NewThreadUnsafeSet[string]()
 
-	sd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
-		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
-		if !ok {
-			next()
-			return
-		}
-
-		markerSetSnoGroup, markerSetSnoName := toc.Entries.GetName(szMsEntry.SnoMarkerSet.Id)
-		markerSetSnoPath := filepath.Join(baseMetaPath, "MarkerSet", markerSetSnoName+markerSetSnoGroup.Ext())
+	// Add related marker sets
+	relatedMarkerSetGlob := filepath.Join(
+		baseMetaPath,
+		"MarkerSet",
+		fmt.Sprintf("%s (*)%s", subZoneName, d4.SnoGroupMarkerSet.Ext()),
+	)
+	relatedMarkerSetPaths, err := doublestar.FilepathGlob(relatedMarkerSetGlob)
+	for _, markerSetSnoPath := range relatedMarkerSetPaths {
 		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
 		if err != nil {
 			panic(err)
+		}
+
+		if !seenMarkerSet.Add(markerSetSnoPath) {
+			continue
 		}
 
 		msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
@@ -216,6 +265,53 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
+				DataSnos:    dataSnosFromMarker(marker),
+				X:           marker.Transform.Wp.X,
+				Y:           marker.Transform.Wp.Y,
+				Z:           marker.Transform.Wp.Z,
+				Metadata: map[string]any{
+					"mt": marker.EType.Value,
+				},
+				// TODO: could also add scale to add a larger radius on hover
+			})
+		})
+	}
+
+	sd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
+		if !ok {
+			next()
+			return
+		}
+
+		markerSetSnoGroup, markerSetSnoName := toc.Entries.GetName(szMsEntry.SnoMarkerSet.Id)
+		markerSetSnoPath := filepath.Join(baseMetaPath, "MarkerSet", markerSetSnoName+markerSetSnoGroup.Ext())
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
+		if err != nil {
+			panic(err)
+		}
+
+		if !seenMarkerSet.Add(markerSetSnoPath) {
+			next()
+			return
+		}
+
+		msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
+		if !ok {
+			panic("not marker set definition")
+		}
+
+		msd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+			marker, ok := v.(*d4.Marker)
+			if !ok {
+				next()
+				return
+			}
+			md = append(md, MarkerData{
+				RefSnoGroup: uint8(marker.Snoname.Group),
+				RefSno:      marker.Snoname.Id,
+				SourceSno:   markerSetSnoMeta.Id.Value,
+				DataSnos:    dataSnosFromMarker(marker),
 				X:           marker.Transform.Wp.X,
 				Y:           marker.Transform.Wp.Y,
 				Z:           marker.Transform.Wp.Z,
@@ -266,6 +362,7 @@ func loadRelatedMarkers(baseMetaPath string, worldSnoName string) ([]MarkerData,
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
+				DataSnos:    dataSnosFromMarker(marker),
 				X:           marker.Transform.Wp.X,
 				Y:           marker.Transform.Wp.Y,
 				Z:           marker.Transform.Wp.Z,
@@ -351,19 +448,23 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 
 func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSnoName string) error {
 	// Load markers
-	var md MapData
+	md := MapData{
+		ZoneArtScale:   1,
+		ZoneArtCenterX: 0,
+		ZoneArtCenterY: 0,
+	}
+	umd := NewUniqueMarkerData()
 
 	slog.Info("Loading scene markers...", slog.String("sceneSnoName", sceneSnoName))
-	var err error
-	md.Markers, err = loadScene(baseMetaPath, toc, sceneSnoName)
+	sceneMarkers, err := loadScene(baseMetaPath, toc, sceneSnoName)
 	if err != nil {
 		return err
 	}
-	md.ZoneArtCenterX = 0
-	md.ZoneArtCenterY = 0
-	md.ZoneArtScale = 1
+	umd.Add(sceneMarkers...)
 
 	// Write marker data
+	md.Markers = umd.Markers
+
 	slog.Info("Generating map data file...")
 	packed, err := msgpack.Marshal(md)
 	if err != nil {
@@ -386,13 +487,14 @@ func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSn
 func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 	// Load markers
 	var md MapData
+	umd := NewUniqueMarkerData()
 
 	slog.Info("Loading global markers...")
 	globalMarkers, err := loadGlobalMarkers(baseMetaPath, toc, worldSnoId)
 	if err != nil {
 		panic(err)
 	}
-	md.Markers = append(md.Markers, globalMarkers...)
+	umd.Add(globalMarkers...)
 
 	slog.Info("Loading world markers...", slog.Int("snoId", int(worldSnoId)))
 	var worldMarkers []MarkerData
@@ -401,12 +503,14 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 	if err != nil {
 		return err
 	}
-	md.Markers = append(md.Markers, worldMarkers...)
+	umd.Add(worldMarkers...)
 	md.ZoneArtCenterX = mapParams.VecZoneArtCenter.X
 	md.ZoneArtCenterY = mapParams.VecZoneArtCenter.Y
 	md.ZoneArtScale = mapParams.FlZoneArtScale.Value
 
 	// Write marker data
+	md.Markers = umd.Markers
+
 	slog.Info("Generating map data file...")
 	packed, err := msgpack.Marshal(md)
 	if err != nil {
