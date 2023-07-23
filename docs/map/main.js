@@ -58,14 +58,15 @@ loadData((groups, names) => {
 
         // Add search event
         $("#search").data('val', '').on('input', function(){
-            clearTimeout(this.delay);
-            this.delay = setTimeout(function(){
-                if (this.value !== $(this).data('val')) {
-                    console.log("Searching for:", this.value);
-                    $(this).data('val', this.value);
-                    drawMarkers(groups, names, this.value);
-                }
-            }.bind(this), 800);
+            const v = this.value;
+            if (v !== $(this).data('val')) {
+                clearTimeout(this.delay);
+                this.delay = setTimeout(function () {
+                    console.log("Searching for:", v);
+                    $(this).data('val', v);
+                    drawMarkers(groups, names, v);
+                }.bind(this), 300);
+            }
         });
     });
 });
@@ -185,6 +186,7 @@ function drawMarkers(groups, names, search) {
     }
 
     window.dataLayers = L.control.layers({}, markers).addTo(window.m);
+    console.log("Done drawing markers:", search);
 }
 
 function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
