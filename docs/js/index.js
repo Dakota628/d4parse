@@ -89,7 +89,7 @@ function loadNames($, msgpack, notie) {
                 })
             },
             focus: function (event, ui) {
-                this.value = entryName(groups, names, ui.item);
+                this.value = entryName(groups, ui.item);
                 event.preventDefault();
             },
         });
