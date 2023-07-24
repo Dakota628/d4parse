@@ -280,25 +280,36 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
         // Setup renderer
         const canvas = L.canvas();
 
+        // Get flyTo
+        const flyTo = getFlyTo();
+
         // Setup map
         window.m = L.map('map', {
             attributionControl: false,
             crs: D4CRS,
             renderer: canvas,
-            // maxBounds: L.latLngBounds( // Basically magic at this point
-            //     L.latLng(-970, -2890),
-            //     L.latLng(-970, 2545),
-            // )
-        }).setView([0, 0], 0);
+            contextmenu: true,
+            contextmenuItems: [
+                {
+                    text: 'Show Coordinates',
+                    callback: function (e) {
+                        L.popup().setLatLng(e.latlng)
+                            .setContent(`${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}`)
+                            .openOn(window.m);
+                    }
+                },
+                {
+                    text: 'Copy Link to Location',
+                    callback: function(e) {
+                        navigator.clipboard.writeText(
+                            `${location.protocol}//${location.host}${location.pathname}?x=${e.latlng.lat}&y=${e.latlng.lng}`
+                        );
+                    }
+                }
+            ]
+        }).setView([flyTo.x, flyTo.y], flyTo.z);
 
         worldTileLayer(window.m, worldSnoId, worldSnoName);
-
-        // Add map events
-        window.m.on('click', function (e) {
-            L.popup().setLatLng(e.latlng)
-                .setContent(`${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}`)
-                .openOn(window.m);
-        });
 
         // Add markers
         L.circleMarker([0, 0], {
@@ -368,4 +379,19 @@ function binaryRequest(method, url) {
             return xhr;
         }
     })
+}
+
+function getFlyTo() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has('x') || !urlParams.has('y')) {
+        return { x: 0, y: 0, z: 0 };
+    }
+    const out = {
+        x: Number(urlParams.get('x')),
+        y: Number(urlParams.get('y')),
+        z: 6,
+    };
+    urlParams.delete('x');
+    urlParams.delete('y');
+    return out;
 }
