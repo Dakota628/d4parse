@@ -61,7 +61,7 @@ type MapData struct {
 }
 
 func dataSnosFromMarker(m *d4.Marker) (snos []int32) {
-	m.PtBase.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+	m.PtBase.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		switch x := v.(type) {
 		case *d4.DT_SNO:
 			if x.Id > 0 {
@@ -90,7 +90,7 @@ func loadGlobalMarkers(baseMetaPath string, toc d4.Toc, worldSnoId int32) ([]Mar
 
 	var md []MarkerData
 
-	gd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+	gd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		// Get global marker actor
 		gma, ok := v.(*d4.GlobalMarkerActor)
 		if !ok || gma == nil {
@@ -255,7 +255,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 			panic("not marker set definition")
 		}
 
-		msd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+		msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 			marker, ok := v.(*d4.Marker)
 			if !ok {
 				next()
@@ -277,7 +277,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 		})
 	}
 
-	sd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+	sd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
 		if !ok {
 			next()
@@ -301,7 +301,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 			panic("not marker set definition")
 		}
 
-		msd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+		msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 			marker, ok := v.(*d4.Marker)
 			if !ok {
 				next()
@@ -351,7 +351,7 @@ func loadRelatedMarkers(baseMetaPath string, worldSnoName string) ([]MarkerData,
 			return nil, errors.New("not marker set definition")
 		}
 
-		msd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+		msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 			marker, ok := v.(*d4.Marker)
 			if !ok {
 				next()
@@ -409,7 +409,7 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 		md = append(md, subzoneMarkers...)
 	}
 
-	wd.Walk(func(k string, v d4.Object, next d4.WalkNext) {
+	wd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		switch x := v.(type) {
 		case *d4.ZoneMapParams:
 			mapParams = x

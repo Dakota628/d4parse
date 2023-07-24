@@ -45,8 +45,8 @@ func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (m *SnoMeta) Walk(cb WalkCallback) {
-	cb.Do("", m.Meta)
+func (m *SnoMeta) Walk(cb WalkCallback, d ...any) {
+	cb.Do("", m.Meta, d...)
 }
 
 // GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is
@@ -59,7 +59,7 @@ func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {
 	}
 
 	// Walk SNO and keep track of referenced SNOs
-	x.Walk(func(_ string, v Object, next WalkNext) {
+	x.Walk(func(_ string, v Object, next WalkNext, d ...any) {
 		var id int32
 
 		switch t := v.(type) {
@@ -81,7 +81,7 @@ func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {
 			refs = append(refs, id)
 		}
 
-		next()
+		next(d...)
 	})
 
 	return

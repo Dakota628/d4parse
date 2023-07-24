@@ -52,7 +52,7 @@ func (g *Generator) writeFmt(format string, a ...any) {
 	g.sb.WriteString(fmt.Sprintf(format, a...)) // TODO: utilize Fprintf
 }
 
-func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext) {
+func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...any) {
 	// Determine how to display the value
 	switch {
 	// It's an element of an iterable
@@ -256,7 +256,7 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext) {
 }
 
 func (g *Generator) Add(x d4.Object) {
-	g.walkCallback("", x, func() {})
+	g.walkCallback("", x, func(d ...any) {})
 	if w, ok := x.(d4.Walkable); ok {
 		w.Walk(g.walkCallback)
 	}

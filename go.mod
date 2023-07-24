@@ -35,5 +35,9 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.12 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.2 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
+	github.com/minio/highwayhash v1.0.2 // indirect
+	github.com/mpraski/clusters v0.0.0-20171016094157-18104487c312 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
+	golang.org/x/sys v0.10.0 // indirect
+	gonum.org/v1/gonum v0.13.0 // indirect
 )

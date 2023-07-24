@@ -105,9 +105,9 @@ func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (d *DT_OPTIONAL[T]) Walk(cb WalkCallback) {
+func (d *DT_OPTIONAL[T]) Walk(cb WalkCallback, data ...any) {
 	if d.Exists > 0 {
-		cb.Do("", d.Value)
+		cb.Do("", d.Value, data...)
 	}
 }
 
@@ -208,9 +208,9 @@ func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return d.UpperBound.UnmarshalD4(r, o)
 }
 
-func (d *DT_RANGE[T]) Walk(cb WalkCallback) {
-	cb.Do("LowerBound", d.LowerBound)
-	cb.Do("UpperBound", d.UpperBound)
+func (d *DT_RANGE[T]) Walk(cb WalkCallback, data ...any) {
+	cb.Do("LowerBound", d.LowerBound, data...)
+	cb.Do("UpperBound", d.UpperBound, data...)
 }
 
 // DT_FIXEDARRAY ...
@@ -233,9 +233,9 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	return nil
 }
 
-func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback) {
+func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	for i, v := range d.Value {
-		cb.Do(strconv.Itoa(i), v)
+		cb.Do(strconv.Itoa(i), v, data...)
 	}
 }
 
@@ -318,9 +318,9 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	})
 }
 
-func (d *DT_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
+func (d *DT_VARIABLEARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	for i, v := range d.Value {
-		cb.Do(strconv.Itoa(i), v)
+		cb.Do(strconv.Itoa(i), v, data...)
 	}
 }
 
@@ -423,9 +423,9 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 	})
 }
 
-func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback) {
+func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	for i, v := range d.Value {
-		cb.Do(strconv.Itoa(i), v)
+		cb.Do(strconv.Itoa(i), v, data...)
 	}
 }
 

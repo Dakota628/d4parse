@@ -135,6 +135,7 @@ func WalkFieldCode(transformedName string) []jen.Code {
 		jen.Id("cb").Dot("Do").Call(
 			jen.Lit(transformedName),
 			jen.Op("&").Id("t").Dot(transformedName),
+			jen.Id("d").Op("..."),
 		),
 	}
 }
@@ -335,6 +336,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		jen.Id("t").Op("*").Id(def.Name),
 	).Id("Walk").Params(
 		jen.Id("cb").Id("WalkCallback"),
+		jen.Id("d").Op("...").Any(),
 	).Block(
 		walkBody...,
 	).Line()
