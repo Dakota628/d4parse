@@ -34,7 +34,7 @@ func main() {
 	}
 
 	// K-means
-	c, e := clusters.KMeans(100000, 1000, clusters.EuclideanDistance)
+	c, e := clusters.KMeans(10000, 100, clusters.EuclideanDistance)
 	if e != nil {
 		panic(e)
 	}

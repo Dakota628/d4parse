@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clusters</title>
+    <style>
+    body, html {
+        background: #343a40;
+        color: #f8f9fa;
+        font-family: sans-serif;
+        padding: 0;
+        margin: 0;
+    }
+
+    div {
+        margin: 10px 10px 20px;
+        background: #212529;
+        padding: 10px;
+        clear: both;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    a {
+        display: block;
+        color: #4c6ef5;
+        text-decoration: none;
+        background: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+    </style>
+    <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.js"></script>
+    <script src="https://unpkg.com/msgpackr@1.9.5/dist/index.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const snoGroup = urlParams.get('g');
+
+        $(() => {
+            Promise.all([
+                binaryRequest('GET', '../groups.mpk'),
+                binaryRequest('GET', '../names.mpk'),
+                $.ajax({method: 'GET', url: `data/${snoGroup}.json`})
+            ]).then((values) => {
+                const groups = msgpackr.unpack(values[0]);
+                const names = msgpackr.unpack(values[1]);
+                const clusters = values[2];
+
+                const $body = $('body');
+
+                console.log(clusters);
+
+                for (const cluster of Object.values(clusters)) {
+                    const $cluster = $('<div></div>');
+                    $body.append($cluster);
+
+                    for (const snoId of cluster) {
+                        console.log(snoId, names[snoGroup][snoId])
+                        $cluster.append($(`<a href="../sno/${snoId}.html">${names[snoGroup][snoId]}</a>`));
+                    }
+                }
+            })
+        })
+
+        function binaryRequest(method, url) {
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'arraybuffer';
+            return $.ajax({
+                method,
+                url,
+                xhr: function () {
+                    return xhr;
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
