@@ -103,3 +103,12 @@ func ReadSnoMetaFile(path string) (SnoMeta, error) {
 	// Unmarshal meta
 	return snoMeta, snoMeta.UnmarshalD4(r, nil)
 }
+
+func GetDefinition[T Object](meta SnoMeta) (T, error) {
+	def, ok := meta.Meta.(T)
+	if !ok {
+		var zero T
+		return zero, fmt.Errorf("meta does not contain definition of type %T", zero)
+	}
+	return def, nil
+}

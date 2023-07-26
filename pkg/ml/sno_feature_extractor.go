@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/util"
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/minio/highwayhash"
 	"golang.org/x/exp/slices"
@@ -38,7 +39,7 @@ func ExtractGroupFeatures(dataPath string, group d4.SnoGroup) (map[int]int32, []
 		return nil, nil, err
 	}
 
-	if err := d4.EachSnoMeta(dataPath, group, func(meta d4.SnoMeta) bool {
+	if err := util.EachSnoMeta(dataPath, group, func(meta d4.SnoMeta) bool {
 		// Get walkable meta
 		metaObj, ok := meta.Meta.(d4.Walkable)
 		if !ok {

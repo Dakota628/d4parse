@@ -53,9 +53,11 @@ type MarkerData struct {
 type Polygon [][2]float32
 
 type MapData struct {
-	ZoneArtScale   float32      `msgpack:"artScale"`
+	GridSize       float32      `msgpack:"gridSize"`
+	ZoneArtScale   float32      `msgpack:"zoneArtScale"`
 	ZoneArtCenterX float32      `msgpack:"artCenterX"`
 	ZoneArtCenterY float32      `msgpack:"artCenterY"`
+	MaxNativeZoom  uint8        `msgpack:"maxNativeZoom"`
 	Markers        []MarkerData `msgpack:"m"`
 	Polygons       []Polygon    `msgpack:"p"`
 }
@@ -171,6 +173,8 @@ func loadScene(baseMetaPath string, toc d4.Toc, sceneSnoName string) ([]MarkerDa
 }
 
 func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *d4.SceneChunk) ([]MarkerData, error) {
+	slog.Info("Loading world scene...", slog.Int("worldId", int(worldId)))
+
 	sceneSnoGroup, sceneSnoName := toc.Entries.GetName(sceneChunk.Snoname.Id)
 	worldSnoPath := filepath.Join(baseMetaPath, "Scene", sceneSnoName+sceneSnoGroup.Ext())
 	sceneSnoMeta, err := d4.ReadSnoMetaFile(worldSnoPath)
@@ -218,6 +222,8 @@ func loadWorldScene(baseMetaPath string, toc d4.Toc, worldId int32, sceneChunk *
 }
 
 func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32) ([]MarkerData, error) {
+	slog.Info("Loading world subzone...", slog.Int("worldId", int(worldId)))
+
 	subZoneGroup, subZoneName := toc.Entries.GetName(subZoneId)
 	subZonePath := filepath.Join(baseMetaPath, "Subzone", subZoneName+subZoneGroup.Ext())
 	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath)
@@ -328,6 +334,8 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 
 // Not sure how this actually gets related
 func loadRelatedMarkers(baseMetaPath string, worldSnoName string) ([]MarkerData, error) {
+	slog.Info("Loading world related markers...", slog.String("worldSnoName", worldSnoName))
+
 	markerSetGlob := filepath.Join(
 		baseMetaPath,
 		"MarkerSet",
@@ -376,7 +384,7 @@ func loadRelatedMarkers(baseMetaPath string, worldSnoName string) ([]MarkerData,
 	return md, nil
 }
 
-func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerData, []Polygon, *d4.ZoneMapParams, error) {
+func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerData, []Polygon, *d4.WorldDefinition, error) {
 	// Get sno file
 	worldSnoGroup, worldSnoName := toc.Entries.GetName(worldId)
 	worldSnoPath := filepath.Join(baseMetaPath, "World", worldSnoName+worldSnoGroup.Ext())
@@ -393,7 +401,6 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 	// Load data from the world
 	var polygons []Polygon
 	var md []MarkerData
-	var mapParams *d4.ZoneMapParams
 
 	relatedMarkers, err := loadRelatedMarkers(baseMetaPath, worldSnoName)
 	if err != nil {
@@ -411,8 +418,6 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 
 	wd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		switch x := v.(type) {
-		case *d4.ZoneMapParams:
-			mapParams = x
 		case *d4.ScreenStaticCamps:
 			var poly Polygon
 			for _, vec := range x.ArPoints.Value {
@@ -443,15 +448,17 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 		next()
 	})
 
-	return md, polygons, mapParams, nil
+	return md, polygons, wd, nil
 }
 
 func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSnoName string) error {
 	// Load markers
 	md := MapData{
+		GridSize:       96,
 		ZoneArtScale:   1,
 		ZoneArtCenterX: 0,
 		ZoneArtCenterY: 0,
+		MaxNativeZoom:  0,
 	}
 	umd := NewUniqueMarkerData()
 
@@ -484,6 +491,13 @@ func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSn
 	return nil
 }
 
+func maxNativeZoom(tiles int32) (zoom uint8) {
+	for ; tiles%2 == 0 && tiles > 0; tiles /= 2 {
+		zoom++
+	}
+	return
+}
+
 func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 	// Load markers
 	var md MapData
@@ -498,15 +512,17 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 
 	slog.Info("Loading world markers...", slog.Int("snoId", int(worldSnoId)))
 	var worldMarkers []MarkerData
-	var mapParams *d4.ZoneMapParams
-	worldMarkers, md.Polygons, mapParams, err = loadWorldMarkers(baseMetaPath, toc, worldSnoId)
+	var wd *d4.WorldDefinition
+	worldMarkers, md.Polygons, wd, err = loadWorldMarkers(baseMetaPath, toc, worldSnoId)
 	if err != nil {
 		return err
 	}
 	umd.Add(worldMarkers...)
-	md.ZoneArtCenterX = mapParams.VecZoneArtCenter.X
-	md.ZoneArtCenterY = mapParams.VecZoneArtCenter.Y
-	md.ZoneArtScale = mapParams.FlZoneArtScale.Value
+	md.GridSize = wd.FlGridSize.Value
+	md.ZoneArtScale = wd.TZoneMapParams.FlZoneArtScale.Value
+	md.ZoneArtCenterX = wd.TZoneMapParams.VecZoneArtCenter.X
+	md.ZoneArtCenterY = wd.TZoneMapParams.VecZoneArtCenter.Y
+	md.MaxNativeZoom = maxNativeZoom(wd.TZoneMapParams.Unk_3620f37.Value)
 
 	// Write marker data
 	md.Markers = umd.Markers

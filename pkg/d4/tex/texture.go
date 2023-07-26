@@ -5,6 +5,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/go-gl/gl/v4.1-compatibility/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
+	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"image"
 	"math"
@@ -86,7 +87,7 @@ func align(n int, alignment int) int {
 	return n
 }
 
-func LoadTexture(def *d4.TextureDefinition, payloadPath string, paylowPath string) (map[int]image.Image, error) {
+func LoadTexture(def *d4.TextureDefinition, payloadPath string, paylowPath string, levels ...int) (map[int]image.Image, error) {
 	// OpenGL will explode if we don't do this
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
@@ -149,7 +150,7 @@ func LoadTexture(def *d4.TextureDefinition, payloadPath string, paylowPath strin
 	}()
 
 	// Don't return directly so defer can update the error output if necessary
-	mipMap, err := LoadMipMap(tex, def, textureFormat, payloadData, paylowData)
+	mipMap, err := LoadMipMap(tex, def, textureFormat, payloadData, paylowData, levels...)
 	return mipMap, err
 }
 
@@ -159,6 +160,7 @@ func LoadMipMap(
 	texFormat TextureFormat,
 	payloadData []byte,
 	paylowData []byte,
+	levels ...int,
 ) (map[int]image.Image, error) {
 	mipMaps := make(map[int]image.Image, len(def.SerTex.Value))
 	minLevel := int(def.DwMipMapLevelMin.Value)
@@ -173,6 +175,10 @@ func LoadMipMap(
 	for l := minLevel; l <= maxLevel; l++ {
 		// Get serialize data
 		level := l - minLevel
+		if len(levels) > 0 && !slices.Contains(levels, level) {
+			continue
+		}
+
 		serData := def.SerTex.Value[level]
 
 		// Get current data

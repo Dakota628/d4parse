@@ -50,11 +50,17 @@ loadData((groups, names) => {
 
         // Add world select
         worldSelect.change(function() {
-            loadWorld(groups, names, $(this).val(), $(this).find('option:selected').text());
+            loadWorld(
+                groups,
+                names,
+                $(this).val(),
+                $(this).find('option:selected').text(),
+            );
         });
 
         // Load base world
-        worldSelect.val(defaultSnoId).trigger('change');
+        window.flyTo = getFlyTo();
+        worldSelect.val(flyTo.w ?? defaultSnoId).trigger('change');
 
         // Add search event
         $("#search").data('val', '').on('input', function(){
@@ -220,6 +226,10 @@ function drawMarkers(groups, names, search) {
     console.log("Done drawing markers:", search);
 }
 
+windowmapUnitPerTile = 64;
+window.tileSize = 512;
+window.pxPerMapUnit = tileSize / mapUnitPerTile;
+
 function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
     console.log("Loading world:", worldSnoId, worldSnoName);
 
@@ -238,29 +248,7 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
         if (window.m && window.m.remove) {
             window.m.remove();
         }
-
-        // From ZoneMapParams in WorldDefinition
-        window.zoneArtScale = mapData.artScale; // tZoneMapParams.fZoneArtScale
-        window.zoneArtCenter = [mapData.artCenterX, mapData.artCenterY]; // tZoneMapParams.vecZoneArtCenter
-        window.zoneMapParamsScale = 5; // Scale of texture relative to zone map params
-
-        // Pixels <-> Leaflet map units
-        window.mapUnitPerTile = 64;
-        window.mapSize = 40;
-        window.tileSize = 512;
-        window.pxPerMapUnit = tileSize / mapUnitPerTile;
-
-        // Calculated constants
-        window.min = [0, 0];
-        window.max = [tileSize * mapSize, tileSize * mapSize];
-        window.origin = [zoneArtCenter[0] * zoneMapParamsScale, zoneArtCenter[1] * zoneMapParamsScale];
-        window.ptScale = 1 + ((1 - zoneArtScale) * zoneMapParamsScale);
-
-        window.originMapUnits = pxToMapUnit(origin);
-        window.minMapUnits = subPx(pxToMapUnit(min), originMapUnits);
-        window.maxMapUnits = subPx(pxToMapUnit(max), originMapUnits);
-
-        // D4 CRS (TODO: determine from world data)
+        // D4 CRS
         const D4Projection = L.extend({}, L.Projection.LonLat, {
             project: function (latlng) {
                 let point = L.Projection.LonLat.project(latlng);
@@ -271,17 +259,22 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
                 return L.Projection.LonLat.unproject(point);
             },
         });
+        const centerPxX = ((mapData.artCenterX * (tileSize / mapData.gridSize))) / mapData.zoneArtScale;
+        const centerPxY = ((mapData.artCenterY * (tileSize / mapData.gridSize))) / mapData.zoneArtScale;
+        const scale = (mapUnitPerTile * mapData.zoneArtScale) / (mapData.gridSize * mapData.zoneArtScale);
 
         const D4CRS = L.extend({}, L.CRS.Simple, {
             projection: D4Projection,
-            transformation: new L.Transformation(ptScale, originMapUnits[0], ptScale, originMapUnits[1]),
+            transformation: new L.Transformation(
+                scale,
+                centerPxX / pxPerMapUnit,
+                scale,
+                centerPxY / pxPerMapUnit,
+            ),
         });
 
         // Setup renderer
         const canvas = L.canvas();
-
-        // Get flyTo
-        const flyTo = getFlyTo();
 
         // Setup map
         window.m = L.map('map', {
@@ -302,14 +295,16 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
                     text: 'Copy Link to Location',
                     callback: function(e) {
                         navigator.clipboard.writeText(
-                            `${location.protocol}//${location.host}${location.pathname}?x=${e.latlng.lat}&y=${e.latlng.lng}`
+                            `${location.protocol}//${location.host}${location.pathname}?x=${e.latlng.lat}&y=${e.latlng.lng}&w=${worldSnoId}`
                         );
                     }
                 }
             ]
-        }).setView([flyTo.x, flyTo.y], flyTo.z);
+        }).setView([flyTo.x ?? 0, flyTo.y ?? 0], flyTo.z ?? 0);
+        window.flyTo = {};
 
-        worldTileLayer(window.m, worldSnoId, worldSnoName);
+
+        worldTileLayer(window.m, worldSnoId, worldSnoName, mapData);
 
         // Add markers
         L.circleMarker([0, 0], {
@@ -328,9 +323,9 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
         while (len--) { // Using while has a measurable performance improvement... bc Javascript.
             L.polygon(p[len], {
                 weight: 3,
-                color: '#ffffff',
+                color: '#ACA491',
                 fill: false,
-                opacity: 0.1,
+                opacity: 0.5,
                 interactive: false,
             }).addTo(window.m)
         }
@@ -344,14 +339,14 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
     }, console.error);
 }
 
-function worldTileLayer(map, worldSnoId, worldSnoName) {
+function worldTileLayer(map, worldSnoId, worldSnoName, mapData) {
     // Setup tiles
     return L.tileLayer(`maptiles/${worldSnoId}/{z}/{x}_{y}.png`, {
         tileSize: tileSize,
         maxZoom: 15,
         minZoom: -1,
         minNativeZoom: 0,
-        maxNativeZoom: 3,
+        maxNativeZoom: mapData.maxNativeZoom ?? 3,
         noWrap: true,
         tms: false,
     }).addTo(map);
@@ -382,16 +377,19 @@ function binaryRequest(method, url) {
 }
 
 function getFlyTo() {
+    // TODO: also need to include world sno id
     const urlParams = new URLSearchParams(window.location.search);
     if (!urlParams.has('x') || !urlParams.has('y')) {
-        return { x: 0, y: 0, z: 0 };
+        return { x: 0, y: 0, z: 0, w: defaultSnoId };
     }
     const out = {
         x: Number(urlParams.get('x')),
         y: Number(urlParams.get('y')),
-        z: 6,
+        z: Number(urlParams.get('z') ?? 6),
+        w: Number(urlParams.get('w') ?? defaultSnoId)
     };
     urlParams.delete('x');
     urlParams.delete('y');
+    urlParams.delete('w');
     return out;
 }
