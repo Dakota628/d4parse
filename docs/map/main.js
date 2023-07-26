@@ -226,7 +226,7 @@ function drawMarkers(groups, names, search) {
     console.log("Done drawing markers:", search);
 }
 
-windowmapUnitPerTile = 64;
+window.mapUnitPerTile = 64;
 window.tileSize = 512;
 window.pxPerMapUnit = tileSize / mapUnitPerTile;
 
