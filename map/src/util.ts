@@ -1,12 +1,3 @@
-import Quadtree from "@timohausmann/quadtree-js";
-
-export class Marker {
-    constructor(
-        readonly pos: Vec2,
-        // TODO: color, etc
-    ) {}
-}
-
 export class Vec2 {
     constructor(
         readonly x: number,
@@ -58,21 +49,4 @@ export class Vec3 {
         readonly y: number,
         readonly z: number,
     ) {}
-}
-
-export function ClosestPoint<A extends {x: number, y: number}, B extends Quadtree.Rect>(target: A, rects: B[]): B | undefined {
-    let closestDist = Number.POSITIVE_INFINITY;
-    let result: B | undefined  = undefined;
-
-    for (let rect of rects) {
-        const pointX = rect.x + (rect.width / 2);
-        const pointY = rect.y + (rect.height / 2);
-        const dist = Math.hypot(pointX-target.x, pointY-target.y);
-        if (dist < closestDist) {
-            closestDist = dist;
-            result = rect;
-        }
-    }
-
-    return result
 }

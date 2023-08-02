@@ -1,7 +1,7 @@
 import {Application, BaseTexture, ENV, MIPMAP_MODES, SCALE_MODES, settings} from "pixi.js";
 import {WorldMap} from "./world-map";
 import {Stats} from "stats.ts";
-import {ClosestPoint, Vec2} from "./util";
+import {Vec2} from "./util";
 import {getWorker, loadWorld} from "./workers/util";
 import $ from "jquery";
 import {groups, lookupSnoGroup, markerMetaNames, snoName} from "./data";
@@ -47,12 +47,7 @@ const map = new WorldMap(app, {
     getTileUrl: (): string => {
         return ''
     },
-    onMarkerClick: (markers, global, local) => {
-        const marker = ClosestPoint(local, markers);
-        if (!marker) {
-            return
-        }
-
+    onMarkerClick: (marker, global, _) => {
         // Show tooltip
         const tooltip = $("#tooltip");
         tooltip.css('left', global.x - 2);
@@ -113,13 +108,10 @@ window.addEventListener("resize", () => {
 });
 
 // Event handlers
-$("#tooltip-close").on('click', () => {
-    $("#tooltip").hide();
-});
-
-$("#tooltip").on('mouseleave', () => {
-    $("#tooltip").hide();
-})
+const hideTooltip = () => $("#tooltip").hide();
+$("#tooltip-close").on('click', hideTooltip);
+map.tileContainer.on('mousedown', hideTooltip);
+map.tileContainer.on('wheel', hideTooltip);
 
 // Load world
 const worker = getWorker(map);

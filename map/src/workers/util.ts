@@ -33,7 +33,10 @@ export function getWorker(map: WorldMap): Worker {
 }
 
 export function loadWorld(map: WorldMap, worker: Worker, groups: SnoGroups, worldId: number) {
-    const baseUrl = new URL('.', window.location.toString()).toString();
+    let baseUrl = new URL('.', window.location.toString()).toString();
+    if (baseUrl.charAt(baseUrl.length - 1) == '/') {
+        baseUrl = baseUrl.slice(0, -1);
+    }
 
     map.config.getTileUrl = (tileCoord: Vec2, zoom: number): string => {
         return `${baseUrl}/${worldId}/${zoom}/${tileCoord.x}_${tileCoord.y}.png`

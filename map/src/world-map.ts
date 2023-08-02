@@ -14,11 +14,11 @@ import {Viewport} from "pixi-viewport";
 import {Stats} from "stats.ts";
 import {Vec2, Vec3} from "./util";
 import {Marker} from "./workers/events";
-import Quadtree from '@timohausmann/quadtree-js';
+import {quadtree, Quadtree} from "d3-quadtree";
 
 export type TileUrlFunc = (coord: Vec2, zoom: number) => string
 
-export type MarkerClickFunc = (markers: Marker[], global: Point, local: Point) => void
+export type MarkerClickFunc = (marker: Marker, global: Point, local: Point) => void
 
 export interface WorldMapConfig {
     stats: Stats | undefined,
@@ -36,13 +36,15 @@ export interface WorldMapConfig {
     },
 }
 
+const Rads45Degrees = (Math.PI / 180) * 45;
+
 export class WorldMap {
     readonly viewport: Viewport;
     readonly tileContainer: Container = new Container();
 
     readonly markerContainer: Container = new Container();
     readonly markerGfx: Graphics = new Graphics();
-    readonly markerPoints: Quadtree;
+    readonly markerPoints: Quadtree<Marker>;
 
     private lastNativeZoom: number;
     private spriteCache = new Map<Vec3, Sprite>();
@@ -63,27 +65,23 @@ export class WorldMap {
         this.viewport.sortableChildren = true;
 
         this.tileContainer.zIndex = 0;
+        this.tileContainer.interactive = true;
         this.viewport.addChild(this.tileContainer);
 
-        this.markerPoints = new Quadtree({
-            x: -2500,
-            y: -2500,
-            width: 2500,
-            height: 2500,
-        }); // TODO: limit to the actual bounds
+        this.markerPoints = quadtree<Marker>()
+            .x((m) => m.x)
+            .y((m) => m.y);
 
         this.markerContainer.zIndex = 1;
         this.markerContainer.addChild(this.markerGfx);
         this.markerContainer.interactive = true;
         this.markerContainer.on('click', (e) => {
             const local = this.markerContainer.toLocal(e.global);
-            const pts = this.markerPoints.retrieve({
-                x: local.x,
-                y: local.y,
-                width: 1,
-                height: 1,
-            });
-            this.config.onMarkerClick(pts as Marker[], e.global, local);
+            const marker = this.markerPoints.find(local.x, local.y, 5);
+            if (!marker) {
+                return
+            }
+            this.config.onMarkerClick(marker, e.global, local);
         });
 
         this.viewport.addChild(this.markerContainer);
@@ -222,7 +220,7 @@ export class WorldMap {
             this.config.crs.offset.y * scale,
             this.config.crs.scale.x * scale,
             this.config.crs.scale.y * scale,
-            (Math.PI / 180) * 45,
+            Rads45Degrees,
         );
     }
 
@@ -251,7 +249,7 @@ export class WorldMap {
         // this.markerGfx.drawRect(m.x, m.y, m.width, m.height);
         this.markerGfx.drawCircle(m.x, m.y, m.width / 4);
         this.markerGfx.endFill();
-        this.markerPoints.insert(m);
+        this.markerPoints.add(m);
     }
 
     addPolygon(p: Array<Point>) {
