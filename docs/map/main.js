@@ -315,6 +315,38 @@ function loadWorld(groups, names, worldSnoId, worldSnoName, cb) {
             fillColor: "black",
         }).bindTooltip("This is the center of the world!").addTo(window.m);
 
+        L.circleMarker([100, 100], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: "black",
+        }).bindTooltip("100, 100").addTo(window.m);
+
+        L.circleMarker([-100, -100], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: "black",
+        }).bindTooltip("-100, -100").addTo(window.m);
+
+        L.circleMarker([-100, 100], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: "black",
+        }).bindTooltip("-100, 100").addTo(window.m);
+
+        L.circleMarker([100, -100], {
+            radius: 5,
+            stroke: false,
+            fill: true,
+            fillOpacity: 0.75,
+            fillColor: "black",
+        }).bindTooltip("100, -100").addTo(window.m);
+
         // Load world
         const p = mapData.p ?? [];
 

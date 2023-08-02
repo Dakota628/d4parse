@@ -5,3 +5,6 @@ d4data/
 docs/sno/
 docs/map/combined.png
 docs/map/tiles/
+map/dist/
+map/public/
+map/node_modules/

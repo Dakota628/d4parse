@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
@@ -81,19 +80,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer fAdded.Close()
 
 	fRemoved, err := os.Create("samples/removed.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer fRemoved.Close()
 
 	fChanged, err := os.Create("samples/changed.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer fChanged.Close()
 
 	added := newSet.Difference(oldSet)
 	removed := oldSet.Difference(newSet)
@@ -101,18 +97,18 @@ func main() {
 
 	// Write added
 	added.Each(func(a Sno) bool {
-		if _, err := fmt.Fprintf(fAdded, "[%s] %d\n", groupName(a.Group), a.Id); err != nil {
+		if _, err := fmt.Fprintf(fAdded, "[%s] %s\n", groupName(a.Group), a.Name); err != nil {
 			panic(err)
 		}
-		return true
+		return false
 	})
 
 	// Write removed
 	removed.Each(func(r Sno) bool {
-		if _, err := fmt.Fprintf(fRemoved, "[%s] %d\n", groupName(r.Group), r.Id); err != nil {
+		if _, err := fmt.Fprintf(fRemoved, "[%s] %s\n", groupName(r.Group), r.Name); err != nil {
 			panic(err)
 		}
-		return true
+		return false
 	})
 
 	// Write changed
@@ -120,67 +116,73 @@ func main() {
 		oldMetaPath := util.MetaPathByName(oldPath, sno.Group, sno.Name)
 		newMetaPath := util.MetaPathByName(newPath, sno.Group, sno.Name)
 
-		oldMeta, err := d4.ReadSnoMetaFile(oldMetaPath)
+		oldMeta, err := d4.ReadSnoMetaHeader(oldMetaPath)
 		if err != nil {
-			panic(err)
+			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
+				panic(err)
+			}
+			return false
 		}
-		newMeta, err := d4.ReadSnoMetaFile(newMetaPath)
+		newMeta, err := d4.ReadSnoMetaHeader(newMetaPath)
 		if err != nil {
-			panic(err)
+			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
+				panic(err)
+			}
+			return false
 		}
 
 		// Check XML hash
-		if oldMeta.Header.DwXMLHash != newMeta.Header.DwXMLHash {
-			if _, err := fmt.Fprintf(fChanged, "[%s] %d (meta changed)\n", groupName(sno.Group), sno.Id); err != nil {
+		if oldMeta.DwXMLHash != newMeta.DwXMLHash {
+			if _, err := fmt.Fprintf(fChanged, "[%s] %s (meta changed)\n", groupName(sno.Group), sno.Name); err != nil {
 				panic(err)
 			}
-			return true
+			return false
 		}
 
-		// Check payloads
-		oldPayloadPath := util.ChangePathType(oldMetaPath, util.FileTypePayload)
-		newPayLoadPath := util.ChangePathType(newMetaPath, util.FileTypePayload)
+		//// Check payloads
+		//oldPayloadPath := util.ChangePathType(oldMetaPath, util.FileTypePayload)
+		//newPayLoadPath := util.ChangePathType(newMetaPath, util.FileTypePayload)
+		//
+		//oldPayloadExists := true
+		//newPayloadExists := true
+		//if _, err := os.Stat(oldPayloadPath); err != nil {
+		//	oldPayloadExists = false
+		//}
+		//if _, err := os.Stat(newPayLoadPath); err != nil {
+		//	newPayloadExists = false
+		//}
+		//
+		//if oldPayloadExists != newPayloadExists {
+		//	var status string
+		//	if newPayloadExists {
+		//		status = "payload added"
+		//	} else {
+		//		status = "payload removed"
+		//	}
+		//	if _, err := fmt.Fprintf(fChanged, "[%s] %s (%s)\n", groupName(sno.Group), sno.Name, status); err != nil {
+		//		panic(err)
+		//	}
+		//	return true
+		//}
+		//
+		//if oldPayloadExists && newPayloadExists {
+		//	oldPayloadData, err := os.ReadFile(oldPayloadPath)
+		//	if err != nil {
+		//		panic(err)
+		//	}
+		//	newPayloadData, err := os.ReadFile(newPayLoadPath)
+		//	if err != nil {
+		//		panic(err)
+		//	}
+		//
+		//	if !bytes.Equal(oldPayloadData, newPayloadData) {
+		//		if _, err := fmt.Fprintf(fChanged, "[%s] %s (payload changed)\n", groupName(sno.Group), sno.Name); err != nil {
+		//			panic(err)
+		//		}
+		//	}
+		//	return true
+		//}
 
-		oldPayloadExists := true
-		newPayloadExists := true
-		if _, err := os.Stat(oldPayloadPath); err != nil {
-			oldPayloadExists = false
-		}
-		if _, err := os.Stat(newPayLoadPath); err != nil {
-			newPayloadExists = false
-		}
-
-		if oldPayloadExists != newPayloadExists {
-			var status string
-			if newPayloadExists {
-				status = "payload added"
-			} else {
-				status = "payload removed"
-			}
-			if _, err := fmt.Fprintf(fChanged, "[%s] %d (%s)\n", groupName(sno.Group), sno.Id, status); err != nil {
-				panic(err)
-			}
-			return true
-		}
-
-		if oldPayloadExists && newPayloadExists {
-			oldPayloadData, err := os.ReadFile(oldPayloadPath)
-			if err != nil {
-				panic(err)
-			}
-			newPayloadData, err := os.ReadFile(newPayLoadPath)
-			if err != nil {
-				panic(err)
-			}
-
-			if !bytes.Equal(oldPayloadData, newPayloadData) {
-				if _, err := fmt.Fprintf(fChanged, "[%s] %d (payload changed)\n", groupName(sno.Group), sno.Id); err != nil {
-					panic(err)
-				}
-			}
-			return true
-		}
-
-		return true
+		return false
 	})
 }
