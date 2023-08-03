@@ -1,17 +1,17 @@
 import {WorldMap} from "../world-map";
-import {MarkersReq, MarkersResp} from "./events";
+import {WorldReq, WorldReqRetrieve, WorldResp} from "./events";
 import {Vec2} from "../util";
-import {defaultMarkerColor, markerColors, SnoGroups} from "../data";
+import $ from "jquery";
 
-export function getWorker(map: WorldMap): Worker {
+export function createWorldWorker(map: WorldMap): Worker {
     const worker = new Worker(
-        new URL('./markers.ts', import.meta.url),
+        new URL('./world.ts', import.meta.url),
         {
             type: "module",
         },
     )
 
-    worker.onmessage = (e: MessageEvent<MarkersResp>) => {
+    worker.onmessage = (e: MessageEvent<WorldResp>) => {
         if (e.data.marker) {
             map.addMarker(e.data.marker);
         } else if (e.data.polygon) {
@@ -26,13 +26,26 @@ export function getWorker(map: WorldMap): Worker {
             // Done
             map.draw();
             map.drawMarkers();
+            $("#loading").hide();
         }
     };
 
     return worker
 }
 
-export function loadWorld(map: WorldMap, worker: Worker, groups: SnoGroups, worldId: number) {
+export function loadWorld(
+    map: WorldMap,
+    worldWorker: Worker,
+    worldId: number,
+    retrieve: WorldReqRetrieve = {
+        mapData: true,
+        polygons: true,
+        markers: true,
+    },
+    query?: string,
+) {
+    $("#loading").show();
+
     let baseUrl = new URL('.', window.location.toString()).toString();
     if (baseUrl.charAt(baseUrl.length - 1) == '/') {
         baseUrl = baseUrl.slice(0, -1);
@@ -42,11 +55,10 @@ export function loadWorld(map: WorldMap, worker: Worker, groups: SnoGroups, worl
         return `${baseUrl}/${worldId}/${zoom}/${tileCoord.x}_${tileCoord.y}.png`
     };
 
-    worker.postMessage(new MarkersReq(
-        worldId,
+    worldWorker.postMessage({
         baseUrl,
-        defaultMarkerColor,
-        markerColors,
-        groups,
-    ));
+        worldId,
+        retrieve,
+        query,
+    } as WorldReq)
 }

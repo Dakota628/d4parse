@@ -2,7 +2,8 @@ export class Vec2 {
     constructor(
         readonly x: number,
         readonly y: number,
-    ) {}
+    ) {
+    }
 
     scale(scale: number): Vec2 {
         return new Vec2(this.x * scale, this.y * scale);
@@ -48,5 +49,6 @@ export class Vec3 {
         readonly x: number,
         readonly y: number,
         readonly z: number,
-    ) {}
+    ) {
+    }
 }

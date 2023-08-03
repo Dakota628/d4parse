@@ -2,9 +2,8 @@ import {Application, BaseTexture, ENV, MIPMAP_MODES, SCALE_MODES, settings} from
 import {WorldMap} from "./world-map";
 import {Stats} from "stats.ts";
 import {Vec2} from "./util";
-import {getWorker, loadWorld} from "./workers/util";
+import {createWorldWorker, loadWorld} from "./workers/util";
 import $ from "jquery";
-import {groups, lookupSnoGroup, markerMetaNames, snoName} from "./data";
 
 // Setup pixijs
 settings.PREFER_ENV = ENV.WEBGL2;
@@ -41,12 +40,10 @@ app.renderer.resize(window.innerWidth, window.innerHeight);
 const map = new WorldMap(app, {
     stats,
     tileSize: new Vec2(512, 512),
-    bounds: new Vec2(40, 40),
+    bounds: new Vec2(0, 0),
     minNativeZoom: 0,
     maxNativeZoom: 0,
-    getTileUrl: (): string => {
-        return ''
-    },
+    getTileUrl: () => '',
     onMarkerClick: (marker, global, _) => {
         // Show tooltip
         const tooltip = $("#tooltip");
@@ -54,12 +51,8 @@ const map = new WorldMap(app, {
         tooltip.css('top', global.y - 2);
         tooltip.show();
 
-        // Get sno info
-        // const groupName = snoGroupName(marker.refSnoGroup);
-        const title = snoName(marker.refSnoGroup, marker.refSnoId);
-
         // Update tooltip title
-        $("#tooltip-title").html(`<a class="snoRef popupTitle" href="../sno/${marker.refSnoId}.html">${title}</a>`);
+        $("#tooltip-title").html(`<a class="snoRef" href="../sno/${marker.ref.id}.html">${marker.ref.title}</a>`);
 
         // Update tooltip body
         const body = $("#tooltip-body");
@@ -68,23 +61,21 @@ const map = new WorldMap(app, {
         const dl = $("<dl></dl>");
 
         // -- Source
-        dl.append(`<dt>Source</dt><dd><a class="snoRef"  href="../sno/${marker.sourceSno}.html">${snoName(lookupSnoGroup(marker.sourceSno), marker.sourceSno)}</a></dd>`);
+        dl.append(`<dt>Source</dt><dd><a class="snoRef"  href="../sno/${marker.source.id}.html">${marker.source.title}</a></dd>`);
 
         // -- Data SNOs
-        const dataSnos = marker.dataSnos ?? [];
-        if (dataSnos.length > 0) {
+        if (marker.data.length > 0) {
             dl.append('<dt>Data</dt>');
             const dd = $('<dd></dd>');
-            for (const dataSno of dataSnos) {
-                const title = snoName(lookupSnoGroup(dataSno), dataSno);
-                dd.append(`<a class="snoRef" href="../sno/${dataSno}.html">${title}</a>`);
+            for (let data of marker.data) {
+                dd.append(`<a class="snoRef" href="../sno/${data.id}.html">${data.title}</a>`);
             }
             dl.append(dd);
         }
 
         // -- Metadata
-        for (const [key, val] of Object.entries(marker.meta ?? {})) {
-            dl.append(`<dt>${markerMetaNames.get(key) ?? key}</dt><dd>${val}</dd>`);
+        for (const [k, v] of marker.meta) {
+            dl.append(`<dt>${k}</dt><dd>${v}</dd>`);
         }
 
         body.append(dl);
@@ -93,7 +84,7 @@ const map = new WorldMap(app, {
         body.append(`<div class="coords">${marker.x.toFixed(6)}, ${marker.y.toFixed(6)}, ${marker.z.toFixed(6)}</div>`);
     },
     crs: {
-        rotation: 0,
+        rotation: (Math.PI / 180) * 45,
         offset: new Vec2(0, 0),
         gridSize: new Vec2(0, 0),
         scale: new Vec2(0, 0),
@@ -107,12 +98,21 @@ window.addEventListener("resize", () => {
     map.resize(window.innerWidth, window.innerHeight);
 });
 
-// Event handlers
+// Load world
+const worker = createWorldWorker(map);
+loadWorld(map, worker, 69068);
+
+// Tooltip Handlers
 const hideTooltip = () => $("#tooltip").hide();
 $("#tooltip-close").on('click', hideTooltip);
 map.tileContainer.on('mousedown', hideTooltip);
 map.tileContainer.on('wheel', hideTooltip);
 
-// Load world
-const worker = getWorker(map);
-loadWorld(map, worker, groups, 69068);
+// Search handlers
+(window as any).onSearch = (e: any) => {
+    let query: string | undefined = $(e).val()?.toString().toLowerCase();
+    query = query == '' ? undefined : query;
+
+    map.clearMarkers();
+    loadWorld(map, worker, 69068, {markers: true}, query);
+};

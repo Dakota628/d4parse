@@ -16,9 +16,9 @@ import {Vec2, Vec3} from "./util";
 import {Marker} from "./workers/events";
 import {quadtree, Quadtree} from "d3-quadtree";
 
-export type TileUrlFunc = (coord: Vec2, zoom: number) => string
+export type TileUrlFunc = (coord: Vec2, zoom: number) => string;
 
-export type MarkerClickFunc = (marker: Marker, global: Point, local: Point) => void
+export type MarkerClickFunc = (marker: Marker, global: Point, local: Point) => void;
 
 export interface WorldMapConfig {
     stats: Stats | undefined,
@@ -36,15 +36,14 @@ export interface WorldMapConfig {
     },
 }
 
-const Rads45Degrees = (Math.PI / 180) * 45;
-
 export class WorldMap {
     readonly viewport: Viewport;
     readonly tileContainer: Container = new Container();
 
     readonly markerContainer: Container = new Container();
+    readonly polygonGfx: Graphics = new Graphics();
     readonly markerGfx: Graphics = new Graphics();
-    readonly markerPoints: Quadtree<Marker>;
+    private markerPoints: Quadtree<Marker>;
 
     private lastNativeZoom: number;
     private spriteCache = new Map<Vec3, Sprite>();
@@ -53,7 +52,7 @@ export class WorldMap {
         readonly app: Application,
         readonly config: WorldMapConfig,
     ) {
-        // Setup viewport
+        // Start viewport setup
         this.viewport = new Viewport({
             screenWidth: app.view.width,
             screenHeight: app.view.height,
@@ -64,16 +63,23 @@ export class WorldMap {
         });
         this.viewport.sortableChildren = true;
 
+        // Setup container z indexes
         this.tileContainer.zIndex = 0;
+        this.markerContainer.zIndex = 1;
+        this.polygonGfx.zIndex = 2;
+        this.markerGfx.zIndex = 3;
+
+        // Setup tile container
         this.tileContainer.interactive = true;
         this.viewport.addChild(this.tileContainer);
 
+        // Setup markers
         this.markerPoints = quadtree<Marker>()
             .x((m) => m.x)
             .y((m) => m.y);
 
-        this.markerContainer.zIndex = 1;
         this.markerContainer.addChild(this.markerGfx);
+        this.markerContainer.addChild(this.polygonGfx);
         this.markerContainer.interactive = true;
         this.markerContainer.on('click', (e) => {
             const local = this.markerContainer.toLocal(e.global);
@@ -86,6 +92,7 @@ export class WorldMap {
 
         this.viewport.addChild(this.markerContainer);
 
+        // Finish viewport setup
         this.app.stage.interactive = true;
         this.app.stage.addChild(this.viewport);
 
@@ -206,7 +213,7 @@ export class WorldMap {
     }
 
     onNativeZoomChange(lastZoom: number, newZoom: number) {
-        const ratio =  Math.pow(2, newZoom) / Math.pow(2, lastZoom);
+        const ratio = Math.pow(2, newZoom) / Math.pow(2, lastZoom);
         this.viewport.center = new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio);
     }
 
@@ -220,7 +227,7 @@ export class WorldMap {
             this.config.crs.offset.y * scale,
             this.config.crs.scale.x * scale,
             this.config.crs.scale.y * scale,
-            Rads45Degrees,
+            this.config.crs.rotation,
         );
     }
 
@@ -229,7 +236,7 @@ export class WorldMap {
         this.tileContainer.removeChildren(0);
 
         // Draw tiles
-        this.eachTileInView((tileCoord: Vec2) =>  {
+        this.eachTileInView((tileCoord: Vec2) => {
             const tileCoordWithZoom = tileCoord.withZ(tileCoord, this.nativeZoom);
 
             let sprite: Sprite | undefined = this.spriteCache.get(tileCoordWithZoom);
@@ -247,18 +254,25 @@ export class WorldMap {
     addMarker(m: Marker) {
         this.markerGfx.beginFill(m.color, 0.5);
         // this.markerGfx.drawRect(m.x, m.y, m.width, m.height);
-        this.markerGfx.drawCircle(m.x, m.y, m.width / 4);
+        this.markerGfx.drawCircle(m.x, m.y, m.w / 2);
         this.markerGfx.endFill();
         this.markerPoints.add(m);
     }
 
     addPolygon(p: Array<Point>) {
-        this.markerGfx.lineStyle({
+        this.polygonGfx.lineStyle({
             width: 2,
             color: 0xACA491,
             alpha: 0.5,
         });
-        this.markerGfx.drawPolygon(p);
-        this.markerGfx.lineStyle();
+        this.polygonGfx.drawPolygon(p);
+        this.polygonGfx.lineStyle();
+    }
+
+    clearMarkers() {
+        this.markerGfx.clear();
+        this.markerPoints = quadtree<Marker>()
+            .x(this.markerPoints.x())
+            .y(this.markerPoints.y());
     }
 }

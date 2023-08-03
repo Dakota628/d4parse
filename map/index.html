@@ -7,6 +7,11 @@
   </head>
   <body>
     <script type="module" src="/src/main.ts"></script>
+    <div id="loading">
+      <div class="ldsRoller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="loadingText">Loading Map Data<br/><br/><i>The map is in alpha. Double check everything.</i></div>
+    </div>
+    <input id="search" type="search" placeholder="Search..." onsearch="onSearch(this)"/>
     <div id="tooltip">
       <div id="tooltip-close"></div>
       <div id="tooltip-title"></div>
