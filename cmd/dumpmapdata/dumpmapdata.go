@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
@@ -14,7 +15,53 @@ import (
 
 var (
 	outputBasePath = filepath.Join("docs", "map")
+	rzd            = NewZoneSnoData() // TODO: temp
 )
+
+type RegionZoneData struct {
+	data map[int32]mapset.Set[int32]
+}
+
+func NewZoneSnoData() *RegionZoneData {
+	return &RegionZoneData{
+		data: make(map[int32]mapset.Set[int32]),
+	}
+}
+
+func (r *RegionZoneData) Add(zone int32, snos ...int32) {
+	if rd, ok := r.data[zone]; !ok {
+		r.data[zone] = mapset.NewThreadUnsafeSet[int32](snos...)
+	} else {
+		rd.Append(snos...)
+	}
+}
+
+func (r *RegionZoneData) EachZone(f func(zone int32)) {
+	for zone := range r.data {
+		f(zone)
+	}
+}
+
+func (r *RegionZoneData) ZoneSpecificSnos(zone int32) []int32 {
+	zoneSnos, ok := r.data[zone]
+	if !ok {
+		return nil
+	}
+
+	for otherZone, otherZoneSnos := range r.data {
+		if otherZone == zone {
+			continue
+		}
+
+		if zoneSnos.Cardinality() == 0 {
+			return make([]int32, 0)
+		}
+
+		zoneSnos = zoneSnos.Difference(otherZoneSnos)
+	}
+
+	return zoneSnos.ToSlice()
+}
 
 type UniqueMarkerData struct {
 	seen    mapset.Set[string]
@@ -236,6 +283,8 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 		return nil, errors.New("not sub zone definition")
 	}
 
+	parentZone := sd.EParentZone
+
 	var md []MarkerData
 	var seenMarkerSet = mapset.NewThreadUnsafeSet[string]()
 
@@ -267,7 +316,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 				next()
 				return
 			}
-			md = append(md, MarkerData{
+			markerData := MarkerData{
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
@@ -279,7 +328,10 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 					"mt": marker.EType.Value,
 				},
 				// TODO: could also add scale to add a larger radius on hover
-			})
+			}
+			md = append(md, markerData)
+			rzd.Add(parentZone.Value, markerData.RefSno, markerData.SourceSno)
+			rzd.Add(parentZone.Value, markerData.DataSnos...)
 		})
 	}
 
@@ -313,7 +365,7 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 				next()
 				return
 			}
-			md = append(md, MarkerData{
+			markerData := MarkerData{
 				RefSnoGroup: uint8(marker.Snoname.Group),
 				RefSno:      marker.Snoname.Id,
 				SourceSno:   markerSetSnoMeta.Id.Value,
@@ -325,7 +377,10 @@ func loadSubZone(baseMetaPath string, toc d4.Toc, worldId int32, subZoneId int32
 					"mt": marker.EType.Value,
 				},
 				// TODO: could also add scale to add a larger radius on hover
-			})
+			}
+			md = append(md, markerData)
+			rzd.Add(parentZone.Value, markerData.RefSno, markerData.SourceSno)
+			rzd.Add(parentZone.Value, markerData.DataSnos...)
 		})
 	})
 
@@ -550,7 +605,7 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 
 func main() {
 	if len(os.Args) < 2 {
-		slog.Error("usage: dumpmapdata d4DataPath")
+		slog.Error("usage: dumpmapdata d4DataPath [skipScenes]")
 		os.Exit(1)
 	}
 
@@ -566,17 +621,36 @@ func main() {
 		os.Exit(1)
 	}
 
-	for sceneSnoId, sceneSnoName := range toc.Entries[d4.SnoGroupScene] {
-		if err := generateForScene(baseMetaPath, toc, sceneSnoId, sceneSnoName); err != nil {
-			slog.Error("Failed generate scene data", slog.Any("error", err), slog.Any("snoName", sceneSnoName))
-			os.Exit(1)
+	if !(len(os.Args) >= 3 && os.Args[2] == "true") {
+		for sceneSnoId, sceneSnoName := range toc.Entries[d4.SnoGroupScene] {
+			if err := generateForScene(baseMetaPath, toc, sceneSnoId, sceneSnoName); err != nil {
+				slog.Error("Failed to generate scene data", slog.Any("error", err), slog.Any("snoName", sceneSnoName))
+				os.Exit(1)
+			}
 		}
 	}
 
 	for worldSnoId, worldSnoName := range toc.Entries[d4.SnoGroupWorld] {
 		if err := generateForWorld(baseMetaPath, toc, worldSnoId); err != nil {
-			slog.Error("Failed generate world data", slog.Any("error", err), slog.Any("snoName", worldSnoName))
+			slog.Error("Failed to generate world data", slog.Any("error", err), slog.Any("snoName", worldSnoName))
 			os.Exit(1)
 		}
+	}
+
+	// Dump zone specific SNOs
+	zs := make(map[int32][]int32)
+	rzd.EachZone(func(zone int32) {
+		zs[zone] = rzd.ZoneSpecificSnos(zone)
+	})
+
+	zsData, err := json.Marshal(zs)
+	if err != nil {
+		slog.Error("Failed to marshal zone specific snos", slog.Any("error", err))
+		os.Exit(1)
+	}
+
+	if err := os.WriteFile(filepath.Join("data", "zoneSpecificSnos.json"), zsData, 0655); err != nil {
+		slog.Error("Failed to write zone specific snos", slog.Any("error", err))
+		os.Exit(1)
 	}
 }
