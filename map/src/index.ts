@@ -4,6 +4,14 @@ import {Stats} from "stats.ts";
 import {Vec2} from "./util";
 import {createWorldWorker, loadWorld} from "./workers/util";
 import $ from "jquery";
+import '@selectize/selectize';
+import {names} from "./workers/data";
+
+// Setup constants
+const worldSnoGroup = 48;
+const sceneSnoGroup = 33;
+let currentWorldId = 69068;
+
 
 // Setup pixijs
 settings.PREFER_ENV = ENV.WEBGL2;
@@ -100,7 +108,7 @@ window.addEventListener("resize", () => {
 
 // Load world
 const worker = createWorldWorker(map);
-loadWorld(map, worker, 69068);
+loadWorld(map, worker, currentWorldId);
 
 // Tooltip Handlers
 const hideTooltip = () => $("#tooltip").hide();
@@ -109,10 +117,66 @@ map.tileContainer.on('mousedown', hideTooltip);
 map.tileContainer.on('wheel', hideTooltip);
 
 // Search handlers
-(window as any).onSearch = (e: any) => {
+(<any>window).onSearch = (e: any) => {
     let query: string | undefined = $(e).val()?.toString().toLowerCase();
     query = query == '' ? undefined : query;
 
     map.clearMarkers();
-    loadWorld(map, worker, 69068, {markers: true}, query);
+    loadWorld(map, worker, currentWorldId, {markers: true}, query);
 };
+
+// World switch handlers
+$(async () => {
+    // Create options
+    const ns = await names('');
+    const options = new Array<any>();
+
+    for (const [snoId, snoName] of Object.entries(ns[worldSnoGroup])) {
+        options.push({
+            group: 'World',
+            label: snoName,
+            value: snoId,
+        })
+    }
+
+    for (const [snoId, snoName] of Object.entries(ns[sceneSnoGroup])) {
+        options.push({
+            group: 'Scene',
+            label: snoName,
+            value: snoId,
+        })
+    }
+
+    // Create selectize
+    const $worldSelect = $('#world-select').selectize({
+        create: false,
+        persist: false,
+        sortField: [
+            { field: 'group', direction: 'desc' },
+            { field: 'label', direction: 'asc' },
+        ],
+        valueField: 'value',
+        labelField: 'label',
+        searchField: ['group', 'label'],
+        optgroupField: 'group',
+        optgroupLabelField: 'group',
+        optgroupValueField: 'group',
+        optgroupOrder: ['World', 'Scene'],
+        lockOptgroupOrder: true,
+        optgroups: [
+            { group: 'World' },
+            { group: 'Scene' },
+        ],
+        options,
+        onChange: (worldId) => {
+            if (worldId) {
+                currentWorldId = worldId;
+                map.clear();
+                loadWorld(map, worker, worldId);
+            }
+        }
+    });
+
+    // Set default value
+    $worldSelect[0].selectize.setValue(currentWorldId, true);
+});

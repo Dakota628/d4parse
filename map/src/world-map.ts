@@ -134,6 +134,8 @@ export class WorldMap {
     public resize(width: number, height: number) {
         this.app.renderer.resize(width, height);
         this.viewport.resize(width, height);
+        this.viewport.worldWidth = this.config.tileSize.x * this.config.bounds.x;
+        this.viewport.worldHeight = this.config.tileSize.y * this.config.bounds.y;
     }
 
     get nativeZoom(): number {
@@ -274,5 +276,11 @@ export class WorldMap {
         this.markerPoints = quadtree<Marker>()
             .x(this.markerPoints.x())
             .y(this.markerPoints.y());
+    }
+
+    clear() {
+        this.clearMarkers();
+        this.polygonGfx.clear();
+        this.tileContainer.removeChildren(0);
     }
 }

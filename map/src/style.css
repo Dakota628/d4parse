@@ -22,9 +22,6 @@ canvas {
 }
 
 #search {
-    position: fixed;
-    right: 10px;
-    top: 10px;
     border-radius: 5px;
     color: #f1f3f5;
     background: #212529;
@@ -32,8 +29,8 @@ canvas {
     box-shadow: none;
     width: 25%;
     z-index: 100;
-    padding: 7px;
-    font-size: 16px;
+    padding: 9.5px;
+    font-size: 13px;
 }
 
 #search:focus {
@@ -43,6 +40,61 @@ canvas {
 
 #search::placeholder {
     color: #868e96;
+}
+
+#world-select {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 500;
+}
+
+#world-select-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 25%;
+    z-index: 100;
+}
+
+.selectize-input,
+.selectize-control.single .selectize-input.input-active,
+.selectize-dropdown,
+.selectize-input.full,
+.selectize-input input,
+.selectize-control.multi .selectize-input>div.active {
+    background: #212529;
+    color: #f1f3f5;
+    border: 1px solid #343a40;
+}
+
+.selectize-input.focus {
+    box-shadow: none;
+}
+
+.selectize-dropdown .selected, .selectize-dropdown .active {
+    background: #a61e4d;
+    color: #f1f3f5;
+}
+
+.selectize-dropdown .active:not(.selected) {
+    background: #0b7285;
+    color: #f1f3f5;
+}
+
+.selectize-input.dropdown-active::before {
+    background: #343a40;
+}
+
+.selectize-dropdown .optgroup-header {
+    background: #343a40;
+    color: #f1f3f5;
+}
+
+#search {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
 }
 
 #tooltip {
