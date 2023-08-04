@@ -5,7 +5,7 @@ import {error} from "jquery";
 // Sno types
 export namespace Sno {
     export type Id = number;
-    export type Name = number;
+    export type Name = string;
     export type GroupId = number;
     export type GroupName = string;
     export type Groups = {
@@ -27,7 +27,6 @@ export namespace Sno {
 export async function getMsgpack(url: string): Promise<any> {
     const resp = await fetch(url);
     if (!resp.ok) {
-        console.log("msgpack request failed", resp);
         throw error("Msgpack request failed");
     }
     return unpack(await resp.arrayBuffer());
@@ -54,16 +53,14 @@ let namesCache: Sno.Names | undefined;
 
 export async function groups(baseUrl: string): Promise<Sno.Groups> {
     if (!groupsCache) {
-        console.log("fetching groups");
-        groupsCache = await getMsgpack(`${baseUrl}/groups.mpk`);
+        groupsCache = await getMsgpack(`${baseUrl}/groups.mpk`); // TODO: vite static asset import
     }
     return groupsCache!;
 }
 
 export async function names(baseUrl: string): Promise<Sno.Names> {
     if (!namesCache) {
-        console.log("fetching names");
-        namesCache = await getMsgpack(`${baseUrl}/names.mpk`);
+        namesCache = await getMsgpack(`${baseUrl}/names.mpk`); // TODO: vite static asset import
     }
     return namesCache!;
 }
@@ -86,6 +83,11 @@ export async function lookupSnoGroup(baseUrl: string, id: Sno.Id, ns?: Sno.Names
     return -1;
 }
 
+export async function snoName(baseUrl: string, group: Sno.GroupId, id: Sno.Id, ns?: Sno.Names): Promise<string | undefined> {
+    ns ??= await names(baseUrl);
+    return (ns[group] ?? {})[id] ?? undefined;
+}
+
 export async function snoTitle(baseUrl: string, group: Sno.GroupId, id: Sno.Id, gs?: Sno.Groups, ns?: Sno.Names): Promise<string> {
     ns ??= await names(baseUrl);
 
@@ -94,13 +96,8 @@ export async function snoTitle(baseUrl: string, group: Sno.GroupId, id: Sno.Id, 
     }
 
     const groupName = await snoGroupName(baseUrl, group, gs);
-    const groupNames = ns[group];
-
-    if (!groupNames || !groupNames.hasOwnProperty(id)) {
-        return `[${groupName}] ${id}`
-    }
-
-    return `[${groupName}] ${groupNames[id]}`
+    const name = await snoName(baseUrl, group, id);
+    return `[${groupName}] ${name ?? id}`
 }
 
 export async function getDisplayInfo(baseUrl: string, id: Sno.Id, group?: Sno.GroupId, gs?: Sno.Groups, ns?: Sno.Names): Promise<Sno.DisplayInfo> {

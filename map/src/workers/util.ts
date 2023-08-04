@@ -24,10 +24,9 @@ export function createWorldWorker(map: WorldMap): Worker {
             map.config.crs.scale = new Vec2(e.data.mapData.zoneArtScale, e.data.mapData.zoneArtScale);
         } else {
             // Done
-            map.resize(window.innerWidth, window.innerHeight);
-            map.draw();
-            map.drawMarkers();
+            map.redraw();
             $("#loading").hide();
+            $("#map").trigger('focus');
         }
     };
 

@@ -3,12 +3,13 @@ import {Point} from "pixi.js";
 import {
     defaultMarkerColor,
     getDisplayInfo,
-    getWorldData,
+    getWorldData, lookupSnoGroup,
     markerColors,
     markerMetaNames,
     Sno,
-    snoGroupName
+    snoGroupName, snoName
 } from "./data";
+import * as liqe from "liqe";
 
 console.log("new world worker!");
 
@@ -38,19 +39,35 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
 
     // Add markers
     if (e.data.retrieve.markers) {
-        let size = 0.5;
+        let query: liqe.LiqeQuery | undefined;
         if (e.data.query) {
-            size = 10;
+            query = liqe.parse(e.data.query);
         }
 
         for (let m of data.m ?? []) {
-            const groupName = await snoGroupName(e.data.baseUrl, m.g);
-            const color = markerColors.get(groupName) ?? defaultMarkerColor;
+            const refGroup = await snoGroupName(e.data.baseUrl, m.g);
 
-            const ref = await getDisplayInfo(e.data.baseUrl, m.r, m.g);
-            if (e.data.query && !ref.title.toLowerCase().includes(e.data.query)) {
-                continue;
+            if (query) {
+                const refName = await snoName(e.data.baseUrl,  m.g, m.r);
+                const srcGroupId = await lookupSnoGroup(e.data.baseUrl, m.s);
+                const srcGroup = await snoGroupName(e.data.baseUrl, srcGroupId);
+                const srcName = await snoName(e.data.baseUrl, srcGroupId, m.s);
+
+                const searchObj: any = {
+                    id: String(m.r),
+                    group: refGroup,
+                    name: refName,
+                    source_id: String(m.s),
+                    source_group: srcGroup,
+                    source: srcName,
+                };
+
+                if (!liqe.test(query, searchObj)) {
+                    continue;
+                }
             }
+
+            const color = markerColors.get(refGroup) ?? defaultMarkerColor;
 
             // noinspection JSSuspiciousNameCombination
             self.postMessage({
@@ -59,9 +76,9 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
                     x: m.y, // Note: x and y are purposely swapped
                     y: m.x, // Note: x and y are purposely swapped
                     z: m.z,
-                    w: size,
-                    h: size,
-                    ref,
+                    w: 0.5, // TODO: configurable
+                    h: 0.5,
+                    ref: await getDisplayInfo(e.data.baseUrl, m.r, m.g),
                     source: await getDisplayInfo(e.data.baseUrl, m.s),
                     data: await Promise.all((m.d ?? []).map(
                         async (id: Sno.Id) => await getDisplayInfo(e.data.baseUrl, id),

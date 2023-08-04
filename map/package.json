@@ -22,6 +22,7 @@
     "@types/selectize": "^0.12.35",
     "d3-quadtree": "^3.0.1",
     "jquery": "^3.7.0",
+    "liqe": "^3.6.1",
     "msgpackr": "^1.9.5",
     "pixi-viewport": "^5.0.1",
     "pixi.js": "^7.1.4",

@@ -13,24 +13,33 @@ const sceneSnoGroup = 33;
 let currentWorldId = 69068;
 
 
+//
 // Setup pixijs
+//
 settings.PREFER_ENV = ENV.WEBGL2;
 settings.FAIL_IF_MAJOR_PERFORMANCE_CAVEAT = true;
 
 BaseTexture.defaultOptions.mipmap = MIPMAP_MODES.ON;
 BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST;
 
+//
 // Create canvas
+//
 const view = document.createElement("canvas");
+view.setAttribute('id', 'map');
 document.body.appendChild(view);
 
+//
 // Create stats
+//
 const stats = new Stats();
 stats.showPanel(0);
 stats.dom.id = 'stats'
 document.body.appendChild(stats.dom);
 
+//
 // Create pixi app
+//
 export const app = new Application({
     view,
     width: window.innerWidth,
@@ -44,7 +53,9 @@ export const app = new Application({
 
 app.renderer.resize(window.innerWidth, window.innerHeight);
 
+//
 // Create world map
+//
 const map = new WorldMap(app, {
     stats,
     tileSize: new Vec2(512, 512),
@@ -99,24 +110,32 @@ const map = new WorldMap(app, {
     }
 });
 
+//
 // Start app
+//
 app.ticker.start();
 
 window.addEventListener("resize", () => {
     map.resize(window.innerWidth, window.innerHeight);
 });
 
+//
 // Load world
+//
 const worker = createWorldWorker(map);
 loadWorld(map, worker, currentWorldId);
 
+//
 // Tooltip Handlers
+//
 const hideTooltip = () => $("#tooltip").hide();
 $("#tooltip-close").on('click', hideTooltip);
 map.tileContainer.on('mousedown', hideTooltip);
 map.tileContainer.on('wheel', hideTooltip);
 
+//
 // Search handlers
+//
 (<any>window).onSearch = (e: any) => {
     let query: string | undefined = $(e).val()?.toString().toLowerCase();
     query = query == '' ? undefined : query;
@@ -125,13 +144,14 @@ map.tileContainer.on('wheel', hideTooltip);
     loadWorld(map, worker, currentWorldId, {markers: true}, query);
 };
 
+//
 // World switch handlers
-$(async () => {
-    // Create options
-    const ns = await names('');
+//
+// Create options
+names('').then((names) => {
     const options = new Array<any>();
 
-    for (const [snoId, snoName] of Object.entries(ns[worldSnoGroup])) {
+    for (const [snoId, snoName] of Object.entries(names[worldSnoGroup])) {
         options.push({
             group: 'World',
             label: snoName,
@@ -139,7 +159,7 @@ $(async () => {
         })
     }
 
-    for (const [snoId, snoName] of Object.entries(ns[sceneSnoGroup])) {
+    for (const [snoId, snoName] of Object.entries(names[sceneSnoGroup])) {
         options.push({
             group: 'Scene',
             label: snoName,

@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
 }
 
-canvas {
+#map {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,23 +11,30 @@ canvas {
 }
 
 #stats {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    top: auto !important;
+    left: auto !important;
     box-shadow: none !important;
-    background: #212529;
+    background: transparent !important;
 }
 
 #stats > canvas {
-    left: 10px;
-    top: 10px;
     background: #212529;
 }
 
 #search {
+    position: fixed;
+    right: 10px;
+    top: 10px;
     border-radius: 5px;
     color: #f1f3f5;
     background: #212529;
     border: 1px solid #343a40;
     box-shadow: none;
     width: 25%;
+    min-width: 250px;
     z-index: 100;
     padding: 9.5px;
     font-size: 13px;
@@ -42,18 +49,12 @@ canvas {
     color: #868e96;
 }
 
-#world-select {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    z-index: 500;
-}
-
 #world-select-container {
     position: fixed;
     top: 10px;
-    right: 10px;
+    left: 10px;
     width: 25%;
+    min-width: 250px;
     z-index: 100;
 }
 
@@ -62,14 +63,23 @@ canvas {
 .selectize-dropdown,
 .selectize-input.full,
 .selectize-input input,
-.selectize-control.multi .selectize-input>div.active {
+.selectize-control.single .selectize-input>div.active {
     background: #212529;
     color: #f1f3f5;
     border: 1px solid #343a40;
+    border-radius: 5px;
 }
 
 .selectize-input.focus {
     box-shadow: none;
+}
+
+.selectize-input.dropdown-active {
+    border-radius: 5px 5px 0 0 !important;
+}
+
+.selectize-dropdown {
+    border-radius: 0 0 5px 5px !important;
 }
 
 .selectize-dropdown .selected, .selectize-dropdown .active {
@@ -91,29 +101,24 @@ canvas {
     color: #f1f3f5;
 }
 
-#search {
-    position: fixed;
-    left: 10px;
-    bottom: 10px;
-}
-
 #tooltip {
     position: fixed;
     z-index: 1000;
     border-radius: 5px;
+    color: #f1f3f5;
     background: #212529;
+    border: 1px solid #343a40;
     display: none;
     min-width: 100px;
     min-height: 100px;
     padding: 10px;
     border-top: 20px solid #343a40;
-    color: #f8f9fa;
 }
 
 #tooltip-close {
     position: absolute;
     right: 5px;
-    top: -17px;
+    top: -20px;
     font-weight: bold;
     color: #f03e3e;
 }
@@ -121,6 +126,7 @@ canvas {
 #tooltip-close:after {
     display: inline-block;
     content: "\00d7";
+    font-size: 20px;
 }
 
 #tooltip-close:hover {
