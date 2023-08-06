@@ -108,7 +108,7 @@ export class WorldMap {
         let nextNativeZoom = lastNativeZoom;
         this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
 
-        app.ticker.maxFPS = 60;
+        // app.ticker.maxFPS = 60;
         app.ticker.add(() => {
             this.config.stats?.begin();
 
