@@ -128,10 +128,11 @@ loadWorld(map, worker, currentWorldId);
 //
 // Tooltip Handlers
 //
-const hideTooltip = () => $("#tooltip").hide();
+const $tooltip = $("#tooltip");
+const hideTooltip = () => $tooltip.hide();
 $("#tooltip-close").on('click', hideTooltip);
-map.tileContainer.on('mousedown', hideTooltip);
-map.tileContainer.on('wheel', hideTooltip);
+map.viewport.on('drag-start', hideTooltip);
+map.viewport.on('zoomed', hideTooltip);
 
 //
 // Search handlers
@@ -200,3 +201,7 @@ names('').then((names) => {
     // Set default value
     $worldSelect[0].selectize.setValue(currentWorldId, true);
 });
+
+// TODO: world links, show mouse position
+// TODO: world grids (optional)
+// TODO: fit markers to world for worlds with bad scaling

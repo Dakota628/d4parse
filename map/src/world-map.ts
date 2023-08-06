@@ -100,34 +100,10 @@ export class WorldMap {
             .wheel();
 
         // Start rendering
-        let lastScale = this.viewport.scaled;
-        let nextScale = lastScale;
-        this.onScaleChange(lastScale, nextScale);
-
-        let lastNativeZoom = this.nativeZoom;
-        let nextNativeZoom = lastNativeZoom;
-        this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
-
-        // app.ticker.maxFPS = 60;
         app.ticker.add(() => {
             this.config.stats?.begin();
 
             if (this.viewport.dirty) {
-                // Scale change
-                nextScale = this.viewport.scaled;
-                if (lastScale != nextScale) {
-                    this.onScaleChange(lastScale, nextScale);
-                    lastScale = nextScale;
-                }
-
-                // Native zoom change
-                nextNativeZoom = this.nativeZoom;
-                if (lastNativeZoom != nextNativeZoom) {
-                    this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
-                    lastNativeZoom = nextNativeZoom;
-                }
-
-                // Viewport update
                 this.draw();
                 this.viewport.dirty = false;
             }
@@ -140,6 +116,32 @@ export class WorldMap {
     }
 
     private initHandlers() {
+        // Viewport scale handlers
+        let lastScale = this.viewport.scaled;
+        let nextScale = lastScale;
+        this.onScaleChange(lastScale, nextScale);
+
+        let lastNativeZoom = this.nativeZoom;
+        let nextNativeZoom = lastNativeZoom;
+        this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
+
+        this.viewport.on('zoomed-end', () => {
+            // Scale change
+            nextScale = this.viewport.scaled;
+            if (lastScale != nextScale) {
+                this.onScaleChange(lastScale, nextScale);
+                lastScale = nextScale;
+            }
+
+            // Native zoom change
+            nextNativeZoom = this.nativeZoom;
+            if (lastNativeZoom != nextNativeZoom) {
+                this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
+                lastNativeZoom = nextNativeZoom;
+            }
+        });
+
+        // Mouse move and click handlers
         const $view = $(this.app.view);
 
         this.markerContainer.on('globalmousemove', (e) => {
@@ -156,7 +158,7 @@ export class WorldMap {
                 const local = this.markerContainer.toLocal(e.global);
                 this.config.onMarkerClick(this.currentMarker, e.global, local);
             }
-        })
+        });
     }
 
     public resize(width: number, height: number) {
@@ -259,7 +261,7 @@ export class WorldMap {
             this.config.crs.rotation,
         );
 
-        this.markerSize = Math.max(0.2, 15 / Math.pow(3, this.viewport.scaled));
+        this.markerSize = Math.max(0.15, (15 / this.config.crs.scale.x) / Math.pow(3, this.viewport.scaled));
         this.markerContainer.removeChildren(0);
         this.markerContainer.addChild(this.markerMesh.getMesh(this.markerSize));
     }
@@ -298,26 +300,6 @@ export class WorldMap {
 
     // TODO: marker should be generic or interface. WorldMap shouldn't know about D4 concerns.
     public addMarker(m: Marker) {
-        // this.markerGfx2.draw(m.color, (gfx) => {
-        //     gfx.beginFill(m.color, 1);
-        //     // gfx.drawCircle(m.x, m.y, m.w * 5);
-        //     gfx.drawRect(m.x, m.y, m.w * 5, m.h * 5);
-        //     gfx.endFill();
-        // });
-        // this.markerPoints.add(m);
-
-
-
-        // const sprite = new Sprite(Texture.WHITE);
-        // sprite.position.set(m.x, m.y);
-        // sprite.width = m.w;
-        // sprite.height = m.h;
-        // sprite.tint = m.color;
-        // // sprite.
-        //
-        // this.markerParticles.addChild(sprite);
-        // this.markerPoints.add(m);
-
         this.markerMesh.addMarker(m.x, m.y, m.color);
         this.markerPoints.add(m);
     }
