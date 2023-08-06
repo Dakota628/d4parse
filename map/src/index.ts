@@ -251,6 +251,5 @@ names('').then((names) => {
     $worldSelect[0].selectize.setValue(currentWorldId, true);
 });
 
-// TODO: world links (x, y, zoom, world, query) -- should also live update URL bar so people can share without any extra context
 // TODO: world grids (optional)
 // TODO: fit markers to world for worlds with bad scaling

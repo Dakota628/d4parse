@@ -285,6 +285,7 @@ export class WorldMap {
         this.markerSize = Math.max(0.15, (15 / this.config.crs.scale.x) / Math.pow(3, this.viewport.scaled));
         this.markerContainer.removeChildren(0);
         this.markerContainer.addChild(this.markerMesh.getMesh(this.markerSize));
+        this.markerContainer.addChild(this.polygonGfx);
     }
 
     private draw() {
