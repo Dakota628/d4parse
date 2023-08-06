@@ -34,7 +34,6 @@ body {
     border: 1px solid #343a40;
     box-shadow: none;
     width: 25%;
-    min-width: 250px;
     z-index: 100;
     padding: 9.5px;
     font-size: 13px;
@@ -47,6 +46,75 @@ body {
 
 #search::placeholder {
     color: #868e96;
+}
+
+#search-info {
+    position: fixed;
+    top: 10px;
+    right: calc(25% + 7px);
+    z-index: 100;
+    text-align: center;
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 34px;
+    color: #f1f3f5;
+    background: #212529;
+    font-weight: 50;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #343a40;
+}
+
+#search-info #search-info-text {
+    visibility: hidden;
+    position: fixed;
+    top: calc(36px + 10px + 10px);
+    right: 10px;
+    z-index: 100;
+    border-radius: 5px;
+    color: #f1f3f5;
+    background: #212529;
+    border: 1px solid #343a40;
+    padding: 10px;
+    width: calc(25% + 10px);
+    line-height: 1;
+    font-size: 14px;
+    text-align: left;
+}
+
+#search-info-text p {
+    padding: 0;
+    margin: 0;
+}
+
+#search-info-text pre {
+    color: #adb5bd;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#search-info-text hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #343a40;
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#search-info-text ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+}
+
+#search-info:hover {
+    cursor: help;
+}
+
+#search-info:hover #search-info-text {
+    visibility: visible;
 }
 
 #world-select-container {
@@ -214,9 +282,10 @@ a:hover {
     margin: 0;
     background: #212529;
     z-index: 100000;
+    cursor: wait;
 }
 
-.loadingText {
+.loading-text {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -227,7 +296,7 @@ a:hover {
     font-size: 16px;
 }
 
-.ldsRoller {
+.loading-roller {
     display: inline-block;
     position: fixed;
     width: 80px;
@@ -237,12 +306,12 @@ a:hover {
     z-index: 1000000;
 }
 
-.ldsRoller div {
-    animation: ldsRoller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+.loading-roller div {
+    animation: loading-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px;
 }
 
-.ldsRoller div:after {
+.loading-roller div:after {
     content: " ";
     display: block;
     position: absolute;
@@ -253,79 +322,79 @@ a:hover {
     margin: -4px 0 0 -4px;
 }
 
-.ldsRoller div:nth-child(1) {
+.loading-roller div:nth-child(1) {
     animation-delay: -0.036s;
 }
 
-.ldsRoller div:nth-child(1):after {
+.loading-roller div:nth-child(1):after {
     top: 63px;
     left: 63px;
 }
 
-.ldsRoller div:nth-child(2) {
+.loading-roller div:nth-child(2) {
     animation-delay: -0.072s;
 }
 
-.ldsRoller div:nth-child(2):after {
+.loading-roller div:nth-child(2):after {
     top: 68px;
     left: 56px;
 }
 
-.ldsRoller div:nth-child(3) {
+.loading-roller div:nth-child(3) {
     animation-delay: -0.108s;
 }
 
-.ldsRoller div:nth-child(3):after {
+.loading-roller div:nth-child(3):after {
     top: 71px;
     left: 48px;
 }
 
-.ldsRoller div:nth-child(4) {
+.loading-roller div:nth-child(4) {
     animation-delay: -0.144s;
 }
 
-.ldsRoller div:nth-child(4):after {
+.loading-roller div:nth-child(4):after {
     top: 72px;
     left: 40px;
 }
 
-.ldsRoller div:nth-child(5) {
+.loading-roller div:nth-child(5) {
     animation-delay: -0.18s;
 }
 
-.ldsRoller div:nth-child(5):after {
+.loading-roller div:nth-child(5):after {
     top: 71px;
     left: 32px;
 }
 
-.ldsRoller div:nth-child(6) {
+.loading-roller div:nth-child(6) {
     animation-delay: -0.216s;
 }
 
-.ldsRoller div:nth-child(6):after {
+.loading-roller div:nth-child(6):after {
     top: 68px;
     left: 24px;
 }
 
-.ldsRoller div:nth-child(7) {
+.loading-roller div:nth-child(7) {
     animation-delay: -0.252s;
 }
 
-.ldsRoller div:nth-child(7):after {
+.loading-roller div:nth-child(7):after {
     top: 63px;
     left: 17px;
 }
 
-.ldsRoller div:nth-child(8) {
+.loading-roller div:nth-child(8) {
     animation-delay: -0.288s;
 }
 
-.ldsRoller div:nth-child(8):after {
+.loading-roller div:nth-child(8):after {
     top: 56px;
     left: 12px;
 }
 
-@keyframes ldsRoller {
+@keyframes loading-roller {
     0% {
         transform: rotate(0deg);
     }

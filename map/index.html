@@ -8,10 +8,66 @@
   <body>
     <script type="module" src="/src/main.ts"></script>
     <div id="loading">
-      <div class="ldsRoller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      <div class="loadingText">Loading Map Data<br/><br/><i>The map is in alpha. Double check everything.</i></div>
+      <div class="loading-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="loading-text">Loading Map Data<br/><br/><i>The map is in alpha. Double check everything.</i></div>
     </div>
     <input id="search" type="search" placeholder="Search..." onsearch="onSearch(this)"/>
+    <div id="search-info">
+      &#8505;
+      <div id="search-info-text">
+        <p>
+          Search supports a query language called <a href="https://github.com/gajus/liqe">Liqe</a>. Liqe allows you to perform complex search queries using the following fields:
+          <ul>
+            <li><pre>id</pre></li>
+            <li><pre>group</pre></li>
+            <li><pre>name</pre></li>
+            <li><pre>source_id</pre></li>
+            <li><pre>source_group</pre></li>
+            <li><pre>source</pre></li>
+          </ul>
+          <br/>
+
+          <b>Search for the term 'cow' anywhere in the marker (case insensitive):</b>
+          <pre>cow</pre>
+          <br/>
+
+          <b>Search for the term 'cow' anywhere in the marker (case sensitive):</b>
+          <pre>'cow'</pre>
+          <pre>&quot;cow&quot;</pre>
+          <br/>
+
+          <b>Search for a marker with a SNO name containing 'cow':</b>
+          <pre>name:cow</pre>
+          <br/>
+
+          <b>Search for all markers in the Actor SNO group:</b>
+          <pre>group:actor</pre>
+          <br/>
+
+          <b>Search for all markers that are not in the Actor group:</b>
+          <pre>-group:actor</pre>
+          <br/>
+
+          <b>Search for all markers in the Actor or Encounter SNO group:</b>
+          <pre>group:actor OR group:encounter</pre>
+          <br/>
+
+          <b>Search using regex:</b>
+          <pre>name:/[cow]{3}/</pre>
+          <br/>
+
+          <b>Search using wildcard:</b>
+          <pre>name:c*w</pre>
+          <br/>
+
+          <b>Search for anything that contains 'cow' but doesn't contain 'meat':</b>
+          <pre>cow -meat</pre>
+          <br/>
+
+          See the Liqe documentation for more advanced usage.
+        </p>
+      </div>
+    </div>
     <div id="world-select-container">
       <select id="world-select" placeholder="Choose a World..."></select>
     </div>

@@ -41,7 +41,11 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
     if (e.data.retrieve.markers) {
         let query: liqe.LiqeQuery | undefined;
         if (e.data.query) {
-            query = liqe.parse(e.data.query);
+            try {
+                query = liqe.parse(e.data.query);
+            } catch (e) {
+                console.log("Error parsing search query:", e);
+            }
         }
 
         for (let m of data.m ?? []) {
