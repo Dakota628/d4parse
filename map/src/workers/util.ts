@@ -3,7 +3,7 @@ import {WorldReq, WorldReqRetrieve, WorldResp} from "./events";
 import {Vec2} from "../util";
 import $ from "jquery";
 
-export function createWorldWorker(map: WorldMap): Worker {
+export function createWorldWorker(map: WorldMap, doneCb?: () => void): Worker {
     const worker = new Worker(
         new URL('./world.ts', import.meta.url),
         {
@@ -30,6 +30,10 @@ export function createWorldWorker(map: WorldMap): Worker {
             $("#loading").hide();
             $("#map").trigger('focus');
             gotMapData = false;
+
+            if (doneCb) {
+                doneCb();
+            }
         }
     };
 

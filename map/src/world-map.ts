@@ -259,15 +259,14 @@ export class WorldMap {
         }
     }
 
-    private onScaleChange(_: number, newScale: number) {
+    public onScaleChange(_: number, newScale: number) {
         let l = Math.ceil((Math.log2(newScale)));
         this.nativeZoom = Math.min(Math.max(l, this.config.minNativeZoom), this.config.maxNativeZoom);
         this.drawMarkers();
     }
-    private onNativeZoomChange(lastZoom: number, newZoom: number) {
+    public onNativeZoomChange(lastZoom: number, newZoom: number) {
         const ratio = Math.pow(2, newZoom) / Math.pow(2, lastZoom);
         this.viewport.center = new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio);
-        // this.drawMarkers();
     }
 
     private drawMarkers() {

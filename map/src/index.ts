@@ -1,4 +1,4 @@
-import {Application, BaseTexture, ENV, MIPMAP_MODES, SCALE_MODES, settings} from "pixi.js";
+import {Application, BaseTexture, ENV, MIPMAP_MODES, Point, SCALE_MODES, settings} from "pixi.js";
 import {WorldMap} from "./world-map";
 import {Stats} from "stats.ts";
 import {Vec2} from "./util";
@@ -10,8 +10,19 @@ import {names} from "./workers/data";
 // Setup constants
 const worldSnoGroup = 48;
 const sceneSnoGroup = 33;
-let currentWorldId = 69068;
 
+// Load url params
+const url = new URL(window.location.href);
+const defaultParams = {
+    x: Number(url.searchParams.get('x') ?? 0),
+    y: Number(url.searchParams.get('y') ?? 0),
+    zoom: Number(url.searchParams.get('zoom') ?? 1),
+    world: Number(url.searchParams.get('world') ?? 69068),
+    query: url.searchParams.get('query') ?? undefined,
+}
+
+let currentWorldId = defaultParams.world;
+let currentQuery: string | undefined = defaultParams.query;
 
 //
 // Setup pixijs
@@ -123,8 +134,14 @@ window.addEventListener("resize", () => {
 //
 // Load world
 //
-const worker = createWorldWorker(map);
-loadWorld(map, worker, currentWorldId);
+const worker = createWorldWorker(map, () => {
+    map.viewport.setZoom(defaultParams.zoom);
+    map.viewport.updateTransform();
+    const center = map.markerContainer.transform.localTransform.apply(new Point(defaultParams.x, defaultParams.y)); //map.markerContainer.transform.worldTransform.apply(new Point(defaultParams.x, defaultParams.y));
+    map.viewport.moveCenter(center);
+    updateUrl();
+});
+loadWorld(map, worker, currentWorldId, undefined, currentQuery);
 
 //
 // Tooltip Handlers
@@ -136,14 +153,43 @@ map.viewport.on('drag-start', hideTooltip);
 map.viewport.on('zoomed', hideTooltip);
 
 //
+// URL handlers
+//
+function updateUrl() {
+    if (!window.history.replaceState) {
+        return;
+    }
+
+    const center = map.viewport.toGlobal(map.viewport.center);
+    const local = map.markerContainer.toLocal(center);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('x', String(local.x));
+    url.searchParams.set('y', String(local.y));
+    url.searchParams.set('zoom', String(map.viewport.scaled));
+    url.searchParams.set('world', String(currentWorldId));
+    if (currentQuery) {
+        url.searchParams.set('query', String(currentQuery));
+    } else {
+        url.searchParams.delete('query');
+    }
+
+    window.history.replaceState(null, '', url);
+}
+
+map.viewport.on('drag-end', updateUrl);
+map.viewport.on('zoomed-end', updateUrl);
+
+//
 // Search handlers
 //
 (<any>window).onSearch = (e: any) => {
-    let query: string | undefined = $(e).val()?.toString().toLowerCase();
-    query = query == '' ? undefined : query;
+    const query: string | undefined = $(e).val()?.toString().toLowerCase();
+    currentQuery = query == '' ? undefined : query;
 
     map.clearMarkers();
-    loadWorld(map, worker, currentWorldId, {markers: true}, query);
+    loadWorld(map, worker, currentWorldId, {markers: true}, currentQuery);
+    updateUrl();
 };
 
 //
@@ -175,8 +221,8 @@ names('').then((names) => {
         create: false,
         persist: false,
         sortField: [
-            { field: 'group', direction: 'desc' },
-            { field: 'label', direction: 'asc' },
+            {field: 'group', direction: 'desc'},
+            {field: 'label', direction: 'asc'},
         ],
         valueField: 'value',
         labelField: 'label',
@@ -187,8 +233,8 @@ names('').then((names) => {
         optgroupOrder: ['World', 'Scene'],
         lockOptgroupOrder: true,
         optgroups: [
-            { group: 'World' },
-            { group: 'Scene' },
+            {group: 'World'},
+            {group: 'Scene'},
         ],
         options,
         onChange: (worldId) => {
@@ -196,6 +242,7 @@ names('').then((names) => {
                 currentWorldId = worldId;
                 map.clear();
                 loadWorld(map, worker, worldId);
+                updateUrl();
             }
         }
     });
@@ -204,6 +251,6 @@ names('').then((names) => {
     $worldSelect[0].selectize.setValue(currentWorldId, true);
 });
 
-// TODO: world links, show mouse position
+// TODO: world links (x, y, zoom, world, query) -- should also live update URL bar so people can share without any extra context
 // TODO: world grids (optional)
 // TODO: fit markers to world for worlds with bad scaling
