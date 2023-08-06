@@ -165,14 +165,22 @@ export class WorldMap {
 
 
         // Coordinate display handlers
-        this.tileContainer.on('mousemove', (e) => {
+        this.viewport.on('mousemove', (e) => {
             if (this.config.coordinateDisplay) {
-                const local = this.markerContainer.toLocal(e.global);
-                this.config.coordinateDisplay.text(`${local.x.toFixed(6)}, ${local.y.toFixed(6)}`);
+                const markerLocal = this.markerContainer.toLocal(e.global);
+
+                const tileLocal = this.tileContainer.toLocal(e.global);
+                const currScale = Math.pow(2, this.config.maxNativeZoom - this.nativeZoom);
+                const tileX = Math.floor(tileLocal.x / (this.config.tileSize.x / currScale));
+                const tileY = Math.floor(tileLocal.y / (this.config.tileSize.y / currScale));
+
+                this.config.coordinateDisplay.text(
+                    `${markerLocal.x.toFixed(6)}, ${markerLocal.y.toFixed(6)} ｜ ${tileX}, ${tileY}`
+                );
             }
         });
-        this.tileContainer.on('mouseenter', () => this.config.coordinateDisplay?.show());
-        this.tileContainer.on('mouseleave', () => this.config.coordinateDisplay?.hide());
+        this.viewport.on('mouseenter', () => this.config.coordinateDisplay?.show());
+        this.viewport.on('mouseleave', () => this.config.coordinateDisplay?.hide());
     }
 
     public resize(width: number, height: number) {

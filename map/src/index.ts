@@ -171,6 +171,7 @@ names('').then((names) => {
 
     // Create selectize
     const $worldSelect = $('#world-select').selectize({
+        plugins: ["restore_on_backspace"],
         create: false,
         persist: false,
         sortField: [
