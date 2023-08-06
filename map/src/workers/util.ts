@@ -11,6 +11,7 @@ export function createWorldWorker(map: WorldMap): Worker {
         },
     )
 
+    let gotMapData = false;
     worker.onmessage = (e: MessageEvent<WorldResp>) => {
         if (e.data.marker) {
             map.addMarker(e.data.marker);
@@ -22,11 +23,13 @@ export function createWorldWorker(map: WorldMap): Worker {
             map.config.crs.offset = new Vec2(e.data.mapData.artCenterX, e.data.mapData.artCenterY);
             map.config.crs.gridSize = new Vec2(e.data.mapData.gridSize, e.data.mapData.gridSize);
             map.config.crs.scale = new Vec2(e.data.mapData.zoneArtScale, e.data.mapData.zoneArtScale);
+            gotMapData = true;
         } else {
             // Done
-            map.redraw();
+            map.redraw(gotMapData);
             $("#loading").hide();
             $("#map").trigger('focus');
+            gotMapData = false;
         }
     };
 

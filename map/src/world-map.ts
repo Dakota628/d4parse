@@ -17,6 +17,7 @@ import {Marker} from "./workers/events";
 import {quadtree, Quadtree} from "d3-quadtree";
 import $ from "jquery";
 import {LRUCache} from "typescript-lru-cache";
+import {MarkerMesh} from "./marker-mesh";
 
 export type TileUrlFunc = (coord: Vec2, zoom: number) => string;
 
@@ -39,17 +40,21 @@ export interface WorldMapConfig {
 }
 
 export class WorldMap {
+    private nativeZoom: number = 0;
+    private markerSize: number = 0;
+
     readonly viewport: Viewport;
     readonly tileContainer: Container = new Container();
 
     readonly markerContainer: Container = new Container();
     readonly polygonGfx: Graphics = new Graphics();
-    readonly markerGfx: Graphics = new Graphics();
-    private markerPoints: Quadtree<Marker>;
+    readonly markerMesh = new MarkerMesh(1000000);
 
-    private lastNativeZoom: number;
+    private markerPoints: Quadtree<Marker>;
+    private currentMarker: Marker | undefined = undefined;
+
     private spriteCache = new LRUCache<Vec3, Sprite>({
-        maxSize: 1000,
+        maxSize: 1600,
     })
 
     constructor(
@@ -69,9 +74,8 @@ export class WorldMap {
 
         // Setup container z indexes
         this.tileContainer.zIndex = 0;
-        this.markerContainer.zIndex = 1;
-        this.polygonGfx.zIndex = 2;
-        this.markerGfx.zIndex = 3;
+        this.polygonGfx.zIndex = 1;
+        this.markerContainer.zIndex = 2;
 
         // Setup tile container
         this.tileContainer.interactive = true;
@@ -82,7 +86,6 @@ export class WorldMap {
             .x((m) => m.x)
             .y((m) => m.y);
 
-        this.markerContainer.addChild(this.markerGfx);
         this.markerContainer.addChild(this.polygonGfx);
 
         this.viewport.addChild(this.markerContainer);
@@ -96,34 +99,41 @@ export class WorldMap {
             .pinch()
             .wheel();
 
-        this.lastNativeZoom = this.nativeZoom;
-
         // Start rendering
+        let lastScale = this.viewport.scaled;
+        let nextScale = lastScale;
+        this.onScaleChange(lastScale, nextScale);
+
+        let lastNativeZoom = this.nativeZoom;
+        let nextNativeZoom = lastNativeZoom;
+        this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
+
         app.ticker.maxFPS = 60;
         app.ticker.add(() => {
             this.config.stats?.begin();
 
             if (this.viewport.dirty) {
-                // Zoom change
-                const nextNativeZoom = this.nativeZoom;
-                if (this.lastNativeZoom != nextNativeZoom) {
-                    this.onNativeZoomChange(this.lastNativeZoom, nextNativeZoom);
-                    this.lastNativeZoom = nextNativeZoom;
+                // Scale change
+                nextScale = this.viewport.scaled;
+                if (lastScale != nextScale) {
+                    this.onScaleChange(lastScale, nextScale);
+                    lastScale = nextScale;
+                }
+
+                // Native zoom change
+                nextNativeZoom = this.nativeZoom;
+                if (lastNativeZoom != nextNativeZoom) {
+                    this.onNativeZoomChange(lastNativeZoom, nextNativeZoom);
+                    lastNativeZoom = nextNativeZoom;
                 }
 
                 // Viewport update
                 this.draw();
-                this.drawMarkers();
                 this.viewport.dirty = false;
             }
 
             this.config.stats?.end();
         });
-
-        // Draw center of world
-        this.markerGfx.beginFill(0x000000, 1);
-        this.markerGfx.drawCircle(0, 0, 0.25);
-        this.markerGfx.endFill();
 
         // Init handlers
         this.initHandlers();
@@ -132,31 +142,26 @@ export class WorldMap {
     private initHandlers() {
         const $view = $(this.app.view);
 
-        this.markerContainer.interactive = true;
-        this.markerContainer.on('click', (e) => {
+        this.markerContainer.on('globalmousemove', (e) => {
             const local = this.markerContainer.toLocal(e.global);
-            const marker = this.markerPoints.find(local.x, local.y, 5);
-            if (!marker) {
+            this.currentMarker = this.markerPoints.find(local.x, local.y, this.markerSize);
+            if (!this.currentMarker) {
+                $view.css('cursor', '');
                 return
             }
-            this.config.onMarkerClick(marker, e.global, local);
-        });
-        this.markerContainer.on('mouseover', () => {
             $view.css('cursor', 'pointer');
         });
-        this.markerContainer.on('mouseleave', () => {
-            $view.css('cursor', '');
-        });
+        this.viewport.on('click', (e) => {
+            if (this.currentMarker) {
+                const local = this.markerContainer.toLocal(e.global);
+                this.config.onMarkerClick(this.currentMarker, e.global, local);
+            }
+        })
     }
 
     public resize(width: number, height: number) {
         this.app.renderer.resize(width, height);
         this.viewport.resize(width, height);
-    }
-
-    get nativeZoom(): number {
-        let l = Math.ceil((Math.log2(this.viewport.scaled)));
-        return Math.min(Math.max(l, this.config.minNativeZoom), this.config.maxNativeZoom);
     }
 
     private getTileTexture(tileCoord: Vec2): Texture | undefined {
@@ -230,9 +235,15 @@ export class WorldMap {
         }
     }
 
+    private onScaleChange(_: number, newScale: number) {
+        let l = Math.ceil((Math.log2(newScale)));
+        this.nativeZoom = Math.min(Math.max(l, this.config.minNativeZoom), this.config.maxNativeZoom);
+        this.drawMarkers();
+    }
     private onNativeZoomChange(lastZoom: number, newZoom: number) {
         const ratio = Math.pow(2, newZoom) / Math.pow(2, lastZoom);
         this.viewport.center = new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio);
+        // this.drawMarkers();
     }
 
     private drawMarkers() {
@@ -247,6 +258,10 @@ export class WorldMap {
             this.config.crs.scale.y * scale,
             this.config.crs.rotation,
         );
+
+        this.markerSize = Math.max(0.2, 15 / Math.pow(3, this.viewport.scaled));
+        this.markerContainer.removeChildren(0);
+        this.markerContainer.addChild(this.markerMesh.getMesh(this.markerSize));
     }
 
     private draw() {
@@ -269,21 +284,41 @@ export class WorldMap {
         });
     }
 
-    public redraw() {
+    public redraw(resetView = true) {
         this.viewport.worldWidth = this.config.tileSize.x * this.config.bounds.x;
         this.viewport.worldHeight = this.config.tileSize.y * this.config.bounds.y;
-        this.viewport.moveCorner(0, 0);
-        this.viewport.setZoom(1);
         this.draw();
         this.drawMarkers();
+
+        if (resetView) {
+            this.viewport.moveCorner(0, 0);
+            this.viewport.setZoom(1);
+        }
     }
 
-    // TODO: marker should be generic or interface. WorldMap shouldn't know about D4 concerns
+    // TODO: marker should be generic or interface. WorldMap shouldn't know about D4 concerns.
     public addMarker(m: Marker) {
-        this.markerGfx.beginFill(m.color, 0.5);
-        // this.markerGfx.drawRect(m.x, m.y, m.width, m.height);
-        this.markerGfx.drawCircle(m.x, m.y, m.w / 2);
-        this.markerGfx.endFill();
+        // this.markerGfx2.draw(m.color, (gfx) => {
+        //     gfx.beginFill(m.color, 1);
+        //     // gfx.drawCircle(m.x, m.y, m.w * 5);
+        //     gfx.drawRect(m.x, m.y, m.w * 5, m.h * 5);
+        //     gfx.endFill();
+        // });
+        // this.markerPoints.add(m);
+
+
+
+        // const sprite = new Sprite(Texture.WHITE);
+        // sprite.position.set(m.x, m.y);
+        // sprite.width = m.w;
+        // sprite.height = m.h;
+        // sprite.tint = m.color;
+        // // sprite.
+        //
+        // this.markerParticles.addChild(sprite);
+        // this.markerPoints.add(m);
+
+        this.markerMesh.addMarker(m.x, m.y, m.color);
         this.markerPoints.add(m);
     }
 
@@ -298,7 +333,8 @@ export class WorldMap {
     }
 
     public clearMarkers() {
-        this.markerGfx.clear();
+        this.markerMesh.clear();
+        this.markerContainer.removeChildren(0);
         this.markerPoints = quadtree<Marker>()
             .x(this.markerPoints.x())
             .y(this.markerPoints.y());

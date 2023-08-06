@@ -20,7 +20,7 @@ settings.PREFER_ENV = ENV.WEBGL2;
 settings.FAIL_IF_MAJOR_PERFORMANCE_CAVEAT = true;
 
 BaseTexture.defaultOptions.mipmap = MIPMAP_MODES.ON;
-BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST;
+BaseTexture.defaultOptions.scaleMode = SCALE_MODES.LINEAR;
 
 //
 // Create canvas
@@ -44,7 +44,7 @@ export const app = new Application({
     view,
     width: window.innerWidth,
     height: window.innerHeight,
-    antialias: false,
+    antialias: true,
     autoDensity: true,
     backgroundColor: 0x0,
     resolution: window.devicePixelRatio,
