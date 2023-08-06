@@ -31,6 +31,7 @@ export interface WorldMapConfig {
     maxNativeZoom: number,
     getTileUrl: TileUrlFunc,
     onMarkerClick: MarkerClickFunc,
+    coordinateDisplay: JQuery<HTMLElement> | undefined,
     crs: {
         rotation: number
         offset: Vec2,
@@ -141,7 +142,7 @@ export class WorldMap {
             }
         });
 
-        // Mouse move and click handlers
+        // Marker click handlers
         const $view = $(this.app.view);
 
         this.markerContainer.on('globalmousemove', (e) => {
@@ -152,6 +153,8 @@ export class WorldMap {
                 return
             }
             $view.css('cursor', 'pointer');
+
+
         });
         this.viewport.on('click', (e) => {
             if (this.currentMarker) {
@@ -159,6 +162,17 @@ export class WorldMap {
                 this.config.onMarkerClick(this.currentMarker, e.global, local);
             }
         });
+
+
+        // Coordinate display handlers
+        this.tileContainer.on('mousemove', (e) => {
+            if (this.config.coordinateDisplay) {
+                const local = this.markerContainer.toLocal(e.global);
+                this.config.coordinateDisplay.text(`${local.x.toFixed(6)}, ${local.y.toFixed(6)}`);
+            }
+        });
+        this.tileContainer.on('mouseenter', () => this.config.coordinateDisplay?.show());
+        this.tileContainer.on('mouseleave', () => this.config.coordinateDisplay?.hide());
     }
 
     public resize(width: number, height: number) {

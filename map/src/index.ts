@@ -102,6 +102,7 @@ const map = new WorldMap(app, {
         // -- Coordinates
         body.append(`<div class="coords">${marker.x.toFixed(6)}, ${marker.y.toFixed(6)}, ${marker.z.toFixed(6)}</div>`);
     },
+    coordinateDisplay: $("#coordinate-display"),
     crs: {
         rotation: (Math.PI / 180) * 45,
         offset: new Vec2(0, 0),

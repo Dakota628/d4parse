@@ -169,6 +169,18 @@ body {
     color: #f1f3f5;
 }
 
+#coordinate-display {
+    color: #f1f3f5;
+    background: #212529;
+    border: 1px solid #343a40;
+    padding: 5px;
+    position: fixed;
+    z-index: 100;
+    left: 10px;
+    bottom: 10px;
+    border-radius: 5px;
+}
+
 #tooltip {
     position: fixed;
     z-index: 1000;
