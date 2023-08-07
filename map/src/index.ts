@@ -1,11 +1,11 @@
 import {Application, BaseTexture, ENV, MIPMAP_MODES, Point, SCALE_MODES, settings} from "pixi.js";
 import {WorldMap} from "./world-map";
 import {Stats} from "stats.ts";
-import {Vec2} from "./util";
+import {Vec2} from "./vec";
 import {createWorldWorker, loadWorld} from "./workers/util";
 import $ from "jquery";
 import '@selectize/selectize';
-import {names} from "./workers/data";
+import {docsBaseUrl, names} from "./workers/data";
 
 // Setup constants
 const worldSnoGroup = 48;
@@ -82,7 +82,7 @@ const map = new WorldMap(app, {
         tooltip.show();
 
         // Update tooltip title
-        $("#tooltip-title").html(`<a class="snoRef" href="../sno/${marker.ref.id}.html">${marker.ref.title}</a>`);
+        $("#tooltip-title").html(`<a class="sno-ref" href="${docsBaseUrl}/sno/${marker.ref.id}.html">${marker.ref.title}</a>`);
 
         // Update tooltip body
         const body = $("#tooltip-body");
@@ -91,14 +91,14 @@ const map = new WorldMap(app, {
         const dl = $("<dl></dl>");
 
         // -- Source
-        dl.append(`<dt>Source</dt><dd><a class="snoRef"  href="../sno/${marker.source.id}.html">${marker.source.title}</a></dd>`);
+        dl.append(`<dt>Source</dt><dd><a class="sno-ref"  href="${docsBaseUrl}/sno/${marker.source.id}.html">${marker.source.title}</a></dd>`);
 
         // -- Data SNOs
         if (marker.data.length > 0) {
             dl.append('<dt>Data</dt>');
             const dd = $('<dd></dd>');
             for (let data of marker.data) {
-                dd.append(`<a class="snoRef" href="../sno/${data.id}.html">${data.title}</a>`);
+                dd.append(`<a class="sno-ref" href="${docsBaseUrl}/sno/${data.id}.html">${data.title}</a>`);
             }
             dl.append(dd);
         }
@@ -196,7 +196,7 @@ map.viewport.on('zoomed-end', updateUrl);
 // World switch handlers
 //
 // Create options
-names('').then((names) => {
+names().then((names) => {
     const options = new Array<any>();
 
     for (const [snoId, snoName] of Object.entries(names[worldSnoGroup])) {

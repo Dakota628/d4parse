@@ -269,7 +269,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.snoRef {
+.sno-ref {
     display: block;
     white-space: nowrap;
     width: 100%;
@@ -277,7 +277,7 @@ a:hover {
     text-overflow: ellipsis;
 }
 
-.snoRef:hover {
+.sno-ref:hover {
     overflow: auto;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -306,7 +306,16 @@ a:hover {
     top: calc(50% + 80px);
     z-index: 100000;
     color: #f8f9fa;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.loading-text i {
+    background: #343a40;
+    padding: 7px;
+    border-radius: 5px;
+    font-style: normal;
+    color: #dee2e6;
+    font-size: 14px;
 }
 
 .loading-roller {

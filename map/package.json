@@ -28,6 +28,7 @@
     "pixi.js": "^7.1.4",
     "stats.ts": "^1.1.0",
     "typescript-lru-cache": "^2.0.0",
+    "vite-plugin-static-copy": "^0.17.0",
     "vite-plugin-top-level-await": "^1.3.1"
   }
 }

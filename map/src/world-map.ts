@@ -12,7 +12,7 @@ import {
 } from "pixi.js";
 import {Viewport} from "pixi-viewport";
 import {Stats} from "stats.ts";
-import {Vec2, Vec3} from "./util";
+import {Vec2, Vec3} from "./vec";
 import {Marker} from "./workers/events";
 import {quadtree, Quadtree} from "d3-quadtree";
 import $ from "jquery";
@@ -264,9 +264,10 @@ export class WorldMap {
         this.nativeZoom = Math.min(Math.max(l, this.config.minNativeZoom), this.config.maxNativeZoom);
         this.drawMarkers();
     }
+
     public onNativeZoomChange(lastZoom: number, newZoom: number) {
         const ratio = Math.pow(2, newZoom) / Math.pow(2, lastZoom);
-        this.viewport.center = new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio);
+        this.viewport.moveCenter(new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio));
     }
 
     private drawMarkers() {

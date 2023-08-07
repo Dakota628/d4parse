@@ -49,13 +49,13 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
         }
 
         for (let m of data.m ?? []) {
-            const refGroup = await snoGroupName(e.data.baseUrl, m.g);
+            const refGroup = await snoGroupName(m.g);
 
             if (query) {
-                const refName = await snoName(e.data.baseUrl,  m.g, m.r);
-                const srcGroupId = await lookupSnoGroup(e.data.baseUrl, m.s);
-                const srcGroup = await snoGroupName(e.data.baseUrl, srcGroupId);
-                const srcName = await snoName(e.data.baseUrl, srcGroupId, m.s);
+                const refName = await snoName(m.g, m.r);
+                const srcGroupId = await lookupSnoGroup(m.s);
+                const srcGroup = await snoGroupName(srcGroupId);
+                const srcName = await snoName(srcGroupId, m.s);
 
                 const searchObj: any = {
                     id: String(m.r),
@@ -82,10 +82,10 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
                     z: m.z,
                     w: 0.5, // TODO: configurable
                     h: 0.5,
-                    ref: await getDisplayInfo(e.data.baseUrl, m.r, m.g),
-                    source: await getDisplayInfo(e.data.baseUrl, m.s),
+                    ref: await getDisplayInfo( m.r, m.g),
+                    source: await getDisplayInfo(m.s),
                     data: await Promise.all((m.d ?? []).map(
-                        async (id: Sno.Id) => await getDisplayInfo(e.data.baseUrl, id),
+                        async (id: Sno.Id) => await getDisplayInfo(id),
                     )),
                     meta: Object.entries(m.m ?? {}).map(
                         ([k, v]) => [markerMetaNames.get(k) ?? k, v]

@@ -1,6 +1,6 @@
 import {WorldMap} from "../world-map";
 import {WorldReq, WorldReqRetrieve, WorldResp} from "./events";
-import {Vec2} from "../util";
+import {Vec2} from "../vec";
 import $ from "jquery";
 
 export function createWorldWorker(map: WorldMap, doneCb?: () => void): Worker {
@@ -59,7 +59,7 @@ export function loadWorld(
     }
 
     map.config.getTileUrl = (tileCoord: Vec2, zoom: number): string => {
-        return `${baseUrl}/${worldId}/${zoom}/${tileCoord.x}_${tileCoord.y}.png`
+        return `${baseUrl}/tiles/${worldId}/${zoom}/${tileCoord.x}_${tileCoord.y}.png`
     };
 
     worldWorker.postMessage({

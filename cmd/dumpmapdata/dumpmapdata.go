@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	outputBasePath = filepath.Join("docs", "map")
+	outputBasePath = filepath.Join("data", "mapdata")
 )
 
 type UniqueMarkerData struct {
@@ -482,7 +482,7 @@ func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSn
 		return err
 	}
 
-	outputPath := filepath.Join(outputBasePath, "data", fmt.Sprintf("%d.mpk", sceneSnoId))
+	outputPath := filepath.Join(outputBasePath, fmt.Sprintf("%d.mpk", sceneSnoId))
 	f, err := os.Create(outputPath)
 	if err != nil {
 		return err
@@ -539,7 +539,7 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 		return err
 	}
 
-	outputPath := filepath.Join(outputBasePath, "data", fmt.Sprintf("%d.mpk", worldSnoId))
+	outputPath := filepath.Join(outputBasePath, fmt.Sprintf("%d.mpk", worldSnoId))
 	f, err := os.Create(outputPath)
 	if err != nil {
 		return err

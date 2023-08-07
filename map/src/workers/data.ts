@@ -2,6 +2,8 @@ import {LRUCache} from 'typescript-lru-cache';
 import {unpack} from "msgpackr";
 import {error} from "jquery";
 
+export const docsBaseUrl = "https://docs.diablo.farm"
+
 // Sno types
 export namespace Sno {
     export type Id = number;
@@ -51,30 +53,30 @@ export async function getWorldData(baseUrl: string, worldId: number): Promise<an
 let groupsCache: Sno.Groups | undefined;
 let namesCache: Sno.Names | undefined;
 
-export async function groups(baseUrl: string): Promise<Sno.Groups> {
+export async function groups(): Promise<Sno.Groups> {
     if (!groupsCache) {
-        groupsCache = await getMsgpack(`${baseUrl}/groups.mpk`); // TODO: vite static asset import
+        groupsCache = await getMsgpack(`${docsBaseUrl}/groups.mpk`);
     }
     return groupsCache!;
 }
 
-export async function names(baseUrl: string): Promise<Sno.Names> {
+export async function names(): Promise<Sno.Names> {
     if (!namesCache) {
-        namesCache = await getMsgpack(`${baseUrl}/names.mpk`); // TODO: vite static asset import
+        namesCache = await getMsgpack(`${docsBaseUrl}/names.mpk`);
     }
     return namesCache!;
 }
 
-export async function snoGroupName(baseUrl: string, id: Sno.GroupId, gs?: Sno.Groups): Promise<Sno.GroupName> {
+export async function snoGroupName(id: Sno.GroupId, gs?: Sno.Groups): Promise<Sno.GroupName> {
     if (id === 255) {
         return "Unknown";
     }
-    gs ??= await groups(baseUrl);
+    gs ??= await groups();
     return gs[id] ?? `Group_${id}`;
 }
 
-export async function lookupSnoGroup(baseUrl: string, id: Sno.Id, ns?: Sno.Names): Promise<Sno.GroupId> {
-    ns ??= await names(baseUrl);
+export async function lookupSnoGroup(id: Sno.Id, ns?: Sno.Names): Promise<Sno.GroupId> {
+    ns ??= await names();
     for (let [groupId, m] of Object.entries(ns)) {
         if (m.hasOwnProperty(id)) {
             return Number(groupId)
@@ -83,41 +85,41 @@ export async function lookupSnoGroup(baseUrl: string, id: Sno.Id, ns?: Sno.Names
     return -1;
 }
 
-export async function snoName(baseUrl: string, group: Sno.GroupId, id: Sno.Id, ns?: Sno.Names): Promise<string | undefined> {
-    ns ??= await names(baseUrl);
+export async function snoName(group: Sno.GroupId, id: Sno.Id, ns?: Sno.Names): Promise<string | undefined> {
+    ns ??= await names();
     return (ns[group] ?? {})[id] ?? undefined;
 }
 
-export async function snoTitle(baseUrl: string, group: Sno.GroupId, id: Sno.Id, gs?: Sno.Groups, ns?: Sno.Names): Promise<string> {
-    ns ??= await names(baseUrl);
+export async function snoTitle(group: Sno.GroupId, id: Sno.Id, gs?: Sno.Groups, ns?: Sno.Names): Promise<string> {
+    ns ??= await names();
 
     if (group > 250 || !ns.hasOwnProperty(group)) {
         return `[Unknown] ${id === -1 ? 'Unknown' : id}`;
     }
 
-    const groupName = await snoGroupName(baseUrl, group, gs);
-    const name = await snoName(baseUrl, group, id);
+    const groupName = await snoGroupName(group, gs);
+    const name = await snoName(group, id);
     return `[${groupName}] ${name ?? id}`
 }
 
-export async function getDisplayInfo(baseUrl: string, id: Sno.Id, group?: Sno.GroupId, gs?: Sno.Groups, ns?: Sno.Names): Promise<Sno.DisplayInfo> {
-    group ??= await lookupSnoGroup(baseUrl, id, ns);
+export async function getDisplayInfo(id: Sno.Id, group?: Sno.GroupId, gs?: Sno.Groups, ns?: Sno.Names): Promise<Sno.DisplayInfo> {
+    group ??= await lookupSnoGroup(id, ns);
     return {
-        title: await snoTitle(baseUrl, group, id, gs, ns),
+        title: await snoTitle(group, id, gs, ns),
         id,
     } as Sno.DisplayInfo;
 }
 
 // Marker data
-export const defaultMarkerColor = 0x495057;
+export const defaultMarkerColor = 0x000000;
 export const markerColors = new Map<string, number>([
-    ['Actor', 0x2b8a3e],
+    ['Actor', 0x00ff00],
     ['AmbientSound', 0x9775fa],
-    ['Encounter', 0xc92a2a],
+    ['Encounter', 0xff0000],
     ['EffectGroup', 0x1864ab],
     ['FogVolume', 0x38d9a9],
     ['Light', 0xfcc419],
-    ['MarkerSet', 0xdee2e6],
+    ['MarkerSet', 0x0000ff],
     ['Material', 0xe8590c],
     ['Particle', 0x7b3f00],
     ['Quest', 0x74c0fc],
