@@ -51,17 +51,26 @@ document.body.appendChild(stats.dom);
 //
 // Create pixi app
 //
-export const app = new Application({
-    view,
-    width: window.innerWidth,
-    height: window.innerHeight,
-    antialias: true,
-    autoDensity: true,
-    backgroundColor: 0x0,
-    resolution: window.devicePixelRatio,
-    powerPreference: 'high-performance',
-});
-
+export const app= (() => {
+    try {
+        return new Application({
+            view,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            antialias: true,
+            autoDensity: true,
+            backgroundColor: 0x0,
+            resolution: window.devicePixelRatio,
+            powerPreference: 'high-performance',
+        });
+    } catch(e) {
+        $(".loading-roller").hide();
+        $(".loading-text")
+            .css('color', 'red')
+            .text("Your browser or graphics card is not compatible. Try updating your browser and assure it supports WebGL.");
+        throw e;
+    }
+})();
 app.renderer.resize(window.innerWidth, window.innerHeight);
 
 //
