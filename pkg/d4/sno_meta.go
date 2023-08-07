@@ -104,6 +104,25 @@ func ReadSnoMetaFile(path string) (SnoMeta, error) {
 	return snoMeta, snoMeta.UnmarshalD4(r, nil)
 }
 
+func ReadSnoMetaHeader(path string) (header SNOFileHeader, err error) {
+	// Open file
+	f, err := os.Open(path)
+	if err != nil {
+		return header, err
+	}
+	defer f.Close()
+
+	// Create binary reader
+	r := bin.NewBinaryReader(f)
+
+	// Read SNOFileHeader
+	if err := header.UnmarshalD4(r, nil); err != nil {
+		return header, err
+	}
+
+	return header, nil
+}
+
 func GetDefinition[T Object](meta SnoMeta) (T, error) {
 	def, ok := meta.Meta.(T)
 	if !ok {

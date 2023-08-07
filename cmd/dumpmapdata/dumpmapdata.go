@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	outputBasePath = filepath.Join("docs", "map")
+	outputBasePath = filepath.Join("data", "mapdata")
 )
 
 type UniqueMarkerData struct {
@@ -54,6 +54,8 @@ type Polygon [][2]float32
 
 type MapData struct {
 	GridSize       float32      `msgpack:"gridSize"`
+	BoundsX        int32        `msgpack:"boundsX"`
+	BoundsY        int32        `msgpack:"boundsY"`
 	ZoneArtScale   float32      `msgpack:"zoneArtScale"`
 	ZoneArtCenterX float32      `msgpack:"artCenterX"`
 	ZoneArtCenterY float32      `msgpack:"artCenterY"`
@@ -455,6 +457,8 @@ func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSn
 	// Load markers
 	md := MapData{
 		GridSize:       96,
+		BoundsX:        0,
+		BoundsY:        0,
 		ZoneArtScale:   1,
 		ZoneArtCenterX: 0,
 		ZoneArtCenterY: 0,
@@ -478,7 +482,7 @@ func generateForScene(baseMetaPath string, toc d4.Toc, sceneSnoId int32, sceneSn
 		return err
 	}
 
-	outputPath := filepath.Join(outputBasePath, "data", fmt.Sprintf("%d.mpk", sceneSnoId))
+	outputPath := filepath.Join(outputBasePath, fmt.Sprintf("%d.mpk", sceneSnoId))
 	f, err := os.Create(outputPath)
 	if err != nil {
 		return err
@@ -522,6 +526,8 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 	md.ZoneArtScale = wd.TZoneMapParams.FlZoneArtScale.Value
 	md.ZoneArtCenterX = wd.TZoneMapParams.VecZoneArtCenter.X
 	md.ZoneArtCenterY = wd.TZoneMapParams.VecZoneArtCenter.Y
+	md.BoundsX = wd.TZoneMapParams.Unk_3620f37.Value
+	md.BoundsY = wd.TZoneMapParams.Unk_c60b9b0.Value
 	md.MaxNativeZoom = maxNativeZoom(wd.TZoneMapParams.Unk_3620f37.Value)
 
 	// Write marker data
@@ -533,7 +539,7 @@ func generateForWorld(baseMetaPath string, toc d4.Toc, worldSnoId int32) error {
 		return err
 	}
 
-	outputPath := filepath.Join(outputBasePath, "data", fmt.Sprintf("%d.mpk", worldSnoId))
+	outputPath := filepath.Join(outputBasePath, fmt.Sprintf("%d.mpk", worldSnoId))
 	f, err := os.Create(outputPath)
 	if err != nil {
 		return err
