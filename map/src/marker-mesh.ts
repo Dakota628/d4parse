@@ -1,4 +1,4 @@
-import {Buffer, Geometry, Mesh, Shader, utils} from "pixi.js";
+import {Geometry, Mesh, Shader, utils} from "pixi.js";
 import {TYPES, DRAW_MODES} from "@pixi/core";
 
 const DoublePi = 2.0 * Math.PI;
