@@ -86,10 +86,8 @@ export class WorldMap {
         this.markerPoints = quadtree<Marker>()
             .x((m) => m.x)
             .y((m) => m.y);
-
-        this.markerContainer.addChild(this.polygonGfx);
-
         this.viewport.addChild(this.markerContainer);
+        this.drawMarkers(true);
 
         // Finish viewport setup
         this.app.stage.interactive = true;
@@ -270,7 +268,7 @@ export class WorldMap {
         this.viewport.moveCenter(new Point(this.viewport.center.x * ratio, this.viewport.center.y * ratio));
     }
 
-    private drawMarkers() {
+    private drawMarkers(resetChildren = false) {
         const scale = this.getCurrentScale()
             * (this.config.tileSize.x / this.config.crs.gridSize.x)
             / this.config.crs.scale.x;
@@ -284,9 +282,14 @@ export class WorldMap {
         );
 
         this.markerSize = Math.max(0.15, (15 / this.config.crs.scale.x) / Math.pow(3, this.viewport.scaled));
-        this.markerContainer.removeChildren(0);
-        this.markerContainer.addChild(this.markerMesh.getMesh(this.markerSize));
-        this.markerContainer.addChild(this.polygonGfx);
+        this.markerMesh.radius = this.markerSize;
+
+        if (resetChildren) {
+            this.markerMesh.update();
+            this.markerContainer.removeChildren(0);
+            this.markerContainer.addChild(this.markerMesh.getMesh());
+            this.markerContainer.addChild(this.polygonGfx);
+        }
     }
 
     private draw() {
@@ -313,7 +316,8 @@ export class WorldMap {
         this.viewport.worldWidth = this.config.tileSize.x * this.config.bounds.x;
         this.viewport.worldHeight = this.config.tileSize.y * this.config.bounds.y;
         this.draw();
-        this.drawMarkers();
+
+        this.drawMarkers(true);
 
         if (resetView) {
             this.viewport.moveCorner(0, 0);

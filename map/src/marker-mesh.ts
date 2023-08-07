@@ -1,7 +1,8 @@
 import {Buffer, Geometry, Mesh, Shader, utils} from "pixi.js";
-import {TYPES} from "@pixi/core";
+import {TYPES, DRAW_MODES} from "@pixi/core";
 
-const shader = Shader.from(`precision mediump float;
+const DoublePi = 2.0 * Math.PI;
+const MarkerShader = Shader.from(`precision mediump float;
 
     attribute vec2 aVPos;
     attribute vec2 aIPos;
@@ -33,49 +34,65 @@ export class MarkerMesh {
     private size: number = 0;
     private count: number = 0;
 
+    private mesh: Mesh<Shader> | undefined;
+    private _radius: number = 1;
+
 
     constructor(
-        readonly maxSize: number
+        readonly maxSize: number,
+        readonly markerSegments: number = 20,
     ) {
         this.data = new Float32Array(maxSize * (this.positionSize + this.colorSize));
     }
 
+    get radius(): number {
+        return this._radius;
+    }
+
+    set radius(r: number) {
+        if (r == this._radius) {
+            return;
+        }
+
+        this._radius = r;
+
+        if (this.mesh) {
+            const buf = this.mesh.geometry.getBuffer('aVPos');
+            buf.update(this.generateVertices(r, this.markerSegments));
+        }
+    }
+
     public clear() {
         this.data = new Float32Array(this.data.length);
+        this.mesh = undefined;
         this.size = 0;
         this.count = 0;
     }
 
     public addMarker(x: number, y: number, color: number) {
+        this.mesh = undefined;
+
         const rgb = utils.hex2rgb(color);
-
-        this.data[this.size] = x;
-        this.data[this.size + 1] = y;
-        this.data[this.size + 2] = rgb[0];
-        this.data[this.size + 3] = rgb[1];
-        this.data[this.size + 4] = rgb[2];
-
-        this.size += this.positionSize + this.colorSize;
-        this.count += 1;
+        this.data[this.size++] = x;
+        this.data[this.size++] = y;
+        this.data[this.size++] = rgb[0];
+        this.data[this.size++] = rgb[1];
+        this.data[this.size++] = rgb[2];
+        this.count++;
     }
 
-    public getMesh(markerSize: number): Mesh<Shader> {
-        const buffer = new Buffer(this.data.slice(0, this.size));
+    public update() {
+        const data = this.data.slice(0, this.size);
 
         const geometry = new Geometry()
             .addAttribute(
                 'aVPos',
-                [
-                    -markerSize, -markerSize,
-                    markerSize, -markerSize,
-                    markerSize, markerSize,
-                    -markerSize, markerSize
-                ],
+                this.generateVertices(this._radius, this.markerSegments),
                 2,
             )
             .addAttribute(
                 'aIPos',
-                buffer,
+                data,
                 this.positionSize,
                 false,
                 TYPES.FLOAT,
@@ -85,19 +102,35 @@ export class MarkerMesh {
             )
             .addAttribute(
                 'aICol',
-                buffer,
+                data,
                 this.colorSize,
                 false,
                 TYPES.FLOAT,
                 4 * (this.positionSize + this.colorSize),
                 4 * this.positionSize,
                 true,
-            )
-            .addIndex([0, 1, 2, 0, 2, 3]);
-
+            );
         geometry.instanced = true;
         geometry.instanceCount = this.count;
 
-        return new Mesh(geometry, shader);
+        this.mesh = new Mesh(geometry, MarkerShader, undefined, DRAW_MODES.TRIANGLE_FAN);
+    }
+
+    private generateVertices(scale: number, segments: number): Float32Array {
+        const vertices = new Float32Array(segments * 2);
+        let j = 0;
+        for (let i = 0; i < segments; i++) {
+            const theta = (i / segments) * DoublePi;
+            vertices[j++] = Math.cos(theta) * scale;
+            vertices[j++] = Math.sin(theta) * scale;
+        }
+        return vertices;
+    }
+
+    public getMesh(): Mesh<Shader> {
+        if (!this.mesh) {
+            this.update();
+        }
+        return this.mesh!;
     }
 }
