@@ -1,10 +1,10 @@
-package util
+package tex
 
 import (
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
-	"github.com/Dakota628/d4parse/pkg/d4/tex"
+	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/bmatcuk/doublestar/v4"
 	"github.com/nfnt/resize"
 	"golang.org/x/exp/slices"
@@ -105,7 +105,7 @@ func coordsFromName(name string) (TileCoord, error) {
 }
 
 func FindMapTextures(dataPath string, worldName string) (*MapTiles, int32, error) {
-	worldMetaPath := MetaPathByName(dataPath, d4.SnoGroupWorld, worldName)
+	worldMetaPath := util.MetaPathByName(dataPath, d4.SnoGroupWorld, worldName)
 	worldMeta, err := d4.ReadSnoMetaFile(worldMetaPath)
 	if err != nil {
 		return nil, -1, err
@@ -121,9 +121,9 @@ func FindMapTextures(dataPath string, worldName string) (*MapTiles, int32, error
 		uint(worldDef.TZoneMapParams.Unk_c60b9b0.Value),
 	)
 
-	texMetaGlob := BaseFilePattern(
+	texMetaGlob := util.BaseFilePattern(
 		dataPath,
-		FileTypeMeta,
+		util.FileTypeMeta,
 		d4.SnoGroupTexture,
 		worldName,
 		"zmap_",
@@ -208,11 +208,11 @@ func WriteMapTiles(mapTiles *MapTiles, outputDir string) (err error) {
 			return
 		}
 
-		texPayloadPath := ChangePathType(texMetaPath, FileTypePayload)
-		texPaylowPath := ChangePathType(texMetaPath, FileTypePaylow)
+		texPayloadPath := util.ChangePathType(texMetaPath, util.FileTypePayload)
+		texPaylowPath := util.ChangePathType(texMetaPath, util.FileTypePaylow)
 
 		var texs map[int]image.Image
-		texs, err = tex.LoadTexture(texDef, texPayloadPath, texPaylowPath, 0)
+		texs, err = LoadTexture(texDef, texPayloadPath, texPaylowPath, 0)
 		if err != nil {
 			return
 		}

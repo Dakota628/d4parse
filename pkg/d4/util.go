@@ -3,6 +3,7 @@ package d4
 import (
 	"golang.org/x/exp/constraints"
 	"reflect"
+	"sync"
 	"unicode"
 )
 
@@ -38,4 +39,35 @@ func Max[T constraints.Ordered](a T, b T) T {
 		return b
 	}
 	return a
+}
+
+func Work[T any](workers uint, data []T, f func(T)) {
+	// Add data to the channel
+	c := make(chan T, len(data))
+	for _, d := range data {
+		c <- d
+	}
+	close(c)
+
+	// Create worker
+	wg := sync.WaitGroup{}
+
+	worker := func() {
+		defer wg.Done()
+		for {
+			item, ok := <-c
+			if !ok {
+				return
+			}
+			f(item)
+		}
+	}
+
+	// Launch the workers
+	for thread := uint(0); thread < workers; thread++ {
+		wg.Add(1)
+		go worker()
+	}
+
+	wg.Wait()
 }

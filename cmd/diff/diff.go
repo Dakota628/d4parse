@@ -1,13 +1,21 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
 	mapset "github.com/deckarep/golang-set/v2"
+	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
+	"strings"
+	"sync/atomic"
+)
+
+const (
+	workers = 2000
 )
 
 var (
@@ -112,77 +120,95 @@ func main() {
 	})
 
 	// Write changed
-	common.Each(func(sno Sno) bool {
+	var progress atomic.Uint64
+
+	d4.Work(workers, common.ToSlice(), func(sno Sno) {
+		defer func() {
+			if i := progress.Add(1); i%1000 == 0 {
+				slog.Info("Comparing snos...", slog.Uint64("progress", i))
+			}
+		}()
+
 		oldMetaPath := util.MetaPathByName(oldPath, sno.Group, sno.Name)
 		newMetaPath := util.MetaPathByName(newPath, sno.Group, sno.Name)
 
-		oldMeta, err := d4.ReadSnoMetaHeader(oldMetaPath)
+		oldMeta, err := d4.ReadSnoMetaFile(oldMetaPath)
 		if err != nil {
 			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
 				panic(err)
 			}
-			return false
+			return
 		}
-		newMeta, err := d4.ReadSnoMetaHeader(newMetaPath)
+		newMeta, err := d4.ReadSnoMetaFile(newMetaPath)
 		if err != nil {
 			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
 				panic(err)
 			}
-			return false
+			return
+		}
+
+		// Log reasons
+		var reasons []string
+
+		// Check data
+		oldSer, err := msgpack.Marshal(oldMeta.Meta)
+		if err != nil {
+			panic(err)
+		}
+		newSer, err := msgpack.Marshal(newMeta.Meta)
+		if err != nil {
+			panic(err)
+		}
+
+		if !bytes.Equal(oldSer, newSer) {
+			reasons = append(reasons, "meta changed")
 		}
 
 		// Check XML hash
-		if oldMeta.DwXMLHash != newMeta.DwXMLHash {
-			if _, err := fmt.Fprintf(fChanged, "[%s] %s (meta changed)\n", groupName(sno.Group), sno.Name); err != nil {
-				panic(err)
-			}
-			return false
+		if oldMeta.Header.DwXMLHash != newMeta.Header.DwXMLHash {
+			reasons = append(reasons, "possible server-side change")
 		}
 
-		//// Check payloads
-		//oldPayloadPath := util.ChangePathType(oldMetaPath, util.FileTypePayload)
-		//newPayLoadPath := util.ChangePathType(newMetaPath, util.FileTypePayload)
-		//
-		//oldPayloadExists := true
-		//newPayloadExists := true
-		//if _, err := os.Stat(oldPayloadPath); err != nil {
-		//	oldPayloadExists = false
-		//}
-		//if _, err := os.Stat(newPayLoadPath); err != nil {
-		//	newPayloadExists = false
-		//}
-		//
-		//if oldPayloadExists != newPayloadExists {
-		//	var status string
-		//	if newPayloadExists {
-		//		status = "payload added"
-		//	} else {
-		//		status = "payload removed"
-		//	}
-		//	if _, err := fmt.Fprintf(fChanged, "[%s] %s (%s)\n", groupName(sno.Group), sno.Name, status); err != nil {
-		//		panic(err)
-		//	}
-		//	return true
-		//}
-		//
-		//if oldPayloadExists && newPayloadExists {
-		//	oldPayloadData, err := os.ReadFile(oldPayloadPath)
-		//	if err != nil {
-		//		panic(err)
-		//	}
-		//	newPayloadData, err := os.ReadFile(newPayLoadPath)
-		//	if err != nil {
-		//		panic(err)
-		//	}
-		//
-		//	if !bytes.Equal(oldPayloadData, newPayloadData) {
-		//		if _, err := fmt.Fprintf(fChanged, "[%s] %s (payload changed)\n", groupName(sno.Group), sno.Name); err != nil {
-		//			panic(err)
-		//		}
-		//	}
-		//	return true
-		//}
+		// Check payloads
+		oldPayloadPath := util.ChangePathType(oldMetaPath, util.FileTypePayload)
+		newPayLoadPath := util.ChangePathType(newMetaPath, util.FileTypePayload)
 
-		return false
+		oldPayloadExists := true
+		newPayloadExists := true
+		if _, err := os.Stat(oldPayloadPath); err != nil {
+			oldPayloadExists = false
+		}
+		if _, err := os.Stat(newPayLoadPath); err != nil {
+			newPayloadExists = false
+		}
+
+		if oldPayloadExists != newPayloadExists {
+			if newPayloadExists {
+				reasons = append(reasons, "payload added")
+			} else {
+				reasons = append(reasons, "payload removed")
+			}
+		}
+
+		if oldPayloadExists && newPayloadExists {
+			oldPayloadData, err := os.ReadFile(oldPayloadPath)
+			if err != nil {
+				panic(err)
+			}
+			newPayloadData, err := os.ReadFile(newPayLoadPath)
+			if err != nil {
+				panic(err)
+			}
+
+			if !bytes.Equal(oldPayloadData, newPayloadData) {
+				reasons = append(reasons, "payload changed")
+			}
+		}
+
+		if len(reasons) > 0 {
+			if _, err := fmt.Fprintf(fChanged, "[%s] %s (%s)\n", groupName(sno.Group), sno.Name, strings.Join(reasons, ",")); err != nil {
+				panic(err)
+			}
+		}
 	})
 }
