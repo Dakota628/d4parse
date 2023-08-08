@@ -1,3 +1,7 @@
+.PHONY: definitions
+definitions:
+	wget -O d4data/definitions.json https://raw.githubusercontent.com/blizzhackers/d4data/master/definitions.json
+
 .PHONY: generate
 generate:
 	go generate ./...
