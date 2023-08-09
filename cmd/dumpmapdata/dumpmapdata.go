@@ -11,10 +11,12 @@ import (
 	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 const (
-	workers = 2000
+	workers      = 2000
+	adHocWorkers = 100
 )
 
 var (
@@ -423,6 +425,10 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 		md = append(md, subzoneMarkers...)
 	}
 
+	// Extract data to run async and run sync jobs
+	var sceneChunks []*d4.SceneChunk
+	var subZoneIds []int32
+
 	wd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		switch x := v.(type) {
 		case *d4.ScreenStaticCamps:
@@ -437,22 +443,39 @@ func loadWorldMarkers(baseMetaPath string, toc d4.Toc, worldId int32) ([]MarkerD
 		case *d4.Type_bef5a4a:
 			// TODO: conditional map overlays
 		case *d4.SceneChunk:
-			sceneMarkers, err := loadWorldScene(baseMetaPath, toc, worldId, x)
-			if err != nil {
-				panic(err) // Not a great solution but whatever
-			}
-			md = append(md, sceneMarkers...)
+			sceneChunks = append(sceneChunks, x)
 		case *d4.SceneSpecification:
 			for _, subZone := range x.ArSubzones.Value {
-				subZoneMarkers, err := loadSubZone(baseMetaPath, toc, worldId, subZone.SnoSubzone.Id)
-				if err != nil {
-					panic(err) // Not a great solution but whatever
-				}
-				md = append(md, subZoneMarkers...)
+				subZoneIds = append(subZoneIds, subZone.SnoSubzone.Id)
 			}
 		}
 
 		next()
+	})
+
+	// Run async jobs
+	var mdMu sync.Mutex
+
+	util.DoWorkSlice(adHocWorkers, sceneChunks, func(sceneChunk *d4.SceneChunk) {
+		sceneMarkers, err := loadWorldScene(baseMetaPath, toc, worldId, sceneChunk)
+		if err != nil {
+			panic(err) // Not a great solution but whatever
+		}
+
+		mdMu.Lock()
+		defer mdMu.Unlock()
+		md = append(md, sceneMarkers...)
+	})
+
+	util.DoWorkSlice(adHocWorkers, subZoneIds, func(subZoneId int32) {
+		subZoneMarkers, err := loadSubZone(baseMetaPath, toc, worldId, subZoneId)
+		if err != nil {
+			panic(err) // Not a great solution but whatever
+		}
+
+		mdMu.Lock()
+		defer mdMu.Unlock()
+		md = append(md, subZoneMarkers...)
 	})
 
 	return md, polygons, wd, nil
