@@ -171,25 +171,36 @@ func generateTiles(mapImg *image.NRGBA, outputDir string, level int, tiles int, 
 		return err
 	}
 
+	// Create channel of coords
+	coords := make(chan [2]int, tiles*tiles)
 	for x := 0; x < tiles; x++ {
 		for y := 0; y < tiles; y++ {
-			subImg := tileSubImg(mapImg, subImgSize, x, y)
-			tile := resize.Resize(uint(tileSize), uint(tileSize), subImg, resize.Lanczos3)
-
-			p := filepath.Join(baseDir, fmt.Sprintf("%d_%d.png", x, y))
-			f, err := os.Create(p)
-			if err != nil {
-				return err
-			}
-
-			err = png.Encode(f, tile)
-			if err != nil {
-				return err
-			}
+			coords <- [2]int{x, y}
 		}
 	}
+	close(coords)
 
-	return nil
+	// Process each coord
+	errs := util.NewErrors()
+	util.DoWorkChan(100, coords, func(coord [2]int) {
+		subImg := tileSubImg(mapImg, subImgSize, coord[0], coord[1])
+		tile := resize.Resize(uint(tileSize), uint(tileSize), subImg, resize.Lanczos3)
+
+		p := filepath.Join(baseDir, fmt.Sprintf("%d_%d.png", coord[0], coord[1]))
+		f, err := os.Create(p)
+		if err != nil {
+			errs.Add(err)
+			return
+		}
+
+		err = png.Encode(f, tile)
+		if err != nil {
+			errs.Add(err)
+			return
+		}
+	})
+
+	return errs.Err()
 }
 
 func WriteMapTiles(mapTiles *MapTiles, outputDir string) (err error) {

@@ -11,6 +11,7 @@ import (
 	"math"
 	"os"
 	"runtime"
+	"sync"
 )
 
 var (
@@ -34,6 +35,8 @@ var (
 		50: {gl.COMPRESSED_RGBA_BPTC_UNORM_ARB, 64, true},
 		51: {gl.COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_ARB, 64, true},
 	} // Compression types: BPTC=BC7, BPTC_FLOAT=BC6H, DXT1, DXT3, DXT5, RGTC1, RGTC2
+
+	loadTextureMu sync.Mutex
 )
 
 type TextureFormat struct {
@@ -88,6 +91,10 @@ func align(n int, alignment int) int {
 }
 
 func LoadTexture(def *d4.TextureDefinition, payloadPath string, paylowPath string, levels ...int) (map[int]image.Image, error) {
+	// Only load one texture at a time
+	loadTextureMu.Lock()
+	defer loadTextureMu.Unlock()
+
 	// OpenGL will explode if we don't do this
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()

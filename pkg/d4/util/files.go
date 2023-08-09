@@ -90,3 +90,29 @@ func EachSnoMeta(dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta) bo
 
 	return nil
 }
+
+func EachSnoMetaAsync(workers uint, dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta), ecb func(err error)) {
+	groupMetaDir := GroupMetaDir(dataPath, group)
+	entries, err := os.ReadDir(groupMetaDir)
+	if err != nil {
+		ecb(err)
+		return
+	}
+
+	DoWorkSlice(workers, entries, func(entry os.DirEntry) {
+		if entry.IsDir() {
+			return
+		}
+
+		metaFilePath := filepath.Join(groupMetaDir, entry.Name())
+		meta, err := d4.ReadSnoMetaFile(metaFilePath)
+		if err != nil {
+			ecb(err)
+			return
+		}
+
+		cb(meta)
+	})
+
+	return
+}

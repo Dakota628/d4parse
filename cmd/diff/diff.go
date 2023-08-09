@@ -122,7 +122,7 @@ func main() {
 	// Write changed
 	var progress atomic.Uint64
 
-	d4.Work(workers, common.ToSlice(), func(sno Sno) {
+	util.DoWorkSlice(workers, common.ToSlice(), func(sno Sno) {
 		defer func() {
 			if i := progress.Add(1); i%1000 == 0 {
 				slog.Info("Comparing snos...", slog.Uint64("progress", i))

@@ -4,12 +4,17 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
+)
+
+const (
+	workers = 2000
 )
 
 var (
@@ -572,17 +577,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	for sceneSnoId, sceneSnoName := range toc.Entries[d4.SnoGroupScene] {
+	util.DoWorkMap(workers, toc.Entries[d4.SnoGroupScene], func(sceneSnoId int32, sceneSnoName string) {
 		if err := generateForScene(baseMetaPath, toc, sceneSnoId, sceneSnoName); err != nil {
 			slog.Error("Failed generate scene data", slog.Any("error", err), slog.Any("snoName", sceneSnoName))
 			os.Exit(1)
 		}
-	}
+	})
 
-	for worldSnoId, worldSnoName := range toc.Entries[d4.SnoGroupWorld] {
+	util.DoWorkMap(workers, toc.Entries[d4.SnoGroupWorld], func(worldSnoId int32, worldSnoName string) {
 		if err := generateForWorld(baseMetaPath, toc, worldSnoId); err != nil {
 			slog.Error("Failed generate world data", slog.Any("error", err), slog.Any("snoName", worldSnoName))
 			os.Exit(1)
 		}
-	}
+	})
 }

@@ -2,11 +2,16 @@ package main
 
 import (
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/tex"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"golang.org/x/exp/slog"
 	"os"
 	"path/filepath"
 	"strconv"
+)
+
+const (
+	workers = 1000
 )
 
 var (
@@ -28,11 +33,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	err = util.EachSnoMeta(dataPath, d4.SnoGroupWorld, func(meta d4.SnoMeta) bool {
+	util.EachSnoMetaAsync(workers, dataPath, d4.SnoGroupWorld, func(meta d4.SnoMeta) {
 		slog.Info("Checking SNO...", slog.Int("id", int(meta.Id.Value)))
 
 		if meta.Meta.(*d4.WorldDefinition).FHasZoneMap.Value != 1 {
-			return true
+			return
 		}
 
 		// Get world name
@@ -40,7 +45,7 @@ func main() {
 		slog.Info("Dumping map...", slog.String("world", worldName))
 
 		// Find the textures
-		mapTiles, worldSnoId, err := util.FindMapTextures(dataPath, worldName)
+		mapTiles, worldSnoId, err := tex.FindMapTextures(dataPath, worldName)
 		if err != nil {
 			slog.Error("Failed to find map textures", slog.Any("error", err))
 			os.Exit(1)
@@ -55,16 +60,12 @@ func main() {
 		tileOutputPath := filepath.Join(outputBasePath, strconv.Itoa(int(worldSnoId)))
 
 		// Write the tiles
-		if err = util.WriteMapTiles(mapTiles, tileOutputPath); err != nil {
+		if err = tex.WriteMapTiles(mapTiles, tileOutputPath); err != nil {
 			slog.Error("Failed to write map tiles", slog.Any("error", err))
 			os.Exit(1)
 		}
-
-		return true
-	})
-
-	if err != nil {
+	}, func(err error) {
 		slog.Error("Failed finding world meta files", slog.Any("error", err))
 		os.Exit(1)
-	}
+	})
 }
