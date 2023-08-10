@@ -17,7 +17,7 @@ export type WorldReq = {
 export type WorldResp = {
     readonly marker: Marker | undefined,
     readonly polygon: Array<Point> | undefined;
-    readonly mapData: MapData | undefined;
+    readonly mapData: WorldMapData | undefined;
 }
 
 export type Marker = {
@@ -33,7 +33,7 @@ export type Marker = {
     readonly meta: string[][],
 }
 
-export type MapData = {
+export type WorldMapData = {
     readonly artCenterX: number,
     readonly artCenterY: number,
     readonly zoneArtScale: number,

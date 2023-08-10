@@ -2,8 +2,19 @@
 definitions:
 	wget -O d4data/definitions.json https://raw.githubusercontent.com/blizzhackers/d4data/master/definitions.json
 
+.PHONY: generate-protos
+generate-protos:
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	npm install -g protoc-gen-ts
+	protoc -I=data/protos \
+		--go_out=pkg/pb \
+		--go_opt=paths=source_relative \
+		--ts_out=map/src/pb \
+		--experimental_allow_proto3_optional \
+		$(wildcard data/protos/*.proto)
+
 .PHONY: generate
-generate:
+generate: generate-protos
 	go generate ./...
 
 .PHONY: install

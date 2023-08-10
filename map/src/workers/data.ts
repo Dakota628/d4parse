@@ -1,6 +1,7 @@
 import {LRUCache} from 'typescript-lru-cache';
 import {unpack} from "msgpackr";
-import {error} from "jquery";
+import {MapData} from "../pb/mapdata";
+import {BinaryReader} from "google-protobuf";
 
 export const docsBaseUrl = "https://docs.diablo.farm"
 
@@ -29,22 +30,26 @@ export namespace Sno {
 export async function getMsgpack(url: string): Promise<any> {
     const resp = await fetch(url);
     if (!resp.ok) {
-        throw error("Msgpack request failed");
+        throw new Error("Msgpack request failed");
     }
     return unpack(await resp.arrayBuffer());
 }
 
 // World data
-const worldDataCache = new LRUCache<number, any>({
+const worldDataCache = new LRUCache<number, MapData>({
     maxSize: 3,
 });
 
-export async function getWorldData(baseUrl: string, worldId: number): Promise<any> {
+export async function getWorldData(baseUrl: string, worldId: number): Promise<MapData> {
     if (worldDataCache.has(worldId)) {
-        return worldDataCache.get(worldId);
+        return worldDataCache.get(worldId)!;
     }
 
-    const result = await getMsgpack(`${baseUrl}/data/${worldId}.mpk`);
+    const resp = await fetch(`${baseUrl}/data/${worldId}.binpb`);
+    if (!resp.ok) {
+        throw new Error("World data request failed");
+    }
+    const result = MapData.deserialize(new BinaryReader(await resp.arrayBuffer()));
     worldDataCache.set(worldId, result);
     return result;
 }
@@ -127,8 +132,3 @@ export const markerColors = new Map<string, number>([
     ['Unknown', defaultMarkerColor],
     ['Weather', 0xc5f6fa],
 ]);
-
-export const markerMetaNames = new Map<string, string>([
-    ['mt', 'Marker Type'],
-    ['gt', 'Gizmo Type'],
-])

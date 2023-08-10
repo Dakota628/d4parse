@@ -1,11 +1,10 @@
-import {MapData, Marker, WorldReq, WorldResp} from "./events";
+import {WorldMapData, Marker, WorldReq, WorldResp} from "./events";
 import {Point} from "pixi.js";
 import {
     defaultMarkerColor,
     getDisplayInfo,
     getWorldData, lookupSnoGroup,
     markerColors,
-    markerMetaNames,
     Sno,
     snoGroupName, snoName
 } from "./data";
@@ -15,20 +14,29 @@ console.log("new world worker!");
 
 self.onmessage = async (e: MessageEvent<WorldReq>) => {
     const data = await getWorldData(e.data.baseUrl, e.data.worldId);
+    console.log(data);
 
     // Send map data
     if (e.data.retrieve.mapData) {
         self.postMessage({
-            mapData: data as MapData,
+            mapData: {
+                artCenterX: data.zoneArtCenter.x,
+                artCenterY: data.zoneArtCenter.y,
+                zoneArtScale: data.zoneArtScale,
+                gridSize: data.gridSize,
+                maxNativeZoom: data.maxNativeZoom,
+                boundsX: data.bounds.x,
+                boundsY: data.bounds.y,
+            } as WorldMapData,
         } as WorldResp);
     }
 
     // Add polygons
     if (e.data.retrieve.polygons) {
-        for (let p of data.p ?? []) {
+        for (let p of data.polygons) {
             const polygon = new Array<Point>();
-            for (const wp of p) {
-                polygon.push(new Point(wp[1], wp[0]));
+            for (const wp of p.vertices) {
+                polygon.push(new Point(wp.y, wp.x));
             }
 
             self.postMessage({
@@ -48,20 +56,20 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
             }
         }
 
-        for (let m of data.m ?? []) {
-            const refGroup = await snoGroupName(m.g);
+        for (let m of data.markers) {
+            const refGroup = await snoGroupName(m.refSnoGroup);
 
             if (query) {
-                const refName = await snoName(m.g, m.r);
-                const srcGroupId = await lookupSnoGroup(m.s);
+                const refName = await snoName(m.refSnoGroup, m.refSno);
+                const srcGroupId = await lookupSnoGroup(m.sourceSno);
                 const srcGroup = await snoGroupName(srcGroupId);
-                const srcName = await snoName(srcGroupId, m.s);
+                const srcName = await snoName(srcGroupId, m.sourceSno);
 
                 const searchObj: any = {
-                    id: String(m.r),
+                    id: String(m.refSno),
                     group: refGroup,
                     name: refName,
-                    source_id: String(m.s),
+                    source_id: String(m.sourceSno),
                     source_group: srcGroup,
                     source: srcName,
                 };
@@ -77,19 +85,20 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
             self.postMessage({
                 marker: {
                     color,
-                    x: m.y, // Note: x and y are purposely swapped
-                    y: m.x, // Note: x and y are purposely swapped
-                    z: m.z,
-                    w: 0.5, // TODO: configurable
+                    x: m.position.y, // Note: x and y are purposely swapped
+                    y: m.position.x, // Note: x and y are purposely swapped
+                    z: m.position.z,
+                    w: 0.5,
                     h: 0.5,
-                    ref: await getDisplayInfo( m.r, m.g),
-                    source: await getDisplayInfo(m.s),
-                    data: await Promise.all((m.d ?? []).map(
+                    ref: await getDisplayInfo(m.refSno, m.refSnoGroup),
+                    source: await getDisplayInfo(m.sourceSno),
+                    data: await Promise.all((m.dataSnos).map(
                         async (id: Sno.Id) => await getDisplayInfo(id),
                     )),
-                    meta: Object.entries(m.m ?? {}).map(
-                        ([k, v]) => [markerMetaNames.get(k) ?? k, v]
-                    ),
+                    meta: [
+                        ... m.extra.has_gizmoType ? [['Gizmo Type', m.extra.gizmoType]] : [],
+                        ... m.extra.has_markerType ? [['Marker Type', m.extra.markerType]] : [],
+                    ],
                 } as Marker,
             } as WorldResp);
         }

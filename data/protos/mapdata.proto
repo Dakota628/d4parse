@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option go_package = "github.com/Dakota628/d4parse/pb";
+
+message Gbid {
+  int32 group = 1;
+  int32 type = 2;
+}
+
+message ExtraMarkerData {
+  optional int32 gizmoType = 1;
+  optional int32 markerType = 2;
+  optional Gbid spawnLoc = 3;
+  optional Point3d scale = 4;
+}
+
+message MarkerData {
+  int32 refSnoGroup = 1;
+  int32 refSno = 2;
+  int32 sourceSno = 3;
+  repeated int32 dataSnos = 4;
+  Point3d position = 5;
+  ExtraMarkerData extra = 9;
+}
+
+message Point2d {
+  float x = 1;
+  float y = 2;
+}
+
+message Point3d {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message Bounds {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message Polygon {
+  repeated Point2d vertices = 1;
+}
+
+message MapData {
+  float gridSize = 1;
+  Bounds bounds = 2;
+  float zoneArtScale = 3;
+  Point2d zoneArtCenter = 4;
+  uint32 maxNativeZoom = 5;
+  repeated MarkerData markers = 6;
+  repeated Polygon polygons = 7;
+}
