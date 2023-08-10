@@ -27,6 +27,8 @@ export type Marker = {
     readonly z: number,
     readonly w: number,
     readonly h: number,
+    readonly scaleX: number,
+    readonly scaleY: number,
     readonly ref: Sno.DisplayInfo,
     readonly source: Sno.DisplayInfo
     readonly data: Sno.DisplayInfo[],

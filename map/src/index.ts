@@ -121,6 +121,13 @@ const map = new WorldMap(app, {
 
         // -- Coordinates
         body.append(`<div class="coords">${marker.x.toFixed(6)}, ${marker.y.toFixed(6)}, ${marker.z.toFixed(6)}</div>`);
+
+        // Draw scale
+        map.otherGfx.clear();
+        map.otherGfx.beginFill(0xFFFFFF, 0.15);
+        map.otherGfx.drawRect(marker.x, marker.y, marker.scaleX ?? 0, marker.scaleY ?? 0);
+        map.otherGfx.endFill();
+
     },
     coordinateDisplay: $("#coordinate-display"),
     crs: {
@@ -156,7 +163,10 @@ loadWorld(map, worker, currentWorldId, undefined, currentQuery);
 // Tooltip Handlers
 //
 const $tooltip = $("#tooltip");
-const hideTooltip = () => $tooltip.hide();
+const hideTooltip = () => {
+    $tooltip.hide();
+    map.otherGfx.clear();
+}
 $("#tooltip-close").on('click', hideTooltip);
 map.viewport.on('drag-start', hideTooltip);
 map.viewport.on('zoomed', hideTooltip);

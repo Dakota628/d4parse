@@ -47,6 +47,7 @@ export class WorldMap {
     readonly viewport: Viewport;
     readonly tileContainer: Container = new Container();
 
+    public otherGfx: Graphics = new Graphics();
     readonly markerContainer: Container = new Container();
     readonly polygonGfx: Graphics = new Graphics();
     readonly markerMesh = new MarkerMesh(1000000);
@@ -151,8 +152,6 @@ export class WorldMap {
                 return
             }
             $view.css('cursor', 'pointer');
-
-
         });
         this.viewport.on('click', (e) => {
             if (this.currentMarker) {
@@ -289,6 +288,7 @@ export class WorldMap {
             this.markerContainer.removeChildren(0);
             this.markerContainer.addChild(this.markerMesh.getMesh());
             this.markerContainer.addChild(this.polygonGfx);
+            this.markerContainer.addChild(this.otherGfx);
         }
     }
 

@@ -14,7 +14,6 @@ console.log("new world worker!");
 
 self.onmessage = async (e: MessageEvent<WorldReq>) => {
     const data = await getWorldData(e.data.baseUrl, e.data.worldId);
-    console.log(data);
 
     // Send map data
     if (e.data.retrieve.mapData) {
@@ -90,6 +89,8 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
                     z: m.position.z,
                     w: 0.5,
                     h: 0.5,
+                    scaleX: m.has_extra && m.extra.has_scale ? m.extra.scale.y : undefined,
+                    scaleY: m.has_extra && m.extra.has_scale ? m.extra.scale.x : undefined,
                     ref: await getDisplayInfo(m.refSno, m.refSnoGroup),
                     source: await getDisplayInfo(m.sourceSno),
                     data: await Promise.all((m.dataSnos).map(
