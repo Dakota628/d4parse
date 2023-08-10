@@ -40,7 +40,7 @@ func main() {
 		me := mrk.NewMarkerExtractor(d4DataPath, outputBasePath, toc)
 
 		if err := me.AddScene(sceneSnoId); err != nil {
-			slog.Error("Failed generate scene data", slog.Any("error", err), slog.Int("id", int(sceneSnoId)), slog.String("name", sceneSnoName))
+			slog.Error("Failed to generate scene data", slog.Any("error", err), slog.Int("id", int(sceneSnoId)), slog.String("name", sceneSnoName))
 			os.Exit(1)
 		}
 
@@ -56,7 +56,7 @@ func main() {
 		me := mrk.NewMarkerExtractor(d4DataPath, outputBasePath, toc)
 
 		if err := me.AddWorld(worldSnoId); err != nil {
-			slog.Error("Failed generate world data", slog.Any("error", err), slog.Int("id", int(worldSnoId)), slog.String("name", worldSnoName))
+			slog.Error("Failed to generate world data", slog.Any("error", err), slog.Int("id", int(worldSnoId)), slog.String("name", worldSnoName))
 			os.Exit(1)
 		}
 

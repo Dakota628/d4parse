@@ -50,7 +50,7 @@ export class WorldMap {
     public otherGfx: Graphics = new Graphics();
     readonly markerContainer: Container = new Container();
     readonly polygonGfx: Graphics = new Graphics();
-    readonly markerMesh = new MarkerMesh(1000000);
+    readonly markerMesh = new MarkerMesh(2500000);
 
     private markerPoints: Quadtree<Marker>;
     private currentMarker: Marker | undefined = undefined;
@@ -280,7 +280,7 @@ export class WorldMap {
             this.config.crs.rotation,
         );
 
-        this.markerSize = Math.max(0.15, (15 / this.config.crs.scale.x) / Math.pow(3, this.viewport.scaled));
+        this.markerSize = Math.max(0.1, (15 / this.config.crs.scale.x) / Math.pow(3, this.viewport.scaled));
         this.markerMesh.radius = this.markerSize;
 
         if (resetChildren) {

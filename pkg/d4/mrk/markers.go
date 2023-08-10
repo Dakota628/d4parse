@@ -138,16 +138,27 @@ func (e *MarkerExtractor) maxNativeZoom(tiles int32) (zoom uint32) {
 	return
 }
 
-func (e *MarkerExtractor) addMarker(marker *d4.Marker, sourceSno int32) {
+func (e *MarkerExtractor) addMarker(
+	marker *d4.Marker,
+	sourceSno int32,
+	baseX float32,
+	baseY float32,
+	baseZ float32,
+) error {
+	x := baseX + marker.Transform.Wp.X
+	y := baseY + marker.Transform.Wp.Y
+	z := baseZ + marker.Transform.Wp.Z
+
+	// Add the marker
 	e.uniqueMarkers.Add(&pb.MarkerData{
 		RefSnoGroup: marker.Snoname.Group,
 		RefSno:      marker.Snoname.Id,
 		SourceSno:   sourceSno,
 		DataSnos:    e.getDataSnos(marker),
 		Position: &pb.Point3D{
-			X: marker.Transform.Wp.X,
-			Y: marker.Transform.Wp.Y,
-			Z: marker.Transform.Wp.Z,
+			X: x,
+			Y: y,
+			Z: z,
 		},
 		Extra: &pb.ExtraMarkerData{
 			MarkerType: &marker.EType.Value,
@@ -158,14 +169,37 @@ func (e *MarkerExtractor) addMarker(marker *d4.Marker, sourceSno int32) {
 			},
 		},
 	})
+
+	// If it's a nested MarkerSet, unwrap it
+	if d4.SnoGroup(marker.Snoname.Group) == d4.SnoGroupMarkerSet {
+		if _, markerSetName := e.toc.Entries.GetName(marker.Snoname.Id, d4.SnoGroupMarkerSet); markerSetName != "" {
+			metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, markerSetName)
+			meta, err := d4.ReadSnoMetaFile(metaPath)
+			if err != nil {
+				return err
+			}
+
+			if err := e.addMarkerSet(meta, x, y, z); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }
 
-func (e *MarkerExtractor) addMarkerSet(markerSetSnoMeta d4.SnoMeta) error {
+func (e *MarkerExtractor) addMarkerSet(
+	markerSetSnoMeta d4.SnoMeta,
+	baseX float32,
+	baseY float32,
+	baseZ float32,
+) error {
 	msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
 	if !ok {
 		panic("not marker set definition")
 	}
 
+	errs := util.NewErrors()
 	msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		defer next()
 
@@ -174,10 +208,13 @@ func (e *MarkerExtractor) addMarkerSet(markerSetSnoMeta d4.SnoMeta) error {
 			return
 		}
 
-		e.addMarker(marker, markerSetSnoMeta.Id.Value)
+		if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, baseX, baseY, baseZ); err != nil {
+			errs.Add(err)
+			return
+		}
 	})
 
-	return nil
+	return errs.Err()
 }
 
 func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
@@ -203,7 +240,7 @@ func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
 			return
 		}
 
-		if err := e.addMarkerSet(markerSetSnoMeta); err != nil {
+		if err := e.addMarkerSet(markerSetSnoMeta, 0, 0, 0); err != nil {
 			errs.Add(err)
 			return
 		}
@@ -213,7 +250,7 @@ func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
 }
 
 func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
-	subZoneGroup, subZoneName := e.toc.Entries.GetName(subZoneId)
+	subZoneGroup, subZoneName := e.toc.Entries.GetName(subZoneId, d4.SnoGroupSubzone)
 	subZonePath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, subZoneGroup, subZoneName)
 	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath)
 	if err != nil {
@@ -233,6 +270,8 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 	}
 
 	seenMarkerSet := mapset.NewSet[string]()
+	errs := util.NewErrors()
+
 	util.DoWorkSlice(adHocWorkers, relatedMarkerSetPaths, func(markerSetSnoPath string) {
 		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
 		if err != nil {
@@ -256,12 +295,14 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 				return
 			}
 
-			e.addMarker(marker, markerSetSnoMeta.Id.Value)
+			if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, 0, 0, 0); err != nil {
+				errs.Add(err)
+				return
+			}
 		})
 	})
 
 	// Add subzone marker sets
-	errs := util.NewErrors()
 	sd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
 		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
 		if !ok {
@@ -269,7 +310,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 			return
 		}
 
-		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(szMsEntry.SnoMarkerSet.Id)
+		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(szMsEntry.SnoMarkerSet.Id, d4.SnoGroupMarkerSet)
 		markerSetSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, markerSetSnoGroup, markerSetSnoName)
 		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
 		if err != nil {
@@ -282,7 +323,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 			return
 		}
 
-		if err := e.addMarkerSet(markerSetSnoMeta); err != nil {
+		if err := e.addMarkerSet(markerSetSnoMeta, 0, 0, 0); err != nil {
 			errs.Add(err)
 			return
 		}
@@ -292,7 +333,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 }
 
 func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY float32, baseZ float32) error {
-	sceneSnoGroup, sceneSnoName := e.toc.Entries.GetName(sceneId)
+	sceneSnoGroup, sceneSnoName := e.toc.Entries.GetName(sceneId, d4.SnoGroupScene)
 	sceneSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, sceneSnoGroup, sceneSnoName)
 	sceneSnoMeta, err := d4.ReadSnoMetaFile(sceneSnoPath)
 	if err != nil {
@@ -306,7 +347,7 @@ func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY f
 
 	errs := util.NewErrors()
 	util.DoWorkSlice(adHocWorkers, sd.ArLayers.Value, func(layer *d4.DT_SNO) {
-		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(layer.Id)
+		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(layer.Id, d4.SnoGroupMarkerSet)
 		markerSetSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, markerSetSnoGroup, markerSetSnoName)
 		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
 		if err != nil {
@@ -321,25 +362,10 @@ func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY f
 		}
 
 		for _, marker := range msd.TMarkerSet.Value {
-			e.uniqueMarkers.Add(&pb.MarkerData{
-				RefSnoGroup: marker.Snoname.Group,
-				RefSno:      marker.Snoname.Id,
-				SourceSno:   markerSetSnoMeta.Id.Value,
-				DataSnos:    e.getDataSnos(marker),
-				Position: &pb.Point3D{
-					X: baseX + marker.Transform.Wp.X,
-					Y: baseY + marker.Transform.Wp.Y,
-					Z: baseZ + marker.Transform.Wp.Z,
-				},
-				Extra: &pb.ExtraMarkerData{
-					MarkerType: &marker.EType.Value,
-					Scale: &pb.Point3D{
-						X: marker.VecScale.X,
-						Y: marker.VecScale.Y,
-						Z: marker.VecScale.Z,
-					},
-				},
-			})
+			if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, baseX, baseY, baseZ); err != nil {
+				errs.Add(err)
+				return
+			}
 		}
 	})
 
@@ -358,7 +384,7 @@ func (e *MarkerExtractor) loadSceneChunkMarkers(sceneChunk *d4.SceneChunk) error
 
 func (e *MarkerExtractor) loadWorldMarkers(worldId int32) error {
 	// Get world definition
-	_, worldSnoName := e.toc.Entries.GetName(worldId)
+	_, worldSnoName := e.toc.Entries.GetName(worldId, d4.SnoGroupWorld)
 	worldSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupWorld, worldSnoName)
 	worldSnoMeta, err := d4.ReadSnoMetaFile(worldSnoPath)
 	if err != nil {
