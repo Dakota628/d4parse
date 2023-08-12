@@ -380,3 +380,5 @@ function binaryRequest($, method, url) {
         }
     })
 }
+
+// TODO: add MarkerSet nID links

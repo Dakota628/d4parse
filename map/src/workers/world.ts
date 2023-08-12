@@ -89,8 +89,10 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
                     z: m.position.z,
                     w: 0.5,
                     h: 0.5,
-                    scaleX: m.has_extra && m.extra.has_scale ? m.extra.scale.y : undefined,
-                    scaleY: m.has_extra && m.extra.has_scale ? m.extra.scale.x : undefined,
+                    boundX: m.has_extra && m.extra.has_bounds ? m.extra.bounds.offset.x : 0,
+                    boundY: m.has_extra && m.extra.has_bounds ? m.extra.bounds.offset.y : 0,
+                    boundW: m.has_extra && m.extra.has_bounds ? m.extra.bounds.ext.x : 0,
+                    boundH: m.has_extra && m.extra.has_bounds ? m.extra.bounds.ext.y : 0,
                     ref: await getDisplayInfo(m.refSno, m.refSnoGroup),
                     source: await getDisplayInfo(m.sourceSno),
                     data: await Promise.all((m.dataSnos).map(

@@ -30,6 +30,8 @@ func DoWorkChan[T any](workers uint, c chan T, f func(T)) {
 }
 
 func DoWorkSlice[T any](workers uint, data []T, f func(T)) {
+	workers = Min(workers, uint(len(data)))
+
 	// Add data to the channel
 	c := make(chan T, len(data))
 	for _, d := range data {
@@ -47,6 +49,8 @@ type doWorkMapItem[K comparable, V any] struct {
 }
 
 func DoWorkMap[K comparable, V any](workers uint, data map[K]V, f func(K, V)) {
+	workers = Min(workers, uint(len(data)))
+
 	// Add data to the channel
 	c := make(chan doWorkMapItem[K, V], len(data))
 	for k, v := range data {

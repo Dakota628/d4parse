@@ -103,7 +103,7 @@ export class ExtraMarkerData extends pb_1.Message {
     }) | ({
         spawnLoc?: Gbid;
     }) | ({
-        scale?: Point3d;
+        bounds?: AABB;
     })))) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -117,8 +117,8 @@ export class ExtraMarkerData extends pb_1.Message {
             if ("spawnLoc" in data && data.spawnLoc != undefined) {
                 this.spawnLoc = data.spawnLoc;
             }
-            if ("scale" in data && data.scale != undefined) {
-                this.scale = data.scale;
+            if ("bounds" in data && data.bounds != undefined) {
+                this.bounds = data.bounds;
             }
         }
     }
@@ -149,13 +149,13 @@ export class ExtraMarkerData extends pb_1.Message {
     get has_spawnLoc() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    get scale() {
-        return pb_1.Message.getWrapperField(this, Point3d, 4) as Point3d;
+    get bounds() {
+        return pb_1.Message.getWrapperField(this, AABB, 4) as AABB;
     }
-    set scale(value: Point3d) {
+    set bounds(value: AABB) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[3], value);
     }
-    get has_scale() {
+    get has_bounds() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get _gizmoType() {
@@ -185,12 +185,12 @@ export class ExtraMarkerData extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [3])];
     }
-    get _scale() {
+    get _bounds() {
         const cases: {
-            [index: number]: "none" | "scale";
+            [index: number]: "none" | "bounds";
         } = {
             0: "none",
-            4: "scale"
+            4: "bounds"
         };
         return cases[pb_1.Message.computeOneofCase(this, [4])];
     }
@@ -198,7 +198,7 @@ export class ExtraMarkerData extends pb_1.Message {
         gizmoType?: number;
         markerType?: number;
         spawnLoc?: ReturnType<typeof Gbid.prototype.toObject>;
-        scale?: ReturnType<typeof Point3d.prototype.toObject>;
+        bounds?: ReturnType<typeof AABB.prototype.toObject>;
     }): ExtraMarkerData {
         const message = new ExtraMarkerData({});
         if (data.gizmoType != null) {
@@ -210,8 +210,8 @@ export class ExtraMarkerData extends pb_1.Message {
         if (data.spawnLoc != null) {
             message.spawnLoc = Gbid.fromObject(data.spawnLoc);
         }
-        if (data.scale != null) {
-            message.scale = Point3d.fromObject(data.scale);
+        if (data.bounds != null) {
+            message.bounds = AABB.fromObject(data.bounds);
         }
         return message;
     }
@@ -220,7 +220,7 @@ export class ExtraMarkerData extends pb_1.Message {
             gizmoType?: number;
             markerType?: number;
             spawnLoc?: ReturnType<typeof Gbid.prototype.toObject>;
-            scale?: ReturnType<typeof Point3d.prototype.toObject>;
+            bounds?: ReturnType<typeof AABB.prototype.toObject>;
         } = {};
         if (this.gizmoType != null) {
             data.gizmoType = this.gizmoType;
@@ -231,8 +231,8 @@ export class ExtraMarkerData extends pb_1.Message {
         if (this.spawnLoc != null) {
             data.spawnLoc = this.spawnLoc.toObject();
         }
-        if (this.scale != null) {
-            data.scale = this.scale.toObject();
+        if (this.bounds != null) {
+            data.bounds = this.bounds.toObject();
         }
         return data;
     }
@@ -246,8 +246,8 @@ export class ExtraMarkerData extends pb_1.Message {
             writer.writeInt32(2, this.markerType);
         if (this.has_spawnLoc)
             writer.writeMessage(3, this.spawnLoc, () => this.spawnLoc.serialize(writer));
-        if (this.has_scale)
-            writer.writeMessage(4, this.scale, () => this.scale.serialize(writer));
+        if (this.has_bounds)
+            writer.writeMessage(4, this.bounds, () => this.bounds.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -267,7 +267,7 @@ export class ExtraMarkerData extends pb_1.Message {
                     reader.readMessage(message.spawnLoc, () => message.spawnLoc = Gbid.deserialize(reader));
                     break;
                 case 4:
-                    reader.readMessage(message.scale, () => message.scale = Point3d.deserialize(reader));
+                    reader.readMessage(message.bounds, () => message.bounds = AABB.deserialize(reader));
                     break;
                 default: reader.skipField();
             }
@@ -760,6 +760,102 @@ export class Bounds extends pb_1.Message {
     }
     static deserializeBinary(bytes: Uint8Array): Bounds {
         return Bounds.deserialize(bytes);
+    }
+}
+export class AABB extends pb_1.Message {
+    #one_of_decls: number[][] = [];
+    constructor(data?: any[] | {
+        offset?: Point3d;
+        ext?: Point3d;
+    }) {
+        super();
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+        if (!Array.isArray(data) && typeof data == "object") {
+            if ("offset" in data && data.offset != undefined) {
+                this.offset = data.offset;
+            }
+            if ("ext" in data && data.ext != undefined) {
+                this.ext = data.ext;
+            }
+        }
+    }
+    get offset() {
+        return pb_1.Message.getWrapperField(this, Point3d, 1) as Point3d;
+    }
+    set offset(value: Point3d) {
+        pb_1.Message.setWrapperField(this, 1, value);
+    }
+    get has_offset() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
+    get ext() {
+        return pb_1.Message.getWrapperField(this, Point3d, 2) as Point3d;
+    }
+    set ext(value: Point3d) {
+        pb_1.Message.setWrapperField(this, 2, value);
+    }
+    get has_ext() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
+    static fromObject(data: {
+        offset?: ReturnType<typeof Point3d.prototype.toObject>;
+        ext?: ReturnType<typeof Point3d.prototype.toObject>;
+    }): AABB {
+        const message = new AABB({});
+        if (data.offset != null) {
+            message.offset = Point3d.fromObject(data.offset);
+        }
+        if (data.ext != null) {
+            message.ext = Point3d.fromObject(data.ext);
+        }
+        return message;
+    }
+    toObject() {
+        const data: {
+            offset?: ReturnType<typeof Point3d.prototype.toObject>;
+            ext?: ReturnType<typeof Point3d.prototype.toObject>;
+        } = {};
+        if (this.offset != null) {
+            data.offset = this.offset.toObject();
+        }
+        if (this.ext != null) {
+            data.ext = this.ext.toObject();
+        }
+        return data;
+    }
+    serialize(): Uint8Array;
+    serialize(w: pb_1.BinaryWriter): void;
+    serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+        const writer = w || new pb_1.BinaryWriter();
+        if (this.has_offset)
+            writer.writeMessage(1, this.offset, () => this.offset.serialize(writer));
+        if (this.has_ext)
+            writer.writeMessage(2, this.ext, () => this.ext.serialize(writer));
+        if (!w)
+            return writer.getResultBuffer();
+    }
+    static deserialize(bytes: Uint8Array | pb_1.BinaryReader): AABB {
+        const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new AABB();
+        while (reader.nextField()) {
+            if (reader.isEndGroup())
+                break;
+            switch (reader.getFieldNumber()) {
+                case 1:
+                    reader.readMessage(message.offset, () => message.offset = Point3d.deserialize(reader));
+                    break;
+                case 2:
+                    reader.readMessage(message.ext, () => message.ext = Point3d.deserialize(reader));
+                    break;
+                default: reader.skipField();
+            }
+        }
+        return message;
+    }
+    serializeBinary(): Uint8Array {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes: Uint8Array): AABB {
+        return AABB.deserialize(bytes);
     }
 }
 export class Polygon extends pb_1.Message {

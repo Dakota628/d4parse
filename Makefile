@@ -47,3 +47,10 @@ deploy:
 
 .PHONY: build-all
 build-all: build-map build-docs
+
+.PHONY: generate-class-diagram
+generate-class-diagram:
+	go get github.com/jfeliu007/goplantuml/parser
+	go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
+	goplantuml --output data/d4-class-diagram.puml pkg/d4
+

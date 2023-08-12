@@ -14,8 +14,8 @@ const sceneSnoGroup = 33;
 // Load url params
 const url = new URL(window.location.href);
 const defaultParams = {
-    x: Number(url.searchParams.get('x') ?? 0),
-    y: Number(url.searchParams.get('y') ?? 0),
+    x: Number(url.searchParams.get('y') ?? 0),
+    y: Number(url.searchParams.get('x') ?? 0),
     zoom: Number(url.searchParams.get('zoom') ?? 1),
     world: Number(url.searchParams.get('world') ?? 69068),
     query: url.searchParams.get('query') ?? undefined,
@@ -120,12 +120,12 @@ const map = new WorldMap(app, {
         body.append(dl);
 
         // -- Coordinates
-        body.append(`<div class="coords">${marker.x.toFixed(6)}, ${marker.y.toFixed(6)}, ${marker.z.toFixed(6)}</div>`);
+        body.append(`<div class="coords">${marker.y.toFixed(6)}, ${marker.x.toFixed(6)}, ${marker.z.toFixed(6)}</div>`);
 
         // Draw scale
         map.otherGfx.clear();
         map.otherGfx.beginFill(0xFFFFFF, 0.15);
-        map.otherGfx.drawRect(marker.x, marker.y, marker.scaleX ?? 0, marker.scaleY ?? 0);
+        map.otherGfx.drawRect(marker.x + marker.boundX, marker.y + marker.boundY, marker.boundW ?? 0, marker.boundH ?? 0);
         map.otherGfx.endFill();
 
     },
@@ -183,8 +183,8 @@ function updateUrl() {
     const local = map.markerContainer.toLocal(center);
 
     const url = new URL(window.location.href);
-    url.searchParams.set('x', String(local.x));
-    url.searchParams.set('y', String(local.y));
+    url.searchParams.set('x', String(local.y));
+    url.searchParams.set('y', String(local.x));
     url.searchParams.set('zoom', String(map.viewport.scaled));
     url.searchParams.set('world', String(currentWorldId));
     if (currentQuery) {
@@ -271,4 +271,5 @@ names().then((names) => {
 });
 
 // TODO: world grids (optional)
-// TODO: fit markers to world for worlds with bad scaling
+// TODO: allow selecting markers that are stacked from a context menu
+// TODO: fit map to bounds after load based on min and max markers

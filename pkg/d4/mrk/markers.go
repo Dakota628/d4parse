@@ -8,6 +8,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/pb"
 	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
+	"github.com/go-gl/mathgl/mgl32"
 	"google.golang.org/protobuf/proto"
 	"os"
 	"path/filepath"
@@ -18,6 +19,79 @@ const (
 	adHocWorkers = 100
 )
 
+var (
+	defaultTransform = Transform{
+		Q:     mgl32.QuatIdent(),
+		Wp:    mgl32.Vec3{0, 0, 0},
+		Scale: mgl32.Vec3{1, 1, 1},
+	}
+)
+
+// Transform ...
+type Transform struct {
+	Q     mgl32.Quat
+	Wp    mgl32.Vec3
+	Scale mgl32.Vec3
+}
+
+func (t Transform) Merge(prt d4.PRTransform, scale *d4.DT_VECTOR3D) Transform {
+	if scale == nil {
+		scale = &d4.DT_VECTOR3D{X: 1, Y: 1, Z: 1}
+	}
+
+	prtQ := mgl32.Quat{
+		W: prt.Q.W.Value,
+		V: mgl32.Vec3{
+			prt.Q.X.Value,
+			prt.Q.Y.Value,
+			prt.Q.Z.Value,
+		},
+	}
+	return Transform{
+		Q: prtQ,
+		Wp: t.AbsFromRel(mgl32.Vec3{
+			prt.Wp.X * t.Scale.X(),
+			prt.Wp.Y * t.Scale.Y(),
+			prt.Wp.Z * t.Scale.Z(),
+		}),
+		Scale: mgl32.Vec3{
+			t.Scale.X() * scale.X,
+			t.Scale.Y() * scale.Y,
+			t.Scale.Z() * scale.Z,
+		},
+	}
+	//prtQ := mgl32.Quat{
+	//	W: prt.Q.W.Value,
+	//	V: mgl32.Vec3{
+	//		prt.Q.X.Value,
+	//		prt.Q.Y.Value,
+	//		prt.Q.Z.Value,
+	//	},
+	//}
+	//return Transform{
+	//	Q:     prtQ,
+	//	Wp:    t.AbsFromRel(D4Vec3ToMgl(prt.Wp)),
+	//	Scale: t.Scale,
+	//}
+}
+
+func (t Transform) AbsFromRel(rel mgl32.Vec3) mgl32.Vec3 {
+	return t.Wp.Add(t.Q.Rotate(rel))
+}
+
+func (t Transform) Center() mgl32.Vec3 {
+	return t.Wp
+}
+
+func D4Vec3ToMgl(vec3 d4.DT_VECTOR3D) mgl32.Vec3 {
+	return mgl32.Vec3{
+		vec3.X,
+		vec3.Y,
+		vec3.Z,
+	}
+}
+
+// UniqueMarkerData ...
 type UniqueMarkerData struct {
 	mu      sync.Mutex
 	seen    mapset.Set[string]
@@ -44,6 +118,7 @@ func (u *UniqueMarkerData) Add(data ...*pb.MarkerData) {
 	}
 }
 
+// MarkerExtractor ...
 type MarkerExtractor struct {
 	dumpPath     string
 	baseMetaPath string
@@ -52,7 +127,9 @@ type MarkerExtractor struct {
 
 	data          *pb.MapData
 	uniqueMarkers *UniqueMarkerData
-	snoId         int32
+	seenSnos      mapset.Set[int32]
+
+	snoId int32
 }
 
 func NewMarkerExtractor(dumpPath string, outputPath string, toc d4.Toc) *MarkerExtractor {
@@ -64,7 +141,58 @@ func NewMarkerExtractor(dumpPath string, outputPath string, toc d4.Toc) *MarkerE
 
 		data:          &pb.MapData{},
 		uniqueMarkers: NewUniqueMarkerData(),
+		seenSnos:      mapset.NewSet[int32](),
 	}
+}
+
+func (e *MarkerExtractor) getMaxNativeZoom(tiles int32) (zoom uint32) {
+	for ; tiles%2 == 0 && tiles > 0; tiles /= 2 {
+		zoom++
+	}
+	return
+}
+
+func (e *MarkerExtractor) getBoundingBox(snoId int32, scale d4.DT_VECTOR3D, transform Transform) (*pb.AABB, error) {
+	snoGroup, snoName := e.toc.Entries.GetName(snoId)
+	if snoName == "" {
+		return nil, nil
+	}
+
+	metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
+	meta, err := d4.ReadSnoMetaFile(metaPath)
+	if err != nil {
+		return nil, err
+	}
+
+	switch x := meta.Meta.(type) {
+	case *d4.ActorDefinition:
+		offset := transform.Q.Rotate(mgl32.Vec3{
+			x.AabbBounds.Wp.X,
+			x.AabbBounds.Wp.Y,
+			x.AabbBounds.Wp.Z,
+		})
+
+		ext := transform.Q.Rotate(mgl32.Vec3{
+			x.AabbBounds.WvExt.X * scale.X,
+			x.AabbBounds.WvExt.Z * scale.Y,
+			x.AabbBounds.WvExt.Z * scale.Z,
+		})
+
+		return &pb.AABB{
+			Offset: &pb.Point3D{
+				X: offset.X(),
+				Y: offset.Y(),
+				Z: offset.Z(),
+			},
+			Ext: &pb.Point3D{
+				X: ext.X(),
+				Y: ext.Y(),
+				Z: ext.Z(),
+			},
+		}, nil
+	}
+
+	return nil, nil
 }
 
 func (e *MarkerExtractor) getDataSnos(m *d4.Marker) (snos []int32) {
@@ -84,7 +212,7 @@ func (e *MarkerExtractor) getDataSnos(m *d4.Marker) (snos []int32) {
 	return
 }
 
-func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32) error {
+func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32, transform Transform) error {
 	metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupGlobal, "global_markers")
 	meta, err := d4.ReadSnoMetaFile(metaPath)
 	if err != nil {
@@ -96,77 +224,85 @@ func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32) error {
 		return errors.New("not global definition")
 	}
 
-	gd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
-		// Get global marker actor
-		gma, ok := v.(*d4.GlobalMarkerActor)
-		if !ok || gma == nil {
-			next()
-			return
+	errs := util.NewErrors()
+
+	for _, content := range gd.PtContent.Value {
+		gwd, ok := content.(*d4.GlobalWaypointData)
+		if !ok {
+			continue
 		}
 
-		// If it's not in the world, skip
-		if gma.SnoWorld.Id != worldSnoId {
-			return
-		}
+		util.DoWorkSlice(adHocWorkers, gwd.ArGlobalMarkerActors.Value, func(gma *d4.GlobalMarkerActor) {
+			// If it's not in the world, skip
+			if gma.SnoWorld.Id != worldSnoId {
+				return
+			}
 
-		// Get referenced sno name
-		refSnoGroup, _ := e.toc.Entries.GetName(gma.SnoActor.Id)
+			// Update transform
+			currTransform := transform.Merge(gma.TWorldTransform, nil)
+			vec := currTransform.Center()
 
-		// Add marker data
-		e.uniqueMarkers.Add(&pb.MarkerData{
-			RefSnoGroup: int32(refSnoGroup),
-			RefSno:      gma.SnoActor.Id,
-			SourceSno:   meta.Id.Value,
-			Position: &pb.Point3D{
-				X: gma.TWorldTransform.Wp.X,
-				Y: gma.TWorldTransform.Wp.Y,
-				Z: gma.TWorldTransform.Wp.Z,
-			},
-			Extra: &pb.ExtraMarkerData{
-				GizmoType: &gma.EGizmoType.Value,
-			},
+			// Add referenced actor
+			if gma.SnoActor.Id > 0 {
+				refSnoGroup, _ := e.toc.Entries.GetName(gma.SnoActor.Id)
+				e.uniqueMarkers.Add(&pb.MarkerData{
+					RefSnoGroup: int32(refSnoGroup),
+					RefSno:      gma.SnoActor.Id,
+					SourceSno:   meta.Id.Value,
+					Position: &pb.Point3D{
+						X: vec.X(),
+						Y: vec.Y(),
+						Z: vec.Z(),
+					},
+					Extra: &pb.ExtraMarkerData{
+						GizmoType: &gma.EGizmoType.Value,
+					},
+				})
+			}
+
+			// Add referenced marker set
+			if _, markerSetName := e.toc.Entries.GetName(gma.SnoMarkerSet.Id, d4.SnoGroupMarkerSet); markerSetName != "" {
+				markerSetMetaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, markerSetName)
+				markerSetMeta, err := d4.ReadSnoMetaFile(markerSetMetaPath)
+				if err != nil {
+					errs.Add(err)
+					return
+				}
+
+				if err := e.addMarkerSet(markerSetMeta, transform); err != nil {
+					errs.Add(err)
+					return
+				}
+			}
 		})
-	})
-
-	return nil
-}
-
-func (e *MarkerExtractor) maxNativeZoom(tiles int32) (zoom uint32) {
-	for ; tiles%2 == 0 && tiles > 0; tiles /= 2 {
-		zoom++
 	}
-	return
+
+	return errs.Err()
 }
 
-func (e *MarkerExtractor) addMarker(
-	marker *d4.Marker,
-	sourceSno int32,
-	baseX float32,
-	baseY float32,
-	baseZ float32,
-) error {
-	x := baseX + marker.Transform.Wp.X
-	y := baseY + marker.Transform.Wp.Y
-	z := baseZ + marker.Transform.Wp.Z
-
+func (e *MarkerExtractor) addMarker(marker *d4.Marker, sourceSno int32, transform Transform) error {
 	// Add the marker
+	transform = transform.Merge(marker.Transform, &marker.VecScale)
+	vec := transform.Center()
+
+	bounds, err := e.getBoundingBox(marker.Snoname.Id, marker.VecScale, transform)
+	if err != nil {
+		return err
+	}
+
 	e.uniqueMarkers.Add(&pb.MarkerData{
 		RefSnoGroup: marker.Snoname.Group,
 		RefSno:      marker.Snoname.Id,
 		SourceSno:   sourceSno,
 		DataSnos:    e.getDataSnos(marker),
 		Position: &pb.Point3D{
-			X: x,
-			Y: y,
-			Z: z,
+			X: vec.X(),
+			Y: vec.Y(),
+			Z: vec.Z(),
 		},
 		Extra: &pb.ExtraMarkerData{
 			MarkerType: &marker.EType.Value,
-			Scale: &pb.Point3D{
-				X: marker.VecScale.X,
-				Y: marker.VecScale.Y,
-				Z: marker.VecScale.Z,
-			},
+			Bounds:     bounds,
 		},
 	})
 
@@ -179,7 +315,7 @@ func (e *MarkerExtractor) addMarker(
 				return err
 			}
 
-			if err := e.addMarkerSet(meta, x, y, z); err != nil {
+			if err := e.addMarkerSet(meta, transform); err != nil {
 				return err
 			}
 		}
@@ -188,27 +324,18 @@ func (e *MarkerExtractor) addMarker(
 	return nil
 }
 
-func (e *MarkerExtractor) addMarkerSet(
-	markerSetSnoMeta d4.SnoMeta,
-	baseX float32,
-	baseY float32,
-	baseZ float32,
-) error {
+func (e *MarkerExtractor) addMarkerSet(markerSetSnoMeta d4.SnoMeta, transform Transform) error {
+	e.seenSnos.Add(markerSetSnoMeta.Id.Value)
+
 	msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
 	if !ok {
 		panic("not marker set definition")
 	}
 
 	errs := util.NewErrors()
-	msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
-		defer next()
 
-		marker, ok := v.(*d4.Marker)
-		if !ok {
-			return
-		}
-
-		if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, baseX, baseY, baseZ); err != nil {
+	util.DoWorkSlice(adHocWorkers, msd.TMarkerSet.Value, func(marker *d4.Marker) {
+		if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, transform); err != nil {
 			errs.Add(err)
 			return
 		}
@@ -217,7 +344,7 @@ func (e *MarkerExtractor) addMarkerSet(
 	return errs.Err()
 }
 
-func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
+func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string, transform Transform) error {
 	markerSetPattern := util.BaseFilePattern(
 		e.dumpPath,
 		util.FileTypeMeta,
@@ -240,7 +367,11 @@ func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
 			return
 		}
 
-		if err := e.addMarkerSet(markerSetSnoMeta, 0, 0, 0); err != nil {
+		if e.seenSnos.Contains(markerSetSnoMeta.Id.Value) {
+			return
+		}
+
+		if err := e.addMarkerSet(markerSetSnoMeta, transform); err != nil {
 			errs.Add(err)
 			return
 		}
@@ -249,7 +380,10 @@ func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string) error {
 	return errs.Err()
 }
 
-func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
+func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32, transform Transform) error {
+	errs := util.NewErrors()
+
+	// Load sub zone
 	subZoneGroup, subZoneName := e.toc.Entries.GetName(subZoneId, d4.SnoGroupSubzone)
 	subZonePath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, subZoneGroup, subZoneName)
 	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath)
@@ -262,55 +396,9 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 		return errors.New("not sub zone definition")
 	}
 
-	// Add related marker sets
-	relatedMarkerSetPattern := util.BaseFilePattern(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, subZoneName, "", " (*)")
-	relatedMarkerSetPaths, err := doublestar.FilepathGlob(relatedMarkerSetPattern)
-	if err != nil {
-		return err
-	}
-
-	seenMarkerSet := mapset.NewSet[string]()
-	errs := util.NewErrors()
-
-	util.DoWorkSlice(adHocWorkers, relatedMarkerSetPaths, func(markerSetSnoPath string) {
-		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
-		if err != nil {
-			panic(err)
-		}
-
-		if !seenMarkerSet.Add(markerSetSnoPath) {
-			return
-		}
-
-		msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
-		if !ok {
-			panic("not marker set definition")
-		}
-
-		msd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
-			defer next()
-
-			marker, ok := v.(*d4.Marker)
-			if !ok {
-				return
-			}
-
-			if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, 0, 0, 0); err != nil {
-				errs.Add(err)
-				return
-			}
-		})
-	})
-
 	// Add subzone marker sets
-	sd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
-		szMsEntry, ok := v.(*d4.SubzoneWorldMarkerSetEntry)
-		if !ok {
-			next()
-			return
-		}
-
-		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(szMsEntry.SnoMarkerSet.Id, d4.SnoGroupMarkerSet)
+	util.DoWorkSlice(adHocWorkers, sd.ArWorldMarkerSets.Value, func(subZoneMarkerSetEntry *d4.SubzoneWorldMarkerSetEntry) {
+		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(subZoneMarkerSetEntry.SnoMarkerSet.Id, d4.SnoGroupMarkerSet)
 		markerSetSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, markerSetSnoGroup, markerSetSnoName)
 		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
 		if err != nil {
@@ -318,12 +406,26 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 			return
 		}
 
-		if !seenMarkerSet.Add(markerSetSnoPath) {
-			next()
+		if err := e.addMarkerSet(markerSetSnoMeta, transform); err != nil {
+			errs.Add(err)
 			return
 		}
+	})
 
-		if err := e.addMarkerSet(markerSetSnoMeta, 0, 0, 0); err != nil {
+	// Add related marker sets
+	relatedMarkerSetPattern := util.BaseFilePattern(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, subZoneName, "", " (*)")
+	relatedMarkerSetPaths, err := doublestar.FilepathGlob(relatedMarkerSetPattern)
+	if err != nil {
+		return err
+	}
+
+	util.DoWorkSlice(adHocWorkers, relatedMarkerSetPaths, func(markerSetSnoPath string) {
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
+		if err != nil {
+			panic(err)
+		}
+
+		if err := e.addMarkerSet(markerSetSnoMeta, transform); err != nil {
 			errs.Add(err)
 			return
 		}
@@ -332,7 +434,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32) error {
 	return errs.Err()
 }
 
-func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY float32, baseZ float32) error {
+func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, transform Transform) error {
 	sceneSnoGroup, sceneSnoName := e.toc.Entries.GetName(sceneId, d4.SnoGroupScene)
 	sceneSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, sceneSnoGroup, sceneSnoName)
 	sceneSnoMeta, err := d4.ReadSnoMetaFile(sceneSnoPath)
@@ -362,7 +464,7 @@ func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY f
 		}
 
 		for _, marker := range msd.TMarkerSet.Value {
-			if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, baseX, baseY, baseZ); err != nil {
+			if err := e.addMarker(marker, markerSetSnoMeta.Id.Value, transform); err != nil {
 				errs.Add(err)
 				return
 			}
@@ -372,17 +474,12 @@ func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, baseX float32, baseY f
 	return nil
 }
 
-func (e *MarkerExtractor) loadSceneChunkMarkers(sceneChunk *d4.SceneChunk) error {
+func (e *MarkerExtractor) loadSceneChunkMarkers(sceneChunk *d4.SceneChunk, transform Transform) error {
 	// TODO: are there any cases where we need to apply the quaternion?
-	return e.loadSceneMarkers(
-		sceneChunk.Snoname.Id,
-		sceneChunk.Transform.Wp.X,
-		sceneChunk.Transform.Wp.Y,
-		sceneChunk.Transform.Wp.Z,
-	)
+	return e.loadSceneMarkers(sceneChunk.Snoname.Id, transform.Merge(sceneChunk.Transform, nil))
 }
 
-func (e *MarkerExtractor) loadWorldMarkers(worldId int32) error {
+func (e *MarkerExtractor) loadWorldMarkers(worldId int32, transform Transform) error {
 	// Get world definition
 	_, worldSnoName := e.toc.Entries.GetName(worldId, d4.SnoGroupWorld)
 	worldSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupWorld, worldSnoName)
@@ -396,65 +493,54 @@ func (e *MarkerExtractor) loadWorldMarkers(worldId int32) error {
 		return errors.New("not world definition")
 	}
 
-	// Load related markers
-	if err := e.loadWorldRelatedMarkers(worldSnoName); err != nil {
-		return err
-	}
+	errs := util.NewErrors()
 
-	// Load subzone markers
+	// Process default subzone
 	if wd.SnoSubzoneDefault.Id > 0 {
-		if err := e.loadSubzoneMarkers(wd.SnoSubzoneDefault.Id); err != nil {
+		if err := e.loadSubzoneMarkers(wd.SnoSubzoneDefault.Id, transform); err != nil {
 			return err
 		}
 	}
 
-	// Load additional data from walking world definition
-	var sceneChunks []*d4.SceneChunk
-	var subZoneIds []int32
-
-	wd.Walk(func(k string, v d4.Object, next d4.WalkNext, d ...any) {
-		switch x := v.(type) {
-		case *d4.ScreenStaticCamps:
-			// Add polygons
-			poly := &pb.Polygon{}
-			for _, vec := range x.ArPoints.Value {
-				poly.Vertices = append(poly.Vertices, &pb.Point2D{
-					X: vec.X,
-					Y: vec.Y,
-				})
+	// Process scene chunks and scene specs
+	for _, serverData := range wd.PtServerData.Value {
+		util.DoWorkSlice(adHocWorkers, serverData.PtSceneChunks.Value, func(sceneChunk *d4.SceneChunk) {
+			if err := e.loadSceneChunkMarkers(sceneChunk, transform); err != nil {
+				errs.Add(err)
+				return
 			}
-			e.data.Polygons = append(e.data.Polygons, poly)
-		case *d4.Type_bef5a4a:
-			// TODO: conditional map overlays
-		case *d4.SceneChunk:
-			// Add scene chunk for async processing
-			sceneChunks = append(sceneChunks, x)
-		case *d4.SceneSpecification:
-			// Add subzone id for async processing
-			for _, subZone := range x.ArSubzones.Value {
-				subZoneIds = append(subZoneIds, subZone.SnoSubzone.Id)
-			}
+
+			util.DoWorkSlice(adHocWorkers, sceneChunk.TSceneSpec.ArSubzones.Value, func(subZone *d4.Type_4e8e96e4) {
+				if subZone.SnoSubzone.Id == wd.SnoSubzoneDefault.Id {
+					return
+				}
+
+				if err := e.loadSubzoneMarkers(subZone.SnoSubzone.Id, transform); err != nil {
+					errs.Add(err)
+					return
+				}
+			})
+		})
+	}
+
+	// Process screen static camps
+	for _, screenStaticCamp := range wd.Unk_675bda3.Value {
+		poly := &pb.Polygon{}
+		for _, vec := range screenStaticCamp.ArPoints.Value {
+			poly.Vertices = append(poly.Vertices, &pb.Point2D{
+				X: vec.X,
+				Y: vec.Y,
+			})
 		}
+		e.data.Polygons = append(e.data.Polygons, poly)
+	}
 
-		next()
-	})
+	// Load related markers (do this last since it's a hacky way -- we don't know how to get VFX, Audio or Road markers yet)
+	if err = e.loadWorldRelatedMarkers(worldSnoName, transform); err != nil {
+		return err
+	}
 
-	// Load some data async
-	errs := util.NewErrors()
-
-	util.DoWorkSlice(adHocWorkers, sceneChunks, func(sceneChunk *d4.SceneChunk) {
-		if err := e.loadSceneChunkMarkers(sceneChunk); err != nil {
-			errs.Add(err)
-			return
-		}
-	})
-
-	util.DoWorkSlice(adHocWorkers, subZoneIds, func(subZoneId int32) {
-		if err := e.loadSubzoneMarkers(subZoneId); err != nil {
-			errs.Add(err)
-			return
-		}
-	})
+	// TODO: conditional map overlays (Type_bef5a4a)
 
 	// Update world data
 	e.data.GridSize = wd.FlGridSize.Value
@@ -467,7 +553,7 @@ func (e *MarkerExtractor) loadWorldMarkers(worldId int32) error {
 		X: wd.TZoneMapParams.Unk_3620f37.Value,
 		Y: wd.TZoneMapParams.Unk_c60b9b0.Value,
 	}
-	e.data.MaxNativeZoom = e.maxNativeZoom(wd.TZoneMapParams.Unk_3620f37.Value)
+	e.data.MaxNativeZoom = e.getMaxNativeZoom(wd.TZoneMapParams.Unk_3620f37.Value)
 
 	return errs.Err()
 }
@@ -476,16 +562,16 @@ func (e *MarkerExtractor) AddWorld(worldSnoId int32) error {
 	e.snoId = worldSnoId
 
 	// Load global markers
-	if err := e.loadGlobalMarkers(worldSnoId); err != nil {
+	if err := e.loadGlobalMarkers(worldSnoId, defaultTransform); err != nil {
 		return err
 	}
 
 	// Load world markers
-	if err := e.loadWorldMarkers(worldSnoId); err != nil {
+	if err := e.loadWorldMarkers(worldSnoId, defaultTransform); err != nil {
 		return err
 	}
 
-	// TODO: also load quest markers?
+	// TODO: gbid SpawnLocTypes
 
 	return nil
 }
@@ -507,7 +593,7 @@ func (e *MarkerExtractor) AddScene(sceneSnoId int32) error {
 	e.data.MaxNativeZoom = 0
 
 	// Load scene
-	if err := e.loadSceneMarkers(sceneSnoId, 0, 0, 0); err != nil {
+	if err := e.loadSceneMarkers(sceneSnoId, defaultTransform); err != nil {
 		return err
 	}
 

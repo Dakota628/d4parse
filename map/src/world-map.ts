@@ -172,7 +172,7 @@ export class WorldMap {
                 const tileY = Math.floor(tileLocal.y / (this.config.tileSize.y / currScale));
 
                 this.config.coordinateDisplay.text(
-                    `${markerLocal.x.toFixed(6)}, ${markerLocal.y.toFixed(6)} ｜ ${tileX}, ${tileY}`
+                    `${markerLocal.y.toFixed(6)}, ${markerLocal.x.toFixed(6)} ｜ ${tileX}, ${tileY}`
                 );
             }
         });

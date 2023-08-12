@@ -17,8 +17,10 @@ require (
 	github.com/minio/highwayhash v1.0.2
 	github.com/mpraski/clusters v0.0.0-20171016094157-18104487c312
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+	github.com/ungerik/go3d v0.0.0-20220309204530-55ced4bcb334
 	github.com/vmihailenco/msgpack/v5 v5.3.5
 	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
+	gonum.org/v1/gonum v0.13.0
 	google.golang.org/protobuf v1.31.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -38,7 +40,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.12 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.2 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
+	github.com/go-gl/mathgl v1.0.0 // indirect
+	github.com/jfeliu007/goplantuml v1.6.2 // indirect
+	github.com/spf13/afero v1.8.2 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
+	golang.org/x/image v0.6.0 // indirect
 	golang.org/x/sys v0.10.0 // indirect
-	gonum.org/v1/gonum v0.13.0 // indirect
+	golang.org/x/text v0.8.0 // indirect
 )

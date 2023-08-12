@@ -11,7 +11,7 @@ message ExtraMarkerData {
   optional int32 gizmoType = 1;
   optional int32 markerType = 2;
   optional Gbid spawnLoc = 3;
-  optional Point3d scale = 4;
+  optional AABB bounds = 4;
 }
 
 message MarkerData {
@@ -37,6 +37,11 @@ message Point3d {
 message Bounds {
   int32 x = 1;
   int32 y = 2;
+}
+
+message AABB {
+  Point3d offset = 1;
+  Point3d ext = 2;
 }
 
 message Polygon {
