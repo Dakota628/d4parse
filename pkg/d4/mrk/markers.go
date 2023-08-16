@@ -93,11 +93,11 @@ func (e *MarkerExtractor) getBoundingBox(snoId int32, transform *Transform) (*pb
 
 	switch x := meta.Meta.(type) {
 	case *d4.ActorDefinition:
-		offTransform := transform.AddTranslate(&x.AabbBounds.Wp)
-		extTransform := transform.AddTranslate(&x.AabbBounds.WvExt)
+		off := transform.GetRelWorldPos(&x.AabbBounds.Wp)
+		ext := transform.GetRelWorldPos(&x.AabbBounds.WvExt)
 		return &pb.AABB{
-			Offset: pb.Vec3ToPoint3D(offTransform.GetWorldPosition()),
-			Ext:    pb.Vec3ToPoint3D(extTransform.GetWorldPosition()),
+			Offset: pb.Vec3ToPoint3D(off),
+			Ext:    pb.Vec3ToPoint3D(ext),
 		}, nil
 	}
 
@@ -194,8 +194,6 @@ func (e *MarkerExtractor) getMarkerGroupHashes(marker *d4.Marker) []uint32 {
 }
 
 func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, transform *Transform) error {
-	pos := transform.GetWorldPosition()
-
 	bounds, err := e.getBoundingBox(marker.Snoname.Id, transform)
 	if err != nil {
 		return err
@@ -206,11 +204,7 @@ func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, trans
 		RefSno:      marker.Snoname.Id,
 		SourceSno:   sourceSno,
 		DataSnos:    e.getDataSnos(marker),
-		Position: &pb.Point3D{
-			X: pos.X(),
-			Y: pos.Y(),
-			Z: pos.Z(),
-		},
+		Position:    pb.Vec3ToPoint3D(transform.GetWorldPosition()),
 		Extra: &pb.ExtraMarkerData{
 			MarkerType: &marker.EType.Value,
 			Bounds:     bounds,

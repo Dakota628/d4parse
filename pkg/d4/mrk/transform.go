@@ -155,15 +155,15 @@ func (t *Transform) LocalToWorldMatrix() mgl32.Mat4 {
 	t.lwMu.Lock()
 	defer t.lwMu.Unlock()
 
-	matrix := t.LocalTranslationMatrix().
+	m := t.LocalTranslationMatrix().
 		Mul4(t.LocalRotationMatrix()).
 		Mul4(t.LocalScalingMatrix())
 
 	if t.parent != nil {
-		matrix = t.parent.LocalToWorldMatrix().Mul4(matrix)
+		m = t.parent.LocalToWorldMatrix().Mul4(m)
 	}
 
-	return matrix
+	return m
 }
 
 func (t *Transform) GetWorldPosition() mgl32.Vec3 {
@@ -171,6 +171,15 @@ func (t *Transform) GetWorldPosition() mgl32.Vec3 {
 		return t.position
 	}
 
-	matrix := t.LocalToWorldMatrix()
-	return matrix.Col(3).Vec3()
+	m := t.LocalToWorldMatrix()
+	return m.Col(3).Vec3()
+}
+
+func (t *Transform) GetRelWorldPos(v *d4.DT_VECTOR3D) mgl32.Vec3 {
+	m := t.LocalToWorldMatrix()
+	return mgl32.Vec3{
+		v.X*m.At(0, 0) + v.Y*m.At(0, 1) + v.Z*m.At(0, 2),
+		v.X*m.At(1, 0) + v.Y*m.At(1, 1) + v.Z*m.At(1, 2),
+		v.X*m.At(2, 0) + v.Y*m.At(2, 1) + v.Z*m.At(2, 2),
+	}
 }

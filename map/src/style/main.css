@@ -57,10 +57,11 @@ body {
     width: 34px;
     height: 34px;
     font-size: 16px;
+    font-family: monospace;
+    font-weight: bolder;
     line-height: 34px;
     color: #f1f3f5;
     background: #212529;
-    font-weight: 50;
     border-radius: 5px 0 0 5px;
     border: 1px solid #343a40;
 }
@@ -80,6 +81,8 @@ body {
     line-height: 1;
     font-size: 14px;
     text-align: left;
+    font-weight: normal;
+    font-family: sans-serif;
 }
 
 #search-info-text p {
