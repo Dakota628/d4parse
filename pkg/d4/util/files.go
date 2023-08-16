@@ -15,9 +15,14 @@ var (
 type FileType string
 
 const (
-	FileTypeMeta    FileType = "meta"
-	FileTypePayload FileType = "payload"
-	FileTypePaylow  FileType = "paylow"
+	FileTypeMeta         FileType = "meta"
+	FileTypePayload      FileType = "payload"
+	FileTypePaylow       FileType = "paylow"
+	FileTypeEnUsTextMeta          = FileType(".." +
+		string(filepath.Separator) +
+		"enUS_Text" +
+		string(filepath.Separator) +
+		"meta")
 )
 
 func BaseFilePattern(

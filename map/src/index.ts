@@ -202,6 +202,10 @@ map.viewport.on('zoomed-end', updateUrl);
 //
 // Search handlers
 //
+if (defaultParams.query) {
+    $("#search").val(defaultParams.query);
+}
+
 (<any>window).onSearch = (e: any) => {
     const query: string | undefined = $(e).val()?.toString().toLowerCase();
     currentQuery = query == '' ? undefined : query;

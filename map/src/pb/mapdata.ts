@@ -282,17 +282,20 @@ export class ExtraMarkerData extends pb_1.Message {
     }
 }
 export class MarkerData extends pb_1.Message {
-    #one_of_decls: number[][] = [];
-    constructor(data?: any[] | {
+    #one_of_decls: number[][] = [[10]];
+    constructor(data?: any[] | ({
         refSnoGroup?: number;
         refSno?: number;
         sourceSno?: number;
         dataSnos?: number[];
         position?: Point3d;
         extra?: ExtraMarkerData;
-    }) {
+        markerGroupHashes?: number[];
+    } & (({
+        markerHash?: number;
+    })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 11], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("refSnoGroup" in data && data.refSnoGroup != undefined) {
                 this.refSnoGroup = data.refSnoGroup;
@@ -311,6 +314,12 @@ export class MarkerData extends pb_1.Message {
             }
             if ("extra" in data && data.extra != undefined) {
                 this.extra = data.extra;
+            }
+            if ("markerHash" in data && data.markerHash != undefined) {
+                this.markerHash = data.markerHash;
+            }
+            if ("markerGroupHashes" in data && data.markerGroupHashes != undefined) {
+                this.markerGroupHashes = data.markerGroupHashes;
             }
         }
     }
@@ -356,6 +365,30 @@ export class MarkerData extends pb_1.Message {
     get has_extra() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    get markerHash() {
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
+    }
+    set markerHash(value: number) {
+        pb_1.Message.setOneofField(this, 10, this.#one_of_decls[0], value);
+    }
+    get has_markerHash() {
+        return pb_1.Message.getField(this, 10) != null;
+    }
+    get markerGroupHashes() {
+        return pb_1.Message.getFieldWithDefault(this, 11, []) as number[];
+    }
+    set markerGroupHashes(value: number[]) {
+        pb_1.Message.setField(this, 11, value);
+    }
+    get _markerHash() {
+        const cases: {
+            [index: number]: "none" | "markerHash";
+        } = {
+            0: "none",
+            10: "markerHash"
+        };
+        return cases[pb_1.Message.computeOneofCase(this, [10])];
+    }
     static fromObject(data: {
         refSnoGroup?: number;
         refSno?: number;
@@ -363,6 +396,8 @@ export class MarkerData extends pb_1.Message {
         dataSnos?: number[];
         position?: ReturnType<typeof Point3d.prototype.toObject>;
         extra?: ReturnType<typeof ExtraMarkerData.prototype.toObject>;
+        markerHash?: number;
+        markerGroupHashes?: number[];
     }): MarkerData {
         const message = new MarkerData({});
         if (data.refSnoGroup != null) {
@@ -383,6 +418,12 @@ export class MarkerData extends pb_1.Message {
         if (data.extra != null) {
             message.extra = ExtraMarkerData.fromObject(data.extra);
         }
+        if (data.markerHash != null) {
+            message.markerHash = data.markerHash;
+        }
+        if (data.markerGroupHashes != null) {
+            message.markerGroupHashes = data.markerGroupHashes;
+        }
         return message;
     }
     toObject() {
@@ -393,6 +434,8 @@ export class MarkerData extends pb_1.Message {
             dataSnos?: number[];
             position?: ReturnType<typeof Point3d.prototype.toObject>;
             extra?: ReturnType<typeof ExtraMarkerData.prototype.toObject>;
+            markerHash?: number;
+            markerGroupHashes?: number[];
         } = {};
         if (this.refSnoGroup != null) {
             data.refSnoGroup = this.refSnoGroup;
@@ -412,6 +455,12 @@ export class MarkerData extends pb_1.Message {
         if (this.extra != null) {
             data.extra = this.extra.toObject();
         }
+        if (this.markerHash != null) {
+            data.markerHash = this.markerHash;
+        }
+        if (this.markerGroupHashes != null) {
+            data.markerGroupHashes = this.markerGroupHashes;
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -430,6 +479,10 @@ export class MarkerData extends pb_1.Message {
             writer.writeMessage(5, this.position, () => this.position.serialize(writer));
         if (this.has_extra)
             writer.writeMessage(9, this.extra, () => this.extra.serialize(writer));
+        if (this.has_markerHash)
+            writer.writeUint32(10, this.markerHash);
+        if (this.markerGroupHashes.length)
+            writer.writePackedUint32(11, this.markerGroupHashes);
         if (!w)
             return writer.getResultBuffer();
     }
@@ -456,6 +509,12 @@ export class MarkerData extends pb_1.Message {
                     break;
                 case 9:
                     reader.readMessage(message.extra, () => message.extra = ExtraMarkerData.deserialize(reader));
+                    break;
+                case 10:
+                    message.markerHash = reader.readUint32();
+                    break;
+                case 11:
+                    message.markerGroupHashes = reader.readPackedUint32();
                     break;
                 default: reader.skipField();
             }

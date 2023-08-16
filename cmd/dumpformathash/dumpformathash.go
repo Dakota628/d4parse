@@ -49,8 +49,6 @@ func main() {
 
 		// Update SNO group names whose definitions differ slightly
 		switch snoGroup {
-		case "137":
-			snoGroup = "Season"
 		case "Anim":
 			snoGroup = "Animation"
 		case "Anim2D":

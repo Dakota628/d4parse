@@ -129,19 +129,30 @@ func main() {
 			}
 		}()
 
-		oldMetaPath := util.MetaPathByName(oldPath, sno.Group, sno.Name)
-		newMetaPath := util.MetaPathByName(newPath, sno.Group, sno.Name)
+		if strings.TrimSpace(sno.Name) == "" {
+			return
+		}
+
+		fileType := util.FileTypeMeta
+		if sno.Group == d4.SnoGroupStringList {
+			fileType = util.FileTypeEnUsTextMeta
+		}
+
+		oldMetaPath := util.BaseFilePath(oldPath, fileType, sno.Group, sno.Name)
+		newMetaPath := util.BaseFilePath(newPath, fileType, sno.Group, sno.Name)
 
 		oldMeta, err := d4.ReadSnoMetaFile(oldMetaPath)
 		if err != nil {
-			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
+			slog.Error("Error reading old meta", slog.String("path", oldMetaPath), slog.String("err", err.Error()))
+			if _, err := fmt.Fprintf(fChanged, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
 				panic(err)
 			}
 			return
 		}
 		newMeta, err := d4.ReadSnoMetaFile(newMetaPath)
 		if err != nil {
-			if _, err := fmt.Fprintf(fRemoved, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
+			slog.Error("Error reading new meta", slog.String("path", newMetaPath), slog.String("err", err.Error()))
+			if _, err := fmt.Fprintf(fChanged, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
 				panic(err)
 			}
 			return

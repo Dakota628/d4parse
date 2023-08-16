@@ -21,6 +21,8 @@ message MarkerData {
   repeated int32 dataSnos = 4;
   Point3d position = 5;
   ExtraMarkerData extra = 9;
+  optional uint32 markerHash = 10;
+  repeated uint32 markerGroupHashes = 11;
 }
 
 message Point2d {
