@@ -6,7 +6,6 @@ import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/Dakota628/d4parse/pkg/pb"
-	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
 	"google.golang.org/protobuf/proto"
 	"os"
