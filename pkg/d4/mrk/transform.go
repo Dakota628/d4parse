@@ -163,6 +163,7 @@ func (t *Transform) LocalToWorldMatrix() mgl32.Mat4 {
 		m = t.parent.LocalToWorldMatrix().Mul4(m)
 	}
 
+	t.lwMatrix = &m
 	return m
 }
 
