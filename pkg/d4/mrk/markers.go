@@ -6,6 +6,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/Dakota628/d4parse/pkg/pb"
+	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
 	"google.golang.org/protobuf/proto"
 	"os"
@@ -78,19 +79,12 @@ func (e *MarkerExtractor) getMaxNativeZoom(tiles int32) (zoom uint32) {
 	return
 }
 
-func (e *MarkerExtractor) getBoundingBox(snoId int32, transform *Transform) (*pb.AABB, error) {
-	snoGroup, snoName := e.toc.Entries.GetName(snoId)
-	if snoName == "" {
+func (e *MarkerExtractor) getBoundingBox(snoMeta *d4.SnoMeta, transform *Transform) (*pb.AABB, error) {
+	if snoMeta == nil {
 		return nil, nil
 	}
 
-	metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
-	meta, err := d4.ReadSnoMetaFile(metaPath)
-	if err != nil {
-		return nil, err
-	}
-
-	switch x := meta.Meta.(type) {
+	switch x := snoMeta.Meta.(type) {
 	case *d4.ActorDefinition:
 		off := transform.GetRelWorldPos(&x.AabbBounds.Wp)
 		ext := transform.GetRelWorldPos(&x.AabbBounds.WvExt)
@@ -184,6 +178,32 @@ func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32, transform *Transfo
 	return errs.Err()
 }
 
+func (e *MarkerExtractor) addMarkerSno(snoMeta *d4.SnoMeta, transform *Transform) error {
+	if snoMeta == nil {
+		return nil
+	}
+
+	switch x := snoMeta.Meta.(type) {
+	case *d4.ActorDefinition:
+		snoGroup, snoName := e.toc.Entries.GetName(x.SnoPrefabAttachment.Id)
+		if snoGroup <= 0 {
+			return nil
+		}
+
+		metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
+		meta, err := d4.ReadSnoMetaFile(metaPath)
+		if err != nil {
+			return err
+		}
+
+		if err := e.addMarkerSet(meta, transform); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (e *MarkerExtractor) getMarkerGroupHashes(marker *d4.Marker) []uint32 {
 	hashes := mapset.NewThreadUnsafeSet[uint32]()
 	for _, markerLink := range marker.PtMarkerLinks.Value {
@@ -193,7 +213,15 @@ func (e *MarkerExtractor) getMarkerGroupHashes(marker *d4.Marker) []uint32 {
 }
 
 func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, transform *Transform) error {
-	bounds, err := e.getBoundingBox(marker.Snoname.Id, transform)
+	var snoMeta *d4.SnoMeta
+	if snoGroup, snoName := e.toc.Entries.GetName(marker.Snoname.Id); snoGroup > 0 {
+		metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
+		if meta, err := d4.ReadSnoMetaFile(metaPath); err == nil {
+			snoMeta = &meta
+		}
+	}
+
+	bounds, err := e.getBoundingBox(snoMeta, transform)
 	if err != nil {
 		return err
 	}
@@ -211,6 +239,10 @@ func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, trans
 		MarkerHash:        &marker.DwHash.Value,
 		MarkerGroupHashes: e.getMarkerGroupHashes(marker),
 	})
+
+	if err = e.addMarkerSno(snoMeta, transform); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -257,7 +289,7 @@ func (e *MarkerExtractor) addMarkerSet(markerSetSnoMeta d4.SnoMeta, transform *T
 
 	msd, ok := markerSetSnoMeta.Meta.(*d4.MarkerSetDefinition)
 	if !ok {
-		panic("not marker set definition")
+		return nil
 	}
 
 	errs := util.NewErrors()
