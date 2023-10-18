@@ -376,8 +376,32 @@ func (g SnoGroup) String() string {
 		return "FacialHair"
 	case 140:
 		return "Face"
+	case 141:
+		return "MercenaryClass"
+	case 142:
+		return "PassivePowerContainer"
+	case 143:
+		return "MountProfile"
 	case 144:
 		return "AICoordinator"
+	case 145:
+		return "CrafterTab"
+	case 146:
+		return "TownPortalCosmetic"
+	case 147:
+		return "AxeTest"
+	case 148:
+		return "Wizard"
+	case 149:
+		return "FootstepTable"
+	case 150:
+		return "Modal"
+	case 151:
+		return "CollectiblePower"
+	case 152:
+		return "AppearenceSet"
+	case 153:
+		return "Preset"
 	default:
 		return "Unknown"
 	}
@@ -668,17 +692,31 @@ func (g SnoGroup) Ext() string {
 	case 140:
 		return ".fac"
 	case 141:
-		return ""
+		return ".mrc"
 	case 142:
-		return ""
+		return ".ppc"
 	case 143:
-		return ""
+		return ".mpp"
 	case 144:
 		return ".aic"
 	case 145:
-		return ""
+		return ".ctb"
 	case 146:
-		return ""
+		return ".tpc"
+	case 147:
+		return ".axe"
+	case 148:
+		return ".wiz"
+	case 149:
+		return ".fst"
+	case 150:
+		return ".mdl"
+	case 151:
+		return ".cpw"
+	case 152:
+		return ".aps"
+	case 153:
+		return ".pst"
 	default:
 		return ""
 	}
