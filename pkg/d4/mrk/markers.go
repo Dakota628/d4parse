@@ -205,11 +205,12 @@ func (e *MarkerExtractor) addMarkerSno(snoMeta *d4.SnoMeta, transform *Transform
 }
 
 func (e *MarkerExtractor) getMarkerGroupHashes(marker *d4.Marker) []uint32 {
-	hashes := mapset.NewThreadUnsafeSet[uint32]()
-	for _, markerLink := range marker.PtMarkerLinks.Value {
-		hashes.Add(markerLink.DwGroupHash.Value)
-	}
-	return hashes.ToSlice()
+	return nil // Note: DWGroupHash was removed
+	//hashes := mapset.NewThreadUnsafeSet[uint32]()
+	//for _, markerLink := range marker.PtMarkerLinks.Value {
+	//	hashes.Add(markerLink.DwGroupHash.Value)
+	//}
+	//return hashes.ToSlice()
 }
 
 func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, transform *Transform) error {
@@ -470,7 +471,7 @@ func (e *MarkerExtractor) loadWorldMarkers(worldId int32, transform *Transform) 
 				return
 			}
 
-			util.DoWorkSlice(adHocWorkers, sceneChunk.TSceneSpec.ArSubzones.Value, func(subZone *d4.Type_4e8e96e4) {
+			util.DoWorkSlice(adHocWorkers, sceneChunk.TSceneSpec.ArSubzones.Value, func(subZone *d4.SubzoneRelation) {
 				if subZone.SnoSubzone.Id == wd.SnoSubzoneDefault.Id {
 					return
 				}
@@ -484,9 +485,9 @@ func (e *MarkerExtractor) loadWorldMarkers(worldId int32, transform *Transform) 
 	}
 
 	// Process screen static camps
-	for _, screenStaticCamp := range wd.Unk_675bda3.Value {
+	for _, regionBoundary := range wd.ArRegionBoundaries.Value {
 		poly := &pb.Polygon{}
-		for _, vec := range screenStaticCamp.ArPoints.Value {
+		for _, vec := range regionBoundary.ArPoints.Value {
 			poly.Vertices = append(poly.Vertices, &pb.Point2D{
 				X: vec.X,
 				Y: vec.Y,
