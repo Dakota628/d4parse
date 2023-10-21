@@ -25,6 +25,7 @@ require (
 )
 
 require (
+	github.com/avast/retry-go v3.0.0+incompatible // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.4 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.34 // indirect
@@ -46,6 +47,7 @@ require (
 	golang.org/x/sys v0.10.0 // indirect
 	gonum.org/v1/gonum v0.13.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+	leb.io/hashland v0.1.5 // indirect
 )
 
 // Fixes windows EOF error
