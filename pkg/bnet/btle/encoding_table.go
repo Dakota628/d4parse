@@ -19,59 +19,6 @@ type EncodingTableHeader struct {
 }
 
 func (h *EncodingTableHeader) UnmarshalBinary(r *bin.BinaryReader) error {
-	//// Signature
-	//if err := r.Uint8(&h.Signature[0]); err != nil {
-	//	return err
-	//}
-	//if err := r.Uint8(&h.Signature[1]); err != nil {
-	//	return err
-	//}
-	//
-	//// Version
-	//if err := r.Uint8(&h.Version); err != nil {
-	//	return err
-	//}
-	//
-	//// Hash Sizes
-	//if err := r.Uint8(&h.HashSizeCKey); err != nil {
-	//	return err
-	//}
-	//if err := r.Uint8(&h.HashSizeEKey); err != nil {
-	//	return err
-	//}
-	//
-	//// Page Sizes
-	//if err := r.Uint16BE(&h.CEKeyPageTablePageSizeKb); err != nil {
-	//	return err
-	//}
-	//if err := r.Uint16BE(&h.EKeySpecPageTablePageSizeKb); err != nil {
-	//	return err
-	//}
-	//
-	//// Page Counts
-	//if err := r.Uint32BE(&h.CEKeyPageTablePageCount); err != nil {
-	//	return err
-	//}
-	//if err := r.Uint32BE(&h.EKeyPageTablePageCount); err != nil {
-	//	return err
-	//}
-	//
-	//// Skip unk
-	//if _, err := r.Seek(1, io.SeekCurrent); err != nil {
-	//	return err
-	//}
-	//
-	//// ESpec Block Size
-	//if err := r.Uint32BE(&h.ESpecBlockSize); err != nil {
-	//	return err
-	//}
-	//
-	//// Skip padding
-	//if _, err := r.Seek(4, io.SeekCurrent); err != nil {
-	//	return err
-	//}
-	//
-	//return nil
 	return bin.UnmarshalStruct(h, r)
 }
 
