@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bin"
+	"github.com/Dakota628/d4parse/pkg/bnet/blte"
 	"github.com/Dakota628/d4parse/pkg/bnet/bpsv"
-	"github.com/Dakota628/d4parse/pkg/bnet/btle"
 	"github.com/Dakota628/d4parse/pkg/bnet/ribbit2"
 	"github.com/avast/retry-go"
 	"io"
@@ -233,7 +233,7 @@ func (c *CDN) GetConfig(config string) (map[string]string, error) {
 	return ParseConfig(body)
 }
 
-func (c *CDN) GetEncodingTable() (*btle.EncodingTable, error) {
+func (c *CDN) GetEncodingTable() (*blte.EncodingTable, error) {
 	// Get encoding hashes from fetched build config
 	// TODO: maybe build config should be a arg here so user can cache?
 	buildConfig, err := c.GetBuildConfig()
@@ -253,15 +253,16 @@ func (c *CDN) GetEncodingTable() (*btle.EncodingTable, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := io.ReadAll(resp.Body) // TODO: parse as BTLE encoding table
+	body, err := io.ReadAll(resp.Body) // TODO: parse as BLTE encoding table
 	if err != nil {
 		return nil, err
 	}
+	fmt.Printf(">>> BODY >>> %s\n\n", body[:50])
 
 	// Convert the body to a binary reader and parse encoding table
 	r := bin.NewBinaryReader(bytes.NewReader(body))
 
-	var t btle.EncodingTable
+	var t blte.EncodingTable
 	if err := t.UnmarshalBinary(r); err != nil {
 		return nil, err
 	}

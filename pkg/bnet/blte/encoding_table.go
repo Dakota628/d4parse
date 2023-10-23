@@ -1,4 +1,4 @@
-package btle
+package blte
 
 import (
 	"github.com/Dakota628/d4parse/pkg/bin"
@@ -20,6 +20,9 @@ type EncodingTableHeader struct {
 
 func (h *EncodingTableHeader) UnmarshalBinary(r *bin.BinaryReader) error {
 	return bin.UnmarshalStruct(h, r)
+}
+
+type EncodingTableESpec struct {
 }
 
 type EncodingTable struct {
