@@ -4,15 +4,23 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/Dakota628/d4parse/pkg/bin"
 	"github.com/Dakota628/d4parse/pkg/bnet/bpsv"
+	"github.com/Dakota628/d4parse/pkg/bnet/btle"
 	"github.com/Dakota628/d4parse/pkg/bnet/ribbit2"
 	"github.com/avast/retry-go"
+	"io"
 	"leb.io/hashland/jenkins"
 	"math/rand"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
+)
+
+var (
+	ErrInvalidConfigFormat      = errors.New("invalid config format")
+	ErrInvalidConfigValueFormat = errors.New("invalid config value format")
 )
 
 // Endpoint ...
@@ -22,8 +30,9 @@ type Endpoint struct {
 	Fallback bool
 }
 
-func (e *Endpoint) BuildURL(path string, pathType string, hexHash string) string {
-	return e.URL.JoinPath(path, pathType, hexHash[0:2], hexHash[2:4], hexHash).String()
+func (e *Endpoint) BuildURL(path string, pathType string, hexHash string, suffix ...string) string {
+	elem := append([]string{path, pathType, hexHash[0:2], hexHash[2:4], hexHash}, suffix...)
+	return e.URL.JoinPath(elem...).String()
 }
 
 func ParseEndpoint(s string) (e *Endpoint, err error) {
@@ -197,19 +206,70 @@ func (c *CDN) Version() string {
 	return c.version["VersionsName"]
 }
 
-func (c *CDN) GetBuildConfig() (*http.Response, error) {
-	return c.Do("config", c.version["BuildConfig"])
+func (c *CDN) GetBuildConfig() (map[string]string, error) {
+	return c.GetConfig("BuildConfig")
 }
 
-func (c *CDN) GetCDNConfig() (*http.Response, error) {
-	return c.Do("config", c.version["CDNConfig"])
+func (c *CDN) GetCDNConfig() (map[string]string, error) {
+	return c.GetConfig("CDNConfig")
 }
 
-func (c *CDN) GetProductConfig() (*http.Response, error) {
-	return c.Do("config", c.version["ProductConfig"])
+func (c *CDN) GetProductConfig() (map[string]string, error) {
+	return c.GetConfig("ProductConfig")
 }
 
-func (c *CDN) Do(pathType string, hexHash string) (*http.Response, error) { // TODO: may want ctx
+func (c *CDN) GetConfig(config string) (map[string]string, error) {
+	resp, err := c.Do("config", c.version[config])
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return ParseConfig(body)
+}
+
+func (c *CDN) GetEncodingTable() (*btle.EncodingTable, error) {
+	// Get encoding hashes from fetched build config
+	// TODO: maybe build config should be a arg here so user can cache?
+	buildConfig, err := c.GetBuildConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	encodingHashes := strings.Fields(buildConfig["encoding"])
+	if len(encodingHashes) != 2 {
+		return nil, ErrInvalidConfigValueFormat
+	}
+
+	// Fetch encoding table bytes
+	resp, err := c.Do("data", encodingHashes[1])
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body) // TODO: parse as BTLE encoding table
+	if err != nil {
+		return nil, err
+	}
+
+	// Convert the body to a binary reader and parse encoding table
+	r := bin.NewBinaryReader(bytes.NewReader(body))
+
+	var t btle.EncodingTable
+	if err := t.UnmarshalBinary(r); err != nil {
+		return nil, err
+	}
+
+	return &t, nil
+}
+
+func (c *CDN) Do(pathType string, hexHash string, suffix ...string) (*http.Response, error) { // TODO: may want ctx
 	var fallback bool
 	var resp *http.Response
 
@@ -225,7 +285,7 @@ func (c *CDN) Do(pathType string, hexHash string) (*http.Response, error) { // T
 			}
 
 			// Try to send the request
-			reqUrl := endpoint.BuildURL(c.path, pathType, hexHash)
+			reqUrl := endpoint.BuildURL(c.path, pathType, hexHash, suffix...)
 			resp, err = c.httpClient.Get(reqUrl)
 			if err != nil {
 				return
@@ -237,7 +297,7 @@ func (c *CDN) Do(pathType string, hexHash string) (*http.Response, error) { // T
 
 			return
 		},
-		retry.Attempts(10), // TODO: better retry policy?
+		retry.Attempts(1), // TODO: better retry policy?
 	); err != nil {
 		return nil, err
 	}
@@ -253,4 +313,39 @@ func NameHash(fileName string) uint32 {
 	fileName = NormalizeFileName(fileName)
 	rpc, _ := jenkins.HashString(fileName, 0, 0)
 	return rpc
+}
+
+func ParseConfig(bs []byte) (map[string]string, error) {
+	lines := bytes.Split(bs, []byte{'\n'})
+
+	if len(lines) >= 2 {
+		if bytes.HasPrefix(lines[0], []byte{'#'}) {
+			lines = lines[1:]
+		}
+
+		if len(lines[0]) == 0 {
+			lines = lines[1:]
+		}
+	}
+
+	parsed := make(map[string]string, len(lines))
+
+	for _, line := range lines {
+		if bytes.HasPrefix(line, []byte{'#'}) {
+			continue
+		}
+
+		if len(line) == 0 {
+			continue
+		}
+
+		parts := bytes.SplitN(line, []byte{' ', '=', ' '}, 2)
+		if len(parts) != 2 {
+			return nil, ErrInvalidConfigFormat
+		}
+
+		parsed[string(parts[0])] = string(parts[1])
+	}
+
+	return parsed, nil
 }

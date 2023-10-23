@@ -89,12 +89,30 @@ func (r *BinaryReader) Uint16LE(x *uint16) error {
 	return nil
 }
 
+func (r *BinaryReader) Uint16BE(x *uint16) error {
+	buf := make([]byte, 2)
+	if _, err := r.Read(buf); err != nil {
+		return err
+	}
+	*x = binary.BigEndian.Uint16(buf)
+	return nil
+}
+
 func (r *BinaryReader) Uint32LE(x *uint32) error {
 	buf := make([]byte, 4)
 	if _, err := r.Read(buf); err != nil {
 		return err
 	}
 	*x = binary.LittleEndian.Uint32(buf)
+	return nil
+}
+
+func (r *BinaryReader) Uint32BE(x *uint32) error {
+	buf := make([]byte, 4)
+	if _, err := r.Read(buf); err != nil {
+		return err
+	}
+	*x = binary.BigEndian.Uint32(buf)
 	return nil
 }
 
@@ -107,21 +125,75 @@ func (r *BinaryReader) Uint64LE(x *uint64) error {
 	return nil
 }
 
-func (r *BinaryReader) Int32LE(x *int32) error {
-	buf := make([]byte, 4)
-	if _, err := r.Read(buf); err != nil {
-		return err
-	}
-	*x = int32(binary.LittleEndian.Uint32(buf))
-	return nil
-}
-
-func (r *BinaryReader) Int64LE(x *int64) error {
+func (r *BinaryReader) Uint64BE(x *uint64) error {
 	buf := make([]byte, 8)
 	if _, err := r.Read(buf); err != nil {
 		return err
 	}
-	*x = int64(binary.LittleEndian.Uint64(buf))
+	*x = binary.BigEndian.Uint64(buf)
+	return nil
+}
+
+func (r *BinaryReader) Int8(x *int8) error {
+	var temp uint8
+	if err := r.Uint8(&temp); err != nil {
+		return err
+	}
+	*x = int8(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int16LE(x *int16) error {
+	var temp uint16
+	if err := r.Uint16LE(&temp); err != nil {
+		return err
+	}
+	*x = int16(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int16BE(x *int16) error {
+	var temp uint16
+	if err := r.Uint16BE(&temp); err != nil {
+		return err
+	}
+	*x = int16(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int32LE(x *int32) error {
+	var temp uint32
+	if err := r.Uint32LE(&temp); err != nil {
+		return err
+	}
+	*x = int32(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int32BE(x *int32) error {
+	var temp uint32
+	if err := r.Uint32BE(&temp); err != nil {
+		return err
+	}
+	*x = int32(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int64LE(x *int64) error {
+	var temp uint64
+	if err := r.Uint64LE(&temp); err != nil {
+		return err
+	}
+	*x = int64(temp)
+	return nil
+}
+
+func (r *BinaryReader) Int64BE(x *int64) error {
+	var temp uint64
+	if err := r.Uint64BE(&temp); err != nil {
+		return err
+	}
+	*x = int64(temp)
 	return nil
 }
 
@@ -131,6 +203,15 @@ func (r *BinaryReader) Float32LE(x *float32) error {
 		return err
 	}
 	*x = math.Float32frombits(binary.LittleEndian.Uint32(buf))
+	return nil
+}
+
+func (r *BinaryReader) Float32BE(x *float32) error {
+	buf := make([]byte, 4)
+	if _, err := r.Read(buf); err != nil {
+		return err
+	}
+	*x = math.Float32frombits(binary.BigEndian.Uint32(buf))
 	return nil
 }
 

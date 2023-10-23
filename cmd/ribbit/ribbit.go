@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bnet/cdn"
 	"github.com/Dakota628/d4parse/pkg/bnet/ribbit2"
-	"io"
 	"log"
 	"os"
 )
@@ -38,16 +38,9 @@ func main() {
 		log.Fatalf("error creating CDN: %s", err)
 	}
 
-	resp, err := _cdn.GetBuildConfig()
+	data, err := _cdn.GetEncodingTable()
 	if err != nil {
-		log.Fatalf("error getting build config: %s", err)
+		log.Fatalf("error getting encoding table: %s", err)
 	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("error reading build config body: %s", err)
-	}
-
-	println(string(body))
+	fmt.Printf("%#v", data)
 }
