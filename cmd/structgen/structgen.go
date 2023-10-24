@@ -273,6 +273,35 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 	return nil
 }
 
+func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error {
+	var cases []jen.Code
+
+	for _, fieldHash := range SortedKeys(defs.FieldHashToName) {
+		fieldName := defs.FieldHashToName[fieldHash]
+		cases = append(
+			cases,
+			jen.Case(jen.Lit(fieldHash)).Block(
+				jen.Return(jen.Lit(fieldName)),
+			),
+		)
+	}
+
+	cases = append(
+		cases,
+		jen.Default().Block(
+			jen.Return(jen.Lit("")),
+		),
+	)
+
+	f.Func().Id("NameByFieldHash").Params(
+		jen.Id("h").Int(),
+	).Id("string").Block(
+		jen.Switch(jen.Id("h")).Block(cases...),
+	).Line()
+
+	return nil
+}
+
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
 	if BasicTypes.Contains(def.Name) {
@@ -354,6 +383,9 @@ func GenerateStructs(defs d4data.Definitions, outputPath string) error {
 		return err
 	}
 	if err := GenerateTypeHashMapFunc(f, defs); err != nil {
+		return err
+	}
+	if err := GenerateTagMapFieldHashMapFunc(f, defs); err != nil {
 		return err
 	}
 

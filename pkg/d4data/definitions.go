@@ -35,10 +35,13 @@ type Field struct {
 
 type TypeName = string
 type TypeHash = int
+type FieldName = string
+type FieldHash = int
 type FormatHash = int
 
 type Definitions struct {
 	TypeHashToDef    map[TypeHash]Definition
+	FieldHashToName  map[FieldHash]FieldName
 	formatToTypeHash map[FormatHash]TypeHash
 	nameToTypeHash   map[TypeName]TypeHash
 }
@@ -98,6 +101,7 @@ func LoadDefinitions(path string) (defs Definitions, err error) {
 
 	// Transform
 	defs.TypeHashToDef = make(map[int]Definition, len(parsed))
+	defs.FieldHashToName = make(map[int]string)
 	defs.nameToTypeHash = make(map[string]int, len(parsed))
 	defs.formatToTypeHash = make(map[int]int)
 
@@ -111,6 +115,10 @@ func LoadDefinitions(path string) (defs Definitions, err error) {
 		defs.nameToTypeHash[def.Name] = typeHash
 		if def.FormatHash != 0 {
 			defs.formatToTypeHash[def.FormatHash] = typeHash
+		}
+
+		for _, field := range def.Fields {
+			defs.FieldHashToName[field.Hash] = field.Name
 		}
 	}
 

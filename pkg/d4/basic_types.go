@@ -240,12 +240,17 @@ func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback, data ...any) {
 }
 
 // DT_TAGMAP ...
+type TagMapEntry struct {
+	Name string
+	Value Object
+}
 type DT_TAGMAP[T Object] struct {
 	Padding1   int64
 	DataOffset int32
 	DataSize   int32
 
-	// TODO: figure out how to implement this fully
+	DataCount int32
+	Value     []TagMapEntry
 }
 
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
@@ -257,7 +262,72 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 
-	return r.Int32LE(&d.DataSize)
+	if err := r.Int32LE(&d.DataSize); err != nil {
+		return err
+	}
+
+	if d.Padding1 != 0 {
+		return ErrInvalidPadding
+	}
+
+	if d.DataOffset < 1 || d.DataSize < 1 {
+		return nil
+	}
+
+	return r.AtPos(int64(d.DataOffset), io.SeekStart, func(r *bin.BinaryReader) error {
+		if err := r.Int32LE(&d.DataCount); err != nil {
+			return err
+		}
+		d.Value = make([]TagMapEntry, d.DataCount)
+
+		for i := int32(0); i < d.DataCount; i++ {
+			var elemFieldHash uint32
+			var elemTypeHash uint32
+			var elemSubTypeHash uint32
+			var elemSubType Object
+			elemSubType = &DT_NULL{}
+			if err := r.Uint32LE(&elemFieldHash); err != nil {
+				return err
+			}
+			if err := r.Uint32LE(&elemTypeHash); err != nil {
+				return err
+			}
+
+			// Type flag 0x8000
+			if elemTypeHash == 1683664497 || // DT_POLYMORPHIC_VARIABLEARRAY
+			   elemTypeHash == 2388214534 || // DT_FIXEDARRAY
+			   elemTypeHash == 3121633597 || // DT_OPTIONAL
+			   elemTypeHash == 3244749660 || // DT_VARIABLEARRAY
+			   elemTypeHash == 3493213809 || // DT_TAGMAP
+			   elemTypeHash == 3846829457 || // DT_CSTRING
+			   elemTypeHash == 3877855748 {  // DT_RANGE
+				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
+					return err
+				}
+				elemSubType = NewByTypeHash(int(elemSubTypeHash), &DT_NULL{})
+			}
+
+			d.Value[i].Name = NameByFieldHash(int(elemFieldHash))
+			d.Value[i].Value = NewByTypeHash(int(elemTypeHash), elemSubType)
+			if d.Value[i].Value == nil {
+				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
+			}
+		}
+
+		for i := int32(0); i < d.DataCount; i++ {
+			if err := d.Value[i].Value.UnmarshalD4(r, o); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+}
+
+func (d *DT_TAGMAP[T]) Walk(cb WalkCallback, data ...any) {
+	for _, v := range d.Value {
+		cb.Do(v.Name, v.Value, data...)
+	}
 }
 
 // DT_VARIABLEARRAY ...
@@ -409,7 +479,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			elemTypeHash := int(base.DwType.Value)
 
 			// Use DT_NULL as subtype for now as we don't know if it's possible to nest a third type atm
-			d.Value[i] = NewByTypeHash[*DT_NULL](elemTypeHash)
+			d.Value[i] = NewByTypeHash(elemTypeHash, &DT_NULL{})
 			if d.Value[i] == nil {
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}

@@ -242,7 +242,7 @@ func NewByFormatHash(h int) Object {
 	}
 }
 
-func NewByTypeHash[T Object](h int) Object {
+func NewByTypeHash[T Object](h int, subType T) Object {
 	switch h {
 	case 88275:
 		return &OBB{}

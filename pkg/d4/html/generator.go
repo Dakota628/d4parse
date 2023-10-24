@@ -230,7 +230,11 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...a
 		g.sb.WriteString("</ul>")
 		return
 	case "*d4.DT_TAGMAP":
-		g.sb.WriteString("<p><i>note: tag map parsing is not supported</i></p>") // TODO
+		g.sb.WriteString(`<div class="t">`)
+		// TODO DT_TAGMAP: Display TagMapType name (*OptionalFieldMapDefaults)
+		g.sb.WriteString(`<div class="tn">TagMap</div>`)
+		next()
+		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_CSTRING":
 		g.sb.WriteString("<pre>")
