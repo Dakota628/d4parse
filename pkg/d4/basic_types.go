@@ -284,6 +284,8 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			var elemFieldHash uint32
 			var elemTypeHash uint32
 			var elemSubTypeHash uint32
+			var elemSubType Object
+			elemSubType = &DT_NULL{}
 			if err := r.Uint32LE(&elemFieldHash); err != nil {
 				return err
 			}
@@ -302,11 +304,11 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
 					return err
 				}
+				elemSubType = NewByTypeHash(int(elemSubTypeHash), &DT_NULL{})
 			}
 
 			d.Value[i].Name = NameByFieldHash(int(elemFieldHash))
-			// TODO DT_TAGMAP: Replace DT_INT with correct type
-			d.Value[i].Value = NewByTypeHash[*DT_INT](int(elemTypeHash))
+			d.Value[i].Value = NewByTypeHash(int(elemTypeHash), elemSubType)
 			if d.Value[i].Value == nil {
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
@@ -477,7 +479,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			elemTypeHash := int(base.DwType.Value)
 
 			// Use DT_NULL as subtype for now as we don't know if it's possible to nest a third type atm
-			d.Value[i] = NewByTypeHash[*DT_NULL](elemTypeHash)
+			d.Value[i] = NewByTypeHash(elemTypeHash, &DT_NULL{})
 			if d.Value[i] == nil {
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
