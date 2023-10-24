@@ -302,10 +302,29 @@ func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error 
 	return nil
 }
 
+func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definition) error {
+	// Generate receiver code
+	var receiver jen.Code
+	if ReqParamTypes.Contains(def.Name) {
+		receiver = jen.Id("t").Op("*").Id(def.Name).Types(jen.Id("Object"))
+	} else {
+		receiver = jen.Id("t").Op("*").Id(def.Name)
+	}
+
+	// Construct GetFlags function
+	f.Func().Params(
+		receiver,
+	).Id("GetFlags").Params().Int().Block( // Note: don't use `Flags` as it collides with some fields.
+		jen.Return(jen.Lit(def.Flags)),
+	).Line()
+
+	return nil
+}
+
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
 	if BasicTypes.Contains(def.Name) {
-		return nil
+		return GenerateForAllTypes(f, defs, def)
 	}
 
 	// Construct fields
@@ -370,7 +389,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		walkBody...,
 	).Line()
 
-	return nil
+	return GenerateForAllTypes(f, defs, def)
 }
 
 func GenerateStructs(defs d4data.Definitions, outputPath string) error {

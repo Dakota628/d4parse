@@ -220,7 +220,7 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...a
 		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_FIXEDARRAY", "*d4.DT_VARIABLEARRAY", "*d4.DT_POLYMORPHIC_VARIABLEARRAY":
-		if maybeExt, ok := x.(d4.MaybeExternal); ok && maybeExt.IsExternal() {
+		if maybeExt, ok := x.(d4.MaybeExternal); ok && maybeExt.IsExternal_() {
 			g.sb.WriteString("<p><i>note: external data is not supported</i></p>") // TODO
 			return
 		}

@@ -21,13 +21,15 @@ var (
 
 type (
 	Options struct {
-		Flags       int
-		ArrayLength int
-		Group       int32
+		Flags                int
+		ArrayLength          int
+		Group                int32slog
+		OverrideTypeInstance Object
 	}
 
 	Object interface {
 		UnmarshalD4(r *bin.BinaryReader, o *Options) error
+		GetFlags() int
 	}
 
 	MaybeExternal interface {
@@ -99,6 +101,11 @@ func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}
 
 	if d.Exists > 0 {
+		var err error
+		if d.Value, err = newElemWithOpts(d.Value, o); err != nil {
+			return err
+		}
+
 		return d.Value.UnmarshalD4(r, o)
 	}
 
@@ -199,12 +206,16 @@ type DT_RANGE[T Object] struct {
 	UpperBound T
 }
 
-func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.LowerBound = newElem(d.LowerBound)
-	if err := d.LowerBound.UnmarshalD4(r, o); err != nil {
-		return err
+func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) (err error) {
+	if d.LowerBound, err = newElemWithOpts(d.LowerBound, o); err != nil {
+		return
 	}
-	d.UpperBound = newElem(d.LowerBound)
+	if err = d.LowerBound.UnmarshalD4(r, o); err != nil {
+		return
+	}
+	if d.UpperBound, err = newElemWithOpts(d.UpperBound, o); err != nil {
+		return
+	}
 	return d.UpperBound.UnmarshalD4(r, o)
 }
 
@@ -225,7 +236,11 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 	d.Value = make([]T, o.ArrayLength)
 	for i := 0; i < o.ArrayLength; i++ {
-		d.Value[i] = newElem(d.Value[i])
+		var err error
+		if d.Value[i], err = newElemWithOpts(d.Value[i], o); err != nil {
+			return err
+		}
+
 		if err := d.Value[i].UnmarshalD4(r, o); err != nil {
 			return err
 		}
@@ -240,18 +255,21 @@ func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback, data ...any) {
 }
 
 // DT_TAGMAP ...
-type TagMapEntry struct {
-	Name string
-	Value Object
-}
-type DT_TAGMAP[T Object] struct {
-	Padding1   int64
-	DataOffset int32
-	DataSize   int32
+type (
+	TagMapEntry struct {
+		Name  string
+		Value Object
+	}
 
-	DataCount int32
-	Value     []TagMapEntry
-}
+	DT_TAGMAP[T Object] struct {
+		Padding1   int64
+		DataOffset int32
+		DataSize   int32
+
+		DataCount int32
+		Value     []TagMapEntry
+	}
+)
 
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	if err := r.Int64LE(&d.Padding1); err != nil {
@@ -279,43 +297,47 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			return err
 		}
 		d.Value = make([]TagMapEntry, d.DataCount)
+		subTypeInstances := make([]Object, d.DataCount)
 
 		for i := int32(0); i < d.DataCount; i++ {
 			var elemFieldHash uint32
-			var elemTypeHash uint32
-			var elemSubTypeHash uint32
-			var elemSubType Object
-			elemSubType = &DT_NULL{}
 			if err := r.Uint32LE(&elemFieldHash); err != nil {
 				return err
 			}
+
+			var elemTypeHash uint32
 			if err := r.Uint32LE(&elemTypeHash); err != nil {
 				return err
 			}
 
+			name := NameByFieldHash(int(elemFieldHash))
+			value := NewByTypeHash[Object](int(elemTypeHash))
+			if value == nil {
+				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
+			}
+
 			// Type flag 0x8000
-			if elemTypeHash == 1683664497 || // DT_POLYMORPHIC_VARIABLEARRAY
-			   elemTypeHash == 2388214534 || // DT_FIXEDARRAY
-			   elemTypeHash == 3121633597 || // DT_OPTIONAL
-			   elemTypeHash == 3244749660 || // DT_VARIABLEARRAY
-			   elemTypeHash == 3493213809 || // DT_TAGMAP
-			   elemTypeHash == 3846829457 || // DT_CSTRING
-			   elemTypeHash == 3877855748 {  // DT_RANGE
+			if (value.GetFlags() & 0x8000) > 0 {
+				var elemSubTypeHash uint32
 				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
 					return err
 				}
-				elemSubType = NewByTypeHash(int(elemSubTypeHash), &DT_NULL{})
+				subTypeInstances[i] = NewByTypeHash[Object](int(elemSubTypeHash))
 			}
 
-			d.Value[i].Name = NameByFieldHash(int(elemFieldHash))
-			d.Value[i].Value = NewByTypeHash(int(elemTypeHash), elemSubType)
-			if d.Value[i].Value == nil {
-				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
-			}
+			d.Value[i].Name = name
+			d.Value[i].Value = value
 		}
 
 		for i := int32(0); i < d.DataCount; i++ {
-			if err := d.Value[i].Value.UnmarshalD4(r, o); err != nil {
+			currOpts := o
+			if subTypeInstances[i] != nil {
+				newOpts := *currOpts
+				newOpts.OverrideTypeInstance = subTypeInstances[i]
+				currOpts = &newOpts
+			}
+
+			if err := d.Value[i].Value.UnmarshalD4(r, currOpts); err != nil {
 				return err
 			}
 		}
@@ -369,16 +391,20 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	}
 
 	return r.AtPos(int64(d.DataOffset), io.SeekStart, func(r *bin.BinaryReader) error {
-		//for (curr - int64(d.DataOffset)) < int64(d.DataSize) {
 		for curr := int64(d.DataOffset); curr < int64(d.DataOffset+d.DataSize); {
+			var err error
 			var elem T
-			elem = newElem(elem)
-			if err := elem.UnmarshalD4(r, o); err != nil {
+
+			elem, err = newElemWithOpts(elem, o)
+			if err != nil {
+				return err
+			}
+
+			if err = elem.UnmarshalD4(r, o); err != nil {
 				return err
 			}
 			d.Value = append(d.Value, elem)
 
-			var err error
 			if curr, err = r.Pos(); err != nil {
 				return err
 			}
@@ -479,7 +505,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			elemTypeHash := int(base.DwType.Value)
 
 			// Use DT_NULL as subtype for now as we don't know if it's possible to nest a third type atm
-			d.Value[i] = NewByTypeHash(elemTypeHash, &DT_NULL{})
+			d.Value[i] = NewByTypeHash[*DT_NULL](elemTypeHash)
 			if d.Value[i] == nil {
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
