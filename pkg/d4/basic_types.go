@@ -208,13 +208,13 @@ func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) (err error) {
 	if d.LowerBound, err = newElemWithOpts(d.LowerBound, o); err != nil {
 		return
 	}
-	if err = d.LowerBound.UnmarshalD4(r, &Options{}); err != nil {
+	if err = d.LowerBound.UnmarshalD4(r, nil); err != nil {
 		return
 	}
 	if d.UpperBound, err = newElemWithOpts(d.UpperBound, o); err != nil {
 		return
 	}
-	return d.UpperBound.UnmarshalD4(r, &Options{})
+	return d.UpperBound.UnmarshalD4(r, nil)
 }
 
 func (d *DT_RANGE[T]) Walk(cb WalkCallback, data ...any) {
@@ -239,7 +239,7 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			return err
 		}
 
-		if err := d.Value[i].UnmarshalD4(r, &Options{}); err != nil {
+		if err := d.Value[i].UnmarshalD4(r, nil); err != nil {
 			return err
 		}
 	}
@@ -315,7 +315,7 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			}
 
 			// Type flag 0x8000
-			if (value.GetFlags() & 0x8000) > 0 {
+			if DefFlagHasSubType.In(value.GetFlags()) {
 				var elemSubTypeHash uint32
 				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
 					return err
@@ -328,9 +328,11 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		}
 
 		for i := int32(0); i < d.DataCount; i++ {
-			currOpts := &Options{}
+			var currOpts *Options
 			if subTypeInstances[i] != nil {
-				currOpts.OverrideTypeInstance = subTypeInstances[i]
+				currOpts = &Options{
+					OverrideTypeInstance: subTypeInstances[i],
+				}
 			}
 
 			if err := d.Value[i].Value.UnmarshalD4(r, currOpts); err != nil {
@@ -359,7 +361,7 @@ type DT_VARIABLEARRAY[T Object] struct {
 }
 
 func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
+	d.external = o != nil && (FieldFlagPayload.In(o.Flags) || FieldFlagPayload2.In(o.Flags))
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
@@ -433,7 +435,7 @@ type DT_POLYMORPHIC_VARIABLEARRAY[T Object] struct {
 }
 
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
+	d.external = o != nil && (FieldFlagPayload.In(o.Flags) || FieldFlagPayload2.In(o.Flags))
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
@@ -482,7 +484,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			// Read polymorphic base to get type info before reading real type
 			var base PolymorphicBase
 			if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
-				return base.UnmarshalD4(r, &Options{})
+				return base.UnmarshalD4(r, nil)
 			}); err != nil {
 				// TODO: this is definitely not right, remove once GameBalanceTable issue solved
 				if err == io.EOF {

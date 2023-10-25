@@ -37,6 +37,7 @@ func (g *Generator) genericField(rv reflect.Value, field string) any {
 func (g *Generator) prettyTypeName(t any) string {
 	typeName := fmt.Sprintf("%T", t)
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
+	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
 	return typeName
@@ -220,7 +221,7 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...a
 		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_FIXEDARRAY", "*d4.DT_VARIABLEARRAY", "*d4.DT_POLYMORPHIC_VARIABLEARRAY":
-		if maybeExt, ok := x.(d4.MaybeExternal); ok && maybeExt.IsExternal_() {
+		if maybeExt, ok := x.(d4.MaybeExternal); ok && maybeExt.IsExternal() {
 			g.sb.WriteString("<p><i>note: external data is not supported</i></p>") // TODO
 			return
 		}

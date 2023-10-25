@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4data"
 	"github.com/dave/jennifer/jen"
 	mapset "github.com/deckarep/golang-set/v2"
@@ -47,18 +48,9 @@ var (
 		"DT_VECTOR3D",
 		"DT_VECTOR4D",
 	)
-	ReqParamTypes = mapset.NewThreadUnsafeSet[string](
-		"DT_CSTRING",
-		"DT_OPTIONAL",
-		"DT_RANGE",
-		"DT_FIXEDARRAY",
-		"DT_TAGMAP",
-		"DT_VARIABLEARRAY",
-		"DT_POLYMORPHIC_VARIABLEARRAY",
-	)
 
 	ErrComposeUnknownTypeHash = errors.New("cannot compose unknown type hash")
-	ErrNullNotfound           = errors.New("could not find DT_NULL type hash")
+	ErrNullNotFound           = errors.New("could not find DT_NULL type hash")
 )
 
 func SortedKeys[K constraints.Ordered, V any](m map[K]V) []K {
@@ -158,10 +150,10 @@ func composeTypes(defs d4data.Definitions, types []d4data.TypeHash, hasParent bo
 
 		// This is a weird edge case. We think the internal UI allows to select 3 types default to NULL. Cases like this
 		// are likely a mistake. So, if the final types requires a type param, use null.
-		if ReqParamTypes.Contains(t.Name) {
+		if d4.DefFlagHasSubType.In(t.Flags) {
 			nullTypeHash, _, ok := defs.GetByName("DT_NULL")
 			if !ok {
-				return nil, ErrNullNotfound
+				return nil, ErrNullNotFound
 			}
 			types = append(types, nullTypeHash)
 			return composeTypes(defs, types, hasParent)
@@ -193,7 +185,7 @@ func ComposeTypes(defs d4data.Definitions, types []d4data.TypeHash) (jen.Code, e
 	// Truncate to everything before first null type
 	nullTypeHash, _, ok := defs.GetByName("DT_NULL")
 	if !ok {
-		return nil, ErrNullNotfound
+		return nil, ErrNullNotFound
 	}
 
 	for i, typeHash := range types {
@@ -245,7 +237,7 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 		def := defs.TypeHashToDef[typeHash]
 		var case_ jen.Code
 
-		if ReqParamTypes.Contains(def.Name) {
+		if d4.DefFlagHasSubType.In(def.Flags) {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Types(jen.Id("T")).Block())
 		} else {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Block())
@@ -305,7 +297,7 @@ func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error 
 func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definition) error {
 	// Generate receiver code
 	var receiver jen.Code
-	if ReqParamTypes.Contains(def.Name) {
+	if d4.DefFlagHasSubType.In(def.Flags) {
 		receiver = jen.Id("t").Op("*").Id(def.Name).Types(jen.Id("Object"))
 	} else {
 		receiver = jen.Id("t").Op("*").Id(def.Name)

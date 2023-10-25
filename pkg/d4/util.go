@@ -17,7 +17,7 @@ func newElem[T Object](t T) T {
 }
 
 func newElemWithOpts[T Object](t T, o *Options) (T, error) {
-	if o.OverrideTypeInstance != nil {
+	if o != nil && o.OverrideTypeInstance != nil {
 		if t, ok := newElem(o.OverrideTypeInstance).(T); ok {
 			return t, nil
 		}
