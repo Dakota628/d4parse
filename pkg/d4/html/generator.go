@@ -38,6 +38,7 @@ func (g *Generator) prettyTypeName(t any) string {
 	typeName := fmt.Sprintf("%T", t)
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/", "", -1)
+	typeName = strings.Replace(typeName, "github.com/Dakota628/d4parse/pkg/", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
 	return typeName
