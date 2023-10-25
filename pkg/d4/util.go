@@ -47,21 +47,3 @@ func IsIndex(s string) bool {
 	}
 	return true
 }
-
-func NewCollectionBySubTypeInstance[T Object](h int, _ T) Object {
-	return NewByTypeHash[T](h)
-}
-
-func NewCollectionBySubTypeHash(h int, sh int) Object {
-	st := NewByTypeHash[Object](sh)
-	return NewCollectionBySubTypeInstance(h, st)
-}
-
-func NewPolymorphicVariableArray[B Object](_ B) *DT_POLYMORPHIC_VARIABLEARRAY[B] {
-	return &DT_POLYMORPHIC_VARIABLEARRAY[B]{}
-}
-
-func TypeNameByHash(h int) string {
-	t := NewByTypeHash[Object](h)
-	return reflect.TypeOf(t).Elem().Name()
-}
