@@ -88,7 +88,7 @@ func SeekRelativeCode(offset int) jen.Code {
 	)
 }
 
-func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
+func UnmarshalFieldCode(transformedName string, field d4data.Field, defs d4data.Definitions) []jen.Code {
 	var code []jen.Code
 
 	// Create options code
@@ -102,6 +102,11 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 	}
 	if field.Group > -1 {
 		optionsDict[jen.Id("Group")] = jen.Lit(field.Group)
+	}
+	if field.TagMapType > -1 {
+		if def, ok := defs.GetByTypeHash(field.TagMapType); ok {
+			optionsDict[jen.Id("TagMapType")] = jen.Op("&").Id(def.Name).Block()
+		}
 	}
 
 	code = append(
@@ -349,7 +354,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		fields = append(fields, jen.Id(fieldName).Add(fieldTypeCode))
 
 		// Add UnmarshalD4 body code
-		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field)...)
+		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field, defs)...)
 
 		// Add Walk body code
 		walkBody = append(walkBody, WalkFieldCode(fieldName)...)

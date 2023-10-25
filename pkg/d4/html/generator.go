@@ -232,8 +232,11 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...a
 		return
 	case "*d4.DT_TAGMAP":
 		g.sb.WriteString(`<div class="t">`)
-		// TODO DT_TAGMAP: Display TagMapType name (*OptionalFieldMapDefaults)
-		g.sb.WriteString(`<div class="tn">TagMap</div>`)
+		if f := reflect.ValueOf(x).Elem().FieldByName("Type"); f.IsValid() && !f.IsNil() {
+			g.writeFmt(`<div class="tn">%s <i>(TagMap)</i></div>`, g.prettyTypeName(f.Interface()))
+		} else {
+			g.sb.WriteString(`<div class="tn">TagMap</div>`)
+		}
 		next()
 		g.sb.WriteString("</div>")
 		return

@@ -23,6 +23,7 @@ type (
 		ArrayLength          int
 		Group                int32
 		OverrideTypeInstance Object
+		TagMapType           Object
 	}
 
 	Object interface {
@@ -275,10 +276,18 @@ type (
 
 		DataCount int32
 		Value     []TagMapEntry
+		Type      Object
 	}
 )
 
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	// Note: this is probably not fully correct. In order to support possibilities such as nested tag maps and fixed arr
+	// in a tag map, we would need to look at the associated type and follow the flags and such for each field.
+
+	if o != nil {
+		d.Type = o.TagMapType
+	}
+
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
 	}
