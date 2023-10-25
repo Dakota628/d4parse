@@ -35,6 +35,15 @@ type (
 	}
 )
 
+func (o *Options) CopyForChild() *Options {
+	if o == nil {
+		return nil
+	}
+	return &Options{
+		Group: o.Group,
+	}
+}
+
 // DT_NULL ..
 type DT_NULL struct{}
 
@@ -104,7 +113,7 @@ func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			return err
 		}
 
-		return d.Value.UnmarshalD4(r, o)
+		return d.Value.UnmarshalD4(r, o.CopyForChild())
 	}
 
 	return nil
@@ -208,13 +217,13 @@ func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) (err error) {
 	if d.LowerBound, err = newElemWithOpts(d.LowerBound, o); err != nil {
 		return
 	}
-	if err = d.LowerBound.UnmarshalD4(r, nil); err != nil {
+	if err = d.LowerBound.UnmarshalD4(r, o.CopyForChild()); err != nil {
 		return
 	}
 	if d.UpperBound, err = newElemWithOpts(d.UpperBound, o); err != nil {
 		return
 	}
-	return d.UpperBound.UnmarshalD4(r, nil)
+	return d.UpperBound.UnmarshalD4(r, o.CopyForChild())
 }
 
 func (d *DT_RANGE[T]) Walk(cb WalkCallback, data ...any) {
@@ -239,7 +248,7 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 			return err
 		}
 
-		if err := d.Value[i].UnmarshalD4(r, nil); err != nil {
+		if err := d.Value[i].UnmarshalD4(r, o.CopyForChild()); err != nil {
 			return err
 		}
 	}
@@ -328,11 +337,9 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		}
 
 		for i := int32(0); i < d.DataCount; i++ {
-			var currOpts *Options
+			currOpts := o.CopyForChild()
 			if subTypeInstances[i] != nil {
-				currOpts = &Options{
-					OverrideTypeInstance: subTypeInstances[i],
-				}
+				currOpts.OverrideTypeInstance = subTypeInstances[i]
 			}
 
 			if err := d.Value[i].Value.UnmarshalD4(r, currOpts); err != nil {
@@ -398,7 +405,7 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 				return err
 			}
 
-			if err = elem.UnmarshalD4(r, &Options{}); err != nil {
+			if err = elem.UnmarshalD4(r, o.CopyForChild()); err != nil {
 				return err
 			}
 			d.Value = append(d.Value, elem)
@@ -484,7 +491,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			// Read polymorphic base to get type info before reading real type
 			var base PolymorphicBase
 			if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
-				return base.UnmarshalD4(r, nil)
+				return base.UnmarshalD4(r, o.CopyForChild())
 			}); err != nil {
 				// TODO: this is definitely not right, remove once GameBalanceTable issue solved
 				if err == io.EOF {
@@ -508,7 +515,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
 
-			if err := d.Value[i].UnmarshalD4(r, &Options{}); err != nil {
+			if err := d.Value[i].UnmarshalD4(r, o.CopyForChild()); err != nil {
 				return err
 			}
 		}
