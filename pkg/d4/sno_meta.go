@@ -49,6 +49,10 @@ func (m *SnoMeta) Walk(cb WalkCallback, d ...any) {
 	cb.Do("", m.Meta, d...)
 }
 
+func (m *SnoMeta) GetFlags() int {
+	return 0
+}
+
 // GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is
 // not nil.
 func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {

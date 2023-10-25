@@ -37,6 +37,7 @@ func (g *Generator) genericField(rv reflect.Value, field string) any {
 func (g *Generator) prettyTypeName(t any) string {
 	typeName := fmt.Sprintf("%T", t)
 	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/d4.", "", -1)
+	typeName = strings.Replace(typeName, "*github.com/Dakota628/d4parse/pkg/", "", -1)
 	typeName = strings.Replace(typeName, "*d4.", "", -1)
 	typeName = strings.Replace(typeName, "d4.", "", -1)
 	return typeName
@@ -230,7 +231,14 @@ func (g *Generator) walkCallback(k string, x d4.Object, next d4.WalkNext, d ...a
 		g.sb.WriteString("</ul>")
 		return
 	case "*d4.DT_TAGMAP":
-		g.sb.WriteString("<p><i>note: tag map parsing is not supported</i></p>") // TODO
+		g.sb.WriteString(`<div class="t">`)
+		if f := reflect.ValueOf(x).Elem().FieldByName("Type"); f.IsValid() && !f.IsNil() {
+			g.writeFmt(`<div class="tn">%s <i>(TagMap)</i></div>`, g.prettyTypeName(f.Interface()))
+		} else {
+			g.sb.WriteString(`<div class="tn">TagMap</div>`)
+		}
+		next()
+		g.sb.WriteString("</div>")
 		return
 	case "*d4.DT_CSTRING":
 		g.sb.WriteString("<pre>")

@@ -8,3 +8,4 @@ docs/map/tiles/
 map/dist/
 map/public/
 map/node_modules/
+temp/

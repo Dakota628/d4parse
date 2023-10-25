@@ -17,23 +17,33 @@ var (
 	ErrGroupRequired       = errors.New("group option required")
 )
 
-// TODO: implement Walk for iterable types
-
 type (
 	Options struct {
-		Flags       int
-		ArrayLength int
-		Group       int32
+		Flags                int
+		ArrayLength          int
+		Group                int32
+		OverrideTypeInstance Object
+		TagMapType           Object
 	}
 
 	Object interface {
 		UnmarshalD4(r *bin.BinaryReader, o *Options) error
+		GetFlags() int
 	}
 
 	MaybeExternal interface {
 		IsExternal() bool
 	}
 )
+
+func (o *Options) CopyForChild() *Options {
+	if o == nil {
+		return nil
+	}
+	return &Options{
+		Group: o.Group,
+	}
+}
 
 // DT_NULL ..
 type DT_NULL struct{}
@@ -99,7 +109,12 @@ func (d *DT_OPTIONAL[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 	}
 
 	if d.Exists > 0 {
-		return d.Value.UnmarshalD4(r, o)
+		var err error
+		if d.Value, err = newElemWithOpts(d.Value, o); err != nil {
+			return err
+		}
+
+		return d.Value.UnmarshalD4(r, o.CopyForChild())
 	}
 
 	return nil
@@ -199,13 +214,17 @@ type DT_RANGE[T Object] struct {
 	UpperBound T
 }
 
-func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.LowerBound = newElem(d.LowerBound)
-	if err := d.LowerBound.UnmarshalD4(r, o); err != nil {
-		return err
+func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) (err error) {
+	if d.LowerBound, err = newElemWithOpts(d.LowerBound, o); err != nil {
+		return
 	}
-	d.UpperBound = newElem(d.LowerBound)
-	return d.UpperBound.UnmarshalD4(r, o)
+	if err = d.LowerBound.UnmarshalD4(r, o.CopyForChild()); err != nil {
+		return
+	}
+	if d.UpperBound, err = newElemWithOpts(d.UpperBound, o); err != nil {
+		return
+	}
+	return d.UpperBound.UnmarshalD4(r, o.CopyForChild())
 }
 
 func (d *DT_RANGE[T]) Walk(cb WalkCallback, data ...any) {
@@ -225,8 +244,12 @@ func (d *DT_FIXEDARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 
 	d.Value = make([]T, o.ArrayLength)
 	for i := 0; i < o.ArrayLength; i++ {
-		d.Value[i] = newElem(d.Value[i])
-		if err := d.Value[i].UnmarshalD4(r, o); err != nil {
+		var err error
+		if d.Value[i], err = newElemWithOpts(d.Value[i], o); err != nil {
+			return err
+		}
+
+		if err := d.Value[i].UnmarshalD4(r, o.CopyForChild()); err != nil {
 			return err
 		}
 	}
@@ -240,15 +263,31 @@ func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback, data ...any) {
 }
 
 // DT_TAGMAP ...
-type DT_TAGMAP[T Object] struct {
-	Padding1   int64
-	DataOffset int32
-	DataSize   int32
+type (
+	TagMapEntry struct {
+		Name  string
+		Value Object
+	}
 
-	// TODO: figure out how to implement this fully
-}
+	DT_TAGMAP[T Object] struct {
+		Padding1   int64
+		DataOffset int32
+		DataSize   int32
+
+		DataCount int32
+		Value     []TagMapEntry
+		Type      Object
+	}
+)
 
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+	// Note: this is probably not fully correct. In order to support possibilities such as nested tag maps and fixed arr
+	// in a tag map, we would need to look at the associated type and follow the flags and such for each field.
+
+	if o != nil {
+		d.Type = o.TagMapType
+	}
+
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
 	}
@@ -257,7 +296,74 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
 		return err
 	}
 
-	return r.Int32LE(&d.DataSize)
+	if err := r.Int32LE(&d.DataSize); err != nil {
+		return err
+	}
+
+	if d.Padding1 != 0 {
+		return ErrInvalidPadding
+	}
+
+	if d.DataOffset < 1 || d.DataSize < 1 {
+		return nil
+	}
+
+	return r.AtPos(int64(d.DataOffset), io.SeekStart, func(r *bin.BinaryReader) error {
+		if err := r.Int32LE(&d.DataCount); err != nil {
+			return err
+		}
+		d.Value = make([]TagMapEntry, d.DataCount)
+		subTypeInstances := make([]Object, d.DataCount)
+
+		for i := int32(0); i < d.DataCount; i++ {
+			var elemFieldHash uint32
+			if err := r.Uint32LE(&elemFieldHash); err != nil {
+				return err
+			}
+
+			var elemTypeHash uint32
+			if err := r.Uint32LE(&elemTypeHash); err != nil {
+				return err
+			}
+
+			name := NameByFieldHash(int(elemFieldHash))
+			value := NewByTypeHash[Object](int(elemTypeHash))
+			if value == nil {
+				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
+			}
+
+			// Type flag 0x8000
+			if DefFlagHasSubType.In(value.GetFlags()) {
+				var elemSubTypeHash uint32
+				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
+					return err
+				}
+				subTypeInstances[i] = NewByTypeHash[Object](int(elemSubTypeHash))
+			}
+
+			d.Value[i].Name = name
+			d.Value[i].Value = value
+		}
+
+		for i := int32(0); i < d.DataCount; i++ {
+			currOpts := o.CopyForChild()
+			if subTypeInstances[i] != nil {
+				currOpts.OverrideTypeInstance = subTypeInstances[i]
+			}
+
+			if err := d.Value[i].Value.UnmarshalD4(r, currOpts); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+}
+
+func (d *DT_TAGMAP[T]) Walk(cb WalkCallback, data ...any) {
+	for _, v := range d.Value {
+		cb.Do(v.Name, v.Value, data...)
+	}
 }
 
 // DT_VARIABLEARRAY ...
@@ -271,7 +377,7 @@ type DT_VARIABLEARRAY[T Object] struct {
 }
 
 func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
+	d.external = o != nil && (FieldFlagPayload.In(o.Flags) || FieldFlagPayload2.In(o.Flags))
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
@@ -299,16 +405,20 @@ func (d *DT_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error
 	}
 
 	return r.AtPos(int64(d.DataOffset), io.SeekStart, func(r *bin.BinaryReader) error {
-		//for (curr - int64(d.DataOffset)) < int64(d.DataSize) {
 		for curr := int64(d.DataOffset); curr < int64(d.DataOffset+d.DataSize); {
+			var err error
 			var elem T
-			elem = newElem(elem)
-			if err := elem.UnmarshalD4(r, o); err != nil {
+
+			elem, err = newElemWithOpts(elem, o)
+			if err != nil {
+				return err
+			}
+
+			if err = elem.UnmarshalD4(r, o.CopyForChild()); err != nil {
 				return err
 			}
 			d.Value = append(d.Value, elem)
 
-			var err error
 			if curr, err = r.Pos(); err != nil {
 				return err
 			}
@@ -341,7 +451,7 @@ type DT_POLYMORPHIC_VARIABLEARRAY[T Object] struct {
 }
 
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
-	d.external = o != nil && ((o.Flags&0x200000) > 0 || (o.Flags&0x400000) > 0)
+	d.external = o != nil && (FieldFlagPayload.In(o.Flags) || FieldFlagPayload2.In(o.Flags))
 
 	if err := r.Int64LE(&d.Padding1); err != nil {
 		return err
@@ -390,7 +500,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 			// Read polymorphic base to get type info before reading real type
 			var base PolymorphicBase
 			if err := r.AtPos(0, io.SeekCurrent, func(r *bin.BinaryReader) error {
-				return base.UnmarshalD4(r, o)
+				return base.UnmarshalD4(r, o.CopyForChild())
 			}); err != nil {
 				// TODO: this is definitely not right, remove once GameBalanceTable issue solved
 				if err == io.EOF {
@@ -414,7 +524,7 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) UnmarshalD4(r *bin.BinaryReader, o *Op
 				return fmt.Errorf("could not find type for type hash: %d", elemTypeHash)
 			}
 
-			if err := d.Value[i].UnmarshalD4(r, o); err != nil {
+			if err := d.Value[i].UnmarshalD4(r, o.CopyForChild()); err != nil {
 				return err
 			}
 		}

@@ -177,6 +177,12 @@ i {
     color: #dee2e6;
 }
 
+.tn i {
+    font-size: 80%;
+    font-weight: normal;
+    line-height: 100%;
+}
+
 .pathHint {
     position: fixed;
     top: 0;

@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4data"
 	"github.com/dave/jennifer/jen"
 	mapset "github.com/deckarep/golang-set/v2"
@@ -47,18 +48,9 @@ var (
 		"DT_VECTOR3D",
 		"DT_VECTOR4D",
 	)
-	ReqParamTypes = mapset.NewThreadUnsafeSet[string](
-		"DT_CSTRING",
-		"DT_OPTIONAL",
-		"DT_RANGE",
-		"DT_FIXEDARRAY",
-		"DT_TAGMAP",
-		"DT_VARIABLEARRAY",
-		"DT_POLYMORPHIC_VARIABLEARRAY",
-	)
 
 	ErrComposeUnknownTypeHash = errors.New("cannot compose unknown type hash")
-	ErrNullNotfound           = errors.New("could not find DT_NULL type hash")
+	ErrNullNotFound           = errors.New("could not find DT_NULL type hash")
 )
 
 func SortedKeys[K constraints.Ordered, V any](m map[K]V) []K {
@@ -96,7 +88,7 @@ func SeekRelativeCode(offset int) jen.Code {
 	)
 }
 
-func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
+func UnmarshalFieldCode(transformedName string, field d4data.Field, defs d4data.Definitions) []jen.Code {
 	var code []jen.Code
 
 	// Create options code
@@ -110,6 +102,11 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field) []jen.Code {
 	}
 	if field.Group > -1 {
 		optionsDict[jen.Id("Group")] = jen.Lit(field.Group)
+	}
+	if field.TagMapType > -1 {
+		if def, ok := defs.GetByTypeHash(field.TagMapType); ok {
+			optionsDict[jen.Id("TagMapType")] = jen.Op("&").Id(def.Name).Block()
+		}
 	}
 
 	code = append(
@@ -158,10 +155,10 @@ func composeTypes(defs d4data.Definitions, types []d4data.TypeHash, hasParent bo
 
 		// This is a weird edge case. We think the internal UI allows to select 3 types default to NULL. Cases like this
 		// are likely a mistake. So, if the final types requires a type param, use null.
-		if ReqParamTypes.Contains(t.Name) {
+		if d4.DefFlagHasSubType.In(t.Flags) {
 			nullTypeHash, _, ok := defs.GetByName("DT_NULL")
 			if !ok {
-				return nil, ErrNullNotfound
+				return nil, ErrNullNotFound
 			}
 			types = append(types, nullTypeHash)
 			return composeTypes(defs, types, hasParent)
@@ -193,7 +190,7 @@ func ComposeTypes(defs d4data.Definitions, types []d4data.TypeHash) (jen.Code, e
 	// Truncate to everything before first null type
 	nullTypeHash, _, ok := defs.GetByName("DT_NULL")
 	if !ok {
-		return nil, ErrNullNotfound
+		return nil, ErrNullNotFound
 	}
 
 	for i, typeHash := range types {
@@ -245,7 +242,7 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 		def := defs.TypeHashToDef[typeHash]
 		var case_ jen.Code
 
-		if ReqParamTypes.Contains(def.Name) {
+		if d4.DefFlagHasSubType.In(def.Flags) {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Types(jen.Id("T")).Block())
 		} else {
 			case_ = jen.Return(jen.Op("&").Id(def.Name).Block())
@@ -273,10 +270,58 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 	return nil
 }
 
+func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error {
+	var cases []jen.Code
+
+	for _, fieldHash := range SortedKeys(defs.FieldHashToName) {
+		fieldName := defs.FieldHashToName[fieldHash]
+		cases = append(
+			cases,
+			jen.Case(jen.Lit(fieldHash)).Block(
+				jen.Return(jen.Lit(fieldName)),
+			),
+		)
+	}
+
+	cases = append(
+		cases,
+		jen.Default().Block(
+			jen.Return(jen.Lit("")),
+		),
+	)
+
+	f.Func().Id("NameByFieldHash").Params(
+		jen.Id("h").Int(),
+	).Id("string").Block(
+		jen.Switch(jen.Id("h")).Block(cases...),
+	).Line()
+
+	return nil
+}
+
+func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definition) error {
+	// Generate receiver code
+	var receiver jen.Code
+	if d4.DefFlagHasSubType.In(def.Flags) {
+		receiver = jen.Id("t").Op("*").Id(def.Name).Types(jen.Id("Object"))
+	} else {
+		receiver = jen.Id("t").Op("*").Id(def.Name)
+	}
+
+	// Construct GetFlags function
+	f.Func().Params(
+		receiver,
+	).Id("GetFlags").Params().Int().Block( // Note: don't use `Flags` as it collides with some fields.
+		jen.Return(jen.Lit(def.Flags)),
+	).Line()
+
+	return nil
+}
+
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
 	if BasicTypes.Contains(def.Name) {
-		return nil
+		return GenerateForAllTypes(f, defs, def)
 	}
 
 	// Construct fields
@@ -309,7 +354,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		fields = append(fields, jen.Id(fieldName).Add(fieldTypeCode))
 
 		// Add UnmarshalD4 body code
-		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field)...)
+		unmarshalD4Body = append(unmarshalD4Body, UnmarshalFieldCode(fieldName, field, defs)...)
 
 		// Add Walk body code
 		walkBody = append(walkBody, WalkFieldCode(fieldName)...)
@@ -341,7 +386,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		walkBody...,
 	).Line()
 
-	return nil
+	return GenerateForAllTypes(f, defs, def)
 }
 
 func GenerateStructs(defs d4data.Definitions, outputPath string) error {
@@ -354,6 +399,9 @@ func GenerateStructs(defs d4data.Definitions, outputPath string) error {
 		return err
 	}
 	if err := GenerateTypeHashMapFunc(f, defs); err != nil {
+		return err
+	}
+	if err := GenerateTagMapFieldHashMapFunc(f, defs); err != nil {
 		return err
 	}
 
