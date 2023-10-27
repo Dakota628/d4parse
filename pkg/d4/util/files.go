@@ -15,15 +15,28 @@ var (
 type FileType string
 
 const (
-	FileTypeMeta         FileType = "meta"
-	FileTypePayload      FileType = "payload"
-	FileTypePaylow       FileType = "paylow"
-	FileTypeEnUsTextMeta          = FileType(".." +
-		string(filepath.Separator) +
-		"enUS_Text" +
-		string(filepath.Separator) +
-		"meta")
+	FileTypeMeta    FileType = "meta"
+	FileTypePayload FileType = "payload"
+	FileTypePaylow  FileType = "paylow"
 )
+
+func FilePattern(
+	dataPath string,
+	rootPath string,
+	ft FileType,
+	group d4.SnoGroup,
+	name string,
+	prefixPattern string,
+	suffixPattern string,
+) string {
+	return filepath.Join(
+		dataPath,
+		rootPath,
+		string(ft),
+		group.String(),
+		fmt.Sprintf("%s%s%s%s", prefixPattern, name, suffixPattern, group.Ext()),
+	)
+}
 
 func BaseFilePattern(
 	dataPath string,
@@ -33,13 +46,7 @@ func BaseFilePattern(
 	prefixPattern string,
 	suffixPattern string,
 ) string {
-	return filepath.Join(
-		dataPath,
-		basePath,
-		string(ft),
-		group.String(),
-		fmt.Sprintf("%s%s%s%s", prefixPattern, name, suffixPattern, group.Ext()),
-	)
+	return FilePattern(dataPath, basePath, ft, group, name, prefixPattern, suffixPattern)
 }
 
 func BaseFilePath(dataPath string, ft FileType, group d4.SnoGroup, name string) string {
@@ -68,6 +75,22 @@ func ChangePathType(path string, ft FileType) string {
 	path, _ = filepath.Split(path)
 	path = filepath.Clean(path)
 	return filepath.Join(path, string(ft), group, file)
+}
+
+func FindLocalizedFile(dataPath string, ft FileType, group d4.SnoGroup, name string) string {
+	switch group {
+	case d4.SnoGroupStringList:
+		l10nPath := FilePattern(dataPath, "enUS_Text", ft, group, name, "", "")
+		if _, err := os.Stat(l10nPath); !os.IsNotExist(err) {
+			return l10nPath
+		}
+	case d4.SnoGroupwWiseSoundBank:
+		l10nPath := FilePattern(dataPath, "enUS_Speech", ft, group, name, "", "")
+		if _, err := os.Stat(l10nPath); !os.IsNotExist(err) {
+			return l10nPath
+		}
+	}
+	return BaseFilePath(dataPath, ft, group, name)
 }
 
 func EachSnoMeta(dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta) bool) error {

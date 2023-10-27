@@ -133,13 +133,8 @@ func main() {
 			return
 		}
 
-		fileType := util.FileTypeMeta
-		if sno.Group == d4.SnoGroupStringList {
-			fileType = util.FileTypeEnUsTextMeta
-		}
-
-		oldMetaPath := util.BaseFilePath(oldPath, fileType, sno.Group, sno.Name)
-		newMetaPath := util.BaseFilePath(newPath, fileType, sno.Group, sno.Name)
+		oldMetaPath := util.FindLocalizedFile(oldPath, util.FileTypeMeta, sno.Group, sno.Name)
+		newMetaPath := util.FindLocalizedFile(newPath, util.FileTypeMeta, sno.Group, sno.Name)
 
 		oldMeta, err := d4.ReadSnoMetaFile(oldMetaPath)
 		if err != nil {

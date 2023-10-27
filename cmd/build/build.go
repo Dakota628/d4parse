@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4/html"
+	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/bmatcuk/doublestar/v4"
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/vmihailenco/msgpack/v5"
@@ -23,9 +24,10 @@ const (
 )
 
 var (
-	basePrefix        = "base"
-	metaPrefix        = filepath.Join(basePrefix, "meta")
-	stringListsPrefix = filepath.Join("enUS_Text", "meta", "StringList")
+	basePrefix       = "base"
+	metaPrefix       = filepath.Join(basePrefix, "meta")
+	textMetaPrefix   = filepath.Join("enUS_Text", "meta")
+	speechMetaPrefix = filepath.Join("enUS_Speech", "meta")
 )
 
 func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], outputPath string, progress *atomic.Uint64) {
@@ -123,8 +125,13 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 	// Make paths
 	metaPath := filepath.Join(gameDataPath, metaPrefix)
 	baseMetaGlobPath := filepath.Join(metaPath, "**", "*.*")
-	stringListsPath := filepath.Join(gameDataPath, stringListsPrefix)
-	stringsMetaGlobPath := filepath.Join(stringListsPath, "**", "*.*")
+
+	textMetaPath := filepath.Join(gameDataPath, textMetaPrefix)
+	textMetaGlobPath := filepath.Join(textMetaPath, "**", "*.*")
+
+	speechMetaPath := filepath.Join(gameDataPath, speechMetaPrefix)
+	speechMetaGlobPath := filepath.Join(speechMetaPath, "**", "*.*")
+
 	gameBalancePath := filepath.Join(metaPath, "GameBalance")
 
 	// Get all data file names
@@ -132,7 +139,11 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 	if err != nil {
 		return err
 	}
-	stringsMetaFiles, err := doublestar.FilepathGlob(stringsMetaGlobPath)
+	stringsMetaFiles, err := doublestar.FilepathGlob(textMetaGlobPath)
+	if err != nil {
+		return err
+	}
+	speechMetaFiles, err := doublestar.FilepathGlob(speechMetaGlobPath)
 	if err != nil {
 		return err
 	}
@@ -162,7 +173,14 @@ func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string,
 	}
 
 	slog.Info("Generating remaining html files...")
-	if err = generateHtmlForFiles(toc, gbData, refs, append(stringsMetaFiles, baseMetaFiles...), outputPath, &progress); err != nil {
+	if err = generateHtmlForFiles(
+		toc,
+		gbData,
+		refs,
+		util.CombineSlices(stringsMetaFiles, speechMetaFiles, baseMetaFiles),
+		outputPath,
+		&progress,
+	); err != nil {
 		return err
 	}
 
