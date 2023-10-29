@@ -286,6 +286,19 @@ type (
 	}
 )
 
+func getTagMapTypeAlignment(fieldType Object, fieldSubType Object) int32 {
+	switch(fieldType.TypeHash()) {
+	case 2388214534: // DT_FIXEDARRAY
+	case 3121633597: // DT_OPTIONAL
+	case 3877855748: // DT_RANGE
+		subtypeOptions := OptionsForType(fieldSubType.TypeHash())
+		return int32(subtypeOptions.TagMapAlignment)
+	}
+
+	typeOptions := OptionsForType(fieldType.TypeHash())
+	return int32(typeOptions.TagMapAlignment)
+}
+
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	// Note: this is probably not fully correct. In order to support possibilities such as nested tag maps and fixed arr
 	// in a tag map, we would need to look at the associated type and follow the flags and such for each field.
@@ -353,6 +366,19 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 		}
 
 		for i := int32(0); i < d.DataCount; i++ {
+			var err error
+			var currentOffset int64
+			if currentOffset, err = r.Pos(); err != nil {
+				return err
+			}
+			requiredAlignment := getTagMapTypeAlignment(d.Value[i].Value, subTypeInstances[i])
+			currentAlignment := int32(currentOffset) % requiredAlignment
+			if currentAlignment > 0 {
+				padding := requiredAlignment - currentAlignment
+
+				r.Seek(int64(padding), io.SeekCurrent)
+			}
+
 			currOpts := o.CopyForChild()
 			if subTypeInstances[i] != nil {
 				currOpts.OverrideTypeInstance = subTypeInstances[i]
