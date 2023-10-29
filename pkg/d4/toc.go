@@ -15,7 +15,7 @@ type TocEntry struct {
 	SnoName string
 }
 
-func (t *TocEntry) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TocEntry) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	if err := r.Int32LE((*int32)(&t.SnoGroup)); err != nil {
 		return err
 	}
@@ -64,7 +64,7 @@ func (t *Toc) headerSize() int64 {
 	return 4 + (int64(t.NumSnoGroups) * (4 + 4 + 4)) + 4
 }
 
-func (t *Toc) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *Toc) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	if err := r.Int32LE(&t.NumSnoGroups); err != nil {
 		return err
 	}
@@ -160,7 +160,7 @@ type TocReplacedSnosMapping struct {
 	Entries    []TocReplacedSnosEntry
 }
 
-func (t *TocReplacedSnosMapping) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TocReplacedSnosMapping) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	if _, err := r.Seek(4, io.SeekCurrent); err != nil {
 		return err
 	}
@@ -214,7 +214,7 @@ type TocSharedPayloadsMapping struct {
 	Entries    []TocSharedPayloadsEntry
 }
 
-func (t *TocSharedPayloadsMapping) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (t *TocSharedPayloadsMapping) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	if _, err := r.Seek(4, io.SeekCurrent); err != nil {
 		return err
 	}

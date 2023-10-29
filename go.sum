@@ -147,4 +147,5 @@ leb.io/cuckoo v0.1.2/go.mod h1:EAn6JQBg65dcILMLuPbBRbkSjd6u+4KA+iTwBEUxBuQ=
 leb.io/hashland v0.0.0-20171003003232-07375b562dea/go.mod h1:OSwp5BNKniWS6joctn4Grabrxd2EERBB7pNzK9Ni3BQ=
 leb.io/hashland v0.1.5 h1:eYSHFg1XW9g9skEHW8vmGqmLI7/uwgdIZfs6S5B6sYA=
 leb.io/hashland v0.1.5/go.mod h1:9j5mdWHi55Q2xbBI5R/xv6lI5SnljxxtS9JE9XSlfoc=
+leb.io/hrff v0.1.0 h1:HAhaPEnNEJp7pCbH/qgCT0VMNMQC7I10unCRuu08cKc=
 leb.io/hrff v0.1.0/go.mod h1:EZ02Yctbwtxev2S/3jw6aKNrw2e/gkaaRk4fgnYFTec=

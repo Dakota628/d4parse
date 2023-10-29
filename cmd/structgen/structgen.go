@@ -53,6 +53,75 @@ var (
 	ErrNullNotFound           = errors.New("could not find DT_NULL type hash")
 )
 
+func GetBasicTypeAlignment(defs d4data.Definitions, def d4data.Definition, inTagMap bool, typeHashes ...d4data.TypeHash) int {
+	switch def.Hash {
+	case defs.HashByName("DT_NULL"):
+		return 0
+	case defs.HashByName("DT_POLYMORPHIC_VARIABLEARRAY"),
+		defs.HashByName("DT_STRING_FORMULA"),
+		defs.HashByName("DT_VARIABLEARRAY"),
+		defs.HashByName("DT_TAGMAP"),
+		defs.HashByName("DT_CSTRING"):
+		if inTagMap {
+			return 4
+		}
+		return 8
+	case defs.HashByName("DT_CHARARRAY"):
+		return 1
+	case defs.HashByName("DT_FIXEDARRAY"):
+		return GetTypeAlignment(defs, false, typeHashes[1:]...)
+	case defs.HashByName("DT_OPTIONAL"):
+		return GetTypeAlignment(defs, false, typeHashes[1:]...) // 2 for DT_WORD, 8 for DT_INT?
+	case defs.HashByName("DT_SNO_NAME"):
+		return 4
+	case defs.HashByName("DT_RANGE"):
+		return GetTypeAlignment(defs, false, typeHashes[1:]...)
+	default:
+		return def.Size
+	}
+}
+
+func GetTypeAlignment(defs d4data.Definitions, inTagMap bool, typeHashes ...d4data.TypeHash) int {
+	if len(typeHashes) == 0 {
+		return 0
+	}
+
+	def, ok := defs.GetByTypeHash(typeHashes[0])
+	if !ok {
+		slog.Warn(
+			"No alignment information for unknown type",
+			slog.String("name", def.Name),
+			slog.Int("hash", def.Hash),
+		)
+		return 4
+	}
+
+	if def.Fields == nil {
+		if def.Type == "basic" {
+			return GetBasicTypeAlignment(defs, def, inTagMap, typeHashes...)
+		}
+
+		slog.Warn(
+			"No alignment information for type",
+			slog.String("name", def.Name),
+			slog.Int("hash", def.Hash),
+		)
+		return 4
+	}
+
+	if len(def.Fields) == 0 && def.Fields != nil { // Checking nil again here in case above code changes and causes hard to spot bug
+		return 1
+	}
+
+	var alignment int
+	for _, field := range def.Fields {
+		// Since the field.Type slice is always size 3, just manually index here instead of iter and casting the slice
+		alignment = max(alignment, GetTypeAlignment(defs, false, field.Type[0], field.Type[1], field.Type[2]))
+	}
+
+	return alignment
+}
+
 func SortedKeys[K constraints.Ordered, V any](m map[K]V) []K {
 	// TODO: maybe move this into pkg/d4data/definitions so we dont iter + sort multiple times
 	ks := make([]K, 0, len(m))
@@ -116,7 +185,7 @@ func UnmarshalFieldCode(transformedName string, field d4data.Field, defs d4data.
 				jen.Id("p").Op("+").Lit(field.Offset),
 				jen.Op("&").Id("t").Dot(transformedName),
 				jen.Id("r"),
-				jen.Op("&").Id("Options").Values(optionsDict),
+				jen.Op("&").Id("FieldOptions").Values(optionsDict),
 			),
 			jen.Err().Op("!=").Nil(),
 		).Block(
@@ -299,6 +368,56 @@ func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error 
 	return nil
 }
 
+func GenerateTypeOptions(options d4.TypeOptions) jen.Code {
+	optionsDict := jen.Dict{}
+
+	if options.Flags != 0 {
+		optionsDict[jen.Id("Flags")] = jen.Lit(options.Flags)
+	}
+	if options.Alignment != 0 {
+		optionsDict[jen.Id("Alignment")] = jen.Lit(options.Alignment)
+	}
+	if options.TagMapAlignment != 0 {
+		optionsDict[jen.Id("TagMapAlignment")] = jen.Lit(options.TagMapAlignment)
+	}
+
+	return jen.Id("TypeOptions").Values(optionsDict)
+}
+
+func GenerateOptionsMapFunc(f *jen.File, defs d4data.Definitions) error {
+	var cases []jen.Code
+
+	for _, typeHash := range SortedKeys(defs.TypeHashToDef) {
+		def := defs.TypeHashToDef[typeHash]
+
+		cases = append(
+			cases,
+			jen.Case(jen.Lit(typeHash)).Block(
+				jen.Return(GenerateTypeOptions(d4.TypeOptions{
+					Flags:           def.Flags,
+					Alignment:       GetTypeAlignment(defs, false, def.Hash),
+					TagMapAlignment: GetTypeAlignment(defs, true, def.Hash),
+				})),
+			),
+		)
+	}
+
+	cases = append(
+		cases,
+		jen.Default().Block(
+			jen.Return(GenerateTypeOptions(d4.TypeOptions{})),
+		),
+	)
+
+	f.Func().Id("OptionsForType").Params(
+		jen.Id("h").Int(),
+	).Id("TypeOptions").Block(
+		jen.Switch(jen.Id("h")).Block(cases...),
+	).Line()
+
+	return nil
+}
+
 func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definition) error {
 	// Generate receiver code
 	var receiver jen.Code
@@ -311,8 +430,8 @@ func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definitio
 	// Construct GetFlags function
 	f.Func().Params(
 		receiver,
-	).Id("GetFlags").Params().Int().Block( // Note: don't use `Flags` as it collides with some fields.
-		jen.Return(jen.Lit(def.Flags)),
+	).Id("TypeHash").Params().Int().Block(
+		jen.Return(jen.Lit(def.Hash)),
 	).Line()
 
 	return nil
@@ -371,7 +490,7 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		jen.Id("t").Op("*").Id(def.Name),
 	).Id("UnmarshalD4").Params(
 		jen.Id("r").Op("*").Qual("github.com/Dakota628/d4parse/pkg/bin", "BinaryReader"),
-		jen.Id("o").Op("*").Id("Options"),
+		jen.Id("o").Op("*").Id("FieldOptions"),
 	).Error().Block(
 		unmarshalD4Body...,
 	).Line()
@@ -402,6 +521,9 @@ func GenerateStructs(defs d4data.Definitions, outputPath string) error {
 		return err
 	}
 	if err := GenerateTagMapFieldHashMapFunc(f, defs); err != nil {
+		return err
+	}
+	if err := GenerateOptionsMapFunc(f, defs); err != nil {
 		return err
 	}
 

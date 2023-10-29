@@ -16,7 +16,7 @@ func newElem[T Object](t T) T {
 	return elemPtr.Interface().(T)
 }
 
-func newElemWithOpts[T Object](t T, o *Options) (T, error) {
+func newElemWithOpts[T Object](t T, o *FieldOptions) (T, error) {
 	if o != nil && o.OverrideTypeInstance != nil {
 		if t, ok := newElem(o.OverrideTypeInstance).(T); ok {
 			return t, nil

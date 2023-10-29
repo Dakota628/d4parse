@@ -79,6 +79,11 @@ func (d Definitions) GetByName(name TypeName) (TypeHash, Definition, bool) {
 	return typeHash, def, true
 }
 
+func (d Definitions) HashByName(name TypeName) (hash TypeHash) {
+	hash, _, _ = d.GetByName(name)
+	return
+}
+
 func LoadDefinitions(path string) (defs Definitions, err error) {
 	// Open file
 	f, err := os.Open(path)

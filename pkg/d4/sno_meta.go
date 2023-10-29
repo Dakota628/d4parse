@@ -15,7 +15,7 @@ type SnoMeta struct {
 	Meta   Object
 }
 
-func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *Options) error {
+func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	// Read SNOFileHeader
 	if err := m.Header.UnmarshalD4(r, nil); err != nil {
 		return err
@@ -49,8 +49,8 @@ func (m *SnoMeta) Walk(cb WalkCallback, d ...any) {
 	cb.Do("", m.Meta, d...)
 }
 
-func (m *SnoMeta) GetFlags() int {
-	return 0
+func (m *SnoMeta) TypeHash() int {
+	return -1
 }
 
 // GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is

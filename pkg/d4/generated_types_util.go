@@ -23,7 +23,7 @@ func (cb WalkCallback) Do(k string, t Object, d ...any) {
 	}, d...)
 }
 
-func UnmarshalAt(offset int64, t Object, r *bin.BinaryReader, o *Options) error {
+func UnmarshalAt(offset int64, t Object, r *bin.BinaryReader, o *FieldOptions) error {
 	if _, err := r.Seek(offset, io.SeekStart); err != nil {
 		return err
 	}
