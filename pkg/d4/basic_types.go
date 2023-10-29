@@ -288,9 +288,9 @@ type (
 
 func (d *DT_TAGMAP[T]) getTypeAlignment(fieldType Object, fieldSubType Object) int32 {
 	switch fieldType.TypeHash() {
-	case 2388214534, // DT_FIXEDARRAY
-		3121633597, // DT_OPTIONAL
-		3877855748: // DT_RANGE
+	case TypeHashByName("DT_FIXEDARRAY"),
+		TypeHashByName("DT_OPTIONAL"),
+		TypeHashByName("DT_RANGE"):
 		subtypeOptions := OptionsForType(fieldSubType.TypeHash())
 		return int32(subtypeOptions.TagMapAlignment)
 	default:

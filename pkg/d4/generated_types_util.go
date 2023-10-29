@@ -32,3 +32,7 @@ func UnmarshalAt(offset int64, t Object, r *bin.BinaryReader, o *FieldOptions) e
 	}
 	return nil
 }
+
+func nilObject[T Object]() (obj T) {
+	return
+}

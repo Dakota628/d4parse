@@ -6,6 +6,7 @@ import (
 	"github.com/Dakota628/d4parse/pkg/d4"
 	"github.com/Dakota628/d4parse/pkg/d4data"
 	"github.com/dave/jennifer/jen"
+	mapset "github.com/deckarep/golang-set/v2"
 	"golang.org/x/exp/constraints"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
@@ -16,6 +17,38 @@ import (
 )
 
 var (
+	BasicTypes = mapset.NewThreadUnsafeSet[string](
+		"DT_NULL",
+		"DT_BYTE",
+		"DT_WORD",
+		"DT_ENUM",
+		"DT_INT",
+		"DT_FLOAT",
+		"DT_OPTIONAL",
+		"DT_SNO",
+		"DT_SNO_NAME",
+		"DT_GBID",
+		"DT_STARTLOC_NAME",
+		"DT_UINT",
+		"DT_ACD_NETWORK_NAME",
+		"DT_SHARED_SERVER_DATA_ID",
+		"DT_INT64",
+		"DT_RANGE",
+		"DT_FIXEDARRAY",
+		"DT_TAGMAP",
+		"DT_VARIABLEARRAY",
+		"DT_POLYMORPHIC_VARIABLEARRAY",
+		"DT_STRING_FORMULA",
+		"DT_CSTRING",
+		"DT_CHARARRAY",
+		"DT_RGBACOLOR",
+		"DT_RGBACOLORVALUE",
+		"DT_BCVEC2I",
+		"DT_VECTOR2D",
+		"DT_VECTOR3D",
+		"DT_VECTOR4D",
+	)
+
 	ErrComposeUnknownTypeHash = errors.New("cannot compose unknown type hash")
 	ErrNullNotFound           = errors.New("could not find DT_NULL type hash")
 )
@@ -306,36 +339,6 @@ func GenerateTypeHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 	return nil
 }
 
-func GenerateTypeNameMapFunc(f *jen.File, defs d4data.Definitions) error {
-	var cases []jen.Code
-
-	for _, typeHash := range SortedKeys(defs.TypeHashToDef) {
-		def := defs.TypeHashToDef[typeHash]
-
-		case_ := jen.Return(jen.Lit(typeHash))
-
-		cases = append(
-			cases,
-			jen.Case(jen.Lit(def.Name)).Block(case_),
-		)
-	}
-
-	cases = append(
-		cases,
-		jen.Default().Block(
-			jen.Return(jen.Lit(0)),
-		),
-	)
-
-	f.Func().Id("TypeHashByName").Params(
-		jen.Id("s").String(),
-	).Int().Block(
-		jen.Switch(jen.Id("s")).Block(cases...),
-	).Line()
-
-	return nil
-}
-
 func GenerateTagMapFieldHashMapFunc(f *jen.File, defs d4data.Definitions) error {
 	var cases []jen.Code
 
@@ -416,46 +419,27 @@ func GenerateOptionsMapFunc(f *jen.File, defs d4data.Definitions) error {
 }
 
 func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definition) error {
-	hasSubType := d4.DefFlagHasSubType.In(def.Flags)
-
 	// Generate receiver code
 	var receiver jen.Code
-	if hasSubType {
-		receiver = jen.Id("t").Op("*").Id(def.Name).Types(jen.Id("T"))
+	if d4.DefFlagHasSubType.In(def.Flags) {
+		receiver = jen.Id("t").Op("*").Id(def.Name).Types(jen.Id("Object"))
 	} else {
 		receiver = jen.Id("t").Op("*").Id(def.Name)
 	}
 
-	// Construct TypHash function
+	// Construct GetFlags function
 	f.Func().Params(
 		receiver,
 	).Id("TypeHash").Params().Int().Block(
 		jen.Return(jen.Lit(def.Hash)),
 	).Line()
 
-	// Construct SubTypeHash function
-	if hasSubType {
-		f.Func().Params(
-			receiver,
-		).Id("SubTypeHash").Params().Int().Block(
-			jen.Return(
-				jen.Id("nilObject").Types(jen.Id("T")).Call().Dot("TypeHash").Call(),
-			),
-		).Line()
-	} else {
-		f.Func().Params(
-			receiver,
-		).Id("SubTypeHash").Params().Int().Block(
-			jen.Return(jen.Lit(0)),
-		).Line()
-	}
-
 	return nil
 }
 
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
-	if def.Type == "basic" {
+	if BasicTypes.Contains(def.Name) {
 		return GenerateForAllTypes(f, defs, def)
 	}
 
@@ -534,9 +518,6 @@ func GenerateStructs(defs d4data.Definitions, outputPath string) error {
 		return err
 	}
 	if err := GenerateTypeHashMapFunc(f, defs); err != nil {
-		return err
-	}
-	if err := GenerateTypeNameMapFunc(f, defs); err != nil {
 		return err
 	}
 	if err := GenerateTagMapFieldHashMapFunc(f, defs); err != nil {
