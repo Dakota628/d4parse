@@ -286,17 +286,17 @@ type (
 	}
 )
 
-func getTagMapTypeAlignment(fieldType Object, fieldSubType Object) int32 {
-	switch(fieldType.TypeHash()) {
-	case 2388214534: // DT_FIXEDARRAY
-	case 3121633597: // DT_OPTIONAL
-	case 3877855748: // DT_RANGE
+func (d *DT_TAGMAP[T]) getTypeAlignment(fieldType Object, fieldSubType Object) int32 {
+	switch fieldType.TypeHash() {
+	case 2388214534, // DT_FIXEDARRAY
+		3121633597, // DT_OPTIONAL
+		3877855748: // DT_RANGE
 		subtypeOptions := OptionsForType(fieldSubType.TypeHash())
 		return int32(subtypeOptions.TagMapAlignment)
+	default:
+		typeOptions := OptionsForType(fieldType.TypeHash())
+		return int32(typeOptions.TagMapAlignment)
 	}
-
-	typeOptions := OptionsForType(fieldType.TypeHash())
-	return int32(typeOptions.TagMapAlignment)
 }
 
 func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
@@ -352,7 +352,7 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 			}
 
 			// Type flag 0x8000
-			elemTypeOptions := OptionsForType(int(elemTypeHash))
+			elemTypeOptions := OptionsForType(value.TypeHash())
 			if DefFlagHasSubType.In(elemTypeOptions.Flags) {
 				var elemSubTypeHash uint32
 				if err := r.Uint32LE(&elemSubTypeHash); err != nil {
@@ -366,17 +366,18 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 		}
 
 		for i := int32(0); i < d.DataCount; i++ {
-			var err error
-			var currentOffset int64
-			if currentOffset, err = r.Pos(); err != nil {
+			currentOffset, err := r.Pos()
+			if err != nil {
 				return err
 			}
-			requiredAlignment := getTagMapTypeAlignment(d.Value[i].Value, subTypeInstances[i])
+
+			requiredAlignment := d.getTypeAlignment(d.Value[i].Value, subTypeInstances[i])
 			currentAlignment := int32(currentOffset) % requiredAlignment
 			if currentAlignment > 0 {
 				padding := requiredAlignment - currentAlignment
-
-				r.Seek(int64(padding), io.SeekCurrent)
+				if _, err = r.Seek(int64(padding), io.SeekCurrent); err != nil {
+					return err
+				}
 			}
 
 			currOpts := o.CopyForChild()
