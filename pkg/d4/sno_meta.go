@@ -53,6 +53,10 @@ func (m *SnoMeta) TypeHash() int {
 	return -1
 }
 
+func (m *SnoMeta) SubTypeHash() int {
+	return m.Meta.TypeHash()
+}
+
 // GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is
 // not nil.
 func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {

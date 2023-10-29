@@ -35,6 +35,7 @@ type (
 	Object interface {
 		UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error
 		TypeHash() int
+		SubTypeHash() int
 	}
 
 	MaybeExternal interface {
