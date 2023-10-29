@@ -1,6 +1,6 @@
 package d4
 
-//go:generate go run ../../cmd/structgen/structgen.go ../../d4data/definitions.json generated_types.go
+//go:generate go run ../../cmd/structgen2/structgen2.go ../../d4data/definitions.json generated_types.go
 
 import (
 	"errors"
@@ -50,6 +50,8 @@ func (o *FieldOptions) CopyForChild() *FieldOptions {
 		Group: o.Group,
 	}
 }
+
+// TODO: basic types need to be interfaces with constructors too
 
 // DT_NULL ..
 type DT_NULL struct{}
