@@ -27,7 +27,7 @@ func newElemWithOpts[T Object](t T, o *FieldOptions) (T, error) {
 	return newElem(t), nil
 }
 
-func TrimNullTerminated(x []rune) string {
+func TrimNullTerminated(x []byte) string {
 	for i, c := range x {
 		if c == 0 {
 			return string(x[:i])
