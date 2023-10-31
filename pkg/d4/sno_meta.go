@@ -3,6 +3,7 @@ package d4
 import (
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bin"
+	"hash"
 	"io"
 	"os"
 )
@@ -55,6 +56,10 @@ func (m *SnoMeta) TypeHash() int {
 
 func (m *SnoMeta) SubTypeHash() int {
 	return m.Meta.TypeHash()
+}
+
+func (m *SnoMeta) Hash(h hash.Hash) error {
+	return m.Meta.Hash(h)
 }
 
 // GetReferences gets a list of SNO IDs referenced by this SNO. Will also add GameBalance SNO references if gbData is

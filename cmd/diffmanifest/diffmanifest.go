@@ -105,11 +105,11 @@ func main() {
 		}
 
 		// Add meta hash
-		oldSer, err := msgpack.Marshal(meta.Meta)
-		if err != nil {
+		h := crc32.NewIEEE()
+		if err := meta.Hash(h); err != nil {
 			panic(err)
 		}
-		sno.MetaHash = crc32.ChecksumIEEE(oldSer)
+		sno.MetaHash = h.Sum32()
 
 		// Add XML hash
 		sno.XMLHash = meta.Header.DwXMLHash.Value

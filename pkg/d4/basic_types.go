@@ -3,11 +3,14 @@ package d4
 //go:generate go run ../../cmd/structgen/structgen.go ../../d4data/definitions.json generated_types.go
 
 import (
+	"encoding/binary"
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bin"
 	"golang.org/x/exp/slog"
+	"hash"
 	"io"
+	"math"
 	"strconv"
 )
 
@@ -36,6 +39,7 @@ type (
 		UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error
 		TypeHash() int
 		SubTypeHash() int
+		Hash(h hash.Hash) error
 	}
 
 	MaybeExternal interface {
@@ -59,6 +63,10 @@ func (d *DT_NULL) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return nil
 }
 
+func (d *DT_NULL) Hash(_ hash.Hash) error {
+	return nil
+}
+
 // DT_BYTE ...
 type DT_BYTE struct {
 	Value uint8
@@ -66,6 +74,11 @@ type DT_BYTE struct {
 
 func (d *DT_BYTE) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint8(&d.Value)
+}
+
+func (d *DT_BYTE) Hash(h hash.Hash) error {
+	_, err := h.Write([]byte{d.Value})
+	return err
 }
 
 // DT_WORD ...
@@ -77,6 +90,13 @@ func (d *DT_WORD) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint16LE(&d.Value)
 }
 
+func (d *DT_WORD) Hash(h hash.Hash) error {
+	bs := make([]byte, 2)
+	binary.LittleEndian.PutUint16(bs, d.Value)
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_ENUM ...
 type DT_ENUM struct {
 	Value int32
@@ -84,6 +104,13 @@ type DT_ENUM struct {
 
 func (d *DT_ENUM) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Int32LE(&d.Value)
+}
+
+func (d *DT_ENUM) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, uint32(d.Value))
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_INT ...
@@ -95,6 +122,13 @@ func (d *DT_INT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Int32LE(&d.Value)
 }
 
+func (d *DT_INT) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, uint32(d.Value))
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_FLOAT ...
 type DT_FLOAT struct {
 	Value float32
@@ -102,6 +136,13 @@ type DT_FLOAT struct {
 
 func (d *DT_FLOAT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Float32LE(&d.Value)
+}
+
+func (d *DT_FLOAT) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.Value))
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_OPTIONAL ...
@@ -133,6 +174,13 @@ func (d *DT_OPTIONAL[T]) Walk(cb WalkCallback, data ...any) {
 	}
 }
 
+func (d *DT_OPTIONAL[T]) Hash(h hash.Hash) error {
+	if d.Exists > 0 {
+		return d.Value.Hash(h)
+	}
+	return nil
+}
+
 // DT_SNO ...
 type DT_SNO struct {
 	Id int32
@@ -140,6 +188,13 @@ type DT_SNO struct {
 
 func (d *DT_SNO) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Int32LE(&d.Id)
+}
+
+func (d *DT_SNO) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, uint32(d.Id))
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_SNO_NAME ...
@@ -153,6 +208,22 @@ func (d *DT_SNO_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 		return err
 	}
 	return r.Int32LE(&d.Id)
+}
+
+func (d *DT_SNO_NAME) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+
+	binary.LittleEndian.PutUint32(bs, uint32(d.Group))
+	if _, err := h.Write(bs); err != nil {
+		return err
+	}
+
+	binary.LittleEndian.PutUint32(bs, uint32(d.Id))
+	if _, err := h.Write(bs); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // DT_GBID ...
@@ -170,6 +241,22 @@ func (d *DT_GBID) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint32LE(&d.Value)
 }
 
+func (d *DT_GBID) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+
+	binary.LittleEndian.PutUint32(bs, uint32(d.Group))
+	if _, err := h.Write(bs); err != nil {
+		return err
+	}
+
+	binary.LittleEndian.PutUint32(bs, d.Value)
+	if _, err := h.Write(bs); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // DT_STARTLOC_NAME ...
 type DT_STARTLOC_NAME struct {
 	Value uint32
@@ -177,6 +264,13 @@ type DT_STARTLOC_NAME struct {
 
 func (d *DT_STARTLOC_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint32LE(&d.Value)
+}
+
+func (d *DT_STARTLOC_NAME) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, d.Value)
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_UINT ...
@@ -188,6 +282,13 @@ func (d *DT_UINT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint32LE(&d.Value)
 }
 
+func (d *DT_UINT) Hash(h hash.Hash) error {
+	bs := make([]byte, 4)
+	binary.LittleEndian.PutUint32(bs, d.Value)
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_ACD_NETWORK_NAME ...
 type DT_ACD_NETWORK_NAME struct {
 	Value uint64
@@ -195,6 +296,13 @@ type DT_ACD_NETWORK_NAME struct {
 
 func (d *DT_ACD_NETWORK_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Uint64LE(&d.Value)
+}
+
+func (d *DT_ACD_NETWORK_NAME) Hash(h hash.Hash) error {
+	bs := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bs, d.Value)
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_SHARED_SERVER_DATA_ID ...
@@ -206,6 +314,13 @@ func (d *DT_SHARED_SERVER_DATA_ID) UnmarshalD4(r *bin.BinaryReader, o *FieldOpti
 	return r.Uint64LE(&d.Value)
 }
 
+func (d *DT_SHARED_SERVER_DATA_ID) Hash(h hash.Hash) error {
+	bs := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bs, d.Value)
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_INT64 ...
 type DT_INT64 struct {
 	Value int64
@@ -213,6 +328,13 @@ type DT_INT64 struct {
 
 func (d *DT_INT64) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Int64LE(&d.Value)
+}
+
+func (d *DT_INT64) Hash(h hash.Hash) error {
+	bs := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bs, uint64(d.Value))
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_RANGE ...
@@ -237,6 +359,13 @@ func (d *DT_RANGE[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) (err err
 func (d *DT_RANGE[T]) Walk(cb WalkCallback, data ...any) {
 	cb.Do("LowerBound", d.LowerBound, data...)
 	cb.Do("UpperBound", d.UpperBound, data...)
+}
+
+func (d *DT_RANGE[T]) Hash(h hash.Hash) error {
+	if err := d.LowerBound.Hash(h); err != nil {
+		return err
+	}
+	return d.UpperBound.Hash(h)
 }
 
 // DT_FIXEDARRAY ...
@@ -269,11 +398,21 @@ func (d *DT_FIXEDARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	}
 }
 
+func (d *DT_FIXEDARRAY[T]) Hash(h hash.Hash) error {
+	for _, v := range d.Value {
+		if err := v.Hash(h); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // DT_TAGMAP ...
 type (
 	TagMapEntry struct {
-		Name  string
-		Value Object
+		Name      string
+		FieldHash uint32
+		Value     Object
 	}
 
 	DT_TAGMAP[T Object] struct {
@@ -363,6 +502,7 @@ func (d *DT_TAGMAP[T]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 			}
 
 			d.Value[i].Name = name
+			d.Value[i].FieldHash = elemFieldHash // TODO: maybe get rid of this and just hash the string when needed
 			d.Value[i].Value = value
 		}
 
@@ -399,6 +539,16 @@ func (d *DT_TAGMAP[T]) Walk(cb WalkCallback, data ...any) {
 	for _, v := range d.Value {
 		cb.Do(v.Name, v.Value, data...)
 	}
+}
+
+func (d *DT_TAGMAP[T]) Hash(h hash.Hash) error {
+	// Note: values should already be sorted by hash; that's how they're stored
+	for _, entry := range d.Value {
+		if err := hashField(h, entry.FieldHash, entry.Value); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // DT_VARIABLEARRAY ...
@@ -467,6 +617,15 @@ func (d *DT_VARIABLEARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	for i, v := range d.Value {
 		cb.Do(strconv.Itoa(i), v, data...)
 	}
+}
+
+func (d *DT_VARIABLEARRAY[T]) Hash(h hash.Hash) error {
+	for _, v := range d.Value {
+		if err := v.Hash(h); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (d *DT_VARIABLEARRAY[T]) IsExternal() bool {
@@ -574,6 +733,15 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback, data ...any) {
 	}
 }
 
+func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Hash(h hash.Hash) error {
+	for _, v := range d.Value {
+		if err := v.Hash(h); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) IsExternal() bool {
 	return d.external
 }
@@ -636,6 +804,14 @@ func (d *DT_STRING_FORMULA) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) er
 	return nil
 }
 
+func (d *DT_STRING_FORMULA) Hash(h hash.Hash) error {
+	if _, err := h.Write([]byte(d.Value)); err != nil {
+		return err
+	}
+	_, err := h.Write([]byte(d.Compiled))
+	return err
+}
+
 // DT_CSTRING ...
 type DT_CSTRING[Unused Object] struct {
 	Offset int32
@@ -668,13 +844,18 @@ func (d *DT_CSTRING[Unused]) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) e
 	})
 }
 
+func (d *DT_CSTRING[Unused]) Hash(h hash.Hash) error {
+	_, err := h.Write([]byte(d.Value))
+	return err
+}
+
 func (d *DT_CSTRING[Unused]) String() string {
 	return d.Value
 }
 
 // DT_CHARARRAY ...
 type DT_CHARARRAY struct {
-	Value []rune
+	Value []byte
 }
 
 func (d *DT_CHARARRAY) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
@@ -682,12 +863,16 @@ func (d *DT_CHARARRAY) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 		return ErrArrayLengthRequired
 	}
 
-	buf := make([]byte, o.ArrayLength)
-	if _, err := r.Read(buf); err != nil {
+	d.Value = make([]byte, o.ArrayLength)
+	if _, err := r.Read(d.Value); err != nil {
 		return nil
 	}
-	d.Value = []rune(string(buf))
 	return nil
+}
+
+func (d *DT_CHARARRAY) Hash(h hash.Hash) error {
+	_, err := h.Write(d.Value)
+	return err
 }
 
 // DT_RGBACOLOR ...
@@ -705,7 +890,6 @@ func (d *DT_RGBACOLOR) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 
 	if err := r.Uint8(&d.G); err != nil {
 		return err
-		return err
 	}
 
 	if err := r.Uint8(&d.B); err != nil {
@@ -713,6 +897,16 @@ func (d *DT_RGBACOLOR) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	}
 
 	return r.Uint8(&d.A)
+}
+
+func (d *DT_RGBACOLOR) Hash(h hash.Hash) error {
+	_, err := h.Write([]byte{
+		d.R,
+		d.G,
+		d.B,
+		d.A,
+	})
+	return err
 }
 
 // DT_RGBACOLORVALUE ...
@@ -739,6 +933,18 @@ func (d *DT_RGBACOLORVALUE) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) er
 	return r.Float32LE(&d.A)
 }
 
+func (d *DT_RGBACOLORVALUE) Hash(h hash.Hash) error {
+	bs := make([]byte, 16)
+
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.R))
+	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.G))
+	binary.LittleEndian.PutUint32(bs[8:], math.Float32bits(d.B))
+	binary.LittleEndian.PutUint32(bs[12:], math.Float32bits(d.A))
+
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_BCVEC2I ...
 type DT_BCVEC2I struct {
 	X float32
@@ -753,6 +959,16 @@ func (d *DT_BCVEC2I) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return r.Float32LE(&d.Y)
 }
 
+func (d *DT_BCVEC2I) Hash(h hash.Hash) error {
+	bs := make([]byte, 8)
+
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
+	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
+
+	_, err := h.Write(bs)
+	return err
+}
+
 // DT_VECTOR2D ...
 type DT_VECTOR2D struct {
 	X float32
@@ -765,6 +981,16 @@ func (d *DT_VECTOR2D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	}
 
 	return r.Float32LE(&d.Y)
+}
+
+func (d *DT_VECTOR2D) Hash(h hash.Hash) error {
+	bs := make([]byte, 8)
+
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
+	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
+
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_VECTOR3D ...
@@ -784,6 +1010,17 @@ func (d *DT_VECTOR3D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	}
 
 	return r.Float32LE(&d.Z)
+}
+
+func (d *DT_VECTOR3D) Hash(h hash.Hash) error {
+	bs := make([]byte, 12)
+
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
+	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
+	binary.LittleEndian.PutUint32(bs[8:], math.Float32bits(d.Z))
+
+	_, err := h.Write(bs)
+	return err
 }
 
 // DT_VECTOR4D ...
@@ -808,4 +1045,16 @@ func (d *DT_VECTOR4D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	}
 
 	return r.Float32LE(&d.W)
+}
+
+func (d *DT_VECTOR4D) Hash(h hash.Hash) error {
+	bs := make([]byte, 16)
+
+	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
+	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
+	binary.LittleEndian.PutUint32(bs[8:], math.Float32bits(d.Z))
+	binary.LittleEndian.PutUint32(bs[12:], math.Float32bits(d.W))
+
+	_, err := h.Write(bs)
+	return err
 }

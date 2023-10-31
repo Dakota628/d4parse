@@ -453,6 +453,41 @@ func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definitio
 	return nil
 }
 
+func GenerateHashBody(f *jen.File, defs d4data.Definitions, def d4data.Definition) []jen.Code {
+	var code []jen.Code
+	fields := make(map[int]string, len(def.Fields)) // field hash -> field name
+
+	// Add to map to sort
+	for _, field := range def.Fields {
+		fields[field.Hash] = TransformFieldName(field.Name)
+	}
+
+	// Generate the code
+	// TODO: add type hash?
+
+	for _, fieldHash := range SortedKeys(fields) {
+		fieldName := fields[fieldHash]
+
+		code = append(
+			code,
+			jen.If(
+				jen.Err().Op(":=").Id("hashField").Call(
+					jen.Id("h"),
+					jen.Lit(fieldHash),
+					jen.Op("&").Id("t").Dot(fieldName),
+				),
+				jen.Err().Op("!=").Nil(),
+			).Block(
+				jen.Return(jen.Err()),
+			),
+		)
+	}
+
+	code = append(code, jen.Return(jen.Nil()))
+
+	return code
+}
+
 func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition) error {
 	// Skip basic types
 	if def.Type == "basic" {
@@ -519,6 +554,15 @@ func GenerateStruct(f *jen.File, defs d4data.Definitions, def d4data.Definition)
 		jen.Id("d").Op("...").Any(),
 	).Block(
 		walkBody...,
+	).Line()
+
+	// Construct Hash function
+	f.Func().Params(
+		jen.Id("t").Op("*").Id(def.Name),
+	).Id("Hash").Params(
+		jen.Id("h").Qual("hash", "Hash"),
+	).Error().Block(
+		GenerateHashBody(f, defs, def)...,
 	).Line()
 
 	return GenerateForAllTypes(f, defs, def)
