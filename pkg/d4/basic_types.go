@@ -748,8 +748,10 @@ func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Walk(cb WalkCallback, data ...any) {
 
 func (d *DT_POLYMORPHIC_VARIABLEARRAY[T]) Hash(h hash.Hash) error {
 	for _, v := range d.Value {
-		if err := v.Hash(h); err != nil {
-			return err
+		if v != nil {
+			if err := v.Hash(h); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
