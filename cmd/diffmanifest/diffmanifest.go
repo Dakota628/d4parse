@@ -8,14 +8,13 @@ import (
 	"hash/crc32"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"sync"
 	"sync/atomic"
 )
 
-var (
-	workers = uint(runtime.NumCPU() * 10)
+const (
+	workers = 2000
 )
 
 var (

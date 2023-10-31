@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bin"
+	"github.com/panjf2000/gnet/pkg/pool/byteslice"
 	"golang.org/x/exp/slog"
 	"hash"
 	"io"
@@ -91,7 +92,8 @@ func (d *DT_WORD) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_WORD) Hash(h hash.Hash) error {
-	bs := make([]byte, 2)
+	bs := byteslice.Get(2)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint16(bs, d.Value)
 	_, err := h.Write(bs)
 	return err
@@ -107,7 +109,8 @@ func (d *DT_ENUM) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_ENUM) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, uint32(d.Value))
 	_, err := h.Write(bs)
 	return err
@@ -123,7 +126,8 @@ func (d *DT_INT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_INT) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, uint32(d.Value))
 	_, err := h.Write(bs)
 	return err
@@ -139,7 +143,8 @@ func (d *DT_FLOAT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_FLOAT) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.Value))
 	_, err := h.Write(bs)
 	return err
@@ -191,7 +196,8 @@ func (d *DT_SNO) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_SNO) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, uint32(d.Id))
 	_, err := h.Write(bs)
 	return err
@@ -211,7 +217,8 @@ func (d *DT_SNO_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_SNO_NAME) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, uint32(d.Group))
 	if _, err := h.Write(bs); err != nil {
@@ -242,7 +249,8 @@ func (d *DT_GBID) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_GBID) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, uint32(d.Group))
 	if _, err := h.Write(bs); err != nil {
@@ -267,7 +275,8 @@ func (d *DT_STARTLOC_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) err
 }
 
 func (d *DT_STARTLOC_NAME) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, d.Value)
 	_, err := h.Write(bs)
 	return err
@@ -283,7 +292,8 @@ func (d *DT_UINT) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_UINT) Hash(h hash.Hash) error {
-	bs := make([]byte, 4)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, d.Value)
 	_, err := h.Write(bs)
 	return err
@@ -299,7 +309,8 @@ func (d *DT_ACD_NETWORK_NAME) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) 
 }
 
 func (d *DT_ACD_NETWORK_NAME) Hash(h hash.Hash) error {
-	bs := make([]byte, 8)
+	bs := byteslice.Get(8)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint64(bs, d.Value)
 	_, err := h.Write(bs)
 	return err
@@ -315,7 +326,8 @@ func (d *DT_SHARED_SERVER_DATA_ID) UnmarshalD4(r *bin.BinaryReader, o *FieldOpti
 }
 
 func (d *DT_SHARED_SERVER_DATA_ID) Hash(h hash.Hash) error {
-	bs := make([]byte, 8)
+	bs := byteslice.Get(8)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint64(bs, d.Value)
 	_, err := h.Write(bs)
 	return err
@@ -331,7 +343,8 @@ func (d *DT_INT64) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_INT64) Hash(h hash.Hash) error {
-	bs := make([]byte, 8)
+	bs := byteslice.Get(8)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint64(bs, uint64(d.Value))
 	_, err := h.Write(bs)
 	return err
@@ -934,7 +947,8 @@ func (d *DT_RGBACOLORVALUE) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) er
 }
 
 func (d *DT_RGBACOLORVALUE) Hash(h hash.Hash) error {
-	bs := make([]byte, 16)
+	bs := byteslice.Get(16)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.R))
 	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.G))
@@ -960,7 +974,8 @@ func (d *DT_BCVEC2I) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_BCVEC2I) Hash(h hash.Hash) error {
-	bs := make([]byte, 8)
+	bs := byteslice.Get(8)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
 	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
@@ -984,7 +999,8 @@ func (d *DT_VECTOR2D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_VECTOR2D) Hash(h hash.Hash) error {
-	bs := make([]byte, 8)
+	bs := byteslice.Get(8)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
 	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
@@ -1013,7 +1029,8 @@ func (d *DT_VECTOR3D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_VECTOR3D) Hash(h hash.Hash) error {
-	bs := make([]byte, 12)
+	bs := byteslice.Get(12)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
 	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))
@@ -1048,7 +1065,8 @@ func (d *DT_VECTOR4D) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 }
 
 func (d *DT_VECTOR4D) Hash(h hash.Hash) error {
-	bs := make([]byte, 16)
+	bs := byteslice.Get(16)
+	defer byteslice.Put(bs)
 
 	binary.LittleEndian.PutUint32(bs, math.Float32bits(d.X))
 	binary.LittleEndian.PutUint32(bs[4:], math.Float32bits(d.Y))

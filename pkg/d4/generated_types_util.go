@@ -3,6 +3,7 @@ package d4
 import (
 	"encoding/binary"
 	"github.com/Dakota628/d4parse/pkg/bin"
+	"github.com/panjf2000/gnet/pkg/pool/byteslice"
 	"hash"
 	"io"
 )
@@ -41,7 +42,8 @@ func nilObject[T Object]() (obj T) {
 
 func hashField(h hash.Hash, fieldHash uint32, obj Object) error {
 	// Write field hash
-	bs := make([]byte, fieldHash)
+	bs := byteslice.Get(4)
+	defer byteslice.Put(bs)
 	binary.LittleEndian.PutUint32(bs, fieldHash)
 	if _, err := h.Write(bs); err != nil {
 		return err
