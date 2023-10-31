@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	workers = runtime.NumCPU() * 10
+	workers = uint(runtime.NumCPU() * 10)
 )
 
 var (
