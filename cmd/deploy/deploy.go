@@ -26,7 +26,7 @@ const (
 var r2DeployConfigs = []R2DeployConfig{
 	{
 		AccountId:  "4bc1086f05e53d1b4006b5edfb5b7732",
-		BucketName: aws.String("docs-diablo-farm"),
+		BucketName: aws.String("docs-diablo-parse"),
 		LocalPath:  "docs",
 	},
 	{
@@ -119,6 +119,9 @@ func main() {
 	}
 	if err := mime.AddExtensionType(".mpk", "application/msgpack"); err != nil {
 		log.Fatalf("Failed to add .mpk mime extension: %s", err)
+	}
+	if err := mime.AddExtensionType(".binpb", "application/protobuf"); err != nil {
+		log.Fatalf("Failed to add .binpb mime extension: %s", err)
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
