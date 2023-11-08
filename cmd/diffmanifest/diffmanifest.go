@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Dakota628/d4parse/pkg/d4"
+	"github.com/Dakota628/d4parse/pkg/d4/diff"
 	"github.com/Dakota628/d4parse/pkg/d4/util"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
@@ -9,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
 	"sync/atomic"
 )
 
@@ -20,39 +20,6 @@ const (
 var (
 	coreTocPath = filepath.Join("base", "CoreTOC.dat")
 )
-
-type Sno struct {
-	Group       d4.SnoGroup
-	Id          int32
-	Name        string `msgpack:"n"`
-	MetaHash    uint32 `msgpack:"mh"`
-	PayloadHash uint32 `msgpack:"ph"`
-	XMLHash     uint32 `msgpack:"xh"`
-}
-
-type DiffManifest struct {
-	Snos map[d4.SnoGroup]map[int32]Sno `msgpack:"snos"`
-	mu   sync.Mutex
-}
-
-func NewDiffManifest() *DiffManifest {
-	return &DiffManifest{
-		Snos: make(map[d4.SnoGroup]map[int32]Sno),
-	}
-}
-
-func (m *DiffManifest) Add(s Sno) {
-	m.mu.Lock()
-	defer m.mu.Unlock()
-
-	if sub, ok := m.Snos[s.Group]; ok {
-		sub[s.Id] = s
-		return
-	}
-	m.Snos[s.Group] = map[int32]Sno{
-		s.Id: s,
-	}
-}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -69,11 +36,11 @@ func main() {
 	}
 
 	// Get entries
-	var snos []Sno
+	var snos []diff.Sno
 
 	for group, m := range toc.Entries {
 		for id, name := range m {
-			snos = append(snos, Sno{
+			snos = append(snos, diff.Sno{
 				Group: group,
 				Id:    id,
 				Name:  name,
@@ -83,9 +50,9 @@ func main() {
 
 	// Create manifest
 	var progress atomic.Uint64
-	dm := NewDiffManifest()
+	dm := diff.NewManifest()
 
-	util.DoWorkSlice(workers, snos, func(sno Sno) {
+	util.DoWorkSlice(workers, snos, func(sno diff.Sno) {
 		defer func() {
 			if i := progress.Add(1); i%1000 == 0 {
 				slog.Info("Generating manifest...", slog.Uint64("progress", i))

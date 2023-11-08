@@ -1,32 +1,14 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/d4"
-	"github.com/Dakota628/d4parse/pkg/d4/util"
-	mapset "github.com/deckarep/golang-set/v2"
+	"github.com/Dakota628/d4parse/pkg/d4/diff"
 	"github.com/vmihailenco/msgpack/v5"
 	"golang.org/x/exp/slog"
 	"os"
-	"path/filepath"
 	"strings"
-	"sync/atomic"
 )
-
-const (
-	workers = 2000
-)
-
-var (
-	coreTocPath = filepath.Join("base", "CoreTOC.dat")
-)
-
-type Sno struct {
-	Group d4.SnoGroup
-	Id    int32
-	Name  string
-}
 
 func groupName(group d4.SnoGroup) string {
 	if n := group.String(); n != "Unknown" {
@@ -35,186 +17,100 @@ func groupName(group d4.SnoGroup) string {
 	return fmt.Sprintf("unk_%d", group)
 }
 
+func changedString(c diff.Change) string {
+	var ss []string
+
+	if c.NameChanged {
+		ss = append(ss, "name")
+	}
+
+	if c.MetaChanged {
+		ss = append(ss, "meta")
+	}
+
+	if c.PayloadChanged {
+		ss = append(ss, "payload")
+	}
+
+	if c.XMLChanged {
+		ss = append(ss, "server")
+	}
+
+	return strings.Join(ss, ",")
+}
+
 func main() {
 	if len(os.Args) < 3 {
-		slog.Error("usage: diff oldDump newDump")
+		slog.Error("usage: diff oldManifest newManifest")
 		os.Exit(1)
 	}
 
 	oldPath := os.Args[1]
 	newPath := os.Args[2]
 
-	oldTocPath := filepath.Join(oldPath, coreTocPath)
-	newTocPath := filepath.Join(newPath, coreTocPath)
+	// Load the manifests
+	var oldManifest diff.Manifest
+	var newManifest diff.Manifest
 
-	oldToc, err := d4.ReadTocFile(oldTocPath)
+	oldData, err := os.ReadFile(oldPath)
 	if err != nil {
-		slog.Error("failed to read oldToc toc file", slog.Any("error", err))
-		os.Exit(1)
+		panic(err)
+	}
+	if err := msgpack.Unmarshal(oldData, &oldManifest); err != nil {
+		panic(err)
 	}
 
-	newToc, err := d4.ReadTocFile(newTocPath)
+	newData, err := os.ReadFile(newPath)
 	if err != nil {
-		slog.Error("failed to read new toc file", slog.Any("error", err))
-		os.Exit(1)
+		panic(err)
+	}
+	if err := msgpack.Unmarshal(newData, &newManifest); err != nil {
+		panic(err)
 	}
 
-	// Get old entries
-	oldSet := mapset.NewThreadUnsafeSet[Sno]()
-	for group, m := range oldToc.Entries {
-		for id, name := range m {
-			oldSet.Add(Sno{
-				Group: group,
-				Id:    id,
-				Name:  name,
-			})
-		}
-	}
+	// Do the diff
+	d := oldManifest.Diff(&newManifest)
 
-	// Get new entries
-	newSet := mapset.NewThreadUnsafeSet[Sno]()
-	for group, m := range newToc.Entries {
-		for id, name := range m {
-			newSet.Add(Sno{
-				Group: group,
-				Id:    id,
-				Name:  name,
-			})
-		}
-	}
-
-	// Write changes
-	fAdded, err := os.Create("samples/added.txt")
+	// Open files
+	fAdded, err := os.Create("added.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	fRemoved, err := os.Create("samples/removed.txt")
+	fRemoved, err := os.Create("removed.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	fChanged, err := os.Create("samples/changed.txt")
+	fChanged, err := os.Create("changed.txt")
 	if err != nil {
 		panic(err)
 	}
-
-	added := newSet.Difference(oldSet)
-	removed := oldSet.Difference(newSet)
-	common := newSet.Intersect(oldSet)
 
 	// Write added
-	added.Each(func(a Sno) bool {
+	for _, a := range d.Added {
 		if _, err := fmt.Fprintf(fAdded, "[%s] %s\n", groupName(a.Group), a.Name); err != nil {
 			panic(err)
 		}
-		return false
-	})
+	}
 
 	// Write removed
-	removed.Each(func(r Sno) bool {
+	for _, r := range d.Removed {
 		if _, err := fmt.Fprintf(fRemoved, "[%s] %s\n", groupName(r.Group), r.Name); err != nil {
 			panic(err)
 		}
-		return false
-	})
+	}
 
 	// Write changed
-	var progress atomic.Uint64
-
-	util.DoWorkSlice(workers, common.ToSlice(), func(sno Sno) {
-		defer func() {
-			if i := progress.Add(1); i%1000 == 0 {
-				slog.Info("Comparing snos...", slog.Uint64("progress", i))
-			}
-		}()
-
-		if strings.TrimSpace(sno.Name) == "" {
-			return
-		}
-
-		oldMetaPath := util.FindLocalizedFile(oldPath, util.FileTypeMeta, sno.Group, sno.Name)
-		newMetaPath := util.FindLocalizedFile(newPath, util.FileTypeMeta, sno.Group, sno.Name)
-
-		oldMeta, err := d4.ReadSnoMetaFile(oldMetaPath)
-		if err != nil {
-			slog.Error("Error reading old meta", slog.String("path", oldMetaPath), slog.String("err", err.Error()))
-			if _, err := fmt.Fprintf(fChanged, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
-				panic(err)
-			}
-			return
-		}
-		newMeta, err := d4.ReadSnoMetaFile(newMetaPath)
-		if err != nil {
-			slog.Error("Error reading new meta", slog.String("path", newMetaPath), slog.String("err", err.Error()))
-			if _, err := fmt.Fprintf(fChanged, "[%s] %s (compare failed)\n", groupName(sno.Group), sno.Name); err != nil {
-				panic(err)
-			}
-			return
-		}
-
-		// Log reasons
-		var reasons []string
-
-		// Check data
-		oldSer, err := msgpack.Marshal(oldMeta.Meta)
-		if err != nil {
+	for _, c := range d.Changes {
+		if _, err := fmt.Fprintf(
+			fChanged,
+			"[%s] %s (%s)\n",
+			groupName(c.New.Group),
+			c.New.Name,
+			changedString(c),
+		); err != nil {
 			panic(err)
 		}
-		newSer, err := msgpack.Marshal(newMeta.Meta)
-		if err != nil {
-			panic(err)
-		}
-
-		if !bytes.Equal(oldSer, newSer) {
-			reasons = append(reasons, "meta changed")
-		}
-
-		// Check XML hash
-		if oldMeta.Header.DwXMLHash != newMeta.Header.DwXMLHash {
-			reasons = append(reasons, "possible server-side change")
-		}
-
-		// Check payloads
-		oldPayloadPath := util.ChangePathType(oldMetaPath, util.FileTypePayload)
-		newPayLoadPath := util.ChangePathType(newMetaPath, util.FileTypePayload)
-
-		oldPayloadExists := true
-		newPayloadExists := true
-		if _, err := os.Stat(oldPayloadPath); err != nil {
-			oldPayloadExists = false
-		}
-		if _, err := os.Stat(newPayLoadPath); err != nil {
-			newPayloadExists = false
-		}
-
-		if oldPayloadExists != newPayloadExists {
-			if newPayloadExists {
-				reasons = append(reasons, "payload added")
-			} else {
-				reasons = append(reasons, "payload removed")
-			}
-		}
-
-		if oldPayloadExists && newPayloadExists {
-			oldPayloadData, err := os.ReadFile(oldPayloadPath)
-			if err != nil {
-				panic(err)
-			}
-			newPayloadData, err := os.ReadFile(newPayLoadPath)
-			if err != nil {
-				panic(err)
-			}
-
-			if !bytes.Equal(oldPayloadData, newPayloadData) {
-				reasons = append(reasons, "payload changed")
-			}
-		}
-
-		if len(reasons) > 0 {
-			if _, err := fmt.Fprintf(fChanged, "[%s] %s (%s)\n", groupName(sno.Group), sno.Name, strings.Join(reasons, ",")); err != nil {
-				panic(err)
-			}
-		}
-	})
+	}
 }
