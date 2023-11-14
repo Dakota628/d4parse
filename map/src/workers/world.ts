@@ -73,6 +73,7 @@ self.onmessage = async (e: MessageEvent<WorldReq>) => {
                     source: srcName,
                     marker_hash: String(m.markerHash),
                     marker_group_hash: String(m.markerGroupHashes),
+                    marker_type: m.extra.has_markerType ? m.extra.markerType : '',
                 };
 
                 if (!liqe.test(query, searchObj)) {
