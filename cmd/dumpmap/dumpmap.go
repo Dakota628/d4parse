@@ -52,7 +52,7 @@ func main() {
 		}
 
 		if mapTiles.Rows == 0 || mapTiles.Cols == 0 || len(mapTiles.TexturePaths) == 0 {
-			slog.Info("No map textures for world")
+			slog.Info("No map textures for world", slog.String("world", worldName))
 			os.Exit(0)
 		}
 
