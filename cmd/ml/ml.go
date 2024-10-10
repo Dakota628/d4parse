@@ -7,6 +7,7 @@ import (
 	"github.com/mpraski/clusters"
 	"golang.org/x/exp/slog"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
@@ -27,8 +28,14 @@ func main() {
 	dataPath := os.Args[1]
 	snoGroupIntStr := parseSnoGroup(os.Args[2])
 
+	// Read toc
+	toc, err := d4.ReadTocFile(filepath.Join(dataPath, "base", "CoreTOC.dat"))
+	if err != nil {
+		panic(err)
+	}
+
 	// Determine features
-	snoIds, features, err := ml.ExtractGroupFeatures(dataPath, snoGroupIntStr)
+	snoIds, features, err := ml.ExtractGroupFeatures(dataPath, toc, snoGroupIntStr)
 	if err != nil {
 		panic(err)
 	}

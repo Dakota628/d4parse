@@ -30,7 +30,7 @@ var (
 	speechMetaPrefix = filepath.Join("enUS_Speech", "meta")
 )
 
-func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], outputPath string, progress *atomic.Uint64) {
+func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc *d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], outputPath string, progress *atomic.Uint64) {
 	defer wg.Done()
 
 	snoPath := filepath.Join(outputPath, "sno")
@@ -47,7 +47,7 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d
 		}
 
 		// Parse sno file
-		snoMeta, err := d4.ReadSnoMetaFile(snoMetaFilePath)
+		snoMeta, err := d4.ReadSnoMetaFile(snoMetaFilePath, toc)
 		if err != nil {
 			slog.Error("Error reading sno meta file", slog.Any("error", err), slog.String("snoMetaFilePath", snoMetaFilePath))
 			continue
@@ -102,7 +102,7 @@ func generateHtmlWorker(c chan string, wg *sync.WaitGroup, toc d4.Toc, gbData *d
 	}
 }
 
-func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], files []string, outputPath string, progress *atomic.Uint64) error {
+func generateHtmlForFiles(toc *d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int32], files []string, outputPath string, progress *atomic.Uint64) error {
 	// Files arr to channel
 	c := make(chan string, len(files))
 	for _, file := range files {
@@ -121,7 +121,7 @@ func generateHtmlForFiles(toc d4.Toc, gbData *d4.GbData, refs mapset.Set[[2]int3
 	return nil
 }
 
-func generateAllHtml(toc d4.Toc, refs mapset.Set[[2]int32], gameDataPath string, outputPath string) error {
+func generateAllHtml(toc *d4.Toc, refs mapset.Set[[2]int32], gameDataPath string, outputPath string) error {
 	// Make paths
 	metaPath := filepath.Join(gameDataPath, metaPrefix)
 	baseMetaGlobPath := filepath.Join(metaPath, "**", "*.*")
@@ -209,7 +209,7 @@ func generateGroupsFile(outputPath string) error {
 	return err
 }
 
-func generateNamesFile(toc d4.Toc, outputPath string) error {
+func generateNamesFile(toc *d4.Toc, outputPath string) error {
 	namesFilePath := filepath.Join(outputPath, "names.mpk")
 
 	b, err := msgpack.Marshal(toc.Entries)

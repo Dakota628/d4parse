@@ -50,7 +50,7 @@ type MarkerExtractor struct {
 	dumpPath     string
 	baseMetaPath string
 	outputPath   string
-	toc          d4.Toc
+	toc          *d4.Toc
 
 	data          *pb.MapData
 	uniqueMarkers *UniqueMarkerData
@@ -59,7 +59,7 @@ type MarkerExtractor struct {
 	snoId int32
 }
 
-func NewMarkerExtractor(dumpPath string, outputPath string, toc d4.Toc) *MarkerExtractor {
+func NewMarkerExtractor(dumpPath string, outputPath string, toc *d4.Toc) *MarkerExtractor {
 	return &MarkerExtractor{
 		dumpPath:     dumpPath,
 		baseMetaPath: filepath.Join(dumpPath, "base", "meta"),
@@ -116,7 +116,7 @@ func (e *MarkerExtractor) getDataSnos(m *d4.Marker) (snos []int32) {
 
 func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32, transform *Transform) error {
 	metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupGlobal, "global_markers")
-	meta, err := d4.ReadSnoMetaFile(metaPath)
+	meta, err := d4.ReadSnoMetaFile(metaPath, e.toc)
 	if err != nil {
 		return err
 	}
@@ -161,7 +161,7 @@ func (e *MarkerExtractor) loadGlobalMarkers(worldSnoId int32, transform *Transfo
 			// Add referenced marker set
 			if _, markerSetName := e.toc.Entries.GetName(gma.SnoMarkerSet.Id, d4.SnoGroupMarkerSet); markerSetName != "" {
 				markerSetMetaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, markerSetName)
-				markerSetMeta, err := d4.ReadSnoMetaFile(markerSetMetaPath)
+				markerSetMeta, err := d4.ReadSnoMetaFile(markerSetMetaPath, e.toc)
 				if err != nil {
 					errs.Add(err)
 					return
@@ -191,7 +191,7 @@ func (e *MarkerExtractor) addMarkerSno(snoMeta *d4.SnoMeta, transform *Transform
 		}
 
 		metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
-		meta, err := d4.ReadSnoMetaFile(metaPath)
+		meta, err := d4.ReadSnoMetaFile(metaPath, e.toc)
 		if err != nil {
 			return err
 		}
@@ -217,7 +217,7 @@ func (e *MarkerExtractor) addRawMarker(marker *d4.Marker, sourceSno int32, trans
 	var snoMeta *d4.SnoMeta
 	if snoGroup, snoName := e.toc.Entries.GetName(marker.Snoname.Id); snoGroup > 0 {
 		metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, snoGroup, snoName)
-		if meta, err := d4.ReadSnoMetaFile(metaPath); err == nil {
+		if meta, err := d4.ReadSnoMetaFile(metaPath, e.toc); err == nil {
 			snoMeta = &meta
 		}
 	}
@@ -259,7 +259,7 @@ func (e *MarkerExtractor) addNestedMarkerSet(marker *d4.Marker, transform *Trans
 	}
 
 	metaPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupMarkerSet, markerSetName)
-	meta, err := d4.ReadSnoMetaFile(metaPath)
+	meta, err := d4.ReadSnoMetaFile(metaPath, e.toc)
 	if err != nil {
 		return err
 	}
@@ -322,7 +322,7 @@ func (e *MarkerExtractor) loadWorldRelatedMarkers(worldName string, transform *T
 	errs := util.NewErrors()
 
 	util.DoWorkSlice(adHocWorkers, files, func(file string) {
-		markerSetSnoMeta, err := d4.ReadSnoMetaFile(file)
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(file, e.toc)
 		if err != nil {
 			errs.Add(err)
 			return
@@ -347,7 +347,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32, transform *Transfo
 	// Load sub zone
 	subZoneGroup, subZoneName := e.toc.Entries.GetName(subZoneId, d4.SnoGroupSubzone)
 	subZonePath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, subZoneGroup, subZoneName)
-	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath)
+	subZoneMeta, err := d4.ReadSnoMetaFile(subZonePath, e.toc)
 	if err != nil {
 		return err
 	}
@@ -361,7 +361,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32, transform *Transfo
 	util.DoWorkSlice(adHocWorkers, sd.ArWorldMarkerSets.Value, func(subZoneMarkerSetEntry *d4.SubzoneWorldMarkerSetEntry) {
 		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(subZoneMarkerSetEntry.SnoMarkerSet.Id, d4.SnoGroupMarkerSet)
 		markerSetSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, markerSetSnoGroup, markerSetSnoName)
-		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath, e.toc)
 		if err != nil {
 			errs.Add(err)
 			return
@@ -381,7 +381,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32, transform *Transfo
 	}
 
 	util.DoWorkSlice(adHocWorkers, relatedMarkerSetPaths, func(markerSetSnoPath string) {
-		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath, e.toc)
 		if err != nil {
 			panic(err)
 		}
@@ -398,7 +398,7 @@ func (e *MarkerExtractor) loadSubzoneMarkers(subZoneId int32, transform *Transfo
 func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, transform *Transform) error {
 	sceneSnoGroup, sceneSnoName := e.toc.Entries.GetName(sceneId, d4.SnoGroupScene)
 	sceneSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, sceneSnoGroup, sceneSnoName)
-	sceneSnoMeta, err := d4.ReadSnoMetaFile(sceneSnoPath)
+	sceneSnoMeta, err := d4.ReadSnoMetaFile(sceneSnoPath, e.toc)
 	if err != nil {
 		return err
 	}
@@ -412,7 +412,7 @@ func (e *MarkerExtractor) loadSceneMarkers(sceneId int32, transform *Transform) 
 	util.DoWorkSlice(adHocWorkers, sd.ArLayers.Value, func(layer *d4.DT_SNO) {
 		markerSetSnoGroup, markerSetSnoName := e.toc.Entries.GetName(layer.Id, d4.SnoGroupMarkerSet)
 		markerSetSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, markerSetSnoGroup, markerSetSnoName)
-		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath)
+		markerSetSnoMeta, err := d4.ReadSnoMetaFile(markerSetSnoPath, e.toc)
 		if err != nil {
 			errs.Add(err)
 			return
@@ -444,7 +444,7 @@ func (e *MarkerExtractor) loadWorldMarkers(worldId int32, transform *Transform) 
 	// Get world definition
 	_, worldSnoName := e.toc.Entries.GetName(worldId, d4.SnoGroupWorld)
 	worldSnoPath := util.BaseFilePath(e.dumpPath, util.FileTypeMeta, d4.SnoGroupWorld, worldSnoName)
-	worldSnoMeta, err := d4.ReadSnoMetaFile(worldSnoPath)
+	worldSnoMeta, err := d4.ReadSnoMetaFile(worldSnoPath, e.toc)
 	if err != nil {
 		return err
 	}

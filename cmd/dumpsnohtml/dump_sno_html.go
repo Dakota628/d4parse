@@ -25,7 +25,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	snoMeta, err := d4.ReadSnoMetaFile(snoMetaPath)
+	snoMeta, err := d4.ReadSnoMetaFile(snoMetaPath, toc)
 	if err != nil {
 		slog.Error("failed to read sno meta file", slog.Any("error", err))
 		os.Exit(1)

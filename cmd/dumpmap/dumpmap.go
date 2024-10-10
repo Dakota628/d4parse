@@ -33,7 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	util.EachSnoMetaAsync(workers, dataPath, d4.SnoGroupWorld, func(meta d4.SnoMeta) {
+	util.EachSnoMetaAsync(workers, dataPath, toc, d4.SnoGroupWorld, func(meta d4.SnoMeta) {
 		slog.Info("Checking SNO...", slog.Int("id", int(meta.Id.Value)))
 
 		if meta.Meta.(*d4.WorldDefinition).FHasZoneMap.Value != 1 {
