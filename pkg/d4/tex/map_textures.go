@@ -104,9 +104,9 @@ func coordsFromName(name string) (TileCoord, error) {
 	}, nil
 }
 
-func FindMapTextures(dataPath string, worldName string) (*MapTiles, int32, error) {
+func FindMapTextures(dataPath string, worldName string, toc *d4.Toc) (*MapTiles, int32, error) {
 	worldMetaPath := util.MetaPathByName(dataPath, d4.SnoGroupWorld, worldName)
-	worldMeta, err := d4.ReadSnoMetaFile(worldMetaPath)
+	worldMeta, err := d4.ReadSnoMetaFile(worldMetaPath, toc)
 	if err != nil {
 		return nil, -1, err
 	}
@@ -203,13 +203,13 @@ func generateTiles(mapImg *image.NRGBA, outputDir string, level int, tiles int, 
 	return errs.Err()
 }
 
-func WriteMapTiles(mapTiles *MapTiles, outputDir string) (err error) {
+func WriteMapTiles(mapTiles *MapTiles, outputDir string, toc *d4.Toc) (err error) {
 	mapImg := image.NewNRGBA(image.Rect(0, 0, int(mapTiles.Rows*mapTileSize), int(mapTiles.Cols*mapTileSize)))
 
 	// Load each tile onto one large map image
 	mapTiles.Each(func(coord TileCoord, texMetaPath string) {
 		var texMeta d4.SnoMeta
-		texMeta, err = d4.ReadSnoMetaFile(texMetaPath)
+		texMeta, err = d4.ReadSnoMetaFile(texMetaPath, toc)
 		if err != nil {
 			return
 		}

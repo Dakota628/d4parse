@@ -45,7 +45,7 @@ func main() {
 		slog.Info("Dumping map...", slog.String("world", worldName))
 
 		// Find the textures
-		mapTiles, worldSnoId, err := tex.FindMapTextures(dataPath, worldName)
+		mapTiles, worldSnoId, err := tex.FindMapTextures(dataPath, worldName, toc)
 		if err != nil {
 			slog.Error("Failed to find map textures", slog.Any("error", err))
 			os.Exit(1)
@@ -60,7 +60,7 @@ func main() {
 		tileOutputPath := filepath.Join(outputBasePath, strconv.Itoa(int(worldSnoId)))
 
 		// Write the tiles
-		if err = tex.WriteMapTiles(mapTiles, tileOutputPath); err != nil {
+		if err = tex.WriteMapTiles(mapTiles, tileOutputPath, toc); err != nil {
 			slog.Error("Failed to write map tiles", slog.Any("error", err))
 			os.Exit(1)
 		}
