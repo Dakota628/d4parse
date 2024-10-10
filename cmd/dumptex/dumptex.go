@@ -25,7 +25,13 @@ func main() {
 	texPayloadPath := filepath.Join(dataPath, "base", "payload", "Texture", texName)
 	texPaylowPath := filepath.Join(dataPath, "base", "paylow", "Texture", texName)
 
-	snoMeta, err := d4.ReadSnoMetaFile(texDefPath)
+	toc, err := d4.ReadTocFile(filepath.Join(dataPath, "base", "CoreTOC.dat"))
+	if err != nil {
+		slog.Error("Failed to read toc file", slog.Any("error", err))
+		os.Exit(1)
+	}
+
+	snoMeta, err := d4.ReadSnoMetaFile(texDefPath, toc)
 	if err != nil {
 		slog.Error("Failed to read tex def sno meta file", slog.Any("error", err))
 		os.Exit(1)

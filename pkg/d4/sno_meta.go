@@ -1,14 +1,13 @@
 package d4
 
 import (
+	"errors"
 	"fmt"
 	"github.com/Dakota628/d4parse/pkg/bin"
 	"hash"
 	"io"
 	"os"
 )
-
-const SNOFileHeaderSize = 16 // TODO: calculate from struct in case it ever changes
 
 type SnoMeta struct {
 	Header SNOFileHeader
@@ -17,13 +16,17 @@ type SnoMeta struct {
 }
 
 func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
+	return m.UnmarshalD4WithTOC(r, o, nil)
+}
+
+func (m *SnoMeta) UnmarshalD4WithTOC(r *bin.BinaryReader, o *FieldOptions, toc *Toc) error {
 	// Read SNOFileHeader
 	if err := m.Header.UnmarshalD4(r, nil); err != nil {
 		return err
 	}
 
 	// Offset the reader by the header length
-	if err := r.Offset(SNOFileHeaderSize); err != nil {
+	if err := r.Offset(m.Header.TypeSize()); err != nil {
 		return err
 	}
 
@@ -32,6 +35,14 @@ func (m *SnoMeta) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 		return m.Id.UnmarshalD4(r, nil)
 	}); err != nil {
 		return err
+	}
+
+	// Check if it's a new format SNO
+	if m.Header.DwFormatHash.Value == 0 {
+		if toc == nil || !toc.IsNewFormat {
+			return errors.New("sno header is missing format hash but toc is not new format")
+		}
+		m.Header.DwFormatHash.Value = uint32(toc.GetFormatHash(m.Id.Value))
 	}
 
 	// Read meta
@@ -100,7 +111,7 @@ func (m *SnoMeta) GetReferences(gbData *GbData) (refs []int32) {
 	return
 }
 
-func ReadSnoMetaFile(path string) (SnoMeta, error) {
+func ReadSnoMetaFile(path string, toc *Toc) (SnoMeta, error) {
 	var snoMeta SnoMeta
 
 	// Open file
@@ -114,26 +125,7 @@ func ReadSnoMetaFile(path string) (SnoMeta, error) {
 	r := bin.NewBinaryReader(f)
 
 	// Unmarshal meta
-	return snoMeta, snoMeta.UnmarshalD4(r, nil)
-}
-
-func ReadSnoMetaHeader(path string) (header SNOFileHeader, err error) {
-	// Open file
-	f, err := os.Open(path)
-	if err != nil {
-		return header, err
-	}
-	defer f.Close()
-
-	// Create binary reader
-	r := bin.NewBinaryReader(f)
-
-	// Read SNOFileHeader
-	if err := header.UnmarshalD4(r, nil); err != nil {
-		return header, err
-	}
-
-	return header, nil
+	return snoMeta, snoMeta.UnmarshalD4WithTOC(r, nil, toc)
 }
 
 func GetDefinition[T Object](meta SnoMeta) (T, error) {

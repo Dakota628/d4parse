@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+const newVersionMagic uint32 = 0xbcde6611
+
 type TocEntry struct {
 	SnoGroup SnoGroup
 	SnoId    int32
@@ -52,21 +54,35 @@ func (e TocEntries) GetName(id int32, groups ...SnoGroup) (SnoGroup, string) {
 }
 
 type Toc struct {
-	NumSnoGroups   int32
-	EntryCounts    []int32 // n = numSnoGroups
-	EntryOffsets   []int32 // n = numSnoGroups
-	EntryUnkCounts []int32 // n = numSnoGroups
-	Unk1           int32
-	Entries        TocEntries
+	IsNewFormat       bool
+	NumSnoGroups      int32
+	EntryCounts       []int32 // n = numSnoGroups
+	EntryOffsets      []int32 // n = numSnoGroups
+	EntryUnkCounts    []int32 // n = numSnoGroups
+	EntryFormatHashes []int32 // n = numSnoGroups
+	Unk1              int32
+	Entries           TocEntries
 }
 
 func (t *Toc) headerSize() int64 {
-	return 4 + (int64(t.NumSnoGroups) * (4 + 4 + 4)) + 4
+	size := 4 + (int64(t.NumSnoGroups) * (4 + 4 + 4)) + 4
+	if t.IsNewFormat {
+		size += 4 + (int64(t.NumSnoGroups) * 4)
+	}
+	return size
 }
 
 func (t *Toc) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	if err := r.Int32LE(&t.NumSnoGroups); err != nil {
 		return err
+	}
+
+	if uint32(t.NumSnoGroups) == newVersionMagic {
+		t.IsNewFormat = true
+
+		if err := r.Int32LE(&t.NumSnoGroups); err != nil {
+			return err
+		}
 	}
 
 	t.EntryCounts = make([]int32, t.NumSnoGroups)
@@ -86,6 +102,13 @@ func (t *Toc) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	t.EntryUnkCounts = make([]int32, t.NumSnoGroups)
 	for i := int32(0); i < t.NumSnoGroups; i++ {
 		if err := r.Int32LE(&t.EntryUnkCounts[i]); err != nil {
+			return err
+		}
+	}
+
+	t.EntryFormatHashes = make([]int32, t.NumSnoGroups)
+	for i := int32(0); i < t.NumSnoGroups; i++ {
+		if err := r.Int32LE(&t.EntryFormatHashes[i]); err != nil {
 			return err
 		}
 	}
@@ -130,13 +153,18 @@ func (t *Toc) UnmarshalD4(r *bin.BinaryReader, o *FieldOptions) error {
 	return nil
 }
 
-func ReadTocFile(path string) (Toc, error) {
+func (t *Toc) GetFormatHash(snoID int32) int32 {
+	snoGroup, _ := t.Entries.GetName(snoID)
+	return t.EntryFormatHashes[snoGroup]
+}
+
+func ReadTocFile(path string) (*Toc, error) {
 	var toc Toc
 
 	// Open file
 	f, err := os.Open(path)
 	if err != nil {
-		return toc, err
+		return &toc, err
 	}
 	defer f.Close()
 
@@ -144,7 +172,7 @@ func ReadTocFile(path string) (Toc, error) {
 	r := bin.NewBinaryReader(f)
 
 	// Unmarshal meta
-	return toc, toc.UnmarshalD4(r, nil)
+	return &toc, toc.UnmarshalD4(r, nil)
 }
 
 type TocReplacedSnosEntry struct {

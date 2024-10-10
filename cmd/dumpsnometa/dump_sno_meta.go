@@ -21,14 +21,21 @@ var spewConfig = spew.ConfigState{
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		slog.Error("usage: dumpsnometa snoMetaFile")
+	if len(os.Args) < 3 {
+		slog.Error("usage: dumpsnometa coreTOCFile snoMetaFile")
 		os.Exit(1)
 	}
 
-	snoMetaPath := os.Args[1]
+	tocPath := os.Args[1]
+	snoMetaPath := os.Args[2]
 
-	snoMeta, err := d4.ReadSnoMetaFile(snoMetaPath)
+	toc, err := d4.ReadTocFile(tocPath)
+	if err != nil {
+		slog.Error("failed to read TOC file", slog.Any("error", err))
+		os.Exit(1)
+	}
+
+	snoMeta, err := d4.ReadSnoMetaFile(snoMetaPath, toc)
 	if err != nil {
 		slog.Error("failed to read sno meta file", slog.Any("error", err))
 		os.Exit(1)

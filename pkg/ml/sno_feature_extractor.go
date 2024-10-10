@@ -27,7 +27,7 @@ func BytesToFeature(h hash.Hash64, b []byte) float64 {
 	return float64(h.Sum64())
 }
 
-func ExtractGroupFeatures(dataPath string, group d4.SnoGroup) (map[int]int32, [][]float64, error) {
+func ExtractGroupFeatures(dataPath string, toc *d4.Toc, group d4.SnoGroup) (map[int]int32, [][]float64, error) {
 	var eachErr error
 
 	featureKeys := mapset.NewThreadUnsafeSet[string]()
@@ -39,7 +39,7 @@ func ExtractGroupFeatures(dataPath string, group d4.SnoGroup) (map[int]int32, []
 		return nil, nil, err
 	}
 
-	if err := util.EachSnoMeta(dataPath, group, func(meta d4.SnoMeta) bool {
+	if err := util.EachSnoMeta(dataPath, toc, group, func(meta d4.SnoMeta) bool {
 		// Get walkable meta
 		metaObj, ok := meta.Meta.(d4.Walkable)
 		if !ok {

@@ -450,6 +450,13 @@ func GenerateForAllTypes(f *jen.File, _ d4data.Definitions, def d4data.Definitio
 		).Line()
 	}
 
+	// Construct Size function
+	f.Func().Params(
+		receiver,
+	).Id("TypeSize").Params().Int64().Block(
+		jen.Return(jen.Lit(def.Size)),
+	).Line()
+
 	return nil
 }
 

@@ -57,7 +57,7 @@ func MetaPathByName(dataPath string, group d4.SnoGroup, name string) string {
 	return BaseFilePath(dataPath, FileTypeMeta, group, name)
 }
 
-func MetaPathById(dataPath string, toc d4.Toc, snoId int32) string {
+func MetaPathById(dataPath string, toc *d4.Toc, snoId int32) string {
 	group, name := toc.Entries.GetName(snoId)
 	return MetaPathByName(dataPath, group, name)
 }
@@ -93,7 +93,7 @@ func FindLocalizedFile(dataPath string, ft FileType, group d4.SnoGroup, name str
 	return BaseFilePath(dataPath, ft, group, name)
 }
 
-func EachSnoMeta(dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta) bool) error {
+func EachSnoMeta(dataPath string, toc *d4.Toc, group d4.SnoGroup, cb func(meta d4.SnoMeta) bool) error {
 	groupMetaDir := GroupMetaDir(dataPath, group)
 	entries, err := os.ReadDir(groupMetaDir)
 	if err != nil {
@@ -106,7 +106,7 @@ func EachSnoMeta(dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta) bo
 		}
 
 		metaFilePath := filepath.Join(groupMetaDir, entry.Name())
-		meta, err := d4.ReadSnoMetaFile(metaFilePath)
+		meta, err := d4.ReadSnoMetaFile(metaFilePath, toc)
 		if err != nil {
 			return err
 		}
@@ -119,7 +119,7 @@ func EachSnoMeta(dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta) bo
 	return nil
 }
 
-func EachSnoMetaAsync(workers uint, dataPath string, group d4.SnoGroup, cb func(meta d4.SnoMeta), ecb func(err error)) {
+func EachSnoMetaAsync(workers uint, dataPath string, toc *d4.Toc, group d4.SnoGroup, cb func(meta d4.SnoMeta), ecb func(err error)) {
 	groupMetaDir := GroupMetaDir(dataPath, group)
 	entries, err := os.ReadDir(groupMetaDir)
 	if err != nil {
@@ -133,7 +133,7 @@ func EachSnoMetaAsync(workers uint, dataPath string, group d4.SnoGroup, cb func(
 		}
 
 		metaFilePath := filepath.Join(groupMetaDir, entry.Name())
-		meta, err := d4.ReadSnoMetaFile(metaFilePath)
+		meta, err := d4.ReadSnoMetaFile(metaFilePath, toc)
 		if err != nil {
 			ecb(err)
 			return

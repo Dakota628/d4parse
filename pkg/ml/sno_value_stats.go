@@ -98,12 +98,12 @@ func WalkSerPathValues(metaObj d4.Walkable, cb func(string, string)) {
 	}, "")
 }
 
-func ExtractGroupValueCounts(dataPath string, group d4.SnoGroup) (ValueCountMap, uint, error) {
+func ExtractGroupValueCounts(dataPath string, toc *d4.Toc, group d4.SnoGroup) (ValueCountMap, uint, error) {
 	var eachErr error
 	var count uint
 	f := make(ValueCountMap)
 
-	if err := util.EachSnoMeta(dataPath, group, func(meta d4.SnoMeta) bool {
+	if err := util.EachSnoMeta(dataPath, toc, group, func(meta d4.SnoMeta) bool {
 		// Get walkable meta
 		metaObj, ok := meta.Meta.(d4.Walkable)
 		if !ok {
@@ -126,21 +126,21 @@ func ExtractGroupValueCounts(dataPath string, group d4.SnoGroup) (ValueCountMap,
 }
 
 func DetermineSnoValueFreqs(dataPath string, group d4.SnoGroup, snoId int32) (map[string]float32, error) {
-	// Get counts for group
-	counts, l, err := ExtractGroupValueCounts(dataPath, group)
-	if err != nil {
-		return nil, err
-	}
-
 	// Read toc
 	toc, err := d4.ReadTocFile(filepath.Join(dataPath, "base", "CoreTOC.dat"))
 	if err != nil {
 		return nil, err
 	}
 
+	// Get counts for group
+	counts, l, err := ExtractGroupValueCounts(dataPath, toc, group)
+	if err != nil {
+		return nil, err
+	}
+
 	// Get sno meta by id
 	metaPath := util.MetaPathById(dataPath, toc, snoId)
-	metaObj, err := d4.ReadSnoMetaFile(metaPath)
+	metaObj, err := d4.ReadSnoMetaFile(metaPath, toc)
 	if err != nil {
 		return nil, err
 	}

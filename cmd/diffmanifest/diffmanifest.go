@@ -65,7 +65,7 @@ func main() {
 
 		metaPath := util.FindLocalizedFile(path, util.FileTypeMeta, sno.Group, sno.Name)
 
-		meta, err := d4.ReadSnoMetaFile(metaPath)
+		meta, err := d4.ReadSnoMetaFile(metaPath, toc)
 		if err != nil {
 			slog.Error("Error reading meta", slog.String("path", metaPath), slog.String("err", err.Error()))
 			return

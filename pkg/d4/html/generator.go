@@ -15,7 +15,7 @@ type Generator struct {
 	gbData     *d4.GbData
 }
 
-func NewGenerator(toc d4.Toc, gbData *d4.GbData) *Generator {
+func NewGenerator(toc *d4.Toc, gbData *d4.GbData) *Generator {
 	return &Generator{
 		tocEntries: toc.Entries,
 		gbData:     gbData,

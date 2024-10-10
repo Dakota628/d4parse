@@ -7,7 +7,7 @@ Parses various D4 files.
 ### dumpsnometa
 Dumps SNO meta files as spew output.
 
-Example: `dumpsnometa World_SecretCellar.qst > World_SecretCellar.qst.dump`
+Example: `dumpsnometa CoreTOC.dat World_SecretCellar.qst > World_SecretCellar.qst.dump`
 
 ### dumptoc
 Dumps TOC files as YAML output.
